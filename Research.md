@@ -317,7 +317,7 @@ Agent swarming and multi-agent review
 
 Runtime inspection and debugging
 
-Use of GitHub Copilot CLI, Kilo CLI, Augment CLI, Zencoder CLI, Cline CLI, Kimi agents, etc.
+Use of GitHub Copilot CLI, Kilo CLI, Augment CLI, Zencoder CLI, Cline CLI, Kimi K2.5 agents, etc.
 
 Agent swarm usage across multi-repo / cross-repo contexts
 
@@ -336,10 +336,362 @@ CI/CD platform selection & patterns (GitHub Actions, GitLab CI, Jenkins, etc.)
 
 Kubernetes/Docker containerization/standards for agentic systems
 
-2.2 Unified Taxonomy (I–XII)
-For every item in the unified taxonomy (Meta Architecture → Cognitive Systems → Code Intelligence → SDLC Automation → Infrastructure → Governance → Optimization → Research Discipline → Scaling → Advanced → Self-Improvement), treat each numbered and bulleted line as an independent research topic that must satisfy the same deep research criteria (5+ papers, 20+ web sources, 7+ discussion threads).
+Design standards and preferences for agent-generated code
+
+Integration testing (service-level, component-level, contract testing)
+
+Agent specialization patterns and role-based agent design
+
+Agent lifecycle states and state machine modeling
+
+Agent watchdog monitoring, deadlock detection, and livelock detection
+
+Agent failure recovery and graceful degradation
+
+Agent performance scoring and trust scoring between agents
+
+Voting thresholds and consensus mechanisms for adversarial review
+
+Task graphs and atomic task creation
+
+Task validation pipelines
+
+Prompt injection defense and adversarial prompt simulation testing
+
+MCP privilege isolation and secure inter-agent communication
+
+Multi-model suggestion comparison and analysis
+
+2.2 Unified Taxonomy (I–XII) — Full Explicit Enumeration
+For every item in the unified taxonomy below, treat each numbered and bulleted line as an independent research topic that must satisfy the same deep research criteria (5+ papers, 20+ web sources, 7+ discussion threads).
 
 You must explicitly include all taxonomy content in your research queue, and attach cross-references where items overlap with the original list.
+
+--- I. META ARCHITECTURE LAYER ---
+
+1. System Design & Philosophy
+- Design principles (KISS, modularity, autonomy-first)
+- Anti-slop architecture constraints
+- Scope creep prevention frameworks
+- Complexity scoring and complexity budgets
+- Abstraction depth controls
+- Architecture drift detection
+- Entropy tracking in evolving codebases
+- Specification discipline
+- Spec-driven vs intent-driven systems (including critiques, e.g., AugmentCode)
+- Iterative refinement strategies
+- Deferred documentation strategies
+- Design standards and preferences
+
+2. Economic & Optimization Modeling
+- Cost-per-task modeling
+- Token efficiency optimization
+- Latency vs intelligence tradeoff modeling
+- Dynamic model routing and model selection engines
+- Resource utilization telemetry (CPU/GPU/RAM/token)
+- Cost-aware orchestration
+- ROI measurement per workflow
+- Cache strategy design
+- Cold start optimization
+
+3. Governance & Compliance
+- Audit trail architecture
+- Explainability logging
+- Deterministic replay systems
+- Reproducibility frameworks
+- License compliance scanning
+- SBOM (Software Bill of Materials) generation
+- Supply chain security validation
+- Policy enforcement layer
+- Secret handling strategy
+- Credential vaulting
+
+4. Security Architecture
+- Prompt injection defense
+- Context poisoning mitigation
+- MCP privilege isolation
+- Sandboxing execution environments
+- Network egress restriction modeling
+- File permission modeling
+- Secure inter-agent communication
+- Adversarial prompt simulation testing
+
+--- II. AGENT & ORCHESTRATION ARCHITECTURE ---
+
+5. Agent System Design
+- Modes (agent operational modes and switching)
+- Skills (agent skill definitions, loading, and management)
+- Workflows (structured multi-step agent workflows)
+- Rules (agent rules, constraints, guardrails)
+- Tool use strategy and tool use alignment with user intent
+- CLI-based agent systems (Kilo CLI, Augment CLI, Zencoder CLI, Cline CLI, GitHub Copilot CLI, Kimi K2.5)
+- IDE-integrated agents (Kilocode, Kilo Auto Launch, Copilot, Augment, Cline)
+- Multi-agent orchestration patterns
+- Agent swarming and swarm intelligence
+- Agent specialization patterns and role-based agent design
+- Hierarchical tasking, diagrams, graphs, maps
+- Agent lifecycle states and state machine modeling
+- Agent watchdog monitoring
+- Deadlock detection in agent systems
+- Livelock detection in agent systems
+- Agent failure recovery and graceful degradation
+- Agent performance scoring
+- Trust scoring between agents
+- Voting thresholds and adversarial review consensus mechanisms
+
+6. Task Architecture
+- Task decomposition and segmentation
+- Task graphs and dependency resolution
+- Atomic task creation
+- Work tree lifecycle management
+- Branch orchestration and multi-worktree management
+- Conflict resolution in concurrent agent work
+- Commit generation strategies
+- Automated merging with testing and validation
+- Task validation pipelines
+- Structured workflow orchestration maps
+
+7. Distributed Orchestration
+- Cross-machine agent clusters
+- Task queueing systems
+- Priority scheduling
+- Concurrency control
+- Backpressure handling
+- Distributed locking
+- Background / asynchronous agents and daemons
+
+--- III. CONTEXT, MEMORY & INTELLIGENCE ---
+
+8. Context Management
+- Context window optimization
+- Context compression and reduction pipelines
+- Context filtering and prioritization
+- Large-model summarization pipelines (using larger context models as compressors)
+- Context poisoning detection and mitigation
+- Cross-repo context modeling
+- Multi-repo memory management
+- Handling context limits
+
+9. Memory Systems
+- Short-term working memory
+- Persistent memory architecture
+- Vector DB architecture for agent memory
+- Hybrid symbolic + embedding memory
+- Graph memory and knowledge graphs
+- Auto-learning memory systems
+- Scheduled self-review for improvement
+- Knowledge base construction
+- Organization-wide knowledge modeling
+
+10. Reasoning Architecture
+- Tree-of-thought reasoning
+- Graph-of-thought reasoning
+- Reflective loops and self-critique loops
+- Confidence scoring and uncertainty modeling
+- Intent verification loops
+- Plan validation before execution
+- Multi-model adversarial reasoning
+- Chain-of-thought prompting strategies
+
+11. Knowledge Representation
+- AST (Abstract Syntax Tree) usage and manipulation
+- Control Flow Graph (CFG) analysis
+- Data Flow Graph (DFG) analysis
+- SSA (Static Single Assignment) form
+- Interprocedural analysis
+- Taint tracking
+- Lossless Semantic Tree (LST) and graph representations
+- Symbol indexing platforms (full code graph)
+- Semantic diffing
+- Schema inference from code
+- Behavior signature extraction
+
+--- IV. CODE INTELLIGENCE & EXPLORATION ---
+
+12. Code Exploration
+- Code traversal strategies
+- Search strategies (semantic, syntactic, hybrid)
+- Relationship chain verification
+- Dependency graphs and dependency management
+- Component diagrams
+- API interaction maps
+- Entrypoint mapping
+- Endpoint mapping
+- Call graph analysis and call management
+- Repo grokking systems (e.g., Zencoder repo grokking)
+- Pattern extraction from codebases
+- Codebase pattern management
+- Codebase analysis approaches
+
+13. Specification & Design
+- Documentation templates and formatting standards
+- Architecture documentation and management
+- API flow diagrams
+- Database schema management
+- Infrastructure mapping and documentation
+- Templates, formatting, and structure for all artifacts
+- Coding style guidelines for agents
+- Managing complexity frameworks
+- Test-driven / behavior-driven / intent-driven / objective-driven / result-driven development
+- Design standards and preferences
+- Docstrings best practices
+
+14. Refactoring & Optimization
+- Code refactoring strategies
+- Code repair techniques
+- Code performance optimization
+- Code readability improvement
+- Code documentation generation
+- Automated repair looping
+- Automatic validation pipelines
+- Multi-stage validation pipelines
+- Happy path and sad path validation
+
+--- V. SDLC AUTOMATION ---
+
+15. Testing Architecture
+- Unit testing
+- Integration testing (service, component, contract)
+- E2E testing
+- Behavioral testing
+- Validation methodology frameworks
+- Automatic test generation
+- Mutation testing
+- Runtime validation
+- Formal verification
+- Model checking
+- Constraint-based synthesis
+- Theorem prover integration
+- Happy and sad path testing/validation
+- Multi-stage validated testing workflows
+
+16. CI/CD & DevOps
+- Continuous integration patterns and platforms (GitHub Actions, GitLab CI, Jenkins, etc.)
+- Continuous deployment and delivery
+- Self-healing CI/CD
+- Canary deployments
+- Blue/green deployments
+- Rollback automation
+- Feature flag management
+- Infrastructure as Code
+- Kubernetes standards for agentic systems
+- Docker containerization standards
+- Pipeline optimization
+- Observability integration in CI/CD
+
+17. Observability & Feedback Loops
+- Structured logging strategy
+- Telemetry pipelines
+- Distributed tracing
+- Runtime metrics ingestion
+- Error fingerprint clustering
+- Incident postmortem automation
+- Feedback-based improvement loops
+- Automated feedback improvement/optimization
+
+--- VI. DATA & INFRASTRUCTURE ---
+
+18. Database & Data Engineering
+- Schema management and schema evolution
+- Migration control
+- Data validation contracts
+- Data drift detection
+- Synthetic data generation
+- Test data lifecycle management
+
+19. Infrastructure Engineering
+- Infrastructure management and optimization
+- Resource scaling strategy
+- GPU orchestration for model serving
+- Model serving infrastructure
+- Parallelization and async processing
+- Cold start optimization
+- Cache invalidation strategies
+- Sharded vector DB strategies
+
+--- VII. HUMAN INTERACTION LAYER ---
+
+20. Human-in-the-Loop Systems
+- Human-in-the-loop interaction support/integration
+- Approval hierarchies
+- Escalation thresholds
+- Cognitive load optimization
+- Explainable plan visualization
+- Confidence-based human escalation
+- Auto-approval gateway models
+- Suggestion systems and follow-up question prompting
+- Multi-model suggestion comparison and analysis
+- Notification frameworks (e.g., Apprise) and their role in agent workflows
+
+--- VIII. MODEL MANAGEMENT ---
+
+21. Model Capability Management
+- Per-model capability matrix
+- Model specialization mapping
+- Hallucination profiling and anti-hallucination strategies (OpenCLaw, LangChain guardrails)
+- Failure mode tracking
+- Regression tracking across model versions
+- Temperature optimization strategies
+- Multi-model consoles
+- Dynamic fallback strategies
+- Runtime model switching and model routing
+- Adversarial multi-model review
+- Research-informed model switching (when solution is not viable/sub-optimal)
+
+--- IX. RESEARCH DISCIPLINE ---
+
+22. Research & Benchmarking Framework
+- Hypothesis logging
+- Experiment logging
+- Workflow A/B testing
+- Performance baselines
+- Controlled benchmarking
+- Reproducibility standards
+- Model comparison matrices
+- Structured evaluation metrics
+
+--- X. SCALING & ENTERPRISE LAYER ---
+
+23. Large Codebase Handling
+- 10M+ LOC strategies
+- Monorepo vs polyrepo modeling
+- Incremental indexing
+- Repository compression
+- Semantic summarization
+- Autonomous dependency pruning
+- Cross-language translation systems
+
+24. Ecosystem Intelligence
+- Tool ecosystem monitoring
+- MCP update tracking and MCP server selection
+- Model API change tracking
+- Breaking change detection
+- Deprecation monitoring
+- Vendor risk assessment
+
+--- XI. ADVANCED & BLEEDING EDGE ---
+
+25. Autonomous Runtime Systems
+- Runtime inspection and debugging
+- Production patch generation
+- Autonomous refactor migrations
+- Incident auto-patching
+- Reinforcement learning from code review
+- Prompt evolution systems
+- Gradient-free optimization of workflows
+
+--- XII. META-CONTROL ---
+
+26. System Self-Improvement
+- Scheduled system review
+- Automated feedback integration
+- Performance regression detection
+- Agent optimization loops
+- Prompt optimization loops
+- Self-diagnosis modules
+- Failure clustering
+- Continuous architecture evolution
+- Enabling and disabling skills, workflows, agents, MCP to optimize performance and token usage
 
 2.3 Kilo Code / Kilocode / SDLC Workflow Framework Content
 You must also research, in depth:
@@ -465,33 +817,57 @@ Assume a top-level directory:
 
 Under this, create:
 
-By Layer / Domain (taxonomy-aligned)
-
-Example (adapt to full taxonomy):
+By Layer / Domain (taxonomy-aligned, matching the I–XII unified taxonomy):
 
 /docs/research/01_meta_architecture/
+  /system_design_philosophy/
+  /economic_optimization_modeling/
+  /governance_compliance/
+  /security_architecture/
 
 /docs/research/02_agent_orchestration/
+  /agent_system_design/
+  /task_architecture/
+  /distributed_orchestration/
 
 /docs/research/03_context_memory_intelligence/
+  /context_management/
+  /memory_systems/
+  /reasoning_architecture/
+  /knowledge_representation/
 
 /docs/research/04_code_intelligence/
+  /code_exploration/
+  /specification_design/
+  /refactoring_optimization/
 
 /docs/research/05_sdlc_automation/
+  /testing_architecture/
+  /cicd_devops/
+  /observability_feedback_loops/
 
-/docs/research/06_infrastructure/
+/docs/research/06_data_infrastructure/
+  /database_data_engineering/
+  /infrastructure_engineering/
 
 /docs/research/07_human_interaction/
+  /human_in_the_loop_systems/
 
 /docs/research/08_model_management/
+  /model_capability_management/
 
 /docs/research/09_research_discipline/
+  /research_benchmarking_framework/
 
 /docs/research/10_scaling_enterprise/
+  /large_codebase_handling/
+  /ecosystem_intelligence/
 
 /docs/research/11_advanced_runtime/
+  /autonomous_runtime_systems/
 
 /docs/research/12_self_improvement/
+  /system_self_improvement/
 
 Within each folder, one subfolder per topic
 
@@ -517,13 +893,31 @@ Create:
 
 /docs/research/index.md — global overview of all topics, with links.
 
-Cross-cutting indices, for example:
+/docs/research/_indices/ — cross-cutting indices that link topics across layers:
 
-/docs/research/_indices/mcp_servers.md — linking to all MCP-related topics
+/docs/research/_indices/mcp_servers.md — linking to all MCP-related topics (selection, privilege isolation, update tracking, context-engine MCP)
 
-/docs/research/_indices/testing_strategies.md
+/docs/research/_indices/testing_strategies.md — linking all testing topics (unit, integration, E2E, behavioral, mutation, formal verification, happy/sad path, multi-stage)
 
-/docs/research/_indices/context_management.md
+/docs/research/_indices/context_management.md — linking context window, compression, poisoning, cross-repo, limits
+
+/docs/research/_indices/agent_coordination.md — linking orchestration, swarming, task decomposition, conflict resolution, trust scoring
+
+/docs/research/_indices/security.md — linking prompt injection, sandboxing, MCP isolation, credential vaulting, supply chain security
+
+/docs/research/_indices/model_management.md — linking model routing, temperature, fallback, adversarial review, hallucination profiling
+
+/docs/research/_indices/memory_systems.md — linking persistent memory, vector DB, graph memory, org-wide knowledge, auto-learning
+
+/docs/research/_indices/cicd_devops.md — linking CI/CD, self-healing, canary/blue-green, IaC, Kubernetes, Docker
+
+/docs/research/_indices/code_quality.md — linking refactoring, repair, readability, optimization, automated repair loops, linting, style
+
+/docs/research/_indices/governance_compliance.md — linking audit trails, SBOM, license scanning, reproducibility, policy enforcement
+
+/docs/research/_indices/scaling_enterprise.md — linking large codebase handling, monorepo, incremental indexing, cross-language
+
+/docs/research/_indices/reasoning_intelligence.md — linking tree-of-thought, graph-of-thought, confidence scoring, intent verification
 
 Traceability
 
