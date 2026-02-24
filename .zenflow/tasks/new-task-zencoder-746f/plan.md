@@ -42,24 +42,137 @@ Save to `{@artifacts_path}/spec.md` with:
 - Delivery phases (incremental, testable milestones)
 - Verification approach using project lint/test commands
 
-### [ ] Step: Planning
+### [x] Step: Planning
+<!-- chat-id: 97a99f6f-9b9b-4194-b0b0-7164d3c16c95 -->
 
-Create a detailed implementation plan based on `{@artifacts_path}/spec.md`.
+Plan created below. Each step is a coherent unit of work with its own verification.
 
-1. Break down the work into concrete tasks
-2. Each task should reference relevant contracts and include verification steps
-3. Replace the Implementation step below with the planned tasks
+### [ ] Step: Foundation — Data Models, Constants, and Package Scaffold
 
-Rule of thumb for step size: each step should represent a coherent unit of work (e.g., implement a component, add an API endpoint). Avoid steps that are too granular (single function) or too broad (entire feature).
+Create `scripts/distillation/` package with core data structures and enums.
 
-Important: unit tests must be part of each implementation task, not separate tasks. Each task should implement the code and its tests together, if relevant.
+- Create `scripts/distillation/__init__.py` (empty package init)
+- Create `scripts/distillation/models.py`: `KnowledgeAtom`, `DomainSpec`, `PhaseSpec`, `ProductSpec` dataclasses per spec §4
+- Create `scripts/distillation/constants.py`: `AtomType`, `EvidenceStrength`, `Domain`, `SDLCPhase`, `ProductCategory` enums; domain keyword vocabularies (D1-D12), phase keyword vocabularies (P1-P8), product keyword vocabularies (PC1-PC10); known tool names list; extraction/discard regex patterns
+- Verification: `python -c "from scripts.distillation.models import KnowledgeAtom; from scripts.distillation.constants import AtomType, Domain"` succeeds
 
-If the feature is trivial and doesn't warrant full specification, update this workflow to remove unnecessary steps and explain the reasoning to the user.
+### [ ] Step: Corpus Scanner
 
-Save to `{@artifacts_path}/plan.md`.
+Implement file discovery for the research corpus.
 
-### [ ] Step: Implementation
+- Create `scripts/distillation/scanner.py`: `scan_corpus(root: Path) -> dict[str, list[Path]]` that discovers all input files categorized by source type (perplexity, overviews, indices, kimi_docs, kimi_csv, root_files)
+- Match patterns from spec §1.2: `docs/research/**/perplexityai_research_overview*.md`, `docs/research/**/overview.md`, `docs/research/_indices/*.md`, `Kimi-Research/docs/research/**/*.md`, `Kimi-Research/**/*.csv`, root `.md` files
+- Add inline test in `scripts/test_distill.py`: verify scanner finds files in each category (>0 count for each populated category)
+- Verification: `python scripts/test_distill.py` passes scanner checks
 
-This step should be replaced with detailed implementation tasks from the Planning step.
+### [ ] Step: Markdown Parser and Atom Extraction
 
-If Planning didn't replace this step, execute the tasks in `{@artifacts_path}/plan.md`, updating checkboxes as you go. Run planned tests/lint and record results in plan.md.
+Implement section-level extraction of candidate atoms from markdown files.
+
+- Create `scripts/distillation/parser.py`: `parse_file(path: Path) -> list[RawAtom]`
+  - Split markdown by `##` headers into sections
+  - Extract bullet points, table rows, bold text, numbered lists, metrics patterns per spec §5.1
+  - Apply DISCARD filters (scaffolding, "See also", methodology, aspirational, low-confidence)
+  - Each meaningful section chunk becomes a `RawAtom` (content + source_path + raw_section)
+- Handle CSV files: extract title/abstract columns as candidate atoms
+- Add parser tests in `scripts/test_distill.py`: parse a sample research file, verify atom count > 0, verify discard rules filter known noise
+- Verification: `python scripts/test_distill.py` passes parser checks
+
+### [ ] Step: Classifier and Evidence Strength
+
+Implement atom TYPE classification and evidence strength scoring.
+
+- Create `scripts/distillation/classifier.py`: `classify(atom: RawAtom) -> KnowledgeAtom | None`
+  - Pattern-based classification into 9 types per spec §5.2 (METRIC, TOOL, TECHNIQUE, RECIPE, COMBINATION, CONSTRAINT, FAILURE_MODE, ANTI_PATTERN, TRADEOFF)
+  - Priority: RECIPE > TECHNIQUE > COMBINATION when multiple patterns match
+  - Evidence strength heuristic per spec §2.2 item 4 (STRONG/MODERATE/WEAK)
+  - Return None for atoms matching no type pattern (discard)
+- Add classifier tests in `scripts/test_distill.py`: verify known input strings classify to expected types
+- Verification: `python scripts/test_distill.py` passes classifier checks
+
+### [ ] Step: Deduplication and Ranking
+
+Implement content-hash dedup and ranking within each atom type.
+
+- Create `scripts/distillation/dedup.py`: `deduplicate(atoms: list[KnowledgeAtom]) -> list[KnowledgeAtom]`
+  - Normalize content (lowercase, strip whitespace, remove citation markers)
+  - SHA-256 hash for grouping
+  - Merge groups: keep highest evidence strength, merge SOURCE lists, merge complementary details per spec §5.4
+- Create `scripts/distillation/ranker.py`: `rank(atoms: list[KnowledgeAtom]) -> list[KnowledgeAtom]`
+  - Sort within each TYPE by: evidence strength, specificity heuristic, agent-specificity heuristic per spec §4.5 ranking rules
+  - Assign sequential `KA-NNN` IDs after ranking
+- Add dedup/ranker tests in `scripts/test_distill.py`: verify duplicate atoms merge, verify ranking order is evidence-first
+- Verification: `python scripts/test_distill.py` passes dedup+ranker checks
+
+### [ ] Step: Tagger — Domain, Phase, and Product Assignment
+
+Implement keyword-vocabulary-based tag assignment.
+
+- Create `scripts/distillation/tagger.py`: `tag(atoms: list[KnowledgeAtom]) -> list[KnowledgeAtom]`
+  - For each atom, match content against domain keyword vocabularies (D1-D12), phase vocabularies (P1-P8), product vocabularies (PC1-PC10) from `constants.py`
+  - Assign tag when ≥2 keywords match per spec §5.3
+  - Ensure every atom gets ≥1 domain, ≥1 phase, ≥1 product (fallback: assign most generic match if threshold not met)
+- Add tagger tests in `scripts/test_distill.py`: verify known atoms get expected tags
+- Verification: `python scripts/test_distill.py` passes tagger checks
+
+### [ ] Step: Prong 2 — Domain Grouping Output
+
+Generate 12 domain spec markdown files.
+
+- Create `scripts/distillation/prong2_domains.py`: `generate_domain_specs(atoms: list[KnowledgeAtom], output_dir: Path)`
+  - Group atoms by domain tags
+  - For each domain (D1-D12), produce a markdown file following the domain output format from spec §Prong 2
+  - Include ranked key techniques, constraints, tools, combination recipes, failure modes, cross-domain links, gaps
+- Output to `distillation/domains/D01_agent_architecture.md` through `D12_self_improvement.md`
+- Add test: verify 12 files generated, each contains valid atom ID references
+- Verification: `python scripts/test_distill.py` passes domain output checks
+
+### [ ] Step: Prong 3 — SDLC Phase Mapping Output
+
+Generate 8 phase spec markdown files.
+
+- Create `scripts/distillation/prong3_phases.py`: `generate_phase_specs(atoms: list[KnowledgeAtom], output_dir: Path)`
+  - Group atoms by phase tags
+  - For each phase (P1-P8), produce a markdown file following the phase output format from spec §Prong 3
+  - Include sequenced techniques by step, constraints in effect, tools needed, failure modes, transitions
+- Output to `distillation/phases/P1_discovery_onboarding.md` through `P8_maintenance_monitoring.md`
+- Add test: verify 8 files generated, each contains valid atom ID references
+- Verification: `python scripts/test_distill.py` passes phase output checks
+
+### [ ] Step: Prong 4 — Product Spec Assembly (YAML Templates and Output)
+
+Generate product YAML specs for all 10 categories.
+
+- Create `scripts/distillation/yaml_templates.py`: one builder function per product category (PC1-PC10) — `build_mode_spec()`, `build_skill_spec()`, `build_workflow_spec()`, `build_rule_spec()`, `build_context_strategy_spec()`, `build_technique_spec()`, `build_task_decomposition_spec()`, `build_mcp_config_spec()`, `build_prompt_spec()`, `build_workspace_spec()`
+  - Each builder takes a cluster of related atoms and fills the corresponding YAML template from spec §Spec Templates
+  - Mark unfillable fields with `# GAP: [description]`
+- Create `scripts/distillation/prong4_products.py`: `generate_product_specs(atoms: list[KnowledgeAtom], output_dir: Path)`
+  - Collect atoms per product category
+  - Cluster related atoms into product instances (e.g., code traversal atoms → Skill: Code Traversal)
+  - Call template builders, write YAML files
+- Output to `distillation/products/{category}/*.yaml`
+- `pyyaml` dependency: add note in verification to `pip install pyyaml` if not present
+- Add test: verify YAML files generated, valid YAML syntax, conform to template structure
+- Verification: `python scripts/test_distill.py` passes product output checks
+
+### [ ] Step: Validation, Gap Report, and CLI Entrypoint
+
+Cross-reference validation, gap analysis, and CLI orchestration.
+
+- Create `scripts/distillation/validator.py`: `validate(atoms, domain_specs, phase_specs, product_specs) -> ValidationReport`
+  - Check every atom referenced by ≥1 domain, phase, product
+  - Check cross-references (skills in modes exist, context strategies in modes exist, etc.)
+  - Flag orphan atoms
+- Create `scripts/distillation/gap_report.py`: `generate_gap_report(atoms, domain_specs, phase_specs, product_specs) -> str`
+  - Categorize: strong backing (≥5 STRONG atoms), adequate (2-4 mixed), weak (<2 or WEAK only)
+  - List orphan research, contradictions
+- Create `scripts/distill.py`: CLI entrypoint orchestrating the full pipeline
+  - `--dry-run`: scan + parse only, report counts
+  - `--verbose`: log each step
+  - `--output-dir`: default `distillation/`
+  - Sequence: scan → parse → classify → dedup → rank → tag → write registry JSON → prong2 → prong3 → prong4 → validate → gap report
+- Output reports to `distillation/reports/validation_report.md` and `distillation/reports/gap_report.md`
+- Registry to `distillation/registry/knowledge_atoms.json`
+- Create output directory structure (`distillation/registry/`, `domains/`, `phases/`, `products/{10 subdirs}/`, `reports/`)
+- Add end-to-end test in `scripts/test_distill.py`: run full pipeline, verify all output files exist and are non-empty
+- Verification: `python scripts/test_distill.py` passes all checks; `python scripts/distill.py --dry-run` succeeds
