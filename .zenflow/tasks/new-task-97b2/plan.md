@@ -107,7 +107,8 @@ Read both source documents. Produce two focused domain reports following the per
 
 **Verification**: Both files exist, all 6 subsection headers (A-F) present and non-empty in each.
 
-### [ ] Step: Generate Domain Reports — Environment & Infrastructure + Security & Compliance
+### [x] Step: Generate Domain Reports — Environment & Infrastructure + Security & Compliance
+<!-- chat-id: d572c60a-deb6-4f23-a4ed-dc7da687225a -->
 
 Read both source documents. Produce two focused domain reports.
 
@@ -117,19 +118,19 @@ Read both source documents. Produce two focused domain reports.
 - `.zenflow/tasks/new-task-97b2/reports/security_compliance.md`
 
 1. For Environment & Infrastructure:
-   - [ ] A. Executive Summary (3-5 sentences)
-   - [ ] B. Core Concepts (deduplicated bullets)
-   - [ ] C. Implementation Guidance (what/how/why/dependencies)
-   - [ ] D. Validation Criteria
-   - [ ] E. Known Gaps & Risks
-   - [ ] F. Decision Log
+   - [x] A. Executive Summary (3-5 sentences)
+   - [x] B. Core Concepts (deduplicated bullets)
+   - [x] C. Implementation Guidance (what/how/why/dependencies)
+   - [x] D. Validation Criteria
+   - [x] E. Known Gaps & Risks
+   - [x] F. Decision Log
 2. For Security & Compliance:
-   - [ ] A. Executive Summary (3-5 sentences)
-   - [ ] B. Core Concepts (deduplicated bullets)
-   - [ ] C. Implementation Guidance (what/how/why/dependencies)
-   - [ ] D. Validation Criteria
-   - [ ] E. Known Gaps & Risks
-   - [ ] F. Decision Log
+   - [x] A. Executive Summary (3-5 sentences)
+   - [x] B. Core Concepts (deduplicated bullets)
+   - [x] C. Implementation Guidance (what/how/why/dependencies)
+   - [x] D. Validation Criteria
+   - [x] E. Known Gaps & Risks
+   - [x] F. Decision Log
 3. No concept duplicated across any reports — use cross-references
 4. Source traceability maintained
 
