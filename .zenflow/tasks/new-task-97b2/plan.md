@@ -136,7 +136,8 @@ Read both source documents. Produce two focused domain reports.
 
 **Verification**: Both files exist, all 6 subsection headers (A-F) present and non-empty in each.
 
-### [ ] Step: Generate Domain Reports — Performance & Optimization + Documentation & Knowledge
+### [x] Step: Generate Domain Reports — Performance & Optimization + Documentation & Knowledge
+<!-- chat-id: 86dca9ba-e3f2-4a5c-bc0d-85e33012d699 -->
 
 Read both source documents. Produce two focused domain reports.
 
@@ -146,19 +147,19 @@ Read both source documents. Produce two focused domain reports.
 - `.zenflow/tasks/new-task-97b2/reports/documentation_knowledge.md`
 
 1. For Performance & Optimization:
-   - [ ] A. Executive Summary (3-5 sentences)
-   - [ ] B. Core Concepts (deduplicated bullets)
-   - [ ] C. Implementation Guidance (what/how/why/dependencies)
-   - [ ] D. Validation Criteria
-   - [ ] E. Known Gaps & Risks
-   - [ ] F. Decision Log
+   - [x] A. Executive Summary (3-5 sentences)
+   - [x] B. Core Concepts (deduplicated bullets)
+   - [x] C. Implementation Guidance (what/how/why/dependencies)
+   - [x] D. Validation Criteria
+   - [x] E. Known Gaps & Risks
+   - [x] F. Decision Log
 2. For Documentation & Knowledge:
-   - [ ] A. Executive Summary (3-5 sentences)
-   - [ ] B. Core Concepts (deduplicated bullets)
-   - [ ] C. Implementation Guidance (what/how/why/dependencies)
-   - [ ] D. Validation Criteria
-   - [ ] E. Known Gaps & Risks
-   - [ ] F. Decision Log
+   - [x] A. Executive Summary (3-5 sentences)
+   - [x] B. Core Concepts (deduplicated bullets)
+   - [x] C. Implementation Guidance (what/how/why/dependencies)
+   - [x] D. Validation Criteria
+   - [x] E. Known Gaps & Risks
+   - [x] F. Decision Log
 3. No concept duplicated across any reports — use cross-references
 4. Source traceability maintained
 
