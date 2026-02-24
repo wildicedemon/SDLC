@@ -65,7 +65,8 @@ Save to `{@artifacts_path}/plan.md`.
 - Create directory structure: `scripts/distillation/`, `scripts/prompts/`, and `output/distilled/`.
 - Verify environment setup by successfully installing dependencies.
 
-### [ ] Step: Phase 1 Foundation & Data Models
+### [x] Step: Phase 1 Foundation & Data Models
+<!-- chat-id: 137bb056-3c1e-4dda-8ab7-81b1fbd21296 -->
 - Create the Pydantic schemas corresponding to the YAML templates and the Knowledge Atom format in `scripts/distillation/schemas.py`.
 - Write simple unit tests for schema validation in `tests/test_schemas.py`.
 - Verify with `pytest` and `mypy`.
