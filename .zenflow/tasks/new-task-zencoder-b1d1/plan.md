@@ -59,7 +59,8 @@ If the feature is trivial and doesn't warrant full specification, update this wo
 
 Save to `{@artifacts_path}/plan.md`.
 
-### [ ] Step: Project Setup
+### [x] Step: Project Setup
+<!-- chat-id: 64148ab5-a650-4de2-a5b6-1df08d24ac82 -->
 - Initialize Python project with a `requirements.txt` or `pyproject.toml` including dependencies: `pydantic`, `pyyaml`, `anthropic` or `openai`, `pytest`, `flake8`, `black`, `mypy`.
 - Create directory structure: `scripts/distillation/`, `scripts/prompts/`, and `output/distilled/`.
 - Verify environment setup by successfully installing dependencies.
