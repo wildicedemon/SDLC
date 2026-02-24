@@ -67,7 +67,8 @@ Implement file discovery for the research corpus.
 - Add inline test in `scripts/test_distill.py`: verify scanner finds files in each category (>0 count for each populated category)
 - Verification: `python scripts/test_distill.py` passes scanner checks
 
-### [ ] Step: Markdown Parser and Atom Extraction
+### [x] Step: Markdown Parser and Atom Extraction
+<!-- chat-id: 6a82057d-0df0-4a61-9531-9b72bb7a684d -->
 
 Implement section-level extraction of candidate atoms from markdown files.
 
