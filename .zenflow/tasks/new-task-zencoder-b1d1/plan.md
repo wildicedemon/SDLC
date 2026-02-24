@@ -71,7 +71,8 @@ Save to `{@artifacts_path}/plan.md`.
 - Write simple unit tests for schema validation in `tests/test_schemas.py`.
 - Verify with `pytest` and `mypy`.
 
-### [ ] Step: Phase 2 LLM Integration & Parsing
+### [x] Step: Phase 2 LLM Integration & Parsing
+<!-- chat-id: 6339c619-1b41-4a3b-9430-5553a561988c -->
 - Implement `llm_client.py` and `parser.py` in `scripts/distillation/`.
 - Add `scripts/prompts/distillation_prompt.txt` based on the PRD prompt.
 - Create a test in `tests/test_parser.py` using a small sample markdown file to verify successful generation and extraction of Knowledge Atoms.
