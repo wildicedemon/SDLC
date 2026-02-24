@@ -84,7 +84,8 @@ Save to `{@artifacts_path}/plan.md`.
 - Ensure parsed outputs are written correctly to the `output/distilled/` directory structure using `pyyaml`.
 - Verify end-to-end execution against a curated dummy research file (`dummy_research.md`).
 
-### [ ] Step: Phase 4 Validation Engine
+### [x] Step: Phase 4 Validation Engine
+<!-- chat-id: 4aa8fc77-c991-47d9-8f39-6e5c87721683 -->
 - Implement `validator.py` in `scripts/distillation/` to check for orphaned atoms, missing cross-references, and unhandled failure modes.
 - Implement generation of the final Gap Report.
 - Write unit tests in `tests/test_validator.py` to ensure orphaned atoms or missing references are caught.
