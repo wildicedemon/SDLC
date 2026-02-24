@@ -57,7 +57,8 @@ Create `scripts/distillation/` package with core data structures and enums.
 - Create `scripts/distillation/constants.py`: `AtomType`, `EvidenceStrength`, `Domain`, `SDLCPhase`, `ProductCategory` enums; domain keyword vocabularies (D1-D12), phase keyword vocabularies (P1-P8), product keyword vocabularies (PC1-PC10); known tool names list; extraction/discard regex patterns
 - Verification: `python -c "from scripts.distillation.models import KnowledgeAtom; from scripts.distillation.constants import AtomType, Domain"` succeeds
 
-### [ ] Step: Corpus Scanner
+### [x] Step: Corpus Scanner
+<!-- chat-id: 17964139-fe0f-4327-bb46-e539eca5f054 -->
 
 Implement file discovery for the research corpus.
 
