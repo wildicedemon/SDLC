@@ -47,7 +47,8 @@ Save to `{@artifacts_path}/spec.md` with:
 
 Plan created below. Each step is a coherent unit of work with its own verification.
 
-### [ ] Step: Foundation — Data Models, Constants, and Package Scaffold
+### [x] Step: Foundation — Data Models, Constants, and Package Scaffold
+<!-- chat-id: c0edf0a5-453a-4679-abfb-d3dcd0250a5d -->
 
 Create `scripts/distillation/` package with core data structures and enums.
 
