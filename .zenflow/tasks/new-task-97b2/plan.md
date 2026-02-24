@@ -165,7 +165,8 @@ Read both source documents. Produce two focused domain reports.
 
 **Verification**: Both files exist, all 6 subsection headers (A-F) present and non-empty in each.
 
-### [ ] Step: Generate Consolidated Decision Log
+### [x] Step: Generate Consolidated Decision Log
+<!-- chat-id: c0e0d735-62da-4bd9-bc39-4aafe44737d1 -->
 
 Review all previously generated reports and both source documents. Extract all architectural decisions into a consolidated decision log.
 
