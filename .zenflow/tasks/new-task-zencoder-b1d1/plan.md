@@ -42,7 +42,8 @@ Save to `{@artifacts_path}/spec.md` with:
 - Delivery phases (incremental, testable milestones)
 - Verification approach using project lint/test commands
 
-### [ ] Step: Planning
+### [x] Step: Planning
+<!-- chat-id: a0e1c75a-c684-4396-8eb5-797f4d3c7cef -->
 
 Create a detailed implementation plan based on `{@artifacts_path}/spec.md`.
 
@@ -58,8 +59,29 @@ If the feature is trivial and doesn't warrant full specification, update this wo
 
 Save to `{@artifacts_path}/plan.md`.
 
-### [ ] Step: Implementation
+### [ ] Step: Project Setup
+- Initialize Python project with a `requirements.txt` or `pyproject.toml` including dependencies: `pydantic`, `pyyaml`, `anthropic` or `openai`, `pytest`, `flake8`, `black`, `mypy`.
+- Create directory structure: `scripts/distillation/`, `scripts/prompts/`, and `output/distilled/`.
+- Verify environment setup by successfully installing dependencies.
 
-This step should be replaced with detailed implementation tasks from the Planning step.
+### [ ] Step: Phase 1 Foundation & Data Models
+- Create the Pydantic schemas corresponding to the YAML templates and the Knowledge Atom format in `scripts/distillation/schemas.py`.
+- Write simple unit tests for schema validation in `tests/test_schemas.py`.
+- Verify with `pytest` and `mypy`.
 
-If Planning didn't replace this step, execute the tasks in `{@artifacts_path}/plan.md`, updating checkboxes as you go. Run planned tests/lint and record results in plan.md.
+### [ ] Step: Phase 2 LLM Integration & Parsing
+- Implement `llm_client.py` and `parser.py` in `scripts/distillation/`.
+- Add `scripts/prompts/distillation_prompt.txt` based on the PRD prompt.
+- Create a test in `tests/test_parser.py` using a small sample markdown file to verify successful generation and extraction of Knowledge Atoms.
+- Verify with `pytest`.
+
+### [ ] Step: Phase 3 Pipeline Orchestration
+- Build `main.py` in `scripts/distillation/` to chain the prompt executions (Prong 1 -> Prongs 2/3 -> Prong 4).
+- Ensure parsed outputs are written correctly to the `output/distilled/` directory structure using `pyyaml`.
+- Verify end-to-end execution against a curated dummy research file (`dummy_research.md`).
+
+### [ ] Step: Phase 4 Validation Engine
+- Implement `validator.py` in `scripts/distillation/` to check for orphaned atoms, missing cross-references, and unhandled failure modes.
+- Implement generation of the final Gap Report.
+- Write unit tests in `tests/test_validator.py` to ensure orphaned atoms or missing references are caught.
+- Run `flake8`, `black`, and `mypy` against the entire `scripts/distillation` module to ensure code quality.
