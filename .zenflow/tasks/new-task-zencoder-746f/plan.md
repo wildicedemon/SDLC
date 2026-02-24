@@ -165,6 +165,7 @@ Generate product YAML specs for all 10 categories.
 - Verification: `python scripts/test_distill.py` passes product output checks
 
 ### [ ] Step: Validation, Gap Report, and CLI Entrypoint
+<!-- chat-id: 14be2c41-c3e3-4076-be4e-77fdc2cd1f36 -->
 
 Cross-reference validation, gap analysis, and CLI orchestration.
 
