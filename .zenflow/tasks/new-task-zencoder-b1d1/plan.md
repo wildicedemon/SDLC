@@ -78,7 +78,8 @@ Save to `{@artifacts_path}/plan.md`.
 - Create a test in `tests/test_parser.py` using a small sample markdown file to verify successful generation and extraction of Knowledge Atoms.
 - Verify with `pytest`.
 
-### [ ] Step: Phase 3 Pipeline Orchestration
+### [x] Step: Phase 3 Pipeline Orchestration
+<!-- chat-id: ba808198-b9cd-4dbc-8630-33576cc792ac -->
 - Build `main.py` in `scripts/distillation/` to chain the prompt executions (Prong 1 -> Prongs 2/3 -> Prong 4).
 - Ensure parsed outputs are written correctly to the `output/distilled/` directory structure using `pyyaml`.
 - Verify end-to-end execution against a curated dummy research file (`dummy_research.md`).
