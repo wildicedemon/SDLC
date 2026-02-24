@@ -707,6 +707,130 @@ def test_ranker_specificity_tiebreak() -> None:
     )
 
 
+# ── Tagger tests ───────────────────────────────────────────────────
+
+def test_tagger_domain_assignment() -> None:
+    print("\n=== Tagger Tests (Domain Assignment) ===")
+    from distillation.tagger import tag
+    from distillation.models import KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength
+
+    atom = KnowledgeAtom(
+        id="KA-001", type=AtomType.TOOL,
+        content="Tree-sitter: incremental AST parsing supporting 40+ languages with error recovery, de facto standard for code intelligence",
+        evidence_strength=EvidenceStrength.STRONG,
+        sources=["f.md"],
+    )
+    result = tag([atom])
+    check("domain tagged", len(result[0].domains) > 0, f"got {result[0].domains}")
+    check("D5 assigned (code intelligence)", "D5" in result[0].domains, f"got {result[0].domains}")
+
+
+def test_tagger_phase_assignment() -> None:
+    print("\n=== Tagger Tests (Phase Assignment) ===")
+    from distillation.tagger import tag
+    from distillation.models import KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength
+
+    atom = KnowledgeAtom(
+        id="KA-002", type=AtomType.METRIC,
+        content="Mutation testing detects 70% of quality gate failures in test generation validation pipelines",
+        evidence_strength=EvidenceStrength.MODERATE,
+        sources=["f.md"],
+    )
+    result = tag([atom])
+    check("phase tagged", len(result[0].sdlc_phases) > 0, f"got {result[0].sdlc_phases}")
+    check("P4 assigned (testing)", "P4" in result[0].sdlc_phases, f"got {result[0].sdlc_phases}")
+
+
+def test_tagger_product_assignment() -> None:
+    print("\n=== Tagger Tests (Product Assignment) ===")
+    from distillation.tagger import tag
+    from distillation.models import KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength
+
+    atom = KnowledgeAtom(
+        id="KA-003", type=AtomType.CONSTRAINT,
+        content="Agent must never commit directly to main branch — all changes require review approval as a hard constraint and guardrail rule",
+        evidence_strength=EvidenceStrength.WEAK,
+        sources=["f.md"],
+    )
+    result = tag([atom])
+    check("product tagged", len(result[0].products) > 0, f"got {result[0].products}")
+    check("PC6 assigned (rules)", "PC6" in result[0].products, f"got {result[0].products}")
+
+
+def test_tagger_multi_domain() -> None:
+    print("\n=== Tagger Tests (Multi-Domain) ===")
+    from distillation.tagger import tag
+    from distillation.models import KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength
+
+    atom = KnowledgeAtom(
+        id="KA-004", type=AtomType.TOOL,
+        content="Code Property Graphs via Joern unify AST CFG DFG for vulnerability detection and taint tracking of security issues",
+        evidence_strength=EvidenceStrength.MODERATE,
+        sources=["f.md"],
+    )
+    result = tag([atom])
+    check("multiple domains", len(result[0].domains) >= 2, f"got {result[0].domains}")
+    check("D5 present (code intelligence)", "D5" in result[0].domains, f"got {result[0].domains}")
+    check("D7 present (security)", "D7" in result[0].domains, f"got {result[0].domains}")
+
+
+def test_tagger_fallback_assignment() -> None:
+    print("\n=== Tagger Tests (Fallback Assignment) ===")
+    from distillation.tagger import tag
+    from distillation.models import KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength
+
+    atom = KnowledgeAtom(
+        id="KA-005", type=AtomType.TECHNIQUE,
+        content="Apply a novel specialized approach for improved system outcomes",
+        evidence_strength=EvidenceStrength.WEAK,
+        sources=["f.md"],
+    )
+    result = tag([atom])
+    check("domain fallback >=1", len(result[0].domains) >= 1, f"got {result[0].domains}")
+    check("phase fallback >=1", len(result[0].sdlc_phases) >= 1, f"got {result[0].sdlc_phases}")
+    check("product fallback >=1", len(result[0].products) >= 1, f"got {result[0].products}")
+
+
+def test_tagger_all_atoms_tagged() -> None:
+    print("\n=== Tagger Tests (All Atoms Get Tags) ===")
+    from distillation.tagger import tag
+    from distillation.models import KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength
+
+    atoms = [
+        KnowledgeAtom(id="KA-010", type=AtomType.METRIC, content="LLMLingua achieves 20x compression with less than 3% quality loss", evidence_strength=EvidenceStrength.MODERATE, sources=["f.md"]),
+        KnowledgeAtom(id="KA-011", type=AtomType.RECIPE, content="1. Parse AST 2. Build call graph 3. Overlay DFG 4. Construct CPG", evidence_strength=EvidenceStrength.MODERATE, sources=["f.md"]),
+        KnowledgeAtom(id="KA-012", type=AtomType.FAILURE_MODE, content="19.7% of AI-recommended packages are fabricated hallucinations", evidence_strength=EvidenceStrength.STRONG, sources=["f.md"]),
+    ]
+    result = tag(atoms)
+    for a in result:
+        check(f"{a.id} has domains", len(a.domains) >= 1, f"got {a.domains}")
+        check(f"{a.id} has phases", len(a.sdlc_phases) >= 1, f"got {a.sdlc_phases}")
+        check(f"{a.id} has products", len(a.products) >= 1, f"got {a.products}")
+
+
+def test_tagger_raw_section_fallback() -> None:
+    print("\n=== Tagger Tests (Raw Section Fallback) ===")
+    from distillation.tagger import tag
+    from distillation.models import KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength
+
+    atom = KnowledgeAtom(
+        id="KA-006", type=AtomType.TECHNIQUE,
+        content="A generic method for processing data efficiently",
+        evidence_strength=EvidenceStrength.WEAK,
+        sources=["f.md"],
+        raw_section="## Agent Architecture & Orchestration\nMulti-agent delegation handoff patterns for hierarchical orchestration",
+    )
+    result = tag([atom])
+    check("raw_section fallback domain D1", "D1" in result[0].domains, f"got {result[0].domains}")
+
+
 # ── Main ───────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
@@ -730,6 +854,13 @@ if __name__ == "__main__":
     test_ranker_assigns_ids()
     test_ranker_groups_by_type()
     test_ranker_specificity_tiebreak()
+    test_tagger_domain_assignment()
+    test_tagger_phase_assignment()
+    test_tagger_product_assignment()
+    test_tagger_multi_domain()
+    test_tagger_fallback_assignment()
+    test_tagger_all_atoms_tagged()
+    test_tagger_raw_section_fallback()
 
     print(f"\n{'=' * 40}")
     print(f"Results: {PASS} passed, {FAIL} failed")
