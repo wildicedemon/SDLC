@@ -94,7 +94,8 @@ Implement atom TYPE classification and evidence strength scoring.
 - Add classifier tests in `scripts/test_distill.py`: verify known input strings classify to expected types
 - Verification: `python scripts/test_distill.py` passes classifier checks
 
-### [ ] Step: Deduplication and Ranking
+### [x] Step: Deduplication and Ranking
+<!-- chat-id: c447071b-159f-444f-9f84-4b5bccb07c10 -->
 
 Implement content-hash dedup and ranking within each atom type.
 

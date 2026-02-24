@@ -491,6 +491,222 @@ def test_classifier_priority() -> None:
     )
 
 
+# ── Dedup tests ────────────────────────────────────────────────────
+
+def test_dedup_exact_duplicates() -> None:
+    print("\n=== Dedup Tests (Exact Duplicates) ===")
+    from distillation.dedup import deduplicate
+    from distillation.models import KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength
+
+    a1 = KnowledgeAtom(
+        id="", type=AtomType.METRIC,
+        content="AST-based code search improves precision 60-80% over text-based",
+        evidence_strength=EvidenceStrength.MODERATE,
+        sources=["file_a.md"],
+    )
+    a2 = KnowledgeAtom(
+        id="", type=AtomType.METRIC,
+        content="AST-based code search improves precision 60-80% over text-based",
+        evidence_strength=EvidenceStrength.STRONG,
+        sources=["file_b.md"],
+    )
+    result = deduplicate([a1, a2])
+    check("exact dup merged to 1", len(result) == 1, f"got {len(result)}")
+    check("kept STRONG version", result[0].evidence_strength == EvidenceStrength.STRONG)
+    check("merged sources", set(result[0].sources) == {"file_a.md", "file_b.md"})
+
+
+def test_dedup_whitespace_normalization() -> None:
+    print("\n=== Dedup Tests (Whitespace Normalization) ===")
+    from distillation.dedup import deduplicate
+    from distillation.models import KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength
+
+    a1 = KnowledgeAtom(
+        id="", type=AtomType.TOOL,
+        content="Tree-sitter:  incremental AST   parsing",
+        evidence_strength=EvidenceStrength.MODERATE,
+        sources=["f1.md"],
+    )
+    a2 = KnowledgeAtom(
+        id="", type=AtomType.TOOL,
+        content="Tree-sitter: incremental AST parsing",
+        evidence_strength=EvidenceStrength.MODERATE,
+        sources=["f2.md"],
+    )
+    result = deduplicate([a1, a2])
+    check("whitespace-different dup merged", len(result) == 1, f"got {len(result)}")
+
+
+def test_dedup_citation_normalization() -> None:
+    print("\n=== Dedup Tests (Citation Normalization) ===")
+    from distillation.dedup import deduplicate
+    from distillation.models import KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength
+
+    a1 = KnowledgeAtom(
+        id="", type=AtomType.METRIC,
+        content="According to [12], precision improves 60-80%",
+        evidence_strength=EvidenceStrength.STRONG,
+        sources=["f1.md"],
+    )
+    a2 = KnowledgeAtom(
+        id="", type=AtomType.METRIC,
+        content="According to , precision improves 60-80%",
+        evidence_strength=EvidenceStrength.MODERATE,
+        sources=["f2.md"],
+    )
+    result = deduplicate([a1, a2])
+    check("citation-stripped dup merged", len(result) == 1, f"got {len(result)}")
+    check("kept STRONG with citation", result[0].evidence_strength == EvidenceStrength.STRONG)
+
+
+def test_dedup_distinct_preserved() -> None:
+    print("\n=== Dedup Tests (Distinct Atoms Preserved) ===")
+    from distillation.dedup import deduplicate
+    from distillation.models import KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength
+
+    a1 = KnowledgeAtom(
+        id="", type=AtomType.TOOL,
+        content="Tree-sitter: incremental AST parsing 40+ languages",
+        evidence_strength=EvidenceStrength.STRONG,
+        sources=["f1.md"],
+    )
+    a2 = KnowledgeAtom(
+        id="", type=AtomType.TOOL,
+        content="Sourcegraph: multi-repo symbol search with sub-second queries",
+        evidence_strength=EvidenceStrength.STRONG,
+        sources=["f2.md"],
+    )
+    result = deduplicate([a1, a2])
+    check("distinct atoms kept", len(result) == 2, f"got {len(result)}")
+
+
+def test_dedup_content_hash_set() -> None:
+    print("\n=== Dedup Tests (Content Hash) ===")
+    from distillation.dedup import deduplicate
+    from distillation.models import KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength
+
+    a1 = KnowledgeAtom(
+        id="", type=AtomType.METRIC,
+        content="Precision improves 60-80%",
+        evidence_strength=EvidenceStrength.MODERATE,
+        sources=["f1.md"],
+    )
+    result = deduplicate([a1])
+    check("content_hash populated", len(result[0].content_hash) == 64, f"got len={len(result[0].content_hash)}")
+
+
+# ── Ranker tests ───────────────────────────────────────────────────
+
+def test_ranker_evidence_ordering() -> None:
+    print("\n=== Ranker Tests (Evidence Ordering) ===")
+    from distillation.ranker import rank
+    from distillation.models import KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength
+
+    atoms = [
+        KnowledgeAtom(id="", type=AtomType.METRIC, content="Weak metric assertion", evidence_strength=EvidenceStrength.WEAK, sources=["f.md"]),
+        KnowledgeAtom(id="", type=AtomType.METRIC, content="Strong metric with 80% improvement [12]", evidence_strength=EvidenceStrength.STRONG, sources=["f.md"]),
+        KnowledgeAtom(id="", type=AtomType.METRIC, content="Moderate metric with 50% gain", evidence_strength=EvidenceStrength.MODERATE, sources=["f.md"]),
+    ]
+    result = rank(atoms)
+    metrics = [a for a in result if a.type == AtomType.METRIC]
+    check(
+        "STRONG first",
+        metrics[0].evidence_strength == EvidenceStrength.STRONG,
+        f"got {metrics[0].evidence_strength.value}",
+    )
+    check(
+        "MODERATE second",
+        metrics[1].evidence_strength == EvidenceStrength.MODERATE,
+        f"got {metrics[1].evidence_strength.value}",
+    )
+    check(
+        "WEAK last",
+        metrics[2].evidence_strength == EvidenceStrength.WEAK,
+        f"got {metrics[2].evidence_strength.value}",
+    )
+
+
+def test_ranker_assigns_ids() -> None:
+    print("\n=== Ranker Tests (ID Assignment) ===")
+    from distillation.ranker import rank
+    from distillation.models import KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength
+
+    atoms = [
+        KnowledgeAtom(id="", type=AtomType.TECHNIQUE, content="Parse AST and build graph", evidence_strength=EvidenceStrength.MODERATE, sources=["f.md"]),
+        KnowledgeAtom(id="", type=AtomType.METRIC, content="60-80% improvement", evidence_strength=EvidenceStrength.STRONG, sources=["f.md"]),
+        KnowledgeAtom(id="", type=AtomType.TOOL, content="Tree-sitter supports 40+ languages", evidence_strength=EvidenceStrength.STRONG, sources=["f.md"]),
+    ]
+    result = rank(atoms)
+    check("all have KA- IDs", all(a.id.startswith("KA-") for a in result))
+    ids = [a.id for a in result]
+    check("IDs are unique", len(ids) == len(set(ids)), f"ids={ids}")
+    check("IDs are sequential format", all(a.id[3:].isdigit() for a in result))
+
+
+def test_ranker_groups_by_type() -> None:
+    print("\n=== Ranker Tests (Grouped by Type) ===")
+    from distillation.ranker import rank
+    from distillation.models import KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength
+
+    atoms = [
+        KnowledgeAtom(id="", type=AtomType.TOOL, content="Sourcegraph multi-repo search", evidence_strength=EvidenceStrength.STRONG, sources=["f.md"]),
+        KnowledgeAtom(id="", type=AtomType.TECHNIQUE, content="Parse and build AST with verification step", evidence_strength=EvidenceStrength.MODERATE, sources=["f.md"]),
+        KnowledgeAtom(id="", type=AtomType.TOOL, content="Tree-sitter AST parsing 40+ languages", evidence_strength=EvidenceStrength.MODERATE, sources=["f.md"]),
+        KnowledgeAtom(id="", type=AtomType.TECHNIQUE, content="Extract and verify claims independently", evidence_strength=EvidenceStrength.STRONG, sources=["f.md"]),
+    ]
+    result = rank(atoms)
+    types = [a.type for a in result]
+    first_technique = types.index(AtomType.TECHNIQUE)
+    last_technique = len(types) - 1 - types[::-1].index(AtomType.TECHNIQUE)
+    first_tool = types.index(AtomType.TOOL)
+    last_tool = len(types) - 1 - types[::-1].index(AtomType.TOOL)
+    check(
+        "techniques contiguous",
+        last_technique - first_technique == 1,
+        f"technique indices {first_technique}-{last_technique}",
+    )
+    check(
+        "tools contiguous",
+        last_tool - first_tool == 1,
+        f"tool indices {first_tool}-{last_tool}",
+    )
+
+
+def test_ranker_specificity_tiebreak() -> None:
+    print("\n=== Ranker Tests (Specificity Tiebreak) ===")
+    from distillation.ranker import rank
+    from distillation.models import KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength
+
+    vague = KnowledgeAtom(
+        id="", type=AtomType.TECHNIQUE,
+        content="Parse the code and analyze it for issues",
+        evidence_strength=EvidenceStrength.MODERATE,
+        sources=["f.md"],
+    )
+    specific = KnowledgeAtom(
+        id="", type=AtomType.TECHNIQUE,
+        content="Parse target files with Tree-sitter to build AST then extract symbol references step 1 and verify step 2",
+        evidence_strength=EvidenceStrength.MODERATE,
+        sources=["f.md"],
+    )
+    result = rank([vague, specific])
+    techniques = [a for a in result if a.type == AtomType.TECHNIQUE]
+    check(
+        "more specific ranked first",
+        "Tree-sitter" in techniques[0].content,
+        f"first content: {techniques[0].content[:40]}",
+    )
+
+
 # ── Main ───────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
@@ -505,6 +721,15 @@ if __name__ == "__main__":
     test_classifier_evidence_strength()
     test_classifier_output_fields()
     test_classifier_priority()
+    test_dedup_exact_duplicates()
+    test_dedup_whitespace_normalization()
+    test_dedup_citation_normalization()
+    test_dedup_distinct_preserved()
+    test_dedup_content_hash_set()
+    test_ranker_evidence_ordering()
+    test_ranker_assigns_ids()
+    test_ranker_groups_by_type()
+    test_ranker_specificity_tiebreak()
 
     print(f"\n{'=' * 40}")
     print(f"Results: {PASS} passed, {FAIL} failed")
