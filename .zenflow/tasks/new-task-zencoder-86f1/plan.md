@@ -42,7 +42,8 @@ Save to `{@artifacts_path}/spec.md` with:
 - Delivery phases (incremental, testable milestones)
 - Verification approach using project lint/test commands
 
-### [ ] Step: Planning
+### [x] Step: Planning
+<!-- chat-id: c09d374b-a622-4a05-8550-18217dfdd9a6 -->
 
 Create a detailed implementation plan based on `{@artifacts_path}/spec.md`.
 
@@ -58,8 +59,94 @@ If the feature is trivial and doesn't warrant full specification, update this wo
 
 Save to `{@artifacts_path}/plan.md`.
 
-### [ ] Step: Implementation
+### [ ] Step: Phase 1 - Core Infrastructure Setup
 
-This step should be replaced with detailed implementation tasks from the Planning step.
+Set up the basic project structure, data models, and configuration system.
 
-If Planning didn't replace this step, execute the tasks in `{@artifacts_path}/plan.md`, updating checkboxes as you go. Run planned tests/lint and record results in plan.md.
+1. Create project directory structure with distillation/ package
+2. Set up pyproject.toml with all dependencies (pydantic, typer, beautifulsoup4, markdown, pytest, etc.)
+3. Implement core data models (KnowledgeAtom, ProductSpec, etc.) in models/ directory
+4. Create configuration management system with YAML support
+5. Set up basic CLI interface with typer
+6. Write unit tests for all data models and configuration
+
+**Verification**: Run `pytest` for unit tests, `mypy` for type checking, `ruff` for linting. All models should validate correctly and CLI should accept basic commands.
+
+### [ ] Step: Phase 2 - Research Ingestion Engine
+
+Implement multi-format file parsing and content extraction.
+
+1. Create ResearchIngestor class in processors/ingestion.py
+2. Implement parsers for Markdown, HTML, JSON, and CSV formats
+3. Add content chunking for large documents
+4. Build metadata extraction (source, date, author, citations)
+5. Create ResearchFile data model for processed content
+6. Write integration tests for file processing pipeline
+
+**Verification**: Process sample files of each format, verify metadata extraction accuracy, ensure large files are handled without memory issues.
+
+### [ ] Step: Phase 3 - Knowledge Atom Extraction
+
+Build the core extraction logic with pattern-based rules.
+
+1. Create AtomExtractor class in processors/extraction.py
+2. Implement KEEP/DISCARD extraction rules as configurable patterns
+3. Add evidence strength assessment (STRONG/MODERATE/WEAK)
+4. Build deduplication algorithms across sources
+5. Implement atom type classification (TECHNIQUE, METRIC, CONSTRAINT, etc.)
+6. Create extraction rule configuration system
+7. Write unit tests for extraction accuracy and deduplication
+
+**Verification**: Extract atoms from sample research files, verify >95% precision in atom identification, test deduplication across multiple sources.
+
+### [ ] Step: Phase 4 - Domain & Phase Mapping
+
+Implement grouping logic for domains and SDLC phases.
+
+1. Create DomainMapper class in processors/domain_mapper.py with all 12 domains
+2. Implement SDLC Phase Assigner in processors/phase_assigner.py with all 8 phases
+3. Add cross-domain relationship tracking
+4. Build gap analysis reporting functionality
+5. Create ranking algorithms for atoms within domains
+6. Write tests for domain assignment accuracy and phase mapping
+
+**Verification**: All atoms from test corpus assigned to appropriate domains, phase assignments match expected SDLC workflow, cross-domain links identified correctly.
+
+### [ ] Step: Phase 5 - Product Assembly System
+
+Create template-based specification generation.
+
+1. Create ProductAssembler class in processors/product_assembler.py
+2. Implement YAML template system in templates/ directory for all 10 product types
+3. Add confidence scoring algorithms for generated specs
+4. Build spec validation against defined schemas
+5. Create output formatting for product specifications
+6. Write tests for template rendering and spec validation
+
+**Verification**: Generate valid YAML specifications for all product types, specifications follow defined templates, confidence scores reflect research backing.
+
+### [ ] Step: Phase 6 - Pipeline Integration & Optimization
+
+Integrate all components into a complete distillation pipeline.
+
+1. Create ResearchDistiller orchestrator class with full pipeline integration
+2. Implement async processing for concurrent file handling
+3. Add comprehensive error handling and recovery
+4. Optimize performance (target <5min for full corpus, <100MB memory)
+5. Build end-to-end integration tests
+6. Add performance monitoring and benchmarking
+
+**Verification**: Full pipeline processes research corpus end-to-end, meets performance targets, handles edge cases gracefully, comprehensive test suite passes.
+
+### [ ] Step: Final Integration & Validation
+
+Complete system integration, testing, and validation.
+
+1. Run full pipeline on complete research corpus
+2. Perform manual review of 10% sample outputs
+3. Validate generated specs can be used to create agent components
+4. Ensure gap reports identify real missing knowledge areas
+5. Final performance benchmarking and optimization
+6. Create comprehensive documentation and usage examples
+
+**Verification**: All success criteria met (95%+ extraction precision, <5min processing, 90%+ test coverage, manual review passes).
