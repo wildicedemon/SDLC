@@ -13,7 +13,8 @@ If you are blocked and need user clarification, mark the current step with `[!]`
 
 ## Workflow Steps
 
-### [ ] Step: Requirements
+### [x] Step: Requirements
+<!-- chat-id: aff97356-167e-4cec-9b28-6971227022fd -->
 
 Create a Product Requirements Document (PRD) based on the feature description.
 
@@ -25,7 +26,8 @@ Create a Product Requirements Document (PRD) based on the feature description.
 
 Save the PRD to `{@artifacts_path}/requirements.md`.
 
-### [ ] Step: Technical Specification
+### [x] Step: Technical Specification
+<!-- chat-id: 6a793db8-fc1c-4edf-92ce-c4864bee7181 -->
 
 Create a technical specification based on the PRD in `{@artifacts_path}/requirements.md`.
 
