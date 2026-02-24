@@ -148,6 +148,7 @@ Generate 8 phase spec markdown files.
 - Verification: `python scripts/test_distill.py` passes phase output checks
 
 ### [ ] Step: Prong 4 — Product Spec Assembly (YAML Templates and Output)
+<!-- chat-id: 71f531a0-a987-4c18-8018-ccac6c7bcd9a -->
 
 Generate product YAML specs for all 10 categories.
 
