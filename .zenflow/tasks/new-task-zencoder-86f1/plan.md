@@ -73,7 +73,8 @@ Set up the basic project structure, data models, and configuration system.
 
 **Verification**: Run `pytest` for unit tests, `mypy` for type checking, `ruff` for linting. All models should validate correctly and CLI should accept basic commands.
 
-### [ ] Step: Phase 2 - Research Ingestion Engine
+### [x] Step: Phase 2 - Research Ingestion Engine
+<!-- chat-id: f92346aa-7d39-458d-b9e2-3b26c4fee0f8 -->
 
 Implement multi-format file parsing and content extraction.
 
