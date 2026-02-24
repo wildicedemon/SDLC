@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "perplexity": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@perplexity-ai/mcp-server"],
+      "env": {
+        "PERPLEXITY_BASE_URL": "https://api.kilo.ai/api/gateway",
+        "PERPLEXITY_API_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbnYiOiJwcm9kdWN0aW9uIiwia2lsb1VzZXJJZCI6IjMwZjYwMDQ5LTIyMjktNGUxMy1iYmVhLTIyNjRjNTEzZGQ5ZiIsImFwaVRva2VuUGVwcGVyIjpudWxsLCJ2ZXJzaW9uIjozLCJpYXQiOjE3NzE4ODY1NDcsImV4cCI6MTkyOTU2NjU0N30.bLWZ6auBLzT245ICqKNCg91UmuKzNRQvgahIBBVtALE"
+      },
+      "disabled": true,
+      "alwaysAllow": []
+    },
+    "github": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "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"
+      },
+      "disabled": false,
+      "alwaysAllow": ["create_issue", "list_issues", "get_issue", "update_issue"]
+    }
+  }
+}

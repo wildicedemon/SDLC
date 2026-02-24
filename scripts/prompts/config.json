@@ -1,0 +1,230 @@
+[
+  {
+    "id": 1,
+    "title": "Agent Orchestration & Multi-Agent Patterns",
+    "prompt_file": "scripts/prompts/prompt_01.md",
+    "output_path": "docs/research/02_agent_orchestration/agent_system_design/perplexityai_research_overview_01.md"
+  },
+  {
+    "id": 2,
+    "title": "Context Management for LLM/Agent Systems",
+    "prompt_file": "scripts/prompts/prompt_02.md",
+    "output_path": "docs/research/03_context_memory_intelligence/context_management/perplexityai_research_overview_02.md"
+  },
+  {
+    "id": 3,
+    "title": "Memory Systems",
+    "prompt_file": "scripts/prompts/prompt_03.md",
+    "output_path": "docs/research/03_context_memory_intelligence/memory_systems/perplexityai_research_overview.md"
+  },
+  {
+    "id": 4,
+    "title": "MCP Servers & MCP Security",
+    "prompt_file": "scripts/prompts/prompt_04.md",
+    "output_path": "docs/research/02_agent_orchestration/agent_system_design/perplexityai_research_overview_04.md"
+  },
+  {
+    "id": 5,
+    "title": "Task Decomposition & Agent Coordination",
+    "prompt_file": "scripts/prompts/prompt_05.md",
+    "output_path": "docs/research/02_agent_orchestration/task_architecture/perplexityai_research_overview.md"
+  },
+  {
+    "id": 6,
+    "title": "Testing Architecture & Automatic Validation",
+    "prompt_file": "scripts/prompts/prompt_06.md",
+    "output_path": "docs/research/05_sdlc_automation/testing_architecture/perplexityai_research_overview.md"
+  },
+  {
+    "id": 7,
+    "title": "Model Routing, Switching & Fallback",
+    "prompt_file": "scripts/prompts/prompt_07.md",
+    "output_path": "docs/research/08_model_management/model_capability_management/perplexityai_research_overview_07.md"
+  },
+  {
+    "id": 8,
+    "title": "Security Architecture",
+    "prompt_file": "scripts/prompts/prompt_08.md",
+    "output_path": "docs/research/01_meta_architecture/security_architecture/perplexityai_research_overview_08.md"
+  },
+  {
+    "id": 9,
+    "title": "Anti-Hallucination Strategies & Guardrails",
+    "prompt_file": "scripts/prompts/prompt_09.md",
+    "output_path": "docs/research/01_meta_architecture/security_architecture/perplexityai_research_overview_09.md"
+  },
+  {
+    "id": 10,
+    "title": "Self-Healing CI/CD for Agentic Systems",
+    "prompt_file": "scripts/prompts/prompt_10.md",
+    "output_path": "docs/research/05_sdlc_automation/cicd_devops/perplexityai_research_overview_10.md"
+  },
+  {
+    "id": 11,
+    "title": "Human-in-the-Loop Interaction",
+    "prompt_file": "scripts/prompts/prompt_11.md",
+    "output_path": "docs/research/07_human_interaction/human_in_the_loop_systems/perplexityai_research_overview_11.md"
+  },
+  {
+    "id": 12,
+    "title": "Reasoning Architecture",
+    "prompt_file": "scripts/prompts/prompt_12.md",
+    "output_path": "docs/research/03_context_memory_intelligence/reasoning_architecture/perplexityai_research_overview.md"
+  },
+  {
+    "id": 13,
+    "title": "Knowledge Representation",
+    "prompt_file": "scripts/prompts/prompt_13.md",
+    "output_path": "docs/research/03_context_memory_intelligence/knowledge_representation/perplexityai_research_overview_13.md"
+  },
+  {
+    "id": 14,
+    "title": "Governance & Compliance",
+    "prompt_file": "scripts/prompts/prompt_14.md",
+    "output_path": "docs/research/01_meta_architecture/governance_compliance/perplexityai_research_overview.md"
+  },
+  {
+    "id": 15,
+    "title": "Large Codebase Handling",
+    "prompt_file": "scripts/prompts/prompt_15.md",
+    "output_path": "docs/research/10_scaling_enterprise/large_codebase_handling/perplexityai_research_overview.md"
+  },
+  {
+    "id": 16,
+    "title": "Ecosystem Intelligence",
+    "prompt_file": "scripts/prompts/prompt_16.md",
+    "output_path": "docs/research/10_scaling_enterprise/ecosystem_intelligence/perplexityai_research_overview.md"
+  },
+  {
+    "id": 17,
+    "title": "Observability & Feedback Loops",
+    "prompt_file": "scripts/prompts/prompt_17.md",
+    "output_path": "docs/research/05_sdlc_automation/observability_feedback_loops/perplexityai_research_overview_17.md"
+  },
+  {
+    "id": 18,
+    "title": "Human Interaction & UX",
+    "prompt_file": "scripts/prompts/prompt_18.md",
+    "output_path": "docs/research/07_human_interaction/human_in_the_loop_systems/perplexityai_research_overview_18.md"
+  },
+  {
+    "id": 19,
+    "title": "Org-Wide Knowledge Base Patterns",
+    "prompt_file": "scripts/prompts/prompt_19.md",
+    "output_path": "docs/research/03_context_memory_intelligence/knowledge_representation/perplexityai_research_overview_19.md"
+  },
+  {
+    "id": 20,
+    "title": "System Design & Philosophy",
+    "prompt_file": "scripts/prompts/prompt_20.md",
+    "output_path": "docs/research/01_meta_architecture/system_design_philosophy/perplexityai_research_overview.md"
+  },
+  {
+    "id": 21,
+    "title": "Economic & Optimization Modeling",
+    "prompt_file": "scripts/prompts/prompt_21.md",
+    "output_path": "docs/research/01_meta_architecture/economic_optimization_modeling/perplexityai_research_overview.md"
+  },
+  {
+    "id": 22,
+    "title": "Database & Data Engineering",
+    "prompt_file": "scripts/prompts/prompt_22.md",
+    "output_path": "docs/research/06_data_infrastructure/database_data_engineering/perplexityai_research_overview.md"
+  },
+  {
+    "id": 23,
+    "title": "Infrastructure Engineering",
+    "prompt_file": "scripts/prompts/prompt_23.md",
+    "output_path": "docs/research/06_data_infrastructure/infrastructure_engineering/perplexityai_research_overview.md"
+  },
+  {
+    "id": 24,
+    "title": "Model Serving & GPU Management",
+    "prompt_file": "scripts/prompts/prompt_24.md",
+    "output_path": "docs/research/08_model_management/model_capability_management/perplexityai_research_overview_24.md"
+  },
+  {
+    "id": 25,
+    "title": "Vector Search, RAG & Semantic Indexing",
+    "prompt_file": "scripts/prompts/prompt_25.md",
+    "output_path": "docs/research/03_context_memory_intelligence/context_management/perplexityai_research_overview_25.md"
+  },
+  {
+    "id": 26,
+    "title": "Agent Modes, Skills & Role-Based Design",
+    "prompt_file": "scripts/prompts/prompt_26.md",
+    "output_path": "docs/research/02_agent_orchestration/agent_system_design/perplexityai_research_overview_26.md"
+  },
+  {
+    "id": 27,
+    "title": "Orchestration Graphs, Workflows & Task Graphs",
+    "prompt_file": "scripts/prompts/prompt_27.md",
+    "output_path": "docs/research/02_agent_orchestration/distributed_orchestration/perplexityai_research_overview_27.md"
+  },
+  {
+    "id": 28,
+    "title": "Agent Lifecycle, State Machines & Failure Handling",
+    "prompt_file": "scripts/prompts/prompt_28.md",
+    "output_path": "docs/research/02_agent_orchestration/agent_system_design/perplexityai_research_overview_28.md"
+  },
+  {
+    "id": 29,
+    "title": "Agent Trust, Scoring & Multi-Agent Consensus",
+    "prompt_file": "scripts/prompts/prompt_29.md",
+    "output_path": "docs/research/02_agent_orchestration/distributed_orchestration/perplexityai_research_overview_29.md"
+  },
+  {
+    "id": 30,
+    "title": "SDLC Automation Overview",
+    "prompt_file": "scripts/prompts/prompt_30.md",
+    "output_path": "docs/research/05_sdlc_automation/cicd_devops/perplexityai_research_overview_30.md"
+  },
+  {
+    "id": 31,
+    "title": "Code Repair, Refactoring & Optimization",
+    "prompt_file": "scripts/prompts/prompt_31.md",
+    "output_path": "docs/research/04_code_intelligence/refactoring_optimization/perplexityai_research_overview.md"
+  },
+  {
+    "id": 32,
+    "title": "CI/CD & DevOps Automation",
+    "prompt_file": "scripts/prompts/prompt_32.md",
+    "output_path": "docs/research/05_sdlc_automation/cicd_devops/perplexityai_research_overview_32.md"
+  },
+  {
+    "id": 33,
+    "title": "Research & Benchmarking Framework",
+    "prompt_file": "scripts/prompts/prompt_33.md",
+    "output_path": "docs/research/09_research_discipline/research_benchmarking_framework/perplexityai_research_overview.md"
+  },
+  {
+    "id": 34,
+    "title": "System Self-Improvement",
+    "prompt_file": "scripts/prompts/prompt_34.md",
+    "output_path": "docs/research/12_self_improvement/system_self_improvement/perplexityai_research_overview_34.md"
+  },
+  {
+    "id": 35,
+    "title": "Feedback, Telemetry & AI Feedback Loops",
+    "prompt_file": "scripts/prompts/prompt_35.md",
+    "output_path": "docs/research/05_sdlc_automation/observability_feedback_loops/perplexityai_research_overview_35.md"
+  },
+  {
+    "id": 36,
+    "title": "Meta-Prompting & Prompt Evolution",
+    "prompt_file": "scripts/prompts/prompt_36.md",
+    "output_path": "docs/research/12_self_improvement/system_self_improvement/perplexityai_research_overview_36.md"
+  },
+  {
+    "id": 37,
+    "title": "Gradient-Free Workflow Optimization",
+    "prompt_file": "scripts/prompts/prompt_37.md",
+    "output_path": "docs/research/11_advanced_runtime/autonomous_runtime_systems/perplexityai_research_overview_37.md"
+  },
+  {
+    "id": 38,
+    "title": "Gödel-like Self-Referential Agents",
+    "prompt_file": "scripts/prompts/prompt_38.md",
+    "output_path": "docs/research/11_advanced_runtime/autonomous_runtime_systems/perplexityai_research_overview_38.md"
+  }
+]
