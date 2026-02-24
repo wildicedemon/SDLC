@@ -117,6 +117,7 @@ Implement grouping logic for domains and SDLC phases.
 **Verification**: All atoms from test corpus assigned to appropriate domains, phase assignments match expected SDLC workflow, cross-domain links identified correctly.
 
 ### [ ] Step: Phase 5 - Product Assembly System
+<!-- chat-id: 02a84dd1-94eb-48f2-862e-f78d725c4cb1 -->
 
 Create template-based specification generation.
 
