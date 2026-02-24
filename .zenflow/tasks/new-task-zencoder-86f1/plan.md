@@ -131,6 +131,7 @@ Create template-based specification generation.
 **Verification**: Generate valid YAML specifications for all product types, specifications follow defined templates, confidence scores reflect research backing.
 
 ### [ ] Step: Phase 6 - Pipeline Integration & Optimization
+<!-- chat-id: c711413a-2090-433d-b2c5-699701714afb -->
 
 Integrate all components into a complete distillation pipeline.
 
