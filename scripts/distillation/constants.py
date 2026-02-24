@@ -339,7 +339,7 @@ CONSTRAINT_KEYWORDS = re.compile(
 )
 
 FAILURE_MODE_KEYWORDS = re.compile(
-    r"\b(?:fail(?:ure|s|ed)?|break(?:s|ing)?|attack|vulnerabilit|exploit|fabricat|hallucinat|degrad|corrupt|poison)\b",
+    r"\b(?:fail(?:ure|s|ed)?|break(?:s|ing)?|attacks?|vulnerabilit\w*|exploits?|fabricat\w*|hallucinat\w*|degrad\w*|corrupt\w*|poison\w*)\b",
     re.IGNORECASE,
 )
 

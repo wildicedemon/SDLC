@@ -81,7 +81,8 @@ Implement section-level extraction of candidate atoms from markdown files.
 - Add parser tests in `scripts/test_distill.py`: parse a sample research file, verify atom count > 0, verify discard rules filter known noise
 - Verification: `python scripts/test_distill.py` passes parser checks
 
-### [ ] Step: Classifier and Evidence Strength
+### [x] Step: Classifier and Evidence Strength
+<!-- chat-id: a40e10e7-888f-469c-8739-12b3a3a3ed15 -->
 
 Implement atom TYPE classification and evidence strength scoring.
 

@@ -290,6 +290,207 @@ def test_parser_code_fence_stripping() -> None:
         )
 
 
+# ── Classifier tests ───────────────────────────────────────────────
+
+def test_classifier_types() -> None:
+    print("\n=== Classifier Tests (Type Detection) ===")
+    from distillation.parser import RawAtom
+    from distillation.classifier import classify
+    from distillation.constants import AtomType
+
+    cases: list[tuple[str, AtomType | None, str]] = [
+        (
+            "AST-based code search improves precision 60-80% over text-based grep approaches",
+            AtomType.METRIC,
+            "metric with percentage range",
+        ),
+        (
+            "Tree-sitter: incremental AST parsing supporting 40+ languages with error recovery, de facto standard for code intelligence",
+            AtomType.TOOL,
+            "tool with capability description",
+        ),
+        (
+            "Chain-of-Verification: generate answer then extract claims then verify each independently then produce final answer",
+            AtomType.TECHNIQUE,
+            "technique with procedural verbs",
+        ),
+        (
+            "1. Parse target files with Tree-sitter to build AST\n2. Query symbol index for cross-file references\n3. Construct CFG for execution flow analysis\n4. Build DFG for data dependency tracking",
+            AtomType.RECIPE,
+            "numbered steps with procedural verbs",
+        ),
+        (
+            "AST + CFG + DFG combined together improves code understanding 35-50% over single representation",
+            AtomType.METRIC,
+            "combination with metric gets METRIC priority",
+        ),
+        (
+            "Context window attention degrades 20-40% for mid-context items — must place critical info at boundaries",
+            AtomType.METRIC,
+            "constraint-like but has metric",
+        ),
+        (
+            "19.7% of AI-recommended packages are fabricated — verify every package against registry before inclusion to prevent slopsquatting attacks",
+            AtomType.METRIC,
+            "failure mode with metric gets METRIC",
+        ),
+        (
+            "Wake-up prompts don't recover degraded context — measured failure across models, avoid this anti-pattern",
+            AtomType.ANTI_PATTERN,
+            "anti-pattern with don't/avoid",
+        ),
+        (
+            "Selective Context: 50% reduction, 97% quality vs. LLMLingua: 20x compression, less than 3% loss — use SC for moderate needs, LLMLingua for aggressive compression",
+            AtomType.METRIC,
+            "tradeoff with metrics gets METRIC",
+        ),
+        (
+            "Agent must never commit directly to main branch — all changes require review approval before merge",
+            AtomType.CONSTRAINT,
+            "constraint with must never",
+        ),
+        (
+            "Prompt injection attacks can bypass guardrails — detect via input sanitization and respond with request rejection to handle the vulnerability",
+            AtomType.FAILURE_MODE,
+            "failure mode with detect/respond",
+        ),
+        (
+            "Use AST combined with symbol index together for fast navigation instead of full CPG",
+            AtomType.COMBINATION,
+            "combination with together/combined",
+        ),
+        (
+            "Selective Context vs LLMLingua: when moderate compression needed use SC, when aggressive compression needed use LLMLingua alternatively",
+            AtomType.TRADEOFF,
+            "tradeoff with vs and when...use",
+        ),
+    ]
+
+    for content, expected_type, label in cases:
+        raw = RawAtom(content=content, source_path="test/cls.md", raw_section=content)
+        result = classify(raw)
+        if expected_type is None:
+            check(f"classify None: {label}", result is None, f"got {result}")
+        else:
+            check(
+                f"classify {expected_type.value}: {label}",
+                result is not None and result.type == expected_type,
+                f"got {result.type.value if result else 'None'}",
+            )
+
+
+def test_classifier_discard() -> None:
+    print("\n=== Classifier Tests (Discard) ===")
+    from distillation.parser import RawAtom
+    from distillation.classifier import classify
+
+    discard_cases = [
+        "An AST represents the syntactic structure of source code in a tree format.",
+        "Use appropriate error handling in your code implementation.",
+        "Follow best practices when designing your system architecture.",
+        "The quick brown fox jumps over the lazy dog repeatedly today.",
+    ]
+
+    for content in discard_cases:
+        raw = RawAtom(content=content, source_path="test/cls.md", raw_section=content)
+        result = classify(raw)
+        check(f"discard: {content[:50]}...", result is None, f"got {result.type.value if result else 'None'}")
+
+
+def test_classifier_evidence_strength() -> None:
+    print("\n=== Classifier Tests (Evidence Strength) ===")
+    from distillation.parser import RawAtom
+    from distillation.classifier import classify
+    from distillation.constants import EvidenceStrength
+
+    strong_text = "According to [12], AST-based search improves precision by 60-80% over text-based approaches"
+    raw = RawAtom(content=strong_text, source_path="test/cls.md", raw_section=strong_text)
+    result = classify(raw)
+    check(
+        "STRONG: citation + number",
+        result is not None and result.evidence_strength == EvidenceStrength.STRONG,
+        f"got {result.evidence_strength.value if result else 'None'}",
+    )
+
+    moderate_num = "Tree-sitter: incremental AST parsing supporting 40+ languages with error recovery capabilities"
+    raw = RawAtom(content=moderate_num, source_path="test/cls.md", raw_section=moderate_num)
+    result = classify(raw)
+    check(
+        "MODERATE: number without citation",
+        result is not None and result.evidence_strength == EvidenceStrength.MODERATE,
+        f"got {result.evidence_strength.value if result else 'None'}",
+    )
+
+    moderate_src = "According to a benchmark study, Tree-sitter provides the fastest incremental parsing implementation available"
+    raw = RawAtom(content=moderate_src, source_path="test/cls.md", raw_section=moderate_src)
+    result = classify(raw)
+    check(
+        "MODERATE: named source without number",
+        result is not None and result.evidence_strength == EvidenceStrength.MODERATE,
+        f"got {result.evidence_strength.value if result else 'None'}",
+    )
+
+    weak_text = "Agent must never commit directly to main branch — all changes require review approval before merge"
+    raw = RawAtom(content=weak_text, source_path="test/cls.md", raw_section=weak_text)
+    result = classify(raw)
+    check(
+        "WEAK: no number or source",
+        result is not None and result.evidence_strength == EvidenceStrength.WEAK,
+        f"got {result.evidence_strength.value if result else 'None'}",
+    )
+
+
+def test_classifier_output_fields() -> None:
+    print("\n=== Classifier Tests (Output Fields) ===")
+    from distillation.parser import RawAtom
+    from distillation.classifier import classify
+    from distillation.models import KnowledgeAtom
+
+    text = "Tree-sitter: incremental AST parsing supporting 40+ languages with error recovery capabilities"
+    raw = RawAtom(content=text, source_path="test/src.md", raw_section="## Section\n" + text)
+    result = classify(raw)
+
+    check("result is KnowledgeAtom", isinstance(result, KnowledgeAtom))
+    if result:
+        check("id is empty (assigned later)", result.id == "")
+        check("content preserved", result.content == text)
+        check("source_path set", result.sources == ["test/src.md"])
+        check("raw_section set", len(result.raw_section) > 0)
+        check("domains empty (tagger assigns later)", result.domains == [])
+        check("sdlc_phases empty", result.sdlc_phases == [])
+        check("products empty", result.products == [])
+
+
+def test_classifier_priority() -> None:
+    print("\n=== Classifier Tests (Priority: RECIPE > TECHNIQUE > COMBINATION) ===")
+    from distillation.parser import RawAtom
+    from distillation.classifier import classify
+    from distillation.constants import AtomType
+
+    recipe_text = (
+        "1. Parse target files with Tree-sitter to build AST\n"
+        "2. Extract symbol references and build call graph\n"
+        "3. Construct combined CFG integrated together with DFG\n"
+        "4. Verify all references resolve correctly"
+    )
+    raw = RawAtom(content=recipe_text, source_path="test/cls.md", raw_section=recipe_text)
+    result = classify(raw)
+    check(
+        "RECIPE wins over TECHNIQUE+COMBINATION",
+        result is not None and result.type == AtomType.RECIPE,
+        f"got {result.type.value if result else 'None'}",
+    )
+
+    technique_combo = "Parse the AST and build the CFG combined together with DFG for unified code analysis"
+    raw = RawAtom(content=technique_combo, source_path="test/cls.md", raw_section=technique_combo)
+    result = classify(raw)
+    check(
+        "TECHNIQUE wins over COMBINATION",
+        result is not None and result.type == AtomType.TECHNIQUE,
+        f"got {result.type.value if result else 'None'}",
+    )
+
+
 # ── Main ───────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
@@ -299,6 +500,11 @@ if __name__ == "__main__":
     test_parser_csv_nested()
     test_parser_real_file()
     test_parser_code_fence_stripping()
+    test_classifier_types()
+    test_classifier_discard()
+    test_classifier_evidence_strength()
+    test_classifier_output_fields()
+    test_classifier_priority()
 
     print(f"\n{'=' * 40}")
     print(f"Results: {PASS} passed, {FAIL} failed")
