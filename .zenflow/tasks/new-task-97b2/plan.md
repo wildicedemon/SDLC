@@ -77,7 +77,8 @@ Read both source documents (`Research.md`, `start_prompt.md`). Perform inventory
 
 **Verification**: File exists, all 8 section headers present and non-empty, covers all 12 domains.
 
-### [ ] Step: Generate Domain Reports — Orchestration & Workflow + Testing & Validation
+### [x] Step: Generate Domain Reports — Orchestration & Workflow + Testing & Validation
+<!-- chat-id: 14f47d22-7482-4da0-b9ea-83f02546e734 -->
 
 Read both source documents. Produce two focused domain reports following the per-domain report template (sections A-F).
 
@@ -88,19 +89,19 @@ Read both source documents. Produce two focused domain reports following the per
 
 1. Create `reports/` directory if not exists
 2. For Orchestration & Workflow:
-   - [ ] A. Executive Summary (3-5 sentences)
-   - [ ] B. Core Concepts (deduplicated bullets)
-   - [ ] C. Implementation Guidance (what/how/why/dependencies)
-   - [ ] D. Validation Criteria
-   - [ ] E. Known Gaps & Risks
-   - [ ] F. Decision Log
+   - [x] A. Executive Summary (3-5 sentences)
+   - [x] B. Core Concepts (deduplicated bullets)
+   - [x] C. Implementation Guidance (what/how/why/dependencies)
+   - [x] D. Validation Criteria
+   - [x] E. Known Gaps & Risks
+   - [x] F. Decision Log
 3. For Testing & Validation:
-   - [ ] A. Executive Summary (3-5 sentences)
-   - [ ] B. Core Concepts (deduplicated bullets)
-   - [ ] C. Implementation Guidance (what/how/why/dependencies)
-   - [ ] D. Validation Criteria
-   - [ ] E. Known Gaps & Risks
-   - [ ] F. Decision Log
+   - [x] A. Executive Summary (3-5 sentences)
+   - [x] B. Core Concepts (deduplicated bullets)
+   - [x] C. Implementation Guidance (what/how/why/dependencies)
+   - [x] D. Validation Criteria
+   - [x] E. Known Gaps & Risks
+   - [x] F. Decision Log
 4. No concept duplicated across reports or with master report — use cross-references
 5. Source traceability: reference originating document/section for each finding
 
