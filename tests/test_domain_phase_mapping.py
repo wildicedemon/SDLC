@@ -287,7 +287,7 @@ class TestPhaseAssigner:
         assert summary["phase"] == SDLCPhase.DISCOVERY_ONBOARDING
         assert "total_atoms" in summary
         assert "techniques_by_step" in summary
-        assert "constraints" in summary
+        assert "key_constraints" in summary
         assert "tools_needed" in summary
 
 

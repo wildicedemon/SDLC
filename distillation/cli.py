@@ -251,11 +251,50 @@ def distill(
     try:
         config = get_cli_config()
 
-        # This is a placeholder - full pipeline will be implemented later
-        console.print("[yellow]⚠[/yellow] Full distillation pipeline not yet implemented")
-        console.print(f"Input directory: {config.distillation.input_dir}")
-        output_dir = output_dir or config.distillation.output_dir
-        console.print(f"Output directory: {output_dir}")
+        # Import here to avoid circular imports
+        from .processors import ResearchDistiller
+
+        # Create distiller and run pipeline
+        distiller = ResearchDistiller(config)
+
+        input_dir = Path(config.distillation.input_dir)
+        if not input_dir.exists():
+            console.print(f"[red]✗[/red] Input directory does not exist: {input_dir}")
+            raise typer.Exit(1)
+
+        output_dir = Path(output_dir) if output_dir else Path(config.distillation.output_dir)
+
+        # Run the pipeline
+        with Progress() as progress:
+            task = progress.add_task("Running distillation pipeline...", total=None)
+
+            # Run async pipeline
+            import asyncio
+            results = asyncio.run(distiller.distill_corpus(input_dir))
+
+            progress.update(task, completed=100)
+
+        # Save results
+        distiller.save_results(output_dir)
+
+        # Report results
+        if results["success"]:
+            console.print(f"[green]✓[/green] Pipeline completed successfully")
+            console.print(f"[green]✓[/green] Processed {results['files_processed']} files")
+            console.print(f"[green]✓[/green] Extracted {len(results['atoms'])} knowledge atoms")
+            console.print(f"[green]✓[/green] Generated {len(results['products'])} product specifications")
+            console.print(f"[green]✓[/green] Results saved to {output_dir}")
+
+            metrics = results["metrics"]
+            console.print(f"[blue]Performance:[/blue] {metrics['processing_time_seconds']:.2f}s")
+        else:
+            console.print(f"[red]✗[/red] Pipeline failed: {results['error']}")
+            if results["metrics"]["errors"]:
+                console.print("[red]Errors:[/red]")
+                for error in results["metrics"]["errors"][:5]:  # Show first 5 errors
+                    console.print(f"  • {error}")
+                if len(results["metrics"]["errors"]) > 5:
+                    console.print(f"  ... and {len(results['metrics']['errors']) - 5} more errors")
 
     except Exception as e:
         console.print(f"[red]✗[/red] Distillation failed: {e}")

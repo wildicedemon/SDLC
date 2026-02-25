@@ -1,0 +1,54 @@
+name: "Prompt Template"
+description: "Template for defining instruction templates for agents"
+
+fields:
+  target_mode:
+    required: true
+    description: "Which agent mode this prompt is designed for"
+    validation:
+      - "non_empty"
+
+  structure:
+    required: true
+    description: "Overall prompt structure and ordering"
+    validation:
+      - "dict_non_empty"
+
+  context_section_placement:
+    required: true
+    description: "Where context information is placed in the prompt"
+    validation:
+      - "dict_non_empty"
+
+  instructions:
+    required: true
+    description: "Core behavioral instructions"
+    validation:
+      - "min_length:50"
+
+  guardrails:
+    required: true
+    description: "Safety constraints and boundaries"
+    validation:
+      - "list_non_empty"
+
+  output_format:
+    required: true
+    description: "Expected output structure and format"
+    validation:
+      - "non_empty"
+
+  token_budget:
+    required: true
+    description: "Token allocation across prompt sections"
+    validation:
+      - "dict_non_empty"
+
+structure:
+  - target_mode
+  - structure
+  - context_section_placement
+  - instructions
+  - guardrails
+  - output_format
+  - token_budget

@@ -522,18 +522,18 @@ class PhaseAssigner:
 
         # Assign techniques to steps based on keyword matching
         steps_with_techniques = {}
-        assigned_techniques = set()
+        assigned_technique_ids = set()
 
         for step_name, step_keywords in steps_config.items():
             step_techniques = []
             for technique in techniques:
-                if technique in assigned_techniques:
+                if technique.id in assigned_technique_ids:
                     continue
 
                 content_lower = technique.content.lower()
                 if any(keyword in content_lower for keyword in step_keywords):
                     step_techniques.append(technique)
-                    assigned_techniques.add(technique)
+                    assigned_technique_ids.add(technique.id)
 
             if step_techniques:
                 # Sort by evidence strength within the step
@@ -541,7 +541,7 @@ class PhaseAssigner:
                 steps_with_techniques[step_name] = step_techniques
 
         # Add any remaining techniques to a general step
-        remaining_techniques = [t for t in techniques if t not in assigned_techniques]
+        remaining_techniques = [t for t in techniques if t.id not in assigned_technique_ids]
         if remaining_techniques:
             remaining_techniques.sort(key=lambda t: {"STRONG": 3, "MODERATE": 2, "WEAK": 1}.get(t.evidence_strength, 0), reverse=True)
             steps_with_techniques["Additional Techniques"] = remaining_techniques[:3]  # Top 3
@@ -581,7 +581,7 @@ class PhaseAssigner:
             "name": phase_spec.name,
             "what_agent_is_doing": phase_spec.what_agent_is_doing,
             "total_atoms": len(atoms),
-            "atoms_by_type": {k.value: len(v) for k, v in atoms_by_type.items()},
+            "atoms_by_type": {k: len(v) for k, v in atoms_by_type.items()},
             "techniques_by_step": {
                 step: [{"id": t.id, "content": t.content[:80] + "..." if len(t.content) > 80 else t.content, "evidence": t.evidence_strength}
                       for t in techniques]

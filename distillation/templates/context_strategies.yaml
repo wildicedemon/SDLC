@@ -1,0 +1,54 @@
+name: "Context Strategy Template"
+description: "Template for defining context window management strategies"
+
+fields:
+  applies_to:
+    required: true
+    description: "Task types this strategy applies to"
+    validation:
+      - "non_empty"
+
+  window_partition:
+    required: true
+    description: "How the context window is divided"
+    validation:
+      - "dict_non_empty"
+
+  content_selection:
+    required: true
+    description: "What content to include and exclude"
+    validation:
+      - "dict_non_empty"
+
+  compression_pipeline:
+    required: true
+    description: "Sequence of compression techniques to apply"
+    validation:
+      - "list_non_empty"
+
+  ordering_rules:
+    required: true
+    description: "How to order information in context"
+    validation:
+      - "list_non_empty"
+
+  refresh_policy:
+    required: true
+    description: "When and how to refresh context"
+    validation:
+      - "non_empty"
+
+  poisoning_checks:
+    required: true
+    description: "Detection and prevention of context poisoning"
+    validation:
+      - "list_non_empty"
+
+structure:
+  - applies_to
+  - window_partition
+  - content_selection
+  - compression_pipeline
+  - ordering_rules
+  - refresh_policy
+  - poisoning_checks

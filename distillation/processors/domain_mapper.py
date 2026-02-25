@@ -647,7 +647,7 @@ class DomainMapper:
             "name": domain_spec.name,
             "description": domain_spec.description,
             "total_atoms": len(atoms),
-            "atoms_by_type": {k.value: len(v) for k, v in atoms_by_type.items()},
+            "atoms_by_type": {k: len(v) for k, v in atoms_by_type.items()},
             "key_techniques": [
                 {
                     "id": atom.id,

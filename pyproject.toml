@@ -63,6 +63,7 @@ all = [
 
 [project.scripts]
 distill = "distillation.cli:main"
+benchmark-pipeline = "scripts.benchmark_pipeline:main"
 
 [project.urls]
 Homepage = "https://github.com/zencoder-ai/research-distillation"
