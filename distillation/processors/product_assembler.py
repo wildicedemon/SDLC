@@ -69,7 +69,7 @@ class ProductTemplate:
             if field_name in spec_data and field.validation_rules:
                 value = spec_data[field_name]
                 for rule in field.validation_rules:
-                    if not self._validate_rule(value, rule):
+                    if not self.validate_rule(value, rule):
                         errors.append(f"Field '{field_name}' failed validation rule: {rule}")
 
         return errors

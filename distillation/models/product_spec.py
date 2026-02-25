@@ -37,14 +37,17 @@ class ProductSpec(BaseDistillationModel):
 
     def to_yaml_dict(self) -> Dict[str, Any]:
         """Convert to YAML-serializable dictionary."""
-        return {
-            "category": self.category,
-            "name": self.name,
-            "knowledge_atoms": self.knowledge_atoms,
-            "confidence": self.confidence,
-            "gaps": self.gaps,
-            **self.spec_data
-        }
+        data = self.model_dump()
+        # Ensure enum values are properly converted
+        if hasattr(data.get("category"), "value"):
+            data["category"] = data["category"].value
+        if hasattr(data.get("confidence"), "value"):
+            data["confidence"] = data["confidence"].value
+
+        # Flatten spec_data into the main dictionary
+        spec_data = data.pop("spec_data", {})
+        data.update(spec_data)
+        return data
 
 
 class ModeSpec(ProductSpec):
