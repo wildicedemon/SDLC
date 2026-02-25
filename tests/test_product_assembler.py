@@ -44,14 +44,14 @@ class TestTemplateField:
         )
 
         # Should pass
-        assert field._validate_rule("hello", "non_empty")
-        assert field._validate_rule("hello", "min_length:3")
-        assert field._validate_rule("hello", "max_length:10")
+        assert field.validate_rule("hello", "non_empty")
+        assert field.validate_rule("hello", "min_length:3")
+        assert field.validate_rule("hello", "max_length:10")
 
         # Should fail
-        assert not field._validate_rule("", "non_empty")
-        assert not field._validate_rule("hi", "min_length:3")
-        assert not field._validate_rule("this_is_too_long", "max_length:10")
+        assert not field.validate_rule("", "non_empty")
+        assert not field.validate_rule("hi", "min_length:3")
+        assert not field.validate_rule("this_is_too_long", "max_length:10")
 
 
 class TestProductTemplate:

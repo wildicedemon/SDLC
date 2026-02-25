@@ -81,7 +81,7 @@ class ResearchDistiller:
     4. Product assembly and validation
     """
 
-    def __init__(self, config: SystemConfig):
+    def __init__(self, config: SystemConfig, monitor: Optional[PipelineMonitor] = None):
         """Initialize the distiller with configuration."""
         self.config = config
         self.logger = logging.getLogger(__name__)
@@ -92,6 +92,9 @@ class ResearchDistiller:
         self.domain_mapper = DomainMapper()
         self.phase_assigner = PhaseAssigner()
         self.product_assembler = ProductAssembler(config.templates)
+
+        # Monitoring
+        self.monitor = monitor or PipelineMonitor()
 
         # Pipeline state
         self.research_files: List[ResearchFile] = []
@@ -108,6 +111,10 @@ class ResearchDistiller:
         Returns:
             Dictionary with pipeline results and metrics
         """
+        # Start monitoring
+        self.monitor.start_monitoring()
+        self.monitor.log_event("pipeline_start", "init", f"Starting distillation pipeline on {input_dir}")
+
         try:
             self.logger.info(f"Starting distillation pipeline on {input_dir}")
             self.metrics.update_memory_stats()
@@ -119,30 +126,40 @@ class ResearchDistiller:
                 raise ValueError(f"Input path is not a directory: {input_dir}")
 
             # Phase 1: Ingest research files (async)
-            await self._ingest_research_files(input_dir)
+            with MonitoringContext(self.monitor, "ingestion"):
+                await self._ingest_research_files(input_dir)
             self.metrics.update_memory_stats()
             self._check_memory_limits()
 
             # Phase 2: Extract knowledge atoms
-            await self._extract_knowledge_atoms()
+            with MonitoringContext(self.monitor, "extraction"):
+                await self._extract_knowledge_atoms()
             self.metrics.update_memory_stats()
             self._check_memory_limits()
 
             # Phase 3: Map domains and phases
-            self._map_domains_and_phases()
+            with MonitoringContext(self.monitor, "mapping"):
+                self._map_domains_and_phases()
             self.metrics.update_memory_stats()
 
             # Phase 4: Assemble products
-            self._assemble_products()
+            with MonitoringContext(self.monitor, "assembly"):
+                self._assemble_products()
             self.metrics.update_memory_stats()
 
             # Phase 5: Validate and finalize
-            self._validate_pipeline()
+            with MonitoringContext(self.monitor, "validation"):
+                self._validate_pipeline()
             self.metrics.update_memory_stats()
 
             # Force garbage collection before completion
             gc.collect()
             self.metrics.complete()
+
+            self.monitor.log_event("pipeline_complete", "finalization", "Pipeline completed successfully",
+                                 files_processed=len(self.research_files),
+                                 atoms_extracted=len(self.knowledge_atoms),
+                                 products_generated=len(self.product_specs))
 
             return {
                 "success": True,
@@ -150,11 +167,13 @@ class ResearchDistiller:
                 "atoms": [atom.to_dict() for atom in self.knowledge_atoms],
                 "products": [spec.to_yaml_dict() for spec in self.product_specs],
                 "files_processed": len(self.research_files),
+                "performance_summary": self.monitor.get_performance_summary(),
             }
 
         except Exception as e:
             self.logger.error(f"Pipeline failed: {e}")
             self.metrics.errors.append(str(e))
+            self.monitor.log_event("pipeline_error", "error", f"Pipeline failed: {e}")
 
             # Force garbage collection on error
             gc.collect()
@@ -168,7 +187,12 @@ class ResearchDistiller:
                 "atoms": [atom.to_dict() for atom in self.knowledge_atoms],
                 "products": [spec.to_yaml_dict() for spec in self.product_specs],
                 "partial_results": True,
+                "performance_summary": self.monitor.get_performance_summary(),
             }
+
+        finally:
+            # Always stop monitoring
+            self.monitor.stop_monitoring()
 
     async def _ingest_research_files(self, input_dir: Path) -> None:
         """Phase 1: Ingest all research files asynchronously."""

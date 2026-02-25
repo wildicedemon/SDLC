@@ -74,7 +74,7 @@ class ProductTemplate:
 
         return errors
 
-    def _validate_rule(self, value: Any, rule: str) -> bool:
+    def validate_rule(self, value: Any, rule: str) -> bool:
         """Apply a validation rule to a value."""
         if rule == "non_empty":
             return bool(value)
@@ -135,10 +135,10 @@ class ProductAssembler:
             if template_path.exists():
                 with open(template_path, 'r', encoding='utf-8') as f:
                     template_data = yaml.safe_load(f)
-                    templates[str(category)] = template_data
+                    templates[category] = template_data
             else:
                 # Create default template if it doesn't exist
-                templates[str(category)] = self._create_default_template(category)
+                templates[category] = self._create_default_template(category)
 
         return templates
 
@@ -167,7 +167,6 @@ class ProductAssembler:
         }
 
         for category, template_data in self.templates.items():
-            category_enum = ProductCategory(category)
             fields = {}
 
             # Parse field definitions
@@ -180,11 +179,11 @@ class ProductAssembler:
                     validation_rules=field_config.get("validation", [])
                 )
 
-            self.template_registry[category_enum] = ProductTemplate(
-                category=category_enum,
+            self.template_registry[category] = ProductTemplate(
+                category=category,
                 name=template_data.get("name", f"{category} Template"),
                 fields=fields,
-                spec_class=spec_class_map[category_enum]
+                spec_class=spec_class_map[category]
             )
 
     def assemble_spec(
