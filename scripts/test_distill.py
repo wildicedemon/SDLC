@@ -1439,6 +1439,226 @@ def test_prong4_atom_id_coverage() -> None:
         shutil.rmtree(tmp, ignore_errors=True)
 
 
+# ── Validator tests ─────────────────────────────────────────────────
+
+def test_validator_basic() -> None:
+    print("\n=== Validator Tests (Basic) ===")
+    import shutil
+    import tempfile
+    from distillation.validator import validate, ValidationReport
+    from distillation.prong2_domains import generate_domain_specs
+    from distillation.prong3_phases import generate_phase_specs
+    from distillation.prong4_products import generate_product_specs
+
+    atoms = _make_tagged_atoms()
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        domain_specs = generate_domain_specs(atoms, tmp)
+        phase_specs = generate_phase_specs(atoms, tmp)
+        product_specs = generate_product_specs(atoms, tmp)
+        report = validate(atoms, domain_specs, phase_specs, product_specs)
+
+        check("returns ValidationReport", isinstance(report, ValidationReport))
+        check("total_atoms correct", report.total_atoms == len(atoms), f"got {report.total_atoms}")
+        check("atoms_with_domain > 0", report.atoms_with_domain > 0, f"got {report.atoms_with_domain}")
+        check("atoms_with_phase > 0", report.atoms_with_phase > 0, f"got {report.atoms_with_phase}")
+        check("atoms_with_product > 0", report.atoms_with_product > 0, f"got {report.atoms_with_product}")
+        check("summary is string", isinstance(report.summary, str))
+        check("summary non-empty", len(report.summary) > 0)
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_validator_orphans() -> None:
+    print("\n=== Validator Tests (Orphan Detection) ===")
+    from distillation.validator import validate
+    from distillation.models import DomainSpec, PhaseSpec, ProductSpec, KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength, Domain, SDLCPhase, ProductCategory
+
+    atoms = [
+        KnowledgeAtom(
+            id="KA-001", type=AtomType.TOOL,
+            content="Tree-sitter AST parsing",
+            evidence_strength=EvidenceStrength.STRONG,
+            sources=["f.md"], domains=["D5"], sdlc_phases=["P1"], products=["PC2"],
+        ),
+        KnowledgeAtom(
+            id="KA-099", type=AtomType.METRIC,
+            content="Orphan atom with no references anywhere",
+            evidence_strength=EvidenceStrength.WEAK,
+            sources=["f.md"], domains=["D1"], sdlc_phases=["P1"], products=["PC1"],
+        ),
+    ]
+    domain_specs = [
+        DomainSpec(domain=Domain.D5, name="Code Intelligence", atom_ids=["KA-001"]),
+    ]
+    phase_specs = [
+        PhaseSpec(phase=SDLCPhase.P1, name="Discovery", atom_ids=["KA-001"]),
+    ]
+    product_specs = [
+        ProductSpec(category=ProductCategory.PC2, instance_name="test_skill", atom_ids=["KA-001"]),
+    ]
+    report = validate(atoms, domain_specs, phase_specs, product_specs)
+    check("orphan KA-099 detected", "KA-099" in report.orphan_atoms, f"got {report.orphan_atoms}")
+    check("KA-001 not orphan", "KA-001" not in report.orphan_atoms)
+
+
+def test_validator_cross_refs() -> None:
+    print("\n=== Validator Tests (Cross-Reference Issues) ===")
+    from distillation.validator import validate
+    from distillation.models import DomainSpec, PhaseSpec, ProductSpec, KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength, Domain, SDLCPhase, ProductCategory
+
+    atoms = _make_tagged_atoms()
+    domain_specs = [DomainSpec(domain=Domain.D5, name="Code Intelligence", atom_ids=[a.id for a in atoms])]
+    phase_specs = [PhaseSpec(phase=SDLCPhase.P1, name="Discovery", atom_ids=[a.id for a in atoms])]
+    product_specs = [
+        ProductSpec(
+            category=ProductCategory.PC1,
+            instance_name="test_mode",
+            atom_ids=[a.id for a in atoms],
+            yaml_spec={
+                "skills_available": [{"nonexistent_skill": "test"}],
+                "context_strategy": "nonexistent_strategy",
+            },
+        ),
+    ]
+    report = validate(atoms, domain_specs, phase_specs, product_specs)
+    check("cross_ref_issues is list", isinstance(report.cross_ref_issues, list))
+
+
+# ── Gap Report tests ───────────────────────────────────────────────
+
+def test_gap_report_sections() -> None:
+    print("\n=== Gap Report Tests (Section Structure) ===")
+    import shutil
+    import tempfile
+    from distillation.gap_report import generate_gap_report
+    from distillation.prong2_domains import generate_domain_specs
+    from distillation.prong3_phases import generate_phase_specs
+    from distillation.prong4_products import generate_product_specs
+
+    atoms = _make_tagged_atoms()
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        domain_specs = generate_domain_specs(atoms, tmp)
+        phase_specs = generate_phase_specs(atoms, tmp)
+        product_specs = generate_product_specs(atoms, tmp)
+        report_text = generate_gap_report(atoms, domain_specs, phase_specs, product_specs)
+
+        check("report is string", isinstance(report_text, str))
+        check("report non-empty", len(report_text) > 0)
+        check("has STRONG BACKING section", "STRONG BACKING" in report_text)
+        check("has ADEQUATE BACKING section", "ADEQUATE BACKING" in report_text)
+        check("has WEAK/NO BACKING section", "WEAK/NO BACKING" in report_text)
+        check("has ORPHAN RESEARCH section", "ORPHAN RESEARCH" in report_text)
+        check("has CONTRADICTIONS section", "CONTRADICTIONS" in report_text)
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_gap_report_orphans() -> None:
+    print("\n=== Gap Report Tests (Orphan Listing) ===")
+    from distillation.gap_report import generate_gap_report
+    from distillation.models import DomainSpec, KnowledgeAtom, PhaseSpec, ProductSpec
+    from distillation.constants import AtomType, EvidenceStrength, Domain, SDLCPhase, ProductCategory
+
+    atoms = [
+        KnowledgeAtom(
+            id="KA-001", type=AtomType.TOOL,
+            content="Referenced atom",
+            evidence_strength=EvidenceStrength.STRONG,
+            sources=["f.md"], domains=["D5"], sdlc_phases=["P1"], products=["PC2"],
+        ),
+        KnowledgeAtom(
+            id="KA-099", type=AtomType.METRIC,
+            content="Orphan with no refs in any spec",
+            evidence_strength=EvidenceStrength.WEAK,
+            sources=["f.md"], domains=["D1"], sdlc_phases=["P1"], products=["PC1"],
+        ),
+    ]
+    domain_specs = [DomainSpec(domain=Domain.D5, name="D5", atom_ids=["KA-001"])]
+    phase_specs = [PhaseSpec(phase=SDLCPhase.P1, name="P1", atom_ids=["KA-001"])]
+    product_specs = [ProductSpec(category=ProductCategory.PC2, instance_name="s", atom_ids=["KA-001"])]
+
+    report_text = generate_gap_report(atoms, domain_specs, phase_specs, product_specs)
+    check("orphan KA-099 in gap report", "KA-099" in report_text)
+    check("KA-001 not in orphan section", "KA-001" not in report_text.split("ORPHAN RESEARCH")[1].split("##")[0] if "ORPHAN RESEARCH" in report_text else False)
+
+
+# ── End-to-End tests ───────────────────────────────────────────────
+
+def test_e2e_dry_run() -> None:
+    print("\n=== E2E Tests (Dry Run) ===")
+    import subprocess
+    result = subprocess.run(
+        [sys.executable, str(SCRIPT_DIR / "distill.py"), "--dry-run"],
+        capture_output=True, text=True, encoding="utf-8", errors="replace",
+        cwd=str(PROJECT_ROOT),
+    )
+    check("dry-run exit code 0", result.returncode == 0, f"exit={result.returncode}, stderr={result.stderr[:200]}")
+    check("dry-run shows summary", "Dry Run Summary" in result.stdout, f"stdout[:200]={result.stdout[:200]}")
+    check("dry-run shows file count", "Files scanned" in result.stdout)
+    check("dry-run shows atom count", "Final atoms" in result.stdout)
+
+
+def test_e2e_full_pipeline() -> None:
+    print("\n=== E2E Tests (Full Pipeline) ===")
+    import shutil
+    import subprocess
+    import tempfile
+
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        result = subprocess.run(
+            [sys.executable, str(SCRIPT_DIR / "distill.py"), "--output-dir", str(tmp), "--verbose"],
+            capture_output=True, text=True, encoding="utf-8", errors="replace",
+            cwd=str(PROJECT_ROOT),
+        )
+        check("full pipeline exit code 0", result.returncode == 0, f"exit={result.returncode}, stderr={result.stderr[:300]}")
+
+        registry = tmp / "registry" / "knowledge_atoms.json"
+        check("registry JSON exists", registry.exists())
+        if registry.exists():
+            import json
+            data = json.loads(registry.read_text(encoding="utf-8"))
+            check("registry is non-empty list", isinstance(data, list) and len(data) > 0, f"got {type(data)} len={len(data) if isinstance(data, list) else 'N/A'}")
+
+        domains_dir = tmp / "domains"
+        check("domains dir exists", domains_dir.is_dir())
+        domain_files = list(domains_dir.glob("*.md")) if domains_dir.is_dir() else []
+        check("12 domain files", len(domain_files) == 12, f"got {len(domain_files)}")
+
+        phases_dir = tmp / "phases"
+        check("phases dir exists", phases_dir.is_dir())
+        phase_files = list(phases_dir.glob("*.md")) if phases_dir.is_dir() else []
+        check("8 phase files", len(phase_files) == 8, f"got {len(phase_files)}")
+
+        products_dir = tmp / "products"
+        check("products dir exists", products_dir.is_dir())
+        yaml_files = list(products_dir.rglob("*.yaml")) if products_dir.is_dir() else []
+        check("at least 1 product yaml", len(yaml_files) >= 1, f"got {len(yaml_files)}")
+
+        reports_dir = tmp / "reports"
+        check("reports dir exists", reports_dir.is_dir())
+        val_report = reports_dir / "validation_report.md"
+        check("validation_report.md exists", val_report.exists())
+        if val_report.exists():
+            check("validation report non-empty", val_report.stat().st_size > 0)
+        gap_report = reports_dir / "gap_report.md"
+        check("gap_report.md exists", gap_report.exists())
+        if gap_report.exists():
+            check("gap report non-empty", gap_report.stat().st_size > 0)
+
+        for f in domain_files + phase_files:
+            check(f"{f.name} non-empty", f.stat().st_size > 0)
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+
+
 # ── Main ───────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
@@ -1485,6 +1705,13 @@ if __name__ == "__main__":
     test_prong4_confidence_levels()
     test_prong4_gaps_tracked()
     test_prong4_atom_id_coverage()
+    test_validator_basic()
+    test_validator_orphans()
+    test_validator_cross_refs()
+    test_gap_report_sections()
+    test_gap_report_orphans()
+    test_e2e_dry_run()
+    test_e2e_full_pipeline()
 
     print(f"\n{'=' * 40}")
     print(f"Results: {PASS} passed, {FAIL} failed")
