@@ -109,7 +109,7 @@ Implement content-hash dedup and ranking within each atom type.
 - Add dedup/ranker tests in `scripts/test_distill.py`: verify duplicate atoms merge, verify ranking order is evidence-first
 - Verification: `python scripts/test_distill.py` passes dedup+ranker checks
 
-### [ ] Step: Tagger — Domain, Phase, and Product Assignment
+### [x] Step: Tagger — Domain, Phase, and Product Assignment
 <!-- chat-id: 9c31acd5-02b5-49ee-aa8d-165694933655 -->
 
 Implement keyword-vocabulary-based tag assignment.
