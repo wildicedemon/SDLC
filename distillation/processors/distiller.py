@@ -377,7 +377,7 @@ class ResearchDistiller:
 
         for atom in atoms:
             # Use first 100 chars + type for grouping key
-            key = f"{atom.type.value}:{atom.content.strip().lower()[:100]}"
+            key = f"{atom.type}:{atom.content.strip().lower()[:100]}"
             content_groups[key].append(atom)
 
         # Select best atom from each group
@@ -395,9 +395,11 @@ class ResearchDistiller:
     def _evidence_strength_score(self, atom: KnowledgeAtom) -> int:
         """Calculate evidence strength score for atom ranking."""
         score = 0
-        if atom.evidence_strength.value == "STRONG":
+        # Handle both enum and string values
+        strength_value = atom.evidence_strength.value if hasattr(atom.evidence_strength, 'value') else str(atom.evidence_strength)
+        if strength_value == "STRONG":
             score = 3
-        elif atom.evidence_strength.value == "MODERATE":
+        elif strength_value == "MODERATE":
             score = 2
         else:  # WEAK
             score = 1
@@ -413,12 +415,15 @@ class ResearchDistiller:
 
         for atom in self.knowledge_atoms:
             # Map to domains
-            atom.domains = self.domain_mapper.map_to_domains(atom)
+            atom.domains = self.domain_mapper.map_atom_to_domains(atom)
 
             # Map to phases
-            atom.sdlc_phases = self.phase_assigner.assign_phases(atom)
+            atom.sdlc_phases = self.phase_assigner.assign_phases_to_atom(atom)
 
-        self.logger.info("Completed domain and phase mapping")
+        # Assign products to atoms
+        self.product_assembler.assign_products_to_atoms(self.knowledge_atoms)
+
+        self.logger.info("Completed domain, phase, and product mapping")
 
     def _assemble_products(self) -> None:
         """Phase 4: Assemble product specifications."""
@@ -430,10 +435,17 @@ class ResearchDistiller:
         # Generate specifications for each product category
         for product_category, atoms in atoms_by_product.items():
             try:
-                specs = self.product_assembler.assemble_products(product_category, atoms)
-                self.product_specs.extend(specs)
+                # For now, create a single product per category with a generic name
+                # In a full implementation, this would create multiple specific products
+                product_name = f"{product_category.value.replace('_', ' ').title()}"
+                spec = self.product_assembler.assemble_spec(
+                    category=product_category,
+                    name=product_name,
+                    knowledge_atoms=atoms
+                )
+                self.product_specs.append(spec)
             except Exception as e:
-                self.logger.error(f"Failed to assemble {product_category} products: {e}")
+                self.logger.error(f"Failed to assemble {product_category} product: {e}")
                 self.metrics.errors.append(f"Product assembly failed for {product_category}: {e}")
 
         self.metrics.products_generated = len(self.product_specs)

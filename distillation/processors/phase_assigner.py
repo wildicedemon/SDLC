@@ -342,6 +342,34 @@ class PhaseAssigner:
 
         return phase_atoms
 
+    def assign_phases_to_atom(self, atom: KnowledgeAtom) -> List[SDLCPhase]:
+        """Assign SDLC phases to a single knowledge atom.
+
+        Args:
+            atom: The knowledge atom to assign phases to.
+
+        Returns:
+            List of phases this atom belongs to.
+        """
+        # Reset phases for this atom
+        atom.sdlc_phases = []
+
+        # Apply assignment rules in priority order
+        matched_phases = set()
+        for rule in sorted(self.assignment_rules, key=lambda r: r.priority, reverse=True):
+            if rule.enabled and rule.matches(atom):
+                if rule.phase not in matched_phases:
+                    matched_phases.add(rule.phase)
+                    atom.sdlc_phases.append(rule.phase)
+
+        # If no phases matched, assign to a default based on content analysis
+        if not atom.sdlc_phases:
+            default_phase = self._find_default_phase(atom)
+            if default_phase:
+                atom.sdlc_phases.append(default_phase)
+
+        return atom.sdlc_phases
+
     def _find_default_phase(self, atom: KnowledgeAtom) -> Optional[SDLCPhase]:
         """Find a default phase assignment for atoms that don't match specific rules."""
         content_lower = atom.content.lower()

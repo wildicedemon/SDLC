@@ -94,13 +94,18 @@ class ProductTemplate:
 class ProductAssembler:
     """Assembles product specifications from knowledge atoms using templates."""
 
-    def __init__(self, templates_dir: Optional[Path] = None):
+    def __init__(self, template_config: Optional["TemplateConfig"] = None):
         """Initialize the product assembler.
 
         Args:
-            templates_dir: Directory containing template files. If None, uses default.
+            template_config: Template configuration object. If None, uses default.
         """
-        self.templates_dir = templates_dir or Path(__file__).parent.parent / "templates"
+        from ..models import TemplateConfig
+
+        if template_config is None:
+            template_config = TemplateConfig()
+
+        self.templates_dir = template_config.template_dir
         self.templates_dir.mkdir(exist_ok=True)
 
         # Initialize templates
@@ -237,6 +242,71 @@ class ProductAssembler:
         )
 
         return spec
+
+    def assign_products_to_atoms(self, atoms: List[KnowledgeAtom]) -> None:
+        """Assign product categories to knowledge atoms based on their characteristics.
+
+        Args:
+            atoms: List of knowledge atoms to assign products to
+        """
+        from ..models import ProductCategory, AtomType
+
+        for atom in atoms:
+            # Clear existing products
+            atom.products = []
+
+            # Map atom types to product categories
+            type_to_products = {
+                AtomType.TECHNIQUE: [ProductCategory.SKILLS, ProductCategory.TECHNIQUES_STRATEGIES],
+                AtomType.METRIC: [ProductCategory.SKILLS, ProductCategory.WORKFLOWS],
+                AtomType.CONSTRAINT: [ProductCategory.RULES, ProductCategory.CONTEXT_STRATEGIES],
+                AtomType.TOOL: [ProductCategory.MCP_CONFIGURATIONS, ProductCategory.SKILLS],
+                AtomType.COMBINATION: [ProductCategory.SKILLS, ProductCategory.WORKFLOWS],
+                AtomType.FAILURE_MODE: [ProductCategory.RULES, ProductCategory.TECHNIQUES_STRATEGIES],
+                AtomType.ANTI_PATTERN: [ProductCategory.RULES, ProductCategory.TECHNIQUES_STRATEGIES],
+                AtomType.TRADEOFF: [ProductCategory.SKILLS, ProductCategory.TECHNIQUES_STRATEGIES],
+                AtomType.RECIPE: [ProductCategory.SKILLS, ProductCategory.WORKFLOWS, ProductCategory.TASK_DECOMPOSITION_PATTERNS]
+            }
+
+            # Assign products based on atom type
+            if atom.type in type_to_products:
+                atom.products.extend(type_to_products[atom.type])
+
+            # Additional assignments based on domains
+            if hasattr(atom, 'domains') and atom.domains:
+                # Context-related atoms also feed context strategies
+                if any(d in ['D3', 'D4'] for d in atom.domains):  # Context Engineering, Memory Systems
+                    if ProductCategory.CONTEXT_STRATEGIES not in atom.products:
+                        atom.products.append(ProductCategory.CONTEXT_STRATEGIES)
+
+                # Agent architecture atoms feed modes
+                if 'D1' in atom.domains:  # Agent Architecture
+                    if ProductCategory.MODES not in atom.products:
+                        atom.products.append(ProductCategory.MODES)
+
+                # Task management atoms feed workflows and task decomposition
+                if 'D2' in atom.domains:  # Task Management
+                    if ProductCategory.WORKFLOWS not in atom.products:
+                        atom.products.append(ProductCategory.WORKFLOWS)
+                    if ProductCategory.TASK_DECOMPOSITION_PATTERNS not in atom.products:
+                        atom.products.append(ProductCategory.TASK_DECOMPOSITION_PATTERNS)
+
+                # Security atoms feed rules and guardrails
+                if 'D7' in atom.domains:  # Security Guardrails
+                    if ProductCategory.RULES not in atom.products:
+                        atom.products.append(ProductCategory.RULES)
+
+            # Ensure we have at least one product assignment
+            if not atom.products:
+                # Default assignment based on atom type
+                if atom.type in [AtomType.TECHNIQUE, AtomType.RECIPE, AtomType.COMBINATION]:
+                    atom.products.append(ProductCategory.SKILLS)
+                elif atom.type == AtomType.CONSTRAINT:
+                    atom.products.append(ProductCategory.RULES)
+                elif atom.type == AtomType.TOOL:
+                    atom.products.append(ProductCategory.MCP_CONFIGURATIONS)
+                else:
+                    atom.products.append(ProductCategory.TECHNIQUES_STRATEGIES)
 
     def _filter_atoms_for_category(
         self,

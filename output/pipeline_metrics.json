@@ -1,0 +1,11 @@
+{
+  "processing_time_seconds": 13.830398559570312,
+  "files_processed": 135,
+  "atoms_extracted": 2173,
+  "products_generated": 8,
+  "errors_count": 0,
+  "errors": [],
+  "memory_peak_mb": 90.5234375,
+  "memory_final_mb": 90.5234375,
+  "cpu_percent": 0.0
+}

@@ -419,6 +419,35 @@ class DomainMapper:
 
         return domain_atoms
 
+    def map_atom_to_domains(self, atom: KnowledgeAtom) -> List[Domain]:
+        """Map a single knowledge atom to its relevant technical domains.
+
+        Args:
+            atom: The knowledge atom to map.
+
+        Returns:
+            List of domains this atom belongs to.
+        """
+        # Reset domains for this atom
+        atom.domains = []
+
+        # Apply mapping rules in priority order
+        matched_domains = set()
+        for rule in sorted(self.mapping_rules, key=lambda r: r.priority, reverse=True):
+            if rule.enabled and rule.matches(atom):
+                if rule.domain not in matched_domains:
+                    matched_domains.add(rule.domain)
+                    atom.domains.append(rule.domain)
+
+        # If no domains matched, assign to a default catch-all
+        if not atom.domains:
+            # Use content analysis to find best fit
+            best_domain = self._find_best_domain_fit(atom)
+            if best_domain:
+                atom.domains.append(best_domain)
+
+        return atom.domains
+
     def _find_best_domain_fit(self, atom: KnowledgeAtom) -> Optional[Domain]:
         """Find the best domain fit for an atom that didn't match any rules."""
         content_lower = atom.content.lower()
