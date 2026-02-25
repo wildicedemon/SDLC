@@ -1046,6 +1046,201 @@ def test_prong2_evidence_ranking() -> None:
         shutil.rmtree(tmp, ignore_errors=True)
 
 
+# ── Prong 3 (SDLC Phase Mapping) tests ─────────────────────────────
+
+def _make_phase_test_atoms() -> list:
+    from distillation.models import KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength
+
+    return _make_tagged_atoms() + [
+        KnowledgeAtom(
+            id="KA-009", type=AtomType.TOOL,
+            content="Sourcegraph: multi-repo symbol search with sub-second queries across million-line codebases",
+            evidence_strength=EvidenceStrength.STRONG,
+            sources=["file_e.md"],
+            domains=["D5"], sdlc_phases=["P1", "P5"], products=["PC2"],
+        ),
+        KnowledgeAtom(
+            id="KA-010", type=AtomType.TECHNIQUE,
+            content="Canary deployment: route 5% traffic to new version, monitor error rates, gradually increase",
+            evidence_strength=EvidenceStrength.MODERATE,
+            sources=["file_f.md"],
+            domains=["D9"], sdlc_phases=["P7"], products=["PC3"],
+        ),
+        KnowledgeAtom(
+            id="KA-011", type=AtomType.RECIPE,
+            content="1. Parse AST via Tree-sitter 2. Build call graph 3. Overlay DFG 4. For security: full CPG",
+            evidence_strength=EvidenceStrength.MODERATE,
+            sources=["file_a.md"],
+            domains=["D5"], sdlc_phases=["P1", "P5"], products=["PC2"],
+        ),
+        KnowledgeAtom(
+            id="KA-012", type=AtomType.TECHNIQUE,
+            content="Root cause analysis: collect stack traces, build execution timeline, isolate variable state changes",
+            evidence_strength=EvidenceStrength.MODERATE,
+            sources=["file_g.md"],
+            domains=["D5"], sdlc_phases=["P6"], products=["PC10"],
+        ),
+        KnowledgeAtom(
+            id="KA-013", type=AtomType.FAILURE_MODE,
+            content="Self-healing pipeline loops can exhaust resources — cap retry count and escalate after threshold",
+            evidence_strength=EvidenceStrength.MODERATE,
+            sources=["file_h.md"],
+            domains=["D9"], sdlc_phases=["P8"], products=["PC6"],
+        ),
+    ]
+
+
+def test_prong3_generates_8_files() -> None:
+    print("\n=== Prong 3 Tests (8 Phase Files Generated) ===")
+    import shutil
+    import tempfile
+    from distillation.prong3_phases import generate_phase_specs
+
+    atoms = _make_phase_test_atoms()
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        specs = generate_phase_specs(atoms, tmp)
+        phases_dir = tmp / "phases"
+        check("phases dir created", phases_dir.is_dir())
+
+        md_files = sorted(phases_dir.glob("*.md"))
+        check("8 phase files generated", len(md_files) == 8, f"got {len(md_files)}")
+        check("8 PhaseSpec objects returned", len(specs) == 8, f"got {len(specs)}")
+
+        expected_files = [
+            "P1_discovery_onboarding.md",
+            "P2_planning_design.md",
+            "P3_implementation.md",
+            "P4_testing_verification.md",
+            "P5_code_review.md",
+            "P6_debugging_error_recovery.md",
+            "P7_deployment_release.md",
+            "P8_maintenance_monitoring.md",
+        ]
+        actual_names = [f.name for f in md_files]
+        for fname in expected_files:
+            check(f"{fname} exists", fname in actual_names, f"files: {actual_names}")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_prong3_atom_id_references() -> None:
+    print("\n=== Prong 3 Tests (Valid Atom ID References) ===")
+    import re as _re
+    import shutil
+    import tempfile
+    from distillation.prong3_phases import generate_phase_specs
+
+    atoms = _make_phase_test_atoms()
+    valid_ids = {a.id for a in atoms}
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        generate_phase_specs(atoms, tmp)
+        phases_dir = tmp / "phases"
+        ka_pattern = _re.compile(r"KA-\d+")
+        for md_file in sorted(phases_dir.glob("*.md")):
+            content = md_file.read_text(encoding="utf-8")
+            referenced_ids = set(ka_pattern.findall(content))
+            invalid = referenced_ids - valid_ids
+            check(
+                f"{md_file.name}: all atom IDs valid",
+                len(invalid) == 0,
+                f"invalid IDs: {invalid}",
+            )
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_prong3_content_structure() -> None:
+    print("\n=== Prong 3 Tests (Content Structure) ===")
+    import shutil
+    import tempfile
+    from distillation.prong3_phases import generate_phase_specs
+
+    atoms = _make_phase_test_atoms()
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        generate_phase_specs(atoms, tmp)
+        phases_dir = tmp / "phases"
+
+        p1 = (phases_dir / "P1_discovery_onboarding.md").read_text(encoding="utf-8")
+        check("P1 has title", "# P1: Discovery & Onboarding" in p1)
+        check("P1 has WHAT THE AGENT section", "WHAT THE AGENT IS DOING" in p1)
+        check("P1 has Knowledge Atoms section", "## Knowledge Atoms" in p1)
+        check("P1 has Techniques section", "## Techniques to Use" in p1)
+        check("P1 has Constraints section", "## Constraints in Effect" in p1)
+        check("P1 has Tools section", "## Tools Needed" in p1)
+        check("P1 has Failure Modes section", "## Failure Modes to Watch For" in p1)
+        check("P1 has Transitions section", "## Transitions" in p1)
+        check("P1 references KA-001 (Tree-sitter)", "KA-001" in p1)
+        check("P1 references KA-009 (Sourcegraph)", "KA-009" in p1)
+
+        p7 = (phases_dir / "P7_deployment_release.md").read_text(encoding="utf-8")
+        check("P7 references KA-010 (canary)", "KA-010" in p7)
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_prong3_spec_fields() -> None:
+    print("\n=== Prong 3 Tests (PhaseSpec Fields) ===")
+    import shutil
+    import tempfile
+    from distillation.prong3_phases import generate_phase_specs
+    from distillation.constants import SDLCPhase
+
+    atoms = _make_phase_test_atoms()
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        specs = generate_phase_specs(atoms, tmp)
+        phases_by_key = {s.phase.value: s for s in specs}
+
+        p3 = phases_by_key["P3"]
+        check("P3 has atoms", len(p3.atom_ids) > 0, f"got {len(p3.atom_ids)}")
+        check("P3 has constraints", len(p3.constraints) > 0, f"got {p3.constraints}")
+        check("P3 KA-004 in constraints", "KA-004" in p3.constraints)
+        check("P3 has failure_modes", len(p3.failure_modes) > 0, f"got {p3.failure_modes}")
+        check("P3 KA-005 in failure_modes", "KA-005" in p3.failure_modes)
+        check("P3 has tools", len(p3.tools) > 0, f"got {p3.tools}")
+        check("P3 KA-001 in tools", "KA-001" in p3.tools)
+        check("P3 has transitions", len(p3.transitions) > 0)
+
+        p6 = phases_by_key["P6"]
+        check("P6 has atoms", len(p6.atom_ids) > 0, f"got {len(p6.atom_ids)}")
+
+        all_phases = {SDLCPhase.P1, SDLCPhase.P2, SDLCPhase.P3, SDLCPhase.P4,
+                      SDLCPhase.P5, SDLCPhase.P6, SDLCPhase.P7, SDLCPhase.P8}
+        check("all 8 phases present", set(s.phase for s in specs) == all_phases)
+        for s in specs:
+            check(f"{s.phase.value} has name", len(s.name) > 0)
+            check(f"{s.phase.value} has description", len(s.description) > 0)
+            check(f"{s.phase.value} has transitions", len(s.transitions) > 0)
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_prong3_empty_phase_handling() -> None:
+    print("\n=== Prong 3 Tests (Empty Phase Handling) ===")
+    import shutil
+    import tempfile
+    from distillation.prong3_phases import generate_phase_specs
+
+    atoms = _make_phase_test_atoms()
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        specs = generate_phase_specs(atoms, tmp)
+        phases_by_key = {s.phase.value: s for s in specs}
+
+        p4 = phases_by_key["P4"]
+        check("P4 file generated even with few atoms", (tmp / "phases" / "P4_testing_verification.md").exists())
+
+        p2 = phases_by_key["P2"]
+        check("P2 file generated even with 0 atoms", (tmp / "phases" / "P2_planning_design.md").exists())
+        check("P2 still has transitions", len(p2.transitions) > 0)
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
 # ── Main ───────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
@@ -1081,6 +1276,11 @@ if __name__ == "__main__":
     test_prong2_domain_content()
     test_prong2_empty_domain_gaps()
     test_prong2_evidence_ranking()
+    test_prong3_generates_8_files()
+    test_prong3_atom_id_references()
+    test_prong3_content_structure()
+    test_prong3_spec_fields()
+    test_prong3_empty_phase_handling()
 
     print(f"\n{'=' * 40}")
     print(f"Results: {PASS} passed, {FAIL} failed")

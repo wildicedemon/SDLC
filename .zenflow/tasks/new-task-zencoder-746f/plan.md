@@ -134,7 +134,7 @@ Generate 12 domain spec markdown files.
 - Add test: verify 12 files generated, each contains valid atom ID references
 - Verification: `python scripts/test_distill.py` passes domain output checks
 
-### [ ] Step: Prong 3 — SDLC Phase Mapping Output
+### [x] Step: Prong 3 — SDLC Phase Mapping Output
 <!-- chat-id: 4d6df40f-473d-4a44-89ed-961017c8a5e9 -->
 
 Generate 8 phase spec markdown files.
