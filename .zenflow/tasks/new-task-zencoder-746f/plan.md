@@ -121,7 +121,7 @@ Implement keyword-vocabulary-based tag assignment.
 - Add tagger tests in `scripts/test_distill.py`: verify known atoms get expected tags
 - Verification: `python scripts/test_distill.py` passes tagger checks
 
-### [ ] Step: Prong 2 — Domain Grouping Output
+### [x] Step: Prong 2 — Domain Grouping Output
 <!-- chat-id: 59a0db5a-4bcb-4c02-868d-570668db47b0 -->
 
 Generate 12 domain spec markdown files.

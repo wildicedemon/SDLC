@@ -831,6 +831,221 @@ def test_tagger_raw_section_fallback() -> None:
     check("raw_section fallback domain D1", "D1" in result[0].domains, f"got {result[0].domains}")
 
 
+# ── Prong 2 (Domain Grouping) tests ───────────────────────────────
+
+def _make_tagged_atoms() -> list:
+    from distillation.models import KnowledgeAtom
+    from distillation.constants import AtomType, EvidenceStrength
+
+    return [
+        KnowledgeAtom(
+            id="KA-001", type=AtomType.TOOL,
+            content="Tree-sitter: incremental AST parsing supporting 40+ languages with error recovery",
+            evidence_strength=EvidenceStrength.STRONG,
+            sources=["file_a.md"],
+            domains=["D5"], sdlc_phases=["P1", "P3"], products=["PC2"],
+        ),
+        KnowledgeAtom(
+            id="KA-002", type=AtomType.METRIC,
+            content="AST-based code search improves precision 60-80% over text-based approaches",
+            evidence_strength=EvidenceStrength.MODERATE,
+            sources=["file_a.md"],
+            domains=["D5"], sdlc_phases=["P1"], products=["PC2"],
+        ),
+        KnowledgeAtom(
+            id="KA-003", type=AtomType.COMBINATION,
+            content="AST + CFG + DFG combined improves code understanding 35-50% over single representation",
+            evidence_strength=EvidenceStrength.MODERATE,
+            sources=["file_a.md"],
+            domains=["D5", "D7"], sdlc_phases=["P1", "P5"], products=["PC2"],
+        ),
+        KnowledgeAtom(
+            id="KA-004", type=AtomType.CONSTRAINT,
+            content="Agent must never commit directly to main branch — all changes require review approval",
+            evidence_strength=EvidenceStrength.WEAK,
+            sources=["file_b.md"],
+            domains=["D2", "D10"], sdlc_phases=["P3"], products=["PC6"],
+        ),
+        KnowledgeAtom(
+            id="KA-005", type=AtomType.FAILURE_MODE,
+            content="19.7% of AI-recommended packages are fabricated — verify against registry before inclusion",
+            evidence_strength=EvidenceStrength.STRONG,
+            sources=["file_c.md"],
+            domains=["D7"], sdlc_phases=["P3"], products=["PC6"],
+        ),
+        KnowledgeAtom(
+            id="KA-006", type=AtomType.TECHNIQUE,
+            content="Parse target files with Tree-sitter to build AST then extract symbol references",
+            evidence_strength=EvidenceStrength.MODERATE,
+            sources=["file_a.md"],
+            domains=["D5"], sdlc_phases=["P1", "P5"], products=["PC2"],
+        ),
+        KnowledgeAtom(
+            id="KA-007", type=AtomType.TRADEOFF,
+            content="Selective Context vs LLMLingua: use SC for moderate compression, LLMLingua for aggressive",
+            evidence_strength=EvidenceStrength.MODERATE,
+            sources=["file_d.md"],
+            domains=["D3"], sdlc_phases=["P3"], products=["PC7"],
+        ),
+        KnowledgeAtom(
+            id="KA-008", type=AtomType.ANTI_PATTERN,
+            content="Wake-up prompts don't recover degraded context — measured failure across models",
+            evidence_strength=EvidenceStrength.MODERATE,
+            sources=["file_d.md"],
+            domains=["D3"], sdlc_phases=["P3"], products=["PC6", "PC10"],
+        ),
+    ]
+
+
+def test_prong2_generates_12_files() -> None:
+    print("\n=== Prong 2 Tests (12 Domain Files Generated) ===")
+    import shutil
+    import tempfile
+    from distillation.prong2_domains import generate_domain_specs
+
+    atoms = _make_tagged_atoms()
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        specs = generate_domain_specs(atoms, tmp)
+        domains_dir = tmp / "domains"
+        check("domains dir created", domains_dir.is_dir())
+
+        md_files = sorted(domains_dir.glob("*.md"))
+        check("12 domain files generated", len(md_files) == 12, f"got {len(md_files)}")
+
+        check("12 DomainSpec objects returned", len(specs) == 12, f"got {len(specs)}")
+
+        expected_prefixes = [
+            "D01_", "D02_", "D03_", "D04_", "D05_", "D06_",
+            "D07_", "D08_", "D09_", "D10_", "D11_", "D12_",
+        ]
+        actual_names = [f.name for f in md_files]
+        for prefix in expected_prefixes:
+            check(
+                f"file with prefix {prefix} exists",
+                any(n.startswith(prefix) for n in actual_names),
+                f"files: {actual_names}",
+            )
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_prong2_atom_id_references() -> None:
+    print("\n=== Prong 2 Tests (Valid Atom ID References) ===")
+    import re as _re
+    import shutil
+    import tempfile
+    from distillation.prong2_domains import generate_domain_specs
+
+    atoms = _make_tagged_atoms()
+    valid_ids = {a.id for a in atoms}
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        generate_domain_specs(atoms, tmp)
+        domains_dir = tmp / "domains"
+        ka_pattern = _re.compile(r"`(KA-\d+)`")
+        for md_file in domains_dir.glob("*.md"):
+            content = md_file.read_text(encoding="utf-8")
+            referenced_ids = set(ka_pattern.findall(content))
+            invalid = referenced_ids - valid_ids
+            check(
+                f"{md_file.name}: all atom IDs valid",
+                len(invalid) == 0,
+                f"invalid IDs: {invalid}",
+            )
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_prong2_domain_content() -> None:
+    print("\n=== Prong 2 Tests (Domain Content Sections) ===")
+    import shutil
+    import tempfile
+    from distillation.prong2_domains import generate_domain_specs
+
+    atoms = _make_tagged_atoms()
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        specs = generate_domain_specs(atoms, tmp)
+        domains_dir = tmp / "domains"
+
+        d5_file = domains_dir / "D05_code_intelligence.md"
+        check("D5 file exists", d5_file.exists())
+        d5_content = d5_file.read_text(encoding="utf-8")
+        check("D5 has KNOWLEDGE ATOMS section", "KNOWLEDGE ATOMS" in d5_content)
+        check("D5 has KEY TECHNIQUES section", "KEY TECHNIQUES" in d5_content)
+        check("D5 has KEY TOOLS section", "KEY TOOLS" in d5_content)
+        check("D5 has COMBINATION RECIPES section", "COMBINATION RECIPES" in d5_content)
+        check("D5 has CROSS-DOMAIN LINKS section", "CROSS-DOMAIN LINKS" in d5_content)
+        check("D5 has GAPS section", "GAPS" in d5_content)
+        check("D5 references KA-001", "KA-001" in d5_content)
+        check("D5 references KA-006", "KA-006" in d5_content)
+
+        d5_spec = next(s for s in specs if s.domain.value == "D5")
+        check("D5 spec has atoms", len(d5_spec.atom_ids) >= 3, f"got {len(d5_spec.atom_ids)}")
+        check("D5 spec has tools", len(d5_spec.key_tools) >= 1)
+        check("D5 spec has techniques", len(d5_spec.key_techniques) >= 1)
+        check("D5 spec has combination_recipes", len(d5_spec.combination_recipes) >= 1)
+
+        d7_spec = next(s for s in specs if s.domain.value == "D7")
+        check("D7 spec has failure_modes", len(d7_spec.failure_modes) >= 1)
+
+        cross_links = d5_spec.cross_domain_links
+        check(
+            "D5 cross-domain link for KA-003",
+            "KA-003" in cross_links and "D7" in cross_links["KA-003"],
+            f"got {cross_links}",
+        )
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_prong2_empty_domain_gaps() -> None:
+    print("\n=== Prong 2 Tests (Empty Domain Gap Reporting) ===")
+    import shutil
+    import tempfile
+    from distillation.prong2_domains import generate_domain_specs
+
+    atoms = _make_tagged_atoms()
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        specs = generate_domain_specs(atoms, tmp)
+        d4_spec = next(s for s in specs if s.domain.value == "D4")
+        check("empty domain D4 has gaps", len(d4_spec.gaps) > 0, f"got {d4_spec.gaps}")
+        check("empty domain D4 has 0 atoms", len(d4_spec.atom_ids) == 0)
+
+        d4_file = (tmp / "domains" / "D04_memory_knowledge_systems.md")
+        check("D4 file exists even with no atoms", d4_file.exists())
+        d4_content = d4_file.read_text(encoding="utf-8")
+        check("D4 has thin coverage gap", "Thin coverage" in d4_content or "No " in d4_content)
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_prong2_evidence_ranking() -> None:
+    print("\n=== Prong 2 Tests (Evidence Strength Ranking) ===")
+    import shutil
+    import tempfile
+    from distillation.prong2_domains import generate_domain_specs
+
+    atoms = _make_tagged_atoms()
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        specs = generate_domain_specs(atoms, tmp)
+        d5_spec = next(s for s in specs if s.domain.value == "D5")
+        if len(d5_spec.atom_ids) >= 2:
+            from distillation.constants import EvidenceStrength
+            atoms_by_id = {a.id: a for a in atoms}
+            first = atoms_by_id.get(d5_spec.atom_ids[0])
+            check(
+                "STRONG evidence atom ranked first in D5",
+                first is not None and first.evidence_strength == EvidenceStrength.STRONG,
+                f"first atom {d5_spec.atom_ids[0]} has {first.evidence_strength.value if first else 'N/A'}",
+            )
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
 # ── Main ───────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
@@ -861,6 +1076,11 @@ if __name__ == "__main__":
     test_tagger_fallback_assignment()
     test_tagger_all_atoms_tagged()
     test_tagger_raw_section_fallback()
+    test_prong2_generates_12_files()
+    test_prong2_atom_id_references()
+    test_prong2_domain_content()
+    test_prong2_empty_domain_gaps()
+    test_prong2_evidence_ranking()
 
     print(f"\n{'=' * 40}")
     print(f"Results: {PASS} passed, {FAIL} failed")
