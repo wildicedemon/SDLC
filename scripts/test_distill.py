@@ -1241,6 +1241,204 @@ def test_prong3_empty_phase_handling() -> None:
         shutil.rmtree(tmp, ignore_errors=True)
 
 
+# ── Prong 4 (Product Spec Assembly) tests ──────────────────────────
+
+def test_prong4_generates_yaml_files() -> None:
+    print("\n=== Prong 4 Tests (YAML Files Generated) ===")
+    import shutil
+    import tempfile
+    from distillation.prong4_products import generate_product_specs
+
+    atoms = _make_tagged_atoms()
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        specs = generate_product_specs(atoms, tmp)
+        products_dir = tmp / "products"
+        check("products dir created", products_dir.is_dir())
+
+        yaml_files = list(products_dir.rglob("*.yaml"))
+        check("at least 1 yaml file generated", len(yaml_files) >= 1, f"got {len(yaml_files)}")
+
+        check("at least 1 ProductSpec returned", len(specs) >= 1, f"got {len(specs)}")
+
+        for spec in specs:
+            check(
+                f"{spec.instance_name}: has atom_ids",
+                len(spec.atom_ids) >= 1,
+                f"got {len(spec.atom_ids)}",
+            )
+            check(
+                f"{spec.instance_name}: has yaml_spec",
+                isinstance(spec.yaml_spec, dict) and len(spec.yaml_spec) > 0,
+            )
+            check(
+                f"{spec.instance_name}: confidence is valid",
+                spec.confidence in ("HIGH", "MEDIUM", "LOW"),
+                f"got {spec.confidence}",
+            )
+
+        print(f"  Generated {len(yaml_files)} YAML files across {len(specs)} product specs")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_prong4_valid_yaml_syntax() -> None:
+    print("\n=== Prong 4 Tests (Valid YAML Syntax) ===")
+    import shutil
+    import tempfile
+    from distillation.prong4_products import generate_product_specs
+
+    atoms = _make_tagged_atoms()
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        generate_product_specs(atoms, tmp)
+        products_dir = tmp / "products"
+        yaml_files = list(products_dir.rglob("*.yaml"))
+
+        try:
+            import yaml
+            for yf in yaml_files:
+                content = yf.read_text(encoding="utf-8")
+                parsed = yaml.safe_load(content)
+                check(
+                    f"{yf.name}: valid YAML",
+                    parsed is not None and isinstance(parsed, dict),
+                    f"got {type(parsed)}",
+                )
+        except ImportError:
+            import json
+            for yf in yaml_files:
+                content = yf.read_text(encoding="utf-8")
+                parsed = json.loads(content)
+                check(
+                    f"{yf.name}: valid JSON fallback",
+                    parsed is not None and isinstance(parsed, dict),
+                    f"got {type(parsed)}",
+                )
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_prong4_template_structure() -> None:
+    print("\n=== Prong 4 Tests (Template Structure Conformance) ===")
+    import shutil
+    import tempfile
+    from distillation.prong4_products import generate_product_specs, PRODUCT_DIR_MAP
+
+    atoms = _make_tagged_atoms()
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        specs = generate_product_specs(atoms, tmp)
+
+        template_keys = {
+            "PC1": ["mode", "role_definition", "tools", "skills_available"],
+            "PC2": ["skill", "purpose", "technique_stack", "procedure"],
+            "PC3": ["workflow", "trigger", "phases", "rollback_plan"],
+            "PC4": ["prompt", "target", "structure", "guardrails"],
+            "PC5": ["configuration", "servers", "security_constraints"],
+            "PC6": ["rule", "constraint", "rationale", "enforcement"],
+            "PC7": ["strategy", "window_partition", "compression_pipeline"],
+            "PC8": ["pattern", "decomposition", "dependency_rules"],
+            "PC9": ["workspace", "branch_strategy", "conflict_resolution"],
+            "PC10": ["technique", "situation", "recognition", "response"],
+        }
+
+        for spec in specs:
+            pc_val = spec.category.value
+            expected = template_keys.get(pc_val, [])
+            for key in expected:
+                check(
+                    f"{spec.instance_name}: has '{key}' key",
+                    key in spec.yaml_spec,
+                    f"keys: {list(spec.yaml_spec.keys())}",
+                )
+
+        products_dir = tmp / "products"
+        for pc_val, dirname in PRODUCT_DIR_MAP.items():
+            cat_specs = [s for s in specs if s.category.value == pc_val]
+            if cat_specs:
+                subdir = products_dir / dirname
+                check(
+                    f"{dirname}/ dir exists",
+                    subdir.is_dir(),
+                    f"missing {subdir}",
+                )
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_prong4_confidence_levels() -> None:
+    print("\n=== Prong 4 Tests (Confidence Computation) ===")
+    import shutil
+    import tempfile
+    from distillation.prong4_products import generate_product_specs
+
+    atoms = _make_tagged_atoms()
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        specs = generate_product_specs(atoms, tmp)
+        confidences = {s.confidence for s in specs}
+        check(
+            "at least one confidence level assigned",
+            len(confidences) >= 1,
+            f"got {confidences}",
+        )
+        for spec in specs:
+            check(
+                f"{spec.instance_name}: confidence valid",
+                spec.confidence in ("HIGH", "MEDIUM", "LOW"),
+            )
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_prong4_gaps_tracked() -> None:
+    print("\n=== Prong 4 Tests (Gaps Tracked) ===")
+    import shutil
+    import tempfile
+    from distillation.prong4_products import generate_product_specs
+
+    atoms = _make_tagged_atoms()
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        specs = generate_product_specs(atoms, tmp)
+        check(
+            "gaps are list type for all specs",
+            all(isinstance(s.gaps, list) for s in specs),
+        )
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_prong4_atom_id_coverage() -> None:
+    print("\n=== Prong 4 Tests (Atom ID Coverage) ===")
+    import shutil
+    import tempfile
+    from distillation.prong4_products import generate_product_specs
+
+    atoms = _make_tagged_atoms()
+    valid_ids = {a.id for a in atoms}
+    tmp = Path(tempfile.mkdtemp())
+    try:
+        specs = generate_product_specs(atoms, tmp)
+        all_referenced = set()
+        for spec in specs:
+            all_referenced.update(spec.atom_ids)
+        invalid = all_referenced - valid_ids
+        check(
+            "all referenced atom IDs are valid",
+            len(invalid) == 0,
+            f"invalid: {invalid}",
+        )
+        check(
+            "at least some atoms consumed",
+            len(all_referenced) >= 1,
+            f"got {len(all_referenced)}",
+        )
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
 # ── Main ───────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
@@ -1281,6 +1479,12 @@ if __name__ == "__main__":
     test_prong3_content_structure()
     test_prong3_spec_fields()
     test_prong3_empty_phase_handling()
+    test_prong4_generates_yaml_files()
+    test_prong4_valid_yaml_syntax()
+    test_prong4_template_structure()
+    test_prong4_confidence_levels()
+    test_prong4_gaps_tracked()
+    test_prong4_atom_id_coverage()
 
     print(f"\n{'=' * 40}")
     print(f"Results: {PASS} passed, {FAIL} failed")
