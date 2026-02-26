@@ -459,6 +459,7 @@ Implement retrieval pipeline per FR-8.
 - **If vector search returns 0 results**: Return empty response with `confidence=0.0` and message "No matching decisions found"; do not error
 
 ### [ ] Step: Consolidation Gate and Run Completion
+<!-- chat-id: 307066a4-ab3d-4bf3-9fed-9a0e5305731f -->
 
 Implement governance gates per FR-9.
 
