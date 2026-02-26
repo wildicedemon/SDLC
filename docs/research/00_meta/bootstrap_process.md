@@ -25,3 +25,9 @@ Define the minimum process to bootstrap the corpus with real decision coverage a
 - `capability_index.md` has **>= 3** capabilities.
 - Retrieval tests return a DecisionCard for each of the 5 queries.
 - One consolidation run is recorded in `consolidation_log.md`.
+
+
+## Current Execution Status
+- Bootstrap extraction and index population: completed (`cr_bootstrap_2026_02_26`).
+- Retrieval validation results: `docs/research/00_meta/bootstrap_validation_results.md`.
+- Consolidation run report: `docs/research/00_meta/run_reports/cr_bootstrap_2026_02_26.md`.
