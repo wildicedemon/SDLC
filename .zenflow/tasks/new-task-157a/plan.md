@@ -162,7 +162,7 @@ Integration checkpoint: verify the full relational stack works end-to-end before
 - **If verification fails**: This indicates a fundamental schema or repository bug — fix before proceeding; do not continue to ingestion with a broken data layer
 - Run `ruff check src/ tests/` and `mypy src/corpus/` — fix any issues
 
-### [ ] Step: Git Enumerator
+### [x] Step: Git Enumerator
 <!-- chat-id: 99c98976-8039-4ea2-9052-64e328d5edce -->
 
 Implement file enumeration from git branches/worktrees. Mock-friendly, no other ingestion components yet.
@@ -202,6 +202,7 @@ Implement domain/capability tag classification from file paths. Hardcoded rules 
 - **If verification fails**: Cross-reference directory listing from `docs/research/` against classifier rules; add missing patterns
 
 ### [ ] Step: Normalizer
+<!-- chat-id: ab89a93f-8a64-4a12-b2a3-f350fddbcecc -->
 
 Implement content normalization — single-file first, then multi-file merge into canonical pages.
 

@@ -35,30 +35,31 @@ def enumerate_changes(
 
     results: list[ChangedFile] = []
     for diff in diffs:
+        file_path: str
         if diff.new_file:
-            path = diff.b_path
+            file_path = diff.b_path or ""
             change_type = "added"
         elif diff.deleted_file:
-            path = diff.a_path
+            file_path = diff.a_path or ""
             change_type = "deleted"
         elif diff.renamed_file:
-            path = diff.b_path
+            file_path = diff.b_path or ""
             change_type = "modified"
         else:
-            path = diff.b_path or diff.a_path
+            file_path = diff.b_path or diff.a_path or ""
             change_type = "modified"
 
-        if not path.endswith(".md"):
+        if not file_path or not file_path.endswith(".md"):
             continue
 
         content: bytes | None = None
         if change_type != "deleted":
             try:
-                blob = source_commit.tree / path
+                blob = source_commit.tree / file_path
                 content = blob.data_stream.read()
             except KeyError:
                 content = None
 
-        results.append(ChangedFile(path=path, change_type=change_type, content=content))
+        results.append(ChangedFile(path=file_path, change_type=change_type, content=content))
 
     return results
