@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS telemetry_outcomes;
+DROP TABLE IF EXISTS capability_mappings;
+DROP TABLE IF EXISTS human_review_queue;
+DROP TABLE IF EXISTS reference_integrity_reports;
+DROP TABLE IF EXISTS reference_rewrite_maps;
+DROP TABLE IF EXISTS drift_events;
+DROP TABLE IF EXISTS artifact_chunks;
+DROP TABLE IF EXISTS research_artifacts;
+DROP TABLE IF EXISTS decision_cards;
+DROP TABLE IF EXISTS consolidation_runs;
