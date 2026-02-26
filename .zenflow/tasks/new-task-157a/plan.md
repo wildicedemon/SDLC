@@ -416,6 +416,7 @@ Implement derived layers per FR-7. These are rebuildable from relational source 
 - **If sync health fails during a run**: Block run completion; report which layer is behind and by how much; operator can run `corpus rebuild-vectors` / `corpus rebuild-graph` to force recovery
 
 ### [ ] Step: Retrieval Runtime (L0-L3)
+<!-- chat-id: 14637af2-8161-4677-8eba-4effc320fbe4 -->
 
 Implement retrieval pipeline per FR-8.
 
