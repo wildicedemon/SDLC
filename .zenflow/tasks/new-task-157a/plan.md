@@ -47,7 +47,8 @@ Save to `{@artifacts_path}/spec.md` with:
 
 Create a detailed implementation plan based on `{@artifacts_path}/spec.md`.
 
-### [ ] Step: Project Scaffolding and Configuration
+### [x] Step: Project Scaffolding and Configuration
+<!-- chat-id: 5f17cc6d-1265-4aaa-901f-c7c0ed0c9206 -->
 
 Set up the `corpus/` Python package, dependencies, configuration, and CLI skeleton.
 

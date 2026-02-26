@@ -1,0 +1,15 @@
+data/
+node_modules/
+dist/
+build/
+.cache/
+*.log
+__pycache__/
+*.pyc
+*.egg-info/
+.eggs/
+*.egg
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.venv/
