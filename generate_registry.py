@@ -1,0 +1,186 @@
+import json
+
+data = {
+    "TECHNIQUE": [
+        {
+            "ID": "KA-001",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "System-Theoretic Agent Decomposition: Decompose agent systems into five distinct subsystems: Reasoning, Perception, Action, Learning, and Communication.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-002",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Hierarchical Multi-Agent Orchestration: Organize agents in a tree structure with a planner/manager agent at the root decomposing tasks for specialist sub-agents at lower levels.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-003",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Budget-Aware Retrieval: Retrieval systems that respect explicit token budgets, returning optimally-sized context chunks that fit within allocated space while maximizing relevance.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-004",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Test Pyramid Pattern: Structure tests in a pyramid shape with many unit tests at the bottom, fewer integration tests in the middle, and few E2E tests at the top.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-005",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Test-First Pattern (TDD): Write tests before implementation code. Follow red-green-refactor cycle.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        }
+    ],
+    "TRADEOFF": [
+        {
+            "ID": "KA-006",
+            "TYPE": "TRADEOFF",
+            "CONTENT": "System-Theoretic Agent Decomposition: Improved testability and maintainability vs. integration complexity between subsystems.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-007",
+            "TYPE": "TRADEOFF",
+            "CONTENT": "Layered Voting Architecture (MoA): 8-12% improvement over single-agent baselines vs. 3-5x compute overhead.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        }
+    ],
+    "ANTI-PATTERN": [
+        {
+            "ID": "KA-008",
+            "TYPE": "ANTI-PATTERN",
+            "CONTENT": "Context Stuffing: Maximally filling context windows with all available information without prioritization or filtering.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design"],
+            "PRODUCTS": ["PC6: Context Management"]
+        }
+    ]
+}
+
+with open('knowledge_atom_registry.json', 'w', encoding='utf-8') as f:
+    json.dump(data, f, ensure_ascii=False, indent=2)
+    print('JSON file created successfully')
+data = {
+    "TECHNIQUE": [
+        {
+            "ID": "KA-001",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "System-Theoretic Agent Decomposition: Decompose agent systems into five distinct subsystems: Reasoning, Perception, Action, Learning, and Communication.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-002",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Hierarchical Multi-Agent Orchestration: Organize agents in a tree structure with a planner/manager agent at the root decomposing tasks for specialist sub-agents at lower levels.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-003",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Budget-Aware Retrieval: Retrieval systems that respect explicit token budgets, returning optimally-sized context chunks that fit within allocated space while maximizing relevance.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-004",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Test Pyramid Pattern: Structure tests in a pyramid shape with many unit tests at the bottom, fewer integration tests in the middle, and few E2E tests at the top.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-005",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Test-First Pattern (TDD): Write tests before implementation code. Follow red-green-refactor cycle.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        }
+    ],
+    "TRADEOFF": [
+        {
+            "ID": "KA-006",
+            "TYPE": "TRADEOFF",
+            "CONTENT": "System-Theoretic Agent Decomposition: Improved testability and maintainability vs. integration complexity between subsystems.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-007",
+            "TYPE": "TRADEOFF",
+            "CONTENT": "Layered Voting Architecture (MoA): 8-12% improvement over single-agent baselines vs. 3-5x compute overhead.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        }
+    ],
+    "ANTI-PATTERN": [
+        {
+            "ID": "KA-008",
+            "TYPE": "ANTI-PATTERN",
+            "CONTENT": "Context Stuffing: Maximally filling context windows with all available information without prioritization or filtering.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design"],
+            "PRODUCTS": ["PC6: Context Management"]
+        }
+    ]
+}
+
+with open('knowledge_atom_registry.json', 'w', encoding='utf-8') as f:
+    json.dump(data, f, ensure_ascii=False, indent=2)
+    print('JSON file created successfully')
