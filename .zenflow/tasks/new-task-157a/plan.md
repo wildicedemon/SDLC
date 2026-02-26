@@ -366,6 +366,7 @@ Implement reference safety per FR-6.
 - **If integrity check fails during a run**: Block run completion (do not mark `completed`); generate remediation report listing every broken link with file:line location; set run `status='failed'` with `remediation_report` populated
 
 ### [ ] Step: Smoke Test — Ingest to Decision Update
+<!-- chat-id: 47ed4a83-b4cd-42e4-ab39-f715f19be591 -->
 
 Integration checkpoint: verify the core pipeline from ingestion through decision updates.
 
