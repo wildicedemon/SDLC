@@ -1,80 +1,91 @@
-from __future__ import annotations
-
 from pathlib import Path
+from typing import Any
 
 from sqlalchemy import text
 from sqlalchemy.engine import Engine
 
+
 VERSIONS_DIR = Path(__file__).parent / "versions"
 
-_SCHEMA_VERSION_DDL = """
-CREATE TABLE IF NOT EXISTS _schema_version (
-    version INTEGER PRIMARY KEY,
+_INIT_TRACKING = """
+CREATE TABLE IF NOT EXISTS _schema_versions (
+    version TEXT PRIMARY KEY,
     applied_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 """
 
 
-def _ensure_version_table(engine: Engine) -> None:
-    with engine.begin() as conn:
-        conn.execute(text(_SCHEMA_VERSION_DDL))
+def _get_applied_versions(engine: Engine) -> list[str]:
+    with engine.connect() as conn:
+        conn.execute(text(_INIT_TRACKING))
+        conn.commit()
+        rows = conn.execute(text("SELECT version FROM _schema_versions ORDER BY version")).fetchall()
+    return [r[0] for r in rows]
 
 
-def _current_version(engine: Engine) -> int:
-    with engine.begin() as conn:
-        row = conn.execute(text("SELECT MAX(version) FROM _schema_version")).fetchone()
-        return row[0] if row and row[0] is not None else 0
+def _parse_sql_file(path: Path) -> tuple[str, str]:
+    content = path.read_text(encoding="utf-8")
+    parts = content.split("-- rollback:")
+    forward = parts[0].strip()
+    rollback = parts[1].strip() if len(parts) > 1 else ""
+    return forward, rollback
 
 
-def _available_migrations() -> list[tuple[int, Path, Path | None]]:
-    results: list[tuple[int, Path, Path | None]] = []
-    for f in sorted(VERSIONS_DIR.glob("*.sql")):
-        name = f.stem
-        if name.endswith("_rollback"):
+def _get_version_files() -> list[tuple[str, Path]]:
+    files = sorted(VERSIONS_DIR.glob("*.sql"))
+    result = []
+    for f in files:
+        version = f.stem
+        result.append((version, f))
+    return result
+
+
+def migrate_forward(engine: Engine) -> list[str]:
+    applied = _get_applied_versions(engine)
+    version_files = _get_version_files()
+    newly_applied: list[str] = []
+
+    for version, path in version_files:
+        if version in applied:
             continue
-        version = int(name.split("_")[0])
-        rollback = f.parent / f"{name}_rollback.sql"
-        results.append((version, f, rollback if rollback.exists() else None))
-    return results
+        forward_sql, _ = _parse_sql_file(path)
+        with engine.connect() as conn:
+            conn.execute(text("PRAGMA foreign_keys=OFF"))
+            for stmt in forward_sql.split(";"):
+                stmt = stmt.strip()
+                if stmt:
+                    conn.execute(text(stmt))
+            conn.execute(text("INSERT INTO _schema_versions (version) VALUES (:v)"), {"v": version})
+            conn.execute(text("PRAGMA foreign_keys=ON"))
+            conn.commit()
+        newly_applied.append(version)
+
+    return newly_applied
 
 
-def migrate(engine: Engine) -> list[int]:
-    _ensure_version_table(engine)
-    current = _current_version(engine)
-    applied: list[int] = []
-    for version, path, _ in _available_migrations():
-        if version <= current:
-            continue
-        sql = path.read_text(encoding="utf-8")
-        with engine.begin() as conn:
-            for statement in _split_statements(sql):
-                conn.execute(text(statement))
-            conn.execute(
-                text("INSERT INTO _schema_version (version) VALUES (:v)"),
-                {"v": version},
-            )
-        applied.append(version)
-    return applied
-
-
-def rollback(engine: Engine) -> int | None:
-    _ensure_version_table(engine)
-    current = _current_version(engine)
-    if current == 0:
+def migrate_rollback(engine: Engine) -> str | None:
+    applied = _get_applied_versions(engine)
+    if not applied:
         return None
-    for version, _, rollback_path in reversed(_available_migrations()):
-        if version == current and rollback_path is not None:
-            sql = rollback_path.read_text(encoding="utf-8")
-            with engine.begin() as conn:
-                for statement in _split_statements(sql):
-                    conn.execute(text(statement))
-                conn.execute(
-                    text("DELETE FROM _schema_version WHERE version = :v"),
-                    {"v": version},
-                )
-            return version
-    return None
 
+    last_version = applied[-1]
+    version_files = dict(_get_version_files())
+    path = version_files.get(last_version)
+    if path is None:
+        return None
 
-def _split_statements(sql: str) -> list[str]:
-    return [s.strip() for s in sql.split(";") if s.strip()]
+    _, rollback_sql = _parse_sql_file(path)
+    if not rollback_sql:
+        return None
+
+    with engine.connect() as conn:
+        conn.execute(text("PRAGMA foreign_keys=OFF"))
+        for stmt in rollback_sql.split(";"):
+            stmt = stmt.strip()
+            if stmt:
+                conn.execute(text(stmt))
+        conn.execute(text("DELETE FROM _schema_versions WHERE version = :v"), {"v": last_version})
+        conn.execute(text("PRAGMA foreign_keys=ON"))
+        conn.commit()
+
+    return last_version

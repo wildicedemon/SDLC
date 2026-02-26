@@ -78,7 +78,8 @@ Verify AI arbitration backend connectivity before building pipeline components t
 - **Success criteria**: Test passes with HTTP 200 and a valid response body
 - **If verification fails**: Check if `z-ai/glm-5:free` is listed at `GET https://api.kilo.ai/api/gateway/models`; if model unavailable, try `minimax/minimax-m2.1:free` as fallback; if gateway unreachable, mark step `[!]` and escalate
 
-### [ ] Step: Schema Models
+### [x] Step: Schema Models
+<!-- chat-id: 0468e306-8f39-467b-9b03-d2f0d3fbb5b3 -->
 
 Implement SQLAlchemy ORM models only — no migrations, no repository layer yet. Per spec §3.1.
 

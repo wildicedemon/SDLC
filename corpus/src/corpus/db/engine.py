@@ -1,33 +1,31 @@
-from __future__ import annotations
-
+from collections.abc import Generator
 from contextlib import contextmanager
-from typing import Generator
+from typing import Any
 
 from sqlalchemy import create_engine, event
 from sqlalchemy.engine import Engine
 from sqlalchemy.orm import Session, sessionmaker
 
 
-def _set_sqlite_pragmas(dbapi_conn: object, _connection_record: object) -> None:
-    cursor = dbapi_conn.cursor()  # type: ignore[attr-defined]
-    cursor.execute("PRAGMA journal_mode=WAL")
-    cursor.execute("PRAGMA foreign_keys=ON")
-    cursor.close()
+def create_db_engine(url: str) -> Engine:
+    engine = create_engine(url, echo=False)
 
+    @event.listens_for(engine, "connect")
+    def _set_sqlite_pragma(dbapi_conn: Any, _connection_record: Any) -> None:
+        cursor = dbapi_conn.cursor()
+        cursor.execute("PRAGMA foreign_keys=ON")
+        cursor.close()
 
-def build_engine(db_url: str) -> Engine:
-    engine = create_engine(db_url, echo=False)
-    if db_url.startswith("sqlite"):
-        event.listen(engine, "connect", _set_sqlite_pragmas)
     return engine
 
 
-def build_session_factory(engine: Engine) -> sessionmaker[Session]:
-    return sessionmaker(bind=engine, expire_on_commit=False)
+def make_session_factory(engine: Engine) -> sessionmaker[Session]:
+    return sessionmaker(bind=engine)
 
 
 @contextmanager
-def session_scope(factory: sessionmaker[Session]) -> Generator[Session, None, None]:
+def get_session(engine: Engine) -> Generator[Session, None, None]:
+    factory = make_session_factory(engine)
     session = factory()
     try:
         yield session

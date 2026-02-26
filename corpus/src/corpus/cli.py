@@ -9,17 +9,42 @@ def cli() -> None:
 @cli.command()
 def init() -> None:
     """Initialize DB, run migrations, create data dirs."""
-    click.echo("corpus init: not yet implemented")
+    from corpus.config import get_settings
+    from corpus.db.engine import create_db_engine
+    from corpus.db.migrations.runner import migrate_forward
+
+    settings = get_settings()
+    settings.ensure_data_dirs()
+    engine = create_db_engine(settings.db_url)
+    applied = migrate_forward(engine)
+    if applied:
+        click.echo(f"Applied migrations: {', '.join(applied)}")
+    else:
+        click.echo("Database already up to date.")
 
 
 @cli.command()
 @click.option("--rollback", is_flag=True, help="Rollback last migration.")
 def migrate(rollback: bool) -> None:
     """Run pending schema migrations."""
+    from corpus.config import get_settings
+    from corpus.db.engine import create_db_engine
+    from corpus.db.migrations.runner import migrate_forward, migrate_rollback
+
+    settings = get_settings()
+    engine = create_db_engine(settings.db_url)
     if rollback:
-        click.echo("corpus migrate --rollback: not yet implemented")
+        rolled = migrate_rollback(engine)
+        if rolled:
+            click.echo(f"Rolled back migration: {rolled}")
+        else:
+            click.echo("Nothing to roll back.")
     else:
-        click.echo("corpus migrate: not yet implemented")
+        applied = migrate_forward(engine)
+        if applied:
+            click.echo(f"Applied migrations: {', '.join(applied)}")
+        else:
+            click.echo("Database already up to date.")
 
 
 @cli.command()
