@@ -337,6 +337,7 @@ Implement decision surface updates per FR-5.
 - **If confidence formula produces out-of-range values**: Clamp to [0.0, 1.0]; log warning if clamping was needed
 
 ### [ ] Step: Reference Integrity
+<!-- chat-id: f2d0867d-67bf-4c25-b753-fa30d24bccb5 -->
 
 Implement reference safety per FR-6.
 
