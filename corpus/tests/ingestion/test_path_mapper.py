@@ -25,9 +25,6 @@ def test_record_mapping_persists(repo: CorpusRepository) -> None:
     record_mapping(repo, "old/path.md", "new/path.md", "cr_pm_test")
     repo.session.flush()
 
-    entries = (
-        repo.session.query(Base.registry.mappers)  # type: ignore[attr-defined]
-    )
     from corpus.db.models import ReferenceRewriteMap
 
     rows = repo.session.query(ReferenceRewriteMap).filter_by(run_id="cr_pm_test").all()

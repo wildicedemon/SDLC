@@ -243,6 +243,7 @@ Wire all ingestion components together with path mapping and the `corpus ingest`
 - **If verification fails**: Check that enumerator→classifier→normalizer chain passes data correctly; verify repository FK constraints satisfied (run must exist before artifacts)
 
 ### [ ] Step: Smoke Test — Ingest to DB
+<!-- chat-id: 0f3628e4-adbe-4ec5-b2e7-f401c51a551f -->
 
 Integration checkpoint: verify ingestion produces queryable relational state.
 
