@@ -201,7 +201,7 @@ Implement domain/capability tag classification from file paths. Hardcoded rules 
 - **Verify**: `pytest tests/ingestion/test_classifier.py -v` — all 5 assertions pass
 - **If verification fails**: Cross-reference directory listing from `docs/research/` against classifier rules; add missing patterns
 
-### [ ] Step: Normalizer
+### [x] Step: Normalizer
 <!-- chat-id: ab89a93f-8a64-4a12-b2a3-f350fddbcecc -->
 
 Implement content normalization — single-file first, then multi-file merge into canonical pages.
@@ -220,6 +220,7 @@ Implement content normalization — single-file first, then multi-file merge int
 - **If verification fails**: Check heading regex; ensure merge doesn't duplicate existing sections
 
 ### [ ] Step: Path Mapper + Ingestion Integration
+<!-- chat-id: 7d779109-9099-4b1d-bc59-317d822e4ce5 -->
 
 Wire all ingestion components together with path mapping and the `corpus ingest` CLI command.
 

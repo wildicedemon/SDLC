@@ -49,9 +49,32 @@ def migrate(rollback: bool) -> None:
 
 @cli.command()
 @click.argument("source")
-def ingest(source: str) -> None:
+@click.option("--base", default="main", help="Base branch to diff against.")
+@click.option("--repo-path", default=".", help="Path to the git repository.")
+def ingest(source: str, base: str, repo_path: str) -> None:
     """Ingest artifacts from a branch or worktree."""
-    click.echo(f"corpus ingest {source}: not yet implemented")
+    import sys
+
+    from corpus.config import get_settings
+    from corpus.db.engine import create_db_engine, get_session
+    from corpus.db.repository import CorpusRepository
+    from corpus.ingestion.pipeline import run_ingest
+
+    settings = get_settings()
+    engine = create_db_engine(settings.db_url)
+    with get_session(engine) as session:
+        repo = CorpusRepository(session)
+        result = run_ingest(repo, repo_path, source, base, corpus_root=repo_path)
+
+    if result.failed:
+        click.echo("Ingestion FAILED — unclassified files:")
+        for f in result.unclassified_files:
+            click.echo(f"  {f}")
+        click.echo(f"Run ID: {result.run_id} (status=failed)")
+        sys.exit(1)
+
+    click.echo(f"Ingested {result.artifacts_ingested} artifacts, {result.chunks_created} chunks.")
+    click.echo(f"Run ID: {result.run_id}")
 
 
 @cli.command()
