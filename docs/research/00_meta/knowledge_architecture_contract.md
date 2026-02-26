@@ -59,6 +59,16 @@ Branch deletion is allowed only if provenance remains recoverable in canonical m
 
 This preserves lineage while avoiding long-term branch/worktree sprawl.
 
+
+## Corpus Organization and Normalization Policy
+To prevent organizational drift and uncontrolled corpus growth:
+- All research artifacts must be normalized into canonical domain files before run completion.
+- Parallel duplicate topic files are not allowed in active corpus; merge into a single canonical section.
+- Every run must update domain organization status in `domain_coverage_matrix.md`.
+- Unclassified artifacts must be resolved (classified, merged, or archived) before `completed` status.
+
+Refer to `docs/research/00_meta/corpus_organization_standard.md` for directory contract, naming rules, and organization gates.
+
 ## Retrieval Hierarchy (L0-L3)
 Use a strict escalation model to balance speed and rigor.
 

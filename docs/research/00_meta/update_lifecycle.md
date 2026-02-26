@@ -25,6 +25,7 @@ Operationalize continuous research ingestion while keeping a single authoritativ
 - Decision impact report
 - Drift event report
 - Index update confirmation
+- Domain coverage matrix update (`domain_coverage_matrix.md`)
 - Retirement record
 - Human review queue disposition report
 
@@ -33,6 +34,7 @@ Operationalize continuous research ingestion while keeping a single authoritativ
 - If any previously populated capability returns empty results, block completion.
 - New capabilities with no prior DecisionCards are exempt.
 - Human review queue must be fully resolved before status is set to `completed`.
+- New artifacts must conform to canonical directory contract and no unclassified orphan files may remain.
 
 ## Failure Handling
 - If dedup pipeline fails: block merge and mark run as failed.
