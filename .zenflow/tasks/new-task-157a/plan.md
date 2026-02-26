@@ -514,6 +514,7 @@ Integration checkpoint: verify the complete pipeline before adding telemetry.
 - Run `ruff check src/ tests/` and `mypy src/corpus/` — fix any issues
 
 ### [ ] Step: Telemetry and Calibration
+<!-- chat-id: cf322d29-e9de-43ff-ad7e-ad0f04776367 -->
 
 Implement operational telemetry per FR-10.
 
