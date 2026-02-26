@@ -26,13 +26,28 @@ Use short-lived research branches/worktrees, then fully absorb and retire them.
   6. reranked against current recommendations.
 - After successful consolidation, the source branch/worktree must be archived or deleted and not reused.
 
-### Merge Gate Checklist (Required)
-Every research merge into `main`/`master` must pass:
-- **Coverage Gate:** all new artifacts from source branch/worktree are represented or explicitly rejected with reason.
-- **Dedup Gate:** no unresolved near-duplicate sections remain in canonical corpus.
-- **Decision Impact Gate:** affected Decision Cards were revalidated or marked pending with DriftEvents.
-- **Index Gate:** indices and source-to-decision maps were updated.
-- **Archive Gate:** branch/worktree retirement action recorded.
+### Merge Validation (Required)
+Every research merge into `main`/`master` must pass one blocking validation:
+- Query 3 capabilities affected by new artifacts.
+- If any previously populated capability returns empty results, block completion.
+- New capabilities with no prior DecisionCards are exempt.
+
+Additionally, the human review queue must be fully resolved before consolidation status can be set to `completed`.
+
+### Three-Layer Deduplication Method (Required)
+Deduplication is executed as a staged pipeline:
+
+1. **Layer 1 — Lexical candidate generation (MinHash LSH)**
+   - Build near-duplicate candidate pairs using MinHash signatures + LSH buckets.
+2. **Layer 2 — Semantic similarity filtering (Embeddings)**
+   - Score Layer-1 pairs using sentence embedding cosine similarity.
+3. **Layer 3 — AI arbitration (disagreements only)**
+   - Invoke AI arbitration only when Layer 1 and Layer 2 disagree.
+4. **Human review queue**
+   - Route arbitration outputs to human review when AI confidence `< 0.70`.
+
+Monitoring requirement:
+- If Layer-3 arbitration calls exceed **20%** of Layer-1 candidates in a run, tune dedup thresholds before the next run.
 
 ### Provenance Retention After Branch Deletion
 Branch deletion is allowed only if provenance remains recoverable in canonical metadata:

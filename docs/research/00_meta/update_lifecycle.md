@@ -6,12 +6,19 @@ Operationalize continuous research ingestion while keeping a single authoritativ
 ## Workflow
 1. Create ephemeral branch/worktree for new research.
 2. Extract artifacts with provenance and `consolidation_run_id`.
-3. Perform semantic dedup against canonical corpus.
-4. Recompute impacted DecisionCards only.
-5. Emit DriftEvents for confidence drops/contradictions.
-6. Revalidate DecisionCards and regenerate BacklogSeeds.
-7. Update indices and publish snapshot on `main`/`master`.
-8. Record branch/worktree retirement and archive/delete source.
+3. Run three-layer deduplication:
+   - **Layer 1 (lexical):** MinHash LSH candidate generation.
+   - **Layer 2 (semantic):** sentence embedding cosine similarity filtering.
+   - **Layer 3 (arbitration):** AI arbitration only for Layer-1/Layer-2 disagreements.
+4. Route Layer-3 outputs with AI confidence `< 0.70` to the human review queue.
+5. Recompute impacted DecisionCards only.
+6. Emit DriftEvents for confidence drops/contradictions.
+7. Revalidate DecisionCards and regenerate BacklogSeeds.
+8. Update indices and publish snapshot on `main`/`master`.
+9. Record branch/worktree retirement and archive/delete source.
+
+## Monitoring Requirement
+- If Layer-3 arbitration calls exceed **20%** of Layer-1 candidates in a run, tune Layer-1/Layer-2 thresholds before the next run.
 
 ## Required Outputs per Run
 - Consolidation summary
@@ -19,8 +26,15 @@ Operationalize continuous research ingestion while keeping a single authoritativ
 - Drift event report
 - Index update confirmation
 - Retirement record
+- Human review queue disposition report
+
+## Validation Gate (Single Blocking Check)
+- Query 3 capabilities affected by new artifacts.
+- If any previously populated capability returns empty results, block completion.
+- New capabilities with no prior DecisionCards are exempt.
+- Human review queue must be fully resolved before status is set to `completed`.
 
 ## Failure Handling
-- If dedup fails: block merge and mark run as failed.
-- If unresolved contradictions exceed threshold: merge allowed only with explicit unresolved entry.
+- If dedup pipeline fails: block merge and mark run as failed.
+- If validation gate fails: block completion and reopen impacted DecisionCards.
 - If index update fails: block merge.
