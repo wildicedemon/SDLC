@@ -545,6 +545,7 @@ Implement operational telemetry per FR-10.
 - **If calibration produces out-of-range scores**: Clamp to [0.0, 1.0]; log warning
 
 ### [ ] Step: End-to-End Pipeline and Scaled Integration Tests
+<!-- chat-id: 26b88db7-1c9c-4810-95f7-cb0e728204b4 -->
 
 Wire full pipeline orchestrator and run comprehensive validation. Per spec Phase 10.
 
