@@ -163,6 +163,7 @@ Integration checkpoint: verify the full relational stack works end-to-end before
 - Run `ruff check src/ tests/` and `mypy src/corpus/` — fix any issues
 
 ### [ ] Step: Git Enumerator
+<!-- chat-id: 99c98976-8039-4ea2-9052-64e328d5edce -->
 
 Implement file enumeration from git branches/worktrees. Mock-friendly, no other ingestion components yet.
 
