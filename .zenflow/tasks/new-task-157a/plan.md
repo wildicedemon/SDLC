@@ -96,7 +96,8 @@ Implement SQLAlchemy ORM models only — no migrations, no repository layer yet.
 - **Verify**: `pytest tests/db/test_models.py -v` — all 4+ assertions pass
 - **If verification fails**: Fix constraint definitions; if SQLite doesn't enforce CHECK constraints by default, enable `PRAGMA foreign_keys=ON` in engine factory
 
-### [ ] Step: Migration Runner
+### [x] Step: Migration Runner
+<!-- chat-id: 5b89b6c0-b93e-4444-b450-791b21dc303a -->
 
 Implement forward/rollback migration mechanism — no CRUD yet.
 
@@ -113,7 +114,7 @@ Implement forward/rollback migration mechanism — no CRUD yet.
 - **Verify**: `pytest tests/db/test_migrations.py -v` — all 3 assertions pass
 - **If verification fails**: Check `DROP TABLE` order for FK dependency cycles; if circular, use `PRAGMA foreign_keys=OFF` during rollback
 
-### [ ] Step: Repository CRUD — Core Entities
+### [x] Step: Repository CRUD — Core Entities
 
 Implement data-access layer for the 3 most-used entities: `consolidation_runs`, `research_artifacts`, `decision_cards`.
 

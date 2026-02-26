@@ -1,9 +1,7 @@
 from pathlib import Path
-from typing import Any
 
 from sqlalchemy import text
 from sqlalchemy.engine import Engine
-
 
 VERSIONS_DIR = Path(__file__).parent / "versions"
 
