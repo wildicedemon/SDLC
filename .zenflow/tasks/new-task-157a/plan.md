@@ -495,6 +495,7 @@ Implement governance gates per FR-9.
 - **If human queue non-empty**: Gate 2 blocks; operator uses `corpus review resolve` to clear queue, then re-runs gate
 
 ### [ ] Step: Smoke Test — Full Pipeline on Test Branch
+<!-- chat-id: 6310e312-4c55-4b2b-afcf-ea74a6ab2b52 -->
 
 Integration checkpoint: verify the complete pipeline before adding telemetry.
 
