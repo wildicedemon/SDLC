@@ -259,6 +259,7 @@ Integration checkpoint: verify ingestion produces queryable relational state.
 - Run `ruff check src/ tests/` and `mypy src/corpus/` — fix any issues
 
 ### [ ] Step: Dedup Pipeline and Human Review Queue
+<!-- chat-id: ff2e7f57-6dfd-4b2d-b9b1-7168a3fd9db4 -->
 
 Implement 3-layer dedup per FR-3 and human review queue per FR-4. AI arbitration uses Kilo Gateway (`z-ai/glm-5:free`).
 
