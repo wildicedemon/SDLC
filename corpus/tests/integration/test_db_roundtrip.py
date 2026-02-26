@@ -4,7 +4,6 @@ from sqlalchemy import inspect
 
 from corpus.db.engine import create_db_engine, make_session_factory
 from corpus.db.migrations.runner import migrate_forward, migrate_rollback
-from corpus.db.models import Base
 from corpus.db.repository import CorpusRepository
 
 EXPECTED_TABLES = {
@@ -28,14 +27,14 @@ def test_full_roundtrip(tmp_db_url: str) -> None:
     session = make_session_factory(engine)()
     repo = CorpusRepository(session)
 
-    run = repo.create_run(
+    repo.create_run(
         run_id="cr_rt_001",
         source_branch="feature/test",
         started_at="2026-01-01T00:00:00",
         status="running",
     )
 
-    art1 = repo.create_artifact(
+    repo.create_artifact(
         artifact_id="ra_rt_001",
         title="Artifact 1",
         content="Content 1",
@@ -47,7 +46,7 @@ def test_full_roundtrip(tmp_db_url: str) -> None:
         run_id="cr_rt_001",
         status="active",
     )
-    art2 = repo.create_artifact(
+    repo.create_artifact(
         artifact_id="ra_rt_002",
         title="Artifact 2",
         content="Content 2",
@@ -68,7 +67,7 @@ def test_full_roundtrip(tmp_db_url: str) -> None:
             content=f"Chunk content {i}",
         )
 
-    card = repo.create_decision_card(
+    repo.create_decision_card(
         decision_id="dc_rt_001",
         question="Which auth?",
         capability="auth",

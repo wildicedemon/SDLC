@@ -147,7 +147,8 @@ Implement data-access layer for remaining 7 entities: `artifact_chunks`, `drift_
 - **Verify**: `pytest tests/db/test_repository_supporting.py -v` — all 6 assertions pass
 - **If verification fails**: Check FK references exist (parent records must be created first in test fixtures)
 
-### [ ] Step: Smoke Test — DB Round-Trip
+### [x] Step: Smoke Test — DB Round-Trip
+<!-- chat-id: ea469ded-62e0-4cb4-96c5-4f5715ab5f07 -->
 
 Integration checkpoint: verify the full relational stack works end-to-end before building ingestion.
 
