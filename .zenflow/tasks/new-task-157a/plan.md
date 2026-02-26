@@ -383,6 +383,7 @@ Integration checkpoint: verify the core pipeline from ingestion through decision
 - Run `ruff check src/ tests/` and `mypy src/corpus/` — fix any issues
 
 ### [ ] Step: Derived Layer Sync (Vector + Graph)
+<!-- chat-id: 2f91763a-d77c-4adf-b026-9061481f85a3 -->
 
 Implement derived layers per FR-7. These are rebuildable from relational source — no incremental rollback needed; rebuild commands wipe and recreate from scratch.
 
