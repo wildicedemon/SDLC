@@ -304,6 +304,7 @@ Implement 3-layer dedup per FR-3 and human review queue per FR-4. AI arbitration
 - **If Kilo Gateway unreachable**: All disagreements go to human queue; dedup report notes `arbitration_fallback=True`; run proceeds (not blocked)
 
 ### [ ] Step: DecisionCard and Index Updater
+<!-- chat-id: 040361e6-2aa3-4d57-adc9-ed9ec0621e40 -->
 
 Implement decision surface updates per FR-5.
 
