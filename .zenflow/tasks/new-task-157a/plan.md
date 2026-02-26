@@ -183,7 +183,8 @@ Implement file enumeration from git branches/worktrees. Mock-friendly, no other 
 - **Verify**: `pytest tests/ingestion/test_enumerator.py -v` — all 5 assertions pass
 - **If verification fails**: Check GitPython diff API (`repo.git.diff('--name-status', ...)`); ensure tmp repo fixture creates proper commits
 
-### [ ] Step: Classifier
+### [x] Step: Classifier
+<!-- chat-id: 9a5825f4-7c91-4218-ba77-1bfe55630488 -->
 
 Implement domain/capability tag classification from file paths. Hardcoded rules first based on canonical directory contract.
 
