@@ -131,7 +131,8 @@ Implement data-access layer for the 3 most-used entities: `consolidation_runs`, 
 - **Verify**: `pytest tests/db/test_repository_core.py -v` — all 5 assertions pass
 - **If verification fails**: Check Session lifecycle (commit vs flush); ensure JSON fields round-trip correctly through SQLite TEXT storage
 
-### [ ] Step: Repository CRUD — Supporting Entities
+### [x] Step: Repository CRUD — Supporting Entities
+<!-- chat-id: 615e5cb9-6544-4ad7-b196-5f7c2f932202 -->
 
 Implement data-access layer for remaining 7 entities: `artifact_chunks`, `drift_events`, `reference_rewrite_maps`, `reference_integrity_reports`, `human_review_queue`, `capability_mappings`, `telemetry_outcomes`.
 
