@@ -19,7 +19,7 @@ def test_settings(tmp_data_dir: Path) -> CorpusSettings:
         db_url=f"sqlite:///{db_path}",
         chroma_dir=str(tmp_data_dir / "chroma"),
         graph_path=str(tmp_data_dir / "graph.json"),
-        openai_api_key="test-key",
+        kilo_api_key="test-key",
     )
 
 

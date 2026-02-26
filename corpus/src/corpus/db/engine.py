@@ -9,7 +9,7 @@ from sqlalchemy.orm import Session, sessionmaker
 
 
 def _set_sqlite_pragmas(dbapi_conn: object, _connection_record: object) -> None:
-    cursor = dbapi_conn.cursor()  # type: ignore[union-attr]
+    cursor = dbapi_conn.cursor()  # type: ignore[attr-defined]
     cursor.execute("PRAGMA journal_mode=WAL")
     cursor.execute("PRAGMA foreign_keys=ON")
     cursor.close()

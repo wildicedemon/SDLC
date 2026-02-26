@@ -60,7 +60,8 @@ Set up the `corpus/` Python package, dependencies, configuration, and CLI skelet
 - Create `corpus/tests/conftest.py` with shared fixtures (tmp SQLite DB, tmp data dirs)
 - **Verify**: `pip install -e corpus/` succeeds; `corpus --help` prints CLI help; `ruff check src/ tests/` passes; `mypy src/corpus/` passes
 
-### [ ] Step: Kilo Gateway + GLM-5 Integration Test
+### [x] Step: Kilo Gateway + GLM-5 Integration Test
+<!-- chat-id: 86ae89fd-99a7-4275-997f-4e10216569f7 -->
 
 Verify AI arbitration backend connectivity before building pipeline components that depend on it. Uses Kilo AI Gateway (OpenAI-compatible) instead of direct OpenAI API.
 
