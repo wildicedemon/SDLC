@@ -1,13 +1,23 @@
 # Kimi-Research Integration Summary
 
-**Date**: 2026-02-24  
-**Status**: Integration Complete
+**Date**: 2026-02-24 (initial), 2026-02-27 (consolidation)  
+**Status**: Fully Consolidated
 
 ---
 
 ## Executive Summary
 
 This document summarizes the integration of research findings from the `Kimi-Research/` folder into the `docs/research/` knowledge base. A total of **92 papers** from 7 CSV files were successfully integrated across **4 primary topics**, with additional cross-references to related topics.
+
+### Consolidation (2026-02-27)
+
+All Kimi-Research content has been consolidated into the canonical `docs/research/` structure:
+- **14 unique analysis documents** → moved to their corresponding canonical domain subdirectories
+- **36 CSV paper search results** → consolidated at `docs/research/_indices/kimi_papers/`
+- **35 summary/reference documents** → archived at `docs/research/00_meta/kimi_research/`
+- **11 detailed index files** → archived at `docs/research/00_meta/kimi_research/_indices/`
+- **4 progress/integration logs** → archived at `docs/research/00_meta/kimi_research/_progress/`
+- **37 domain overview/comparison files** → archived at `docs/research/00_meta/kimi_research/{domain}/`
 
 ---
 
@@ -152,42 +162,38 @@ New memory paradigms emerging:
 
 ---
 
-## Additional Content in Kimi-Research/docs/research/
+## Consolidated Content Locations
 
-The `Kimi-Research/docs/research/` directory contains extensive additional documentation that was NOT integrated but could be valuable for future research:
+### Analysis Documents (moved to canonical domain subdirectories)
+| Document | New Location |
+|----------|-------------|
+| `anti_hallucination_overview.md` | `docs/research/01_meta_architecture/security_architecture/` |
+| `roocode_context_poisoning_analysis.md` | `docs/research/01_meta_architecture/security_architecture/` |
+| `spec_driven_critique_analysis.md` | `docs/research/01_meta_architecture/system_design_philosophy/` |
+| `kilo_auto_launch_analysis.md` | `docs/research/02_agent_orchestration/agent_system_design/` |
+| `mcp_servers_overview.md` | `docs/research/02_agent_orchestration/agent_system_design/` |
+| `modes_skills_workflows.md` | `docs/research/02_agent_orchestration/agent_system_design/` |
+| `augment_context_engine_mcp_analysis.md` | `docs/research/03_context_memory_intelligence/context_management/` |
+| `zencoder_repo_grokking_analysis.md` | `docs/research/04_code_intelligence/code_exploration/` |
+| `cline_prompts_analysis.md` | `docs/research/07_human_interaction/human_in_the_loop_systems/` |
+| `roocode_temperature_analysis.md` | `docs/research/08_model_management/model_capability_management/` |
+| `gradient_free_optimization.md` | `docs/research/11_advanced_runtime/autonomous_runtime_systems/` |
+| `prompt_evolution_systems.md` | `docs/research/11_advanced_runtime/autonomous_runtime_systems/` |
+| `rl_from_code_review.md` | `docs/research/11_advanced_runtime/autonomous_runtime_systems/` |
+| `entropy_tracking.md` | `docs/research/12_self_improvement/system_self_improvement/` |
 
-### Analysis Documents
-- `anti_hallucination_overview.md` (27,029 chars)
-- `roocode_context_poisoning_analysis.md` (14,835 chars)
-- `spec_driven_critique_analysis.md` (12,834 chars)
-- `kilo_auto_launch_analysis.md` (17,405 chars)
-- `mcp_servers_overview.md` (32,534 chars)
-- `modes_skills_workflows.md` (10,290 chars)
-- `cline_prompts_analysis.md` (15,835 chars)
-- `roocode_temperature_analysis.md` (15,502 chars)
-- `augment_context_engine_mcp_analysis.md` (21,451 chars)
-- `zenencoder_repo_grokking_analysis.md` (21,251 chars)
+### CSV Paper Search Results (consolidated at `docs/research/_indices/kimi_papers/`)
+36 CSV files containing paper search results across security, context management, agent orchestration, testing, memory systems, and other domains.
 
-### Additional CSV Files in Subdirectories
-- `papers_hierarchical_distributed.csv` (20,147 chars)
-- `papers_multi_agent_orchestration.csv` (30,588 chars)
-- `papers_surveys.csv` (18,451 chars)
-- `papers_swarm_intelligence.csv` (22,397 chars)
-- `arxiv_context_compression.csv` (28,348 chars)
-- `arxiv_kv_cache.csv` (26,144 chars)
-- `arxiv_long_context.csv` (27,596 chars)
-- `arxiv_rag.csv` (25,881 chars)
-- `arxiv_mlops.csv` (22,191 chars)
-- `arxiv_formal_verification.csv` (27,394 chars)
-- `arxiv_mutation_testing.csv` (24,966 chars)
-- `arxiv_pbt.csv` (34,311 chars)
-- `arxiv_self_healing.csv` (10,321 chars)
-- `arxiv_test_generation.csv` (27,987 chars)
+### Kimi Summary/Meta Documents (archived at `docs/research/00_meta/kimi_research/`)
+35 summary documents (ARCHITECTURE_OVERVIEW.md, SYNTHESIS.md, ROADMAP.md, etc.), 11 detailed index files, 4 progress/integration logs, and 37 domain-specific overview/comparison files.
 
 ---
 
-## Recommendations for1. **Process Additional CSVs**: The subdirectory CSV files contain ~300 more papers that should be integrated
-2. **Integrate Analysis Documents**: The analysis documents contain valuable insights that should be synthesized into overview.md files
+## Recommendations
+
+1. **Process Additional CSVs**: The `_indices/kimi_papers/` CSV files contain ~300 more papers that should be integrated into domain references
+2. **Integrate Analysis Documents**: The analysis documents now in canonical locations contain valuable insights for synthesis
 3. **Update Patterns**: New patterns from security papers should be added to patterns.md files
 4. **Update Comparisons**: New tools and approaches should be added to comparisons.md files
 

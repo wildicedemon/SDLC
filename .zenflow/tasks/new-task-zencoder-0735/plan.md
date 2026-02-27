@@ -70,7 +70,8 @@ Verification: confirm each file has no repeated sections after edit.
 
 ---
 
-### [ ] Step: Consolidate Kimi-Research into Canonical Structure
+### [x] Step: Consolidate Kimi-Research into Canonical Structure
+<!-- chat-id: 4bd88383-5617-4e99-bc8d-c0933d05e714 -->
 
 - Move unique Kimi-Research domain research into corresponding `docs/research/` subdirectories
 - Move Kimi-Research summary docs to `docs/research/00_meta/kimi_research/`
