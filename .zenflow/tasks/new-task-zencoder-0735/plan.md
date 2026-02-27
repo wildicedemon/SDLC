@@ -49,7 +49,8 @@ Verification: confirm each file has no repeated sections after edit.
 
 ---
 
-### [ ] Step: Archive Superseded Distillation Outputs
+### [x] Step: Archive Superseded Distillation Outputs
+<!-- chat-id: f7b3bc72-9071-4678-a1c8-d4609e96e669 -->
 
 **Pre-step**: Create staging area: `mkdir -p .staging/archive-$(date +%Y%m%d)/`
 
