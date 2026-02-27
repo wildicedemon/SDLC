@@ -1,0 +1,17 @@
+STRONG BACKING (≥5 atoms with STRONG evidence):
+- Total Strong Atoms: 1
+
+ADEQUATE BACKING (2-4 atoms, mixed evidence):
+- Total Adequate Atoms: 0
+
+WEAK/NO BACKING (<2 atoms or WEAK only):
+- Total Weak Atoms: 0
+
+ORPHAN RESEARCH (atoms with no product home):
+- None
+
+MISSING CROSS-REFERENCES (referenced but do not exist):
+- None
+
+UNHANDLED FAILURE MODES (FAILURE_MODE atoms not consumed by any product):
+- None

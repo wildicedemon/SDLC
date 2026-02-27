@@ -1,125 +1,130 @@
-from __future__ import annotations
-
-from dataclasses import dataclass, field
-
-from .models import DomainSpec, KnowledgeAtom, PhaseSpec, ProductSpec
+from typing import List, Dict, Any, Set, Tuple
 
 
-@dataclass
-class ValidationReport:
-    total_atoms: int = 0
-    atoms_with_domain: int = 0
-    atoms_with_phase: int = 0
-    atoms_with_product: int = 0
-    orphan_atoms: list[str] = field(default_factory=list)
-    missing_skills_in_modes: list[str] = field(default_factory=list)
-    missing_context_strategies_in_modes: list[str] = field(default_factory=list)
-    missing_skills_in_workflows: list[str] = field(default_factory=list)
-    cross_ref_issues: list[str] = field(default_factory=list)
-    passed: bool = True
+class Validator:
+    def __init__(
+        self,
+        atoms: List[Dict[str, Any]],
+        domains: List[Dict[str, Any]],
+        phases: List[Dict[str, Any]],
+        products: List[Dict[str, Any]],
+    ):
+        self.atoms = atoms
+        self.domains = domains
+        self.phases = phases
+        self.products = products
 
-    @property
-    def summary(self) -> str:
-        lines = [
-            f"Total atoms: {self.total_atoms}",
-            f"Atoms with >=1 domain ref: {self.atoms_with_domain}",
-            f"Atoms with >=1 phase ref: {self.atoms_with_phase}",
-            f"Atoms with >=1 product ref: {self.atoms_with_product}",
-            f"Orphan atoms: {len(self.orphan_atoms)}",
-            f"Cross-ref issues: {len(self.cross_ref_issues)}",
+        self.atom_ids: Set[str] = {
+            str(atom.get("id")) for atom in self.atoms if atom.get("id")
+        }
+
+    def _get_referenced_atoms(self) -> Tuple[Set[str], Set[str], Set[str]]:
+        domain_refs = set()
+        for d in self.domains:
+            domain_refs.update(d.get("knowledge_atoms", []))
+            for kt in d.get("key_techniques", []):
+                domain_refs.add(kt.get("atom_id"))
+            for kc in d.get("key_constraints", []):
+                domain_refs.add(kc.get("atom_id"))
+            for kt in d.get("key_tools", []):
+                domain_refs.add(kt.get("atom_id"))
+            for cr in d.get("combination_recipes", []):
+                domain_refs.add(cr.get("atom_id"))
+            for fm in d.get("failure_modes", []):
+                domain_refs.add(fm.get("atom_id"))
+            for cdl in d.get("cross_domain_links", []):
+                domain_refs.add(cdl.get("atom_id"))
+
+        phase_refs = set()
+        for p in self.phases:
+            phase_refs.update(p.get("knowledge_atoms", []))
+            for ttu in p.get("techniques_to_use", []):
+                phase_refs.update(ttu.get("atom_ids", []))
+            phase_refs.update(p.get("constraints_in_effect", []))
+            phase_refs.update(p.get("tools_needed", []))
+            phase_refs.update(p.get("failure_modes_to_watch_for", []))
+
+        product_refs = set()
+        for p in self.products:
+            product_refs.update(p.get("knowledge_atoms_consumed", []))
+
+        return domain_refs, phase_refs, product_refs
+
+    def check_orphaned_atoms(self) -> List[Dict[str, Any]]:
+        """Find atoms extracted but not consumed by any product."""
+        _, _, product_refs = self._get_referenced_atoms()
+        orphaned = []
+        for atom in self.atoms:
+            atom_id = atom.get("id")
+            if atom_id and atom_id not in product_refs:
+                orphaned.append(atom)
+        return orphaned
+
+    def check_missing_references(self) -> List[str]:
+        """Find atoms referenced in products/domains/phases but don't exist."""
+        domain_refs, phase_refs, product_refs = self._get_referenced_atoms()
+        all_refs = domain_refs | phase_refs | product_refs
+
+        # Remove None if it exists
+        all_refs_clean = {str(ref) for ref in all_refs if ref is not None}
+
+        missing = [ref for ref in all_refs_clean if ref not in self.atom_ids]
+        return missing
+
+    def check_unhandled_failure_modes(self) -> List[str]:
+        """Find FAILURE_MODE atoms that are not consumed by any product (or specifically handled)."""
+        failure_modes = {
+            str(atom.get("id"))
+            for atom in self.atoms
+            if atom.get("type") == "FAILURE_MODE" and atom.get("id")
+        }
+        _, _, product_refs = self._get_referenced_atoms()
+
+        unhandled = [fm for fm in failure_modes if fm not in product_refs]
+        return unhandled
+
+    def generate_gap_report(self) -> str:
+        """Generate the final Gap Report based on evidence strength and missing links."""
+        domain_refs, phase_refs, product_refs = self._get_referenced_atoms()
+
+        strong_atoms = [a for a in self.atoms if a.get("evidence_strength") == "STRONG"]
+        adequate_atoms = [
+            a for a in self.atoms if a.get("evidence_strength") == "MODERATE"
         ]
-        return "\n".join(lines)
+        weak_atoms = [a for a in self.atoms if a.get("evidence_strength") == "WEAK"]
 
+        orphaned = self.check_orphaned_atoms()
+        missing_refs = self.check_missing_references()
+        unhandled_fms = self.check_unhandled_failure_modes()
 
-def _collect_all_atom_ids_in_domains(domain_specs: list[DomainSpec]) -> set[str]:
-    ids: set[str] = set()
-    for spec in domain_specs:
-        ids.update(spec.atom_ids)
-    return ids
+        report_lines = []
+        report_lines.append("STRONG BACKING (≥5 atoms with STRONG evidence):")
+        report_lines.append(f"- Total Strong Atoms: {len(strong_atoms)}")
 
+        report_lines.append("\nADEQUATE BACKING (2-4 atoms, mixed evidence):")
+        report_lines.append(f"- Total Adequate Atoms: {len(adequate_atoms)}")
 
-def _collect_all_atom_ids_in_phases(phase_specs: list[PhaseSpec]) -> set[str]:
-    ids: set[str] = set()
-    for spec in phase_specs:
-        ids.update(spec.atom_ids)
-    return ids
+        report_lines.append("\nWEAK/NO BACKING (<2 atoms or WEAK only):")
+        report_lines.append(f"- Total Weak Atoms: {len(weak_atoms)}")
 
+        report_lines.append("\nORPHAN RESEARCH (atoms with no product home):")
+        for atom in orphaned:
+            report_lines.append(f"- {atom.get('id')}: {atom.get('content')}")
+        if not orphaned:
+            report_lines.append("- None")
 
-def _collect_all_atom_ids_in_products(product_specs: list[ProductSpec]) -> set[str]:
-    ids: set[str] = set()
-    for spec in product_specs:
-        ids.update(spec.atom_ids)
-    return ids
+        report_lines.append("\nMISSING CROSS-REFERENCES (referenced but do not exist):")
+        for ref in missing_refs:
+            report_lines.append(f"- {ref}")
+        if not missing_refs:
+            report_lines.append("- None")
 
+        report_lines.append(
+            "\nUNHANDLED FAILURE MODES (FAILURE_MODE atoms not consumed by any product):"
+        )
+        for fm in unhandled_fms:
+            report_lines.append(f"- {fm}")
+        if not unhandled_fms:
+            report_lines.append("- None")
 
-def validate(
-    atoms: list[KnowledgeAtom],
-    domain_specs: list[DomainSpec],
-    phase_specs: list[PhaseSpec],
-    product_specs: list[ProductSpec],
-) -> ValidationReport:
-    report = ValidationReport()
-    report.total_atoms = len(atoms)
-
-    all_atom_ids = {a.id for a in atoms}
-    domain_referenced = _collect_all_atom_ids_in_domains(domain_specs)
-    phase_referenced = _collect_all_atom_ids_in_phases(phase_specs)
-    product_referenced = _collect_all_atom_ids_in_products(product_specs)
-
-    report.atoms_with_domain = len(all_atom_ids & domain_referenced)
-    report.atoms_with_phase = len(all_atom_ids & phase_referenced)
-    report.atoms_with_product = len(all_atom_ids & product_referenced)
-
-    all_referenced = domain_referenced | phase_referenced | product_referenced
-    report.orphan_atoms = sorted(all_atom_ids - all_referenced)
-
-    skill_instance_names = {
-        s.instance_name for s in product_specs if s.category.value == "PC2"
-    }
-    mode_specs = [s for s in product_specs if s.category.value == "PC1"]
-    for ms in mode_specs:
-        skills_in_mode = ms.yaml_spec.get("skills_available", [])
-        for sk in skills_in_mode:
-            if isinstance(sk, dict):
-                for sk_id in sk:
-                    if sk_id.startswith("KA-"):
-                        continue
-                    if sk_id not in skill_instance_names:
-                        report.missing_skills_in_modes.append(
-                            f"Mode '{ms.instance_name}' references skill '{sk_id}' not found in PC2 specs"
-                        )
-
-    cs_in_mode = ms.yaml_spec.get("context_strategy", "") if mode_specs else ""
-    context_strategy_names = {
-        s.instance_name for s in product_specs if s.category.value == "PC7"
-    }
-    for ms in mode_specs:
-        cs = ms.yaml_spec.get("context_strategy", "")
-        if cs and cs != "# GAP: insufficient research data to fill this field" and cs not in context_strategy_names:
-            report.missing_context_strategies_in_modes.append(
-                f"Mode '{ms.instance_name}' references context strategy '{cs}' not found in PC7 specs"
-            )
-
-    workflow_specs = [s for s in product_specs if s.category.value == "PC3"]
-    for ws in workflow_specs:
-        phases = ws.yaml_spec.get("phases", [])
-        for phase in phases:
-            if isinstance(phase, dict):
-                for sk_id in phase.get("skills", []):
-                    if sk_id.startswith("KA-"):
-                        continue
-                    if sk_id not in skill_instance_names:
-                        report.missing_skills_in_workflows.append(
-                            f"Workflow '{ws.instance_name}' references skill '{sk_id}' not found in PC2 specs"
-                        )
-
-    report.cross_ref_issues = (
-        report.missing_skills_in_modes
-        + report.missing_context_strategies_in_modes
-        + report.missing_skills_in_workflows
-    )
-
-    if report.orphan_atoms:
-        report.passed = False
-
-    return report
+        return "\n".join(report_lines)

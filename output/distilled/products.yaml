@@ -1,0 +1,11 @@
+- product: PC2
+  instance: 'Skill: Code Traversal'
+  knowledge_atoms_consumed:
+  - KA-001
+  draft_spec:
+    skill: code_traversal
+    purpose: Navigate and understand code structure
+    technique_stack:
+      primary: Tree-sitter AST parsing (KA-001)
+  confidence: HIGH
+  gaps: []
