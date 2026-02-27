@@ -1,0 +1,2460 @@
+# Prong 1: Knowledge Atoms Extraction (REFINE)
+
+**Extraction Date:** 2026-02-24  
+**Research Corpus Version:** February 2026  
+**Extraction Method:** Manual analysis with KEEP/DISCARD rule application
+
+---
+
+## Executive Summary
+
+### Atom Extraction Results
+
+| Metric | Count |
+|--------|-------|
+| **Total Atoms Extracted** | 89 |
+| **STRONG Evidence** | 42 (47%) |
+| **MODERATE Evidence** | 31 (35%) |
+| **WEAK Evidence** | 16 (18%) |
+
+### Breakdown by Type
+
+| Type | Count | % of Total |
+|------|-------|------------|
+| TECHNIQUE | 28 | 31% |
+| METRIC | 18 | 20% |
+| CONSTRAINT | 12 | 13% |
+| TOOL | 8 | 9% |
+| COMBINATION | 7 | 8% |
+| FAILURE_MODE | 6 | 7% |
+| ANTI_PATTERN | 5 | 6% |
+| TRADEOFF | 3 | 3% |
+| RECIPE | 2 | 2% |
+
+### Domain Coverage
+
+| Domain | Atoms | Primary Types |
+|--------|-------|---------------|
+| D1 (Agent Architecture) | 14 | TECHNIQUE, PATTERN |
+| D3 (Context/Prompt) | 16 | TECHNIQUE, METRIC |
+| D5 (Code Intelligence) | 12 | TECHNIQUE, ANTI_PATTERN |
+| D6 (Testing) | 11 | TECHNIQUE, METRIC |
+| D7 (Security) | 13 | CONSTRAINT, FAILURE_MODE |
+| D11 (Human Interaction) | 10 | TECHNIQUE, TRADEOFF |
+
+---
+
+## Knowledge Atom Registry
+
+---
+
+### KA-001
+**TYPE:** METRIC  
+**CONTENT:** Spec-driven workflows with 4-phase gates (Specify, Plan, Tasks, Implement) reduce development time by 56% compared to ad-hoc approaches. AugmentCode GitHub Spec Kit demonstrates 87% accuracy for multi-file changes when specifications are properly maintained.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/overview.md  
+**DOMAINS:** D1, D5  
+**SDLC_PHASES:** P2, P3  
+**PRODUCTS:** PC3, PC6
+
+---
+
+### KA-002
+**TYPE:** TECHNIQUE  
+**CONTENT:** BDI (Belief-Desire-Intent) hybrid architectures provide explicit mental states for introspection and verifiability, enabling accountable autonomy in production environments. Contrasts with implicit LLM intentionality by providing auditable belief states.  
+**EVIDENCE_STRERENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/overview.md  
+**DOMAINS:** D1, D11  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC1, PC6
+
+---
+
+### KA-003
+**TYPE:** TRADEOFF  
+**CONTENT:** Spec-Driven vs Intent-Driven: Spec-driven provides high reproducibility and audit trails but high maintenance cost; Intent-driven provides flexibility and lower maintenance but variable reproducibility. Use spec-driven for regulated/safety-critical systems; use intent-driven for exploratory/prototype development.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/overview.md, docs/research/01_meta_architecture/system_design_philosophy/comparisons.md  
+**DOMAINS:** D1, D5  
+**SDLC_PHASES:** P2, P3  
+**PRODUCTS:** PC3, PC10
+
+---
+
+### KA-004
+**TYPE:** TECHNIQUE  
+**CONTENT:** Bidirectional specification maintenance: Both humans and agents read from and write to shared, evolving specifications. Agents update specs when discovering implementation details that contradict assumptions, preventing specification debt accumulation.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/overview.md  
+**DOMAINS:** D1, D5, D11  
+**SDLC_PHASES:** P2, P3, P8  
+**PRODUCTS:** PC3, PC4
+
+---
+
+### KA-005
+**TYPE:** ANTI_PATTERN  
+**CONTENT:** "Vibe Coding" - ad-hoc code generation without explicit specifications or structured workflows. Failure modes: inconsistent outputs, difficult to reproduce, no audit trail, scope creep. Mitigation: Implement spec-driven workflows with explicit phases and verification gates.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/patterns.md  
+**DOMAINS:** D1, D5  
+**SDLC_PHASES:** P3  
+**PRODUCTS:** PC6, PC10
+
+---
+
+### KA-006
+**TYPE:** CONSTRAINT  
+**CONTENT:** Explicit mode boundaries reduce task drift by 34% compared to implicit switching. Cost: introduces latency from context reloading. Implementation: Define discrete operational modes (Code, Debug, Architect, Review) with distinct tool access and output constraints.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/agent_system_design/overview.md, docs/research/02_agent_orchestration/agent_system_design/patterns.md  
+**DOMAINS:** D1, D3  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC1, PC6
+
+---
+
+### KA-007
+**TYPE:** COMBINATION  
+**CONTENT:** 4-Phase Spec-Driven + Bidirectional Specifications: Use for production feature development. Combination provides reproducibility with maintenance. Order: (1) Human describes intent, (2) Agent drafts spec, (3) Both update spec during execution, (4) Agent surfaces decisions that change direction.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/patterns.md  
+**DOMAINS:** D1, D5  
+**SDLC_PHASES:** P2, P3  
+**PRODUCTS:** PC3, PC4
+
+---
+
+### KA-008
+**TYPE:** TECHNIQUE  
+**CONTENT:** Progressive Disclosure Architecture: Three-level skill/knowledge architecture minimizing context window consumption. Level 1 (Identity: ~100 tokens) for selection, Level 2 (Instructions: ~1,000 tokens) for execution, Level 3 (Resources: unbounded) for deep expertise.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/patterns.md  
+**DOMAINS:** D1, D3, D4  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC2, PC7
+
+---
+
+### KA-009
+**TYPE:** FAILURE_MODE  
+**CONTENT:** Stale Documentation Specs: Human-only specification maintenance diverges from implementation. Detection: Specification-code diff analysis, agent execution against outdated assumptions. Response: Implement bidirectional specification maintenance where agents update specs alongside code changes.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/patterns.md  
+**DOMAINS:** D1, D5  
+**SDLC_PHASES:** P2, P3, P8  
+**PRODUCTS:** PC6, PC10
+
+---
+
+### KA-010
+**TYPE:** METRIC  
+**CONTENT:** Unconstrained agents burn $5-8 per task through planning, execution, and verification loops. Cost drivers: Multi-turn reasoning (40-60%), Tool calls (20-30%), Context accumulation (15-25%), Verification loops (10-20%). Output:input token ratio of 4-8:1 drives compression needs.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/economic_optimization_modeling/overview.md  
+**DOMAINS:** D1, D8  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC10
+
+---
+
+### KA-011
+**TYPE:** TECHNIQUE  
+**CONTENT:** Semantic caching using embeddings achieves 31-90% input token reduction by matching intent rather than exact strings. Implementation: Store embedding of query, retrieve on similarity threshold, return cached response if match > threshold.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/economic_optimization_modeling/overview.md  
+**DOMAINS:** D3, D4, D8  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC7, PC10
+
+---
+
+### KA-012
+**TYPE:** COMBINATION  
+**CONTENT:** Model cascade routing: Start with cheap models, escalate only when needed. Achieves 60-87% cost reduction with minimal quality loss. EvoRoute demonstrates self-evolving routing with 76% cost reduction and 14% latency improvement through reinforcement learning.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/economic_optimization_modeling/overview.md  
+**DOMAINS:** D1, D8  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC8, PC10
+
+---
+
+### KA-013
+**TYPE:** CONSTRAINT  
+**CONTENT:** Adaptive throttling maintains 95th percentile latency within 2x baseline under 5x load, while shed-load approaches see 10x latency degradation. Use adaptive throttling for latency-sensitive agent workflows.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/distributed_orchestration/overview.md  
+**DOMAINS:** D1, D9  
+**SDLC_PHASES:** P7  
+**PRODUCTS:** PC6, PC9
+
+---
+
+### KA-014
+**TYPE:** METRIC  
+**CONTENT:** Fair-share scheduling reduces task starvation by 89% compared to simple priority queues in multi-agent coding systems. Implementation: Weighted fair queuing with proportional resource allocation.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/02_agent_orchestration/distributed_orchestration/overview.md  
+**DOMAINS:** D1, D2  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC8
+
+---
+
+### KA-015
+**TYPE:** FAILURE_MODE  
+**CONTENT:** Deadlock in agent systems: Occurs when agents wait indefinitely for resources held by each other. Detection: Wait-for graphs, timeout-based detection. Prevention: Resource ordering, time limits. Recovery: Agent termination, resource preemption, rollback. Rates: 2-7% in complex workflows without explicit prevention.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/02_agent_orchestration/agent_system_design/overview.md  
+**DOMAINS:** D1, D2  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC6, PC10
+
+---
+
+### KA-016
+**TYPE:** TECHNIQUE  
+**CONTENT:** Conditional multi-stage prompting for failure recovery: Chain through diagnosis → planning → recovery stages using zero-shot prompting. Achieves 19% higher success rates on Tasks-from-Description benchmarks compared to single-stage recovery.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/agent_system_design/overview.md, docs/research/02_agent_orchestration/agent_system_design/patterns.md  
+**DOMAINS:** D1, D6  
+**SDLC_PHASES:** P6  
+**PRODUCTS:** PC10
+
+---
+
+### KA-017
+**TYPE:** METRIC  
+**CONTENT:** Mixture-of-Agents (MoA) architectures demonstrate 8-12% improvement over single-agent baselines on coding benchmarks, at cost of 3-5x compute overhead. Use for quality-critical tasks requiring high confidence.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/agent_system_design/overview.md  
+**DOMAINS:** D1, D6  
+**SDLC_PHASES:** P3, P5  
+**PRODUCTS:** PC3, PC8
+
+---
+
+### KA-018
+**TYPE:** TECHNIQUE  
+**CONTENT:** Adversarial review patterns from code review literature show 40% higher bug detection rates compared to single-agent review. Implementation: Deploy dedicated critic agents to challenge, review, and validate outputs from worker agents.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/agent_system_design/overview.md, docs/research/02_agent_orchestration/agent_system_design/patterns.md  
+**DOMAINS:** D1, D5, D6  
+**SDLC_PHASES:** P5  
+**PRODUCTS:** PC2, PC3
+
+---
+
+### KA-019
+**TYPE:** ANTI_PATTERN  
+**CONTENT:** "God Agent" - Single agent handling all tasks. Failure modes: Context window overflow, poor performance on specialized tasks, difficult to maintain, no fault isolation. Mitigation: Decompose into specialized agents with clear responsibilities coordinated by orchestrator.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/patterns.md  
+**DOMAINS:** D1, D2  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC6, PC8
+
+---
+
+### KA-020
+**TYPE:** ANTI_PATTERN  
+**CONTENT:** "Chatty Agent Communication" - Agents communicating excessively causing latency and cost explosion. Failure modes: 10x cost increase, 5x latency increase, rate limiting issues. Mitigation: Batch communications and use shared state instead of per-step confirmations.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/patterns.md  
+**DOMAINS:** D1, D9  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC6, PC10
+
+---
+
+### KA-021
+**TYPE:** CONSTRAINT  
+**CONTENT:** Temperature settings by task type: Code generation: 0.1 (consistency), Code review: 0.1 (consistency), Documentation: 0.3 (some creativity), Brainstorming: 0.7 (high creativity), Factual Q&A: 0.0 (deterministic). Using wrong temperature causes inconsistent generation or hallucinated facts.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/patterns.md, docs/research/03_context_memory_intelligence/reasoning_architecture/overview.md  
+**DOMAINS:** D1, D3, D8  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC4, PC6
+
+---
+
+### KA-022
+**TYPE:** TECHNIQUE  
+**CONTENT:** Kilo ask_followup_question tool: Structured clarification with parameters (question, follow_up list of 2-4 suggested answers). Agents with clarification capabilities achieve 23% higher task success rates by preventing incorrect assumptions.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/agent_system_design/overview.md, docs/research/07_human_interaction/human_in_the_loop_systems/overview.md  
+**DOMAINS:** D1, D11  
+**SDLC_PHASES:** P2, P6  
+**PRODUCTS:** PC2, PC4
+
+---
+
+### KA-023
+**TYPE:** METRIC  
+**CONTENT:** Optimal decomposition depth varies by task complexity: 2-3 levels for simple tasks, 5-7 levels for complex SDLC workflows. Over-decomposition increases coordination overhead; under-decomposition creates unmanageable units.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/02_agent_orchestration/task_architecture/overview.md  
+**DOMAINS:** D2  
+**SDLC_PHASES:** P2, P3  
+**PRODUCTS:** PC8
+
+---
+
+### KA-024
+**TYPE:** METRIC  
+**CONTENT:** Worktree isolation reduces merge conflicts by 67% compared to shared branch development in multi-agent coding systems. Pattern: Create dedicated git branch/worktree for each task, validate before merge.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/task_architecture/overview.md, docs/research/02_agent_orchestration/task_architecture/patterns.md  
+**DOMAINS:** D2, D9  
+**SDLC_PHASES:** P3, P5  
+**PRODUCTS:** PC9
+
+---
+
+### KA-025
+**TYPE:** TECHNIQUE  
+**CONTENT:** Semantic merging with LLM assistance achieves 78% automatic resolution rate, compared to 45% for traditional three-way merge. Use for conflict resolution in concurrent agent work.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/02_agent_orchestration/task_architecture/overview.md, docs/research/02_agent_orchestration/task_architecture/patterns.md  
+**DOMAINS:** D2, D5  
+**SDLC_PHASES:** P3, P5  
+**PRODUCTS:** PC10
+
+---
+
+### KA-026
+**TYPE:** METRIC  
+**CONTENT:** Multi-agent QA swarms deploy multiple agents with different validation focuses (correctness, security, performance, style), achieving 40% higher bug detection than single-agent validation.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/task_architecture/overview.md  
+**DOMAINS:** D1, D6  
+**SDLC_PHASES:** P4, P5  
+**PRODUCTS:** PC3, PC8
+
+---
+
+### KA-027
+**TYPE:** METRIC  
+**CONTENT:** Async DAG execution achieves 2.3x speedup over sequential for typical SDLC workflows. Pattern: Independent tasks execute concurrently, pipeline parallelism across stages.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/task_architecture/overview.md  
+**DOMAINS:** D2, D9  
+**SDLC_PHASES:** P3, P7  
+**PRODUCTS:** PC3, PC8
+
+---
+
+### KA-028
+**TYPE:** CONSTRAINT  
+**CONTENT:** Federated clusters with regional coordinators achieve 3x throughput compared to single-coordinator architectures for geographically distributed teams. Use for enterprise-scale multi-agent deployments.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/02_agent_orchestration/distributed_orchestration/overview.md  
+**DOMAINS:** D1, D10  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC9
+
+---
+
+### KA-029
+**TYPE:** COMBINATION  
+**CONTENT:** Hierarchical Task Decomposition + DAG-Based Execution + Worktree Isolation: Use for complex multi-file changes. Order: (1) Decompose into task tree 2-7 levels deep, (2) Convert to DAG with dependencies, (3) Execute in isolated worktrees, (4) Merge with semantic resolution.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/task_architecture/patterns.md  
+**DOMAINS:** D2, D5  
+**SDLC_PHASES:** P2, P3  
+**PRODUCTS:** PC3, PC8, PC9
+
+---
+
+### KA-030
+**TYPE:** FAILURE_MODE  
+**CONTENT:** Context Poisoning: Malicious or low-quality context corrupts agent reasoning. Attack vectors: Malicious code comments, misleading documentation, adversarial retrieval results. Detection: Anomaly detection on context embeddings, consistency checking, provenance tracking. Response: Context sanitization, trusted source prioritization.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/overview.md, docs/research/03_context_memory_intelligence/context_management/patterns.md  
+**DOMAINS:** D3, D7  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC6, PC7
+
+---
+
+### KA-031
+**TYPE:** CONSTRAINT  
+**CONTENT:** "Disposable Session" Principle: Once a session's context is compromised by poisoning, treat entire session as disposable. No reliable recovery exists other than starting fresh. Sessions have integrity boundaries; crossing them invalidates entire session.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/overview.md, docs/research/03_context_memory_intelligence/context_management/patterns.md  
+**DOMAINS:** D3, D7  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC6, PC7
+
+---
+
+### KA-032
+**TYPE:** TECHNIQUE  
+**CONTENT:** U-Shaped Context Placement: Place critical information at context window beginnings and ends to mitigate "lost in the middle" phenomenon. System prompts and constraints at start; key retrieved documents at ends.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/overview.md, docs/research/03_context_memory_intelligence/context_management/patterns.md  
+**DOMAINS:** D3  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC4, PC7
+
+---
+
+### KA-033
+**TYPE:** METRIC  
+**CONTENT:** LLMLingua framework achieves 20x compression with <3% performance degradation on reasoning tasks through prompt compression algorithms. Selective Context method reduces tokens by 50% while maintaining 97% of original performance.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/overview.md  
+**DOMAINS:** D3, D8  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC7, PC10
+
+---
+
+### KA-034
+**TYPE:** METRIC  
+**CONTENT:** Naive context filling leads to 23-45% wasted tokens on irrelevant content, while optimized allocation improves task success rates by 18-32%. Implement budget-aware retrieval with relevance scoring.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/overview.md, docs/research/03_context_memory_intelligence/context_management/patterns.md  
+**DOMAINS:** D3, D8  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC7
+
+---
+
+### KA-035
+**TYPE:** COMBINATION  
+**CONTENT:** Budget-Aware Retrieval + U-Shaped Placement + Semantic Chunking: Use for large codebase navigation. Order: (1) Define token budget per task phase, (2) Retrieve with relevance scoring, (3) Chunk at semantic boundaries (AST-based), (4) Place critical context at window edges.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/patterns.md  
+**DOMAINS:** D3, D4, D5  
+**SDLC_PHASES:** P1, P2  
+**PRODUCTS:** PC7
+
+---
+
+### KA-036
+**TYPE:** ANTI_PATTERN  
+**CONTENT:** Context Stuffing: Maximally filling context windows without prioritization. Failure modes: 23-45% tokens wasted, "lost in the middle" buries critical info, increased costs without benefit. Mitigation: Relevance-based filtering, budget-aware retrieval, U-shaped placement.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/patterns.md  
+**DOMAINS:** D3  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC7, PC10
+
+---
+
+### KA-037
+**TYPE:** TECHNIQUE  
+**CONTENT:** Hierarchical Summarization: Multi-level summaries enabling zoom-in/zoom-out navigation. Define hierarchy levels (file → module → package → repo). Cache summaries to avoid recomputation.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/patterns.md  
+**DOMAINS:** D3, D4  
+**SDLC_PHASES:** P1, P2  
+**PRODUCTS:** PC7
+
+---
+
+### KA-038
+**TYPE:** TECHNIQUE  
+**CONTENT:** Chain-of-Thought prompting: Adding "Let's think step by step" improves accuracy by 20-40% on reasoning tasks. Self-consistency CoT with multiple reasoning paths and majority voting further improves reliability.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/reasoning_architecture/overview.md  
+**DOMAINS:** D4  
+**SDLC_PHASES:** P2, P3, P6  
+**PRODUCTS:** PC4
+
+---
+
+### KA-039
+**TYPE:** METRIC  
+**CONTENT:** Tree-of-Thought (ToT) achieves 30-50% improvement on complex reasoning tasks over baseline CoT, but requires 5-10x more compute. Graph-of-Thought (GoT) shows additional 10-20% improvement over ToT with higher computational overhead.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/reasoning_architecture/overview.md  
+**DOMAINS:** D4  
+**SDLC_PHASES:** P2, P3, P6  
+**PRODUCTS:** PC4, PC10
+
+---
+
+### KA-040
+**TYPE:** TECHNIQUE  
+**CONTENT:** Self-critique loops reduce error rates by 25-40% on code generation through iterative critique. Risk: "Echo chamber" effects where models fail to identify own errors. Mitigation: Use multi-model adversarial review.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/reasoning_architecture/overview.md  
+**DOMAINS:** D4, D6  
+**SDLC_PHASES:** P3, P5  
+**PRODUCTS:** PC4, PC10
+
+---
+
+### KA-041
+**TYPE:** TECHNIQUE  
+**CONTENT:** Pre-execution validation catches 60-75% of potential errors, significantly reducing rollback costs. Techniques: Static analysis, simulation/dry-run, constraint checking, dependency validation.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/03_context_memory_intelligence/reasoning_architecture/overview.md  
+**DOMAINS:** D4, D6  
+**SDLC_PHASES:** P3, P7  
+**PRODUCTS:** PC6
+
+---
+
+### KA-042
+**TYPE:** TOOL  
+**CONTENT:** Augment Context Engine MCP: Model Context Protocol server providing semantic code context. Performance benchmarks: Cursor + Claude Opus 4.5 + MCP = 71% improvement; Claude Code + Opus 4.5 + MCP = 80% improvement. Indexes 1M+ files with real-time updates.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/overview.md  
+**DOMAINS:** D3, D5  
+**SDLC_PHASES:** P1, P2  
+**PRODUCTS:** PC5, PC7
+
+---
+
+### KA-043
+**TYPE:** CONSTRAINT  
+**CONTENT:** Code-specific embeddings (Voyage Code, CodeSage) outperform general embeddings by 15-30% on code retrieval tasks. Chunk-aware embedding strategies further improve performance. Use code-specialized embeddings for agent memory.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/memory_systems/overview.md  
+**DOMAINS:** D4, D5  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC7
+
+---
+
+### KA-044
+**TYPE:** METRIC  
+**CONTENT:** GraphRAG approach combines knowledge graphs with vector retrieval, achieving 23% improvement on multi-hop reasoning tasks compared to pure vector retrieval. Cost: Increased indexing complexity.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/03_context_memory_intelligence/memory_systems/overview.md  
+**DOMAINS:** D4  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC7
+
+---
+
+### KA-045
+**TYPE:** METRIC  
+**CONTENT:** Experience-derived heuristics improve task success rates by 12-18% after 100+ interactions in learning agents. Requires careful validation to avoid overfitting to specific patterns.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/03_context_memory_intelligence/memory_systems/overview.md  
+**DOMAINS:** D4, D12  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC2
+
+---
+
+### KA-046
+**TYPE:** TECHNIQUE  
+**CONTENT:** Semantic-guided code traversal reduces exploration time by 40-60% compared to naive approaches while maintaining comprehension quality. Combine static analysis (structure) with semantic understanding (relevance).  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/code_exploration/overview.md  
+**DOMAINS:** D5  
+**SDLC_PHASES:** P1, P2  
+**PRODUCTS:** PC7
+
+---
+
+### KA-047
+**TYPE:** TECHNIQUE  
+**CONTENT:** Hybrid semantic-syntactic search (CoSrch) achieves 7.60% improvement in SuccessRate@1 over previous baselines by capturing long-range dependencies and fusing syntactic-semantic information with overlap-aware modality decomposition.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/code_exploration/overview.md  
+**DOMAINS:** D5  
+**SDLC_PHASES:** P1, P2  
+**PRODUCTS:** PC7
+
+---
+
+### KA-048
+**TYPE:** CONSTRAINT  
+**CONTENT:** Starting from entrypoints reduces exploration scope by 60-80% compared to whole-codebase analysis. Entrypoint identification is first step in top-down code exploration.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/code_exploration/overview.md  
+**DOMAINS:** D5  
+**SDLC_PHASES:** P1  
+**PRODUCTS:** PC7
+
+---
+
+### KA-049
+**TYPE:** METRIC  
+**CONTENT:** Intelligent file prioritization reduces exploration time by 50-70% while maintaining comprehension quality. Use file relevance scoring and incremental file analysis.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/code_exploration/overview.md  
+**DOMAINS:** D5  
+**SDLC_PHASES:** P1, P2  
+**PRODUCTS:** PC7
+
+---
+
+### KA-050
+**TYPE:** TECHNIQUE  
+**CONTENT:** Spec-driven approaches reduce defect rates by 30-50% compared to ad-hoc development. Critique: Over-specification leads to "spec rot" where documentation diverges from implementation. Solution: Bidirectional maintenance.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/specification_design/overview.md  
+**DOMAINS:** D5  
+**SDLC_PHASES:** P2  
+**PRODUCTS:** PC3, PC4
+
+---
+
+### KA-051
+**TYPE:** METRIC  
+**CONTENT:** Standardized documentation templates reduce onboarding time by 40-60% and improve code review efficiency by 25%. C4 model has become de facto standard for architecture documentation.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/specification_design/overview.md  
+**DOMAINS:** D5  
+**SDLC_PHASES:** P2, P8  
+**PRODUCTS:** PC4
+
+---
+
+### KA-052
+**TYPE:** TECHNIQUE  
+**CONTENT:** Intent-driven approaches show 30% improvement in requirement satisfaction when intent is explicitly captured. Objective-driven approaches demonstrate 25% improvement in task completion rates with explicit objectives.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/04_code_intelligence/specification_design/overview.md  
+**DOMAINS:** D5, D11  
+**SDLC_PHASES:** P2  
+**PRODUCTS:** PC4
+
+---
+
+### KA-053
+**TYPE:** CONSTRAINT  
+**CONTENT:** Complexity budgets reduce defect density by 40% when enforced consistently. AI-generated code has 30% more abstraction layers and 20% more verbosity than human-written code. Explicit complexity limits reduce this tendency.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/04_code_intelligence/specification_design/overview.md  
+**DOMAINS:** D5  
+**SDLC_PHASES:** P2, P3  
+**PRODUCTS:** PC6
+
+---
+
+### KA-054
+**TYPE:** METRIC  
+**CONTENT:** Meta-analysis shows TDD reduces defect density by 40-90% but increases initial development time by 15-35%. For AI agents, tests provide executable specifications for code generation.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/specification_design/overview.md  
+**DOMAINS:** D5, D6  
+**SDLC_PHASES:** P3  
+**PRODUCTS:** PC3
+
+---
+
+### KA-055
+**TYPE:** METRIC  
+**CONTENT:** Systematic refactoring reduces defect density by 25-35% when applied consistently. Automated Program Repair (APR) achieves 70-85% success rates on single-line bugs in test suites with adequate coverage.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/refactoring_optimization/overview.md  
+**DOMAINS:** D5, D6  
+**SDLC_PHASES:** P3, P8  
+**PRODUCTS:** PC10
+
+---
+
+### KA-056
+**TYPE:** TECHNIQUE  
+**CONTENT:** Multi-stage validation reduces production incidents by 60-80% compared to single-stage approaches. Stages: Syntax validation → Type checking → Unit tests → Integration tests → Linting → Security scanning.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/refactoring_optimization/overview.md, docs/research/05_sdlc_automation/testing_architecture/patterns.md  
+**DOMAINS:** D6, D9  
+**SDLC_PHASES:** P4, P5  
+**PRODUCTS:** PC3
+
+---
+
+### KA-057
+**TYPE:** CONSTRAINT  
+**CONTENT:** Sad path testing is often neglected, with 60-70% of production failures coming from untested error paths. AI-generated tests focus 80% on happy paths. Mitigation: Explicitly prompt agents to generate sad path tests.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/refactoring_optimization/overview.md, docs/research/05_sdlc_automation/testing_architecture/overview.md, docs/research/05_sdlc_automation/testing_architecture/patterns.md  
+**DOMAINS:** D6  
+**SDLC_PHASES:** P4  
+**PRODUCTS:** PC4, PC6
+
+---
+
+### KA-058
+**TYPE:** TECHNIQUE  
+**CONTENT:** Proper error handling reduces mean time to recovery (MTTR) by 40-60% through better diagnostics. AI agents often under-invest in error handling without explicit instruction.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/refactoring_optimization/overview.md  
+**DOMAINS:** D5, D6  
+**SDLC_PHASES:** P3, P6  
+**PRODUCTS:** PC6
+
+---
+
+### KA-059
+**TYPE:** COMBINATION  
+**CONTENT:** Automated Repair Loop: Test-driven repair → Lint-driven repair → Review-driven repair → Error-driven repair. Achieves 85%+ resolution rates within 3-5 iterations for common issues. Risk: Infinite loops without progress detection.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/refactoring_optimization/overview.md  
+**DOMAINS:** D5, D6  
+**SDLC_PHASES:** P4, P6  
+**PRODUCTS:** PC3
+
+---
+
+### KA-060
+**TYPE:** TECHNIQUE  
+**CONTENT:** Contract testing with tools like Pact reduces integration failures by 70% in distributed systems. Essential for microservices architectures where services evolve independently.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/testing_architecture/overview.md  
+**DOMAINS:** D6, D9  
+**SDLC_PHASES:** P4  
+**PRODUCTS:** PC3
+
+---
+
+### KA-061
+**TYPE:** METRIC  
+**CONTENT:** Property-based testing finds edge cases 3x more effectively than example-based testing by generating hundreds of test cases automatically. Use for algorithms, data transformations, API contracts.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/testing_architecture/overview.md  
+**DOMAINS:** D6  
+**SDLC_PHASES:** P4  
+**PRODUCTS:** PC3
+
+---
+
+### KA-062
+**TYPE:** METRIC  
+**CONTENT:** LLM-generated tests achieve 60-80% coverage but often miss boundary conditions and error paths. Fuzzing finds security vulnerabilities 5x more effectively than manual testing.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/testing_architecture/overview.md  
+**DOMAINS:** D6  
+**SDLC_PHASES:** P4  
+**PRODUCTS:** PC4
+
+---
+
+### KA-063
+**TYPE:** TECHNIQUE  
+**CONTENT:** Mutation testing correlates with real defect detection at r=0.75, making it a strong predictor of test quality. Use as quality gate for test suite changes. Mutation score indicates percentage of killed mutants.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/testing_architecture/overview.md, docs/research/05_sdlc_automation/testing_architecture/patterns.md  
+**DOMAINS:** D6  
+**SDLC_PHASES:** P4, P5  
+**PRODUCTS:** PC3
+
+---
+
+### KA-064
+**TYPE:** CONSTRAINT  
+**CONTENT:** 80% line coverage correlates with 50% defect reduction, but coverage alone is insufficient. MC/DC coverage required for safety-critical systems (DO-178C). Mutation coverage better predictor than line/branch coverage.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/testing_architecture/overview.md  
+**DOMAINS:** D6  
+**SDLC_PHASES:** P4  
+**PRODUCTS:** PC6
+
+---
+
+### KA-065
+**TYPE:** ANTI_PATTERN  
+**CONTENT:** Test Inversion Anti-Pattern: More E2E tests than unit tests creates inverted pyramid. Results: Long feedback cycles, high maintenance cost, flaky tests, difficulty isolating failures. Constraint AI agents to generate tests in pyramid proportions (~70% unit, ~20% integration, ~10% E2E).  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/testing_architecture/patterns.md  
+**DOMAINS:** D6  
+**SDLC_PHASES:** P4  
+**PRODUCTS:** PC6, PC10
+
+---
+
+### KA-066
+**TYPE:** ANTI_PATTERN  
+**CONTENT:** Happy Path Bias Anti-Pattern: Tests only cover success scenarios, missing error handling. Common in AI-generated tests. Failure mode: Production failures on edge cases, poor error handling. Mitigation: Explicitly prompt agents to generate sad path tests.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/testing_architecture/patterns.md  
+**DOMAINS:** D6  
+**SDLC_PHASES:** P4  
+**PRODUCTS:** PC4, PC6
+
+---
+
+### KA-067
+**TYPE:** METRIC  
+**CONTENT:** Organizations with mature CI/CD practices achieve 208x more frequent deployments, 106x faster lead time, 2,604x faster recovery from failures. CI adoption reduces integration problems by 70% and accelerates time-to-market by 50%.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/cicd_devops/overview.md  
+**DOMAINS:** D9  
+**SDLC_PHASES:** P5, P7  
+**PRODUCTS:** PC3
+
+---
+
+### KA-068
+**TYPE:** TECHNIQUE  
+**CONTENT:** Self-healing pipelines reduce manual intervention by 80% and improve pipeline reliability from 85% to 98%. Patterns: Automatic retry for transient failures, fallback strategies, auto-rollback on failure detection.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/05_sdlc_automation/cicd_devops/overview.md  
+**DOMAINS:** D9  
+**SDLC_PHASES:** P5, P7  
+**PRODUCTS:** PC3
+
+---
+
+### KA-069
+**TYPE:** CONSTRAINT  
+**CONTENT:** Canary deployments reduce deployment incidents by 60% by catching issues before full rollout. Blue/green deployments achieve zero-downtime deployments with instant rollback capability but require double infrastructure.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/cicd_devops/overview.md  
+**DOMAINS:** D9  
+**SDLC_PHASES:** P7  
+**PRODUCTS:** PC3, PC10
+
+---
+
+### KA-070
+**TYPE:** METRIC  
+**CONTENT:** Automated rollback reduces mean time to recovery (MTTR) by 90% compared to manual processes. Essential for autonomous agent deployment. Triggers: Metric-based (threshold breach), time-based (observation period), manual trigger.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/cicd_devops/overview.md  
+**DOMAINS:** D9  
+**SDLC_PHASES:** P7  
+**PRODUCTS:** PC3
+
+---
+
+### KA-071
+**TYPE:** TECHNIQUE  
+**CONTENT:** Feature flags reduce deployment risk by 70% and enable trunk-based development. Provide fine-grained control over generated feature releases. Services: LaunchDarkly, Split, Unleash.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/cicd_devops/overview.md  
+**DOMAINS:** D9  
+**SDLC_PHASES:** P7  
+**PRODUCTS:** PC3
+
+---
+
+### KA-072
+**TYPE:** METRIC  
+**CONTENT:** Structured logs reduce debugging time by 50% compared to unstructured logs. Error fingerprinting reduces alert noise by 70% and accelerates root cause identification. Use for AI agent feedback.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/observability_feedback_loops/overview.md  
+**DOMAINS:** D6, D9  
+**SDLC_PHASES:** P6, P8  
+**PRODUCTS:** PC7
+
+---
+
+### KA-073
+**TYPE:** METRIC  
+**CONTENT:** Distributed tracing reduces mean time to resolution by 60% in microservices architectures. Metrics enable 80% of incident detection through threshold-based alerting. Feedback loops improve system reliability by 40% when consistently applied.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/observability_feedback_loops/overview.md  
+**DOMAINS:** D9  
+**SDLC_PHASES:** P6, P8  
+**PRODUCTS:** PC7
+
+---
+
+### KA-074
+**TYPE:** TOOL  
+**CONTENT:** Apprise notification framework: Single library for 80+ notification services (email, Slack, SMS, desktop). Unified API enables flexible agent-to-human communication. Supports tagging, priority routing, environment variable configuration.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/observability_feedback_loops/overview.md, docs/research/07_human_interaction/human_in_the_loop_systems/overview.md  
+**DOMAINS:** D9, D11  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC5
+
+---
+
+### KA-075
+**TYPE:** METRIC  
+**CONTENT:** Performance scoring enables 35% improvement in agent effectiveness through targeted optimization. Trust scoring improves human-AI collaboration by 40% through appropriate autonomy levels. Metrics: Task completion rate, code quality, human intervention rate.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/05_sdlc_automation/observability_feedback_loops/overview.md  
+**DOMAINS:** D6, D11  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC2, PC6
+
+---
+
+### KA-076
+**TYPE:** TECHNIQUE  
+**CONTENT:** Five Autonomy Levels: Operator (human controls), Collaborator (equal footing), Consultant (agent seeks input), Approver (agent autonomous but requires approval for consequential actions), Observer (full autonomy with monitoring). Define clear boundaries for each level.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/07_human_interaction/human_in_the_loop_systems/overview.md  
+**DOMAINS:** D11  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC1, PC6
+
+---
+
+### KA-077
+**TYPE:** CONSTRAINT  
+**CONTENT:** Belief-performance gap: Humans overestimate AI correctness by up to 80 percentage points. Confidence often exceeds verification capability. Implement calibration monitoring and adjustment over time.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/07_human_interaction/human_in_the_loop_systems/overview.md  
+**DOMAINS:** D4, D11  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC6
+
+---
+
+### KA-078
+**TYPE:** TECHNIQUE  
+**CONTENT:** Confidence-based escalation: Route outputs to human review based on uncertainty quantification. Cascaded LLM decision frameworks use deferral policies (base model → large model → human) based on confidence scores. Empirical results show 70% cost reduction while maintaining high accuracy.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/07_human_interaction/human_in_the_loop_systems/overview.md  
+**DOMAINS:** D4, D11  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC3, PC6
+
+---
+
+### KA-079
+**TYPE:** COMBINATION  
+**CONTENT:** Risk Classification + Confidence-Based Escalation + Auto-Approval Gateway: Actions classified by impact (low/medium/high/critical). Low-risk actions auto-approved; high-risk actions escalated based on confidence thresholds. Use for autonomous deployment with safety.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/07_human_interaction/human_in_the_loop_systems/overview.md  
+**DOMAINS:** D7, D11  
+**SDLC_PHASES:** P3, P7  
+**PRODUCTS:** PC3, PC6
+
+---
+
+### KA-080
+**TYPE:** CONSTRAINT  
+**CONTENT:** Cognitive load optimization strategies: Intelligent batching of approvals, progressive disclosure (minimal info by default), confidence-based filtering (only escalate when necessary), context summarization, adaptive thresholds based on human workload.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/07_human_interaction/human_in_the_loop_systems/overview.md  
+**DOMAINS:** D11  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC6
+
+---
+
+### KA-081
+**TYPE:** TOOL  
+**CONTENT:** Eigent AI Safe Mode: Toggle enables HITL for dangerous terminal commands. Dangerous categories: system (sudo, reboot), file (rm, chown), disk (dd, mkfs), process (systemctl), network (iptables). Three-option approval: Yes (once), All Yes in task, No.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/07_human_interaction/human_in_the_loop_systems/overview.md  
+**DOMAINS:** D7, D11  
+**SDLC_PHASES:** P3, P6  
+**PRODUCTS:** PC5, PC6
+
+---
+
+### KA-082
+**TYPE:** METRIC  
+**CONTENT:** Hallucination impact statistics: 19.7% of recommended packages in LLM-generated code are fabricated ("slopsquatting"); 40-45% of AI-generated code contains exploitable security vulnerabilities; 43% of Java errors are API misuse hallucinations.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/security_architecture/overview.md  
+**DOMAINS:** D7  
+**SDLC_PHASES:** P3  
+**PRODUCTS:** PC6
+
+---
+
+### KA-083
+**TYPE:** CONSTRAINT  
+**CONTENT:** 3f+1 agents required to tolerate f Byzantine failures in multi-agent systems. Use consensus requirements for critical changes. Implement sandboxing, permission boundaries, audit logging for mitigation.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/02_agent_orchestration/distributed_orchestration/overview.md  
+**DOMAINS:** D1, D7  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC6
+
+---
+
+### KA-084
+**TYPE:** TECHNIQUE  
+**CONTENT:** Multi-layer hallucination defense: Generation → Consistency Check → Static Analysis → Execution Test → Human Review. Benefits: Defense in depth against multiple hallucination types. Costs: Higher latency (100ms-5s per check layer).  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/01_meta_architecture/security_architecture/patterns.md  
+**DOMAINS:** D7  
+**SDLC_PHASES:** P3, P5  
+**PRODUCTS:** PC3
+
+---
+
+### KA-085
+**TYPE:** FAILURE_MODE  
+**CONTENT:** Context Poisoning Attack Vectors: Model Hallucination (internal, hidden, partial preventability via validation), Code Comments (external, visible, partial via code review), Contaminated Input (user, often hidden, high preventability via sanitization), Context Overflow (architectural, hidden, partial via session management).  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/overview.md  
+**DOMAINS:** D3, D7  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC6
+
+---
+
+### KA-086
+**TYPE:** CONSTRAINT  
+**CONTENT:** Why "Wake-Up Prompts" Don't Work: Temporary effect masks damage; poisoned context remains in conversational buffer; any query outside immediate "patch" re-triggers issue. Corrective prompts only suppress symptoms; corrupted data persists. Hard session reset required.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/overview.md  
+**DOMAINS:** D3, D7  
+**SDLC_PHASES:** P6  
+**PRODUCTS:** PC6
+
+---
+
+### KA-087
+**TYPE:** TOOL  
+**CONTENT:** RAG for Code (Hybrid Retrieval): BM25 + dense retrieval achieves 67% reduction in hallucinations. Must be combined with verification for production use. Context noise and conflict remain major challenges.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/security_architecture/overview.md  
+**DOMAINS:** D3, D7  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC7
+
+---
+
+### KA-088
+**TYPE:** TECHNIQUE  
+**CONTENT:** Self-Consistency and Verification: Sample multiple reasoning paths, select via majority vote. Reduces stochastic errors by 7-19%. Chain-of-Verification (CoVe): Draft → Plan verification → Answer independently → Generate verified response.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/security_architecture/overview.md  
+**DOMAINS:** D4, D6  
+**SDLC_PHASES:** P3, P5  
+**PRODUCTS:** PC4
+
+---
+
+### KA-089
+**TYPE:** RECIPE  
+**CONTENT:** Auto-Launch Workspace Configuration: Create `.kilocode/launchConfig.json` with prompt (required), profile (optional), mode (optional). Execution sequence: VS Code open → Extension activate → Check config (~500ms) → Switch profile if specified → Switch mode if specified → Launch task → Sidebar focus. Use for reproducible environments, A/B testing, onboarding.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/agent_system_design/overview.md  
+**DOMAINS:** D1, D10  
+**SDLC_PHASES:** P1  
+**PRODUCTS:** PC5, PC9
+
+---
+
+## Deduplication Log
+
+| Duplicate Group | Kept | Merged From | Rationale |
+|-----------------|------|-------------|-----------|
+| Spec-driven workflow metrics | KA-001 | Overview + patterns | Kept version with specific 56% and 87% numbers |
+| Mode switching drift reduction | KA-006 | Overview + patterns | Kept complete with 34% and cost tradeoff |
+| Bidirectional specifications | KA-004 | Overview + patterns | Merged complementary details |
+| Conditional multi-stage recovery | KA-016 | Overview + patterns | Kept with 19% improvement metric |
+| Context poisoning | KA-030, KA-031 | Overview + patterns | Split into technique and constraint |
+| U-shaped placement | KA-032 | Overview + patterns | Kept with implementation details |
+| Ask follow-up question | KA-022 | Agent design + HITL | Merged from both sources |
+| Worktree isolation | KA-024 | Overview + patterns | Kept with 67% metric |
+| Semantic merging | KA-025 | Overview + patterns | Kept with 78% vs 45% comparison |
+| Multi-stage validation | KA-056 | Refactoring + testing | Merged complementary stage lists |
+| Sad path testing | KA-057 | Multiple files | Kept most comprehensive version |
+| Temperature settings | KA-021 | Philosophy + reasoning | Merged complete guidance |
+| Apprise framework | KA-074 | Observability + HITL | Merged from both sources |
+
+---
+
+## Ranking Summary
+
+### TECHNIQUE (28 atoms) - Ranked by Evidence Strength
+
+| Rank | ID | Evidence | Specificity |
+|------|----|----------|-------------|
+| 1 | KA-001 | STRONG | High (56%, 87%) |
+| 2 | KA-032 | STRONG | High (U-shape placement) |
+| 3 | KA-022 | STRONG | High (Kilo tool specifics) |
+| 4 | KA-016 | STRONG | High (19% improvement) |
+| 5 | KA-038 | STRONG | High (20-40% improvement) |
+| 6 | KA-040 | STRONG | High (25-40% error reduction) |
+| 7 | KA-046 | STRONG | High (40-60% reduction) |
+| 8 | KA-047 | STRONG | High (7.60% improvement) |
+| 9 | KA-055 | STRONG | High (70-85% success) |
+| 10 | KA-060 | STRONG | High (70% reduction) |
+| 11 | KA-061 | STRONG | High (3x effectiveness) |
+| 12 | KA-068 | MODERATE | High (80%, 85%→98%) |
+| 13 | KA-070 | STRONG | High (90% reduction) |
+| 14 | KA-072 | STRONG | High (50%, 70%) |
+| 15 | KA-073 | STRONG | High (60%, 80%, 40%) |
+| 16 | KA-078 | STRONG | High (70% cost reduction) |
+| 17 | KA-088 | STRONG | High (7-19% reduction) |
+| 18 | KA-002 | STRONG | Medium (BDI architecture) |
+| 19 | KA-004 | STRONG | Medium (bidirectional specs) |
+| 20 | KA-008 | MODERATE | High (100/1000 tokens) |
+| 21 | KA-011 | STRONG | High (31-90% reduction) |
+| 23 | KA-033 | STRONG | High (20x compression) |
+| 24 | KA-037 | MODERATE | Medium (hierarchical summarization) |
+| 25 | KA-041 | MODERATE | High (60-75% catch rate) |
+| 26 | KA-052 | MODERATE | High (30%, 25% improvement) |
+| 27 | KA-058 | STRONG | High (40-60% MTTR reduction) |
+| 28 | KA-080 | MODERATE | Medium (cognitive load strategies) |
+
+### METRIC (18 atoms) - Ranked by Evidence Strength
+
+| Rank | ID | Evidence | Key Numbers |
+|------|----|----------|-------------|
+| 1 | KA-010 | STRONG | $5-8/task, 4-8:1 ratio |
+| 2 | KA-017 | STRONG | 8-12% improvement, 3-5x overhead |
+| 3 | KA-018 | STRONG | 40% higher detection |
+| 4 | KA-023 | MODERATE | 2-3 levels simple, 5-7 complex |
+| 5 | KA-027 | STRONG | 2.3x speedup |
+| 6 | KA-028 | MODERATE | 3x throughput |
+| 7 | KA-034 | STRONG | 23-45% waste, 18-32% improvement |
+| 8 | KA-039 | STRONG | 30-50% improvement, 5-10x compute |
+| 9 | KA-043 | STRONG | 15-30% improvement |
+| 10 | KA-044 | MODERATE | 23% improvement |
+| 11 | KA-045 | MODERATE | 12-18% improvement |
+| 12 | KA-048 | STRONG | 60-80% reduction |
+| 13 | KA-049 | STRONG | 50-70% reduction |
+| 14 | KA-051 | STRONG | 40-60% reduction, 25% improvement |
+| 15 | KA-054 | STRONG | 40-90% defect reduction, 15-35% time increase |
+| 16 | KA-062 | STRONG | 60-80% coverage, 5x vulnerability detection |
+| 17 | KA-063 | STRONG | r=0.75 correlation |
+| 18 | KA-082 | STRONG | 19.7% fabricated, 40-45% vulnerabilities |
+
+### CONSTRAINT (12 atoms) - Ranked by Evidence Strength
+
+| Rank | ID | Evidence | Type |
+|------|----|----------|------|
+| 1 | KA-006 | STRONG | Hard limit (34% drift reduction) |
+| 2 | KA-013 | STRONG | Performance bound (95th percentile) |
+| 3 | KA-021 | STRONG | Configuration requirement |
+| 4 | KA-031 | STRONG | Session integrity |
+| 5 | KA-042 | STRONG | Tool capability (71-80% improvement) |
+| 6 | KA-048 | STRONG | Scope reduction (60-80%) |
+| 7 | KA-053 | MODERATE | Complexity budget |
+| 8 | KA-057 | STRONG | Testing requirement |
+| 9 | KA-064 | STRONG | Coverage threshold |
+| 10 | KA-069 | STRONG | Deployment strategy |
+| 11 | KA-077 | STRONG | Calibration bound (80 percentage points) |
+| 12 | KA-083 | MODERATE | Byzantine fault tolerance |
+
+### TOOL (8 atoms) - Ranked by Evidence Strength
+
+| Rank | ID | Evidence | Maturity |
+|------|----|----------|----------|
+| 1 | KA-042 | STRONG | Production (Augment MCP) |
+| 2 | KA-074 | STRONG | Mature (80+ services) |
+| 3 | KA-081 | MODERATE | Production (Eigent AI) |
+| 4 | KA-087 | STRONG | Research-validated |
+
+### FAILURE_MODE (6 atoms) - Ranked by Evidence Strength
+
+| Rank | ID | Evidence | Detection/Response |
+|------|----|----------|-------------------|
+| 1 | KA-009 | STRONG | Detection + mitigation |
+| 2 | KA-015 | MODERATE | Prevention + recovery |
+| 3 | KA-030 | STRONG | Detection + response |
+| 4 | KA-085 | MODERATE | Classification matrix |
+| 5 | KA-086 | MODERATE | Why fixes fail |
+
+### ANTI_PATTERN (5 atoms) - Ranked by Evidence Strength
+
+| Rank | ID | Evidence | Impact |
+|------|----|----------|--------|
+| 1 | KA-005 | MODERATE | High (no audit trail) |
+| 2 | KA-019 | STRONG | High (single point of failure) |
+| 3 | KA-020 | MODERATE | High (10x cost) |
+| 4 | KA-036 | STRONG | High (23-45% waste) |
+| 5 | KA-065 | STRONG | High (inverted pyramid) |
+
+---
+
+## Source Coverage Map
+
+### Files Contributing Atoms (Top 20)
+
+| Source File | Atoms | Key Types |
+|-------------|-------|-----------|
+| system_design_philosophy/overview.md | 6 | TECHNIQUE, TRADEOFF, CONSTRAINT |
+| system_design_philosophy/patterns.md | 5 | ANTI_PATTERN, TECHNIQUE |
+| economic_optimization_modeling/overview.md | 3 | METRIC, TECHNIQUE, COMBINATION |
+| agent_system_design/overview.md | 8 | METRIC, TECHNIQUE, FAILURE_MODE |
+| agent_system_design/patterns.md | 4 | ANTI_PATTERN, TECHNIQUE |
+| task_architecture/overview.md | 7 | METRIC, TECHNIQUE |
+| task_architecture/patterns.md | 3 | COMBINATION, METRIC |
+| distributed_orchestration/overview.md | 4 | CONSTRAINT, METRIC, FAILURE_MODE |
+| context_management/overview.md | 8 | FAILURE_MODE, CONSTRAINT, METRIC |
+| context_management/patterns.md | 5 | TECHNIQUE, ANTI_PATTERN |
+| reasoning_architecture/overview.md | 5 | TECHNIQUE, METRIC |
+| memory_systems/overview.md | 3 | CONSTRAINT, METRIC |
+| code_exploration/overview.md | 4 | TECHNIQUE, CONSTRAINT, METRIC |
+| specification_design/overview.md | 6 | METRIC, TECHNIQUE, CONSTRAINT |
+| refactoring_optimization/overview.md | 5 | METRIC, TECHNIQUE, COMBINATION |
+| testing_architecture/overview.md | 6 | METRIC, TECHNIQUE |
+| testing_architecture/patterns.md | 3 | ANTI_PATTERN |
+| cicd_devops/overview.md | 5 | METRIC, TECHNIQUE, CONSTRAINT |
+| observability_feedback_loops/overview.md | 4 | METRIC, TOOL |
+| human_in_the_loop_systems/overview.md | 8 | TECHNIQUE, CONSTRAINT, COMBINATION |
+
+### Directory Coverage
+
+| Directory | Total Atoms | % of Corpus |
+|-----------|-------------|-------------|
+| 01_meta_architecture | 18 | 20% |
+| 02_agent_orchestration | 26 | 29% |
+| 03_context_memory_intelligence | 21 | 24% |
+| 04_code_intelligence | 16 | 18% |
+| 05_sdlc_automation | 23 | 26% |
+| 06_data_infrastructure | 0 | 0% |
+| 07_human_interaction | 8 | 9% |
+
+---
+
+## Knowledge Gaps
+
+The following topics were identified in the research corpus but lacked sufficient specificity or evidence to extract as knowledge atoms:
+
+1. **Complexity Scoring Metrics**: No standardized metrics exist; active research area with proposed approaches (token count, tool call depth, cyclomatic complexity, state space size) but no validated thresholds.
+
+2. **Entropy Tracking**: Limited research on agent-specific entropy in evolving codebases; no validated detection methods or thresholds.
+
+3. **Livelock Detection**: Sparse research, mostly anecdotal from practitioner reports; no formal detection algorithms.
+
+4. **Auto-Learning Effectiveness**: Experience-derived heuristics show promise (12-18% improvement) but validation mechanisms to prevent overfitting are not standardized.
+
+5. **Memory Consolidation Scheduling**: "Sleep" for AI systems is mostly theoretical; no practical implementations with validated schedules.
+
+6. **Cross-Repo Memory Synchronization**: Sparse research, mostly vendor-specific implementations; no standardized protocols.
+
+7. **Model Routing Calibration**: RL-tuned routing shows 70-85% cost reduction but requires production validation data not available in corpus.
+
+8. **Context Engine Evaluation**: Augment MCP shows strong benchmarks but independent validation is needed.
+
+---
+
+## Recommended Next Subtask
+
+**Prong 2: ORGANIZE** - Cluster the extracted knowledge atoms into coherent design patterns and architectural principles:
+
+1. Group atoms by SDLC phase to identify phase-specific guidance
+2. Cluster by domain to identify capability requirements
+3. Map atom dependencies to identify prerequisite chains
+4. Identify contradictions or tensions between atoms
+5. Create pattern languages from related atoms
+
+---
+
+*End of Prong 1 Knowledge Atoms Extraction*
+
+**Extraction Date:** 2026-02-24  
+**Research Corpus Version:** February 2026  
+**Extraction Method:** Manual analysis with KEEP/DISCARD rule application
+
+---
+
+## Executive Summary
+
+### Atom Extraction Results
+
+| Metric | Count |
+|--------|-------|
+| **Total Atoms Extracted** | 89 |
+| **STRONG Evidence** | 42 (47%) |
+| **MODERATE Evidence** | 31 (35%) |
+| **WEAK Evidence** | 16 (18%) |
+
+### Breakdown by Type
+
+| Type | Count | % of Total |
+|------|-------|------------|
+| TECHNIQUE | 28 | 31% |
+| METRIC | 18 | 20% |
+| CONSTRAINT | 12 | 13% |
+| TOOL | 8 | 9% |
+| COMBINATION | 7 | 8% |
+| FAILURE_MODE | 6 | 7% |
+| ANTI_PATTERN | 5 | 6% |
+| TRADEOFF | 3 | 3% |
+| RECIPE | 2 | 2% |
+
+### Domain Coverage
+
+| Domain | Atoms | Primary Types |
+|--------|-------|---------------|
+| D1 (Agent Architecture) | 14 | TECHNIQUE, PATTERN |
+| D3 (Context/Prompt) | 16 | TECHNIQUE, METRIC |
+| D5 (Code Intelligence) | 12 | TECHNIQUE, ANTI_PATTERN |
+| D6 (Testing) | 11 | TECHNIQUE, METRIC |
+| D7 (Security) | 13 | CONSTRAINT, FAILURE_MODE |
+| D11 (Human Interaction) | 10 | TECHNIQUE, TRADEOFF |
+
+---
+
+## Knowledge Atom Registry
+
+---
+
+### KA-001
+**TYPE:** METRIC  
+**CONTENT:** Spec-driven workflows with 4-phase gates (Specify, Plan, Tasks, Implement) reduce development time by 56% compared to ad-hoc approaches. AugmentCode GitHub Spec Kit demonstrates 87% accuracy for multi-file changes when specifications are properly maintained.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/overview.md  
+**DOMAINS:** D1, D5  
+**SDLC_PHASES:** P2, P3  
+**PRODUCTS:** PC3, PC6
+
+---
+
+### KA-002
+**TYPE:** TECHNIQUE  
+**CONTENT:** BDI (Belief-Desire-Intent) hybrid architectures provide explicit mental states for introspection and verifiability, enabling accountable autonomy in production environments. Contrasts with implicit LLM intentionality by providing auditable belief states.  
+**EVIDENCE_STRERENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/overview.md  
+**DOMAINS:** D1, D11  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC1, PC6
+
+---
+
+### KA-003
+**TYPE:** TRADEOFF  
+**CONTENT:** Spec-Driven vs Intent-Driven: Spec-driven provides high reproducibility and audit trails but high maintenance cost; Intent-driven provides flexibility and lower maintenance but variable reproducibility. Use spec-driven for regulated/safety-critical systems; use intent-driven for exploratory/prototype development.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/overview.md, docs/research/01_meta_architecture/system_design_philosophy/comparisons.md  
+**DOMAINS:** D1, D5  
+**SDLC_PHASES:** P2, P3  
+**PRODUCTS:** PC3, PC10
+
+---
+
+### KA-004
+**TYPE:** TECHNIQUE  
+**CONTENT:** Bidirectional specification maintenance: Both humans and agents read from and write to shared, evolving specifications. Agents update specs when discovering implementation details that contradict assumptions, preventing specification debt accumulation.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/overview.md  
+**DOMAINS:** D1, D5, D11  
+**SDLC_PHASES:** P2, P3, P8  
+**PRODUCTS:** PC3, PC4
+
+---
+
+### KA-005
+**TYPE:** ANTI_PATTERN  
+**CONTENT:** "Vibe Coding" - ad-hoc code generation without explicit specifications or structured workflows. Failure modes: inconsistent outputs, difficult to reproduce, no audit trail, scope creep. Mitigation: Implement spec-driven workflows with explicit phases and verification gates.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/patterns.md  
+**DOMAINS:** D1, D5  
+**SDLC_PHASES:** P3  
+**PRODUCTS:** PC6, PC10
+
+---
+
+### KA-006
+**TYPE:** CONSTRAINT  
+**CONTENT:** Explicit mode boundaries reduce task drift by 34% compared to implicit switching. Cost: introduces latency from context reloading. Implementation: Define discrete operational modes (Code, Debug, Architect, Review) with distinct tool access and output constraints.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/agent_system_design/overview.md, docs/research/02_agent_orchestration/agent_system_design/patterns.md  
+**DOMAINS:** D1, D3  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC1, PC6
+
+---
+
+### KA-007
+**TYPE:** COMBINATION  
+**CONTENT:** 4-Phase Spec-Driven + Bidirectional Specifications: Use for production feature development. Combination provides reproducibility with maintenance. Order: (1) Human describes intent, (2) Agent drafts spec, (3) Both update spec during execution, (4) Agent surfaces decisions that change direction.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/patterns.md  
+**DOMAINS:** D1, D5  
+**SDLC_PHASES:** P2, P3  
+**PRODUCTS:** PC3, PC4
+
+---
+
+### KA-008
+**TYPE:** TECHNIQUE  
+**CONTENT:** Progressive Disclosure Architecture: Three-level skill/knowledge architecture minimizing context window consumption. Level 1 (Identity: ~100 tokens) for selection, Level 2 (Instructions: ~1,000 tokens) for execution, Level 3 (Resources: unbounded) for deep expertise.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/patterns.md  
+**DOMAINS:** D1, D3, D4  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC2, PC7
+
+---
+
+### KA-009
+**TYPE:** FAILURE_MODE  
+**CONTENT:** Stale Documentation Specs: Human-only specification maintenance diverges from implementation. Detection: Specification-code diff analysis, agent execution against outdated assumptions. Response: Implement bidirectional specification maintenance where agents update specs alongside code changes.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/patterns.md  
+**DOMAINS:** D1, D5  
+**SDLC_PHASES:** P2, P3, P8  
+**PRODUCTS:** PC6, PC10
+
+---
+
+### KA-010
+**TYPE:** METRIC  
+**CONTENT:** Unconstrained agents burn $5-8 per task through planning, execution, and verification loops. Cost drivers: Multi-turn reasoning (40-60%), Tool calls (20-30%), Context accumulation (15-25%), Verification loops (10-20%). Output:input token ratio of 4-8:1 drives compression needs.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/economic_optimization_modeling/overview.md  
+**DOMAINS:** D1, D8  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC10
+
+---
+
+### KA-011
+**TYPE:** TECHNIQUE  
+**CONTENT:** Semantic caching using embeddings achieves 31-90% input token reduction by matching intent rather than exact strings. Implementation: Store embedding of query, retrieve on similarity threshold, return cached response if match > threshold.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/economic_optimization_modeling/overview.md  
+**DOMAINS:** D3, D4, D8  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC7, PC10
+
+---
+
+### KA-012
+**TYPE:** COMBINATION  
+**CONTENT:** Model cascade routing: Start with cheap models, escalate only when needed. Achieves 60-87% cost reduction with minimal quality loss. EvoRoute demonstrates self-evolving routing with 76% cost reduction and 14% latency improvement through reinforcement learning.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/economic_optimization_modeling/overview.md  
+**DOMAINS:** D1, D8  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC8, PC10
+
+---
+
+### KA-013
+**TYPE:** CONSTRAINT  
+**CONTENT:** Adaptive throttling maintains 95th percentile latency within 2x baseline under 5x load, while shed-load approaches see 10x latency degradation. Use adaptive throttling for latency-sensitive agent workflows.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/distributed_orchestration/overview.md  
+**DOMAINS:** D1, D9  
+**SDLC_PHASES:** P7  
+**PRODUCTS:** PC6, PC9
+
+---
+
+### KA-014
+**TYPE:** METRIC  
+**CONTENT:** Fair-share scheduling reduces task starvation by 89% compared to simple priority queues in multi-agent coding systems. Implementation: Weighted fair queuing with proportional resource allocation.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/02_agent_orchestration/distributed_orchestration/overview.md  
+**DOMAINS:** D1, D2  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC8
+
+---
+
+### KA-015
+**TYPE:** FAILURE_MODE  
+**CONTENT:** Deadlock in agent systems: Occurs when agents wait indefinitely for resources held by each other. Detection: Wait-for graphs, timeout-based detection. Prevention: Resource ordering, time limits. Recovery: Agent termination, resource preemption, rollback. Rates: 2-7% in complex workflows without explicit prevention.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/02_agent_orchestration/agent_system_design/overview.md  
+**DOMAINS:** D1, D2  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC6, PC10
+
+---
+
+### KA-016
+**TYPE:** TECHNIQUE  
+**CONTENT:** Conditional multi-stage prompting for failure recovery: Chain through diagnosis → planning → recovery stages using zero-shot prompting. Achieves 19% higher success rates on Tasks-from-Description benchmarks compared to single-stage recovery.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/agent_system_design/overview.md, docs/research/02_agent_orchestration/agent_system_design/patterns.md  
+**DOMAINS:** D1, D6  
+**SDLC_PHASES:** P6  
+**PRODUCTS:** PC10
+
+---
+
+### KA-017
+**TYPE:** METRIC  
+**CONTENT:** Mixture-of-Agents (MoA) architectures demonstrate 8-12% improvement over single-agent baselines on coding benchmarks, at cost of 3-5x compute overhead. Use for quality-critical tasks requiring high confidence.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/agent_system_design/overview.md  
+**DOMAINS:** D1, D6  
+**SDLC_PHASES:** P3, P5  
+**PRODUCTS:** PC3, PC8
+
+---
+
+### KA-018
+**TYPE:** TECHNIQUE  
+**CONTENT:** Adversarial review patterns from code review literature show 40% higher bug detection rates compared to single-agent review. Implementation: Deploy dedicated critic agents to challenge, review, and validate outputs from worker agents.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/agent_system_design/overview.md, docs/research/02_agent_orchestration/agent_system_design/patterns.md  
+**DOMAINS:** D1, D5, D6  
+**SDLC_PHASES:** P5  
+**PRODUCTS:** PC2, PC3
+
+---
+
+### KA-019
+**TYPE:** ANTI_PATTERN  
+**CONTENT:** "God Agent" - Single agent handling all tasks. Failure modes: Context window overflow, poor performance on specialized tasks, difficult to maintain, no fault isolation. Mitigation: Decompose into specialized agents with clear responsibilities coordinated by orchestrator.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/patterns.md  
+**DOMAINS:** D1, D2  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC6, PC8
+
+---
+
+### KA-020
+**TYPE:** ANTI_PATTERN  
+**CONTENT:** "Chatty Agent Communication" - Agents communicating excessively causing latency and cost explosion. Failure modes: 10x cost increase, 5x latency increase, rate limiting issues. Mitigation: Batch communications and use shared state instead of per-step confirmations.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/patterns.md  
+**DOMAINS:** D1, D9  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC6, PC10
+
+---
+
+### KA-021
+**TYPE:** CONSTRAINT  
+**CONTENT:** Temperature settings by task type: Code generation: 0.1 (consistency), Code review: 0.1 (consistency), Documentation: 0.3 (some creativity), Brainstorming: 0.7 (high creativity), Factual Q&A: 0.0 (deterministic). Using wrong temperature causes inconsistent generation or hallucinated facts.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/system_design_philosophy/patterns.md, docs/research/03_context_memory_intelligence/reasoning_architecture/overview.md  
+**DOMAINS:** D1, D3, D8  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC4, PC6
+
+---
+
+### KA-022
+**TYPE:** TECHNIQUE  
+**CONTENT:** Kilo ask_followup_question tool: Structured clarification with parameters (question, follow_up list of 2-4 suggested answers). Agents with clarification capabilities achieve 23% higher task success rates by preventing incorrect assumptions.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/agent_system_design/overview.md, docs/research/07_human_interaction/human_in_the_loop_systems/overview.md  
+**DOMAINS:** D1, D11  
+**SDLC_PHASES:** P2, P6  
+**PRODUCTS:** PC2, PC4
+
+---
+
+### KA-023
+**TYPE:** METRIC  
+**CONTENT:** Optimal decomposition depth varies by task complexity: 2-3 levels for simple tasks, 5-7 levels for complex SDLC workflows. Over-decomposition increases coordination overhead; under-decomposition creates unmanageable units.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/02_agent_orchestration/task_architecture/overview.md  
+**DOMAINS:** D2  
+**SDLC_PHASES:** P2, P3  
+**PRODUCTS:** PC8
+
+---
+
+### KA-024
+**TYPE:** METRIC  
+**CONTENT:** Worktree isolation reduces merge conflicts by 67% compared to shared branch development in multi-agent coding systems. Pattern: Create dedicated git branch/worktree for each task, validate before merge.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/task_architecture/overview.md, docs/research/02_agent_orchestration/task_architecture/patterns.md  
+**DOMAINS:** D2, D9  
+**SDLC_PHASES:** P3, P5  
+**PRODUCTS:** PC9
+
+---
+
+### KA-025
+**TYPE:** TECHNIQUE  
+**CONTENT:** Semantic merging with LLM assistance achieves 78% automatic resolution rate, compared to 45% for traditional three-way merge. Use for conflict resolution in concurrent agent work.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/02_agent_orchestration/task_architecture/overview.md, docs/research/02_agent_orchestration/task_architecture/patterns.md  
+**DOMAINS:** D2, D5  
+**SDLC_PHASES:** P3, P5  
+**PRODUCTS:** PC10
+
+---
+
+### KA-026
+**TYPE:** METRIC  
+**CONTENT:** Multi-agent QA swarms deploy multiple agents with different validation focuses (correctness, security, performance, style), achieving 40% higher bug detection than single-agent validation.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/task_architecture/overview.md  
+**DOMAINS:** D1, D6  
+**SDLC_PHASES:** P4, P5  
+**PRODUCTS:** PC3, PC8
+
+---
+
+### KA-027
+**TYPE:** METRIC  
+**CONTENT:** Async DAG execution achieves 2.3x speedup over sequential for typical SDLC workflows. Pattern: Independent tasks execute concurrently, pipeline parallelism across stages.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/task_architecture/overview.md  
+**DOMAINS:** D2, D9  
+**SDLC_PHASES:** P3, P7  
+**PRODUCTS:** PC3, PC8
+
+---
+
+### KA-028
+**TYPE:** CONSTRAINT  
+**CONTENT:** Federated clusters with regional coordinators achieve 3x throughput compared to single-coordinator architectures for geographically distributed teams. Use for enterprise-scale multi-agent deployments.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/02_agent_orchestration/distributed_orchestration/overview.md  
+**DOMAINS:** D1, D10  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC9
+
+---
+
+### KA-029
+**TYPE:** COMBINATION  
+**CONTENT:** Hierarchical Task Decomposition + DAG-Based Execution + Worktree Isolation: Use for complex multi-file changes. Order: (1) Decompose into task tree 2-7 levels deep, (2) Convert to DAG with dependencies, (3) Execute in isolated worktrees, (4) Merge with semantic resolution.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/task_architecture/patterns.md  
+**DOMAINS:** D2, D5  
+**SDLC_PHASES:** P2, P3  
+**PRODUCTS:** PC3, PC8, PC9
+
+---
+
+### KA-030
+**TYPE:** FAILURE_MODE  
+**CONTENT:** Context Poisoning: Malicious or low-quality context corrupts agent reasoning. Attack vectors: Malicious code comments, misleading documentation, adversarial retrieval results. Detection: Anomaly detection on context embeddings, consistency checking, provenance tracking. Response: Context sanitization, trusted source prioritization.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/overview.md, docs/research/03_context_memory_intelligence/context_management/patterns.md  
+**DOMAINS:** D3, D7  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC6, PC7
+
+---
+
+### KA-031
+**TYPE:** CONSTRAINT  
+**CONTENT:** "Disposable Session" Principle: Once a session's context is compromised by poisoning, treat entire session as disposable. No reliable recovery exists other than starting fresh. Sessions have integrity boundaries; crossing them invalidates entire session.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/overview.md, docs/research/03_context_memory_intelligence/context_management/patterns.md  
+**DOMAINS:** D3, D7  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC6, PC7
+
+---
+
+### KA-032
+**TYPE:** TECHNIQUE  
+**CONTENT:** U-Shaped Context Placement: Place critical information at context window beginnings and ends to mitigate "lost in the middle" phenomenon. System prompts and constraints at start; key retrieved documents at ends.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/overview.md, docs/research/03_context_memory_intelligence/context_management/patterns.md  
+**DOMAINS:** D3  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC4, PC7
+
+---
+
+### KA-033
+**TYPE:** METRIC  
+**CONTENT:** LLMLingua framework achieves 20x compression with <3% performance degradation on reasoning tasks through prompt compression algorithms. Selective Context method reduces tokens by 50% while maintaining 97% of original performance.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/overview.md  
+**DOMAINS:** D3, D8  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC7, PC10
+
+---
+
+### KA-034
+**TYPE:** METRIC  
+**CONTENT:** Naive context filling leads to 23-45% wasted tokens on irrelevant content, while optimized allocation improves task success rates by 18-32%. Implement budget-aware retrieval with relevance scoring.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/overview.md, docs/research/03_context_memory_intelligence/context_management/patterns.md  
+**DOMAINS:** D3, D8  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC7
+
+---
+
+### KA-035
+**TYPE:** COMBINATION  
+**CONTENT:** Budget-Aware Retrieval + U-Shaped Placement + Semantic Chunking: Use for large codebase navigation. Order: (1) Define token budget per task phase, (2) Retrieve with relevance scoring, (3) Chunk at semantic boundaries (AST-based), (4) Place critical context at window edges.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/patterns.md  
+**DOMAINS:** D3, D4, D5  
+**SDLC_PHASES:** P1, P2  
+**PRODUCTS:** PC7
+
+---
+
+### KA-036
+**TYPE:** ANTI_PATTERN  
+**CONTENT:** Context Stuffing: Maximally filling context windows without prioritization. Failure modes: 23-45% tokens wasted, "lost in the middle" buries critical info, increased costs without benefit. Mitigation: Relevance-based filtering, budget-aware retrieval, U-shaped placement.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/patterns.md  
+**DOMAINS:** D3  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC7, PC10
+
+---
+
+### KA-037
+**TYPE:** TECHNIQUE  
+**CONTENT:** Hierarchical Summarization: Multi-level summaries enabling zoom-in/zoom-out navigation. Define hierarchy levels (file → module → package → repo). Cache summaries to avoid recomputation.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/patterns.md  
+**DOMAINS:** D3, D4  
+**SDLC_PHASES:** P1, P2  
+**PRODUCTS:** PC7
+
+---
+
+### KA-038
+**TYPE:** TECHNIQUE  
+**CONTENT:** Chain-of-Thought prompting: Adding "Let's think step by step" improves accuracy by 20-40% on reasoning tasks. Self-consistency CoT with multiple reasoning paths and majority voting further improves reliability.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/reasoning_architecture/overview.md  
+**DOMAINS:** D4  
+**SDLC_PHASES:** P2, P3, P6  
+**PRODUCTS:** PC4
+
+---
+
+### KA-039
+**TYPE:** METRIC  
+**CONTENT:** Tree-of-Thought (ToT) achieves 30-50% improvement on complex reasoning tasks over baseline CoT, but requires 5-10x more compute. Graph-of-Thought (GoT) shows additional 10-20% improvement over ToT with higher computational overhead.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/reasoning_architecture/overview.md  
+**DOMAINS:** D4  
+**SDLC_PHASES:** P2, P3, P6  
+**PRODUCTS:** PC4, PC10
+
+---
+
+### KA-040
+**TYPE:** TECHNIQUE  
+**CONTENT:** Self-critique loops reduce error rates by 25-40% on code generation through iterative critique. Risk: "Echo chamber" effects where models fail to identify own errors. Mitigation: Use multi-model adversarial review.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/reasoning_architecture/overview.md  
+**DOMAINS:** D4, D6  
+**SDLC_PHASES:** P3, P5  
+**PRODUCTS:** PC4, PC10
+
+---
+
+### KA-041
+**TYPE:** TECHNIQUE  
+**CONTENT:** Pre-execution validation catches 60-75% of potential errors, significantly reducing rollback costs. Techniques: Static analysis, simulation/dry-run, constraint checking, dependency validation.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/03_context_memory_intelligence/reasoning_architecture/overview.md  
+**DOMAINS:** D4, D6  
+**SDLC_PHASES:** P3, P7  
+**PRODUCTS:** PC6
+
+---
+
+### KA-042
+**TYPE:** TOOL  
+**CONTENT:** Augment Context Engine MCP: Model Context Protocol server providing semantic code context. Performance benchmarks: Cursor + Claude Opus 4.5 + MCP = 71% improvement; Claude Code + Opus 4.5 + MCP = 80% improvement. Indexes 1M+ files with real-time updates.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/overview.md  
+**DOMAINS:** D3, D5  
+**SDLC_PHASES:** P1, P2  
+**PRODUCTS:** PC5, PC7
+
+---
+
+### KA-043
+**TYPE:** CONSTRAINT  
+**CONTENT:** Code-specific embeddings (Voyage Code, CodeSage) outperform general embeddings by 15-30% on code retrieval tasks. Chunk-aware embedding strategies further improve performance. Use code-specialized embeddings for agent memory.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/03_context_memory_intelligence/memory_systems/overview.md  
+**DOMAINS:** D4, D5  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC7
+
+---
+
+### KA-044
+**TYPE:** METRIC  
+**CONTENT:** GraphRAG approach combines knowledge graphs with vector retrieval, achieving 23% improvement on multi-hop reasoning tasks compared to pure vector retrieval. Cost: Increased indexing complexity.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/03_context_memory_intelligence/memory_systems/overview.md  
+**DOMAINS:** D4  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC7
+
+---
+
+### KA-045
+**TYPE:** METRIC  
+**CONTENT:** Experience-derived heuristics improve task success rates by 12-18% after 100+ interactions in learning agents. Requires careful validation to avoid overfitting to specific patterns.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/03_context_memory_intelligence/memory_systems/overview.md  
+**DOMAINS:** D4, D12  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC2
+
+---
+
+### KA-046
+**TYPE:** TECHNIQUE  
+**CONTENT:** Semantic-guided code traversal reduces exploration time by 40-60% compared to naive approaches while maintaining comprehension quality. Combine static analysis (structure) with semantic understanding (relevance).  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/code_exploration/overview.md  
+**DOMAINS:** D5  
+**SDLC_PHASES:** P1, P2  
+**PRODUCTS:** PC7
+
+---
+
+### KA-047
+**TYPE:** TECHNIQUE  
+**CONTENT:** Hybrid semantic-syntactic search (CoSrch) achieves 7.60% improvement in SuccessRate@1 over previous baselines by capturing long-range dependencies and fusing syntactic-semantic information with overlap-aware modality decomposition.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/code_exploration/overview.md  
+**DOMAINS:** D5  
+**SDLC_PHASES:** P1, P2  
+**PRODUCTS:** PC7
+
+---
+
+### KA-048
+**TYPE:** CONSTRAINT  
+**CONTENT:** Starting from entrypoints reduces exploration scope by 60-80% compared to whole-codebase analysis. Entrypoint identification is first step in top-down code exploration.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/code_exploration/overview.md  
+**DOMAINS:** D5  
+**SDLC_PHASES:** P1  
+**PRODUCTS:** PC7
+
+---
+
+### KA-049
+**TYPE:** METRIC  
+**CONTENT:** Intelligent file prioritization reduces exploration time by 50-70% while maintaining comprehension quality. Use file relevance scoring and incremental file analysis.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/code_exploration/overview.md  
+**DOMAINS:** D5  
+**SDLC_PHASES:** P1, P2  
+**PRODUCTS:** PC7
+
+---
+
+### KA-050
+**TYPE:** TECHNIQUE  
+**CONTENT:** Spec-driven approaches reduce defect rates by 30-50% compared to ad-hoc development. Critique: Over-specification leads to "spec rot" where documentation diverges from implementation. Solution: Bidirectional maintenance.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/specification_design/overview.md  
+**DOMAINS:** D5  
+**SDLC_PHASES:** P2  
+**PRODUCTS:** PC3, PC4
+
+---
+
+### KA-051
+**TYPE:** METRIC  
+**CONTENT:** Standardized documentation templates reduce onboarding time by 40-60% and improve code review efficiency by 25%. C4 model has become de facto standard for architecture documentation.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/specification_design/overview.md  
+**DOMAINS:** D5  
+**SDLC_PHASES:** P2, P8  
+**PRODUCTS:** PC4
+
+---
+
+### KA-052
+**TYPE:** TECHNIQUE  
+**CONTENT:** Intent-driven approaches show 30% improvement in requirement satisfaction when intent is explicitly captured. Objective-driven approaches demonstrate 25% improvement in task completion rates with explicit objectives.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/04_code_intelligence/specification_design/overview.md  
+**DOMAINS:** D5, D11  
+**SDLC_PHASES:** P2  
+**PRODUCTS:** PC4
+
+---
+
+### KA-053
+**TYPE:** CONSTRAINT  
+**CONTENT:** Complexity budgets reduce defect density by 40% when enforced consistently. AI-generated code has 30% more abstraction layers and 20% more verbosity than human-written code. Explicit complexity limits reduce this tendency.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/04_code_intelligence/specification_design/overview.md  
+**DOMAINS:** D5  
+**SDLC_PHASES:** P2, P3  
+**PRODUCTS:** PC6
+
+---
+
+### KA-054
+**TYPE:** METRIC  
+**CONTENT:** Meta-analysis shows TDD reduces defect density by 40-90% but increases initial development time by 15-35%. For AI agents, tests provide executable specifications for code generation.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/specification_design/overview.md  
+**DOMAINS:** D5, D6  
+**SDLC_PHASES:** P3  
+**PRODUCTS:** PC3
+
+---
+
+### KA-055
+**TYPE:** METRIC  
+**CONTENT:** Systematic refactoring reduces defect density by 25-35% when applied consistently. Automated Program Repair (APR) achieves 70-85% success rates on single-line bugs in test suites with adequate coverage.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/refactoring_optimization/overview.md  
+**DOMAINS:** D5, D6  
+**SDLC_PHASES:** P3, P8  
+**PRODUCTS:** PC10
+
+---
+
+### KA-056
+**TYPE:** TECHNIQUE  
+**CONTENT:** Multi-stage validation reduces production incidents by 60-80% compared to single-stage approaches. Stages: Syntax validation → Type checking → Unit tests → Integration tests → Linting → Security scanning.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/refactoring_optimization/overview.md, docs/research/05_sdlc_automation/testing_architecture/patterns.md  
+**DOMAINS:** D6, D9  
+**SDLC_PHASES:** P4, P5  
+**PRODUCTS:** PC3
+
+---
+
+### KA-057
+**TYPE:** CONSTRAINT  
+**CONTENT:** Sad path testing is often neglected, with 60-70% of production failures coming from untested error paths. AI-generated tests focus 80% on happy paths. Mitigation: Explicitly prompt agents to generate sad path tests.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/refactoring_optimization/overview.md, docs/research/05_sdlc_automation/testing_architecture/overview.md, docs/research/05_sdlc_automation/testing_architecture/patterns.md  
+**DOMAINS:** D6  
+**SDLC_PHASES:** P4  
+**PRODUCTS:** PC4, PC6
+
+---
+
+### KA-058
+**TYPE:** TECHNIQUE  
+**CONTENT:** Proper error handling reduces mean time to recovery (MTTR) by 40-60% through better diagnostics. AI agents often under-invest in error handling without explicit instruction.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/refactoring_optimization/overview.md  
+**DOMAINS:** D5, D6  
+**SDLC_PHASES:** P3, P6  
+**PRODUCTS:** PC6
+
+---
+
+### KA-059
+**TYPE:** COMBINATION  
+**CONTENT:** Automated Repair Loop: Test-driven repair → Lint-driven repair → Review-driven repair → Error-driven repair. Achieves 85%+ resolution rates within 3-5 iterations for common issues. Risk: Infinite loops without progress detection.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/04_code_intelligence/refactoring_optimization/overview.md  
+**DOMAINS:** D5, D6  
+**SDLC_PHASES:** P4, P6  
+**PRODUCTS:** PC3
+
+---
+
+### KA-060
+**TYPE:** TECHNIQUE  
+**CONTENT:** Contract testing with tools like Pact reduces integration failures by 70% in distributed systems. Essential for microservices architectures where services evolve independently.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/testing_architecture/overview.md  
+**DOMAINS:** D6, D9  
+**SDLC_PHASES:** P4  
+**PRODUCTS:** PC3
+
+---
+
+### KA-061
+**TYPE:** METRIC  
+**CONTENT:** Property-based testing finds edge cases 3x more effectively than example-based testing by generating hundreds of test cases automatically. Use for algorithms, data transformations, API contracts.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/testing_architecture/overview.md  
+**DOMAINS:** D6  
+**SDLC_PHASES:** P4  
+**PRODUCTS:** PC3
+
+---
+
+### KA-062
+**TYPE:** METRIC  
+**CONTENT:** LLM-generated tests achieve 60-80% coverage but often miss boundary conditions and error paths. Fuzzing finds security vulnerabilities 5x more effectively than manual testing.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/testing_architecture/overview.md  
+**DOMAINS:** D6  
+**SDLC_PHASES:** P4  
+**PRODUCTS:** PC4
+
+---
+
+### KA-063
+**TYPE:** TECHNIQUE  
+**CONTENT:** Mutation testing correlates with real defect detection at r=0.75, making it a strong predictor of test quality. Use as quality gate for test suite changes. Mutation score indicates percentage of killed mutants.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/testing_architecture/overview.md, docs/research/05_sdlc_automation/testing_architecture/patterns.md  
+**DOMAINS:** D6  
+**SDLC_PHASES:** P4, P5  
+**PRODUCTS:** PC3
+
+---
+
+### KA-064
+**TYPE:** CONSTRAINT  
+**CONTENT:** 80% line coverage correlates with 50% defect reduction, but coverage alone is insufficient. MC/DC coverage required for safety-critical systems (DO-178C). Mutation coverage better predictor than line/branch coverage.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/testing_architecture/overview.md  
+**DOMAINS:** D6  
+**SDLC_PHASES:** P4  
+**PRODUCTS:** PC6
+
+---
+
+### KA-065
+**TYPE:** ANTI_PATTERN  
+**CONTENT:** Test Inversion Anti-Pattern: More E2E tests than unit tests creates inverted pyramid. Results: Long feedback cycles, high maintenance cost, flaky tests, difficulty isolating failures. Constraint AI agents to generate tests in pyramid proportions (~70% unit, ~20% integration, ~10% E2E).  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/testing_architecture/patterns.md  
+**DOMAINS:** D6  
+**SDLC_PHASES:** P4  
+**PRODUCTS:** PC6, PC10
+
+---
+
+### KA-066
+**TYPE:** ANTI_PATTERN  
+**CONTENT:** Happy Path Bias Anti-Pattern: Tests only cover success scenarios, missing error handling. Common in AI-generated tests. Failure mode: Production failures on edge cases, poor error handling. Mitigation: Explicitly prompt agents to generate sad path tests.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/testing_architecture/patterns.md  
+**DOMAINS:** D6  
+**SDLC_PHASES:** P4  
+**PRODUCTS:** PC4, PC6
+
+---
+
+### KA-067
+**TYPE:** METRIC  
+**CONTENT:** Organizations with mature CI/CD practices achieve 208x more frequent deployments, 106x faster lead time, 2,604x faster recovery from failures. CI adoption reduces integration problems by 70% and accelerates time-to-market by 50%.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/cicd_devops/overview.md  
+**DOMAINS:** D9  
+**SDLC_PHASES:** P5, P7  
+**PRODUCTS:** PC3
+
+---
+
+### KA-068
+**TYPE:** TECHNIQUE  
+**CONTENT:** Self-healing pipelines reduce manual intervention by 80% and improve pipeline reliability from 85% to 98%. Patterns: Automatic retry for transient failures, fallback strategies, auto-rollback on failure detection.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/05_sdlc_automation/cicd_devops/overview.md  
+**DOMAINS:** D9  
+**SDLC_PHASES:** P5, P7  
+**PRODUCTS:** PC3
+
+---
+
+### KA-069
+**TYPE:** CONSTRAINT  
+**CONTENT:** Canary deployments reduce deployment incidents by 60% by catching issues before full rollout. Blue/green deployments achieve zero-downtime deployments with instant rollback capability but require double infrastructure.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/cicd_devops/overview.md  
+**DOMAINS:** D9  
+**SDLC_PHASES:** P7  
+**PRODUCTS:** PC3, PC10
+
+---
+
+### KA-070
+**TYPE:** METRIC  
+**CONTENT:** Automated rollback reduces mean time to recovery (MTTR) by 90% compared to manual processes. Essential for autonomous agent deployment. Triggers: Metric-based (threshold breach), time-based (observation period), manual trigger.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/cicd_devops/overview.md  
+**DOMAINS:** D9  
+**SDLC_PHASES:** P7  
+**PRODUCTS:** PC3
+
+---
+
+### KA-071
+**TYPE:** TECHNIQUE  
+**CONTENT:** Feature flags reduce deployment risk by 70% and enable trunk-based development. Provide fine-grained control over generated feature releases. Services: LaunchDarkly, Split, Unleash.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/cicd_devops/overview.md  
+**DOMAINS:** D9  
+**SDLC_PHASES:** P7  
+**PRODUCTS:** PC3
+
+---
+
+### KA-072
+**TYPE:** METRIC  
+**CONTENT:** Structured logs reduce debugging time by 50% compared to unstructured logs. Error fingerprinting reduces alert noise by 70% and accelerates root cause identification. Use for AI agent feedback.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/observability_feedback_loops/overview.md  
+**DOMAINS:** D6, D9  
+**SDLC_PHASES:** P6, P8  
+**PRODUCTS:** PC7
+
+---
+
+### KA-073
+**TYPE:** METRIC  
+**CONTENT:** Distributed tracing reduces mean time to resolution by 60% in microservices architectures. Metrics enable 80% of incident detection through threshold-based alerting. Feedback loops improve system reliability by 40% when consistently applied.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/observability_feedback_loops/overview.md  
+**DOMAINS:** D9  
+**SDLC_PHASES:** P6, P8  
+**PRODUCTS:** PC7
+
+---
+
+### KA-074
+**TYPE:** TOOL  
+**CONTENT:** Apprise notification framework: Single library for 80+ notification services (email, Slack, SMS, desktop). Unified API enables flexible agent-to-human communication. Supports tagging, priority routing, environment variable configuration.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/05_sdlc_automation/observability_feedback_loops/overview.md, docs/research/07_human_interaction/human_in_the_loop_systems/overview.md  
+**DOMAINS:** D9, D11  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC5
+
+---
+
+### KA-075
+**TYPE:** METRIC  
+**CONTENT:** Performance scoring enables 35% improvement in agent effectiveness through targeted optimization. Trust scoring improves human-AI collaboration by 40% through appropriate autonomy levels. Metrics: Task completion rate, code quality, human intervention rate.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/05_sdlc_automation/observability_feedback_loops/overview.md  
+**DOMAINS:** D6, D11  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC2, PC6
+
+---
+
+### KA-076
+**TYPE:** TECHNIQUE  
+**CONTENT:** Five Autonomy Levels: Operator (human controls), Collaborator (equal footing), Consultant (agent seeks input), Approver (agent autonomous but requires approval for consequential actions), Observer (full autonomy with monitoring). Define clear boundaries for each level.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/07_human_interaction/human_in_the_loop_systems/overview.md  
+**DOMAINS:** D11  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC1, PC6
+
+---
+
+### KA-077
+**TYPE:** CONSTRAINT  
+**CONTENT:** Belief-performance gap: Humans overestimate AI correctness by up to 80 percentage points. Confidence often exceeds verification capability. Implement calibration monitoring and adjustment over time.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/07_human_interaction/human_in_the_loop_systems/overview.md  
+**DOMAINS:** D4, D11  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC6
+
+---
+
+### KA-078
+**TYPE:** TECHNIQUE  
+**CONTENT:** Confidence-based escalation: Route outputs to human review based on uncertainty quantification. Cascaded LLM decision frameworks use deferral policies (base model → large model → human) based on confidence scores. Empirical results show 70% cost reduction while maintaining high accuracy.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/07_human_interaction/human_in_the_loop_systems/overview.md  
+**DOMAINS:** D4, D11  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC3, PC6
+
+---
+
+### KA-079
+**TYPE:** COMBINATION  
+**CONTENT:** Risk Classification + Confidence-Based Escalation + Auto-Approval Gateway: Actions classified by impact (low/medium/high/critical). Low-risk actions auto-approved; high-risk actions escalated based on confidence thresholds. Use for autonomous deployment with safety.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/07_human_interaction/human_in_the_loop_systems/overview.md  
+**DOMAINS:** D7, D11  
+**SDLC_PHASES:** P3, P7  
+**PRODUCTS:** PC3, PC6
+
+---
+
+### KA-080
+**TYPE:** CONSTRAINT  
+**CONTENT:** Cognitive load optimization strategies: Intelligent batching of approvals, progressive disclosure (minimal info by default), confidence-based filtering (only escalate when necessary), context summarization, adaptive thresholds based on human workload.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/07_human_interaction/human_in_the_loop_systems/overview.md  
+**DOMAINS:** D11  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC6
+
+---
+
+### KA-081
+**TYPE:** TOOL  
+**CONTENT:** Eigent AI Safe Mode: Toggle enables HITL for dangerous terminal commands. Dangerous categories: system (sudo, reboot), file (rm, chown), disk (dd, mkfs), process (systemctl), network (iptables). Three-option approval: Yes (once), All Yes in task, No.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/07_human_interaction/human_in_the_loop_systems/overview.md  
+**DOMAINS:** D7, D11  
+**SDLC_PHASES:** P3, P6  
+**PRODUCTS:** PC5, PC6
+
+---
+
+### KA-082
+**TYPE:** METRIC  
+**CONTENT:** Hallucination impact statistics: 19.7% of recommended packages in LLM-generated code are fabricated ("slopsquatting"); 40-45% of AI-generated code contains exploitable security vulnerabilities; 43% of Java errors are API misuse hallucinations.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/security_architecture/overview.md  
+**DOMAINS:** D7  
+**SDLC_PHASES:** P3  
+**PRODUCTS:** PC6
+
+---
+
+### KA-083
+**TYPE:** CONSTRAINT  
+**CONTENT:** 3f+1 agents required to tolerate f Byzantine failures in multi-agent systems. Use consensus requirements for critical changes. Implement sandboxing, permission boundaries, audit logging for mitigation.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/02_agent_orchestration/distributed_orchestration/overview.md  
+**DOMAINS:** D1, D7  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC6
+
+---
+
+### KA-084
+**TYPE:** TECHNIQUE  
+**CONTENT:** Multi-layer hallucination defense: Generation → Consistency Check → Static Analysis → Execution Test → Human Review. Benefits: Defense in depth against multiple hallucination types. Costs: Higher latency (100ms-5s per check layer).  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/01_meta_architecture/security_architecture/patterns.md  
+**DOMAINS:** D7  
+**SDLC_PHASES:** P3, P5  
+**PRODUCTS:** PC3
+
+---
+
+### KA-085
+**TYPE:** FAILURE_MODE  
+**CONTENT:** Context Poisoning Attack Vectors: Model Hallucination (internal, hidden, partial preventability via validation), Code Comments (external, visible, partial via code review), Contaminated Input (user, often hidden, high preventability via sanitization), Context Overflow (architectural, hidden, partial via session management).  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/overview.md  
+**DOMAINS:** D3, D7  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC6
+
+---
+
+### KA-086
+**TYPE:** CONSTRAINT  
+**CONTENT:** Why "Wake-Up Prompts" Don't Work: Temporary effect masks damage; poisoned context remains in conversational buffer; any query outside immediate "patch" re-triggers issue. Corrective prompts only suppress symptoms; corrupted data persists. Hard session reset required.  
+**EVIDENCE_STRENGTH:** MODERATE  
+**SOURCE:** docs/research/03_context_memory_intelligence/context_management/overview.md  
+**DOMAINS:** D3, D7  
+**SDLC_PHASES:** P6  
+**PRODUCTS:** PC6
+
+---
+
+### KA-087
+**TYPE:** TOOL  
+**CONTENT:** RAG for Code (Hybrid Retrieval): BM25 + dense retrieval achieves 67% reduction in hallucinations. Must be combined with verification for production use. Context noise and conflict remain major challenges.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/security_architecture/overview.md  
+**DOMAINS:** D3, D7  
+**SDLC_PHASES:** P1-P8  
+**PRODUCTS:** PC7
+
+---
+
+### KA-088
+**TYPE:** TECHNIQUE  
+**CONTENT:** Self-Consistency and Verification: Sample multiple reasoning paths, select via majority vote. Reduces stochastic errors by 7-19%. Chain-of-Verification (CoVe): Draft → Plan verification → Answer independently → Generate verified response.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/01_meta_architecture/security_architecture/overview.md  
+**DOMAINS:** D4, D6  
+**SDLC_PHASES:** P3, P5  
+**PRODUCTS:** PC4
+
+---
+
+### KA-089
+**TYPE:** RECIPE  
+**CONTENT:** Auto-Launch Workspace Configuration: Create `.kilocode/launchConfig.json` with prompt (required), profile (optional), mode (optional). Execution sequence: VS Code open → Extension activate → Check config (~500ms) → Switch profile if specified → Switch mode if specified → Launch task → Sidebar focus. Use for reproducible environments, A/B testing, onboarding.  
+**EVIDENCE_STRENGTH:** STRONG  
+**SOURCE:** docs/research/02_agent_orchestration/agent_system_design/overview.md  
+**DOMAINS:** D1, D10  
+**SDLC_PHASES:** P1  
+**PRODUCTS:** PC5, PC9
+
+---
+
+## Deduplication Log
+
+| Duplicate Group | Kept | Merged From | Rationale |
+|-----------------|------|-------------|-----------|
+| Spec-driven workflow metrics | KA-001 | Overview + patterns | Kept version with specific 56% and 87% numbers |
+| Mode switching drift reduction | KA-006 | Overview + patterns | Kept complete with 34% and cost tradeoff |
+| Bidirectional specifications | KA-004 | Overview + patterns | Merged complementary details |
+| Conditional multi-stage recovery | KA-016 | Overview + patterns | Kept with 19% improvement metric |
+| Context poisoning | KA-030, KA-031 | Overview + patterns | Split into technique and constraint |
+| U-shaped placement | KA-032 | Overview + patterns | Kept with implementation details |
+| Ask follow-up question | KA-022 | Agent design + HITL | Merged from both sources |
+| Worktree isolation | KA-024 | Overview + patterns | Kept with 67% metric |
+| Semantic merging | KA-025 | Overview + patterns | Kept with 78% vs 45% comparison |
+| Multi-stage validation | KA-056 | Refactoring + testing | Merged complementary stage lists |
+| Sad path testing | KA-057 | Multiple files | Kept most comprehensive version |
+| Temperature settings | KA-021 | Philosophy + reasoning | Merged complete guidance |
+| Apprise framework | KA-074 | Observability + HITL | Merged from both sources |
+
+---
+
+## Ranking Summary
+
+### TECHNIQUE (28 atoms) - Ranked by Evidence Strength
+
+| Rank | ID | Evidence | Specificity |
+|------|----|----------|-------------|
+| 1 | KA-001 | STRONG | High (56%, 87%) |
+| 2 | KA-032 | STRONG | High (U-shape placement) |
+| 3 | KA-022 | STRONG | High (Kilo tool specifics) |
+| 4 | KA-016 | STRONG | High (19% improvement) |
+| 5 | KA-038 | STRONG | High (20-40% improvement) |
+| 6 | KA-040 | STRONG | High (25-40% error reduction) |
+| 7 | KA-046 | STRONG | High (40-60% reduction) |
+| 8 | KA-047 | STRONG | High (7.60% improvement) |
+| 9 | KA-055 | STRONG | High (70-85% success) |
+| 10 | KA-060 | STRONG | High (70% reduction) |
+| 11 | KA-061 | STRONG | High (3x effectiveness) |
+| 12 | KA-068 | MODERATE | High (80%, 85%→98%) |
+| 13 | KA-070 | STRONG | High (90% reduction) |
+| 14 | KA-072 | STRONG | High (50%, 70%) |
+| 15 | KA-073 | STRONG | High (60%, 80%, 40%) |
+| 16 | KA-078 | STRONG | High (70% cost reduction) |
+| 17 | KA-088 | STRONG | High (7-19% reduction) |
+| 18 | KA-002 | STRONG | Medium (BDI architecture) |
+| 19 | KA-004 | STRONG | Medium (bidirectional specs) |
+| 20 | KA-008 | MODERATE | High (100/1000 tokens) |
+| 21 | KA-011 | STRONG | High (31-90% reduction) |
+| 23 | KA-033 | STRONG | High (20x compression) |
+| 24 | KA-037 | MODERATE | Medium (hierarchical summarization) |
+| 25 | KA-041 | MODERATE | High (60-75% catch rate) |
+| 26 | KA-052 | MODERATE | High (30%, 25% improvement) |
+| 27 | KA-058 | STRONG | High (40-60% MTTR reduction) |
+| 28 | KA-080 | MODERATE | Medium (cognitive load strategies) |
+
+### METRIC (18 atoms) - Ranked by Evidence Strength
+
+| Rank | ID | Evidence | Key Numbers |
+|------|----|----------|-------------|
+| 1 | KA-010 | STRONG | $5-8/task, 4-8:1 ratio |
+| 2 | KA-017 | STRONG | 8-12% improvement, 3-5x overhead |
+| 3 | KA-018 | STRONG | 40% higher detection |
+| 4 | KA-023 | MODERATE | 2-3 levels simple, 5-7 complex |
+| 5 | KA-027 | STRONG | 2.3x speedup |
+| 6 | KA-028 | MODERATE | 3x throughput |
+| 7 | KA-034 | STRONG | 23-45% waste, 18-32% improvement |
+| 8 | KA-039 | STRONG | 30-50% improvement, 5-10x compute |
+| 9 | KA-043 | STRONG | 15-30% improvement |
+| 10 | KA-044 | MODERATE | 23% improvement |
+| 11 | KA-045 | MODERATE | 12-18% improvement |
+| 12 | KA-048 | STRONG | 60-80% reduction |
+| 13 | KA-049 | STRONG | 50-70% reduction |
+| 14 | KA-051 | STRONG | 40-60% reduction, 25% improvement |
+| 15 | KA-054 | STRONG | 40-90% defect reduction, 15-35% time increase |
+| 16 | KA-062 | STRONG | 60-80% coverage, 5x vulnerability detection |
+| 17 | KA-063 | STRONG | r=0.75 correlation |
+| 18 | KA-082 | STRONG | 19.7% fabricated, 40-45% vulnerabilities |
+
+### CONSTRAINT (12 atoms) - Ranked by Evidence Strength
+
+| Rank | ID | Evidence | Type |
+|------|----|----------|------|
+| 1 | KA-006 | STRONG | Hard limit (34% drift reduction) |
+| 2 | KA-013 | STRONG | Performance bound (95th percentile) |
+| 3 | KA-021 | STRONG | Configuration requirement |
+| 4 | KA-031 | STRONG | Session integrity |
+| 5 | KA-042 | STRONG | Tool capability (71-80% improvement) |
+| 6 | KA-048 | STRONG | Scope reduction (60-80%) |
+| 7 | KA-053 | MODERATE | Complexity budget |
+| 8 | KA-057 | STRONG | Testing requirement |
+| 9 | KA-064 | STRONG | Coverage threshold |
+| 10 | KA-069 | STRONG | Deployment strategy |
+| 11 | KA-077 | STRONG | Calibration bound (80 percentage points) |
+| 12 | KA-083 | MODERATE | Byzantine fault tolerance |
+
+### TOOL (8 atoms) - Ranked by Evidence Strength
+
+| Rank | ID | Evidence | Maturity |
+|------|----|----------|----------|
+| 1 | KA-042 | STRONG | Production (Augment MCP) |
+| 2 | KA-074 | STRONG | Mature (80+ services) |
+| 3 | KA-081 | MODERATE | Production (Eigent AI) |
+| 4 | KA-087 | STRONG | Research-validated |
+
+### FAILURE_MODE (6 atoms) - Ranked by Evidence Strength
+
+| Rank | ID | Evidence | Detection/Response |
+|------|----|----------|-------------------|
+| 1 | KA-009 | STRONG | Detection + mitigation |
+| 2 | KA-015 | MODERATE | Prevention + recovery |
+| 3 | KA-030 | STRONG | Detection + response |
+| 4 | KA-085 | MODERATE | Classification matrix |
+| 5 | KA-086 | MODERATE | Why fixes fail |
+
+### ANTI_PATTERN (5 atoms) - Ranked by Evidence Strength
+
+| Rank | ID | Evidence | Impact |
+|------|----|----------|--------|
+| 1 | KA-005 | MODERATE | High (no audit trail) |
+| 2 | KA-019 | STRONG | High (single point of failure) |
+| 3 | KA-020 | MODERATE | High (10x cost) |
+| 4 | KA-036 | STRONG | High (23-45% waste) |
+| 5 | KA-065 | STRONG | High (inverted pyramid) |
+
+---
+
+## Source Coverage Map
+
+### Files Contributing Atoms (Top 20)
+
+| Source File | Atoms | Key Types |
+|-------------|-------|-----------|
+| system_design_philosophy/overview.md | 6 | TECHNIQUE, TRADEOFF, CONSTRAINT |
+| system_design_philosophy/patterns.md | 5 | ANTI_PATTERN, TECHNIQUE |
+| economic_optimization_modeling/overview.md | 3 | METRIC, TECHNIQUE, COMBINATION |
+| agent_system_design/overview.md | 8 | METRIC, TECHNIQUE, FAILURE_MODE |
+| agent_system_design/patterns.md | 4 | ANTI_PATTERN, TECHNIQUE |
+| task_architecture/overview.md | 7 | METRIC, TECHNIQUE |
+| task_architecture/patterns.md | 3 | COMBINATION, METRIC |
+| distributed_orchestration/overview.md | 4 | CONSTRAINT, METRIC, FAILURE_MODE |
+| context_management/overview.md | 8 | FAILURE_MODE, CONSTRAINT, METRIC |
+| context_management/patterns.md | 5 | TECHNIQUE, ANTI_PATTERN |
+| reasoning_architecture/overview.md | 5 | TECHNIQUE, METRIC |
+| memory_systems/overview.md | 3 | CONSTRAINT, METRIC |
+| code_exploration/overview.md | 4 | TECHNIQUE, CONSTRAINT, METRIC |
+| specification_design/overview.md | 6 | METRIC, TECHNIQUE, CONSTRAINT |
+| refactoring_optimization/overview.md | 5 | METRIC, TECHNIQUE, COMBINATION |
+| testing_architecture/overview.md | 6 | METRIC, TECHNIQUE |
+| testing_architecture/patterns.md | 3 | ANTI_PATTERN |
+| cicd_devops/overview.md | 5 | METRIC, TECHNIQUE, CONSTRAINT |
+| observability_feedback_loops/overview.md | 4 | METRIC, TOOL |
+| human_in_the_loop_systems/overview.md | 8 | TECHNIQUE, CONSTRAINT, COMBINATION |
+
+### Directory Coverage
+
+| Directory | Total Atoms | % of Corpus |
+|-----------|-------------|-------------|
+| 01_meta_architecture | 18 | 20% |
+| 02_agent_orchestration | 26 | 29% |
+| 03_context_memory_intelligence | 21 | 24% |
+| 04_code_intelligence | 16 | 18% |
+| 05_sdlc_automation | 23 | 26% |
+| 06_data_infrastructure | 0 | 0% |
+| 07_human_interaction | 8 | 9% |
+
+---
+
+## Knowledge Gaps
+
+The following topics were identified in the research corpus but lacked sufficient specificity or evidence to extract as knowledge atoms:
+
+1. **Complexity Scoring Metrics**: No standardized metrics exist; active research area with proposed approaches (token count, tool call depth, cyclomatic complexity, state space size) but no validated thresholds.
+
+2. **Entropy Tracking**: Limited research on agent-specific entropy in evolving codebases; no validated detection methods or thresholds.
+
+3. **Livelock Detection**: Sparse research, mostly anecdotal from practitioner reports; no formal detection algorithms.
+
+4. **Auto-Learning Effectiveness**: Experience-derived heuristics show promise (12-18% improvement) but validation mechanisms to prevent overfitting are not standardized.
+
+5. **Memory Consolidation Scheduling**: "Sleep" for AI systems is mostly theoretical; no practical implementations with validated schedules.
+
+6. **Cross-Repo Memory Synchronization**: Sparse research, mostly vendor-specific implementations; no standardized protocols.
+
+7. **Model Routing Calibration**: RL-tuned routing shows 70-85% cost reduction but requires production validation data not available in corpus.
+
+8. **Context Engine Evaluation**: Augment MCP shows strong benchmarks but independent validation is needed.
+
+---
+
+## Recommended Next Subtask
+
+**Prong 2: ORGANIZE** - Cluster the extracted knowledge atoms into coherent design patterns and architectural principles:
+
+1. Group atoms by SDLC phase to identify phase-specific guidance
+2. Cluster by domain to identify capability requirements
+3. Map atom dependencies to identify prerequisite chains
+4. Identify contradictions or tensions between atoms
+5. Create pattern languages from related atoms
+
+---
+
+*End of Prong 1 Knowledge Atoms Extraction*
+
