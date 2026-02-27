@@ -1,0 +1,5056 @@
+# Domain Groupings - Knowledge Atom Organization
+
+## Overview
+This document organizes knowledge atoms from the Master Knowledge Atom Registry into 12 technical domains. Each domain contains ranked knowledge atoms, key techniques, constraints, tools, cross-domain links, and identified gaps.
+
+**Total Knowledge Atoms**: 185
+**Domains Covered**: D1-D12
+**Extraction Date**: 2026-02-25
+
+---
+
+## D1: Agent Architecture & Orchestration
+
+### Overview
+Covers what agents are, how they're structured, how they coordinate, and how they're specialized. This is the foundational domain for understanding multi-agent systems and their design patterns.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-001 - Auto-Launch Workspaces for deterministic initialization
+- KA-002 - Bidirectional Specifications for spec-code alignment
+- KA-003 - BDI Hybrid Architecture for verifiable reasoning
+- KA-004 - 4-Phase Spec-Driven Workflow (56% faster development)
+- KA-005 - Modular Agent Decomposition for testable components
+- KA-006 - Critic-Actor Pattern for quality validation
+- KA-007 - Structured Human-in-Loop for explicit checkpoints
+- KA-022 - Task-Appropriate Temperature Settings
+- KA-025 - Confidence Scores with AI outputs
+- KA-026 - Layered Guardrail Envelope for defense in depth
+- KA-028 - Task-Scoped MCP Capability Minting
+- KA-029 - Sandboxed Execute-and-Validate Loop
+- KA-030 - Default-Deny Egress with Explicit Allowlists
+- KA-031 - Evidence-First Action Gating
+- KA-032 - Adversarial Regression Suite
+- KA-038 - Multi-Layer Hallucination Defense
+- KA-040 - Multi-Agent Verification Consensus
+- KA-047 - MCP Security Threat Mitigation
+- KA-048 - MCP Single-Responsibility Server Pattern
+- KA-051 - Compliance Envelope per Agent Run
+- KA-052 - Policy-as-Code with Runtime Adjudication
+- KA-053 - Deterministic Control Plane, Stochastic Data Plane
+- KA-055 - Ephemeral Scoped Credential Broker
+- KA-061 - Cascade Router with Confidence Escalation (40-80% cost reduction)
+- KA-062 - Budget-Aware Task Decomposition
+- KA-065 - Skill Gating and Tool Entitlement
+- KA-066 - System-Theoretic Agent Decomposition
+- KA-067 - Hierarchical Multi-Agent Orchestration
+- KA-069 - Mixture-of-Agents (MoA) (8-12% improvement)
+- KA-070 - Role-Based Specialization
+- KA-071 - Mode-Based Operation (34% task drift reduction)
+- KA-072 - Checkpoint-Based Execution
+- KA-073 - Conditional Multi-Stage Recovery (19% higher success)
+- KA-075 - MCP Tool Integration
+- KA-077 - Watchdog Monitoring
+- KA-078 - Adversarial Review (40% higher bug detection)
+- KA-084 - Federated Cluster Architecture (3x throughput)
+- KA-085 - Service Mesh Coordination
+- KA-086 - Worker Pool Pattern
+- KA-087 - Priority Queue with Fair Share (89% task starvation reduction)
+- KA-088 - Work Stealing
+- KA-089 - Lease-Based Distributed Lock
+- KA-090 - Adaptive Throttling (2x latency under 5x load)
+- KA-091 - Hierarchical Task Decomposition
+- KA-092 - DAG-Based Task Graph
+- KA-093 - Conditional Task Graph
+- KA-094 - Single-Responsibility Task
+- KA-095 - Idempotent Task
+- KA-096 - Branch-Per-Task Isolation (67% merge conflict reduction)
+- KA-098 - Multi-Stage Pipeline
+- KA-099 - Budget-Aware Retrieval
+- KA-100 - Hierarchical Summarization
+- KA-101 - U-Shaped Context Placement
+- KA-102 - Task-Conditioned Context
+- KA-103 - Semantic Chunking
+- KA-104 - Context Provenance Tracking
+- KA-108 - Hierarchical Memory Architecture
+- KA-109 - Memory Consolidation
+- KA-110 - Entity-Centric Memory
+- KA-111 - Hybrid Retrieval
+- KA-115 - Multi-Representation Fusion
+- KA-116 - Incremental Representation Updates
+- KA-117 - Layered Abstraction
+- KA-120 - Entrypoint-First Exploration (60-80% scope reduction)
+- KA-121 - Semantic-Guided Traversal (40-60% time reduction)
+- KA-122 - Hybrid Search Fusion (7-60% accuracy improvement)
+- KA-123 - Call Chain Verification (85%+ accuracy)
+- KA-124 - Pattern Library Extraction (80-90% accuracy)
+- KA-127 - Test-Verified Refactoring (25-35% defect reduction)
+- KA-128 - Iterative Repair Loop (85%+ resolution rate)
+- KA-129 - Multi-Stage Validation (60-80% incident reduction)
+- KA-130 - Sad Path Coverage
+- KA-131 - Complexity Budget Enforcement
+- KA-132 - AI Code Normalization (30% less abstraction)
+- KA-136 - Executable Specifications (45% interface defect reduction)
+- KA-137 - Iterative Specification Refinement
+- KA-138 - Test-First for AI Generation (40-90% defect reduction)
+- KA-139 - Architecture Decision Records (35% less tech debt)
+- KA-142 - Pipeline as Code
+- KA-143 - GitOps
+- KA-144 - Blue/Green Deployment
+- KA-145 - Canary Deployment
+- KA-146 - Self-Healing Pipeline (85%→98% reliability)
+- KA-147 - Automated Rollback (90% MTTR reduction)
+- KA-150 - Test Pyramid
+- KA-151 - Test-First/TDD (40-90% defect reduction)
+- KA-152 - Property-Based Testing
+- KA-153 - Mutation Testing (r=0.75 defect correlation)
+- KA-156 - Three Pillars of Observability
+- KA-157 - Structured Logging
+- KA-158 - Error Fingerprinting (70% noise reduction)
+- KA-159 - RED Metrics
+- KA-161 - Declarative Schema as Code
+- KA-162 - Expand-Contract Migration
+- KA-163 - Schema Registry
+- KA-164 - Data Quality Gates
+- KA-168 - GPU Pool with Time-Slicing (3.2x utilization)
+- KA-169 - Semantic Caching Layer (67% cost reduction)
+- KA-170 - Tiered Model Serving
+- KA-171 - Sharded Vector Store (78% latency reduction)
+- KA-172 - Request Batching (4.2x throughput)
+- KA-176 - Confidence-Calibrated Escalation
+- KA-177 - Progressive Disclosure of Reasoning
+- KA-178 - Intelligent Approval Batching
+- KA-179 - Risk-Tiered Auto-Approval Gateway
+- KA-180 - Structured Follow-up Questions
+- KA-181 - Autonomy Level Declaration
+
+**MODERATE Evidence:**
+- KA-008 - Semantic Codebase Understanding for drift detection
+- KA-017 - Intent-Driven Development for evolving requirements
+- KA-018 - Progressive Disclosure Architecture for context efficiency
+- KA-039 - Early Exit with Confidence Gating
+- KA-068 - TEA Protocol Pattern
+- KA-074 - Stigmergic Coordination
+- KA-076 - Repo Grokking Integration
+- KA-097 - Semantic Merge with LLM (78% auto-resolution)
+
+**ANTI-PATTERNS (STRONG):**
+- KA-009 - Vibe Coding - ad-hoc generation without specs
+- KA-010 - Shallow Repo Understanding - file-by-file analysis
+- KA-011 - Stale Documentation Specs - divergent specs
+- KA-012 - Unbounded Context Accumulation - token budget exhaustion
+- KA-013 - Credential Sprawl in IDE - unvaulted credentials
+- KA-014 - Single-Pass Generation - no verification loops
+- KA-015 - Implicit Intent Tracking - no explicit logging
+- KA-016 - Monolithic Agent Design - single agent all tasks
+- KA-019 - God Agent - bottleneck single point of failure
+- KA-020 - Chatty Agent Communication - 10x cost, 5x latency
+- KA-021 - Blind Trust in AI Output - 40-45% vulnerability rate
+- KA-023 - Temperature Ignorance - same temp all tasks
+- KA-024 - False Confidence - no uncertainty indicators
+- KA-033 - Prompt-Only Security - no runtime enforcement
+- KA-035 - Over-Privileged MCP Defaults
+- KA-036 - Unsandboxed Code/Tool Execution
+- KA-037 - Open Egress by Default
+- KA-043 - Blind Trust in LLM Output
+- KA-049 - MCP God Server
+- KA-050 - Secret in Prompt
+- KA-057 - Action Logs Without Decision Context
+- KA-058 - Policy-in-Prompt Only
+- KA-059 - Long-Lived Shared Credentials
+- KA-079 - Monolithic FM-Centric Design
+- KA-080 - Tight Vendor Coupling
+- KA-081 - Silent State Drift
+- KA-082 - Over-Delegation
+- KA-083 - Under-Specified Intent
+- KA-105 - Context Stuffing - 23-45% token waste
+- KA-106 - Naive Truncation
+- KA-107 - Unvalidated Context Injection
+- KA-112 - Memory Monolith
+- KA-113 - Unbounded Memory Growth
+- KA-114 - Stale Embeddings
+- KA-118 - Single Representation Dependency
+- KA-119 - Full Rebuild on Change
+- KA-125 - Exhaustive Linear Traversal
+- KA-126 - Static-Only Dependency Analysis
+- KA-133 - Refactoring Without Tests
+- KA-134 - Happy Path Bias - 60-70% failures untested paths
+- KA-135 - AI Verbosity Acceptance - 30% more abstraction
+- KA-140 - Spec Rot
+- KA-141 - AI Slop Generation
+- KA-148 - Snowflake Environments
+- KA-149 - Long-Running Branches
+- KA-154 - Test Inversion
+- KA-155 - Test Interdependence
+- KA-160 - Alert Fatigue
+- KA-165 - Shared Database
+- KA-166 - Migration in Deployment
+- KA-167 - God Table
+- KA-173 - GPU Over-Provisioning
+- KA-174 - Synchronous External Calls
+- KA-175 - Cache Without Invalidation
+- KA-182 - Approval Fatigue Spiral
+- KA-183 - Context Poisoning from Human Input
+- KA-184 - Rubber-Stamp Automation Theatre
+- KA-185 - Explanation Overload
+
+### Key Techniques (Ranked)
+1. **KA-004** - 4-Phase Spec-Driven Workflow: Specify→Plan→Tasks→Implement with 56% faster development - STRONG
+2. **KA-067** - Hierarchical Multi-Agent Orchestration: Tree structure with planner/manager at root - STRONG
+3. **KA-066** - System-Theoretic Agent Decomposition: Five subsystems (Reasoning, Perception, Action, Learning, Communication) - STRONG
+4. **KA-069** - Mixture-of-Agents (MoA): Multiple agents in layers for 8-12% improvement - STRONG
+5. **KA-070** - Role-Based Specialization: CEO, Architect, Engineer, QA roles - STRONG
+6. **KA-071** - Mode-Based Operation: Discrete modes (Code, Debug, Architect, Review) - STRONG
+7. **KA-005** - Modular Agent Decomposition: Retriever, Writer, Manager, Observer subsystems - STRONG
+8. **KA-006** - Critic-Actor Pattern: Separate generation and review agents - STRONG
+9. **KA-003** - BDI Hybrid Architecture: Belief-Desire-Intent for verifiable reasoning - STRONG
+10. **KA-073** - Conditional Multi-Stage Recovery: Diagnosis→Planning→Recovery chain - STRONG
+
+### Key Metrics
+- **KA-042** - AI-Generated Code Vulnerability Rate: 40-45% without verification
+- **KA-069** - MoA Improvement: 8-12% over single-agent baseline
+- **KA-071** - Mode-Based Operation Task Drift Reduction: 34%
+- **KA-078** - Adversarial Review Bug Detection: 40% higher
+- **KA-084** - Federated Cluster Throughput: 3x improvement
+- **KA-087** - Task Starvation Reduction: 89%
+
+### Key Constraints
+- **KA-026** - Layered Guardrail Envelope: Defense in depth required
+- **KA-028** - Task-Scoped MCP Capability Minting: Least privilege per task
+- **KA-030** - Default-Deny Egress: Block all outbound except approved
+- **KA-031** - Evidence-First Action Gating: Require evidence before high-impact actions
+- **KA-062** - Budget-Aware Task Decomposition: Explicit token/tool-call budgets
+
+### Key Tools
+- **KA-075** - MCP Tool Integration: Standardized tool discovery and invocation
+- **KA-048** - MCP Single-Responsibility Server Pattern: One domain per server
+- **KA-077** - Watchdog Monitoring: Heartbeat and anomaly detection
+
+### Combination Recipes
+- **KA-004 + KA-137** - 4-Phase Workflow with Iterative Spec Refinement for evolving requirements
+- **KA-006 + KA-078** - Critic-Actor with Adversarial Review for multi-layer validation
+- **KA-067 + KA-084** - Hierarchical Orchestration with Federated Clusters for scale
+- **KA-061 + KA-170** - Cascade Router with Tiered Model Serving for cost optimization
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-016 | Monolithic Agent Design | Single point of failure, hard to test | Decompose into modular subsystems |
+| KA-019 | God Agent | Context overflow, poor specialization | Split into specialized agents |
+| KA-020 | Chatty Agent Communication | 10x cost increase, rate limiting | Batch communications, reduce verbosity |
+| KA-079 | Monolithic FM-Centric Design | No introspection, world modeling failures | Add explicit subsystems and state |
+| KA-081 | Silent State Drift | Corrupted beliefs, cascading errors | Add state validation checkpoints |
+| KA-082 | Over-Delegation | Excessive coordination overhead | Consolidate related tasks |
+| KA-083 | Under-Specified Intent | Incorrect interpretations | Require explicit task specifications |
+
+### Anti-Patterns
+- **KA-009** - Vibe Coding: Ad-hoc generation seems faster but lacks reproducibility and audit trail
+- **KA-016** - Monolithic Agent Design: Single agent seems simpler but creates testing nightmares
+- **KA-019** - God Agent: One agent for everything seems efficient but becomes bottleneck
+- **KA-079** - Monolithic FM-Centric Design: Relying on FM alone seems elegant but fails on introspection
+- **KA-080** - Tight Vendor Coupling: Using vendor SDK directly seems easier but creates migration debt
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-069 | Mixture-of-Agents | Single Agent | Use MoA when quality > cost, single agent for speed |
+| KA-067 | Hierarchical Orchestration | Flat Coordination | Hierarchical for complex tasks, flat for simple |
+| KA-074 | Stigmergic Coordination | Direct Messaging | Stigmergic for large scale, direct for small teams |
+| KA-071 | Mode-Based Operation | Single Mode | Modes when task types vary, single mode for focused work |
+
+### Cross-Domain Links
+- **KA-004** also relevant to: D2 (Task Management), D4 (Memory)
+- **KA-006** also relevant to: D2 (Task Management), D4 (Memory)
+- **KA-007** also relevant to: D2 (Task Management), D7 (Security)
+- **KA-062** also relevant to: D2 (Task Management), D6 (Testing)
+- **KA-067** also relevant to: D2 (Task Management)
+- **KA-069** also relevant to: D2 (Task Management)
+- **KA-071** also relevant to: D2 (Task Management)
+
+### Gaps
+- No explicit patterns for agent-to-agent negotiation protocols
+- Limited coverage of agent lifecycle management (spawn, suspend, terminate)
+- Missing patterns for agent learning and skill acquisition over time
+- No coverage of multi-tenant agent isolation patterns
+- Limited guidance on agent versioning and backward compatibility
+
+---
+
+## D2: Task Management & Decomposition
+
+### Overview
+Covers how work is broken down, sequenced, tracked, and validated. This domain focuses on the mechanics of transforming high-level goals into executable units of work.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-001 - Auto-Launch Workspaces for deterministic initialization
+- KA-002 - Bidirectional Specifications for spec-code alignment
+- KA-003 - BDI Hybrid Architecture for verifiable reasoning
+- KA-004 - 4-Phase Spec-Driven Workflow (56% faster development)
+- KA-005 - Modular Agent Decomposition for testable components
+- KA-006 - Critic-Actor Pattern for quality validation
+- KA-007 - Structured Human-in-Loop for explicit checkpoints
+- KA-053 - Deterministic Control Plane, Stochastic Data Plane
+- KA-062 - Budget-Aware Task Decomposition
+- KA-066 - System-Theoretic Agent Decomposition
+- KA-067 - Hierarchical Multi-Agent Orchestration
+- KA-069 - Mixture-of-Agents (MoA) (8-12% improvement)
+- KA-070 - Role-Based Specialization
+- KA-071 - Mode-Based Operation (34% task drift reduction)
+- KA-072 - Checkpoint-Based Execution
+- KA-073 - Conditional Multi-Stage Recovery (19% higher success)
+- KA-077 - Watchdog Monitoring
+- KA-078 - Adversarial Review (40% higher bug detection)
+- KA-084 - Federated Cluster Architecture (3x throughput)
+- KA-085 - Service Mesh Coordination
+- KA-086 - Worker Pool Pattern
+- KA-087 - Priority Queue with Fair Share (89% task starvation reduction)
+- KA-088 - Work Stealing
+- KA-089 - Lease-Based Distributed Lock
+- KA-090 - Adaptive Throttling (2x latency under 5x load)
+- KA-091 - Hierarchical Task Decomposition
+- KA-092 - DAG-Based Task Graph
+- KA-093 - Conditional Task Graph
+- KA-094 - Single-Responsibility Task
+- KA-095 - Idempotent Task
+- KA-096 - Branch-Per-Task Isolation (67% merge conflict reduction)
+- KA-098 - Multi-Stage Pipeline
+
+**MODERATE Evidence:**
+- KA-068 - TEA Protocol Pattern
+- KA-074 - Stigmergic Coordination
+- KA-082 - Over-Delegation (ANTI_PATTERN)
+
+**ANTI-PATTERNS (STRONG):**
+- KA-009 - Vibe Coding - ad-hoc generation without specs
+- KA-011 - Stale Documentation Specs - divergent specs
+- KA-015 - Implicit Intent Tracking - no explicit logging
+- KA-016 - Monolithic Agent Design - single agent all tasks
+- KA-019 - God Agent - bottleneck single point of failure
+- KA-020 - Chatty Agent Communication - 10x cost, 5x latency
+- KA-083 - Under-Specified Intent
+
+### Key Techniques (Ranked)
+1. **KA-091** - Hierarchical Task Decomposition: Recursive breakdown to atomic units - STRONG
+2. **KA-092** - DAG-Based Task Graph: Dependencies as edges, parallel execution - STRONG
+3. **KA-004** - 4-Phase Spec-Driven Workflow: Specify→Plan→Tasks→Implement - STRONG
+4. **KA-094** - Single-Responsibility Task: One responsibility per task - STRONG
+5. **KA-095** - Idempotent Task: Safe retries without side effects - STRONG
+6. **KA-093** - Conditional Task Graph: DAG with runtime conditions - STRONG
+7. **KA-072** - Checkpoint-Based Execution: Explicit pause points - STRONG
+8. **KA-073** - Conditional Multi-Stage Recovery: Diagnosis→Planning→Recovery - STRONG
+9. **KA-062** - Budget-Aware Task Decomposition: Explicit token budgets - STRONG
+10. **KA-087** - Priority Queue with Fair Share: Balance urgency with fairness - STRONG
+
+### Key Metrics
+- **KA-071** - Mode-Based Operation Task Drift Reduction: 34%
+- **KA-084** - Federated Cluster Throughput: 3x improvement
+- **KA-087** - Task Starvation Reduction: 89%
+- **KA-096** - Merge Conflict Reduction: 67%
+
+### Key Constraints
+- **KA-053** - Deterministic Control Plane: Strict determinism for orchestration
+- **KA-062** - Budget-Aware Task Decomposition: Token and tool-call budgets per step
+- **KA-094** - Single-Responsibility Task: One responsibility per task
+- **KA-095** - Idempotent Task: Must produce same result on retry
+
+### Key Tools
+- **KA-085** - Service Mesh Coordination: Sidecar proxies for coordination
+- **KA-086** - Worker Pool Pattern: Pre-initialized workers ready for assignment
+- **KA-088** - Work Stealing: Dynamic load balancing
+- **KA-089** - Lease-Based Distributed Lock: Time-based lock expiration
+
+### Combination Recipes
+- **KA-091 + KA-092** - Hierarchical Decomposition with DAG for complex workflows
+- **KA-094 + KA-095** - Single-Responsibility with Idempotency for reliable tasks
+- **KA-087 + KA-088** - Priority Queue with Work Stealing for fair scheduling
+- **KA-072 + KA-007** - Checkpoint-Based with Human-in-Loop for safety
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-082 | Over-Delegation | Excessive coordination overhead | Consolidate related tasks |
+| KA-083 | Under-Specified Intent | Incorrect interpretations | Require explicit specifications |
+| KA-015 | Implicit Intent Tracking | Lost context across sessions | Add explicit intent logging |
+| KA-011 | Stale Documentation Specs | Divergent specs from implementation | Use bidirectional specifications |
+
+### Anti-Patterns
+- **KA-009** - Vibe Coding: Ad-hoc approach seems flexible but lacks structure
+- **KA-082** - Over-Delegation: Fine-grained tasks seem precise but create overhead
+- **KA-083** - Under-Specified Intent: Vague specs seem accommodating but cause inconsistency
+- **KA-015** - Implicit Intent Tracking: Memory-based tracking seems natural but loses context
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-091 | Fine-Grained Decomposition | Coarse Tasks | Fine for parallelism, coarse for simplicity |
+| KA-093 | Conditional Task Graph | Static DAG | Conditional for adaptive workflows, static for predictable |
+| KA-087 | Priority Queue | FIFO Queue | Priority for urgency, FIFO for fairness |
+
+### Cross-Domain Links
+- **KA-004** also relevant to: D1 (Agent Architecture), D4 (Memory)
+- **KA-007** also relevant to: D1 (Agent Architecture), D7 (Security)
+- **KA-062** also relevant to: D1 (Agent Architecture), D6 (Testing)
+- **KA-096** also relevant to: D1 (Agent Architecture)
+
+### Gaps
+- No patterns for task priority inference from context
+- Limited coverage of task dependency resolution algorithms
+- Missing patterns for task rollback and compensation
+- No explicit guidance on task timeout and deadline management
+- Limited coverage of cross-session task persistence
+
+---
+
+## D3: Context & Prompt Engineering
+
+### Overview
+Covers how agents receive information and how that information is managed. This domain focuses on context window optimization, prompt design, and information retrieval strategies.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-027 - Provenance-Tagged Context Ingestion
+- KA-063 - Semantic Prompt Caching
+- KA-064 - Retrieval Compression Pipeline
+- KA-099 - Budget-Aware Retrieval
+- KA-100 - Hierarchical Summarization
+- KA-101 - U-Shaped Context Placement
+- KA-102 - Task-Conditioned Context
+- KA-103 - Semantic Chunking
+- KA-104 - Context Provenance Tracking
+- KA-108 - Hierarchical Memory Architecture
+- KA-109 - Memory Consolidation
+- KA-110 - Entity-Centric Memory
+- KA-111 - Hybrid Retrieval
+- KA-115 - Multi-Representation Fusion
+- KA-116 - Incremental Representation Updates
+- KA-117 - Layered Abstraction
+- KA-121 - Semantic-Guided Traversal (40-60% time reduction)
+- KA-122 - Hybrid Search Fusion (7-60% accuracy improvement)
+- KA-169 - Semantic Caching Layer (67% cost reduction)
+- KA-171 - Sharded Vector Store (78% latency reduction)
+
+**MODERATE Evidence:**
+- KA-018 - Progressive Disclosure Architecture for context efficiency
+- KA-076 - Repo Grokking Integration
+
+**ANTI-PATTERNS (STRONG):**
+- KA-012 - Unbounded Context Accumulation - token budget exhaustion
+- KA-034 - Trusting Retrieved Content as Policy
+- KA-046 - Inadequate Context Window
+- KA-105 - Context Stuffing - 23-45% token waste
+- KA-106 - Naive Truncation
+- KA-107 - Unvalidated Context Injection
+- KA-112 - Memory Monolith
+- KA-113 - Unbounded Memory Growth
+- KA-114 - Stale Embeddings
+- KA-175 - Cache Without Invalidation
+- KA-183 - Context Poisoning from Human Input
+
+### Key Techniques (Ranked)
+1. **KA-101** - U-Shaped Context Placement: Critical info at edges - STRONG
+2. **KA-099** - Budget-Aware Retrieval: Respect token budgets - STRONG
+3. **KA-100** - Hierarchical Summarization: Multi-level navigation - STRONG
+4. **KA-102** - Task-Conditioned Context: Filter by task type - STRONG
+5. **KA-103** - Semantic Chunking: Preserve code boundaries - STRONG
+6. **KA-063** - Semantic Prompt Caching: Cache by similarity - STRONG
+7. **KA-064** - Retrieval Compression Pipeline: Multi-stage retrieval - STRONG
+8. **KA-027** - Provenance-Tagged Context Ingestion: Trust metadata - STRONG
+9. **KA-104** - Context Provenance Tracking: Source attribution - STRONG
+10. **KA-111** - Hybrid Retrieval: Keyword + semantic + graph - STRONG
+
+### Key Metrics
+- **KA-105** - Context Stuffing Token Waste: 23-45% wasted
+- **KA-121** - Semantic-Guided Time Reduction: 40-60%
+- **KA-122** - Hybrid Search Accuracy Improvement: 7-60%
+- **KA-169** - Semantic Caching Cost Reduction: 67%
+
+### Key Constraints
+- **KA-099** - Budget-Aware Retrieval: Must fit within allocated space
+- **KA-027** - Provenance-Tagged Context: Must attach trust metadata
+- **KA-046** - Inadequate Context Window: Must provide sufficient context
+
+### Key Tools
+- **KA-169** - Semantic Caching Layer: Cache by semantic similarity
+- **KA-171** - Sharded Vector Store: Distributed embeddings
+
+### Combination Recipes
+- **KA-101 + KA-099** - U-Shaped Placement with Budget-Aware Retrieval for optimal context
+- **KA-063 + KA-169** - Semantic Prompt Caching with Semantic Caching Layer for cost efficiency
+- **KA-111 + KA-122** - Hybrid Retrieval with Hybrid Search Fusion for accuracy
+- **KA-027 + KA-104** - Provenance-Tagged with Context Provenance Tracking for security
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-012 | Unbounded Context Accumulation | Token budget exhaustion | Implement explicit limits |
+| KA-034 | Trusting Retrieved Content as Policy | Context poisoning attacks | Add provenance validation |
+| KA-046 | Inadequate Context Window | Hallucinations, API misuse | Expand context window |
+| KA-105 | Context Stuffing | 23-45% token waste | Prioritize and filter context |
+| KA-106 | Naive Truncation | Lost critical context | Use semantic chunking |
+| KA-107 | Unvalidated Context Injection | Context poisoning | Validate all external context |
+
+### Anti-Patterns
+- **KA-105** - Context Stuffing: Maximizing context seems thorough but wastes tokens
+- **KA-106** - Naive Truncation: Simple cutoff seems efficient but loses critical info
+- **KA-034** - Trusting Retrieved Content: Treating retrieval as authoritative enables poisoning
+- **KA-046** - Inadequate Context Window: Minimal context seems efficient but causes hallucinations
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-100 | Detailed Context | Summarized Context | Detailed for accuracy, summarized for scope |
+| KA-111 | Hybrid Retrieval | Single-Method Retrieval | Hybrid for accuracy, single for simplicity |
+| KA-063 | Semantic Caching | No Caching | Cache for repeated queries, no cache for unique |
+
+### Cross-Domain Links
+- **KA-027** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-063** also relevant to: D1 (Agent Architecture), D6 (Testing)
+- **KA-103** also relevant to: D1 (Agent Architecture), D4 (Code Intelligence)
+- **KA-169** also relevant to: D1 (Agent Architecture), D6 (Testing)
+- **KA-171** also relevant to: D1 (Agent Architecture), D6 (Testing)
+
+### Gaps
+- No patterns for dynamic prompt template selection
+- Limited coverage of multi-modal context (images, diagrams)
+- Missing patterns for context versioning and evolution
+- No explicit guidance on context window sizing heuristics
+- Limited coverage of context compression algorithms
+
+---
+
+## D4: Memory & Knowledge Systems
+
+### Overview
+Covers how agents store, retrieve, and learn from information across sessions. This domain focuses on persistent memory, knowledge representation, and learning mechanisms.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-002 - Bidirectional Specifications for spec-code alignment
+- KA-003 - BDI Hybrid Architecture for verifiable reasoning
+- KA-027 - Provenance-Tagged Context Ingestion
+- KA-031 - Evidence-First Action Gating
+- KA-038 - Multi-Layer Hallucination Defense
+- KA-040 - Multi-Agent Verification Consensus
+- KA-103 - Semantic Chunking
+- KA-108 - Hierarchical Memory Architecture
+- KA-109 - Memory Consolidation
+- KA-110 - Entity-Centric Memory
+- KA-111 - Hybrid Retrieval
+- KA-115 - Multi-Representation Fusion
+- KA-116 - Incremental Representation Updates
+- KA-117 - Layered Abstraction
+- KA-120 - Entrypoint-First Exploration (60-80% scope reduction)
+- KA-121 - Semantic-Guided Traversal (40-60% time reduction)
+- KA-122 - Hybrid Search Fusion (7-60% accuracy improvement)
+- KA-123 - Call Chain Verification (85%+ accuracy)
+- KA-124 - Pattern Library Extraction (80-90% accuracy)
+- KA-127 - Test-Verified Refactoring (25-35% defect reduction)
+- KA-128 - Iterative Repair Loop (85%+ resolution rate)
+- KA-129 - Multi-Stage Validation (60-80% incident reduction)
+- KA-130 - Sad Path Coverage
+- KA-131 - Complexity Budget Enforcement
+- KA-132 - AI Code Normalization (30% less abstraction)
+- KA-136 - Executable Specifications (45% interface defect reduction)
+- KA-137 - Iterative Specification Refinement
+- KA-138 - Test-First for AI Generation (40-90% defect reduction)
+- KA-150 - Test Pyramid
+- KA-151 - Test-First/TDD (40-90% defect reduction)
+- KA-152 - Property-Based Testing
+- KA-153 - Mutation Testing (r=0.75 defect correlation)
+- KA-161 - Declarative Schema as Code
+- KA-162 - Expand-Contract Migration
+- KA-163 - Schema Registry
+- KA-164 - Data Quality Gates
+
+**MODERATE Evidence:**
+- KA-008 - Semantic Codebase Understanding for drift detection
+- KA-017 - Intent-Driven Development for evolving requirements
+- KA-076 - Repo Grokking Integration
+- KA-097 - Semantic Merge with LLM (78% auto-resolution)
+
+**ANTI-PATTERNS (STRONG):**
+- KA-010 - Shallow Repo Understanding - file-by-file analysis
+- KA-011 - Stale Documentation Specs - divergent specs
+- KA-014 - Single-Pass Generation - no verification loops
+- KA-021 - Blind Trust in AI Output - 40-45% vulnerability rate
+- KA-042 - AI-Generated Code Vulnerability Rate: 40-45%
+- KA-043 - Blind Trust in LLM Output
+- KA-044 - Single-Technique Hallucination Defense
+- KA-045 - Ignoring Confidence Calibration
+- KA-046 - Inadequate Context Window
+- KA-112 - Memory Monolith
+- KA-113 - Unbounded Memory Growth
+- KA-114 - Stale Embeddings
+- KA-118 - Single Representation Dependency
+- KA-119 - Full Rebuild on Change
+- KA-125 - Exhaustive Linear Traversal
+- KA-126 - Static-Only Dependency Analysis
+- KA-133 - Refactoring Without Tests
+- KA-134 - Happy Path Bias - 60-70% failures untested paths
+- KA-135 - AI Verbosity Acceptance - 30% more abstraction
+- KA-140 - Spec Rot
+- KA-141 - AI Slop Generation
+- KA-154 - Test Inversion
+- KA-155 - Test Interdependence
+- KA-165 - Shared Database
+- KA-166 - Migration in Deployment
+- KA-167 - God Table
+
+### Key Techniques (Ranked)
+1. **KA-108** - Hierarchical Memory Architecture: Working→Session→Long-term - STRONG
+2. **KA-109** - Memory Consolidation: Compress, summarize, prune - STRONG
+3. **KA-110** - Entity-Centric Memory: Organize around entities - STRONG
+4. **KA-111** - Hybrid Retrieval: Keyword + semantic + graph - STRONG
+5. **KA-115** - Multi-Representation Fusion: AST + CFG + DFG - STRONG
+6. **KA-116** - Incremental Representation Updates: Update on change - STRONG
+7. **KA-117** - Layered Abstraction: Character→Token→AST→Semantic→Behavior - STRONG
+8. **KA-002** - Bidirectional Specifications: Evolve specs with code - STRONG
+9. **KA-136** - Executable Specifications: Tests as specifications - STRONG
+10. **KA-137** - Iterative Specification Refinement: Start minimal, refine - STRONG
+
+### Key Metrics
+- **KA-042** - AI-Generated Code Vulnerability Rate: 40-45%
+- **KA-120** - Entrypoint-First Scope Reduction: 60-80%
+- **KA-121** - Semantic-Guided Time Reduction: 40-60%
+- **KA-122** - Hybrid Search Accuracy Improvement: 7-60%
+- **KA-124** - Pattern Library Extraction Accuracy: 80-90%
+- **KA-127** - Test-Verified Defect Reduction: 25-35%
+
+### Key Constraints
+- **KA-031** - Evidence-First Action Gating: Require evidence before actions
+- **KA-131** - Complexity Budget Enforcement: Limit complexity metrics
+- **KA-164** - Data Quality Gates: Validate before proceeding
+
+### Key Tools
+- **KA-163** - Schema Registry: Centralized schema management
+- **KA-124** - Pattern Library Extraction: Catalog recurring patterns
+
+### Combination Recipes
+- **KA-108 + KA-109** - Hierarchical Memory with Consolidation for long-term memory
+- **KA-115 + KA-116** - Multi-Representation with Incremental Updates for real-time analysis
+- **KA-136 + KA-002** - Executable Specs with Bidirectional evolution for alignment
+- **KA-110 + KA-111** - Entity-Centric Memory with Hybrid Retrieval for structured queries
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-112 | Memory Monolith | Retrieval latency increases with size | Implement hierarchical memory |
+| KA-113 | Unbounded Memory Growth | Storage costs grow unbounded | Add pruning and expiration |
+| KA-114 | Stale Embeddings | Retrieval of outdated information | Update embeddings on content change |
+| KA-118 | Single Representation Dependency | Incomplete understanding | Add multiple representation types |
+| KA-119 | Full Rebuild on Change | Slow response time | Implement incremental updates |
+
+### Anti-Patterns
+- **KA-112** - Memory Monolith: Single store seems simple but doesn't scale
+- **KA-113** - Unbounded Memory Growth: Keeping everything seems safe but degrades performance
+- **KA-114** - Stale Embeddings: Set-and-forget seems efficient but returns outdated info
+- **KA-118** - Single Representation Dependency: One representation seems sufficient but misses insights
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-108 | Hierarchical Memory | Flat Memory | Hierarchical for scale, flat for simplicity |
+| KA-115 | Multi-Representation | Single Representation | Multi for completeness, single for speed |
+| KA-137 | Iterative Refinement | Complete Upfront Spec | Iterative for evolving needs, complete for stable |
+
+### Cross-Domain Links
+- **KA-002** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-003** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-115** also relevant to: D1 (Agent Architecture), D3 (Context)
+- **KA-136** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+
+### Gaps
+- No patterns for knowledge graph construction and maintenance
+- Limited coverage of memory privacy and access control
+- Missing patterns for cross-agent knowledge sharing
+- No explicit guidance on memory garbage collection
+- Limited coverage of knowledge transfer between domains
+
+---
+
+## D5: Code Intelligence & Representations
+
+### Overview
+Covers how agents understand, navigate, and analyze code. This domain focuses on code exploration, representation, and analysis techniques.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-003 - BDI Hybrid Architecture for verifiable reasoning
+- KA-026 - Layered Guardrail Envelope for defense in depth
+- KA-028 - Task-Scoped MCP Capability Minting
+- KA-030 - Default-Deny Egress with Explicit Allowlists
+- KA-031 - Evidence-First Action Gating
+- KA-032 - Adversarial Regression Suite
+- KA-038 - Multi-Layer Hallucination Defense
+- KA-042 - AI-Generated Code Vulnerability Rate: 40-45%
+- KA-047 - MCP Security Threat Mitigation
+- KA-048 - MCP Single-Responsibility Server Pattern
+- KA-052 - Policy-as-Code with Runtime Adjudication
+- KA-055 - Ephemeral Scoped Credential Broker
+- KA-065 - Skill Gating and Tool Entitlement
+- KA-075 - MCP Tool Integration
+- KA-098 - Multi-Stage Pipeline
+- KA-103 - Semantic Chunking
+- KA-115 - Multi-Representation Fusion
+- KA-116 - Incremental Representation Updates
+- KA-117 - Layered Abstraction
+- KA-120 - Entrypoint-First Exploration (60-80% scope reduction)
+- KA-121 - Semantic-Guided Traversal (40-60% time reduction)
+- KA-122 - Hybrid Search Fusion (7-60% accuracy improvement)
+- KA-123 - Call Chain Verification (85%+ accuracy)
+- KA-124 - Pattern Library Extraction (80-90% accuracy)
+- KA-127 - Test-Verified Refactoring (25-35% defect reduction)
+- KA-128 - Iterative Repair Loop (85%+ resolution rate)
+- KA-129 - Multi-Stage Validation (60-80% incident reduction)
+- KA-130 - Sad Path Coverage
+- KA-131 - Complexity Budget Enforcement
+- KA-132 - AI Code Normalization (30% less abstraction)
+- KA-136 - Executable Specifications (45% interface defect reduction)
+- KA-138 - Test-First for AI Generation (40-90% defect reduction)
+- KA-142 - Pipeline as Code
+- KA-143 - GitOps
+- KA-144 - Blue/Green Deployment
+- KA-145 - Canary Deployment
+- KA-146 - Self-Healing Pipeline (85%→98% reliability)
+- KA-147 - Automated Rollback (90% MTTR reduction)
+- KA-156 - Three Pillars of Observability
+- KA-157 - Structured Logging
+- KA-158 - Error Fingerprinting (70% noise reduction)
+- KA-159 - RED Metrics
+- KA-161 - Declarative Schema as Code
+- KA-162 - Expand-Contract Migration
+- KA-163 - Schema Registry
+- KA-164 - Data Quality Gates
+
+**MODERATE Evidence:**
+- KA-008 - Semantic Codebase Understanding for drift detection
+- KA-076 - Repo Grokking Integration
+- KA-097 - Semantic Merge with LLM (78% auto-resolution)
+
+**ANTI-PATTERNS (STRONG):**
+- KA-010 - Shallow Repo Understanding - file-by-file analysis
+- KA-013 - Credential Sprawl in IDE - unvaulted credentials
+- KA-014 - Single-Pass Generation - no verification loops
+- KA-021 - Blind Trust in AI Output - 40-45% vulnerability rate
+- KA-033 - Prompt-Only Security - no runtime enforcement
+- KA-034 - Trusting Retrieved Content as Policy
+- KA-035 - Over-Privileged MCP Defaults
+- KA-036 - Unsandboxed Code/Tool Execution
+- KA-037 - Open Egress by Default
+- KA-043 - Blind Trust in LLM Output
+- KA-044 - Single-Technique Hallucination Defense
+- KA-045 - Ignoring Confidence Calibration
+- KA-049 - MCP God Server
+- KA-050 - Secret in Prompt
+- KA-058 - Policy-in-Prompt Only
+- KA-059 - Long-Lived Shared Credentials
+- KA-118 - Single Representation Dependency
+- KA-119 - Full Rebuild on Change
+- KA-125 - Exhaustive Linear Traversal
+- KA-126 - Static-Only Dependency Analysis
+- KA-133 - Refactoring Without Tests
+- KA-134 - Happy Path Bias - 60-70% failures untested paths
+- KA-135 - AI Verbosity Acceptance - 30% more abstraction
+- KA-141 - AI Slop Generation
+- KA-148 - Snowflake Environments
+- KA-149 - Long-Running Branches
+- KA-154 - Test Inversion
+- KA-155 - Test Interdependence
+- KA-160 - Alert Fatigue
+- KA-165 - Shared Database
+- KA-166 - Migration in Deployment
+- KA-167 - God Table
+- KA-174 - Synchronous External Calls
+
+### Key Techniques (Ranked)
+1. **KA-120** - Entrypoint-First Exploration: Identify entrypoints first - STRONG
+2. **KA-121** - Semantic-Guided Traversal: Relevance-guided exploration - STRONG
+3. **KA-122** - Hybrid Search Fusion: Syntactic + semantic search - STRONG
+4. **KA-123** - Call Chain Verification: Trace complete call chains - STRONG
+5. **KA-124** - Pattern Library Extraction: Catalog recurring patterns - STRONG
+6. **KA-115** - Multi-Representation Fusion: AST + CFG + DFG - STRONG
+7. **KA-116** - Incremental Representation Updates: Update on change - STRONG
+8. **KA-117** - Layered Abstraction: Multiple abstraction levels - STRONG
+9. **KA-127** - Test-Verified Refactoring: Tests before refactoring - STRONG
+10. **KA-128** - Iterative Repair Loop: Fix, validate, refine - STRONG
+
+### Key Metrics
+- **KA-042** - AI-Generated Code Vulnerability Rate: 40-45%
+- **KA-120** - Entrypoint-First Scope Reduction: 60-80%
+- **KA-121** - Semantic-Guided Time Reduction: 40-60%
+- **KA-122** - Hybrid Search Accuracy Improvement: 7-60%
+- **KA-123** - Call Chain Verification Accuracy: 85%+
+- **KA-124** - Pattern Library Extraction Accuracy: 80-90%
+
+### Key Constraints
+- **KA-031** - Evidence-First Action Gating: Require evidence before actions
+- **KA-131** - Complexity Budget Enforcement: Limit complexity metrics
+- **KA-065** - Skill Gating and Tool Entitlement: Minimum required tools only
+
+### Key Tools
+- **KA-075** - MCP Tool Integration: Standardized tool discovery
+- **KA-048** - MCP Single-Responsibility Server Pattern: One domain per server
+- **KA-124** - Pattern Library Extraction: Catalog patterns
+
+### Combination Recipes
+- **KA-120 + KA-121** - Entrypoint-First with Semantic-Guided for efficient exploration
+- **KA-122 + KA-123** - Hybrid Search with Call Chain Verification for accuracy
+- **KA-115 + KA-116** - Multi-Representation with Incremental Updates for real-time analysis
+- **KA-127 + KA-128** - Test-Verified Refactoring with Iterative Repair for reliability
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-125 | Exhaustive Linear Traversal | Token budget exhaustion | Use entrypoint-first exploration |
+| KA-126 | Static-Only Dependency Analysis | Missing 5-30% of dependencies | Add dynamic analysis |
+| KA-133 | Refactoring Without Tests | Silent behavior changes | Require test coverage first |
+| KA-135 | AI Verbosity Acceptance | 30% more abstraction than needed | Apply AI code normalization |
+
+### Anti-Patterns
+- **KA-010** - Shallow Repo Understanding: File-by-file seems thorough but misses architecture
+- **KA-125** - Exhaustive Linear Traversal: Complete coverage seems thorough but exhausts resources
+- **KA-126** - Static-Only Dependency Analysis: Static analysis seems sufficient but misses dynamic deps
+- **KA-141** - AI Slop Generation: AI output seems reasonable but is over-engineered
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-120 | Entrypoint-First | Breadth-First | Entrypoint for scope, breadth for completeness |
+| KA-122 | Hybrid Search | Single-Method | Hybrid for accuracy, single for speed |
+| KA-127 | Test-Verified Refactoring | Direct Refactoring | Test-verified for safety, direct for speed |
+
+### Cross-Domain Links
+- **KA-003** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-115** also relevant to: D1 (Agent Architecture), D3 (Context)
+- **KA-120** also relevant to: D1 (Agent Architecture)
+- **KA-127** also relevant to: D1 (Agent Architecture)
+
+### Gaps
+- No patterns for code smell detection and remediation
+- Limited coverage of code similarity and clone detection
+- Missing patterns for architecture recovery from code
+- No explicit guidance on code documentation generation
+- Limited coverage of code review automation patterns
+
+---
+
+## D6: Testing & Validation
+
+### Overview
+Covers how agents verify their own work and the quality of generated code. This domain focuses on testing strategies, validation techniques, and quality assurance.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-038 - Multi-Layer Hallucination Defense
+- KA-040 - Multi-Agent Verification Consensus
+- KA-042 - AI-Generated Code Vulnerability Rate: 40-45%
+- KA-061 - Cascade Router with Confidence Escalation (40-80% cost reduction)
+- KA-062 - Budget-Aware Task Decomposition
+- KA-069 - Mixture-of-Agents (MoA) (8-12% improvement)
+- KA-078 - Adversarial Review (40% higher bug detection)
+- KA-084 - Federated Cluster Architecture (3x throughput)
+- KA-090 - Adaptive Throttling (2x latency under 5x load)
+- KA-098 - Multi-Stage Pipeline
+- KA-120 - Entrypoint-First Exploration (60-80% scope reduction)
+- KA-121 - Semantic-Guided Traversal (40-60% time reduction)
+- KA-122 - Hybrid Search Fusion (7-60% accuracy improvement)
+- KA-123 - Call Chain Verification (85%+ accuracy)
+- KA-124 - Pattern Library Extraction (80-90% accuracy)
+- KA-127 - Test-Verified Refactoring (25-35% defect reduction)
+- KA-128 - Iterative Repair Loop (85%+ resolution rate)
+- KA-129 - Multi-Stage Validation (60-80% incident reduction)
+- KA-130 - Sad Path Coverage
+- KA-131 - Complexity Budget Enforcement
+- KA-132 - AI Code Normalization (30% less abstraction)
+- KA-136 - Executable Specifications (45% interface defect reduction)
+- KA-138 - Test-First for AI Generation (40-90% defect reduction)
+- KA-146 - Self-Healing Pipeline (85%→98% reliability)
+- KA-147 - Automated Rollback (90% MTTR reduction)
+- KA-150 - Test Pyramid
+- KA-151 - Test-First/TDD (40-90% defect reduction)
+- KA-152 - Property-Based Testing
+- KA-153 - Mutation Testing (r=0.75 defect correlation)
+- KA-161 - Declarative Schema as Code
+- KA-162 - Expand-Contract Migration
+- KA-164 - Data Quality Gates
+- KA-168 - GPU Pool with Time-Slicing (3.2x utilization)
+- KA-169 - Semantic Caching Layer (67% cost reduction)
+- KA-170 - Tiered Model Serving
+- KA-171 - Sharded Vector Store (78% latency reduction)
+- KA-172 - Request Batching (4.2x throughput)
+
+**MODERATE Evidence:**
+- KA-039 - Early Exit with Confidence Gating
+- KA-097 - Semantic Merge with LLM (78% auto-resolution)
+
+**ANTI-PATTERNS (STRONG):**
+- KA-021 - Blind Trust in AI Output - 40-45% vulnerability rate
+- KA-043 - Blind Trust in LLM Output
+- KA-044 - Single-Technique Hallucination Defense
+- KA-133 - Refactoring Without Tests
+- KA-134 - Happy Path Bias - 60-70% failures untested paths
+- KA-154 - Test Inversion
+- KA-155 - Test Interdependence
+- KA-173 - GPU Over-Provisioning
+- KA-174 - Synchronous External Calls
+
+### Key Techniques (Ranked)
+1. **KA-150** - Test Pyramid: 70% unit, 20% integration, 10% E2E - STRONG
+2. **KA-151** - Test-First/TDD: Red-green-refactor cycle - STRONG
+3. **KA-152** - Property-Based Testing: Define invariants, generate tests - STRONG
+4. **KA-153** - Mutation Testing: Inject faults, verify detection - STRONG
+5. **KA-127** - Test-Verified Refactoring: Tests before changes - STRONG
+6. **KA-128** - Iterative Repair Loop: Fix, validate, refine - STRONG
+7. **KA-129** - Multi-Stage Validation: Multiple validation stages - STRONG
+8. **KA-130** - Sad Path Coverage: Test error scenarios - STRONG
+9. **KA-138** - Test-First for AI Generation: Tests guide AI - STRONG
+10. **KA-038** - Multi-Layer Hallucination Defense: Consistency + analysis + testing - STRONG
+
+### Key Metrics
+- **KA-042** - AI-Generated Code Vulnerability Rate: 40-45%
+- **KA-127** - Test-Verified Defect Reduction: 25-35%
+- **KA-129** - Multi-Stage Validation Incident Reduction: 60-80%
+- **KA-138** - Test-First Defect Reduction: 40-90%
+- **KA-146** - Self-Healing Pipeline Reliability: 85%→98%
+- **KA-147** - Automated Rollback MTTR Reduction: 90%
+- **KA-153** - Mutation Testing Defect Correlation: r=0.75
+
+### Key Constraints
+- **KA-131** - Complexity Budget Enforcement: Limit complexity metrics
+- **KA-164** - Data Quality Gates: Validate before proceeding
+- **KA-062** - Budget-Aware Task Decomposition: Token budgets per step
+
+### Key Tools
+- **KA-153** - Mutation Testing: Fault injection for test quality
+- **KA-146** - Self-Healing Pipeline: Auto-detect and recover
+- **KA-147** - Automated Rollback: Auto-revert on threshold breach
+
+### Combination Recipes
+- **KA-150 + KA-151** - Test Pyramid with TDD for comprehensive coverage
+- **KA-152 + KA-153** - Property-Based with Mutation Testing for robustness
+- **KA-127 + KA-128** - Test-Verified Refactoring with Iterative Repair
+- **KA-038 + KA-040** - Multi-Layer Defense with Multi-Agent Consensus
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-133 | Refactoring Without Tests | Silent behavior changes | Require test coverage first |
+| KA-134 | Happy Path Bias | 60-70% failures from untested paths | Add sad path coverage |
+| KA-154 | Test Inversion | Long feedback cycles, flaky tests | Rebalance to test pyramid |
+| KA-155 | Test Interdependence | Tests pass individually but fail in suite | Isolate test state |
+
+### Anti-Patterns
+- **KA-133** - Refactoring Without Tests: Direct changes seem faster but introduce defects
+- **KA-134** - Happy Path Bias: Testing success seems sufficient but misses failures
+- **KA-154** - Test Inversion: More E2E tests seem thorough but are slow and flaky
+- **KA-155** - Test Interdependence: Shared state seems efficient but causes cascading failures
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-150 | Test Pyramid | Flat Distribution | Pyramid for speed, flat for uniformity |
+| KA-151 | TDD | Test-After | TDD for quality, test-after for speed |
+| KA-153 | Mutation Testing | Coverage Only | Mutation for quality, coverage for baseline |
+
+### Cross-Domain Links
+- **KA-038** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-040** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-127** also relevant to: D1 (Agent Architecture), D4 (Code Intelligence)
+- **KA-138** also relevant to: D1 (Agent Architecture), D4 (Code Intelligence)
+
+### Gaps
+- No patterns for AI-specific testing (testing AI-generated code)
+- Limited coverage of visual regression testing
+- Missing patterns for performance testing automation
+- No explicit guidance on test data management
+- Limited coverage of contract testing patterns
+
+---
+
+## D7: Security & Guardrails
+
+### Overview
+Covers how the system protects against adversarial inputs, hallucinations, and unsafe outputs. This domain focuses on security architecture, guardrails, and threat mitigation.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-007 - Structured Human-in-Loop for explicit checkpoints
+- KA-026 - Layered Guardrail Envelope for defense in depth
+- KA-027 - Provenance-Tagged Context Ingestion
+- KA-028 - Task-Scoped MCP Capability Minting
+- KA-029 - Sandboxed Execute-and-Validate Loop
+- KA-030 - Default-Deny Egress with Explicit Allowlists
+- KA-031 - Evidence-First Action Gating
+- KA-032 - Adversarial Regression Suite
+- KA-038 - Multi-Layer Hallucination Defense
+- KA-041 - Uncertainty-Calibrated Human Escalation
+- KA-042 - AI-Generated Code Vulnerability Rate: 40-45%
+- KA-047 - MCP Security Threat Mitigation
+- KA-048 - MCP Single-Responsibility Server Pattern
+- KA-051 - Compliance Envelope per Agent Run
+- KA-052 - Policy-as-Code with Runtime Adjudication
+- KA-055 - Ephemeral Scoped Credential Broker
+- KA-065 - Skill Gating and Tool Entitlement
+- KA-176 - Confidence-Calibrated Escalation
+- KA-179 - Risk-Tiered Auto-Approval Gateway
+
+**ANTI-PATTERNS (STRONG):**
+- KA-013 - Credential Sprawl in IDE - unvaulted credentials
+- KA-033 - Prompt-Only Security - no runtime enforcement
+- KA-034 - Trusting Retrieved Content as Policy
+- KA-035 - Over-Privileged MCP Defaults
+- KA-036 - Unsandboxed Code/Tool Execution
+- KA-037 - Open Egress by Default
+- KA-043 - Blind Trust in LLM Output
+- KA-049 - MCP God Server
+- KA-050 - Secret in Prompt
+- KA-058 - Policy-in-Prompt Only
+- KA-059 - Long-Lived Shared Credentials
+- KA-107 - Unvalidated Context Injection
+- KA-183 - Context Poisoning from Human Input
+
+### Key Techniques (Ranked)
+1. **KA-026** - Layered Guardrail Envelope: Input filtering + policy validation + output checks - STRONG
+2. **KA-028** - Task-Scoped MCP Capability Minting: Narrow, temporary capabilities - STRONG
+3. **KA-029** - Sandboxed Execute-and-Validate Loop: Isolated runtime execution - STRONG
+4. **KA-030** - Default-Deny Egress: Block all except approved - STRONG
+5. **KA-031** - Evidence-First Action Gating: Require evidence before actions - STRONG
+6. **KA-032** - Adversarial Regression Suite: Continuous adversarial testing - STRONG
+7. **KA-038** - Multi-Layer Hallucination Defense: Consistency + analysis + testing - STRONG
+8. **KA-047** - MCP Security Threat Mitigation: Eight threat categories - STRONG
+9. **KA-052** - Policy-as-Code with Runtime Adjudication: Preflight + runtime checks - STRONG
+10. **KA-055** - Ephemeral Scoped Credential Broker: Short-lived credentials - STRONG
+
+### Key Metrics
+- **KA-042** - AI-Generated Code Vulnerability Rate: 40-45%
+
+### Key Constraints
+- **KA-026** - Layered Guardrail Envelope: Defense in depth required
+- **KA-028** - Task-Scoped MCP Capability Minting: Least privilege per task
+- **KA-030** - Default-Deny Egress: Block all outbound except approved
+- **KA-031** - Evidence-First Action Gating: Require evidence before high-impact actions
+
+### Key Tools
+- **KA-047** - MCP Security Threat Mitigation: Eight threat categories
+- **KA-048** - MCP Single-Responsibility Server Pattern: One domain per server
+- **KA-032** - Adversarial Regression Suite: Continuous security testing
+
+### Combination Recipes
+- **KA-026 + KA-038** - Layered Guardrails with Multi-Layer Hallucination Defense for comprehensive protection
+- **KA-028 + KA-055** - Task-Scoped Capabilities with Ephemeral Credentials for least privilege
+- **KA-029 + KA-036** - Sandboxed Execution prevents Unsandboxed Execution risks
+- **KA-052 + KA-058** - Policy-as-Code prevents Policy-in-Prompt Only risks
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-033 | Prompt-Only Security | Easy bypass by injection | Add runtime enforcement |
+| KA-034 | Trusting Retrieved Content as Policy | Context poisoning attacks | Add provenance validation |
+| KA-035 | Over-Privileged MCP Defaults | Privilege escalation | Implement least privilege |
+| KA-036 | Unsandboxed Code/Tool Execution | Host compromise | Add sandboxed execution |
+| KA-037 | Open Egress by Default | Data exfiltration | Implement default-deny egress |
+| KA-050 | Secret in Prompt | Secrets in logs, training data | Use credential broker |
+
+### Anti-Patterns
+- **KA-033** - Prompt-Only Security: Instructions seem sufficient but are easily bypassed
+- **KA-034** - Trusting Retrieved Content: Treating retrieval as authoritative enables poisoning
+- **KA-035** - Over-Privileged MCP Defaults: Broad access seems convenient but enables escalation
+- **KA-050** - Secret in Prompt: Including secrets seems efficient but leaks them
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-029 | Sandboxed Execution | Direct Execution | Sandbox for safety, direct for performance |
+| KA-030 | Default-Deny Egress | Open Egress | Default-deny for security, open for flexibility |
+| KA-055 | Ephemeral Credentials | Long-Lived Credentials | Ephemeral for security, long-lived for convenience |
+
+### Cross-Domain Links
+- **KA-007** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-027** also relevant to: D1 (Agent Architecture), D3 (Context)
+- **KA-038** also relevant to: D1 (Agent Architecture), D4 (Code Intelligence)
+- **KA-041** also relevant to: D1 (Agent Architecture)
+
+### Gaps
+- No patterns for AI-specific threat modeling
+- Limited coverage of prompt injection detection and prevention
+- Missing patterns for secure multi-tenant isolation
+- No explicit guidance on security incident response automation
+- Limited coverage of AI model supply chain security
+
+---
+
+## D8: Model Management & Routing
+
+### Overview
+Covers how the system selects, switches, and optimizes model usage. This domain focuses on model selection, routing strategies, and cost optimization.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-051 - Compliance Envelope per Agent Run
+- KA-054 - AI-Native SBOM Extension
+- KA-056 - Explainability Record with Policy Context
+- KA-061 - Cascade Router with Confidence Escalation (40-80% cost reduction)
+- KA-063 - Semantic Prompt Caching
+- KA-064 - Retrieval Compression Pipeline
+- KA-065 - Skill Gating and Tool Entitlement
+- KA-139 - Architecture Decision Records (35% less tech debt)
+- KA-168 - GPU Pool with Time-Slicing (3.2x utilization)
+- KA-169 - Semantic Caching Layer (67% cost reduction)
+- KA-170 - Tiered Model Serving
+- KA-171 - Sharded Vector Store (78% latency reduction)
+- KA-172 - Request Batching (4.2x throughput)
+
+**ANTI-PATTERNS (STRONG):**
+- KA-057 - Action Logs Without Decision Context
+- KA-060 - SBOM Without AI Context
+- KA-080 - Tight Vendor Coupling
+- KA-173 - GPU Over-Provisioning
+- KA-184 - Rubber-Stamp Automation Theatre
+
+### Key Techniques (Ranked)
+1. **KA-061** - Cascade Router with Confidence Escalation: Route to low-cost first, escalate if needed - STRONG
+2. **KA-170** - Tiered Model Serving: Multiple tiers with different tradeoffs - STRONG
+3. **KA-063** - Semantic Prompt Caching: Cache by similarity - STRONG
+4. **KA-064** - Retrieval Compression Pipeline: Multi-stage retrieval - STRONG
+5. **KA-168** - GPU Pool with Time-Slicing: Share GPU across workloads - STRONG
+6. **KA-169** - Semantic Caching Layer: Cache by semantic similarity - STRONG
+7. **KA-171** - Sharded Vector Store: Distribute embeddings - STRONG
+8. **KA-172** - Request Batching: Aggregate requests - STRONG
+9. **KA-054** - AI-Native SBOM Extension: Include model info in SBOM - STRONG
+10. **KA-056** - Explainability Record with Policy Context: Persist rationale - STRONG
+
+### Key Metrics
+- **KA-061** - Cascade Router Cost Reduction: 40-80%
+- **KA-168** - GPU Pool Utilization Improvement: 3.2x
+- **KA-169** - Semantic Caching Cost Reduction: 67%
+- **KA-171** - Sharded Vector Store Latency Reduction: 78%
+- **KA-172** - Request Batching Throughput Improvement: 4.2x
+
+### Key Constraints
+- **KA-051** - Compliance Envelope per Agent Run: Emit standardized evidence
+- **KA-054** - AI-Native SBOM Extension: Include model info
+- **KA-065** - Skill Gating and Tool Entitlement: Minimum required only
+
+### Key Tools
+- **KA-061** - Cascade Router: Route based on confidence
+- **KA-170** - Tiered Model Serving: Multiple model tiers
+- **KA-168** - GPU Pool with Time-Slicing: Shared GPU resources
+
+### Combination Recipes
+- **KA-061 + KA-170** - Cascade Router with Tiered Model Serving for cost optimization
+- **KA-063 + KA-169** - Semantic Prompt Caching with Semantic Caching Layer for efficiency
+- **KA-168 + KA-172** - GPU Pool with Request Batching for throughput
+- **KA-054 + KA-060** - AI-Native SBOM prevents SBOM Without AI Context
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-057 | Action Logs Without Decision Context | Weak audit defensibility | Add decision context to logs |
+| KA-060 | SBOM Without AI Context | Incomplete provenance | Extend SBOM with AI context |
+| KA-080 | Tight Vendor Coupling | Migration costs | Add abstraction layers |
+| KA-173 | GPU Over-Provisioning | GPU utilization below 20% | Implement GPU pooling |
+
+### Anti-Patterns
+- **KA-057** - Action Logs Without Decision Context: Logging actions seems sufficient but misses why
+- **KA-060** - SBOM Without AI Context: Package-only SBOM seems complete but misses AI components
+- **KA-080** - Tight Vendor Coupling: Vendor SDK seems easier but creates lock-in
+- **KA-173** - GPU Over-Provisioning: Dedicated GPUs seem performant but waste resources
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-061 | Cascade Router | Single Model | Cascade for cost, single for simplicity |
+| KA-170 | Tiered Model Serving | Single Tier | Tiered for flexibility, single for consistency |
+| KA-168 | GPU Pool | Dedicated GPU | Pool for efficiency, dedicated for performance |
+
+### Cross-Domain Links
+- **KA-051** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-054** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-056** also relevant to: D1 (Agent Architecture), D7 (Human Interaction)
+- **KA-063** also relevant to: D1 (Agent Architecture), D3 (Context)
+
+### Gaps
+- No patterns for model versioning and rollback
+- Limited coverage of A/B testing for model selection
+- Missing patterns for model performance monitoring
+- No explicit guidance on model fallback strategies
+- Limited coverage of multi-model orchestration
+
+---
+
+## D9: CI/CD & DevOps
+
+### Overview
+Covers how the system integrates with build, deploy, and operations infrastructure. This domain focuses on pipeline automation, deployment strategies, and operational practices.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-026 - Layered Guardrail Envelope for defense in depth
+- KA-029 - Sandboxed Execute-and-Validate Loop
+- KA-042 - AI-Generated Code Vulnerability Rate: 40-45%
+- KA-047 - MCP Security Threat Mitigation
+- KA-051 - Compliance Envelope per Agent Run
+- KA-055 - Ephemeral Scoped Credential Broker
+- KA-098 - Multi-Stage Pipeline
+- KA-127 - Test-Verified Refactoring (25-35% defect reduction)
+- KA-129 - Multi-Stage Validation (60-80% incident reduction)
+- KA-131 - Complexity Budget Enforcement
+- KA-142 - Pipeline as Code
+- KA-143 - GitOps
+- KA-144 - Blue/Green Deployment
+- KA-145 - Canary Deployment
+- KA-146 - Self-Healing Pipeline (85%→98% reliability)
+- KA-147 - Automated Rollback (90% MTTR reduction)
+- KA-156 - Three Pillars of Observability
+- KA-157 - Structured Logging
+- KA-158 - Error Fingerprinting (70% noise reduction)
+- KA-159 - RED Metrics
+- KA-162 - Expand-Contract Migration
+- KA-164 - Data Quality Gates
+
+**ANTI-PATTERNS (STRONG):**
+- KA-036 - Unsandboxed Code/Tool Execution
+- KA-043 - Blind Trust in LLM Output
+- KA-133 - Refactoring Without Tests
+- KA-148 - Snowflake Environments
+- KA-149 - Long-Running Branches
+- KA-154 - Test Inversion
+- KA-155 - Test Interdependence
+- KA-160 - Alert Fatigue
+- KA-166 - Migration in Deployment
+- KA-174 - Synchronous External Calls
+
+### Key Techniques (Ranked)
+1. **KA-142** - Pipeline as Code: Version-controlled pipeline definitions - STRONG
+2. **KA-143** - GitOps: Git as single source of truth - STRONG
+3. **KA-144** - Blue/Green Deployment: Two environments, instant switch - STRONG
+4. **KA-145** - Canary Deployment: Gradual traffic shift - STRONG
+5. **KA-146** - Self-Healing Pipeline: Auto-detect and recover - STRONG
+6. **KA-147** - Automated Rollback: Auto-revert on threshold breach - STRONG
+7. **KA-098** - Multi-Stage Pipeline: Stages with increasing precision - STRONG
+8. **KA-129** - Multi-Stage Validation: Multiple validation stages - STRONG
+9. **KA-156** - Three Pillars of Observability: Metrics + logs + traces - STRONG
+10. **KA-157** - Structured Logging: Machine-parseable logs - STRONG
+
+### Key Metrics
+- **KA-146** - Self-Healing Pipeline Reliability: 85%→98%
+- **KA-147** - Automated Rollback MTTR Reduction: 90%
+- **KA-158** - Error Fingerprinting Noise Reduction: 70%
+
+### Key Constraints
+- **KA-131** - Complexity Budget Enforcement: Block when thresholds exceeded
+- **KA-164** - Data Quality Gates: Validate before proceeding
+- **KA-051** - Compliance Envelope per Agent Run: Emit standardized evidence
+
+### Key Tools
+- **KA-142** - Pipeline as Code: Version-controlled pipelines
+- **KA-143** - GitOps: Git-based infrastructure
+- **KA-146** - Self-Healing Pipeline: Auto-recovery
+
+### Combination Recipes
+- **KA-142 + KA-143** - Pipeline as Code with GitOps for reproducibility
+- **KA-144 + KA-147** - Blue/Green with Automated Rollback for safety
+- **KA-145 + KA-156** - Canary with Three Pillars for risk mitigation
+- **KA-098 + KA-129** - Multi-Stage Pipeline with Multi-Stage Validation
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-148 | Snowflake Environments | Works on my machine issues | Implement infrastructure as code |
+| KA-149 | Long-Running Branches | Merge conflicts, integration issues | Use short-lived branches |
+| KA-154 | Test Inversion | Long feedback cycles | Rebalance to test pyramid |
+| KA-160 | Alert Fatigue | Ignored alerts, missed incidents | Reduce false positives |
+| KA-166 | Migration in Deployment | Failed deployments, inconsistent state | Separate migrations from deployments |
+
+### Anti-Patterns
+- **KA-148** - Snowflake Environments: Manual setup seems flexible but causes drift
+- **KA-149** - Long-Running Branches: Long branches seem safe but cause merge hell
+- **KA-160** - Alert Fatigue: Many alerts seem thorough but cause alert ignoring
+- **KA-166** - Migration in Deployment: Combined seems efficient but causes failures
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-144 | Blue/Green Deployment | Rolling Deployment | Blue/green for instant switch, rolling for resource efficiency |
+| KA-145 | Canary Deployment | Big Bang Deployment | Canary for risk mitigation, big bang for simplicity |
+| KA-142 | Pipeline as Code | GUI Pipeline | Code for versioning, GUI for simplicity |
+
+### Cross-Domain Links
+- **KA-026** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-051** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-098** also relevant to: D1 (Agent Architecture), D4 (Code Intelligence)
+
+### Gaps
+- No patterns for AI-specific CI/CD (testing AI models in pipeline)
+- Limited coverage of feature flag integration
+- Missing patterns for environment provisioning automation
+- No explicit guidance on deployment window management
+- Limited coverage of pipeline security patterns
+
+---
+
+## D10: Workspace & Infrastructure Management
+
+### Overview
+Covers how agents organize files, branches, environments, and resources. This domain focuses on workspace organization, infrastructure provisioning, and resource management.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-001 - Auto-Launch Workspaces for deterministic initialization
+- KA-026 - Layered Guardrail Envelope for defense in depth
+- KA-028 - Task-Scoped MCP Capability Minting
+- KA-030 - Default-Deny Egress with Explicit Allowlists
+- KA-047 - MCP Security Threat Mitigation
+- KA-048 - MCP Single-Responsibility Server Pattern
+- KA-055 - Ephemeral Scoped Credential Broker
+- KA-061 - Cascade Router with Confidence Escalation (40-80% cost reduction)
+- KA-062 - Budget-Aware Task Decomposition
+- KA-065 - Skill Gating and Tool Entitlement
+- KA-084 - Federated Cluster Architecture (3x throughput)
+- KA-085 - Service Mesh Coordination
+- KA-086 - Worker Pool Pattern
+- KA-090 - Adaptive Throttling (2x latency under 5x load)
+- KA-096 - Branch-Per-Task Isolation (67% merge conflict reduction)
+- KA-142 - Pipeline as Code
+- KA-143 - GitOps
+- KA-144 - Blue/Green Deployment
+- KA-145 - Canary Deployment
+- KA-156 - Three Pillars of Observability
+- KA-157 - Structured Logging
+- KA-158 - Error Fingerprinting (70% noise reduction)
+- KA-159 - RED Metrics
+- KA-161 - Declarative Schema as Code
+- KA-162 - Expand-Contract Migration
+- KA-163 - Schema Registry
+- KA-164 - Data Quality Gates
+- KA-168 - GPU Pool with Time-Slicing (3.2x utilization)
+- KA-169 - Semantic Caching Layer (67% cost reduction)
+- KA-170 - Tiered Model Serving
+- KA-171 - Sharded Vector Store (78% latency reduction)
+- KA-172 - Request Batching (4.2x throughput)
+
+**MODERATE Evidence:**
+- KA-018 - Progressive Disclosure Architecture for context efficiency
+
+**ANTI-PATTERNS (STRONG):**
+- KA-013 - Credential Sprawl in IDE - unvaulted credentials
+- KA-035 - Over-Privileged MCP Defaults
+- KA-037 - Open Egress by Default
+- KA-049 - MCP God Server
+- KA-050 - Secret in Prompt
+- KA-059 - Long-Lived Shared Credentials
+- KA-148 - Snowflake Environments
+- KA-149 - Long-Running Branches
+- KA-165 - Shared Database
+- KA-167 - God Table
+- KA-173 - GPU Over-Provisioning
+- KA-174 - Synchronous External Calls
+- KA-175 - Cache Without Invalidation
+
+### Key Techniques (Ranked)
+1. **KA-001** - Auto-Launch Workspaces: Deterministic initialization - STRONG
+2. **KA-096** - Branch-Per-Task Isolation: Dedicated branch per task - STRONG
+3. **KA-084** - Federated Cluster Architecture: Regional federations - STRONG
+4. **KA-085** - Service Mesh Coordination: Sidecar proxies - STRONG
+5. **KA-086** - Worker Pool Pattern: Pre-initialized workers - STRONG
+6. **KA-168** - GPU Pool with Time-Slicing: Shared GPU resources - STRONG
+7. **KA-171** - Sharded Vector Store: Distributed embeddings - STRONG
+8. **KA-172** - Request Batching: Aggregate requests - STRONG
+9. **KA-161** - Declarative Schema as Code: Version-controlled schemas - STRONG
+10. **KA-163** - Schema Registry: Centralized schema management - STRONG
+
+### Key Metrics
+- **KA-084** - Federated Cluster Throughput: 3x improvement
+- **KA-096** - Merge Conflict Reduction: 67%
+- **KA-168** - GPU Pool Utilization Improvement: 3.2x
+- **KA-171** - Sharded Vector Store Latency Reduction: 78%
+- **KA-172** - Request Batching Throughput Improvement: 4.2x
+
+### Key Constraints
+- **KA-028** - Task-Scoped MCP Capability Minting: Least privilege per task
+- **KA-030** - Default-Deny Egress: Block all except approved
+- **KA-062** - Budget-Aware Task Decomposition: Token budgets per step
+
+### Key Tools
+- **KA-048** - MCP Single-Responsibility Server Pattern: One domain per server
+- **KA-085** - Service Mesh Coordination: Sidecar proxies
+- **KA-163** - Schema Registry: Centralized schema management
+
+### Combination Recipes
+- **KA-001 + KA-096** - Auto-Launch Workspaces with Branch-Per-Task for isolation
+- **KA-084 + KA-085** - Federated Cluster with Service Mesh for scale
+- **KA-168 + KA-172** - GPU Pool with Request Batching for throughput
+- **KA-161 + KA-163** - Declarative Schema with Schema Registry for consistency
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-148 | Snowflake Environments | Works on my machine issues | Implement infrastructure as code |
+| KA-149 | Long-Running Branches | Merge conflicts | Use short-lived branches |
+| KA-165 | Shared Database | Tight coupling, schema conflicts | Implement service-owned databases |
+| KA-167 | God Table | Unclear column purposes, sparse data | Split into focused tables |
+| KA-173 | GPU Over-Provisioning | GPU utilization below 20% | Implement GPU pooling |
+| KA-175 | Cache Without Invalidation | Stale data | Add proper invalidation strategies |
+
+### Anti-Patterns
+- **KA-148** - Snowflake Environments: Manual setup seems flexible but causes drift
+- **KA-149** - Long-Running Branches: Long branches seem safe but cause merge hell
+- **KA-165** - Shared Database: Shared DB seems efficient but creates coupling
+- **KA-167** - God Table: Single table seems simple but accumulates debt
+- **KA-173** - GPU Over-Provisioning: Dedicated GPUs seem performant but waste resources
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-096 | Branch-Per-Task | Shared Branch | Branch-per-task for isolation, shared for simplicity |
+| KA-084 | Federated Cluster | Single Cluster | Federated for scale, single for simplicity |
+| KA-168 | GPU Pool | Dedicated GPU | Pool for efficiency, dedicated for performance |
+
+### Cross-Domain Links
+- **KA-001** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-026** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-061** also relevant to: D1 (Agent Architecture), D6 (Testing)
+
+### Gaps
+- No patterns for workspace template management
+- Limited coverage of environment variable management
+- Missing patterns for resource quota enforcement
+- No explicit guidance on workspace cleanup and garbage collection
+- Limited coverage of multi-cloud infrastructure patterns
+
+---
+
+## D11: Human Interaction
+
+### Overview
+Covers how agents collaborate with humans. This domain focuses on human-in-the-loop patterns, escalation strategies, and human-agent communication.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-007 - Structured Human-in-Loop for explicit checkpoints
+- KA-041 - Uncertainty-Calibrated Human Escalation
+- KA-056 - Explainability Record with Policy Context
+- KA-176 - Confidence-Calibrated Escalation
+- KA-177 - Progressive Disclosure of Reasoning
+- KA-178 - Intelligent Approval Batching
+- KA-179 - Risk-Tiered Auto-Approval Gateway
+- KA-180 - Structured Follow-up Questions
+- KA-181 - Autonomy Level Declaration
+
+**ANTI-PATTERNS (STRONG):**
+- KA-024 - False Confidence - no uncertainty indicators
+- KA-182 - Approval Fatigue Spiral
+- KA-183 - Context Poisoning from Human Input
+- KA-184 - Rubber-Stamp Automation Theatre
+- KA-185 - Explanation Overload
+
+### Key Techniques (Ranked)
+1. **KA-176** - Confidence-Calibrated Escalation: Escalate based on confidence threshold - STRONG
+2. **KA-177** - Progressive Disclosure of Reasoning: Minimal by default, expandable - STRONG
+3. **KA-178** - Intelligent Approval Batching: Group related approvals - STRONG
+4. **KA-179** - Risk-Tiered Auto-Approval Gateway: Auto-approve low-risk - STRONG
+5. **KA-180** - Structured Follow-up Questions: Clear question with suggested answers - STRONG
+6. **KA-181** - Autonomy Level Declaration: Explicit autonomy levels - STRONG
+7. **KA-007** - Structured Human-in-Loop: Explicit checkpoints - STRONG
+8. **KA-041** - Uncertainty-Calibrated Human Escalation: Route based on uncertainty - STRONG
+9. **KA-056** - Explainability Record with Policy Context: Persist rationale - STRONG
+
+### Key Metrics
+- No specific metrics defined for this domain
+
+### Key Constraints
+- **KA-181** - Autonomy Level Declaration: Explicit autonomy levels required
+- **KA-179** - Risk-Tiered Auto-Approval Gateway: Risk classification required
+
+### Key Tools
+- **KA-180** - Structured Follow-up Questions: Clarification tool
+- **KA-178** - Intelligent Approval Batching: Approval grouping
+
+### Combination Recipes
+- **KA-176 + KA-179** - Confidence-Calibrated Escalation with Risk-Tiered Auto-Approval for efficiency
+- **KA-177 + KA-185** - Progressive Disclosure prevents Explanation Overload
+- **KA-178 + KA-182** - Intelligent Approval Batching prevents Approval Fatigue
+- **KA-007 + KA-181** - Structured Human-in-Loop with Autonomy Level Declaration
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-182 | Approval Fatigue Spiral | Rubber-stamp approvals | Batch approvals, reduce requests |
+| KA-183 | Context Poisoning from Human Input | Degraded agent behavior | Validate human inputs |
+| KA-184 | Rubber-Stamp Automation Theatre | Perfunctory human review | Add meaningful review criteria |
+| KA-185 | Explanation Overload | Reduced decision quality | Use progressive disclosure |
+
+### Anti-Patterns
+- **KA-182** - Approval Fatigue Spiral: Many approvals seem thorough but cause rubber-stamping
+- **KA-183** - Context Poisoning from Human Input: Human input seems helpful but can introduce errors
+- **KA-184** - Rubber-Stamp Automation Theatre: HITL seems compliant but provides no oversight
+- **KA-185** - Explanation Overload: More explanation seems helpful but overwhelms
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-176 | Confidence-Calibrated Escalation | Always Escalate | Calibrated for efficiency, always for safety |
+| KA-179 | Auto-Approval Gateway | Manual Approval | Auto for efficiency, manual for control |
+| KA-177 | Progressive Disclosure | Full Disclosure | Progressive for clarity, full for transparency |
+
+### Cross-Domain Links
+- **KA-007** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-041** also relevant to: D1 (Agent Architecture)
+- **KA-056** also relevant to: D1 (Agent Architecture), D8 (Model Management)
+
+### Gaps
+- No patterns for multi-user collaboration
+- Limited coverage of human feedback integration
+- Missing patterns for conflict resolution between human and agent
+- No explicit guidance on accessibility in human-agent interfaces
+- Limited coverage of cultural and language adaptation
+
+---
+
+## D12: Self-Improvement & Optimization
+
+### Overview
+Covers how the system improves its own performance over time. This domain focuses on learning mechanisms, optimization strategies, and continuous improvement.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-032 - Adversarial Regression Suite
+- KA-038 - Multi-Layer Hallucination Defense
+- KA-040 - Multi-Agent Verification Consensus
+- KA-061 - Cascade Router with Confidence Escalation (40-80% cost reduction)
+- KA-063 - Semantic Prompt Caching
+- KA-064 - Retrieval Compression Pipeline
+- KA-065 - Skill Gating and Tool Entitlement
+- KA-073 - Conditional Multi-Stage Recovery (19% higher success)
+- KA-077 - Watchdog Monitoring
+- KA-078 - Adversarial Review (40% higher bug detection)
+- KA-090 - Adaptive Throttling (2x latency under 5x load)
+- KA-109 - Memory Consolidation
+- KA-116 - Incremental Representation Updates
+- KA-128 - Iterative Repair Loop (85%+ resolution rate)
+- KA-129 - Multi-Stage Validation (60-80% incident reduction)
+- KA-137 - Iterative Specification Refinement
+- KA-146 - Self-Healing Pipeline (85%→98% reliability)
+- KA-153 - Mutation Testing (r=0.75 defect correlation)
+- KA-168 - GPU Pool with Time-Slicing (3.2x utilization)
+- KA-169 - Semantic Caching Layer (67% cost reduction)
+- KA-172 - Request Batching (4.2x throughput)
+
+**MODERATE Evidence:**
+- KA-039 - Early Exit with Confidence Gating
+- KA-074 - Stigmergic Coordination
+
+**ANTI-PATTERNS (STRONG):**
+- KA-044 - Single-Technique Hallucination Defense
+- KA-045 - Ignoring Confidence Calibration
+- KA-113 - Unbounded Memory Growth
+- KA-119 - Full Rebuild on Change
+- KA-134 - Happy Path Bias - 60-70% failures untested paths
+- KA-160 - Alert Fatigue
+- KA-173 - GPU Over-Provisioning
+
+### Key Techniques (Ranked)
+1. **KA-032** - Adversarial Regression Suite: Continuous adversarial testing - STRONG
+2. **KA-078** - Adversarial Review: Dedicated critic agents - STRONG
+3. **KA-109** - Memory Consolidation: Compress, summarize, prune - STRONG
+4. **KA-116** - Incremental Representation Updates: Update on change - STRONG
+5. **KA-128** - Iterative Repair Loop: Fix, validate, refine - STRONG
+6. **KA-137** - Iterative Specification Refinement: Start minimal, refine - STRONG
+7. **KA-146** - Self-Healing Pipeline: Auto-detect and recover - STRONG
+8. **KA-153** - Mutation Testing: Inject faults, verify detection - STRONG
+9. **KA-073** - Conditional Multi-Stage Recovery: Diagnosis→Planning→Recovery - STRONG
+10. **KA-090** - Adaptive Throttling: Dynamic rate adjustment - STRONG
+
+### Key Metrics
+- **KA-073** - Conditional Multi-Stage Recovery Success Rate: 19% higher
+- **KA-078** - Adversarial Review Bug Detection: 40% higher
+- **KA-128** - Iterative Repair Loop Resolution Rate: 85%+
+- **KA-146** - Self-Healing Pipeline Reliability: 85%→98%
+- **KA-153** - Mutation Testing Defect Correlation: r=0.75
+
+### Key Constraints
+- **KA-065** - Skill Gating and Tool Entitlement: Minimum required only
+- **KA-032** - Adversarial Regression Suite: Continuous testing required
+
+### Key Tools
+- **KA-032** - Adversarial Regression Suite: Continuous security testing
+- **KA-153** - Mutation Testing: Fault injection for test quality
+- **KA-077** - Watchdog Monitoring: Health metrics and anomaly detection
+
+### Combination Recipes
+- **KA-032 + KA-078** - Adversarial Regression with Adversarial Review for continuous improvement
+- **KA-109 + KA-113** - Memory Consolidation prevents Unbounded Memory Growth
+- **KA-116 + KA-119** - Incremental Updates prevents Full Rebuild on Change
+- **KA-128 + KA-146** - Iterative Repair with Self-Healing Pipeline for resilience
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-044 | Single-Technique Hallucination Defense | Blind spots in defense | Add multiple techniques |
+| KA-045 | Ignoring Confidence Calibration | Overconfidence in incorrect answers | Add confidence indicators |
+| KA-113 | Unbounded Memory Growth | Storage costs grow unbounded | Add pruning and expiration |
+| KA-119 | Full Rebuild on Change | Slow response time | Implement incremental updates |
+| KA-134 | Happy Path Bias | 60-70% failures from untested paths | Add sad path coverage |
+
+### Anti-Patterns
+- **KA-044** - Single-Technique Hallucination Defense: One technique seems sufficient but has blind spots
+- **KA-045** - Ignoring Confidence Calibration: Equal confidence seems fair but causes overconfidence
+- **KA-113** - Unbounded Memory Growth: Keeping everything seems safe but degrades performance
+- **KA-119** - Full Rebuild on Change: Complete rebuild seems thorough but is slow
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-032 | Adversarial Regression | Standard Testing | Adversarial for security, standard for coverage |
+| KA-153 | Mutation Testing | Coverage Only | Mutation for quality, coverage for baseline |
+| KA-128 | Iterative Repair | Single-Pass Fix | Iterative for reliability, single-pass for speed |
+
+### Cross-Domain Links
+- **KA-032** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-038** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-040** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-078** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+
+### Gaps
+- No patterns for automated prompt optimization
+- Limited coverage of reinforcement learning from human feedback (RLHF)
+- Missing patterns for knowledge distillation
+- No explicit guidance on self-evaluation metrics
+- Limited coverage of continuous learning from production data
+
+---
+
+## Summary Statistics
+
+### Atoms by Domain
+| Domain | Total Atoms | Techniques | Anti-Patterns | Metrics |
+|--------|-------------|------------|---------------|---------|
+| D1: Agent Architecture & Orchestration | 185 | 112 | 58 | 15 |
+| D2: Task Management & Decomposition | 48 | 38 | 10 | 4 |
+| D3: Context & Prompt Engineering | 32 | 20 | 11 | 4 |
+| D4: Memory & Knowledge Systems | 57 | 38 | 19 | 6 |
+| D5: Code Intelligence & Representations | 64 | 30 | 30 | 6 |
+| D6: Testing & Validation | 46 | 28 | 9 | 7 |
+| D7: Security & Guardrails | 32 | 19 | 13 | 1 |
+| D8: Model Management & Routing | 18 | 10 | 5 | 5 |
+| D9: CI/CD & DevOps | 32 | 20 | 10 | 3 |
+| D10: Workspace & Infrastructure Management | 44 | 30 | 12 | 5 |
+| D11: Human Interaction | 14 | 9 | 5 | 0 |
+| D12: Self-Improvement & Optimization | 27 | 20 | 7 | 5 |
+
+### Cross-Domain Link Analysis
+- Most interconnected domains: D1 (Agent Architecture) connects to all other domains
+- Strongest cross-domain relationships:
+  - D1 ↔ D2: Task decomposition and agent coordination
+  - D1 ↔ D3: Context management for agents
+  - D1 ↔ D5: Security and code intelligence
+  - D3 ↔ D4: Context and memory systems
+
+### Identified Gaps Summary
+1. **Agent Architecture**: Agent negotiation protocols, lifecycle management, learning patterns
+2. **Task Management**: Priority inference, dependency resolution, rollback patterns
+3. **Context Engineering**: Dynamic prompt templates, multi-modal context, versioning
+4. **Memory Systems**: Knowledge graphs, privacy controls, cross-agent sharing
+5. **Code Intelligence**: Code smell detection, similarity analysis, architecture recovery
+6. **Testing**: AI-specific testing, visual regression, performance automation
+7. **Security**: AI threat modeling, prompt injection defense, multi-tenant isolation
+8. **Model Management**: Model versioning, A/B testing, performance monitoring
+9. **CI/CD**: AI-specific pipelines, feature flags, environment provisioning
+10. **Workspace**: Template management, resource quotas, multi-cloud patterns
+11. **Human Interaction**: Multi-user collaboration, feedback integration, conflict resolution
+12. **Self-Improvement**: Prompt optimization, RLHF, knowledge distillation
+
+---
+
+*Generated from Master Knowledge Atom Registry on 2026-02-25*
+*Total Source Atoms: 185 | Domains: 12 | Evidence: STRONG (112), MODERATE (58), WEAK (15)*
+
+## Overview
+This document organizes knowledge atoms from the Master Knowledge Atom Registry into 12 technical domains. Each domain contains ranked knowledge atoms, key techniques, constraints, tools, cross-domain links, and identified gaps.
+
+**Total Knowledge Atoms**: 185
+**Domains Covered**: D1-D12
+**Extraction Date**: 2026-02-25
+
+---
+
+## D1: Agent Architecture & Orchestration
+
+### Overview
+Covers what agents are, how they're structured, how they coordinate, and how they're specialized. This is the foundational domain for understanding multi-agent systems and their design patterns.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-001 - Auto-Launch Workspaces for deterministic initialization
+- KA-002 - Bidirectional Specifications for spec-code alignment
+- KA-003 - BDI Hybrid Architecture for verifiable reasoning
+- KA-004 - 4-Phase Spec-Driven Workflow (56% faster development)
+- KA-005 - Modular Agent Decomposition for testable components
+- KA-006 - Critic-Actor Pattern for quality validation
+- KA-007 - Structured Human-in-Loop for explicit checkpoints
+- KA-022 - Task-Appropriate Temperature Settings
+- KA-025 - Confidence Scores with AI outputs
+- KA-026 - Layered Guardrail Envelope for defense in depth
+- KA-028 - Task-Scoped MCP Capability Minting
+- KA-029 - Sandboxed Execute-and-Validate Loop
+- KA-030 - Default-Deny Egress with Explicit Allowlists
+- KA-031 - Evidence-First Action Gating
+- KA-032 - Adversarial Regression Suite
+- KA-038 - Multi-Layer Hallucination Defense
+- KA-040 - Multi-Agent Verification Consensus
+- KA-047 - MCP Security Threat Mitigation
+- KA-048 - MCP Single-Responsibility Server Pattern
+- KA-051 - Compliance Envelope per Agent Run
+- KA-052 - Policy-as-Code with Runtime Adjudication
+- KA-053 - Deterministic Control Plane, Stochastic Data Plane
+- KA-055 - Ephemeral Scoped Credential Broker
+- KA-061 - Cascade Router with Confidence Escalation (40-80% cost reduction)
+- KA-062 - Budget-Aware Task Decomposition
+- KA-065 - Skill Gating and Tool Entitlement
+- KA-066 - System-Theoretic Agent Decomposition
+- KA-067 - Hierarchical Multi-Agent Orchestration
+- KA-069 - Mixture-of-Agents (MoA) (8-12% improvement)
+- KA-070 - Role-Based Specialization
+- KA-071 - Mode-Based Operation (34% task drift reduction)
+- KA-072 - Checkpoint-Based Execution
+- KA-073 - Conditional Multi-Stage Recovery (19% higher success)
+- KA-075 - MCP Tool Integration
+- KA-077 - Watchdog Monitoring
+- KA-078 - Adversarial Review (40% higher bug detection)
+- KA-084 - Federated Cluster Architecture (3x throughput)
+- KA-085 - Service Mesh Coordination
+- KA-086 - Worker Pool Pattern
+- KA-087 - Priority Queue with Fair Share (89% task starvation reduction)
+- KA-088 - Work Stealing
+- KA-089 - Lease-Based Distributed Lock
+- KA-090 - Adaptive Throttling (2x latency under 5x load)
+- KA-091 - Hierarchical Task Decomposition
+- KA-092 - DAG-Based Task Graph
+- KA-093 - Conditional Task Graph
+- KA-094 - Single-Responsibility Task
+- KA-095 - Idempotent Task
+- KA-096 - Branch-Per-Task Isolation (67% merge conflict reduction)
+- KA-098 - Multi-Stage Pipeline
+- KA-099 - Budget-Aware Retrieval
+- KA-100 - Hierarchical Summarization
+- KA-101 - U-Shaped Context Placement
+- KA-102 - Task-Conditioned Context
+- KA-103 - Semantic Chunking
+- KA-104 - Context Provenance Tracking
+- KA-108 - Hierarchical Memory Architecture
+- KA-109 - Memory Consolidation
+- KA-110 - Entity-Centric Memory
+- KA-111 - Hybrid Retrieval
+- KA-115 - Multi-Representation Fusion
+- KA-116 - Incremental Representation Updates
+- KA-117 - Layered Abstraction
+- KA-120 - Entrypoint-First Exploration (60-80% scope reduction)
+- KA-121 - Semantic-Guided Traversal (40-60% time reduction)
+- KA-122 - Hybrid Search Fusion (7-60% accuracy improvement)
+- KA-123 - Call Chain Verification (85%+ accuracy)
+- KA-124 - Pattern Library Extraction (80-90% accuracy)
+- KA-127 - Test-Verified Refactoring (25-35% defect reduction)
+- KA-128 - Iterative Repair Loop (85%+ resolution rate)
+- KA-129 - Multi-Stage Validation (60-80% incident reduction)
+- KA-130 - Sad Path Coverage
+- KA-131 - Complexity Budget Enforcement
+- KA-132 - AI Code Normalization (30% less abstraction)
+- KA-136 - Executable Specifications (45% interface defect reduction)
+- KA-137 - Iterative Specification Refinement
+- KA-138 - Test-First for AI Generation (40-90% defect reduction)
+- KA-139 - Architecture Decision Records (35% less tech debt)
+- KA-142 - Pipeline as Code
+- KA-143 - GitOps
+- KA-144 - Blue/Green Deployment
+- KA-145 - Canary Deployment
+- KA-146 - Self-Healing Pipeline (85%→98% reliability)
+- KA-147 - Automated Rollback (90% MTTR reduction)
+- KA-150 - Test Pyramid
+- KA-151 - Test-First/TDD (40-90% defect reduction)
+- KA-152 - Property-Based Testing
+- KA-153 - Mutation Testing (r=0.75 defect correlation)
+- KA-156 - Three Pillars of Observability
+- KA-157 - Structured Logging
+- KA-158 - Error Fingerprinting (70% noise reduction)
+- KA-159 - RED Metrics
+- KA-161 - Declarative Schema as Code
+- KA-162 - Expand-Contract Migration
+- KA-163 - Schema Registry
+- KA-164 - Data Quality Gates
+- KA-168 - GPU Pool with Time-Slicing (3.2x utilization)
+- KA-169 - Semantic Caching Layer (67% cost reduction)
+- KA-170 - Tiered Model Serving
+- KA-171 - Sharded Vector Store (78% latency reduction)
+- KA-172 - Request Batching (4.2x throughput)
+- KA-176 - Confidence-Calibrated Escalation
+- KA-177 - Progressive Disclosure of Reasoning
+- KA-178 - Intelligent Approval Batching
+- KA-179 - Risk-Tiered Auto-Approval Gateway
+- KA-180 - Structured Follow-up Questions
+- KA-181 - Autonomy Level Declaration
+
+**MODERATE Evidence:**
+- KA-008 - Semantic Codebase Understanding for drift detection
+- KA-017 - Intent-Driven Development for evolving requirements
+- KA-018 - Progressive Disclosure Architecture for context efficiency
+- KA-039 - Early Exit with Confidence Gating
+- KA-068 - TEA Protocol Pattern
+- KA-074 - Stigmergic Coordination
+- KA-076 - Repo Grokking Integration
+- KA-097 - Semantic Merge with LLM (78% auto-resolution)
+
+**ANTI-PATTERNS (STRONG):**
+- KA-009 - Vibe Coding - ad-hoc generation without specs
+- KA-010 - Shallow Repo Understanding - file-by-file analysis
+- KA-011 - Stale Documentation Specs - divergent specs
+- KA-012 - Unbounded Context Accumulation - token budget exhaustion
+- KA-013 - Credential Sprawl in IDE - unvaulted credentials
+- KA-014 - Single-Pass Generation - no verification loops
+- KA-015 - Implicit Intent Tracking - no explicit logging
+- KA-016 - Monolithic Agent Design - single agent all tasks
+- KA-019 - God Agent - bottleneck single point of failure
+- KA-020 - Chatty Agent Communication - 10x cost, 5x latency
+- KA-021 - Blind Trust in AI Output - 40-45% vulnerability rate
+- KA-023 - Temperature Ignorance - same temp all tasks
+- KA-024 - False Confidence - no uncertainty indicators
+- KA-033 - Prompt-Only Security - no runtime enforcement
+- KA-035 - Over-Privileged MCP Defaults
+- KA-036 - Unsandboxed Code/Tool Execution
+- KA-037 - Open Egress by Default
+- KA-043 - Blind Trust in LLM Output
+- KA-049 - MCP God Server
+- KA-050 - Secret in Prompt
+- KA-057 - Action Logs Without Decision Context
+- KA-058 - Policy-in-Prompt Only
+- KA-059 - Long-Lived Shared Credentials
+- KA-079 - Monolithic FM-Centric Design
+- KA-080 - Tight Vendor Coupling
+- KA-081 - Silent State Drift
+- KA-082 - Over-Delegation
+- KA-083 - Under-Specified Intent
+- KA-105 - Context Stuffing - 23-45% token waste
+- KA-106 - Naive Truncation
+- KA-107 - Unvalidated Context Injection
+- KA-112 - Memory Monolith
+- KA-113 - Unbounded Memory Growth
+- KA-114 - Stale Embeddings
+- KA-118 - Single Representation Dependency
+- KA-119 - Full Rebuild on Change
+- KA-125 - Exhaustive Linear Traversal
+- KA-126 - Static-Only Dependency Analysis
+- KA-133 - Refactoring Without Tests
+- KA-134 - Happy Path Bias - 60-70% failures untested paths
+- KA-135 - AI Verbosity Acceptance - 30% more abstraction
+- KA-140 - Spec Rot
+- KA-141 - AI Slop Generation
+- KA-148 - Snowflake Environments
+- KA-149 - Long-Running Branches
+- KA-154 - Test Inversion
+- KA-155 - Test Interdependence
+- KA-160 - Alert Fatigue
+- KA-165 - Shared Database
+- KA-166 - Migration in Deployment
+- KA-167 - God Table
+- KA-173 - GPU Over-Provisioning
+- KA-174 - Synchronous External Calls
+- KA-175 - Cache Without Invalidation
+- KA-182 - Approval Fatigue Spiral
+- KA-183 - Context Poisoning from Human Input
+- KA-184 - Rubber-Stamp Automation Theatre
+- KA-185 - Explanation Overload
+
+### Key Techniques (Ranked)
+1. **KA-004** - 4-Phase Spec-Driven Workflow: Specify→Plan→Tasks→Implement with 56% faster development - STRONG
+2. **KA-067** - Hierarchical Multi-Agent Orchestration: Tree structure with planner/manager at root - STRONG
+3. **KA-066** - System-Theoretic Agent Decomposition: Five subsystems (Reasoning, Perception, Action, Learning, Communication) - STRONG
+4. **KA-069** - Mixture-of-Agents (MoA): Multiple agents in layers for 8-12% improvement - STRONG
+5. **KA-070** - Role-Based Specialization: CEO, Architect, Engineer, QA roles - STRONG
+6. **KA-071** - Mode-Based Operation: Discrete modes (Code, Debug, Architect, Review) - STRONG
+7. **KA-005** - Modular Agent Decomposition: Retriever, Writer, Manager, Observer subsystems - STRONG
+8. **KA-006** - Critic-Actor Pattern: Separate generation and review agents - STRONG
+9. **KA-003** - BDI Hybrid Architecture: Belief-Desire-Intent for verifiable reasoning - STRONG
+10. **KA-073** - Conditional Multi-Stage Recovery: Diagnosis→Planning→Recovery chain - STRONG
+
+### Key Metrics
+- **KA-042** - AI-Generated Code Vulnerability Rate: 40-45% without verification
+- **KA-069** - MoA Improvement: 8-12% over single-agent baseline
+- **KA-071** - Mode-Based Operation Task Drift Reduction: 34%
+- **KA-078** - Adversarial Review Bug Detection: 40% higher
+- **KA-084** - Federated Cluster Throughput: 3x improvement
+- **KA-087** - Task Starvation Reduction: 89%
+
+### Key Constraints
+- **KA-026** - Layered Guardrail Envelope: Defense in depth required
+- **KA-028** - Task-Scoped MCP Capability Minting: Least privilege per task
+- **KA-030** - Default-Deny Egress: Block all outbound except approved
+- **KA-031** - Evidence-First Action Gating: Require evidence before high-impact actions
+- **KA-062** - Budget-Aware Task Decomposition: Explicit token/tool-call budgets
+
+### Key Tools
+- **KA-075** - MCP Tool Integration: Standardized tool discovery and invocation
+- **KA-048** - MCP Single-Responsibility Server Pattern: One domain per server
+- **KA-077** - Watchdog Monitoring: Heartbeat and anomaly detection
+
+### Combination Recipes
+- **KA-004 + KA-137** - 4-Phase Workflow with Iterative Spec Refinement for evolving requirements
+- **KA-006 + KA-078** - Critic-Actor with Adversarial Review for multi-layer validation
+- **KA-067 + KA-084** - Hierarchical Orchestration with Federated Clusters for scale
+- **KA-061 + KA-170** - Cascade Router with Tiered Model Serving for cost optimization
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-016 | Monolithic Agent Design | Single point of failure, hard to test | Decompose into modular subsystems |
+| KA-019 | God Agent | Context overflow, poor specialization | Split into specialized agents |
+| KA-020 | Chatty Agent Communication | 10x cost increase, rate limiting | Batch communications, reduce verbosity |
+| KA-079 | Monolithic FM-Centric Design | No introspection, world modeling failures | Add explicit subsystems and state |
+| KA-081 | Silent State Drift | Corrupted beliefs, cascading errors | Add state validation checkpoints |
+| KA-082 | Over-Delegation | Excessive coordination overhead | Consolidate related tasks |
+| KA-083 | Under-Specified Intent | Incorrect interpretations | Require explicit task specifications |
+
+### Anti-Patterns
+- **KA-009** - Vibe Coding: Ad-hoc generation seems faster but lacks reproducibility and audit trail
+- **KA-016** - Monolithic Agent Design: Single agent seems simpler but creates testing nightmares
+- **KA-019** - God Agent: One agent for everything seems efficient but becomes bottleneck
+- **KA-079** - Monolithic FM-Centric Design: Relying on FM alone seems elegant but fails on introspection
+- **KA-080** - Tight Vendor Coupling: Using vendor SDK directly seems easier but creates migration debt
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-069 | Mixture-of-Agents | Single Agent | Use MoA when quality > cost, single agent for speed |
+| KA-067 | Hierarchical Orchestration | Flat Coordination | Hierarchical for complex tasks, flat for simple |
+| KA-074 | Stigmergic Coordination | Direct Messaging | Stigmergic for large scale, direct for small teams |
+| KA-071 | Mode-Based Operation | Single Mode | Modes when task types vary, single mode for focused work |
+
+### Cross-Domain Links
+- **KA-004** also relevant to: D2 (Task Management), D4 (Memory)
+- **KA-006** also relevant to: D2 (Task Management), D4 (Memory)
+- **KA-007** also relevant to: D2 (Task Management), D7 (Security)
+- **KA-062** also relevant to: D2 (Task Management), D6 (Testing)
+- **KA-067** also relevant to: D2 (Task Management)
+- **KA-069** also relevant to: D2 (Task Management)
+- **KA-071** also relevant to: D2 (Task Management)
+
+### Gaps
+- No explicit patterns for agent-to-agent negotiation protocols
+- Limited coverage of agent lifecycle management (spawn, suspend, terminate)
+- Missing patterns for agent learning and skill acquisition over time
+- No coverage of multi-tenant agent isolation patterns
+- Limited guidance on agent versioning and backward compatibility
+
+---
+
+## D2: Task Management & Decomposition
+
+### Overview
+Covers how work is broken down, sequenced, tracked, and validated. This domain focuses on the mechanics of transforming high-level goals into executable units of work.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-001 - Auto-Launch Workspaces for deterministic initialization
+- KA-002 - Bidirectional Specifications for spec-code alignment
+- KA-003 - BDI Hybrid Architecture for verifiable reasoning
+- KA-004 - 4-Phase Spec-Driven Workflow (56% faster development)
+- KA-005 - Modular Agent Decomposition for testable components
+- KA-006 - Critic-Actor Pattern for quality validation
+- KA-007 - Structured Human-in-Loop for explicit checkpoints
+- KA-053 - Deterministic Control Plane, Stochastic Data Plane
+- KA-062 - Budget-Aware Task Decomposition
+- KA-066 - System-Theoretic Agent Decomposition
+- KA-067 - Hierarchical Multi-Agent Orchestration
+- KA-069 - Mixture-of-Agents (MoA) (8-12% improvement)
+- KA-070 - Role-Based Specialization
+- KA-071 - Mode-Based Operation (34% task drift reduction)
+- KA-072 - Checkpoint-Based Execution
+- KA-073 - Conditional Multi-Stage Recovery (19% higher success)
+- KA-077 - Watchdog Monitoring
+- KA-078 - Adversarial Review (40% higher bug detection)
+- KA-084 - Federated Cluster Architecture (3x throughput)
+- KA-085 - Service Mesh Coordination
+- KA-086 - Worker Pool Pattern
+- KA-087 - Priority Queue with Fair Share (89% task starvation reduction)
+- KA-088 - Work Stealing
+- KA-089 - Lease-Based Distributed Lock
+- KA-090 - Adaptive Throttling (2x latency under 5x load)
+- KA-091 - Hierarchical Task Decomposition
+- KA-092 - DAG-Based Task Graph
+- KA-093 - Conditional Task Graph
+- KA-094 - Single-Responsibility Task
+- KA-095 - Idempotent Task
+- KA-096 - Branch-Per-Task Isolation (67% merge conflict reduction)
+- KA-098 - Multi-Stage Pipeline
+
+**MODERATE Evidence:**
+- KA-068 - TEA Protocol Pattern
+- KA-074 - Stigmergic Coordination
+- KA-082 - Over-Delegation (ANTI_PATTERN)
+
+**ANTI-PATTERNS (STRONG):**
+- KA-009 - Vibe Coding - ad-hoc generation without specs
+- KA-011 - Stale Documentation Specs - divergent specs
+- KA-015 - Implicit Intent Tracking - no explicit logging
+- KA-016 - Monolithic Agent Design - single agent all tasks
+- KA-019 - God Agent - bottleneck single point of failure
+- KA-020 - Chatty Agent Communication - 10x cost, 5x latency
+- KA-083 - Under-Specified Intent
+
+### Key Techniques (Ranked)
+1. **KA-091** - Hierarchical Task Decomposition: Recursive breakdown to atomic units - STRONG
+2. **KA-092** - DAG-Based Task Graph: Dependencies as edges, parallel execution - STRONG
+3. **KA-004** - 4-Phase Spec-Driven Workflow: Specify→Plan→Tasks→Implement - STRONG
+4. **KA-094** - Single-Responsibility Task: One responsibility per task - STRONG
+5. **KA-095** - Idempotent Task: Safe retries without side effects - STRONG
+6. **KA-093** - Conditional Task Graph: DAG with runtime conditions - STRONG
+7. **KA-072** - Checkpoint-Based Execution: Explicit pause points - STRONG
+8. **KA-073** - Conditional Multi-Stage Recovery: Diagnosis→Planning→Recovery - STRONG
+9. **KA-062** - Budget-Aware Task Decomposition: Explicit token budgets - STRONG
+10. **KA-087** - Priority Queue with Fair Share: Balance urgency with fairness - STRONG
+
+### Key Metrics
+- **KA-071** - Mode-Based Operation Task Drift Reduction: 34%
+- **KA-084** - Federated Cluster Throughput: 3x improvement
+- **KA-087** - Task Starvation Reduction: 89%
+- **KA-096** - Merge Conflict Reduction: 67%
+
+### Key Constraints
+- **KA-053** - Deterministic Control Plane: Strict determinism for orchestration
+- **KA-062** - Budget-Aware Task Decomposition: Token and tool-call budgets per step
+- **KA-094** - Single-Responsibility Task: One responsibility per task
+- **KA-095** - Idempotent Task: Must produce same result on retry
+
+### Key Tools
+- **KA-085** - Service Mesh Coordination: Sidecar proxies for coordination
+- **KA-086** - Worker Pool Pattern: Pre-initialized workers ready for assignment
+- **KA-088** - Work Stealing: Dynamic load balancing
+- **KA-089** - Lease-Based Distributed Lock: Time-based lock expiration
+
+### Combination Recipes
+- **KA-091 + KA-092** - Hierarchical Decomposition with DAG for complex workflows
+- **KA-094 + KA-095** - Single-Responsibility with Idempotency for reliable tasks
+- **KA-087 + KA-088** - Priority Queue with Work Stealing for fair scheduling
+- **KA-072 + KA-007** - Checkpoint-Based with Human-in-Loop for safety
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-082 | Over-Delegation | Excessive coordination overhead | Consolidate related tasks |
+| KA-083 | Under-Specified Intent | Incorrect interpretations | Require explicit specifications |
+| KA-015 | Implicit Intent Tracking | Lost context across sessions | Add explicit intent logging |
+| KA-011 | Stale Documentation Specs | Divergent specs from implementation | Use bidirectional specifications |
+
+### Anti-Patterns
+- **KA-009** - Vibe Coding: Ad-hoc approach seems flexible but lacks structure
+- **KA-082** - Over-Delegation: Fine-grained tasks seem precise but create overhead
+- **KA-083** - Under-Specified Intent: Vague specs seem accommodating but cause inconsistency
+- **KA-015** - Implicit Intent Tracking: Memory-based tracking seems natural but loses context
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-091 | Fine-Grained Decomposition | Coarse Tasks | Fine for parallelism, coarse for simplicity |
+| KA-093 | Conditional Task Graph | Static DAG | Conditional for adaptive workflows, static for predictable |
+| KA-087 | Priority Queue | FIFO Queue | Priority for urgency, FIFO for fairness |
+
+### Cross-Domain Links
+- **KA-004** also relevant to: D1 (Agent Architecture), D4 (Memory)
+- **KA-007** also relevant to: D1 (Agent Architecture), D7 (Security)
+- **KA-062** also relevant to: D1 (Agent Architecture), D6 (Testing)
+- **KA-096** also relevant to: D1 (Agent Architecture)
+
+### Gaps
+- No patterns for task priority inference from context
+- Limited coverage of task dependency resolution algorithms
+- Missing patterns for task rollback and compensation
+- No explicit guidance on task timeout and deadline management
+- Limited coverage of cross-session task persistence
+
+---
+
+## D3: Context & Prompt Engineering
+
+### Overview
+Covers how agents receive information and how that information is managed. This domain focuses on context window optimization, prompt design, and information retrieval strategies.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-027 - Provenance-Tagged Context Ingestion
+- KA-063 - Semantic Prompt Caching
+- KA-064 - Retrieval Compression Pipeline
+- KA-099 - Budget-Aware Retrieval
+- KA-100 - Hierarchical Summarization
+- KA-101 - U-Shaped Context Placement
+- KA-102 - Task-Conditioned Context
+- KA-103 - Semantic Chunking
+- KA-104 - Context Provenance Tracking
+- KA-108 - Hierarchical Memory Architecture
+- KA-109 - Memory Consolidation
+- KA-110 - Entity-Centric Memory
+- KA-111 - Hybrid Retrieval
+- KA-115 - Multi-Representation Fusion
+- KA-116 - Incremental Representation Updates
+- KA-117 - Layered Abstraction
+- KA-121 - Semantic-Guided Traversal (40-60% time reduction)
+- KA-122 - Hybrid Search Fusion (7-60% accuracy improvement)
+- KA-169 - Semantic Caching Layer (67% cost reduction)
+- KA-171 - Sharded Vector Store (78% latency reduction)
+
+**MODERATE Evidence:**
+- KA-018 - Progressive Disclosure Architecture for context efficiency
+- KA-076 - Repo Grokking Integration
+
+**ANTI-PATTERNS (STRONG):**
+- KA-012 - Unbounded Context Accumulation - token budget exhaustion
+- KA-034 - Trusting Retrieved Content as Policy
+- KA-046 - Inadequate Context Window
+- KA-105 - Context Stuffing - 23-45% token waste
+- KA-106 - Naive Truncation
+- KA-107 - Unvalidated Context Injection
+- KA-112 - Memory Monolith
+- KA-113 - Unbounded Memory Growth
+- KA-114 - Stale Embeddings
+- KA-175 - Cache Without Invalidation
+- KA-183 - Context Poisoning from Human Input
+
+### Key Techniques (Ranked)
+1. **KA-101** - U-Shaped Context Placement: Critical info at edges - STRONG
+2. **KA-099** - Budget-Aware Retrieval: Respect token budgets - STRONG
+3. **KA-100** - Hierarchical Summarization: Multi-level navigation - STRONG
+4. **KA-102** - Task-Conditioned Context: Filter by task type - STRONG
+5. **KA-103** - Semantic Chunking: Preserve code boundaries - STRONG
+6. **KA-063** - Semantic Prompt Caching: Cache by similarity - STRONG
+7. **KA-064** - Retrieval Compression Pipeline: Multi-stage retrieval - STRONG
+8. **KA-027** - Provenance-Tagged Context Ingestion: Trust metadata - STRONG
+9. **KA-104** - Context Provenance Tracking: Source attribution - STRONG
+10. **KA-111** - Hybrid Retrieval: Keyword + semantic + graph - STRONG
+
+### Key Metrics
+- **KA-105** - Context Stuffing Token Waste: 23-45% wasted
+- **KA-121** - Semantic-Guided Time Reduction: 40-60%
+- **KA-122** - Hybrid Search Accuracy Improvement: 7-60%
+- **KA-169** - Semantic Caching Cost Reduction: 67%
+
+### Key Constraints
+- **KA-099** - Budget-Aware Retrieval: Must fit within allocated space
+- **KA-027** - Provenance-Tagged Context: Must attach trust metadata
+- **KA-046** - Inadequate Context Window: Must provide sufficient context
+
+### Key Tools
+- **KA-169** - Semantic Caching Layer: Cache by semantic similarity
+- **KA-171** - Sharded Vector Store: Distributed embeddings
+
+### Combination Recipes
+- **KA-101 + KA-099** - U-Shaped Placement with Budget-Aware Retrieval for optimal context
+- **KA-063 + KA-169** - Semantic Prompt Caching with Semantic Caching Layer for cost efficiency
+- **KA-111 + KA-122** - Hybrid Retrieval with Hybrid Search Fusion for accuracy
+- **KA-027 + KA-104** - Provenance-Tagged with Context Provenance Tracking for security
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-012 | Unbounded Context Accumulation | Token budget exhaustion | Implement explicit limits |
+| KA-034 | Trusting Retrieved Content as Policy | Context poisoning attacks | Add provenance validation |
+| KA-046 | Inadequate Context Window | Hallucinations, API misuse | Expand context window |
+| KA-105 | Context Stuffing | 23-45% token waste | Prioritize and filter context |
+| KA-106 | Naive Truncation | Lost critical context | Use semantic chunking |
+| KA-107 | Unvalidated Context Injection | Context poisoning | Validate all external context |
+
+### Anti-Patterns
+- **KA-105** - Context Stuffing: Maximizing context seems thorough but wastes tokens
+- **KA-106** - Naive Truncation: Simple cutoff seems efficient but loses critical info
+- **KA-034** - Trusting Retrieved Content: Treating retrieval as authoritative enables poisoning
+- **KA-046** - Inadequate Context Window: Minimal context seems efficient but causes hallucinations
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-100 | Detailed Context | Summarized Context | Detailed for accuracy, summarized for scope |
+| KA-111 | Hybrid Retrieval | Single-Method Retrieval | Hybrid for accuracy, single for simplicity |
+| KA-063 | Semantic Caching | No Caching | Cache for repeated queries, no cache for unique |
+
+### Cross-Domain Links
+- **KA-027** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-063** also relevant to: D1 (Agent Architecture), D6 (Testing)
+- **KA-103** also relevant to: D1 (Agent Architecture), D4 (Code Intelligence)
+- **KA-169** also relevant to: D1 (Agent Architecture), D6 (Testing)
+- **KA-171** also relevant to: D1 (Agent Architecture), D6 (Testing)
+
+### Gaps
+- No patterns for dynamic prompt template selection
+- Limited coverage of multi-modal context (images, diagrams)
+- Missing patterns for context versioning and evolution
+- No explicit guidance on context window sizing heuristics
+- Limited coverage of context compression algorithms
+
+---
+
+## D4: Memory & Knowledge Systems
+
+### Overview
+Covers how agents store, retrieve, and learn from information across sessions. This domain focuses on persistent memory, knowledge representation, and learning mechanisms.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-002 - Bidirectional Specifications for spec-code alignment
+- KA-003 - BDI Hybrid Architecture for verifiable reasoning
+- KA-027 - Provenance-Tagged Context Ingestion
+- KA-031 - Evidence-First Action Gating
+- KA-038 - Multi-Layer Hallucination Defense
+- KA-040 - Multi-Agent Verification Consensus
+- KA-103 - Semantic Chunking
+- KA-108 - Hierarchical Memory Architecture
+- KA-109 - Memory Consolidation
+- KA-110 - Entity-Centric Memory
+- KA-111 - Hybrid Retrieval
+- KA-115 - Multi-Representation Fusion
+- KA-116 - Incremental Representation Updates
+- KA-117 - Layered Abstraction
+- KA-120 - Entrypoint-First Exploration (60-80% scope reduction)
+- KA-121 - Semantic-Guided Traversal (40-60% time reduction)
+- KA-122 - Hybrid Search Fusion (7-60% accuracy improvement)
+- KA-123 - Call Chain Verification (85%+ accuracy)
+- KA-124 - Pattern Library Extraction (80-90% accuracy)
+- KA-127 - Test-Verified Refactoring (25-35% defect reduction)
+- KA-128 - Iterative Repair Loop (85%+ resolution rate)
+- KA-129 - Multi-Stage Validation (60-80% incident reduction)
+- KA-130 - Sad Path Coverage
+- KA-131 - Complexity Budget Enforcement
+- KA-132 - AI Code Normalization (30% less abstraction)
+- KA-136 - Executable Specifications (45% interface defect reduction)
+- KA-137 - Iterative Specification Refinement
+- KA-138 - Test-First for AI Generation (40-90% defect reduction)
+- KA-150 - Test Pyramid
+- KA-151 - Test-First/TDD (40-90% defect reduction)
+- KA-152 - Property-Based Testing
+- KA-153 - Mutation Testing (r=0.75 defect correlation)
+- KA-161 - Declarative Schema as Code
+- KA-162 - Expand-Contract Migration
+- KA-163 - Schema Registry
+- KA-164 - Data Quality Gates
+
+**MODERATE Evidence:**
+- KA-008 - Semantic Codebase Understanding for drift detection
+- KA-017 - Intent-Driven Development for evolving requirements
+- KA-076 - Repo Grokking Integration
+- KA-097 - Semantic Merge with LLM (78% auto-resolution)
+
+**ANTI-PATTERNS (STRONG):**
+- KA-010 - Shallow Repo Understanding - file-by-file analysis
+- KA-011 - Stale Documentation Specs - divergent specs
+- KA-014 - Single-Pass Generation - no verification loops
+- KA-021 - Blind Trust in AI Output - 40-45% vulnerability rate
+- KA-042 - AI-Generated Code Vulnerability Rate: 40-45%
+- KA-043 - Blind Trust in LLM Output
+- KA-044 - Single-Technique Hallucination Defense
+- KA-045 - Ignoring Confidence Calibration
+- KA-046 - Inadequate Context Window
+- KA-112 - Memory Monolith
+- KA-113 - Unbounded Memory Growth
+- KA-114 - Stale Embeddings
+- KA-118 - Single Representation Dependency
+- KA-119 - Full Rebuild on Change
+- KA-125 - Exhaustive Linear Traversal
+- KA-126 - Static-Only Dependency Analysis
+- KA-133 - Refactoring Without Tests
+- KA-134 - Happy Path Bias - 60-70% failures untested paths
+- KA-135 - AI Verbosity Acceptance - 30% more abstraction
+- KA-140 - Spec Rot
+- KA-141 - AI Slop Generation
+- KA-154 - Test Inversion
+- KA-155 - Test Interdependence
+- KA-165 - Shared Database
+- KA-166 - Migration in Deployment
+- KA-167 - God Table
+
+### Key Techniques (Ranked)
+1. **KA-108** - Hierarchical Memory Architecture: Working→Session→Long-term - STRONG
+2. **KA-109** - Memory Consolidation: Compress, summarize, prune - STRONG
+3. **KA-110** - Entity-Centric Memory: Organize around entities - STRONG
+4. **KA-111** - Hybrid Retrieval: Keyword + semantic + graph - STRONG
+5. **KA-115** - Multi-Representation Fusion: AST + CFG + DFG - STRONG
+6. **KA-116** - Incremental Representation Updates: Update on change - STRONG
+7. **KA-117** - Layered Abstraction: Character→Token→AST→Semantic→Behavior - STRONG
+8. **KA-002** - Bidirectional Specifications: Evolve specs with code - STRONG
+9. **KA-136** - Executable Specifications: Tests as specifications - STRONG
+10. **KA-137** - Iterative Specification Refinement: Start minimal, refine - STRONG
+
+### Key Metrics
+- **KA-042** - AI-Generated Code Vulnerability Rate: 40-45%
+- **KA-120** - Entrypoint-First Scope Reduction: 60-80%
+- **KA-121** - Semantic-Guided Time Reduction: 40-60%
+- **KA-122** - Hybrid Search Accuracy Improvement: 7-60%
+- **KA-124** - Pattern Library Extraction Accuracy: 80-90%
+- **KA-127** - Test-Verified Defect Reduction: 25-35%
+
+### Key Constraints
+- **KA-031** - Evidence-First Action Gating: Require evidence before actions
+- **KA-131** - Complexity Budget Enforcement: Limit complexity metrics
+- **KA-164** - Data Quality Gates: Validate before proceeding
+
+### Key Tools
+- **KA-163** - Schema Registry: Centralized schema management
+- **KA-124** - Pattern Library Extraction: Catalog recurring patterns
+
+### Combination Recipes
+- **KA-108 + KA-109** - Hierarchical Memory with Consolidation for long-term memory
+- **KA-115 + KA-116** - Multi-Representation with Incremental Updates for real-time analysis
+- **KA-136 + KA-002** - Executable Specs with Bidirectional evolution for alignment
+- **KA-110 + KA-111** - Entity-Centric Memory with Hybrid Retrieval for structured queries
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-112 | Memory Monolith | Retrieval latency increases with size | Implement hierarchical memory |
+| KA-113 | Unbounded Memory Growth | Storage costs grow unbounded | Add pruning and expiration |
+| KA-114 | Stale Embeddings | Retrieval of outdated information | Update embeddings on content change |
+| KA-118 | Single Representation Dependency | Incomplete understanding | Add multiple representation types |
+| KA-119 | Full Rebuild on Change | Slow response time | Implement incremental updates |
+
+### Anti-Patterns
+- **KA-112** - Memory Monolith: Single store seems simple but doesn't scale
+- **KA-113** - Unbounded Memory Growth: Keeping everything seems safe but degrades performance
+- **KA-114** - Stale Embeddings: Set-and-forget seems efficient but returns outdated info
+- **KA-118** - Single Representation Dependency: One representation seems sufficient but misses insights
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-108 | Hierarchical Memory | Flat Memory | Hierarchical for scale, flat for simplicity |
+| KA-115 | Multi-Representation | Single Representation | Multi for completeness, single for speed |
+| KA-137 | Iterative Refinement | Complete Upfront Spec | Iterative for evolving needs, complete for stable |
+
+### Cross-Domain Links
+- **KA-002** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-003** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-115** also relevant to: D1 (Agent Architecture), D3 (Context)
+- **KA-136** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+
+### Gaps
+- No patterns for knowledge graph construction and maintenance
+- Limited coverage of memory privacy and access control
+- Missing patterns for cross-agent knowledge sharing
+- No explicit guidance on memory garbage collection
+- Limited coverage of knowledge transfer between domains
+
+---
+
+## D5: Code Intelligence & Representations
+
+### Overview
+Covers how agents understand, navigate, and analyze code. This domain focuses on code exploration, representation, and analysis techniques.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-003 - BDI Hybrid Architecture for verifiable reasoning
+- KA-026 - Layered Guardrail Envelope for defense in depth
+- KA-028 - Task-Scoped MCP Capability Minting
+- KA-030 - Default-Deny Egress with Explicit Allowlists
+- KA-031 - Evidence-First Action Gating
+- KA-032 - Adversarial Regression Suite
+- KA-038 - Multi-Layer Hallucination Defense
+- KA-042 - AI-Generated Code Vulnerability Rate: 40-45%
+- KA-047 - MCP Security Threat Mitigation
+- KA-048 - MCP Single-Responsibility Server Pattern
+- KA-052 - Policy-as-Code with Runtime Adjudication
+- KA-055 - Ephemeral Scoped Credential Broker
+- KA-065 - Skill Gating and Tool Entitlement
+- KA-075 - MCP Tool Integration
+- KA-098 - Multi-Stage Pipeline
+- KA-103 - Semantic Chunking
+- KA-115 - Multi-Representation Fusion
+- KA-116 - Incremental Representation Updates
+- KA-117 - Layered Abstraction
+- KA-120 - Entrypoint-First Exploration (60-80% scope reduction)
+- KA-121 - Semantic-Guided Traversal (40-60% time reduction)
+- KA-122 - Hybrid Search Fusion (7-60% accuracy improvement)
+- KA-123 - Call Chain Verification (85%+ accuracy)
+- KA-124 - Pattern Library Extraction (80-90% accuracy)
+- KA-127 - Test-Verified Refactoring (25-35% defect reduction)
+- KA-128 - Iterative Repair Loop (85%+ resolution rate)
+- KA-129 - Multi-Stage Validation (60-80% incident reduction)
+- KA-130 - Sad Path Coverage
+- KA-131 - Complexity Budget Enforcement
+- KA-132 - AI Code Normalization (30% less abstraction)
+- KA-136 - Executable Specifications (45% interface defect reduction)
+- KA-138 - Test-First for AI Generation (40-90% defect reduction)
+- KA-142 - Pipeline as Code
+- KA-143 - GitOps
+- KA-144 - Blue/Green Deployment
+- KA-145 - Canary Deployment
+- KA-146 - Self-Healing Pipeline (85%→98% reliability)
+- KA-147 - Automated Rollback (90% MTTR reduction)
+- KA-156 - Three Pillars of Observability
+- KA-157 - Structured Logging
+- KA-158 - Error Fingerprinting (70% noise reduction)
+- KA-159 - RED Metrics
+- KA-161 - Declarative Schema as Code
+- KA-162 - Expand-Contract Migration
+- KA-163 - Schema Registry
+- KA-164 - Data Quality Gates
+
+**MODERATE Evidence:**
+- KA-008 - Semantic Codebase Understanding for drift detection
+- KA-076 - Repo Grokking Integration
+- KA-097 - Semantic Merge with LLM (78% auto-resolution)
+
+**ANTI-PATTERNS (STRONG):**
+- KA-010 - Shallow Repo Understanding - file-by-file analysis
+- KA-013 - Credential Sprawl in IDE - unvaulted credentials
+- KA-014 - Single-Pass Generation - no verification loops
+- KA-021 - Blind Trust in AI Output - 40-45% vulnerability rate
+- KA-033 - Prompt-Only Security - no runtime enforcement
+- KA-034 - Trusting Retrieved Content as Policy
+- KA-035 - Over-Privileged MCP Defaults
+- KA-036 - Unsandboxed Code/Tool Execution
+- KA-037 - Open Egress by Default
+- KA-043 - Blind Trust in LLM Output
+- KA-044 - Single-Technique Hallucination Defense
+- KA-045 - Ignoring Confidence Calibration
+- KA-049 - MCP God Server
+- KA-050 - Secret in Prompt
+- KA-058 - Policy-in-Prompt Only
+- KA-059 - Long-Lived Shared Credentials
+- KA-118 - Single Representation Dependency
+- KA-119 - Full Rebuild on Change
+- KA-125 - Exhaustive Linear Traversal
+- KA-126 - Static-Only Dependency Analysis
+- KA-133 - Refactoring Without Tests
+- KA-134 - Happy Path Bias - 60-70% failures untested paths
+- KA-135 - AI Verbosity Acceptance - 30% more abstraction
+- KA-141 - AI Slop Generation
+- KA-148 - Snowflake Environments
+- KA-149 - Long-Running Branches
+- KA-154 - Test Inversion
+- KA-155 - Test Interdependence
+- KA-160 - Alert Fatigue
+- KA-165 - Shared Database
+- KA-166 - Migration in Deployment
+- KA-167 - God Table
+- KA-174 - Synchronous External Calls
+
+### Key Techniques (Ranked)
+1. **KA-120** - Entrypoint-First Exploration: Identify entrypoints first - STRONG
+2. **KA-121** - Semantic-Guided Traversal: Relevance-guided exploration - STRONG
+3. **KA-122** - Hybrid Search Fusion: Syntactic + semantic search - STRONG
+4. **KA-123** - Call Chain Verification: Trace complete call chains - STRONG
+5. **KA-124** - Pattern Library Extraction: Catalog recurring patterns - STRONG
+6. **KA-115** - Multi-Representation Fusion: AST + CFG + DFG - STRONG
+7. **KA-116** - Incremental Representation Updates: Update on change - STRONG
+8. **KA-117** - Layered Abstraction: Multiple abstraction levels - STRONG
+9. **KA-127** - Test-Verified Refactoring: Tests before refactoring - STRONG
+10. **KA-128** - Iterative Repair Loop: Fix, validate, refine - STRONG
+
+### Key Metrics
+- **KA-042** - AI-Generated Code Vulnerability Rate: 40-45%
+- **KA-120** - Entrypoint-First Scope Reduction: 60-80%
+- **KA-121** - Semantic-Guided Time Reduction: 40-60%
+- **KA-122** - Hybrid Search Accuracy Improvement: 7-60%
+- **KA-123** - Call Chain Verification Accuracy: 85%+
+- **KA-124** - Pattern Library Extraction Accuracy: 80-90%
+
+### Key Constraints
+- **KA-031** - Evidence-First Action Gating: Require evidence before actions
+- **KA-131** - Complexity Budget Enforcement: Limit complexity metrics
+- **KA-065** - Skill Gating and Tool Entitlement: Minimum required tools only
+
+### Key Tools
+- **KA-075** - MCP Tool Integration: Standardized tool discovery
+- **KA-048** - MCP Single-Responsibility Server Pattern: One domain per server
+- **KA-124** - Pattern Library Extraction: Catalog patterns
+
+### Combination Recipes
+- **KA-120 + KA-121** - Entrypoint-First with Semantic-Guided for efficient exploration
+- **KA-122 + KA-123** - Hybrid Search with Call Chain Verification for accuracy
+- **KA-115 + KA-116** - Multi-Representation with Incremental Updates for real-time analysis
+- **KA-127 + KA-128** - Test-Verified Refactoring with Iterative Repair for reliability
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-125 | Exhaustive Linear Traversal | Token budget exhaustion | Use entrypoint-first exploration |
+| KA-126 | Static-Only Dependency Analysis | Missing 5-30% of dependencies | Add dynamic analysis |
+| KA-133 | Refactoring Without Tests | Silent behavior changes | Require test coverage first |
+| KA-135 | AI Verbosity Acceptance | 30% more abstraction than needed | Apply AI code normalization |
+
+### Anti-Patterns
+- **KA-010** - Shallow Repo Understanding: File-by-file seems thorough but misses architecture
+- **KA-125** - Exhaustive Linear Traversal: Complete coverage seems thorough but exhausts resources
+- **KA-126** - Static-Only Dependency Analysis: Static analysis seems sufficient but misses dynamic deps
+- **KA-141** - AI Slop Generation: AI output seems reasonable but is over-engineered
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-120 | Entrypoint-First | Breadth-First | Entrypoint for scope, breadth for completeness |
+| KA-122 | Hybrid Search | Single-Method | Hybrid for accuracy, single for speed |
+| KA-127 | Test-Verified Refactoring | Direct Refactoring | Test-verified for safety, direct for speed |
+
+### Cross-Domain Links
+- **KA-003** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-115** also relevant to: D1 (Agent Architecture), D3 (Context)
+- **KA-120** also relevant to: D1 (Agent Architecture)
+- **KA-127** also relevant to: D1 (Agent Architecture)
+
+### Gaps
+- No patterns for code smell detection and remediation
+- Limited coverage of code similarity and clone detection
+- Missing patterns for architecture recovery from code
+- No explicit guidance on code documentation generation
+- Limited coverage of code review automation patterns
+
+---
+
+## D6: Testing & Validation
+
+### Overview
+Covers how agents verify their own work and the quality of generated code. This domain focuses on testing strategies, validation techniques, and quality assurance.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-038 - Multi-Layer Hallucination Defense
+- KA-040 - Multi-Agent Verification Consensus
+- KA-042 - AI-Generated Code Vulnerability Rate: 40-45%
+- KA-061 - Cascade Router with Confidence Escalation (40-80% cost reduction)
+- KA-062 - Budget-Aware Task Decomposition
+- KA-069 - Mixture-of-Agents (MoA) (8-12% improvement)
+- KA-078 - Adversarial Review (40% higher bug detection)
+- KA-084 - Federated Cluster Architecture (3x throughput)
+- KA-090 - Adaptive Throttling (2x latency under 5x load)
+- KA-098 - Multi-Stage Pipeline
+- KA-120 - Entrypoint-First Exploration (60-80% scope reduction)
+- KA-121 - Semantic-Guided Traversal (40-60% time reduction)
+- KA-122 - Hybrid Search Fusion (7-60% accuracy improvement)
+- KA-123 - Call Chain Verification (85%+ accuracy)
+- KA-124 - Pattern Library Extraction (80-90% accuracy)
+- KA-127 - Test-Verified Refactoring (25-35% defect reduction)
+- KA-128 - Iterative Repair Loop (85%+ resolution rate)
+- KA-129 - Multi-Stage Validation (60-80% incident reduction)
+- KA-130 - Sad Path Coverage
+- KA-131 - Complexity Budget Enforcement
+- KA-132 - AI Code Normalization (30% less abstraction)
+- KA-136 - Executable Specifications (45% interface defect reduction)
+- KA-138 - Test-First for AI Generation (40-90% defect reduction)
+- KA-146 - Self-Healing Pipeline (85%→98% reliability)
+- KA-147 - Automated Rollback (90% MTTR reduction)
+- KA-150 - Test Pyramid
+- KA-151 - Test-First/TDD (40-90% defect reduction)
+- KA-152 - Property-Based Testing
+- KA-153 - Mutation Testing (r=0.75 defect correlation)
+- KA-161 - Declarative Schema as Code
+- KA-162 - Expand-Contract Migration
+- KA-164 - Data Quality Gates
+- KA-168 - GPU Pool with Time-Slicing (3.2x utilization)
+- KA-169 - Semantic Caching Layer (67% cost reduction)
+- KA-170 - Tiered Model Serving
+- KA-171 - Sharded Vector Store (78% latency reduction)
+- KA-172 - Request Batching (4.2x throughput)
+
+**MODERATE Evidence:**
+- KA-039 - Early Exit with Confidence Gating
+- KA-097 - Semantic Merge with LLM (78% auto-resolution)
+
+**ANTI-PATTERNS (STRONG):**
+- KA-021 - Blind Trust in AI Output - 40-45% vulnerability rate
+- KA-043 - Blind Trust in LLM Output
+- KA-044 - Single-Technique Hallucination Defense
+- KA-133 - Refactoring Without Tests
+- KA-134 - Happy Path Bias - 60-70% failures untested paths
+- KA-154 - Test Inversion
+- KA-155 - Test Interdependence
+- KA-173 - GPU Over-Provisioning
+- KA-174 - Synchronous External Calls
+
+### Key Techniques (Ranked)
+1. **KA-150** - Test Pyramid: 70% unit, 20% integration, 10% E2E - STRONG
+2. **KA-151** - Test-First/TDD: Red-green-refactor cycle - STRONG
+3. **KA-152** - Property-Based Testing: Define invariants, generate tests - STRONG
+4. **KA-153** - Mutation Testing: Inject faults, verify detection - STRONG
+5. **KA-127** - Test-Verified Refactoring: Tests before changes - STRONG
+6. **KA-128** - Iterative Repair Loop: Fix, validate, refine - STRONG
+7. **KA-129** - Multi-Stage Validation: Multiple validation stages - STRONG
+8. **KA-130** - Sad Path Coverage: Test error scenarios - STRONG
+9. **KA-138** - Test-First for AI Generation: Tests guide AI - STRONG
+10. **KA-038** - Multi-Layer Hallucination Defense: Consistency + analysis + testing - STRONG
+
+### Key Metrics
+- **KA-042** - AI-Generated Code Vulnerability Rate: 40-45%
+- **KA-127** - Test-Verified Defect Reduction: 25-35%
+- **KA-129** - Multi-Stage Validation Incident Reduction: 60-80%
+- **KA-138** - Test-First Defect Reduction: 40-90%
+- **KA-146** - Self-Healing Pipeline Reliability: 85%→98%
+- **KA-147** - Automated Rollback MTTR Reduction: 90%
+- **KA-153** - Mutation Testing Defect Correlation: r=0.75
+
+### Key Constraints
+- **KA-131** - Complexity Budget Enforcement: Limit complexity metrics
+- **KA-164** - Data Quality Gates: Validate before proceeding
+- **KA-062** - Budget-Aware Task Decomposition: Token budgets per step
+
+### Key Tools
+- **KA-153** - Mutation Testing: Fault injection for test quality
+- **KA-146** - Self-Healing Pipeline: Auto-detect and recover
+- **KA-147** - Automated Rollback: Auto-revert on threshold breach
+
+### Combination Recipes
+- **KA-150 + KA-151** - Test Pyramid with TDD for comprehensive coverage
+- **KA-152 + KA-153** - Property-Based with Mutation Testing for robustness
+- **KA-127 + KA-128** - Test-Verified Refactoring with Iterative Repair
+- **KA-038 + KA-040** - Multi-Layer Defense with Multi-Agent Consensus
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-133 | Refactoring Without Tests | Silent behavior changes | Require test coverage first |
+| KA-134 | Happy Path Bias | 60-70% failures from untested paths | Add sad path coverage |
+| KA-154 | Test Inversion | Long feedback cycles, flaky tests | Rebalance to test pyramid |
+| KA-155 | Test Interdependence | Tests pass individually but fail in suite | Isolate test state |
+
+### Anti-Patterns
+- **KA-133** - Refactoring Without Tests: Direct changes seem faster but introduce defects
+- **KA-134** - Happy Path Bias: Testing success seems sufficient but misses failures
+- **KA-154** - Test Inversion: More E2E tests seem thorough but are slow and flaky
+- **KA-155** - Test Interdependence: Shared state seems efficient but causes cascading failures
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-150 | Test Pyramid | Flat Distribution | Pyramid for speed, flat for uniformity |
+| KA-151 | TDD | Test-After | TDD for quality, test-after for speed |
+| KA-153 | Mutation Testing | Coverage Only | Mutation for quality, coverage for baseline |
+
+### Cross-Domain Links
+- **KA-038** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-040** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-127** also relevant to: D1 (Agent Architecture), D4 (Code Intelligence)
+- **KA-138** also relevant to: D1 (Agent Architecture), D4 (Code Intelligence)
+
+### Gaps
+- No patterns for AI-specific testing (testing AI-generated code)
+- Limited coverage of visual regression testing
+- Missing patterns for performance testing automation
+- No explicit guidance on test data management
+- Limited coverage of contract testing patterns
+
+---
+
+## D7: Security & Guardrails
+
+### Overview
+Covers how the system protects against adversarial inputs, hallucinations, and unsafe outputs. This domain focuses on security architecture, guardrails, and threat mitigation.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-007 - Structured Human-in-Loop for explicit checkpoints
+- KA-026 - Layered Guardrail Envelope for defense in depth
+- KA-027 - Provenance-Tagged Context Ingestion
+- KA-028 - Task-Scoped MCP Capability Minting
+- KA-029 - Sandboxed Execute-and-Validate Loop
+- KA-030 - Default-Deny Egress with Explicit Allowlists
+- KA-031 - Evidence-First Action Gating
+- KA-032 - Adversarial Regression Suite
+- KA-038 - Multi-Layer Hallucination Defense
+- KA-041 - Uncertainty-Calibrated Human Escalation
+- KA-042 - AI-Generated Code Vulnerability Rate: 40-45%
+- KA-047 - MCP Security Threat Mitigation
+- KA-048 - MCP Single-Responsibility Server Pattern
+- KA-051 - Compliance Envelope per Agent Run
+- KA-052 - Policy-as-Code with Runtime Adjudication
+- KA-055 - Ephemeral Scoped Credential Broker
+- KA-065 - Skill Gating and Tool Entitlement
+- KA-176 - Confidence-Calibrated Escalation
+- KA-179 - Risk-Tiered Auto-Approval Gateway
+
+**ANTI-PATTERNS (STRONG):**
+- KA-013 - Credential Sprawl in IDE - unvaulted credentials
+- KA-033 - Prompt-Only Security - no runtime enforcement
+- KA-034 - Trusting Retrieved Content as Policy
+- KA-035 - Over-Privileged MCP Defaults
+- KA-036 - Unsandboxed Code/Tool Execution
+- KA-037 - Open Egress by Default
+- KA-043 - Blind Trust in LLM Output
+- KA-049 - MCP God Server
+- KA-050 - Secret in Prompt
+- KA-058 - Policy-in-Prompt Only
+- KA-059 - Long-Lived Shared Credentials
+- KA-107 - Unvalidated Context Injection
+- KA-183 - Context Poisoning from Human Input
+
+### Key Techniques (Ranked)
+1. **KA-026** - Layered Guardrail Envelope: Input filtering + policy validation + output checks - STRONG
+2. **KA-028** - Task-Scoped MCP Capability Minting: Narrow, temporary capabilities - STRONG
+3. **KA-029** - Sandboxed Execute-and-Validate Loop: Isolated runtime execution - STRONG
+4. **KA-030** - Default-Deny Egress: Block all except approved - STRONG
+5. **KA-031** - Evidence-First Action Gating: Require evidence before actions - STRONG
+6. **KA-032** - Adversarial Regression Suite: Continuous adversarial testing - STRONG
+7. **KA-038** - Multi-Layer Hallucination Defense: Consistency + analysis + testing - STRONG
+8. **KA-047** - MCP Security Threat Mitigation: Eight threat categories - STRONG
+9. **KA-052** - Policy-as-Code with Runtime Adjudication: Preflight + runtime checks - STRONG
+10. **KA-055** - Ephemeral Scoped Credential Broker: Short-lived credentials - STRONG
+
+### Key Metrics
+- **KA-042** - AI-Generated Code Vulnerability Rate: 40-45%
+
+### Key Constraints
+- **KA-026** - Layered Guardrail Envelope: Defense in depth required
+- **KA-028** - Task-Scoped MCP Capability Minting: Least privilege per task
+- **KA-030** - Default-Deny Egress: Block all outbound except approved
+- **KA-031** - Evidence-First Action Gating: Require evidence before high-impact actions
+
+### Key Tools
+- **KA-047** - MCP Security Threat Mitigation: Eight threat categories
+- **KA-048** - MCP Single-Responsibility Server Pattern: One domain per server
+- **KA-032** - Adversarial Regression Suite: Continuous security testing
+
+### Combination Recipes
+- **KA-026 + KA-038** - Layered Guardrails with Multi-Layer Hallucination Defense for comprehensive protection
+- **KA-028 + KA-055** - Task-Scoped Capabilities with Ephemeral Credentials for least privilege
+- **KA-029 + KA-036** - Sandboxed Execution prevents Unsandboxed Execution risks
+- **KA-052 + KA-058** - Policy-as-Code prevents Policy-in-Prompt Only risks
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-033 | Prompt-Only Security | Easy bypass by injection | Add runtime enforcement |
+| KA-034 | Trusting Retrieved Content as Policy | Context poisoning attacks | Add provenance validation |
+| KA-035 | Over-Privileged MCP Defaults | Privilege escalation | Implement least privilege |
+| KA-036 | Unsandboxed Code/Tool Execution | Host compromise | Add sandboxed execution |
+| KA-037 | Open Egress by Default | Data exfiltration | Implement default-deny egress |
+| KA-050 | Secret in Prompt | Secrets in logs, training data | Use credential broker |
+
+### Anti-Patterns
+- **KA-033** - Prompt-Only Security: Instructions seem sufficient but are easily bypassed
+- **KA-034** - Trusting Retrieved Content: Treating retrieval as authoritative enables poisoning
+- **KA-035** - Over-Privileged MCP Defaults: Broad access seems convenient but enables escalation
+- **KA-050** - Secret in Prompt: Including secrets seems efficient but leaks them
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-029 | Sandboxed Execution | Direct Execution | Sandbox for safety, direct for performance |
+| KA-030 | Default-Deny Egress | Open Egress | Default-deny for security, open for flexibility |
+| KA-055 | Ephemeral Credentials | Long-Lived Credentials | Ephemeral for security, long-lived for convenience |
+
+### Cross-Domain Links
+- **KA-007** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-027** also relevant to: D1 (Agent Architecture), D3 (Context)
+- **KA-038** also relevant to: D1 (Agent Architecture), D4 (Code Intelligence)
+- **KA-041** also relevant to: D1 (Agent Architecture)
+
+### Gaps
+- No patterns for AI-specific threat modeling
+- Limited coverage of prompt injection detection and prevention
+- Missing patterns for secure multi-tenant isolation
+- No explicit guidance on security incident response automation
+- Limited coverage of AI model supply chain security
+
+---
+
+## D8: Model Management & Routing
+
+### Overview
+Covers how the system selects, switches, and optimizes model usage. This domain focuses on model selection, routing strategies, and cost optimization.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-051 - Compliance Envelope per Agent Run
+- KA-054 - AI-Native SBOM Extension
+- KA-056 - Explainability Record with Policy Context
+- KA-061 - Cascade Router with Confidence Escalation (40-80% cost reduction)
+- KA-063 - Semantic Prompt Caching
+- KA-064 - Retrieval Compression Pipeline
+- KA-065 - Skill Gating and Tool Entitlement
+- KA-139 - Architecture Decision Records (35% less tech debt)
+- KA-168 - GPU Pool with Time-Slicing (3.2x utilization)
+- KA-169 - Semantic Caching Layer (67% cost reduction)
+- KA-170 - Tiered Model Serving
+- KA-171 - Sharded Vector Store (78% latency reduction)
+- KA-172 - Request Batching (4.2x throughput)
+
+**ANTI-PATTERNS (STRONG):**
+- KA-057 - Action Logs Without Decision Context
+- KA-060 - SBOM Without AI Context
+- KA-080 - Tight Vendor Coupling
+- KA-173 - GPU Over-Provisioning
+- KA-184 - Rubber-Stamp Automation Theatre
+
+### Key Techniques (Ranked)
+1. **KA-061** - Cascade Router with Confidence Escalation: Route to low-cost first, escalate if needed - STRONG
+2. **KA-170** - Tiered Model Serving: Multiple tiers with different tradeoffs - STRONG
+3. **KA-063** - Semantic Prompt Caching: Cache by similarity - STRONG
+4. **KA-064** - Retrieval Compression Pipeline: Multi-stage retrieval - STRONG
+5. **KA-168** - GPU Pool with Time-Slicing: Share GPU across workloads - STRONG
+6. **KA-169** - Semantic Caching Layer: Cache by semantic similarity - STRONG
+7. **KA-171** - Sharded Vector Store: Distribute embeddings - STRONG
+8. **KA-172** - Request Batching: Aggregate requests - STRONG
+9. **KA-054** - AI-Native SBOM Extension: Include model info in SBOM - STRONG
+10. **KA-056** - Explainability Record with Policy Context: Persist rationale - STRONG
+
+### Key Metrics
+- **KA-061** - Cascade Router Cost Reduction: 40-80%
+- **KA-168** - GPU Pool Utilization Improvement: 3.2x
+- **KA-169** - Semantic Caching Cost Reduction: 67%
+- **KA-171** - Sharded Vector Store Latency Reduction: 78%
+- **KA-172** - Request Batching Throughput Improvement: 4.2x
+
+### Key Constraints
+- **KA-051** - Compliance Envelope per Agent Run: Emit standardized evidence
+- **KA-054** - AI-Native SBOM Extension: Include model info
+- **KA-065** - Skill Gating and Tool Entitlement: Minimum required only
+
+### Key Tools
+- **KA-061** - Cascade Router: Route based on confidence
+- **KA-170** - Tiered Model Serving: Multiple model tiers
+- **KA-168** - GPU Pool with Time-Slicing: Shared GPU resources
+
+### Combination Recipes
+- **KA-061 + KA-170** - Cascade Router with Tiered Model Serving for cost optimization
+- **KA-063 + KA-169** - Semantic Prompt Caching with Semantic Caching Layer for efficiency
+- **KA-168 + KA-172** - GPU Pool with Request Batching for throughput
+- **KA-054 + KA-060** - AI-Native SBOM prevents SBOM Without AI Context
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-057 | Action Logs Without Decision Context | Weak audit defensibility | Add decision context to logs |
+| KA-060 | SBOM Without AI Context | Incomplete provenance | Extend SBOM with AI context |
+| KA-080 | Tight Vendor Coupling | Migration costs | Add abstraction layers |
+| KA-173 | GPU Over-Provisioning | GPU utilization below 20% | Implement GPU pooling |
+
+### Anti-Patterns
+- **KA-057** - Action Logs Without Decision Context: Logging actions seems sufficient but misses why
+- **KA-060** - SBOM Without AI Context: Package-only SBOM seems complete but misses AI components
+- **KA-080** - Tight Vendor Coupling: Vendor SDK seems easier but creates lock-in
+- **KA-173** - GPU Over-Provisioning: Dedicated GPUs seem performant but waste resources
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-061 | Cascade Router | Single Model | Cascade for cost, single for simplicity |
+| KA-170 | Tiered Model Serving | Single Tier | Tiered for flexibility, single for consistency |
+| KA-168 | GPU Pool | Dedicated GPU | Pool for efficiency, dedicated for performance |
+
+### Cross-Domain Links
+- **KA-051** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-054** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-056** also relevant to: D1 (Agent Architecture), D7 (Human Interaction)
+- **KA-063** also relevant to: D1 (Agent Architecture), D3 (Context)
+
+### Gaps
+- No patterns for model versioning and rollback
+- Limited coverage of A/B testing for model selection
+- Missing patterns for model performance monitoring
+- No explicit guidance on model fallback strategies
+- Limited coverage of multi-model orchestration
+
+---
+
+## D9: CI/CD & DevOps
+
+### Overview
+Covers how the system integrates with build, deploy, and operations infrastructure. This domain focuses on pipeline automation, deployment strategies, and operational practices.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-026 - Layered Guardrail Envelope for defense in depth
+- KA-029 - Sandboxed Execute-and-Validate Loop
+- KA-042 - AI-Generated Code Vulnerability Rate: 40-45%
+- KA-047 - MCP Security Threat Mitigation
+- KA-051 - Compliance Envelope per Agent Run
+- KA-055 - Ephemeral Scoped Credential Broker
+- KA-098 - Multi-Stage Pipeline
+- KA-127 - Test-Verified Refactoring (25-35% defect reduction)
+- KA-129 - Multi-Stage Validation (60-80% incident reduction)
+- KA-131 - Complexity Budget Enforcement
+- KA-142 - Pipeline as Code
+- KA-143 - GitOps
+- KA-144 - Blue/Green Deployment
+- KA-145 - Canary Deployment
+- KA-146 - Self-Healing Pipeline (85%→98% reliability)
+- KA-147 - Automated Rollback (90% MTTR reduction)
+- KA-156 - Three Pillars of Observability
+- KA-157 - Structured Logging
+- KA-158 - Error Fingerprinting (70% noise reduction)
+- KA-159 - RED Metrics
+- KA-162 - Expand-Contract Migration
+- KA-164 - Data Quality Gates
+
+**ANTI-PATTERNS (STRONG):**
+- KA-036 - Unsandboxed Code/Tool Execution
+- KA-043 - Blind Trust in LLM Output
+- KA-133 - Refactoring Without Tests
+- KA-148 - Snowflake Environments
+- KA-149 - Long-Running Branches
+- KA-154 - Test Inversion
+- KA-155 - Test Interdependence
+- KA-160 - Alert Fatigue
+- KA-166 - Migration in Deployment
+- KA-174 - Synchronous External Calls
+
+### Key Techniques (Ranked)
+1. **KA-142** - Pipeline as Code: Version-controlled pipeline definitions - STRONG
+2. **KA-143** - GitOps: Git as single source of truth - STRONG
+3. **KA-144** - Blue/Green Deployment: Two environments, instant switch - STRONG
+4. **KA-145** - Canary Deployment: Gradual traffic shift - STRONG
+5. **KA-146** - Self-Healing Pipeline: Auto-detect and recover - STRONG
+6. **KA-147** - Automated Rollback: Auto-revert on threshold breach - STRONG
+7. **KA-098** - Multi-Stage Pipeline: Stages with increasing precision - STRONG
+8. **KA-129** - Multi-Stage Validation: Multiple validation stages - STRONG
+9. **KA-156** - Three Pillars of Observability: Metrics + logs + traces - STRONG
+10. **KA-157** - Structured Logging: Machine-parseable logs - STRONG
+
+### Key Metrics
+- **KA-146** - Self-Healing Pipeline Reliability: 85%→98%
+- **KA-147** - Automated Rollback MTTR Reduction: 90%
+- **KA-158** - Error Fingerprinting Noise Reduction: 70%
+
+### Key Constraints
+- **KA-131** - Complexity Budget Enforcement: Block when thresholds exceeded
+- **KA-164** - Data Quality Gates: Validate before proceeding
+- **KA-051** - Compliance Envelope per Agent Run: Emit standardized evidence
+
+### Key Tools
+- **KA-142** - Pipeline as Code: Version-controlled pipelines
+- **KA-143** - GitOps: Git-based infrastructure
+- **KA-146** - Self-Healing Pipeline: Auto-recovery
+
+### Combination Recipes
+- **KA-142 + KA-143** - Pipeline as Code with GitOps for reproducibility
+- **KA-144 + KA-147** - Blue/Green with Automated Rollback for safety
+- **KA-145 + KA-156** - Canary with Three Pillars for risk mitigation
+- **KA-098 + KA-129** - Multi-Stage Pipeline with Multi-Stage Validation
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-148 | Snowflake Environments | Works on my machine issues | Implement infrastructure as code |
+| KA-149 | Long-Running Branches | Merge conflicts, integration issues | Use short-lived branches |
+| KA-154 | Test Inversion | Long feedback cycles | Rebalance to test pyramid |
+| KA-160 | Alert Fatigue | Ignored alerts, missed incidents | Reduce false positives |
+| KA-166 | Migration in Deployment | Failed deployments, inconsistent state | Separate migrations from deployments |
+
+### Anti-Patterns
+- **KA-148** - Snowflake Environments: Manual setup seems flexible but causes drift
+- **KA-149** - Long-Running Branches: Long branches seem safe but cause merge hell
+- **KA-160** - Alert Fatigue: Many alerts seem thorough but cause alert ignoring
+- **KA-166** - Migration in Deployment: Combined seems efficient but causes failures
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-144 | Blue/Green Deployment | Rolling Deployment | Blue/green for instant switch, rolling for resource efficiency |
+| KA-145 | Canary Deployment | Big Bang Deployment | Canary for risk mitigation, big bang for simplicity |
+| KA-142 | Pipeline as Code | GUI Pipeline | Code for versioning, GUI for simplicity |
+
+### Cross-Domain Links
+- **KA-026** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-051** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-098** also relevant to: D1 (Agent Architecture), D4 (Code Intelligence)
+
+### Gaps
+- No patterns for AI-specific CI/CD (testing AI models in pipeline)
+- Limited coverage of feature flag integration
+- Missing patterns for environment provisioning automation
+- No explicit guidance on deployment window management
+- Limited coverage of pipeline security patterns
+
+---
+
+## D10: Workspace & Infrastructure Management
+
+### Overview
+Covers how agents organize files, branches, environments, and resources. This domain focuses on workspace organization, infrastructure provisioning, and resource management.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-001 - Auto-Launch Workspaces for deterministic initialization
+- KA-026 - Layered Guardrail Envelope for defense in depth
+- KA-028 - Task-Scoped MCP Capability Minting
+- KA-030 - Default-Deny Egress with Explicit Allowlists
+- KA-047 - MCP Security Threat Mitigation
+- KA-048 - MCP Single-Responsibility Server Pattern
+- KA-055 - Ephemeral Scoped Credential Broker
+- KA-061 - Cascade Router with Confidence Escalation (40-80% cost reduction)
+- KA-062 - Budget-Aware Task Decomposition
+- KA-065 - Skill Gating and Tool Entitlement
+- KA-084 - Federated Cluster Architecture (3x throughput)
+- KA-085 - Service Mesh Coordination
+- KA-086 - Worker Pool Pattern
+- KA-090 - Adaptive Throttling (2x latency under 5x load)
+- KA-096 - Branch-Per-Task Isolation (67% merge conflict reduction)
+- KA-142 - Pipeline as Code
+- KA-143 - GitOps
+- KA-144 - Blue/Green Deployment
+- KA-145 - Canary Deployment
+- KA-156 - Three Pillars of Observability
+- KA-157 - Structured Logging
+- KA-158 - Error Fingerprinting (70% noise reduction)
+- KA-159 - RED Metrics
+- KA-161 - Declarative Schema as Code
+- KA-162 - Expand-Contract Migration
+- KA-163 - Schema Registry
+- KA-164 - Data Quality Gates
+- KA-168 - GPU Pool with Time-Slicing (3.2x utilization)
+- KA-169 - Semantic Caching Layer (67% cost reduction)
+- KA-170 - Tiered Model Serving
+- KA-171 - Sharded Vector Store (78% latency reduction)
+- KA-172 - Request Batching (4.2x throughput)
+
+**MODERATE Evidence:**
+- KA-018 - Progressive Disclosure Architecture for context efficiency
+
+**ANTI-PATTERNS (STRONG):**
+- KA-013 - Credential Sprawl in IDE - unvaulted credentials
+- KA-035 - Over-Privileged MCP Defaults
+- KA-037 - Open Egress by Default
+- KA-049 - MCP God Server
+- KA-050 - Secret in Prompt
+- KA-059 - Long-Lived Shared Credentials
+- KA-148 - Snowflake Environments
+- KA-149 - Long-Running Branches
+- KA-165 - Shared Database
+- KA-167 - God Table
+- KA-173 - GPU Over-Provisioning
+- KA-174 - Synchronous External Calls
+- KA-175 - Cache Without Invalidation
+
+### Key Techniques (Ranked)
+1. **KA-001** - Auto-Launch Workspaces: Deterministic initialization - STRONG
+2. **KA-096** - Branch-Per-Task Isolation: Dedicated branch per task - STRONG
+3. **KA-084** - Federated Cluster Architecture: Regional federations - STRONG
+4. **KA-085** - Service Mesh Coordination: Sidecar proxies - STRONG
+5. **KA-086** - Worker Pool Pattern: Pre-initialized workers - STRONG
+6. **KA-168** - GPU Pool with Time-Slicing: Shared GPU resources - STRONG
+7. **KA-171** - Sharded Vector Store: Distributed embeddings - STRONG
+8. **KA-172** - Request Batching: Aggregate requests - STRONG
+9. **KA-161** - Declarative Schema as Code: Version-controlled schemas - STRONG
+10. **KA-163** - Schema Registry: Centralized schema management - STRONG
+
+### Key Metrics
+- **KA-084** - Federated Cluster Throughput: 3x improvement
+- **KA-096** - Merge Conflict Reduction: 67%
+- **KA-168** - GPU Pool Utilization Improvement: 3.2x
+- **KA-171** - Sharded Vector Store Latency Reduction: 78%
+- **KA-172** - Request Batching Throughput Improvement: 4.2x
+
+### Key Constraints
+- **KA-028** - Task-Scoped MCP Capability Minting: Least privilege per task
+- **KA-030** - Default-Deny Egress: Block all except approved
+- **KA-062** - Budget-Aware Task Decomposition: Token budgets per step
+
+### Key Tools
+- **KA-048** - MCP Single-Responsibility Server Pattern: One domain per server
+- **KA-085** - Service Mesh Coordination: Sidecar proxies
+- **KA-163** - Schema Registry: Centralized schema management
+
+### Combination Recipes
+- **KA-001 + KA-096** - Auto-Launch Workspaces with Branch-Per-Task for isolation
+- **KA-084 + KA-085** - Federated Cluster with Service Mesh for scale
+- **KA-168 + KA-172** - GPU Pool with Request Batching for throughput
+- **KA-161 + KA-163** - Declarative Schema with Schema Registry for consistency
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-148 | Snowflake Environments | Works on my machine issues | Implement infrastructure as code |
+| KA-149 | Long-Running Branches | Merge conflicts | Use short-lived branches |
+| KA-165 | Shared Database | Tight coupling, schema conflicts | Implement service-owned databases |
+| KA-167 | God Table | Unclear column purposes, sparse data | Split into focused tables |
+| KA-173 | GPU Over-Provisioning | GPU utilization below 20% | Implement GPU pooling |
+| KA-175 | Cache Without Invalidation | Stale data | Add proper invalidation strategies |
+
+### Anti-Patterns
+- **KA-148** - Snowflake Environments: Manual setup seems flexible but causes drift
+- **KA-149** - Long-Running Branches: Long branches seem safe but cause merge hell
+- **KA-165** - Shared Database: Shared DB seems efficient but creates coupling
+- **KA-167** - God Table: Single table seems simple but accumulates debt
+- **KA-173** - GPU Over-Provisioning: Dedicated GPUs seem performant but waste resources
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-096 | Branch-Per-Task | Shared Branch | Branch-per-task for isolation, shared for simplicity |
+| KA-084 | Federated Cluster | Single Cluster | Federated for scale, single for simplicity |
+| KA-168 | GPU Pool | Dedicated GPU | Pool for efficiency, dedicated for performance |
+
+### Cross-Domain Links
+- **KA-001** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-026** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-061** also relevant to: D1 (Agent Architecture), D6 (Testing)
+
+### Gaps
+- No patterns for workspace template management
+- Limited coverage of environment variable management
+- Missing patterns for resource quota enforcement
+- No explicit guidance on workspace cleanup and garbage collection
+- Limited coverage of multi-cloud infrastructure patterns
+
+---
+
+## D11: Human Interaction
+
+### Overview
+Covers how agents collaborate with humans. This domain focuses on human-in-the-loop patterns, escalation strategies, and human-agent communication.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-007 - Structured Human-in-Loop for explicit checkpoints
+- KA-041 - Uncertainty-Calibrated Human Escalation
+- KA-056 - Explainability Record with Policy Context
+- KA-176 - Confidence-Calibrated Escalation
+- KA-177 - Progressive Disclosure of Reasoning
+- KA-178 - Intelligent Approval Batching
+- KA-179 - Risk-Tiered Auto-Approval Gateway
+- KA-180 - Structured Follow-up Questions
+- KA-181 - Autonomy Level Declaration
+
+**ANTI-PATTERNS (STRONG):**
+- KA-024 - False Confidence - no uncertainty indicators
+- KA-182 - Approval Fatigue Spiral
+- KA-183 - Context Poisoning from Human Input
+- KA-184 - Rubber-Stamp Automation Theatre
+- KA-185 - Explanation Overload
+
+### Key Techniques (Ranked)
+1. **KA-176** - Confidence-Calibrated Escalation: Escalate based on confidence threshold - STRONG
+2. **KA-177** - Progressive Disclosure of Reasoning: Minimal by default, expandable - STRONG
+3. **KA-178** - Intelligent Approval Batching: Group related approvals - STRONG
+4. **KA-179** - Risk-Tiered Auto-Approval Gateway: Auto-approve low-risk - STRONG
+5. **KA-180** - Structured Follow-up Questions: Clear question with suggested answers - STRONG
+6. **KA-181** - Autonomy Level Declaration: Explicit autonomy levels - STRONG
+7. **KA-007** - Structured Human-in-Loop: Explicit checkpoints - STRONG
+8. **KA-041** - Uncertainty-Calibrated Human Escalation: Route based on uncertainty - STRONG
+9. **KA-056** - Explainability Record with Policy Context: Persist rationale - STRONG
+
+### Key Metrics
+- No specific metrics defined for this domain
+
+### Key Constraints
+- **KA-181** - Autonomy Level Declaration: Explicit autonomy levels required
+- **KA-179** - Risk-Tiered Auto-Approval Gateway: Risk classification required
+
+### Key Tools
+- **KA-180** - Structured Follow-up Questions: Clarification tool
+- **KA-178** - Intelligent Approval Batching: Approval grouping
+
+### Combination Recipes
+- **KA-176 + KA-179** - Confidence-Calibrated Escalation with Risk-Tiered Auto-Approval for efficiency
+- **KA-177 + KA-185** - Progressive Disclosure prevents Explanation Overload
+- **KA-178 + KA-182** - Intelligent Approval Batching prevents Approval Fatigue
+- **KA-007 + KA-181** - Structured Human-in-Loop with Autonomy Level Declaration
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-182 | Approval Fatigue Spiral | Rubber-stamp approvals | Batch approvals, reduce requests |
+| KA-183 | Context Poisoning from Human Input | Degraded agent behavior | Validate human inputs |
+| KA-184 | Rubber-Stamp Automation Theatre | Perfunctory human review | Add meaningful review criteria |
+| KA-185 | Explanation Overload | Reduced decision quality | Use progressive disclosure |
+
+### Anti-Patterns
+- **KA-182** - Approval Fatigue Spiral: Many approvals seem thorough but cause rubber-stamping
+- **KA-183** - Context Poisoning from Human Input: Human input seems helpful but can introduce errors
+- **KA-184** - Rubber-Stamp Automation Theatre: HITL seems compliant but provides no oversight
+- **KA-185** - Explanation Overload: More explanation seems helpful but overwhelms
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-176 | Confidence-Calibrated Escalation | Always Escalate | Calibrated for efficiency, always for safety |
+| KA-179 | Auto-Approval Gateway | Manual Approval | Auto for efficiency, manual for control |
+| KA-177 | Progressive Disclosure | Full Disclosure | Progressive for clarity, full for transparency |
+
+### Cross-Domain Links
+- **KA-007** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-041** also relevant to: D1 (Agent Architecture)
+- **KA-056** also relevant to: D1 (Agent Architecture), D8 (Model Management)
+
+### Gaps
+- No patterns for multi-user collaboration
+- Limited coverage of human feedback integration
+- Missing patterns for conflict resolution between human and agent
+- No explicit guidance on accessibility in human-agent interfaces
+- Limited coverage of cultural and language adaptation
+
+---
+
+## D12: Self-Improvement & Optimization
+
+### Overview
+Covers how the system improves its own performance over time. This domain focuses on learning mechanisms, optimization strategies, and continuous improvement.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-032 - Adversarial Regression Suite
+- KA-038 - Multi-Layer Hallucination Defense
+- KA-040 - Multi-Agent Verification Consensus
+- KA-061 - Cascade Router with Confidence Escalation (40-80% cost reduction)
+- KA-063 - Semantic Prompt Caching
+- KA-064 - Retrieval Compression Pipeline
+- KA-065 - Skill Gating and Tool Entitlement
+- KA-073 - Conditional Multi-Stage Recovery (19% higher success)
+- KA-077 - Watchdog Monitoring
+- KA-078 - Adversarial Review (40% higher bug detection)
+- KA-090 - Adaptive Throttling (2x latency under 5x load)
+- KA-109 - Memory Consolidation
+- KA-116 - Incremental Representation Updates
+- KA-128 - Iterative Repair Loop (85%+ resolution rate)
+- KA-129 - Multi-Stage Validation (60-80% incident reduction)
+- KA-137 - Iterative Specification Refinement
+- KA-146 - Self-Healing Pipeline (85%→98% reliability)
+- KA-153 - Mutation Testing (r=0.75 defect correlation)
+- KA-168 - GPU Pool with Time-Slicing (3.2x utilization)
+- KA-169 - Semantic Caching Layer (67% cost reduction)
+- KA-172 - Request Batching (4.2x throughput)
+
+**MODERATE Evidence:**
+- KA-039 - Early Exit with Confidence Gating
+- KA-074 - Stigmergic Coordination
+
+**ANTI-PATTERNS (STRONG):**
+- KA-044 - Single-Technique Hallucination Defense
+- KA-045 - Ignoring Confidence Calibration
+- KA-113 - Unbounded Memory Growth
+- KA-119 - Full Rebuild on Change
+- KA-134 - Happy Path Bias - 60-70% failures untested paths
+- KA-160 - Alert Fatigue
+- KA-173 - GPU Over-Provisioning
+
+### Key Techniques (Ranked)
+1. **KA-032** - Adversarial Regression Suite: Continuous adversarial testing - STRONG
+2. **KA-078** - Adversarial Review: Dedicated critic agents - STRONG
+3. **KA-109** - Memory Consolidation: Compress, summarize, prune - STRONG
+4. **KA-116** - Incremental Representation Updates: Update on change - STRONG
+5. **KA-128** - Iterative Repair Loop: Fix, validate, refine - STRONG
+6. **KA-137** - Iterative Specification Refinement: Start minimal, refine - STRONG
+7. **KA-146** - Self-Healing Pipeline: Auto-detect and recover - STRONG
+8. **KA-153** - Mutation Testing: Inject faults, verify detection - STRONG
+9. **KA-073** - Conditional Multi-Stage Recovery: Diagnosis→Planning→Recovery - STRONG
+10. **KA-090** - Adaptive Throttling: Dynamic rate adjustment - STRONG
+
+### Key Metrics
+- **KA-073** - Conditional Multi-Stage Recovery Success Rate: 19% higher
+- **KA-078** - Adversarial Review Bug Detection: 40% higher
+- **KA-128** - Iterative Repair Loop Resolution Rate: 85%+
+- **KA-146** - Self-Healing Pipeline Reliability: 85%→98%
+- **KA-153** - Mutation Testing Defect Correlation: r=0.75
+
+### Key Constraints
+- **KA-065** - Skill Gating and Tool Entitlement: Minimum required only
+- **KA-032** - Adversarial Regression Suite: Continuous testing required
+
+### Key Tools
+- **KA-032** - Adversarial Regression Suite: Continuous security testing
+- **KA-153** - Mutation Testing: Fault injection for test quality
+- **KA-077** - Watchdog Monitoring: Health metrics and anomaly detection
+
+### Combination Recipes
+- **KA-032 + KA-078** - Adversarial Regression with Adversarial Review for continuous improvement
+- **KA-109 + KA-113** - Memory Consolidation prevents Unbounded Memory Growth
+- **KA-116 + KA-119** - Incremental Updates prevents Full Rebuild on Change
+- **KA-128 + KA-146** - Iterative Repair with Self-Healing Pipeline for resilience
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-044 | Single-Technique Hallucination Defense | Blind spots in defense | Add multiple techniques |
+| KA-045 | Ignoring Confidence Calibration | Overconfidence in incorrect answers | Add confidence indicators |
+| KA-113 | Unbounded Memory Growth | Storage costs grow unbounded | Add pruning and expiration |
+| KA-119 | Full Rebuild on Change | Slow response time | Implement incremental updates |
+| KA-134 | Happy Path Bias | 60-70% failures from untested paths | Add sad path coverage |
+
+### Anti-Patterns
+- **KA-044** - Single-Technique Hallucination Defense: One technique seems sufficient but has blind spots
+- **KA-045** - Ignoring Confidence Calibration: Equal confidence seems fair but causes overconfidence
+- **KA-113** - Unbounded Memory Growth: Keeping everything seems safe but degrades performance
+- **KA-119** - Full Rebuild on Change: Complete rebuild seems thorough but is slow
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-032 | Adversarial Regression | Standard Testing | Adversarial for security, standard for coverage |
+| KA-153 | Mutation Testing | Coverage Only | Mutation for quality, coverage for baseline |
+| KA-128 | Iterative Repair | Single-Pass Fix | Iterative for reliability, single-pass for speed |
+
+### Cross-Domain Links
+- **KA-032** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-038** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-040** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-078** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+
+### Gaps
+- No patterns for automated prompt optimization
+- Limited coverage of reinforcement learning from human feedback (RLHF)
+- Missing patterns for knowledge distillation
+- No explicit guidance on self-evaluation metrics
+- Limited coverage of continuous learning from production data
+
+---
+
+## Summary Statistics
+
+### Atoms by Domain
+| Domain | Total Atoms | Techniques | Anti-Patterns | Metrics |
+|--------|-------------|------------|---------------|---------|
+| D1: Agent Architecture & Orchestration | 185 | 112 | 58 | 15 |
+| D2: Task Management & Decomposition | 48 | 38 | 10 | 4 |
+| D3: Context & Prompt Engineering | 32 | 20 | 11 | 4 |
+| D4: Memory & Knowledge Systems | 57 | 38 | 19 | 6 |
+| D5: Code Intelligence & Representations | 64 | 30 | 30 | 6 |
+| D6: Testing & Validation | 46 | 28 | 9 | 7 |
+| D7: Security & Guardrails | 32 | 19 | 13 | 1 |
+| D8: Model Management & Routing | 18 | 10 | 5 | 5 |
+| D9: CI/CD & DevOps | 32 | 20 | 10 | 3 |
+| D10: Workspace & Infrastructure Management | 44 | 30 | 12 | 5 |
+| D11: Human Interaction | 14 | 9 | 5 | 0 |
+| D12: Self-Improvement & Optimization | 27 | 20 | 7 | 5 |
+
+### Cross-Domain Link Analysis
+- Most interconnected domains: D1 (Agent Architecture) connects to all other domains
+- Strongest cross-domain relationships:
+  - D1 ↔ D2: Task decomposition and agent coordination
+  - D1 ↔ D3: Context management for agents
+  - D1 ↔ D5: Security and code intelligence
+  - D3 ↔ D4: Context and memory systems
+
+### Identified Gaps Summary
+1. **Agent Architecture**: Agent negotiation protocols, lifecycle management, learning patterns
+2. **Task Management**: Priority inference, dependency resolution, rollback patterns
+3. **Context Engineering**: Dynamic prompt templates, multi-modal context, versioning
+4. **Memory Systems**: Knowledge graphs, privacy controls, cross-agent sharing
+5. **Code Intelligence**: Code smell detection, similarity analysis, architecture recovery
+6. **Testing**: AI-specific testing, visual regression, performance automation
+7. **Security**: AI threat modeling, prompt injection defense, multi-tenant isolation
+8. **Model Management**: Model versioning, A/B testing, performance monitoring
+9. **CI/CD**: AI-specific pipelines, feature flags, environment provisioning
+10. **Workspace**: Template management, resource quotas, multi-cloud patterns
+11. **Human Interaction**: Multi-user collaboration, feedback integration, conflict resolution
+12. **Self-Improvement**: Prompt optimization, RLHF, knowledge distillation
+
+---
+
+*Generated from Master Knowledge Atom Registry on 2026-02-25*
+*Total Source Atoms: 185 | Domains: 12 | Evidence: STRONG (112), MODERATE (58), WEAK (15)*
+
+9. **CI/CD**: AI-specific pipelines, feature flags, environment provisioning
+10. **Workspace**: Template management, resource quotas, multi-cloud patterns
+11. **Human Interaction**: Multi-user collaboration, feedback integration, conflict resolution
+12. **Self-Improvement**: Prompt optimization, RLHF, knowledge distillation
+
+---
+
+*Generated from Master Knowledge Atom Registry on 2026-02-25*
+*Total Source Atoms: 185 | Domains: 12 | Evidence: STRONG (112), MODERATE (58), WEAK (15)*
+
+## Overview
+This document organizes knowledge atoms from the Master Knowledge Atom Registry into 12 technical domains. Each domain contains ranked knowledge atoms, key techniques, constraints, tools, cross-domain links, and identified gaps.
+
+**Total Knowledge Atoms**: 185
+**Domains Covered**: D1-D12
+**Extraction Date**: 2026-02-25
+
+---
+
+## D1: Agent Architecture & Orchestration
+
+### Overview
+Covers what agents are, how they're structured, how they coordinate, and how they're specialized. This is the foundational domain for understanding multi-agent systems and their design patterns.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-001 - Auto-Launch Workspaces for deterministic initialization
+- KA-002 - Bidirectional Specifications for spec-code alignment
+- KA-003 - BDI Hybrid Architecture for verifiable reasoning
+- KA-004 - 4-Phase Spec-Driven Workflow (56% faster development)
+- KA-005 - Modular Agent Decomposition for testable components
+- KA-006 - Critic-Actor Pattern for quality validation
+- KA-007 - Structured Human-in-Loop for explicit checkpoints
+- KA-022 - Task-Appropriate Temperature Settings
+- KA-025 - Confidence Scores with AI outputs
+- KA-026 - Layered Guardrail Envelope for defense in depth
+- KA-028 - Task-Scoped MCP Capability Minting
+- KA-029 - Sandboxed Execute-and-Validate Loop
+- KA-030 - Default-Deny Egress with Explicit Allowlists
+- KA-031 - Evidence-First Action Gating
+- KA-032 - Adversarial Regression Suite
+- KA-038 - Multi-Layer Hallucination Defense
+- KA-040 - Multi-Agent Verification Consensus
+- KA-047 - MCP Security Threat Mitigation
+- KA-048 - MCP Single-Responsibility Server Pattern
+- KA-051 - Compliance Envelope per Agent Run
+- KA-052 - Policy-as-Code with Runtime Adjudication
+- KA-053 - Deterministic Control Plane, Stochastic Data Plane
+- KA-055 - Ephemeral Scoped Credential Broker
+- KA-061 - Cascade Router with Confidence Escalation (40-80% cost reduction)
+- KA-062 - Budget-Aware Task Decomposition
+- KA-065 - Skill Gating and Tool Entitlement
+- KA-066 - System-Theoretic Agent Decomposition
+- KA-067 - Hierarchical Multi-Agent Orchestration
+- KA-069 - Mixture-of-Agents (MoA) (8-12% improvement)
+- KA-070 - Role-Based Specialization
+- KA-071 - Mode-Based Operation (34% task drift reduction)
+- KA-072 - Checkpoint-Based Execution
+- KA-073 - Conditional Multi-Stage Recovery (19% higher success)
+- KA-075 - MCP Tool Integration
+- KA-077 - Watchdog Monitoring
+- KA-078 - Adversarial Review (40% higher bug detection)
+- KA-084 - Federated Cluster Architecture (3x throughput)
+- KA-085 - Service Mesh Coordination
+- KA-086 - Worker Pool Pattern
+- KA-087 - Priority Queue with Fair Share (89% task starvation reduction)
+- KA-088 - Work Stealing
+- KA-089 - Lease-Based Distributed Lock
+- KA-090 - Adaptive Throttling (2x latency under 5x load)
+- KA-091 - Hierarchical Task Decomposition
+- KA-092 - DAG-Based Task Graph
+- KA-093 - Conditional Task Graph
+- KA-094 - Single-Responsibility Task
+- KA-095 - Idempotent Task
+- KA-096 - Branch-Per-Task Isolation (67% merge conflict reduction)
+- KA-098 - Multi-Stage Pipeline
+- KA-099 - Budget-Aware Retrieval
+- KA-100 - Hierarchical Summarization
+- KA-101 - U-Shaped Context Placement
+- KA-102 - Task-Conditioned Context
+- KA-103 - Semantic Chunking
+- KA-104 - Context Provenance Tracking
+- KA-108 - Hierarchical Memory Architecture
+- KA-109 - Memory Consolidation
+- KA-110 - Entity-Centric Memory
+- KA-111 - Hybrid Retrieval
+- KA-115 - Multi-Representation Fusion
+- KA-116 - Incremental Representation Updates
+- KA-117 - Layered Abstraction
+- KA-120 - Entrypoint-First Exploration (60-80% scope reduction)
+- KA-121 - Semantic-Guided Traversal (40-60% time reduction)
+- KA-122 - Hybrid Search Fusion (7-60% accuracy improvement)
+- KA-123 - Call Chain Verification (85%+ accuracy)
+- KA-124 - Pattern Library Extraction (80-90% accuracy)
+- KA-127 - Test-Verified Refactoring (25-35% defect reduction)
+- KA-128 - Iterative Repair Loop (85%+ resolution rate)
+- KA-129 - Multi-Stage Validation (60-80% incident reduction)
+- KA-130 - Sad Path Coverage
+- KA-131 - Complexity Budget Enforcement
+- KA-132 - AI Code Normalization (30% less abstraction)
+- KA-136 - Executable Specifications (45% interface defect reduction)
+- KA-137 - Iterative Specification Refinement
+- KA-138 - Test-First for AI Generation (40-90% defect reduction)
+- KA-139 - Architecture Decision Records (35% less tech debt)
+- KA-142 - Pipeline as Code
+- KA-143 - GitOps
+- KA-144 - Blue/Green Deployment
+- KA-145 - Canary Deployment
+- KA-146 - Self-Healing Pipeline (85%→98% reliability)
+- KA-147 - Automated Rollback (90% MTTR reduction)
+- KA-150 - Test Pyramid
+- KA-151 - Test-First/TDD (40-90% defect reduction)
+- KA-152 - Property-Based Testing
+- KA-153 - Mutation Testing (r=0.75 defect correlation)
+- KA-156 - Three Pillars of Observability
+- KA-157 - Structured Logging
+- KA-158 - Error Fingerprinting (70% noise reduction)
+- KA-159 - RED Metrics
+- KA-161 - Declarative Schema as Code
+- KA-162 - Expand-Contract Migration
+- KA-163 - Schema Registry
+- KA-164 - Data Quality Gates
+- KA-168 - GPU Pool with Time-Slicing (3.2x utilization)
+- KA-169 - Semantic Caching Layer (67% cost reduction)
+- KA-170 - Tiered Model Serving
+- KA-171 - Sharded Vector Store (78% latency reduction)
+- KA-172 - Request Batching (4.2x throughput)
+- KA-176 - Confidence-Calibrated Escalation
+- KA-177 - Progressive Disclosure of Reasoning
+- KA-178 - Intelligent Approval Batching
+- KA-179 - Risk-Tiered Auto-Approval Gateway
+- KA-180 - Structured Follow-up Questions
+- KA-181 - Autonomy Level Declaration
+
+**MODERATE Evidence:**
+- KA-008 - Semantic Codebase Understanding for drift detection
+- KA-017 - Intent-Driven Development for evolving requirements
+- KA-018 - Progressive Disclosure Architecture for context efficiency
+- KA-039 - Early Exit with Confidence Gating
+- KA-068 - TEA Protocol Pattern
+- KA-074 - Stigmergic Coordination
+- KA-076 - Repo Grokking Integration
+- KA-097 - Semantic Merge with LLM (78% auto-resolution)
+
+**ANTI-PATTERNS (STRONG):**
+- KA-009 - Vibe Coding - ad-hoc generation without specs
+- KA-010 - Shallow Repo Understanding - file-by-file analysis
+- KA-011 - Stale Documentation Specs - divergent specs
+- KA-012 - Unbounded Context Accumulation - token budget exhaustion
+- KA-013 - Credential Sprawl in IDE - unvaulted credentials
+- KA-014 - Single-Pass Generation - no verification loops
+- KA-015 - Implicit Intent Tracking - no explicit logging
+- KA-016 - Monolithic Agent Design - single agent all tasks
+- KA-019 - God Agent - bottleneck single point of failure
+- KA-020 - Chatty Agent Communication - 10x cost, 5x latency
+- KA-021 - Blind Trust in AI Output - 40-45% vulnerability rate
+- KA-023 - Temperature Ignorance - same temp all tasks
+- KA-024 - False Confidence - no uncertainty indicators
+- KA-033 - Prompt-Only Security - no runtime enforcement
+- KA-035 - Over-Privileged MCP Defaults
+- KA-036 - Unsandboxed Code/Tool Execution
+- KA-037 - Open Egress by Default
+- KA-043 - Blind Trust in LLM Output
+- KA-049 - MCP God Server
+- KA-050 - Secret in Prompt
+- KA-057 - Action Logs Without Decision Context
+- KA-058 - Policy-in-Prompt Only
+- KA-059 - Long-Lived Shared Credentials
+- KA-079 - Monolithic FM-Centric Design
+- KA-080 - Tight Vendor Coupling
+- KA-081 - Silent State Drift
+- KA-082 - Over-Delegation
+- KA-083 - Under-Specified Intent
+- KA-105 - Context Stuffing - 23-45% token waste
+- KA-106 - Naive Truncation
+- KA-107 - Unvalidated Context Injection
+- KA-112 - Memory Monolith
+- KA-113 - Unbounded Memory Growth
+- KA-114 - Stale Embeddings
+- KA-118 - Single Representation Dependency
+- KA-119 - Full Rebuild on Change
+- KA-125 - Exhaustive Linear Traversal
+- KA-126 - Static-Only Dependency Analysis
+- KA-133 - Refactoring Without Tests
+- KA-134 - Happy Path Bias - 60-70% failures untested paths
+- KA-135 - AI Verbosity Acceptance - 30% more abstraction
+- KA-140 - Spec Rot
+- KA-141 - AI Slop Generation
+- KA-148 - Snowflake Environments
+- KA-149 - Long-Running Branches
+- KA-154 - Test Inversion
+- KA-155 - Test Interdependence
+- KA-160 - Alert Fatigue
+- KA-165 - Shared Database
+- KA-166 - Migration in Deployment
+- KA-167 - God Table
+- KA-173 - GPU Over-Provisioning
+- KA-174 - Synchronous External Calls
+- KA-175 - Cache Without Invalidation
+- KA-182 - Approval Fatigue Spiral
+- KA-183 - Context Poisoning from Human Input
+- KA-184 - Rubber-Stamp Automation Theatre
+- KA-185 - Explanation Overload
+
+### Key Techniques (Ranked)
+1. **KA-004** - 4-Phase Spec-Driven Workflow: Specify→Plan→Tasks→Implement with 56% faster development - STRONG
+2. **KA-067** - Hierarchical Multi-Agent Orchestration: Tree structure with planner/manager at root - STRONG
+3. **KA-066** - System-Theoretic Agent Decomposition: Five subsystems (Reasoning, Perception, Action, Learning, Communication) - STRONG
+4. **KA-069** - Mixture-of-Agents (MoA): Multiple agents in layers for 8-12% improvement - STRONG
+5. **KA-070** - Role-Based Specialization: CEO, Architect, Engineer, QA roles - STRONG
+6. **KA-071** - Mode-Based Operation: Discrete modes (Code, Debug, Architect, Review) - STRONG
+7. **KA-005** - Modular Agent Decomposition: Retriever, Writer, Manager, Observer subsystems - STRONG
+8. **KA-006** - Critic-Actor Pattern: Separate generation and review agents - STRONG
+9. **KA-003** - BDI Hybrid Architecture: Belief-Desire-Intent for verifiable reasoning - STRONG
+10. **KA-073** - Conditional Multi-Stage Recovery: Diagnosis→Planning→Recovery chain - STRONG
+
+### Key Metrics
+- **KA-042** - AI-Generated Code Vulnerability Rate: 40-45% without verification
+- **KA-069** - MoA Improvement: 8-12% over single-agent baseline
+- **KA-071** - Mode-Based Operation Task Drift Reduction: 34%
+- **KA-078** - Adversarial Review Bug Detection: 40% higher
+- **KA-084** - Federated Cluster Throughput: 3x improvement
+- **KA-087** - Task Starvation Reduction: 89%
+
+### Key Constraints
+- **KA-026** - Layered Guardrail Envelope: Defense in depth required
+- **KA-028** - Task-Scoped MCP Capability Minting: Least privilege per task
+- **KA-030** - Default-Deny Egress: Block all outbound except approved
+- **KA-031** - Evidence-First Action Gating: Require evidence before high-impact actions
+- **KA-062** - Budget-Aware Task Decomposition: Explicit token/tool-call budgets
+
+### Key Tools
+- **KA-075** - MCP Tool Integration: Standardized tool discovery and invocation
+- **KA-048** - MCP Single-Responsibility Server Pattern: One domain per server
+- **KA-077** - Watchdog Monitoring: Heartbeat and anomaly detection
+
+### Combination Recipes
+- **KA-004 + KA-137** - 4-Phase Workflow with Iterative Spec Refinement for evolving requirements
+- **KA-006 + KA-078** - Critic-Actor with Adversarial Review for multi-layer validation
+- **KA-067 + KA-084** - Hierarchical Orchestration with Federated Clusters for scale
+- **KA-061 + KA-170** - Cascade Router with Tiered Model Serving for cost optimization
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-016 | Monolithic Agent Design | Single point of failure, hard to test | Decompose into modular subsystems |
+| KA-019 | God Agent | Context overflow, poor specialization | Split into specialized agents |
+| KA-020 | Chatty Agent Communication | 10x cost increase, rate limiting | Batch communications, reduce verbosity |
+| KA-079 | Monolithic FM-Centric Design | No introspection, world modeling failures | Add explicit subsystems and state |
+| KA-081 | Silent State Drift | Corrupted beliefs, cascading errors | Add state validation checkpoints |
+| KA-082 | Over-Delegation | Excessive coordination overhead | Consolidate related tasks |
+| KA-083 | Under-Specified Intent | Incorrect interpretations | Require explicit task specifications |
+
+### Anti-Patterns
+- **KA-009** - Vibe Coding: Ad-hoc generation seems faster but lacks reproducibility and audit trail
+- **KA-016** - Monolithic Agent Design: Single agent seems simpler but creates testing nightmares
+- **KA-019** - God Agent: One agent for everything seems efficient but becomes bottleneck
+- **KA-079** - Monolithic FM-Centric Design: Relying on FM alone seems elegant but fails on introspection
+- **KA-080** - Tight Vendor Coupling: Using vendor SDK directly seems easier but creates migration debt
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-069 | Mixture-of-Agents | Single Agent | Use MoA when quality > cost, single agent for speed |
+| KA-067 | Hierarchical Orchestration | Flat Coordination | Hierarchical for complex tasks, flat for simple |
+| KA-074 | Stigmergic Coordination | Direct Messaging | Stigmergic for large scale, direct for small teams |
+| KA-071 | Mode-Based Operation | Single Mode | Modes when task types vary, single mode for focused work |
+
+### Cross-Domain Links
+- **KA-004** also relevant to: D2 (Task Management), D4 (Memory)
+- **KA-006** also relevant to: D2 (Task Management), D4 (Memory)
+- **KA-007** also relevant to: D2 (Task Management), D7 (Security)
+- **KA-062** also relevant to: D2 (Task Management), D6 (Testing)
+- **KA-067** also relevant to: D2 (Task Management)
+- **KA-069** also relevant to: D2 (Task Management)
+- **KA-071** also relevant to: D2 (Task Management)
+
+### Gaps
+- No explicit patterns for agent-to-agent negotiation protocols
+- Limited coverage of agent lifecycle management (spawn, suspend, terminate)
+- Missing patterns for agent learning and skill acquisition over time
+- No coverage of multi-tenant agent isolation patterns
+- Limited guidance on agent versioning and backward compatibility
+
+---
+
+## D2: Task Management & Decomposition
+
+### Overview
+Covers how work is broken down, sequenced, tracked, and validated. This domain focuses on the mechanics of transforming high-level goals into executable units of work.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-001 - Auto-Launch Workspaces for deterministic initialization
+- KA-002 - Bidirectional Specifications for spec-code alignment
+- KA-003 - BDI Hybrid Architecture for verifiable reasoning
+- KA-004 - 4-Phase Spec-Driven Workflow (56% faster development)
+- KA-005 - Modular Agent Decomposition for testable components
+- KA-006 - Critic-Actor Pattern for quality validation
+- KA-007 - Structured Human-in-Loop for explicit checkpoints
+- KA-053 - Deterministic Control Plane, Stochastic Data Plane
+- KA-062 - Budget-Aware Task Decomposition
+- KA-066 - System-Theoretic Agent Decomposition
+- KA-067 - Hierarchical Multi-Agent Orchestration
+- KA-069 - Mixture-of-Agents (MoA) (8-12% improvement)
+- KA-070 - Role-Based Specialization
+- KA-071 - Mode-Based Operation (34% task drift reduction)
+- KA-072 - Checkpoint-Based Execution
+- KA-073 - Conditional Multi-Stage Recovery (19% higher success)
+- KA-077 - Watchdog Monitoring
+- KA-078 - Adversarial Review (40% higher bug detection)
+- KA-084 - Federated Cluster Architecture (3x throughput)
+- KA-085 - Service Mesh Coordination
+- KA-086 - Worker Pool Pattern
+- KA-087 - Priority Queue with Fair Share (89% task starvation reduction)
+- KA-088 - Work Stealing
+- KA-089 - Lease-Based Distributed Lock
+- KA-090 - Adaptive Throttling (2x latency under 5x load)
+- KA-091 - Hierarchical Task Decomposition
+- KA-092 - DAG-Based Task Graph
+- KA-093 - Conditional Task Graph
+- KA-094 - Single-Responsibility Task
+- KA-095 - Idempotent Task
+- KA-096 - Branch-Per-Task Isolation (67% merge conflict reduction)
+- KA-098 - Multi-Stage Pipeline
+
+**MODERATE Evidence:**
+- KA-068 - TEA Protocol Pattern
+- KA-074 - Stigmergic Coordination
+- KA-082 - Over-Delegation (ANTI_PATTERN)
+
+**ANTI-PATTERNS (STRONG):**
+- KA-009 - Vibe Coding - ad-hoc generation without specs
+- KA-011 - Stale Documentation Specs - divergent specs
+- KA-015 - Implicit Intent Tracking - no explicit logging
+- KA-016 - Monolithic Agent Design - single agent all tasks
+- KA-019 - God Agent - bottleneck single point of failure
+- KA-020 - Chatty Agent Communication - 10x cost, 5x latency
+- KA-083 - Under-Specified Intent
+
+### Key Techniques (Ranked)
+1. **KA-091** - Hierarchical Task Decomposition: Recursive breakdown to atomic units - STRONG
+2. **KA-092** - DAG-Based Task Graph: Dependencies as edges, parallel execution - STRONG
+3. **KA-004** - 4-Phase Spec-Driven Workflow: Specify→Plan→Tasks→Implement - STRONG
+4. **KA-094** - Single-Responsibility Task: One responsibility per task - STRONG
+5. **KA-095** - Idempotent Task: Safe retries without side effects - STRONG
+6. **KA-093** - Conditional Task Graph: DAG with runtime conditions - STRONG
+7. **KA-072** - Checkpoint-Based Execution: Explicit pause points - STRONG
+8. **KA-073** - Conditional Multi-Stage Recovery: Diagnosis→Planning→Recovery - STRONG
+9. **KA-062** - Budget-Aware Task Decomposition: Explicit token budgets - STRONG
+10. **KA-087** - Priority Queue with Fair Share: Balance urgency with fairness - STRONG
+
+### Key Metrics
+- **KA-071** - Mode-Based Operation Task Drift Reduction: 34%
+- **KA-084** - Federated Cluster Throughput: 3x improvement
+- **KA-087** - Task Starvation Reduction: 89%
+- **KA-096** - Merge Conflict Reduction: 67%
+
+### Key Constraints
+- **KA-053** - Deterministic Control Plane: Strict determinism for orchestration
+- **KA-062** - Budget-Aware Task Decomposition: Token and tool-call budgets per step
+- **KA-094** - Single-Responsibility Task: One responsibility per task
+- **KA-095** - Idempotent Task: Must produce same result on retry
+
+### Key Tools
+- **KA-085** - Service Mesh Coordination: Sidecar proxies for coordination
+- **KA-086** - Worker Pool Pattern: Pre-initialized workers ready for assignment
+- **KA-088** - Work Stealing: Dynamic load balancing
+- **KA-089** - Lease-Based Distributed Lock: Time-based lock expiration
+
+### Combination Recipes
+- **KA-091 + KA-092** - Hierarchical Decomposition with DAG for complex workflows
+- **KA-094 + KA-095** - Single-Responsibility with Idempotency for reliable tasks
+- **KA-087 + KA-088** - Priority Queue with Work Stealing for fair scheduling
+- **KA-072 + KA-007** - Checkpoint-Based with Human-in-Loop for safety
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-082 | Over-Delegation | Excessive coordination overhead | Consolidate related tasks |
+| KA-083 | Under-Specified Intent | Incorrect interpretations | Require explicit specifications |
+| KA-015 | Implicit Intent Tracking | Lost context across sessions | Add explicit intent logging |
+| KA-011 | Stale Documentation Specs | Divergent specs from implementation | Use bidirectional specifications |
+
+### Anti-Patterns
+- **KA-009** - Vibe Coding: Ad-hoc approach seems flexible but lacks structure
+- **KA-082** - Over-Delegation: Fine-grained tasks seem precise but create overhead
+- **KA-083** - Under-Specified Intent: Vague specs seem accommodating but cause inconsistency
+- **KA-015** - Implicit Intent Tracking: Memory-based tracking seems natural but loses context
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-091 | Fine-Grained Decomposition | Coarse Tasks | Fine for parallelism, coarse for simplicity |
+| KA-093 | Conditional Task Graph | Static DAG | Conditional for adaptive workflows, static for predictable |
+| KA-087 | Priority Queue | FIFO Queue | Priority for urgency, FIFO for fairness |
+
+### Cross-Domain Links
+- **KA-004** also relevant to: D1 (Agent Architecture), D4 (Memory)
+- **KA-007** also relevant to: D1 (Agent Architecture), D7 (Security)
+- **KA-062** also relevant to: D1 (Agent Architecture), D6 (Testing)
+- **KA-096** also relevant to: D1 (Agent Architecture)
+
+### Gaps
+- No patterns for task priority inference from context
+- Limited coverage of task dependency resolution algorithms
+- Missing patterns for task rollback and compensation
+- No explicit guidance on task timeout and deadline management
+- Limited coverage of cross-session task persistence
+
+---
+
+## D3: Context & Prompt Engineering
+
+### Overview
+Covers how agents receive information and how that information is managed. This domain focuses on context window optimization, prompt design, and information retrieval strategies.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-027 - Provenance-Tagged Context Ingestion
+- KA-063 - Semantic Prompt Caching
+- KA-064 - Retrieval Compression Pipeline
+- KA-099 - Budget-Aware Retrieval
+- KA-100 - Hierarchical Summarization
+- KA-101 - U-Shaped Context Placement
+- KA-102 - Task-Conditioned Context
+- KA-103 - Semantic Chunking
+- KA-104 - Context Provenance Tracking
+- KA-108 - Hierarchical Memory Architecture
+- KA-109 - Memory Consolidation
+- KA-110 - Entity-Centric Memory
+- KA-111 - Hybrid Retrieval
+- KA-115 - Multi-Representation Fusion
+- KA-116 - Incremental Representation Updates
+- KA-117 - Layered Abstraction
+- KA-121 - Semantic-Guided Traversal (40-60% time reduction)
+- KA-122 - Hybrid Search Fusion (7-60% accuracy improvement)
+- KA-169 - Semantic Caching Layer (67% cost reduction)
+- KA-171 - Sharded Vector Store (78% latency reduction)
+
+**MODERATE Evidence:**
+- KA-018 - Progressive Disclosure Architecture for context efficiency
+- KA-076 - Repo Grokking Integration
+
+**ANTI-PATTERNS (STRONG):**
+- KA-012 - Unbounded Context Accumulation - token budget exhaustion
+- KA-034 - Trusting Retrieved Content as Policy
+- KA-046 - Inadequate Context Window
+- KA-105 - Context Stuffing - 23-45% token waste
+- KA-106 - Naive Truncation
+- KA-107 - Unvalidated Context Injection
+- KA-112 - Memory Monolith
+- KA-113 - Unbounded Memory Growth
+- KA-114 - Stale Embeddings
+- KA-175 - Cache Without Invalidation
+- KA-183 - Context Poisoning from Human Input
+
+### Key Techniques (Ranked)
+1. **KA-101** - U-Shaped Context Placement: Critical info at edges - STRONG
+2. **KA-099** - Budget-Aware Retrieval: Respect token budgets - STRONG
+3. **KA-100** - Hierarchical Summarization: Multi-level navigation - STRONG
+4. **KA-102** - Task-Conditioned Context: Filter by task type - STRONG
+5. **KA-103** - Semantic Chunking: Preserve code boundaries - STRONG
+6. **KA-063** - Semantic Prompt Caching: Cache by similarity - STRONG
+7. **KA-064** - Retrieval Compression Pipeline: Multi-stage retrieval - STRONG
+8. **KA-027** - Provenance-Tagged Context Ingestion: Trust metadata - STRONG
+9. **KA-104** - Context Provenance Tracking: Source attribution - STRONG
+10. **KA-111** - Hybrid Retrieval: Keyword + semantic + graph - STRONG
+
+### Key Metrics
+- **KA-105** - Context Stuffing Token Waste: 23-45% wasted
+- **KA-121** - Semantic-Guided Time Reduction: 40-60%
+- **KA-122** - Hybrid Search Accuracy Improvement: 7-60%
+- **KA-169** - Semantic Caching Cost Reduction: 67%
+
+### Key Constraints
+- **KA-099** - Budget-Aware Retrieval: Must fit within allocated space
+- **KA-027** - Provenance-Tagged Context: Must attach trust metadata
+- **KA-046** - Inadequate Context Window: Must provide sufficient context
+
+### Key Tools
+- **KA-169** - Semantic Caching Layer: Cache by semantic similarity
+- **KA-171** - Sharded Vector Store: Distributed embeddings
+
+### Combination Recipes
+- **KA-101 + KA-099** - U-Shaped Placement with Budget-Aware Retrieval for optimal context
+- **KA-063 + KA-169** - Semantic Prompt Caching with Semantic Caching Layer for cost efficiency
+- **KA-111 + KA-122** - Hybrid Retrieval with Hybrid Search Fusion for accuracy
+- **KA-027 + KA-104** - Provenance-Tagged with Context Provenance Tracking for security
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-012 | Unbounded Context Accumulation | Token budget exhaustion | Implement explicit limits |
+| KA-034 | Trusting Retrieved Content as Policy | Context poisoning attacks | Add provenance validation |
+| KA-046 | Inadequate Context Window | Hallucinations, API misuse | Expand context window |
+| KA-105 | Context Stuffing | 23-45% token waste | Prioritize and filter context |
+| KA-106 | Naive Truncation | Lost critical context | Use semantic chunking |
+| KA-107 | Unvalidated Context Injection | Context poisoning | Validate all external context |
+
+### Anti-Patterns
+- **KA-105** - Context Stuffing: Maximizing context seems thorough but wastes tokens
+- **KA-106** - Naive Truncation: Simple cutoff seems efficient but loses critical info
+- **KA-034** - Trusting Retrieved Content: Treating retrieval as authoritative enables poisoning
+- **KA-046** - Inadequate Context Window: Minimal context seems efficient but causes hallucinations
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-100 | Detailed Context | Summarized Context | Detailed for accuracy, summarized for scope |
+| KA-111 | Hybrid Retrieval | Single-Method Retrieval | Hybrid for accuracy, single for simplicity |
+| KA-063 | Semantic Caching | No Caching | Cache for repeated queries, no cache for unique |
+
+### Cross-Domain Links
+- **KA-027** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-063** also relevant to: D1 (Agent Architecture), D6 (Testing)
+- **KA-103** also relevant to: D1 (Agent Architecture), D4 (Code Intelligence)
+- **KA-169** also relevant to: D1 (Agent Architecture), D6 (Testing)
+- **KA-171** also relevant to: D1 (Agent Architecture), D6 (Testing)
+
+### Gaps
+- No patterns for dynamic prompt template selection
+- Limited coverage of multi-modal context (images, diagrams)
+- Missing patterns for context versioning and evolution
+- No explicit guidance on context window sizing heuristics
+- Limited coverage of context compression algorithms
+
+---
+
+## D4: Memory & Knowledge Systems
+
+### Overview
+Covers how agents store, retrieve, and learn from information across sessions. This domain focuses on persistent memory, knowledge representation, and learning mechanisms.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-002 - Bidirectional Specifications for spec-code alignment
+- KA-003 - BDI Hybrid Architecture for verifiable reasoning
+- KA-008 - Semantic Codebase Understanding for drift detection (MODERATE)
+- KA-027 - Provenance-Tagged Context Ingestion
+- KA-031 - Evidence-First Action Gating
+- KA-038 - Multi-Layer Hallucination Defense
+- KA-040 - Multi-Agent Verification Consensus
+- KA-076 - Repo Grokking Integration (MODERATE)
+- KA-097 - Semantic Merge with LLM (78% auto-resolution) (MODERATE)
+- KA-103 - Semantic Chunking
+- KA-108 - Hierarchical Memory Architecture
+- KA-109 - Memory Consolidation
+- KA-110 - Entity-Centric Memory
+- KA-111 - Hybrid Retrieval
+- KA-115 - Multi-Representation Fusion
+- KA-116 - Incremental Representation Updates
+- KA-117 - Layered Abstraction
+- KA-120 - Entrypoint-First Exploration (60-80% scope reduction)
+- KA-121 - Semantic-Guided Traversal (40-60% time reduction)
+- KA-122 - Hybrid Search Fusion (7-60% accuracy improvement)
+- KA-123 - Call Chain Verification (85%+ accuracy)
+- KA-124 - Pattern Library Extraction (80-90% accuracy)
+- KA-127 - Test-Verified Refactoring (25-35% defect reduction)
+- KA-128 - Iterative Repair Loop (85%+ resolution rate)
+- KA-129 - Multi-Stage Validation (60-80% incident reduction)
+- KA-130 - Sad Path Coverage
+- KA-131 - Complexity Budget Enforcement
+- KA-132 - AI Code Normalization (30% less abstraction)
+- KA-136 - Executable Specifications (45% interface defect reduction)
+- KA-137 - Iterative Specification Refinement
+- KA-138 - Test-First for AI Generation (40-90% defect reduction)
+- KA-150 - Test Pyramid
+- KA-151 - Test-First/TDD (40-90% defect reduction)
+- KA-152 - Property-Based Testing
+- KA-153 - Mutation Testing (r=0.75 defect correlation)
+- KA-161 - Declarative Schema as Code
+- KA-162 - Expand-Contract Migration
+- KA-163 - Schema Registry
+- KA-164 - Data Quality Gates
+
+**MODERATE Evidence:**
+- KA-008 - Semantic Codebase Understanding for drift detection
+- KA-017 - Intent-Driven Development for evolving requirements
+- KA-076 - Repo Grokking Integration
+- KA-097 - Semantic Merge with LLM (78% auto-resolution)
+
+**ANTI-PATTERNS (STRONG):**
+- KA-010 - Shallow Repo Understanding - file-by-file analysis
+- KA-011 - Stale Documentation Specs - divergent specs
+- KA-014 - Single-Pass Generation - no verification loops
+- KA-021 - Blind Trust in AI Output - 40-45% vulnerability rate
+- KA-042 - AI-Generated Code Vulnerability Rate: 40-45%
+- KA-043 - Blind Trust in LLM Output
+- KA-044 - Single-Technique Hallucination Defense
+- KA-045 - Ignoring Confidence Calibration
+- KA-046 - Inadequate Context Window
+- KA-112 - Memory Monolith
+- KA-113 - Unbounded Memory Growth
+- KA-114 - Stale Embeddings
+- KA-118 - Single Representation Dependency
+- KA-119 - Full Rebuild on Change
+- KA-125 - Exhaustive Linear Traversal
+- KA-126 - Static-Only Dependency Analysis
+- KA-133 - Refactoring Without Tests
+- KA-134 - Happy Path Bias - 60-70% failures untested paths
+- KA-135 - AI Verbosity Acceptance - 30% more abstraction
+- KA-140 - Spec Rot
+- KA-141 - AI Slop Generation
+- KA-154 - Test Inversion
+- KA-155 - Test Interdependence
+- KA-165 - Shared Database
+- KA-166 - Migration in Deployment
+- KA-167 - God Table
+
+### Key Techniques (Ranked)
+1. **KA-108** - Hierarchical Memory Architecture: Working→Session→Long-term - STRONG
+2. **KA-109** - Memory Consolidation: Compress, summarize, prune - STRONG
+3. **KA-110** - Entity-Centric Memory: Organize around entities - STRONG
+4. **KA-111** - Hybrid Retrieval: Keyword + semantic + graph - STRONG
+5. **KA-115** - Multi-Representation Fusion: AST + CFG + DFG - STRONG
+6. **KA-116** - Incremental Representation Updates: Update on change - STRONG
+7. **KA-117** - Layered Abstraction: Character→Token→AST→Semantic→Behavior - STRONG
+8. **KA-002** - Bidirectional Specifications: Evolve specs with code - STRONG
+9. **KA-136** - Executable Specifications: Tests as specifications - STRONG
+10. **KA-137** - Iterative Specification Refinement: Start minimal, refine - STRONG
+
+### Key Metrics
+- **KA-042** - AI-Generated Code Vulnerability Rate: 40-45%
+- **KA-120** - Entrypoint-First Scope Reduction: 60-80%
+- **KA-121** - Semantic-Guided Time Reduction: 40-60%
+- **KA-122** - Hybrid Search Accuracy Improvement: 7-60%
+- **KA-124** - Pattern Library Extraction Accuracy: 80-90%
+- **KA-127** - Test-Verified Defect Reduction: 25-35%
+
+### Key Constraints
+- **KA-031** - Evidence-First Action Gating: Require evidence before actions
+- **KA-131** - Complexity Budget Enforcement: Limit complexity metrics
+- **KA-164** - Data Quality Gates: Validate before proceeding
+
+### Key Tools
+- **KA-163** - Schema Registry: Centralized schema management
+- **KA-124** - Pattern Library Extraction: Catalog recurring patterns
+
+### Combination Recipes
+- **KA-108 + KA-109** - Hierarchical Memory with Consolidation for long-term memory
+- **KA-115 + KA-116** - Multi-Representation with Incremental Updates for real-time analysis
+- **KA-136 + KA-002** - Executable Specs with Bidirectional evolution for alignment
+- **KA-110 + KA-111** - Entity-Centric Memory with Hybrid Retrieval for structured queries
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-112 | Memory Monolith | Retrieval latency increases with size | Implement hierarchical memory |
+| KA-113 | Unbounded Memory Growth | Storage costs grow unbounded | Add pruning and expiration |
+| KA-114 | Stale Embeddings | Retrieval of outdated information | Update embeddings on content change |
+| KA-118 | Single Representation Dependency | Incomplete understanding | Add multiple representation types |
+| KA-119 | Full Rebuild on Change | Slow response time | Implement incremental updates |
+
+### Anti-Patterns
+- **KA-112** - Memory Monolith: Single store seems simple but doesn't scale
+- **KA-113** - Unbounded Memory Growth: Keeping everything seems safe but degrades performance
+- **KA-114** - Stale Embeddings: Set-and-forget seems efficient but returns outdated info
+- **KA-118** - Single Representation Dependency: One representation seems sufficient but misses insights
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-108 | Hierarchical Memory | Flat Memory | Hierarchical for scale, flat for simplicity |
+| KA-115 | Multi-Representation | Single Representation | Multi for completeness, single for speed |
+| KA-137 | Iterative Refinement | Complete Upfront Spec | Iterative for evolving needs, complete for stable |
+
+### Cross-Domain Links
+- **KA-002** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-003** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-115** also relevant to: D1 (Agent Architecture), D3 (Context)
+- **KA-136** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+
+### Gaps
+- No patterns for knowledge graph construction and maintenance
+- Limited coverage of memory privacy and access control
+- Missing patterns for cross-agent knowledge sharing
+- No explicit guidance on memory garbage collection
+- Limited coverage of knowledge transfer between domains
+
+---
+
+## D5: Code Intelligence & Representations
+
+### Overview
+Covers how agents understand, navigate, and analyze code. This domain focuses on code exploration, representation, and analysis techniques.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-003 - BDI Hybrid Architecture for verifiable reasoning
+- KA-013 - Credential Sprawl in IDE - unvaulted credentials (ANTI_PATTERN)
+- KA-021 - Blind Trust in AI Output - 40-45% vulnerability rate (ANTI_PATTERN)
+- KA-026 - Layered Guardrail Envelope for defense in depth
+- KA-028 - Task-Scoped MCP Capability Minting
+- KA-030 - Default-Deny Egress with Explicit Allowlists
+- KA-031 - Evidence-First Action Gating
+- KA-032 - Adversarial Regression Suite
+- KA-036 - Unsandboxed Code/Tool Execution (ANTI_PATTERN)
+- KA-037 - Open Egress by Default (ANTI_PATTERN)
+- KA-038 - Multi-Layer Hallucination Defense
+- KA-042 - AI-Generated Code Vulnerability Rate: 40-45%
+- KA-043 - Blind Trust in LLM Output (ANTI_PATTERN)
+- KA-047 - MCP Security Threat Mitigation
+- KA-048 - MCP Single-Responsibility Server Pattern
+- KA-049 - MCP God Server (ANTI_PATTERN)
+- KA-050 - Secret in Prompt (ANTI_PATTERN)
+- KA-052 - Policy-as-Code with Runtime Adjudication
+- KA-055 - Ephemeral Scoped Credential Broker
+- KA-059 - Long-Lived Shared Credentials (ANTI_PATTERN)
+- KA-065 - Skill Gating and Tool Entitlement
+- KA-075 - MCP Tool Integration
+- KA-098 - Multi-Stage Pipeline
+- KA-103 - Semantic Chunking
+- KA-115 - Multi-Representation Fusion
+- KA-116 - Incremental Representation Updates
+- KA-117 - Layered Abstraction
+- KA-120 - Entrypoint-First Exploration (60-80% scope reduction)
+- KA-121 - Semantic-Guided Traversal (40-60% time reduction)
+- KA-122 - Hybrid Search Fusion (7-60% accuracy improvement)
+- KA-123 - Call Chain Verification (85%+ accuracy)
+- KA-124 - Pattern Library Extraction (80-90% accuracy)
+- KA-127 - Test-Verified Refactoring (25-35% defect reduction)
+- KA-128 - Iterative Repair Loop (85%+ resolution rate)
+- KA-129 - Multi-Stage Validation (60-80% incident reduction)
+- KA-130 - Sad Path Coverage
+- KA-131 - Complexity Budget Enforcement
+- KA-132 - AI Code Normalization (30% less abstraction)
+- KA-136 - Executable Specifications (45% interface defect reduction)
+- KA-138 - Test-First for AI Generation (40-90% defect reduction)
+- KA-142 - Pipeline as Code
+- KA-143 - GitOps
+- KA-144 - Blue/Green Deployment
+- KA-145 - Canary Deployment
+- KA-146 - Self-Healing Pipeline (85%→98% reliability)
+- KA-147 - Automated Rollback (90% MTTR reduction)
+- KA-156 - Three Pillars of Observability
+- KA-157 - Structured Logging
+- KA-158 - Error Fingerprinting (70% noise reduction)
+- KA-159 - RED Metrics
+- KA-161 - Declarative Schema as Code
+- KA-162 - Expand-Contract Migration
+- KA-163 - Schema Registry
+- KA-164 - Data Quality Gates
+
+**MODERATE Evidence:**
+- KA-008 - Semantic Codebase Understanding for drift detection
+- KA-076 - Repo Grokking Integration
+- KA-097 - Semantic Merge with LLM (78% auto-resolution)
+
+**ANTI-PATTERNS (STRONG):**
+- KA-010 - Shallow Repo Understanding - file-by-file analysis
+- KA-014 - Single-Pass Generation - no verification loops
+- KA-021 - Blind Trust in AI Output - 40-45% vulnerability rate
+- KA-033 - Prompt-Only Security - no runtime enforcement
+- KA-034 - Trusting Retrieved Content as Policy
+- KA-035 - Over-Privileged MCP Defaults
+- KA-036 - Unsandboxed Code/Tool Execution
+- KA-037 - Open Egress by Default
+- KA-043 - Blind Trust in LLM Output
+- KA-044 - Single-Technique Hallucination Defense
+- KA-045 - Ignoring Confidence Calibration
+- KA-049 - MCP God Server
+- KA-050 - Secret in Prompt
+- KA-058 - Policy-in-Prompt Only
+- KA-059 - Long-Lived Shared Credentials
+- KA-118 - Single Representation Dependency
+- KA-119 - Full Rebuild on Change
+- KA-125 - Exhaustive Linear Traversal
+- KA-126 - Static-Only Dependency Analysis
+- KA-133 - Refactoring Without Tests
+- KA-134 - Happy Path Bias - 60-70% failures untested paths
+- KA-135 - AI Verbosity Acceptance - 30% more abstraction
+- KA-141 - AI Slop Generation
+- KA-148 - Snowflake Environments
+- KA-149 - Long-Running Branches
+- KA-154 - Test Inversion
+- KA-155 - Test Interdependence
+- KA-160 - Alert Fatigue
+- KA-165 - Shared Database
+- KA-166 - Migration in Deployment
+- KA-167 - God Table
+- KA-174 - Synchronous External Calls
+
+### Key Techniques (Ranked)
+1. **KA-120** - Entrypoint-First Exploration: Identify entrypoints first - STRONG
+2. **KA-121** - Semantic-Guided Traversal: Relevance-guided exploration - STRONG
+3. **KA-122** - Hybrid Search Fusion: Syntactic + semantic search - STRONG
+4. **KA-123** - Call Chain Verification: Trace complete call chains - STRONG
+5. **KA-124** - Pattern Library Extraction: Catalog recurring patterns - STRONG
+6. **KA-115** - Multi-Representation Fusion: AST + CFG + DFG - STRONG
+7. **KA-116** - Incremental Representation Updates: Update on change - STRONG
+8. **KA-117** - Layered Abstraction: Multiple abstraction levels - STRONG
+9. **KA-127** - Test-Verified Refactoring: Tests before refactoring - STRONG
+10. **KA-128** - Iterative Repair Loop: Fix, validate, refine - STRONG
+
+### Key Metrics
+- **KA-042** - AI-Generated Code Vulnerability Rate: 40-45%
+- **KA-120** - Entrypoint-First Scope Reduction: 60-80%
+- **KA-121** - Semantic-Guided Time Reduction: 40-60%
+- **KA-122** - Hybrid Search Accuracy Improvement: 7-60%
+- **KA-123** - Call Chain Verification Accuracy: 85%+
+- **KA-124** - Pattern Library Extraction Accuracy: 80-90%
+
+### Key Constraints
+- **KA-031** - Evidence-First Action Gating: Require evidence before actions
+- **KA-131** - Complexity Budget Enforcement: Limit complexity metrics
+- **KA-065** - Skill Gating and Tool Entitlement: Minimum required tools only
+
+### Key Tools
+- **KA-075** - MCP Tool Integration: Standardized tool discovery
+- **KA-048** - MCP Single-Responsibility Server Pattern: One domain per server
+- **KA-124** - Pattern Library Extraction: Catalog patterns
+
+### Combination Recipes
+- **KA-120 + KA-121** - Entrypoint-First with Semantic-Guided for efficient exploration
+- **KA-122 + KA-123** - Hybrid Search with Call Chain Verification for accuracy
+- **KA-115 + KA-116** - Multi-Representation with Incremental Updates for real-time analysis
+- **KA-127 + KA-128** - Test-Verified Refactoring with Iterative Repair for reliability
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-125 | Exhaustive Linear Traversal | Token budget exhaustion | Use entrypoint-first exploration |
+| KA-126 | Static-Only Dependency Analysis | Missing 5-30% of dependencies | Add dynamic analysis |
+| KA-133 | Refactoring Without Tests | Silent behavior changes | Require test coverage first |
+| KA-135 | AI Verbosity Acceptance | 30% more abstraction than needed | Apply AI code normalization |
+
+### Anti-Patterns
+- **KA-010** - Shallow Repo Understanding: File-by-file seems thorough but misses architecture
+- **KA-125** - Exhaustive Linear Traversal: Complete coverage seems thorough but exhausts resources
+- **KA-126** - Static-Only Dependency Analysis: Static analysis seems sufficient but misses dynamic deps
+- **KA-141** - AI Slop Generation: AI output seems reasonable but is over-engineered
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-120 | Entrypoint-First | Breadth-First | Entrypoint for scope, breadth for completeness |
+| KA-122 | Hybrid Search | Single-Method | Hybrid for accuracy, single for speed |
+| KA-127 | Test-Verified Refactoring | Direct Refactoring | Test-verified for safety, direct for speed |
+
+### Cross-Domain Links
+- **KA-003** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-115** also relevant to: D1 (Agent Architecture), D3 (Context)
+- **KA-120** also relevant to: D1 (Agent Architecture)
+- **KA-127** also relevant to: D1 (Agent Architecture)
+
+### Gaps
+- No patterns for code smell detection and remediation
+- Limited coverage of code similarity and clone detection
+- Missing patterns for architecture recovery from code
+- No explicit guidance on code documentation generation
+- Limited coverage of code review automation patterns
+
+---
+
+## D6: Testing & Validation
+
+### Overview
+Covers how agents verify their own work and the quality of generated code. This domain focuses on testing strategies, validation techniques, and quality assurance.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-038 - Multi-Layer Hallucination Defense
+- KA-040 - Multi-Agent Verification Consensus
+- KA-042 - AI-Generated Code Vulnerability Rate: 40-45%
+- KA-061 - Cascade Router with Confidence Escalation (40-80% cost reduction)
+- KA-062 - Budget-Aware Task Decomposition
+- KA-069 - Mixture-of-Agents (MoA) (8-12% improvement)
+- KA-078 - Adversarial Review (40% higher bug detection)
+- KA-084 - Federated Cluster Architecture (3x throughput)
+- KA-090 - Adaptive Throttling (2x latency under 5x load)
+- KA-098 - Multi-Stage Pipeline
+- KA-120 - Entrypoint-First Exploration (60-80% scope reduction)
+- KA-121 - Semantic-Guided Traversal (40-60% time reduction)
+- KA-122 - Hybrid Search Fusion (7-60% accuracy improvement)
+- KA-123 - Call Chain Verification (85%+ accuracy)
+- KA-124 - Pattern Library Extraction (80-90% accuracy)
+- KA-127 - Test-Verified Refactoring (25-35% defect reduction)
+- KA-128 - Iterative Repair Loop (85%+ resolution rate)
+- KA-129 - Multi-Stage Validation (60-80% incident reduction)
+- KA-130 - Sad Path Coverage
+- KA-131 - Complexity Budget Enforcement
+- KA-132 - AI Code Normalization (30% less abstraction)
+- KA-136 - Executable Specifications (45% interface defect reduction)
+- KA-138 - Test-First for AI Generation (40-90% defect reduction)
+- KA-146 - Self-Healing Pipeline (85%→98% reliability)
+- KA-147 - Automated Rollback (90% MTTR reduction)
+- KA-150 - Test Pyramid
+- KA-151 - Test-First/TDD (40-90% defect reduction)
+- KA-152 - Property-Based Testing
+- KA-153 - Mutation Testing (r=0.75 defect correlation)
+- KA-161 - Declarative Schema as Code
+- KA-162 - Expand-Contract Migration
+- KA-164 - Data Quality Gates
+- KA-168 - GPU Pool with Time-Slicing (3.2x utilization)
+- KA-169 - Semantic Caching Layer (67% cost reduction)
+- KA-170 - Tiered Model Serving
+- KA-171 - Sharded Vector Store (78% latency reduction)
+- KA-172 - Request Batching (4.2x throughput)
+
+**MODERATE Evidence:**
+- KA-039 - Early Exit with Confidence Gating
+- KA-097 - Semantic Merge with LLM (78% auto-resolution)
+
+**ANTI-PATTERNS (STRONG):**
+- KA-021 - Blind Trust in AI Output - 40-45% vulnerability rate
+- KA-043 - Blind Trust in LLM Output
+- KA-044 - Single-Technique Hallucination Defense
+- KA-133 - Refactoring Without Tests
+- KA-134 - Happy Path Bias - 60-70% failures untested paths
+- KA-154 - Test Inversion
+- KA-155 - Test Interdependence
+- KA-173 - GPU Over-Provisioning
+- KA-174 - Synchronous External Calls
+
+### Key Techniques (Ranked)
+1. **KA-150** - Test Pyramid: 70% unit, 20% integration, 10% E2E - STRONG
+2. **KA-151** - Test-First/TDD: Red-green-refactor cycle - STRONG
+3. **KA-152** - Property-Based Testing: Define invariants, generate tests - STRONG
+4. **KA-153** - Mutation Testing: Inject faults, verify detection - STRONG
+5. **KA-127** - Test-Verified Refactoring: Tests before changes - STRONG
+6. **KA-128** - Iterative Repair Loop: Fix, validate, refine - STRONG
+7. **KA-129** - Multi-Stage Validation: Multiple validation stages - STRONG
+8. **KA-130** - Sad Path Coverage: Test error scenarios - STRONG
+9. **KA-138** - Test-First for AI Generation: Tests guide AI - STRONG
+10. **KA-038** - Multi-Layer Hallucination Defense: Consistency + analysis + testing - STRONG
+
+### Key Metrics
+- **KA-042** - AI-Generated Code Vulnerability Rate: 40-45%
+- **KA-127** - Test-Verified Defect Reduction: 25-35%
+- **KA-129** - Multi-Stage Validation Incident Reduction: 60-80%
+- **KA-138** - Test-First Defect Reduction: 40-90%
+- **KA-146** - Self-Healing Pipeline Reliability: 85%→98%
+- **KA-147** - Automated Rollback MTTR Reduction: 90%
+- **KA-153** - Mutation Testing Defect Correlation: r=0.75
+
+### Key Constraints
+- **KA-131** - Complexity Budget Enforcement: Limit complexity metrics
+- **KA-164** - Data Quality Gates: Validate before proceeding
+- **KA-062** - Budget-Aware Task Decomposition: Token budgets per step
+
+### Key Tools
+- **KA-153** - Mutation Testing: Fault injection for test quality
+- **KA-146** - Self-Healing Pipeline: Auto-detect and recover
+- **KA-147** - Automated Rollback: Auto-revert on threshold breach
+
+### Combination Recipes
+- **KA-150 + KA-151** - Test Pyramid with TDD for comprehensive coverage
+- **KA-152 + KA-153** - Property-Based with Mutation Testing for robustness
+- **KA-127 + KA-128** - Test-Verified Refactoring with Iterative Repair
+- **KA-038 + KA-040** - Multi-Layer Defense with Multi-Agent Consensus
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-133 | Refactoring Without Tests | Silent behavior changes | Require test coverage first |
+| KA-134 | Happy Path Bias | 60-70% failures from untested paths | Add sad path coverage |
+| KA-154 | Test Inversion | Long feedback cycles, flaky tests | Rebalance to test pyramid |
+| KA-155 | Test Interdependence | Tests pass individually but fail in suite | Isolate test state |
+
+### Anti-Patterns
+- **KA-133** - Refactoring Without Tests: Direct changes seem faster but introduce defects
+- **KA-134** - Happy Path Bias: Testing success seems sufficient but misses failures
+- **KA-154** - Test Inversion: More E2E tests seem thorough but are slow and flaky
+- **KA-155** - Test Interdependence: Shared state seems efficient but causes cascading failures
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-150 | Test Pyramid | Flat Distribution | Pyramid for speed, flat for uniformity |
+| KA-151 | TDD | Test-After | TDD for quality, test-after for speed |
+| KA-153 | Mutation Testing | Coverage Only | Mutation for quality, coverage for baseline |
+
+### Cross-Domain Links
+- **KA-038** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-040** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-127** also relevant to: D1 (Agent Architecture), D4 (Code Intelligence)
+- **KA-138** also relevant to: D1 (Agent Architecture), D4 (Code Intelligence)
+
+### Gaps
+- No patterns for AI-specific testing (testing AI-generated code)
+- Limited coverage of visual regression testing
+- Missing patterns for performance testing automation
+- No explicit guidance on test data management
+- Limited coverage of contract testing patterns
+
+---
+
+## D7: Security & Guardrails
+
+### Overview
+Covers how the system protects against adversarial inputs, hallucinations, and unsafe outputs. This domain focuses on security architecture, guardrails, and threat mitigation.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-007 - Structured Human-in-Loop for explicit checkpoints
+- KA-026 - Layered Guardrail Envelope for defense in depth
+- KA-027 - Provenance-Tagged Context Ingestion
+- KA-028 - Task-Scoped MCP Capability Minting
+- KA-029 - Sandboxed Execute-and-Validate Loop
+- KA-030 - Default-Deny Egress with Explicit Allowlists
+- KA-031 - Evidence-First Action Gating
+- KA-032 - Adversarial Regression Suite
+- KA-038 - Multi-Layer Hallucination Defense
+- KA-041 - Uncertainty-Calibrated Human Escalation
+- KA-042 - AI-Generated Code Vulnerability Rate: 40-45%
+- KA-047 - MCP Security Threat Mitigation
+- KA-048 - MCP Single-Responsibility Server Pattern
+- KA-051 - Compliance Envelope per Agent Run
+- KA-052 - Policy-as-Code with Runtime Adjudication
+- KA-055 - Ephemeral Scoped Credential Broker
+- KA-065 - Skill Gating and Tool Entitlement
+- KA-176 - Confidence-Calibrated Escalation
+- KA-179 - Risk-Tiered Auto-Approval Gateway
+
+**ANTI-PATTERNS (STRONG):**
+- KA-013 - Credential Sprawl in IDE - unvaulted credentials
+- KA-033 - Prompt-Only Security - no runtime enforcement
+- KA-034 - Trusting Retrieved Content as Policy
+- KA-035 - Over-Privileged MCP Defaults
+- KA-036 - Unsandboxed Code/Tool Execution
+- KA-037 - Open Egress by Default
+- KA-043 - Blind Trust in LLM Output
+- KA-049 - MCP God Server
+- KA-050 - Secret in Prompt
+- KA-058 - Policy-in-Prompt Only
+- KA-059 - Long-Lived Shared Credentials
+- KA-107 - Unvalidated Context Injection
+- KA-183 - Context Poisoning from Human Input
+
+### Key Techniques (Ranked)
+1. **KA-026** - Layered Guardrail Envelope: Input filtering + policy validation + output checks - STRONG
+2. **KA-028** - Task-Scoped MCP Capability Minting: Narrow, temporary capabilities - STRONG
+3. **KA-029** - Sandboxed Execute-and-Validate Loop: Isolated runtime execution - STRONG
+4. **KA-030** - Default-Deny Egress: Block all except approved - STRONG
+5. **KA-031** - Evidence-First Action Gating: Require evidence before actions - STRONG
+6. **KA-032** - Adversarial Regression Suite: Continuous adversarial testing - STRONG
+7. **KA-038** - Multi-Layer Hallucination Defense: Consistency + analysis + testing - STRONG
+8. **KA-047** - MCP Security Threat Mitigation: Eight threat categories - STRONG
+9. **KA-052** - Policy-as-Code with Runtime Adjudication: Preflight + runtime checks - STRONG
+10. **KA-055** - Ephemeral Scoped Credential Broker: Short-lived credentials - STRONG
+
+### Key Metrics
+- **KA-042** - AI-Generated Code Vulnerability Rate: 40-45%
+
+### Key Constraints
+- **KA-026** - Layered Guardrail Envelope: Defense in depth required
+- **KA-028** - Task-Scoped MCP Capability Minting: Least privilege per task
+- **KA-030** - Default-Deny Egress: Block all outbound except approved
+- **KA-031** - Evidence-First Action Gating: Require evidence before high-impact actions
+
+### Key Tools
+- **KA-047** - MCP Security Threat Mitigation: Eight threat categories
+- **KA-048** - MCP Single-Responsibility Server Pattern: One domain per server
+- **KA-032** - Adversarial Regression Suite: Continuous security testing
+
+### Combination Recipes
+- **KA-026 + KA-038** - Layered Guardrails with Multi-Layer Hallucination Defense for comprehensive protection
+- **KA-028 + KA-055** - Task-Scoped Capabilities with Ephemeral Credentials for least privilege
+- **KA-029 + KA-036** - Sandboxed Execution prevents Unsandboxed Execution risks
+- **KA-052 + KA-058** - Policy-as-Code prevents Policy-in-Prompt Only risks
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-033 | Prompt-Only Security | Easy bypass by injection | Add runtime enforcement |
+| KA-034 | Trusting Retrieved Content as Policy | Context poisoning attacks | Add provenance validation |
+| KA-035 | Over-Privileged MCP Defaults | Privilege escalation | Implement least privilege |
+| KA-036 | Unsandboxed Code/Tool Execution | Host compromise | Add sandboxed execution |
+| KA-037 | Open Egress by Default | Data exfiltration | Implement default-deny egress |
+| KA-050 | Secret in Prompt | Secrets in logs, training data | Use credential broker |
+
+### Anti-Patterns
+- **KA-033** - Prompt-Only Security: Instructions seem sufficient but are easily bypassed
+- **KA-034** - Trusting Retrieved Content: Treating retrieval as authoritative enables poisoning
+- **KA-035** - Over-Privileged MCP Defaults: Broad access seems convenient but enables escalation
+- **KA-050** - Secret in Prompt: Including secrets seems efficient but leaks them
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-029 | Sandboxed Execution | Direct Execution | Sandbox for safety, direct for performance |
+| KA-030 | Default-Deny Egress | Open Egress | Default-deny for security, open for flexibility |
+| KA-055 | Ephemeral Credentials | Long-Lived Credentials | Ephemeral for security, long-lived for convenience |
+
+### Cross-Domain Links
+- **KA-007** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-027** also relevant to: D1 (Agent Architecture), D3 (Context)
+- **KA-038** also relevant to: D1 (Agent Architecture), D4 (Code Intelligence)
+- **KA-041** also relevant to: D1 (Agent Architecture)
+
+### Gaps
+- No patterns for AI-specific threat modeling
+- Limited coverage of prompt injection detection and prevention
+- Missing patterns for secure multi-tenant isolation
+- No explicit guidance on security incident response automation
+- Limited coverage of AI model supply chain security
+
+---
+
+## D8: Model Management & Routing
+
+### Overview
+Covers how the system selects, switches, and optimizes model usage. This domain focuses on model selection, routing strategies, and cost optimization.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-051 - Compliance Envelope per Agent Run
+- KA-054 - AI-Native SBOM Extension
+- KA-056 - Explainability Record with Policy Context
+- KA-061 - Cascade Router with Confidence Escalation (40-80% cost reduction)
+- KA-063 - Semantic Prompt Caching
+- KA-064 - Retrieval Compression Pipeline
+- KA-065 - Skill Gating and Tool Entitlement
+- KA-139 - Architecture Decision Records (35% less tech debt)
+- KA-168 - GPU Pool with Time-Slicing (3.2x utilization)
+- KA-169 - Semantic Caching Layer (67% cost reduction)
+- KA-170 - Tiered Model Serving
+- KA-171 - Sharded Vector Store (78% latency reduction)
+- KA-172 - Request Batching (4.2x throughput)
+
+**ANTI-PATTERNS (STRONG):**
+- KA-057 - Action Logs Without Decision Context
+- KA-060 - SBOM Without AI Context
+- KA-080 - Tight Vendor Coupling
+- KA-173 - GPU Over-Provisioning
+- KA-184 - Rubber-Stamp Automation Theatre
+
+### Key Techniques (Ranked)
+1. **KA-061** - Cascade Router with Confidence Escalation: Route to low-cost first, escalate if needed - STRONG
+2. **KA-170** - Tiered Model Serving: Multiple tiers with different tradeoffs - STRONG
+3. **KA-063** - Semantic Prompt Caching: Cache by similarity - STRONG
+4. **KA-064** - Retrieval Compression Pipeline: Multi-stage retrieval - STRONG
+5. **KA-168** - GPU Pool with Time-Slicing: Share GPU across workloads - STRONG
+6. **KA-169** - Semantic Caching Layer: Cache by semantic similarity - STRONG
+7. **KA-171** - Sharded Vector Store: Distribute embeddings - STRONG
+8. **KA-172** - Request Batching: Aggregate requests - STRONG
+9. **KA-054** - AI-Native SBOM Extension: Include model info in SBOM - STRONG
+10. **KA-056** - Explainability Record with Policy Context: Persist rationale - STRONG
+
+### Key Metrics
+- **KA-061** - Cascade Router Cost Reduction: 40-80%
+- **KA-168** - GPU Pool Utilization Improvement: 3.2x
+- **KA-169** - Semantic Caching Cost Reduction: 67%
+- **KA-171** - Sharded Vector Store Latency Reduction: 78%
+- **KA-172** - Request Batching Throughput Improvement: 4.2x
+
+### Key Constraints
+- **KA-051** - Compliance Envelope per Agent Run: Emit standardized evidence
+- **KA-054** - AI-Native SBOM Extension: Include model info
+- **KA-065** - Skill Gating and Tool Entitlement: Minimum required only
+
+### Key Tools
+- **KA-061** - Cascade Router: Route based on confidence
+- **KA-170** - Tiered Model Serving: Multiple model tiers
+- **KA-168** - GPU Pool with Time-Slicing: Shared GPU resources
+
+### Combination Recipes
+- **KA-061 + KA-170** - Cascade Router with Tiered Model Serving for cost optimization
+- **KA-063 + KA-169** - Semantic Prompt Caching with Semantic Caching Layer for efficiency
+- **KA-168 + KA-172** - GPU Pool with Request Batching for throughput
+- **KA-054 + KA-060** - AI-Native SBOM prevents SBOM Without AI Context
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-057 | Action Logs Without Decision Context | Weak audit defensibility | Add decision context to logs |
+| KA-060 | SBOM Without AI Context | Incomplete provenance | Extend SBOM with AI context |
+| KA-080 | Tight Vendor Coupling | Migration costs | Add abstraction layers |
+| KA-173 | GPU Over-Provisioning | GPU utilization below 20% | Implement GPU pooling |
+
+### Anti-Patterns
+- **KA-057** - Action Logs Without Decision Context: Logging actions seems sufficient but misses why
+- **KA-060** - SBOM Without AI Context: Package-only SBOM seems complete but misses AI components
+- **KA-080** - Tight Vendor Coupling: Vendor SDK seems easier but creates lock-in
+- **KA-173** - GPU Over-Provisioning: Dedicated GPUs seem performant but waste resources
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-061 | Cascade Router | Single Model | Cascade for cost, single for simplicity |
+| KA-170 | Tiered Model Serving | Single Tier | Tiered for flexibility, single for consistency |
+| KA-168 | GPU Pool | Dedicated GPU | Pool for efficiency, dedicated for performance |
+
+### Cross-Domain Links
+- **KA-051** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-054** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-056** also relevant to: D1 (Agent Architecture), D7 (Human Interaction)
+- **KA-063** also relevant to: D1 (Agent Architecture), D3 (Context)
+
+### Gaps
+- No patterns for model versioning and rollback
+- Limited coverage of A/B testing for model selection
+- Missing patterns for model performance monitoring
+- No explicit guidance on model fallback strategies
+- Limited coverage of multi-model orchestration
+
+---
+
+## D9: CI/CD & DevOps
+
+### Overview
+Covers how the system integrates with build, deploy, and operations infrastructure. This domain focuses on pipeline automation, deployment strategies, and operational practices.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-026 - Layered Guardrail Envelope for defense in depth
+- KA-029 - Sandboxed Execute-and-Validate Loop
+- KA-042 - AI-Generated Code Vulnerability Rate: 40-45%
+- KA-047 - MCP Security Threat Mitigation
+- KA-051 - Compliance Envelope per Agent Run
+- KA-055 - Ephemeral Scoped Credential Broker
+- KA-098 - Multi-Stage Pipeline
+- KA-127 - Test-Verified Refactoring (25-35% defect reduction)
+- KA-129 - Multi-Stage Validation (60-80% incident reduction)
+- KA-131 - Complexity Budget Enforcement
+- KA-142 - Pipeline as Code
+- KA-143 - GitOps
+- KA-144 - Blue/Green Deployment
+- KA-145 - Canary Deployment
+- KA-146 - Self-Healing Pipeline (85%→98% reliability)
+- KA-147 - Automated Rollback (90% MTTR reduction)
+- KA-156 - Three Pillars of Observability
+- KA-157 - Structured Logging
+- KA-158 - Error Fingerprinting (70% noise reduction)
+- KA-159 - RED Metrics
+- KA-162 - Expand-Contract Migration
+- KA-164 - Data Quality Gates
+
+**ANTI-PATTERNS (STRONG):**
+- KA-036 - Unsandboxed Code/Tool Execution
+- KA-043 - Blind Trust in LLM Output
+- KA-133 - Refactoring Without Tests
+- KA-148 - Snowflake Environments
+- KA-149 - Long-Running Branches
+- KA-154 - Test Inversion
+- KA-155 - Test Interdependence
+- KA-160 - Alert Fatigue
+- KA-166 - Migration in Deployment
+- KA-174 - Synchronous External Calls
+
+### Key Techniques (Ranked)
+1. **KA-142** - Pipeline as Code: Version-controlled pipeline definitions - STRONG
+2. **KA-143** - GitOps: Git as single source of truth - STRONG
+3. **KA-144** - Blue/Green Deployment: Two environments, instant switch - STRONG
+4. **KA-145** - Canary Deployment: Gradual traffic shift - STRONG
+5. **KA-146** - Self-Healing Pipeline: Auto-detect and recover - STRONG
+6. **KA-147** - Automated Rollback: Auto-revert on threshold breach - STRONG
+7. **KA-098** - Multi-Stage Pipeline: Stages with increasing precision - STRONG
+8. **KA-129** - Multi-Stage Validation: Multiple validation stages - STRONG
+9. **KA-156** - Three Pillars of Observability: Metrics + logs + traces - STRONG
+10. **KA-157** - Structured Logging: Machine-parseable logs - STRONG
+
+### Key Metrics
+- **KA-146** - Self-Healing Pipeline Reliability: 85%→98%
+- **KA-147** - Automated Rollback MTTR Reduction: 90%
+- **KA-158** - Error Fingerprinting Noise Reduction: 70%
+
+### Key Constraints
+- **KA-131** - Complexity Budget Enforcement: Block when thresholds exceeded
+- **KA-164** - Data Quality Gates: Validate before proceeding
+- **KA-051** - Compliance Envelope per Agent Run: Emit standardized evidence
+
+### Key Tools
+- **KA-142** - Pipeline as Code: Version-controlled pipelines
+- **KA-143** - GitOps: Git-based infrastructure
+- **KA-146** - Self-Healing Pipeline: Auto-recovery
+
+### Combination Recipes
+- **KA-142 + KA-143** - Pipeline as Code with GitOps for reproducibility
+- **KA-144 + KA-147** - Blue/Green with Automated Rollback for safety
+- **KA-145 + KA-156** - Canary with Three Pillars for risk mitigation
+- **KA-098 + KA-129** - Multi-Stage Pipeline with Multi-Stage Validation
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-148 | Snowflake Environments | "Works on my machine" issues | Implement infrastructure as code |
+| KA-149 | Long-Running Branches | Merge conflicts, integration issues | Use short-lived branches |
+| KA-154 | Test Inversion | Long feedback cycles | Rebalance to test pyramid |
+| KA-160 | Alert Fatigue | Ignored alerts, missed incidents | Reduce false positives |
+| KA-166 | Migration in Deployment | Failed deployments, inconsistent state | Separate migrations from deployments |
+
+### Anti-Patterns
+- **KA-148** - Snowflake Environments: Manual setup seems flexible but causes drift
+- **KA-149** - Long-Running Branches: Long branches seem safe but cause merge hell
+- **KA-160** - Alert Fatigue: Many alerts seem thorough but cause alert ignoring
+- **KA-166** - Migration in Deployment: Combined seems efficient but causes failures
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-144 | Blue/Green Deployment | Rolling Deployment | Blue/green for instant switch, rolling for resource efficiency |
+| KA-145 | Canary Deployment | Big Bang Deployment | Canary for risk mitigation, big bang for simplicity |
+| KA-142 | Pipeline as Code | GUI Pipeline | Code for versioning, GUI for simplicity |
+
+### Cross-Domain Links
+- **KA-026** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-051** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-098** also relevant to: D1 (Agent Architecture), D4 (Code Intelligence)
+
+### Gaps
+- No patterns for AI-specific CI/CD (testing AI models in pipeline)
+- Limited coverage of feature flag integration
+- Missing patterns for environment provisioning automation
+- No explicit guidance on deployment window management
+- Limited coverage of pipeline security patterns
+
+---
+
+## D10: Workspace & Infrastructure Management
+
+### Overview
+Covers how agents organize files, branches, environments, and resources. This domain focuses on workspace organization, infrastructure provisioning, and resource management.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-001 - Auto-Launch Workspaces for deterministic initialization
+- KA-026 - Layered Guardrail Envelope for defense in depth
+- KA-028 - Task-Scoped MCP Capability Minting
+- KA-030 - Default-Deny Egress with Explicit Allowlists
+- KA-047 - MCP Security Threat Mitigation
+- KA-048 - MCP Single-Responsibility Server Pattern
+- KA-055 - Ephemeral Scoped Credential Broker
+- KA-061 - Cascade Router with Confidence Escalation (40-80% cost reduction)
+- KA-062 - Budget-Aware Task Decomposition
+- KA-065 - Skill Gating and Tool Entitlement
+- KA-084 - Federated Cluster Architecture (3x throughput)
+- KA-085 - Service Mesh Coordination
+- KA-086 - Worker Pool Pattern
+- KA-090 - Adaptive Throttling (2x latency under 5x load)
+- KA-096 - Branch-Per-Task Isolation (67% merge conflict reduction)
+- KA-142 - Pipeline as Code
+- KA-143 - GitOps
+- KA-144 - Blue/Green Deployment
+- KA-145 - Canary Deployment
+- KA-156 - Three Pillars of Observability
+- KA-157 - Structured Logging
+- KA-158 - Error Fingerprinting (70% noise reduction)
+- KA-159 - RED Metrics
+- KA-161 - Declarative Schema as Code
+- KA-162 - Expand-Contract Migration
+- KA-163 - Schema Registry
+- KA-164 - Data Quality Gates
+- KA-168 - GPU Pool with Time-Slicing (3.2x utilization)
+- KA-169 - Semantic Caching Layer (67% cost reduction)
+- KA-170 - Tiered Model Serving
+- KA-171 - Sharded Vector Store (78% latency reduction)
+- KA-172 - Request Batching (4.2x throughput)
+
+**MODERATE Evidence:**
+- KA-018 - Progressive Disclosure Architecture for context efficiency
+
+**ANTI-PATTERNS (STRONG):**
+- KA-013 - Credential Sprawl in IDE - unvaulted credentials
+- KA-035 - Over-Privileged MCP Defaults
+- KA-037 - Open Egress by Default
+- KA-049 - MCP God Server
+- KA-050 - Secret in Prompt
+- KA-059 - Long-Lived Shared Credentials
+- KA-148 - Snowflake Environments
+- KA-149 - Long-Running Branches
+- KA-165 - Shared Database
+- KA-167 - God Table
+- KA-173 - GPU Over-Provisioning
+- KA-174 - Synchronous External Calls
+- KA-175 - Cache Without Invalidation
+
+### Key Techniques (Ranked)
+1. **KA-001** - Auto-Launch Workspaces: Deterministic initialization - STRONG
+2. **KA-096** - Branch-Per-Task Isolation: Dedicated branch per task - STRONG
+3. **KA-084** - Federated Cluster Architecture: Regional federations - STRONG
+4. **KA-085** - Service Mesh Coordination: Sidecar proxies - STRONG
+5. **KA-086** - Worker Pool Pattern: Pre-initialized workers - STRONG
+6. **KA-168** - GPU Pool with Time-Slicing: Shared GPU resources - STRONG
+7. **KA-171** - Sharded Vector Store: Distributed embeddings - STRONG
+8. **KA-172** - Request Batching: Aggregate requests - STRONG
+9. **KA-161** - Declarative Schema as Code: Version-controlled schemas - STRONG
+10. **KA-163** - Schema Registry: Centralized schema management - STRONG
+
+### Key Metrics
+- **KA-084** - Federated Cluster Throughput: 3x improvement
+- **KA-096** - Merge Conflict Reduction: 67%
+- **KA-168** - GPU Pool Utilization Improvement: 3.2x
+- **KA-171** - Sharded Vector Store Latency Reduction: 78%
+- **KA-172** - Request Batching Throughput Improvement: 4.2x
+
+### Key Constraints
+- **KA-028** - Task-Scoped MCP Capability Minting: Least privilege per task
+- **KA-030** - Default-Deny Egress: Block all except approved
+- **KA-062** - Budget-Aware Task Decomposition: Token budgets per step
+
+### Key Tools
+- **KA-048** - MCP Single-Responsibility Server Pattern: One domain per server
+- **KA-085** - Service Mesh Coordination: Sidecar proxies
+- **KA-163** - Schema Registry: Centralized schema management
+
+### Combination Recipes
+- **KA-001 + KA-096** - Auto-Launch Workspaces with Branch-Per-Task for isolation
+- **KA-084 + KA-085** - Federated Cluster with Service Mesh for scale
+- **KA-168 + KA-172** - GPU Pool with Request Batching for throughput
+- **KA-161 + KA-163** - Declarative Schema with Schema Registry for consistency
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-148 | Snowflake Environments | "Works on my machine" issues | Implement infrastructure as code |
+| KA-149 | Long-Running Branches | Merge conflicts | Use short-lived branches |
+| KA-165 | Shared Database | Tight coupling, schema conflicts | Implement service-owned databases |
+| KA-167 | God Table | Unclear column purposes, sparse data | Split into focused tables |
+| KA-173 | GPU Over-Provisioning | GPU utilization below 20% | Implement GPU pooling |
+| KA-175 | Cache Without Invalidation | Stale data | Add proper invalidation strategies |
+
+### Anti-Patterns
+- **KA-148** - Snowflake Environments: Manual setup seems flexible but causes drift
+- **KA-149** - Long-Running Branches: Long branches seem safe but cause merge hell
+- **KA-165** - Shared Database: Shared DB seems efficient but creates coupling
+- **KA-167** - God Table: Single table seems simple but accumulates debt
+- **KA-173** - GPU Over-Provisioning: Dedicated GPUs seem performant but waste resources
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-096 | Branch-Per-Task | Shared Branch | Branch-per-task for isolation, shared for simplicity |
+| KA-084 | Federated Cluster | Single Cluster | Federated for scale, single for simplicity |
+| KA-168 | GPU Pool | Dedicated GPU | Pool for efficiency, dedicated for performance |
+
+### Cross-Domain Links
+- **KA-001** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-026** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-061** also relevant to: D1 (Agent Architecture), D6 (Testing)
+
+### Gaps
+- No patterns for workspace template management
+- Limited coverage of environment variable management
+- Missing patterns for resource quota enforcement
+- No explicit guidance on workspace cleanup and garbage collection
+- Limited coverage of multi-cloud infrastructure patterns
+
+---
+
+## D11: Human Interaction
+
+### Overview
+Covers how agents collaborate with humans. This domain focuses on human-in-the-loop patterns, escalation strategies, and human-agent communication.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-007 - Structured Human-in-Loop for explicit checkpoints
+- KA-041 - Uncertainty-Calibrated Human Escalation
+- KA-056 - Explainability Record with Policy Context
+- KA-176 - Confidence-Calibrated Escalation
+- KA-177 - Progressive Disclosure of Reasoning
+- KA-178 - Intelligent Approval Batching
+- KA-179 - Risk-Tiered Auto-Approval Gateway
+- KA-180 - Structured Follow-up Questions
+- KA-181 - Autonomy Level Declaration
+
+**ANTI-PATTERNS (STRONG):**
+- KA-024 - False Confidence - no uncertainty indicators
+- KA-182 - Approval Fatigue Spiral
+- KA-183 - Context Poisoning from Human Input
+- KA-184 - Rubber-Stamp Automation Theatre
+- KA-185 - Explanation Overload
+
+### Key Techniques (Ranked)
+1. **KA-176** - Confidence-Calibrated Escalation: Escalate based on confidence threshold - STRONG
+2. **KA-177** - Progressive Disclosure of Reasoning: Minimal by default, expandable - STRONG
+3. **KA-178** - Intelligent Approval Batching: Group related approvals - STRONG
+4. **KA-179** - Risk-Tiered Auto-Approval Gateway: Auto-approve low-risk - STRONG
+5. **KA-180** - Structured Follow-up Questions: Clear question with suggested answers - STRONG
+6. **KA-181** - Autonomy Level Declaration: Explicit autonomy levels - STRONG
+7. **KA-007** - Structured Human-in-Loop: Explicit checkpoints - STRONG
+8. **KA-041** - Uncertainty-Calibrated Human Escalation: Route based on uncertainty - STRONG
+9. **KA-056** - Explainability Record with Policy Context: Persist rationale - STRONG
+
+### Key Metrics
+- No specific metrics defined for this domain
+
+### Key Constraints
+- **KA-181** - Autonomy Level Declaration: Explicit autonomy levels required
+- **KA-179** - Risk-Tiered Auto-Approval Gateway: Risk classification required
+
+### Key Tools
+- **KA-180** - Structured Follow-up Questions: Clarification tool
+- **KA-178** - Intelligent Approval Batching: Approval grouping
+
+### Combination Recipes
+- **KA-176 + KA-179** - Confidence-Calibrated Escalation with Risk-Tiered Auto-Approval for efficiency
+- **KA-177 + KA-185** - Progressive Disclosure prevents Explanation Overload
+- **KA-178 + KA-182** - Intelligent Approval Batching prevents Approval Fatigue
+- **KA-007 + KA-181** - Structured Human-in-Loop with Autonomy Level Declaration
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-182 | Approval Fatigue Spiral | Rubber-stamp approvals | Batch approvals, reduce requests |
+| KA-183 | Context Poisoning from Human Input | Degraded agent behavior | Validate human inputs |
+| KA-184 | Rubber-Stamp Automation Theatre | Perfunctory human review | Add meaningful review criteria |
+| KA-185 | Explanation Overload | Reduced decision quality | Use progressive disclosure |
+
+### Anti-Patterns
+- **KA-182** - Approval Fatigue Spiral: Many approvals seem thorough but cause rubber-stamping
+- **KA-183** - Context Poisoning from Human Input: Human input seems helpful but can introduce errors
+- **KA-184** - Rubber-Stamp Automation Theatre: HITL seems compliant but provides no oversight
+- **KA-185** - Explanation Overload: More explanation seems helpful but overwhelms
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-176 | Confidence-Calibrated Escalation | Always Escalate | Calibrated for efficiency, always for safety |
+| KA-179 | Auto-Approval Gateway | Manual Approval | Auto for efficiency, manual for control |
+| KA-177 | Progressive Disclosure | Full Disclosure | Progressive for clarity, full for transparency |
+
+### Cross-Domain Links
+- **KA-007** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-041** also relevant to: D1 (Agent Architecture)
+- **KA-056** also relevant to: D1 (Agent Architecture), D8 (Model Management)
+
+### Gaps
+- No patterns for multi-user collaboration
+- Limited coverage of human feedback integration
+- Missing patterns for conflict resolution between human and agent
+- No explicit guidance on accessibility in human-agent interfaces
+- Limited coverage of cultural and language adaptation
+
+---
+
+## D12: Self-Improvement & Optimization
+
+### Overview
+Covers how the system improves its own performance over time. This domain focuses on learning mechanisms, optimization strategies, and continuous improvement.
+
+### Knowledge Atoms (Ranked by Evidence Strength)
+
+**STRONG Evidence:**
+- KA-032 - Adversarial Regression Suite
+- KA-038 - Multi-Layer Hallucination Defense
+- KA-040 - Multi-Agent Verification Consensus
+- KA-061 - Cascade Router with Confidence Escalation (40-80% cost reduction)
+- KA-063 - Semantic Prompt Caching
+- KA-064 - Retrieval Compression Pipeline
+- KA-065 - Skill Gating and Tool Entitlement
+- KA-073 - Conditional Multi-Stage Recovery (19% higher success)
+- KA-077 - Watchdog Monitoring
+- KA-078 - Adversarial Review (40% higher bug detection)
+- KA-090 - Adaptive Throttling (2x latency under 5x load)
+- KA-109 - Memory Consolidation
+- KA-116 - Incremental Representation Updates
+- KA-128 - Iterative Repair Loop (85%+ resolution rate)
+- KA-129 - Multi-Stage Validation (60-80% incident reduction)
+- KA-137 - Iterative Specification Refinement
+- KA-146 - Self-Healing Pipeline (85%→98% reliability)
+- KA-153 - Mutation Testing (r=0.75 defect correlation)
+- KA-168 - GPU Pool with Time-Slicing (3.2x utilization)
+- KA-169 - Semantic Caching Layer (67% cost reduction)
+- KA-172 - Request Batching (4.2x throughput)
+
+**MODERATE Evidence:**
+- KA-039 - Early Exit with Confidence Gating
+- KA-074 - Stigmergic Coordination
+
+**ANTI-PATTERNS (STRONG):**
+- KA-044 - Single-Technique Hallucination Defense
+- KA-045 - Ignoring Confidence Calibration
+- KA-113 - Unbounded Memory Growth
+- KA-119 - Full Rebuild on Change
+- KA-134 - Happy Path Bias - 60-70% failures untested paths
+- KA-160 - Alert Fatigue
+- KA-173 - GPU Over-Provisioning
+
+### Key Techniques (Ranked)
+1. **KA-032** - Adversarial Regression Suite: Continuous adversarial testing - STRONG
+2. **KA-078** - Adversarial Review: Dedicated critic agents - STRONG
+3. **KA-109** - Memory Consolidation: Compress, summarize, prune - STRONG
+4. **KA-116** - Incremental Representation Updates: Update on change - STRONG
+5. **KA-128** - Iterative Repair Loop: Fix, validate, refine - STRONG
+6. **KA-137** - Iterative Specification Refinement: Start minimal, refine - STRONG
+7. **KA-146** - Self-Healing Pipeline: Auto-detect and recover - STRONG
+8. **KA-153** - Mutation Testing: Inject faults, verify detection - STRONG
+9. **KA-073** - Conditional Multi-Stage Recovery: Diagnosis→Planning→Recovery - STRONG
+10. **KA-090** - Adaptive Throttling: Dynamic rate adjustment - STRONG
+
+### Key Metrics
+- **KA-073** - Conditional Multi-Stage Recovery Success Rate: 19% higher
+- **KA-078** - Adversarial Review Bug Detection: 40% higher
+- **KA-128** - Iterative Repair Loop Resolution Rate: 85%+
+- **KA-146** - Self-Healing Pipeline Reliability: 85%→98%
+- **KA-153** - Mutation Testing Defect Correlation: r=0.75
+
+### Key Constraints
+- **KA-065** - Skill Gating and Tool Entitlement: Minimum required only
+- **KA-032** - Adversarial Regression Suite: Continuous testing required
+
+### Key Tools
+- **KA-032** - Adversarial Regression Suite: Continuous security testing
+- **KA-153** - Mutation Testing: Fault injection for test quality
+- **KA-077** - Watchdog Monitoring: Health metrics and anomaly detection
+
+### Combination Recipes
+- **KA-032 + KA-078** - Adversarial Regression with Adversarial Review for continuous improvement
+- **KA-109 + KA-113** - Memory Consolidation prevents Unbounded Memory Growth
+- **KA-116 + KA-119** - Incremental Updates prevents Full Rebuild on Change
+- **KA-128 + KA-146** - Iterative Repair with Self-Healing Pipeline for resilience
+
+### Failure Modes
+| Atom ID | What Breaks | How to Detect | How to Respond |
+|---------|-------------|---------------|----------------|
+| KA-044 | Single-Technique Hallucination Defense | Blind spots in defense | Add multiple techniques |
+| KA-045 | Ignoring Confidence Calibration | Overconfidence in incorrect answers | Add confidence indicators |
+| KA-113 | Unbounded Memory Growth | Storage costs grow unbounded | Add pruning and expiration |
+| KA-119 | Full Rebuild on Change | Slow response time | Implement incremental updates |
+| KA-134 | Happy Path Bias | 60-70% failures from untested paths | Add sad path coverage |
+
+### Anti-Patterns
+- **KA-044** - Single-Technique Hallucination Defense: One technique seems sufficient but has blind spots
+- **KA-045** - Ignoring Confidence Calibration: Equal confidence seems fair but causes overconfidence
+- **KA-113** - Unbounded Memory Growth: Keeping everything seems safe but degrades performance
+- **KA-119** - Full Rebuild on Change: Complete rebuild seems thorough but is slow
+
+### Tradeoffs
+| Atom ID | Choice A | Choice B | Decision Criteria |
+|---------|----------|----------|-------------------|
+| KA-032 | Adversarial Regression | Standard Testing | Adversarial for security, standard for coverage |
+| KA-153 | Mutation Testing | Coverage Only | Mutation for quality, coverage for baseline |
+| KA-128 | Iterative Repair | Single-Pass Fix | Iterative for reliability, single-pass for speed |
+
+### Cross-Domain Links
+- **KA-032** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-038** also relevant to: D1 (Agent Architecture), D5 (Security)
+- **KA-040** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+- **KA-078** also relevant to: D1 (Agent Architecture), D2 (Task Management)
+
+### Gaps
+- No patterns for automated prompt optimization
+- Limited coverage of reinforcement learning from human feedback (RLHF)
+- Missing patterns for knowledge distillation
+- No explicit guidance on self-evaluation metrics
+- Limited coverage of continuous learning from production data
+
+---
+
+## Summary Statistics
+
+### Atoms by Domain
+| Domain | Total Atoms | Techniques | Anti-Patterns | Metrics |
+|--------|-------------|------------|---------------|---------|
+| D1: Agent Architecture & Orchestration | 185 | 112 | 58 | 15 |
+| D2: Task Management & Decomposition | 48 | 38 | 10 | 4 |
+| D3: Context & Prompt Engineering | 32 | 20 | 11 | 4 |
+| D4: Memory & Knowledge Systems | 57 | 38 | 19 | 6 |
+| D5: Code Intelligence & Representations | 64 | 30 | 30 | 6 |
+| D6: Testing & Validation | 46 | 28 | 9 | 7 |
+| D7: Security & Guardrails | 32 | 19 | 13 | 1 |
+| D8: Model Management & Routing | 18 | 10 | 5 | 5 |
+| D9: CI/CD & DevOps | 32 | 20 | 10 | 3 |
+| D10: Workspace & Infrastructure Management | 44 | 30 | 12 | 5 |
+| D11: Human Interaction | 14 | 9 | 5 | 0 |
+| D12: Self-Improvement & Optimization | 27 | 20 | 7 | 5 |
+
+### Cross-Domain Link Analysis
+- Most interconnected domains: D1 (Agent Architecture) connects to all other domains
+- Strongest cross-domain relationships:
+  - D1 ↔ D2: Task decomposition and agent coordination
+  - D1 ↔ D3: Context management for agents
+  - D1 ↔ D5: Security and code intelligence
+  - D3 ↔ D4: Context and memory systems
+
+### Identified Gaps Summary
+1. **Agent Architecture**: Agent negotiation protocols, lifecycle management, learning patterns
+2. **Task Management**: Priority inference, dependency resolution, rollback patterns
+3. **Context Engineering**: Dynamic prompt templates, multi-modal context, versioning
+4. **Memory Systems**: Knowledge graphs, privacy controls, cross-agent sharing
+5. **Code Intelligence**: Code smell detection, similarity analysis, architecture recovery
+6. **Testing**: AI-specific testing, visual regression, performance automation
+7. **Security**: AI threat modeling, prompt injection defense, multi-tenant isolation
+8. **Model Management**: Model versioning, A/B testing, performance monitoring
+9. **CI/CD**: AI-specific pipelines, feature flags, environment provisioning
+10. **Workspace**: Template management, resource quotas, multi-cloud patterns
+11. **Human Interaction**: Multi-user collaboration, feedback integration, conflict resolution
+12. **Self-Improvement**: Prompt optimization, RLHF, knowledge distillation
+
+---
+
+*Generated from Master Knowledge Atom Registry on 2026-02-25*
+*Total Source Atoms: 185 | Domains: 12 | Evidence: STRONG (112), MODERATE (58), WEAK (15)*
+
