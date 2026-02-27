@@ -35,7 +35,8 @@ Key findings:
 
 ---
 
-### [ ] Step: Fix Internal Duplication
+### [x] Step: Fix Internal Duplication
+<!-- chat-id: 9c6c7faa-24ad-4618-9cba-20b9241d0dcb -->
 
 Remove duplicated content blocks within individual files:
 - `distilled/final_summary.md` — remove duplicated Outputs + Quality Gates sections
