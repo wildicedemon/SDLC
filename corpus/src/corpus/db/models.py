@@ -81,9 +81,7 @@ class ArtifactChunk(Base):
     content = Column(Text, nullable=False)
     embedding_synced = Column(Boolean, default=False)
 
-    __table_args__ = (
-        UniqueConstraint("artifact_id", "chunk_index", name="uq_artifact_chunk_index"),
-    )
+    __table_args__ = (UniqueConstraint("artifact_id", "chunk_index", name="uq_artifact_chunk_index"),)
 
     artifact = relationship("ResearchArtifact", back_populates="chunks")
 
@@ -189,9 +187,7 @@ class CapabilityMapping(Base):
     decision_id = Column(Text, ForeignKey("decision_cards.decision_id"), nullable=False)
     domain = Column(Text, nullable=False)
 
-    __table_args__ = (
-        UniqueConstraint("capability", "decision_id", name="uq_capability_decision"),
-    )
+    __table_args__ = (UniqueConstraint("capability", "decision_id", name="uq_capability_decision"),)
 
     decision = relationship("DecisionCard", back_populates="capability_mappings")
 

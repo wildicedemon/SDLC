@@ -153,6 +153,4 @@ class CorpusRepository:
         return outcome
 
     def list_outcomes(self, decision_id: str) -> list[TelemetryOutcome]:
-        return list(
-            self.session.query(TelemetryOutcome).filter(TelemetryOutcome.decision_id == decision_id).all()
-        )
+        return list(self.session.query(TelemetryOutcome).filter(TelemetryOutcome.decision_id == decision_id).all())

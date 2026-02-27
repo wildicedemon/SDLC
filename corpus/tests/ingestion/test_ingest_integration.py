@@ -4,7 +4,7 @@ import pytest
 from git import Repo
 
 from corpus.db.engine import create_db_engine, make_session_factory
-from corpus.db.models import Base, ArtifactChunk, ConsolidationRun, ResearchArtifact
+from corpus.db.models import ArtifactChunk, Base, ConsolidationRun, ResearchArtifact
 from corpus.db.repository import CorpusRepository
 from corpus.ingestion.pipeline import run_ingest
 

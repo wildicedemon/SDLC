@@ -3,16 +3,12 @@ from corpus.ingestion.classifier import DOMAIN_DIRECTORIES, Classification, clas
 
 class TestClassifyDomainPaths:
     def test_security_architecture_patterns(self) -> None:
-        result = classify(
-            "docs/research/01_meta_architecture/security_architecture/patterns.md"
-        )
+        result = classify("docs/research/01_meta_architecture/security_architecture/patterns.md")
         assert result.is_classified is True
         assert "security_architecture" in result.domain_tags
 
     def test_research_benchmarking_framework_overview(self) -> None:
-        result = classify(
-            "docs/research/09_research_discipline/research_benchmarking_framework/overview.md"
-        )
+        result = classify("docs/research/09_research_discipline/research_benchmarking_framework/overview.md")
         assert result.is_classified is True
         assert "research_benchmarking_framework" in result.domain_tags
 
@@ -43,31 +39,23 @@ class TestClassifyDomainPaths:
         assert result.is_classified is True
 
     def test_backslash_paths_normalized(self) -> None:
-        result = classify(
-            "docs\\research\\01_meta_architecture\\security_architecture\\patterns.md"
-        )
+        result = classify("docs\\research\\01_meta_architecture\\security_architecture\\patterns.md")
         assert result.is_classified is True
         assert "security_architecture" in result.domain_tags
 
     def test_capability_tag_from_custom_filename(self) -> None:
-        result = classify(
-            "docs/research/06_data_infrastructure/database_data_engineering/sharding_strategies.md"
-        )
+        result = classify("docs/research/06_data_infrastructure/database_data_engineering/sharding_strategies.md")
         assert result.is_classified is True
         assert "database_data_engineering" in result.domain_tags
         assert "sharding_strategies" in result.capability_tags
 
     def test_standard_filenames_have_no_capability_tag(self) -> None:
         for name in ("overview.md", "patterns.md", "comparisons.md", "references.md", "README.md"):
-            result = classify(
-                f"docs/research/01_meta_architecture/security_architecture/{name}"
-            )
+            result = classify(f"docs/research/01_meta_architecture/security_architecture/{name}")
             assert result.capability_tags == [], f"Unexpected capability tag for {name}"
 
     def test_unknown_subdomain_not_classified(self) -> None:
-        result = classify(
-            "docs/research/01_meta_architecture/nonexistent_subdomain/overview.md"
-        )
+        result = classify("docs/research/01_meta_architecture/nonexistent_subdomain/overview.md")
         assert result.is_classified is False
 
     def test_perplexity_overview_no_capability_tag(self) -> None:

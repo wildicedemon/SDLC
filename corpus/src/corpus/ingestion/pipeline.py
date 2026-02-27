@@ -8,7 +8,7 @@ from pathlib import Path
 
 from corpus.db.repository import CorpusRepository
 from corpus.ingestion.classifier import classify
-from corpus.ingestion.enumerator import ChangedFile, enumerate_changes
+from corpus.ingestion.enumerator import enumerate_changes
 from corpus.ingestion.normalizer import normalize
 from corpus.ingestion.path_mapper import record_mapping
 

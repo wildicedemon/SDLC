@@ -219,7 +219,7 @@ Implement content normalization — single-file first, then multi-file merge int
 - **Verify**: `pytest tests/ingestion/test_normalizer.py -v` — all 4 assertions pass
 - **If verification fails**: Check heading regex; ensure merge doesn't duplicate existing sections
 
-### [ ] Step: Path Mapper + Ingestion Integration
+### [x] Step: Path Mapper + Ingestion Integration
 <!-- chat-id: 7d779109-9099-4b1d-bc59-317d822e4ce5 -->
 
 Wire all ingestion components together with path mapping and the `corpus ingest` CLI command.
@@ -242,7 +242,7 @@ Wire all ingestion components together with path mapping and the `corpus ingest`
 - **Verify**: `pytest tests/ingestion/ -v` — all tests pass
 - **If verification fails**: Check that enumerator→classifier→normalizer chain passes data correctly; verify repository FK constraints satisfied (run must exist before artifacts)
 
-### [ ] Step: Smoke Test — Ingest to DB
+### [x] Step: Smoke Test — Ingest to DB
 <!-- chat-id: 0f3628e4-adbe-4ec5-b2e7-f401c51a551f -->
 
 Integration checkpoint: verify ingestion produces queryable relational state.
@@ -258,7 +258,7 @@ Integration checkpoint: verify ingestion produces queryable relational state.
 - **If verification fails**: This blocks all downstream steps — fix ingestion before proceeding
 - Run `ruff check src/ tests/` and `mypy src/corpus/` — fix any issues
 
-### [ ] Step: Dedup Pipeline and Human Review Queue
+### [x] Step: Dedup Pipeline and Human Review Queue
 <!-- chat-id: ff2e7f57-6dfd-4b2d-b9b1-7168a3fd9db4 -->
 
 Implement 3-layer dedup per FR-3 and human review queue per FR-4. AI arbitration uses Kilo Gateway (`z-ai/glm-5:free`).
@@ -303,7 +303,7 @@ Implement 3-layer dedup per FR-3 and human review queue per FR-4. AI arbitration
 - **If L3 call rate > 20%**: Log warning in dedup report, continue current run, add TODO to tune L1/L2 thresholds before next run
 - **If Kilo Gateway unreachable**: All disagreements go to human queue; dedup report notes `arbitration_fallback=True`; run proceeds (not blocked)
 
-### [ ] Step: DecisionCard and Index Updater
+### [x] Step: DecisionCard and Index Updater
 <!-- chat-id: 040361e6-2aa3-4d57-adc9-ed9ec0621e40 -->
 
 Implement decision surface updates per FR-5.
@@ -336,7 +336,7 @@ Implement decision surface updates per FR-5.
 - **Verify**: `pytest tests/decisions/ -v` — all assertions pass
 - **If confidence formula produces out-of-range values**: Clamp to [0.0, 1.0]; log warning if clamping was needed
 
-### [ ] Step: Reference Integrity
+### [x] Step: Reference Integrity
 <!-- chat-id: f2d0867d-67bf-4c25-b753-fa30d24bccb5 -->
 
 Implement reference safety per FR-6.
@@ -365,7 +365,7 @@ Implement reference safety per FR-6.
 - **Verify**: `pytest tests/references/ -v` — all assertions pass
 - **If integrity check fails during a run**: Block run completion (do not mark `completed`); generate remediation report listing every broken link with file:line location; set run `status='failed'` with `remediation_report` populated
 
-### [ ] Step: Smoke Test — Ingest to Decision Update
+### [x] Step: Smoke Test — Ingest to Decision Update
 <!-- chat-id: 47ed4a83-b4cd-42e4-ab39-f715f19be591 -->
 
 Integration checkpoint: verify the core pipeline from ingestion through decision updates.
@@ -382,7 +382,7 @@ Integration checkpoint: verify the core pipeline from ingestion through decision
 - **If verification fails**: Indicates data flow break between components — check that artifact→capability→decision linkage is correct; fix before proceeding to derived layers
 - Run `ruff check src/ tests/` and `mypy src/corpus/` — fix any issues
 
-### [ ] Step: Derived Layer Sync (Vector + Graph)
+### [x] Step: Derived Layer Sync (Vector + Graph)
 <!-- chat-id: 2f91763a-d77c-4adf-b026-9061481f85a3 -->
 
 Implement derived layers per FR-7. These are rebuildable from relational source — no incremental rollback needed; rebuild commands wipe and recreate from scratch.
@@ -415,7 +415,7 @@ Implement derived layers per FR-7. These are rebuildable from relational source 
 - **Verify**: `pytest tests/sync/ -v` — all assertions pass
 - **If sync health fails during a run**: Block run completion; report which layer is behind and by how much; operator can run `corpus rebuild-vectors` / `corpus rebuild-graph` to force recovery
 
-### [ ] Step: Retrieval Runtime (L0-L3)
+### [x] Step: Retrieval Runtime (L0-L3)
 <!-- chat-id: 14637af2-8161-4677-8eba-4effc320fbe4 -->
 
 Implement retrieval pipeline per FR-8.
@@ -458,7 +458,7 @@ Implement retrieval pipeline per FR-8.
 - **Verify**: `pytest tests/retrieval/ -v` — all assertions pass
 - **If vector search returns 0 results**: Return empty response with `confidence=0.0` and message "No matching decisions found"; do not error
 
-### [ ] Step: Consolidation Gate and Run Completion
+### [x] Step: Consolidation Gate and Run Completion
 <!-- chat-id: 307066a4-ab3d-4bf3-9fed-9a0e5305731f -->
 
 Implement governance gates per FR-9.
@@ -494,7 +494,7 @@ Implement governance gates per FR-9.
 - **If any gate fails**: Run is blocked at `status='failed'`; remediation report lists each failure with actionable fix; operator must resolve and re-run `corpus complete <run-id>`
 - **If human queue non-empty**: Gate 2 blocks; operator uses `corpus review resolve` to clear queue, then re-runs gate
 
-### [ ] Step: Smoke Test — Full Pipeline on Test Branch
+### [x] Step: Smoke Test — Full Pipeline on Test Branch
 <!-- chat-id: 6310e312-4c55-4b2b-afcf-ea74a6ab2b52 -->
 
 Integration checkpoint: verify the complete pipeline before adding telemetry.
@@ -513,7 +513,7 @@ Integration checkpoint: verify the complete pipeline before adding telemetry.
 - **If verification fails**: Identifies architectural issues before final steps — fix before proceeding
 - Run `ruff check src/ tests/` and `mypy src/corpus/` — fix any issues
 
-### [ ] Step: Telemetry and Calibration
+### [x] Step: Telemetry and Calibration
 <!-- chat-id: cf322d29-e9de-43ff-ad7e-ad0f04776367 -->
 
 Implement operational telemetry per FR-10.
@@ -544,7 +544,7 @@ Implement operational telemetry per FR-10.
 - **Verify**: `pytest tests/telemetry/ -v` — all assertions pass
 - **If calibration produces out-of-range scores**: Clamp to [0.0, 1.0]; log warning
 
-### [ ] Step: End-to-End Pipeline and Scaled Integration Tests
+### [x] Step: End-to-End Pipeline and Scaled Integration Tests
 <!-- chat-id: 26b88db7-1c9c-4810-95f7-cb0e728204b4 -->
 
 Wire full pipeline orchestrator and run comprehensive validation. Per spec Phase 10.

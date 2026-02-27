@@ -35,15 +35,11 @@ def ingest_repo(tmp_path: Path) -> tuple[Path, str, str]:
     (sec_dir / "patterns.md").write_text(
         "# Security Patterns\n\n## Pattern A\nContent for pattern A.\n\n## Pattern B\nContent for pattern B.\n"
     )
-    (sec_dir / "threat_modeling.md").write_text(
-        "# Threat Modeling\n\n## Overview\nThreat modeling overview.\n"
-    )
+    (sec_dir / "threat_modeling.md").write_text("# Threat Modeling\n\n## Overview\nThreat modeling overview.\n")
 
     design_dir = arch_dir / "system_design_philosophy"
     design_dir.mkdir(parents=True)
-    (design_dir / "overview.md").write_text(
-        "# System Design Philosophy\n\nDesign content here.\n"
-    )
+    (design_dir / "overview.md").write_text("# System Design Philosophy\n\nDesign content here.\n")
 
     research_dir = repo_dir / "docs" / "research" / "09_research_discipline" / "research_benchmarking_framework"
     research_dir.mkdir(parents=True)

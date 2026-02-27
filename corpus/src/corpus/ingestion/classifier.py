@@ -61,15 +61,9 @@ _RESEARCH_PREFIX = "docs/research/"
 _META_DIR = "00_meta"
 _INDICES_DIR = "03_indices"
 
-_DOMAIN_PATTERN = re.compile(
-    r"^docs/research/(\d{2}_[^/]+)/([^/]+)/(.+)$"
-)
-_META_PATTERN = re.compile(
-    r"^docs/research/00_meta/(.+)$"
-)
-_INDICES_PATTERN = re.compile(
-    r"^docs/research/03_indices/(.+)$"
-)
+_DOMAIN_PATTERN = re.compile(r"^docs/research/(\d{2}_[^/]+)/([^/]+)/(.+)$")
+_META_PATTERN = re.compile(r"^docs/research/00_meta/(.+)$")
+_INDICES_PATTERN = re.compile(r"^docs/research/03_indices/(.+)$")
 
 
 @dataclass
