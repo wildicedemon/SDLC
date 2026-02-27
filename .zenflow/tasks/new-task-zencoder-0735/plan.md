@@ -20,50 +20,64 @@ If you are blocked and need user clarification, mark the current step with `[!]`
 
 ## Workflow Steps
 
-### [ ] Step: Technical Specification
+### [x] Step: Technical Specification
 
-Assess the task's difficulty, as underestimating it leads to poor outcomes.
-- easy: Straightforward implementation, trivial bug fix or feature
-- medium: Moderate complexity, some edge cases or caveats to consider
-- hard: Complex logic, many caveats, architectural considerations, or high-risk changes
+Difficulty: **Medium-Hard**. Full spec saved to `spec.md`.
 
-Create a technical specification for the task that is appropriate for the complexity level:
-- Review the existing codebase architecture and identify reusable components.
-- Define the implementation approach based on established patterns in the project.
-- Identify all source code files that will be created or modified.
-- Define any necessary data model, API, or interface changes.
-- Describe verification steps using the project's test and lint commands.
-
-Save the output to `{@artifacts_path}/spec.md` with:
-- Technical context (language, dependencies)
-- Implementation approach
-- Source code structure changes
-- Data model / API / interface changes
-- Verification approach
-
-If the task is complex enough, create a detailed implementation plan based on `{@artifacts_path}/spec.md`:
-- Break down the work into concrete tasks (incrementable, testable milestones)
-- Each task should reference relevant contracts and include verification steps
-- Replace the Implementation step below with the planned tasks
-
-Rule of thumb for step size: each step should represent a coherent unit of work (e.g., implement a component, add an API endpoint, write tests for a module). Avoid steps that are too granular (single function).
-
-Important: unit tests must be part of each implementation task, not separate tasks. Each task should implement the code and its tests together, if relevant.
-
-Save to `{@artifacts_path}/plan.md`. If the feature is trivial and doesn't warrant this breakdown, keep the Implementation step below as is.
+Key findings:
+- 3 generations of distillation outputs scattered across 6+ locations (36 → 68 → 372 atoms)
+- `docs/distillation/` (Gen 3, 372 atoms) is the canonical/authoritative version
+- 5 files have internal content duplication (sections copy-pasted twice within same file)
+- Root-level artifact sprawl (~15 intermediate files)
+- Kimi-Research partially integrated
+- Operational code must remain untouched
 
 ---
 
-### [ ] Step: Implementation
+### [ ] Step: Fix Internal Duplication
 
-Implement the task according to the technical specification and general engineering best practices.
+Remove duplicated content blocks within individual files:
+- `distilled/final_summary.md` — remove duplicated Outputs + Quality Gates sections
+- `distilled/validation_report.md` — remove duplicated entire report
+- `distilled/gap_report.md` — remove duplicated sections
+- `docs/research/00_meta/consolidation_log.md` — remove duplicated table
+- `docs/research/00_meta/corpus_organization_standard.md` — remove duplicated document
 
-1. Break the task into steps where possible.
-2. Implement the required changes in the codebase
-3. If relevant, write unit tests alongside each change.
-4. Run relevant tests and linters in the end of each step.
-5. Perform basic manual verification if applicable.
-6. After completion, write a report to `{@artifacts_path}/report.md` describing:
-   - What was implemented
-   - How the solution was tested
-   - The biggest issues or challenges encountered
+Verification: confirm each file has no repeated sections after edit.
+
+---
+
+### [ ] Step: Archive Superseded Distillation Outputs
+
+Create `archive/` directory structure and move superseded artifacts:
+- `archive/gen1_root_extraction/` ← root-level Gen 1 files (~15 files: `gap_report.md`, `validation_report.md`, `knowledge_atom_registry.json`, `domain_knowledge_grouping.*`, `sdlc_phase_knowledge_mapping.*`, `product_specs*`, `registry_simple.json`, `atoms_list.txt`, `knowledge_atom_extraction_report.md`, `master_knowledge_atoms.json`, `dummy_research.md`)
+- `archive/gen2_distilled/` ← `distilled/` directory contents (7 files)
+- `archive/intermediate_prongs/` ← `distillation/prong*.md` files (5 files)
+- `archive/research_distilled_drafts/` ← `docs/research/_distilled/` contents (4 files)
+- `archive/docs_distilled/` ← `docs/distilled/` contents (2 files)
+- `archive/output_test_artifacts/` ← `output/distilled/` contents (5 YAML test outputs)
+
+Verification: confirm `docs/distillation/` master_index links still resolve; no operational code moved.
+
+---
+
+### [ ] Step: Consolidate Kimi-Research into Canonical Structure
+
+- Move unique Kimi-Research domain research into corresponding `docs/research/` subdirectories
+- Move Kimi-Research summary docs to `docs/research/00_meta/kimi_research/`
+- Move CSV paper search results to `docs/research/_indices/kimi_papers/`
+- Update `docs/research/kimi_integration_summary.md`
+
+Verification: no research content lost; Kimi-Research findings accessible from canonical paths.
+
+---
+
+### [ ] Step: Establish Canonical Authority & Update Indices
+
+- Mark `docs/distillation/` as authoritative in `master_index.md`
+- Update `docs/research/index.md` to link to canonical distillation outputs
+- Update `docs/research/_progress/completion_tracker.md` to reflect actual research status
+- Update `docs/research/00_meta/consolidation_log.md` with this consolidation run entry
+- Verify cross-reference indices in `docs/research/_indices/`
+
+Verification: all internal links resolve; `git diff` confirms no operational code modified.
