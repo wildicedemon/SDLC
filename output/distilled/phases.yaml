@@ -1,0 +1,9 @@
+- phase: P1
+  knowledge_atoms:
+  - KA-001
+  techniques_to_use: []
+  constraints_in_effect: []
+  tools_needed:
+  - KA-001
+  failure_modes_to_watch_for: []
+  transitions: []

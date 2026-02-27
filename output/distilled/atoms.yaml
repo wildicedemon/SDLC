@@ -1,0 +1,14 @@
+- id: KA-001
+  type: TOOL
+  content: Tree-sitter is a parser generator tool and an incremental parsing library.
+  evidence_strength: STRONG
+  source:
+  - dummy_research.md
+  domains:
+  - D5
+  sdlc_phases:
+  - P1
+  - P3
+  - P5
+  products:
+  - PC2
