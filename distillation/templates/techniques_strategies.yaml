@@ -1,0 +1,41 @@
+name: "Technique & Strategy Template"
+description: "Template for defining situational playbooks and recovery approaches"
+
+fields:
+  situation:
+    required: true
+    description: "Problem description or trigger condition"
+    validation:
+      - "min_length:20"
+      - "max_length:300"
+
+  recognition:
+    required: true
+    description: "How to detect this situation"
+    validation:
+      - "dict_non_empty"
+
+  response:
+    required: true
+    description: "Decision criteria and procedure for handling"
+    validation:
+      - "dict_non_empty"
+
+  success_criteria:
+    required: true
+    description: "How to know the technique worked"
+    validation:
+      - "non_empty"
+
+  fallback:
+    required: true
+    description: "What to do if the primary approach fails"
+    validation:
+      - "min_length:20"
+
+structure:
+  - situation
+  - recognition
+  - response
+  - success_criteria
+  - fallback
