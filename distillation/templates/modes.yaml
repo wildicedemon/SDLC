@@ -1,0 +1,70 @@
+name: "Agent Mode Template"
+description: "Template for defining agent operational personas"
+
+fields:
+  role_definition:
+    required: true
+    description: "2-3 sentences defining what this agent does and does NOT do"
+    validation:
+      - "min_length:50"
+      - "max_length:500"
+
+  perspective:
+    required: true
+    description: "How this agent approaches problems and what it prioritizes"
+    validation:
+      - "min_length:30"
+      - "max_length:300"
+
+  tools:
+    required: true
+    description: "MCP servers and tools available to this mode"
+    validation:
+      - "dict_non_empty"
+
+  context_strategy:
+    required: true
+    description: "Reference to context management strategy"
+    validation:
+      - "non_empty"
+
+  skills_available:
+    required: true
+    description: "Skills this mode can invoke and when to use them"
+    validation:
+      - "list_non_empty"
+
+  decision_authority:
+    required: true
+    description: "What decisions this mode can make vs must escalate"
+    validation:
+      - "dict_non_empty"
+
+  quality_criteria:
+    required: false
+    description: "Measurable criteria for work quality"
+    validation:
+      - "list_non_empty"
+
+  transition_triggers:
+    required: false
+    description: "Conditions that trigger mode switches"
+    validation:
+      - "list_non_empty"
+
+  custom_instructions:
+    required: false
+    description: "Mode-specific behavioral instructions"
+    validation:
+      - "min_length:20"
+
+structure:
+  - role_definition
+  - perspective
+  - tools
+  - context_strategy
+  - skills_available
+  - decision_authority
+  - quality_criteria
+  - transition_triggers
+  - custom_instructions

@@ -1,0 +1,47 @@
+name: "Task Decomposition Pattern Template"
+description: "Template for defining how to break down work into subtasks"
+
+fields:
+  work_type:
+    required: true
+    description: "Type of work this pattern applies to"
+    validation:
+      - "non_empty"
+
+  decomposition:
+    required: true
+    description: "Hierarchical breakdown levels and criteria"
+    validation:
+      - "dict_non_empty"
+
+  dependency_rules:
+    required: true
+    description: "How dependencies between subtasks are determined"
+    validation:
+      - "non_empty"
+
+  parallelization:
+    required: true
+    description: "Which subtasks can run concurrently"
+    validation:
+      - "non_empty"
+
+  estimation:
+    required: true
+    description: "How to estimate effort and complexity"
+    validation:
+      - "non_empty"
+
+  validation_checkpoints:
+    required: true
+    description: "Points where progress should be validated"
+    validation:
+      - "list_non_empty"
+
+structure:
+  - work_type
+  - decomposition
+  - dependency_rules
+  - parallelization
+  - estimation
+  - validation_checkpoints

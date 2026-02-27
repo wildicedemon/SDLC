@@ -115,3 +115,20 @@ Adopt this upgrade if any two are true:
 3. Add promotion rules: only evidence-backed, revalidated recommendations can enter Tier A.
 4. Add demotion rules: contradicted/stale recommendations move to superseded state.
 5. Keep one authoritative branch while storing Tier B as structured append-only datasets in-repo or artifact storage.
+
+
+## Hybrid Backend Decision (Adopted)
+Adopt a hybrid backend for this project:
+- relational database as canonical system-of-record,
+- vector retrieval for semantic candidate generation,
+- graph layer for relationship/contradiction traversal.
+
+### Why this is the right fit here
+- aligns with strict lifecycle and integrity gates already defined,
+- improves retrieval quality without sacrificing governance,
+- supports scalable contradiction and impact analysis.
+
+### Implementation sequence
+1. Phase 1: relational + vector.
+2. Phase 2: add graph expansion for heavy multi-hop reasoning domains.
+3. Keep completion gates tied to relational state across phases.

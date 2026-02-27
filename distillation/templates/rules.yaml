@@ -1,0 +1,35 @@
+name: "Rule Template"
+description: "Template for defining constraints and guardrails"
+
+fields:
+  constraint:
+    required: true
+    description: "Precise statement of what must or must not be done"
+    validation:
+      - "min_length:20"
+      - "max_length:300"
+
+  rationale:
+    required: true
+    description: "Failure mode this rule prevents"
+    validation:
+      - "min_length:30"
+      - "max_length:500"
+
+  enforcement:
+    required: true
+    description: "How violations are detected and handled"
+    validation:
+      - "dict_non_empty"
+
+  exceptions:
+    required: false
+    description: "When the rule can be relaxed"
+    validation:
+      - "list_non_empty"
+
+structure:
+  - constraint
+  - rationale
+  - enforcement
+  - exceptions

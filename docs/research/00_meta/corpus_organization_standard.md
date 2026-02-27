@@ -42,3 +42,11 @@ A consolidation run cannot be set to `completed` unless:
 - Keep active decision surface in indices concise; archive superseded decisions explicitly.
 - Track per-domain growth and require justification if growth outpaces new decision utility.
 - Prefer updating existing canonical pages over creating new parallel pages for same topic.
+
+
+## Reference Integrity Requirements
+- Every move/rename during organization must update links, index references, and run-report citations in the same run.
+- Maintain a per-run rewrite map and integrity report as required artifacts.
+- Do not finalize organization-only changes without passing reference integrity validation.
+
+See `reference_integrity_policy.md` for the validation contract.

@@ -1,0 +1,746 @@
+import json
+
+data = {
+    "TECHNIQUE": [
+        {
+            "ID": "KA-001",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "System-Theoretic Agent Decomposition: Decompose agent systems into five distinct subsystems: Reasoning, Perception, Action, Learning, and Communication. Each subsystem has explicit interfaces and can be developed, tested, and scaled independently.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-002",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Hierarchical Multi-Agent Orchestration: Organize agents in a tree structure with a planner/manager agent at the root decomposing tasks for specialist sub-agents at lower levels. Results aggregate upward with validation at each level.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-003",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "TEA Protocol Pattern: Explicitly model three components: Task (what to accomplish), Environment (context and constraints), Agent (capabilities and state). Define clear interfaces between these components for interoperability.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-004",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Layered Voting Architecture (MoA): Arrange multiple agents in layers where each layer receives outputs from the previous layer and produces refined outputs. Final layer aggregates through voting or weighted combination.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-005",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Software Company Simulation: Define explicit roles (e.g., CEO, Architect, Engineer, QA) with specific responsibilities, expertise, and communication patterns. Agents role-play within defined boundaries.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-006",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Explicit Mode Switching: Define discrete operational modes (e.g., Code, Debug, Architect, Review) with distinct tool access, reasoning patterns, and output constraints. Switch modes explicitly based on task requirements.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-007",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Human-in-the-Loop Checkpoints: Insert explicit checkpoints in agent workflows where execution pauses for human review, approval, or clarification. Checkpoints can be automatic (at phase boundaries) or triggered by confidence thresholds.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration", "D7: Human Interaction"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation", "P4: Testing"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-008",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Zero-Shot Recovery Chaining: On failure, chain through diagnosis → planning → recovery stages using zero-shot prompting. Each stage produces outputs consumed by the next, enabling adaptive recovery without pre-programmed strategies.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P3: Implementation", "P4: Testing", "P6: Operation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-009",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Budget-Aware Retrieval: Retrieval systems that respect explicit token budgets, returning optimally-sized context chunks that fit within allocated space while maximizing relevance.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-010",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Hierarchical Summarization: Multi-level summaries enabling zoom-in/zoom-out navigation through context, with high-level overviews and detailed drill-downs.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-011",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "U-Shaped Context Placement: Placing critical information at context window beginnings and ends to mitigate the \"lost in the middle\" phenomenon where LLMs better attend to edges.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-012",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Task-Conditioned Context: Context selection and filtering conditioned on current task type and phase, retrieving different context for coding vs. debugging vs. architecture tasks.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-013",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Context Caching: Caching frequently-used or expensive-to-compute context to reduce latency and API costs across multiple queries.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-014",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Semantic Chunking: Code-aware chunking that preserves semantic boundaries (functions, classes, modules) rather than arbitrary token limits.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-015",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Context Provenance Tracking: Maintaining source attribution for all context, enabling debugging, trust evaluation, and context poisoning detection.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence", "D1: Meta Architecture"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-016",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Sliding Window with Overlap: Fixed-size context windows that slide through conversation/code with overlap to maintain continuity.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-017",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Test Pyramid Pattern: Structure tests in a pyramid shape with many unit tests at the bottom, fewer integration tests in the middle, and few E2E tests at the top. This optimizes for fast feedback while maintaining comprehensive coverage.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-018",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Test-First Pattern (TDD): Write tests before implementation code. Follow red-green-refactor cycle: write failing test, make it pass, then refactor.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-019",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Property-Based Testing Pattern: Define properties (invariants) that should hold for all inputs, then automatically generate test cases to verify these properties.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-020",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Contract Testing Pattern: Define consumer-driven contracts that specify expected interactions between services. Providers verify they meet all consumer contracts.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-021",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Mutation Testing Pattern: Inject faults (mutants) into code and verify tests detect them. Mutation score indicates test suite quality.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-022",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Test Fixture Pattern: Use setup and teardown methods to create consistent test environments. Fixtures provide known state for tests.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-023",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Mock Object Pattern: Replace real dependencies with test doubles that simulate behavior. Enables testing in isolation.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-024",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Parameterized Test Pattern: Write single test logic with multiple input/output combinations. Reduces code duplication and improves coverage.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-025",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Given-When-Then Pattern (BDD): Structure tests as Given (preconditions), When (action), Then (expected outcome). Provides executable documentation.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-026",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Test Double Pattern: Use various types of test doubles (dummy, stub, spy, mock, fake) to replace real dependencies appropriately. Choose based on verification needs.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-027",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Happy Path / Sad Path Pattern: Explicitly test both success scenarios (happy path) and error scenarios (sad path). Ensure comprehensive coverage.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-028",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Multi-Stage Validation Pattern: Progress tests through multiple validation stages: local → PR → integration → staging → canary. Each stage provides additional confidence.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing", "P5: Deployment"],
+            "PRODUCTS": ["PC4: Testing Automation", "PC5: CI/CD Systems"]
+        }
+    ],
+    "TRADEOFF": [
+        {
+            "ID": "KA-029",
+            "TYPE": "TRADEOFF",
+            "CONTENT": "System-Theoretic Agent Decomposition: Improved testability and maintainability, enables independent scaling of subsystems, clear boundaries for debugging and monitoring vs. integration complexity between subsystems, potential latency from inter-subsystem communication, overhead for simple agent systems.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-030",
+            "TYPE": "TRADEOFF",
+            "CONTENT": "Hierarchical Multi-Agent Orchestration: Clear responsibility boundaries, natural progress tracking through hierarchy levels, enables parallel execution of independent subtasks vs. single point of failure at planner level, communication overhead increases with depth, may over-decompose simple tasks.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-031",
+            "TYPE": "TRADEOFF",
+            "CONTENT": "Layered Voting Architecture (MoA): 8-12% improvement over single-agent baselines, reduces impact of individual agent failures, captures diverse perspectives vs. 3-5x compute overhead, increased latency, may average out creative solutions.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-032",
+            "TYPE": "TRADEOFF",
+            "CONTENT": "Explicit Mode Switching: 34% reduction in task drift, clear user expectations per mode, enables mode-specific optimization vs. context reloading latency on switch, may require manual mode selection, mode boundary ambiguity for edge cases.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-033",
+            "TYPE": "TRADEOFF",
+            "CONTENT": "Human-in-the-Loop Checkpoints: Prevents runaway execution, enables course correction, builds user trust through transparency vs. interrupts workflow flow, requires user availability, may over-checkpoint simple tasks.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration", "D7: Human Interaction"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation", "P4: Testing"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-034",
+            "TYPE": "TRADEOFF",
+            "CONTENT": "Zero-Shot Recovery Chaining: 19% higher success rate on TfD benchmarks, adaptive to novel failure modes, no pre-programmed recovery logic needed vs. prompt brittleness, token overhead for multi-stage prompting, may cascade failures if diagnosis is wrong.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P3: Implementation", "P4: Testing", "P6: Operation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        }
+    ],
+    "ANTI-PATTERN": [
+        {
+            "ID": "KA-035",
+            "TYPE": "ANTI-PATTERN",
+            "CONTENT": "Context Stuffing: Maximally filling context windows with all available information without prioritization or filtering. Results in 23-45% of tokens wasted on irrelevant content, \"lost in the middle\" phenomenon, increased API costs, and model confusion from contradictory or redundant context.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-036",
+            "TYPE": "ANTI-PATTERN",
+            "CONTENT": "Naive Truncation: Truncating context without any prioritization or relevance assessment, leading to loss of critical information and degraded model performance.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        }
+    ]
+}
+
+with open('knowledge_atom_registry.json', 'w', encoding='utf-8') as f:
+    json.dump(data, f, ensure_ascii=False, indent=2)
+    print('Full JSON registry created successfully')
+data = {
+    "TECHNIQUE": [
+        {
+            "ID": "KA-001",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "System-Theoretic Agent Decomposition: Decompose agent systems into five distinct subsystems: Reasoning, Perception, Action, Learning, and Communication. Each subsystem has explicit interfaces and can be developed, tested, and scaled independently.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-002",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Hierarchical Multi-Agent Orchestration: Organize agents in a tree structure with a planner/manager agent at the root decomposing tasks for specialist sub-agents at lower levels. Results aggregate upward with validation at each level.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-003",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "TEA Protocol Pattern: Explicitly model three components: Task (what to accomplish), Environment (context and constraints), Agent (capabilities and state). Define clear interfaces between these components for interoperability.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-004",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Layered Voting Architecture (MoA): Arrange multiple agents in layers where each layer receives outputs from the previous layer and produces refined outputs. Final layer aggregates through voting or weighted combination.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-005",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Software Company Simulation: Define explicit roles (e.g., CEO, Architect, Engineer, QA) with specific responsibilities, expertise, and communication patterns. Agents role-play within defined boundaries.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-006",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Explicit Mode Switching: Define discrete operational modes (e.g., Code, Debug, Architect, Review) with distinct tool access, reasoning patterns, and output constraints. Switch modes explicitly based on task requirements.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-007",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Human-in-the-Loop Checkpoints: Insert explicit checkpoints in agent workflows where execution pauses for human review, approval, or clarification. Checkpoints can be automatic (at phase boundaries) or triggered by confidence thresholds.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration", "D7: Human Interaction"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation", "P4: Testing"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-008",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Zero-Shot Recovery Chaining: On failure, chain through diagnosis → planning → recovery stages using zero-shot prompting. Each stage produces outputs consumed by the next, enabling adaptive recovery without pre-programmed strategies.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P3: Implementation", "P4: Testing", "P6: Operation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-009",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Budget-Aware Retrieval: Retrieval systems that respect explicit token budgets, returning optimally-sized context chunks that fit within allocated space while maximizing relevance.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-010",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Hierarchical Summarization: Multi-level summaries enabling zoom-in/zoom-out navigation through context, with high-level overviews and detailed drill-downs.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-011",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "U-Shaped Context Placement: Placing critical information at context window beginnings and ends to mitigate the \"lost in the middle\" phenomenon where LLMs better attend to edges.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-012",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Task-Conditioned Context: Context selection and filtering conditioned on current task type and phase, retrieving different context for coding vs. debugging vs. architecture tasks.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-013",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Context Caching: Caching frequently-used or expensive-to-compute context to reduce latency and API costs across multiple queries.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-014",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Semantic Chunking: Code-aware chunking that preserves semantic boundaries (functions, classes, modules) rather than arbitrary token limits.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-015",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Context Provenance Tracking: Maintaining source attribution for all context, enabling debugging, trust evaluation, and context poisoning detection.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence", "D1: Meta Architecture"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-016",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Sliding Window with Overlap: Fixed-size context windows that slide through conversation/code with overlap to maintain continuity.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-017",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Test Pyramid Pattern: Structure tests in a pyramid shape with many unit tests at the bottom, fewer integration tests in the middle, and few E2E tests at the top. This optimizes for fast feedback while maintaining comprehensive coverage.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-018",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Test-First Pattern (TDD): Write tests before implementation code. Follow red-green-refactor cycle: write failing test, make it pass, then refactor.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-019",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Property-Based Testing Pattern: Define properties (invariants) that should hold for all inputs, then automatically generate test cases to verify these properties.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-020",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Contract Testing Pattern: Define consumer-driven contracts that specify expected interactions between services. Providers verify they meet all consumer contracts.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-021",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Mutation Testing Pattern: Inject faults (mutants) into code and verify tests detect them. Mutation score indicates test suite quality.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-022",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Test Fixture Pattern: Use setup and teardown methods to create consistent test environments. Fixtures provide known state for tests.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-023",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Mock Object Pattern: Replace real dependencies with test doubles that simulate behavior. Enables testing in isolation.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-024",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Parameterized Test Pattern: Write single test logic with multiple input/output combinations. Reduces code duplication and improves coverage.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-025",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Given-When-Then Pattern (BDD): Structure tests as Given (preconditions), When (action), Then (expected outcome). Provides executable documentation.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-026",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Test Double Pattern: Use various types of test doubles (dummy, stub, spy, mock, fake) to replace real dependencies appropriately. Choose based on verification needs.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-027",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Happy Path / Sad Path Pattern: Explicitly test both success scenarios (happy path) and error scenarios (sad path). Ensure comprehensive coverage.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing"],
+            "PRODUCTS": ["PC4: Testing Automation"]
+        },
+        {
+            "ID": "KA-028",
+            "TYPE": "TECHNIQUE",
+            "CONTENT": "Multi-Stage Validation Pattern: Progress tests through multiple validation stages: local → PR → integration → staging → canary. Each stage provides additional confidence.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/05_sdlc_automation/testing_architecture/patterns.md"],
+            "DOMAINS": ["D5: SDLC Automation"],
+            "SDLC_PHASES": ["P4: Testing", "P5: Deployment"],
+            "PRODUCTS": ["PC4: Testing Automation", "PC5: CI/CD Systems"]
+        }
+    ],
+    "TRADEOFF": [
+        {
+            "ID": "KA-029",
+            "TYPE": "TRADEOFF",
+            "CONTENT": "System-Theoretic Agent Decomposition: Improved testability and maintainability, enables independent scaling of subsystems, clear boundaries for debugging and monitoring vs. integration complexity between subsystems, potential latency from inter-subsystem communication, overhead for simple agent systems.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-030",
+            "TYPE": "TRADEOFF",
+            "CONTENT": "Hierarchical Multi-Agent Orchestration: Clear responsibility boundaries, natural progress tracking through hierarchy levels, enables parallel execution of independent subtasks vs. single point of failure at planner level, communication overhead increases with depth, may over-decompose simple tasks.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-031",
+            "TYPE": "TRADEOFF",
+            "CONTENT": "Layered Voting Architecture (MoA): 8-12% improvement over single-agent baselines, reduces impact of individual agent failures, captures diverse perspectives vs. 3-5x compute overhead, increased latency, may average out creative solutions.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-032",
+            "TYPE": "TRADEOFF",
+            "CONTENT": "Explicit Mode Switching: 34% reduction in task drift, clear user expectations per mode, enables mode-specific optimization vs. context reloading latency on switch, may require manual mode selection, mode boundary ambiguity for edge cases.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-033",
+            "TYPE": "TRADEOFF",
+            "CONTENT": "Human-in-the-Loop Checkpoints: Prevents runaway execution, enables course correction, builds user trust through transparency vs. interrupts workflow flow, requires user availability, may over-checkpoint simple tasks.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration", "D7: Human Interaction"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation", "P4: Testing"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        },
+        {
+            "ID": "KA-034",
+            "TYPE": "TRADEOFF",
+            "CONTENT": "Zero-Shot Recovery Chaining: 19% higher success rate on TfD benchmarks, adaptive to novel failure modes, no pre-programmed recovery logic needed vs. prompt brittleness, token overhead for multi-stage prompting, may cascade failures if diagnosis is wrong.",
+            "EVIDENCE_STRENGTH": "STRONG",
+            "SOURCE": ["docs/research/02_agent_orchestration/agent_system_design/patterns.md"],
+            "DOMAINS": ["D2: Agent Orchestration"],
+            "SDLC_PHASES": ["P3: Implementation", "P4: Testing", "P6: Operation"],
+            "PRODUCTS": ["PC2: Agent Orchestration Frameworks"]
+        }
+    ],
+    "ANTI-PATTERN": [
+        {
+            "ID": "KA-035",
+            "TYPE": "ANTI-PATTERN",
+            "CONTENT": "Context Stuffing: Maximally filling context windows with all available information without prioritization or filtering. Results in 23-45% of tokens wasted on irrelevant content, \"lost in the middle\" phenomenon, increased API costs, and model confusion from contradictory or redundant context.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        },
+        {
+            "ID": "KA-036",
+            "TYPE": "ANTI-PATTERN",
+            "CONTENT": "Naive Truncation: Truncating context without any prioritization or relevance assessment, leading to loss of critical information and degraded model performance.",
+            "EVIDENCE_STRENGTH": "MODERATE",
+            "SOURCE": ["docs/research/03_context_memory_intelligence/context_management/patterns.md"],
+            "DOMAINS": ["D3: Context & Memory Intelligence"],
+            "SDLC_PHASES": ["P2: Design", "P3: Implementation"],
+            "PRODUCTS": ["PC6: Context Management"]
+        }
+    ]
+}
+
+with open('knowledge_atom_registry.json', 'w', encoding='utf-8') as f:
+    json.dump(data, f, ensure_ascii=False, indent=2)
+    print('Full JSON registry created successfully')

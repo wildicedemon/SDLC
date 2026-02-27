@@ -68,6 +68,18 @@ To prevent organizational drift and uncontrolled corpus growth:
 - Unclassified artifacts must be resolved (classified, merged, or archived) before `completed` status.
 
 Refer to `docs/research/00_meta/corpus_organization_standard.md` for directory contract, naming rules, and organization gates.
+Reference updates after reorganization are mandatory and governed by `docs/research/00_meta/reference_integrity_policy.md`.
+
+
+## Storage and Retrieval Backend Policy (Hybrid Default)
+Use a hybrid backend architecture by default:
+- **Relational layer (authoritative):** canonical state, provenance, lifecycle gates, integrity reports.
+- **Vector layer (derived):** semantic candidate retrieval for L1/L2.
+- **Graph layer (derived):** relationship expansion, contradiction traversal, and impact analysis.
+
+Governance and completion decisions must be made from relational source-of-truth records. Vector/graph layers are optimization and reasoning layers, not policy authority.
+
+See `docs/research/00_meta/hybrid_storage_architecture.md` for details.
 
 ## Retrieval Hierarchy (L0-L3)
 Use a strict escalation model to balance speed and rigor.
@@ -282,6 +294,6 @@ docs/research/03_indices/
 ## Open Items
 1. Final threshold values for escalation and contradiction density.
 2. Standard tag vocabulary for domains/capabilities.
-3. Storage backend choices for vector index + graph + metadata store.
+3. Hybrid backend implementation details (engine choices, sync tolerances, and rebuild procedures).
 4. Feedback telemetry schema for downstream-success scoring.
 5. Archival convention (`archive/*` branch vs external backup artifact store).

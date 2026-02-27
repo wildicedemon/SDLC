@@ -1,0 +1,42 @@
+category: PC5
+name: Pc5
+knowledge_atoms:
+- KA-E2036972
+- KA-74CD871A
+- KA-3B68FBB9
+- KA-799A27EA
+- KA-5F10A0BB
+- KA-D64C2CEA
+- KA-44CE905A
+- KA-D569E225
+- KA-1C76C580
+- KA-76520310
+- KA-711653B8
+- KA-FB1CE487
+- KA-DD19A67C
+- KA-42305222
+- KA-D134FF5F
+- KA-55B6ED72
+- KA-37397C47
+- KA-42F41C83
+- KA-55E3C42A
+- KA-9FD87D25
+- KA-2A7D5AA9
+- KA-1826FE02
+- KA-0C0618F6
+- KA-DBB6B41B
+- KA-0CCB4D9A
+- KA-624E2A19
+- KA-8B59C2CD
+- KA-02663300
+- KA-823E9146
+- KA-1E09B362
+- KA-99228A2F
+confidence: HIGH
+gaps:
+- 'Missing required field: applies_to'
+- 'Missing required field: servers'
+- 'Missing required field: selection_logic'
+- 'Missing required field: fallback'
+- 'Missing required field: security_constraints'
+configuration: Pc5
