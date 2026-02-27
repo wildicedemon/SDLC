@@ -1,6 +1,24 @@
 # SDLC Research Corpus: Global Index
 
-**Last Updated:** February 23, 2026
+**Last Updated:** February 27, 2026
+
+## Canonical Distillation Outputs
+
+The authoritative distillation of this research corpus lives at [`docs/distillation/`](../distillation/master_index.md). It contains 372 knowledge atoms organized across 12 domains, 8 SDLC phases, and 47 product specifications.
+
+| Document | Content |
+|----------|---------|
+| [Master Index](../distillation/master_index.md) | Consolidated navigation across all prongs |
+| [Prong 1: Knowledge Atoms](../distillation/prong1_meta_architecture.md) | 372 atoms across 6 research areas |
+| [Prong 2: Domain Groupings](../distillation/prong2_domain_groupings.md) | 12 domain clusters (D1-D12) |
+| [Prong 3: SDLC Phases](../distillation/prong3_sdlc_phases.md) | 8 lifecycle phases (P1-P8) |
+| [Prong 4: Product Assembly](../distillation/prong4_product_assembly.md) | 47 product specifications (PC1-PC10) |
+| [Validation Report](../distillation/validation_report.md) | Compliance status |
+| [Gap Report](../distillation/gap_report.md) | 23 documented gaps |
+
+> Earlier distillation generations have been archived to `archive/`. See `docs/distillation/master_index.md` for details.
+
+---
 
 ## Overview
 
@@ -96,6 +114,13 @@ These indices link related topics across taxonomy layers:
 - [Governance & Compliance Index](./_indices/governance_compliance.md)
 - [Scaling & Enterprise Index](./_indices/scaling_enterprise.md)
 - [Reasoning & Intelligence Index](./_indices/reasoning_intelligence.md)
+
+## Additional Indices
+
+- [Kimi-Research Integration Summary](./kimi_integration_summary.md) — 92 papers integrated from Kimi-Research across 4 primary topics
+- [Cross-Reference Validation Report](./cross_reference_validation_report.md) — atom coverage and skill reference checks
+- [Knowledge Atom Registry](./knowledge_atom_registry.md) — registry of extracted knowledge atoms
+- [Consolidation Log](./00_meta/consolidation_log.md) — history of consolidation runs
 
 ## Progress Tracking
 

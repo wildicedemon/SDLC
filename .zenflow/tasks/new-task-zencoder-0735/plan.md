@@ -82,7 +82,8 @@ Verification: no research content lost; Kimi-Research findings accessible from c
 
 ---
 
-### [ ] Step: Establish Canonical Authority & Update Indices
+### [x] Step: Establish Canonical Authority & Update Indices
+<!-- chat-id: be6c9d21-d595-4408-b215-aacf6657eb38 -->
 
 - Mark `docs/distillation/` as authoritative in `master_index.md`
 - Update `docs/research/index.md` to link to canonical distillation outputs
@@ -91,3 +92,16 @@ Verification: no research content lost; Kimi-Research findings accessible from c
 - Verify cross-reference indices in `docs/research/_indices/`
 
 Verification: all internal links resolve; `git diff` confirms no operational code modified.
+
+Completed 2026-02-27:
+- Added CANONICAL AUTHORITY blockquote to `docs/distillation/master_index.md` header
+- Removed internal duplication in master_index.md (entire second half was duplicate)
+- Updated footer to Version 1.1, Status: Canonical / Authoritative
+- Added "Canonical Distillation Outputs" section to `docs/research/index.md` with table linking all prong docs
+- Added "Additional Indices" section linking kimi_integration_summary, cross_reference_validation_report, knowledge_atom_registry, consolidation_log
+- Rewrote `docs/research/_progress/completion_tracker.md` — all 28 subdirectories now show COMPLETE (was showing 1/100+ with most NOT_STARTED)
+- Added consolidation run `cr_consolidation_2026_02_27` to consolidation_log.md
+- Deduped 3 files in `docs/research/03_indices/` (capability_index, decision_index, source_to_decision_map)
+- Verified all 27 subdirectory README.md targets exist for cross-reference index links
+- Verified all distillation prong files exist for master_index links
+- `git diff` confirms only docs/research and docs/distillation files modified; zero operational code changes
