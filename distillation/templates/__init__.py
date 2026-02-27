@@ -1,0 +1,1 @@
+"""Template definitions for product specifications."""

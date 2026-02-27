@@ -1,0 +1,116 @@
+category: PC6
+name: Pc6
+knowledge_atoms:
+- KA-30098F54
+- KA-EDC96A63
+- KA-1316E2B1
+- KA-B37C9DB6
+- KA-4D8B1CFA
+- KA-615269A8
+- KA-BDB63E6C
+- KA-B61C12BF
+- KA-8BA36DEB
+- KA-D278C5F3
+- KA-844A824A
+- KA-6A487EC4
+- KA-9DC04B10
+- KA-4A5CB7A0
+- KA-A3BD16B4
+- KA-1C24FB0F
+- KA-2517313A
+- KA-8FCD5473
+- KA-52208472
+- KA-C41926CC
+- KA-DA40239B
+- KA-2431E4FB
+- KA-1BCE5D0E
+- KA-E4526F11
+- KA-EDC8527E
+- KA-F32DACF8
+- KA-3B6A7D72
+- KA-48E82157
+- KA-83A4DD11
+- KA-E7AFC0C3
+- KA-7AF53A36
+- KA-A6690787
+- KA-404DCBB2
+- KA-78C6D28F
+- KA-F287C646
+- KA-D602B04D
+- KA-73BB446C
+- KA-D85E77CC
+- KA-714D8ED5
+- KA-55A44194
+- KA-E2C71877
+- KA-799A27EA
+- KA-F9499A35
+- KA-5F10A0BB
+- KA-B0DB9A76
+- KA-6080728F
+- KA-60C0BF00
+- KA-B3B2F570
+- KA-B861982F
+- KA-D3539CCD
+- KA-2E51819C
+- KA-7CB8CE5A
+- KA-6A1C29FA
+- KA-4F79B893
+- KA-A485176B
+- KA-BBFD76A2
+- KA-11AF88E8
+- KA-1C76C580
+- KA-C8B44B08
+- KA-54C3653C
+- KA-47FB9350
+- KA-69EF8171
+- KA-8006F1EC
+- KA-C1D9381D
+- KA-42305222
+- KA-D134FF5F
+- KA-55B6ED72
+- KA-55E3C42A
+- KA-9FD87D25
+- KA-F8EB6EE1
+- KA-1826FE02
+- KA-C27A1D28
+- KA-053B97A4
+- KA-913237B3
+- KA-7912E66A
+- KA-0B851E5D
+- KA-80BBE6ED
+- KA-D6D95D37
+- KA-224BBB0D
+- KA-614C38D2
+- KA-FBB7D31A
+- KA-0CCB4D9A
+- KA-76BF42F8
+- KA-7B278087
+- KA-68A5BFE6
+- KA-BC0BBC00
+- KA-2814B79A
+- KA-DBDC4F2C
+- KA-6934B33E
+- KA-AAB161B3
+- KA-19331BD6
+- KA-823E9146
+- KA-81A632C8
+- KA-81FF4FBD
+- KA-1E09B362
+confidence: HIGH
+gaps:
+- 'Missing required field: enforcement'
+constraint: 'This work represents a critical advancement toward a scalable and interoperable
+  ecosystem of autonomous digital entities'', ''categories'': [''cs.MA'', ''cs.AI''],
+  ''published'': ''2026-02-11T17:02:12+00:00'', ''url'': ''https://arxiv.org/pdf/2602.15055v1'',
+  ''resource_uri'': ''arxiv://2602.15055v1''}, {''id'': ''2602.09433v1'', ''title'':
+  ''Autonomous Action Runtime Management(AARM):A System Specification for Securing
+  AI-Driven Actions at Runtime'', ''authors'': [''Herman Errico''], ''abstract'':
+  ''As artificial intelligence...'
+rationale: 'This work represents a critical advancement toward a scalable and interoperable
+  ecosystem of autonomous digital entities'', ''categories'': [''cs.MA'', ''cs.AI''],
+  ''published'': ''2026-02-11T17:02:12+00:00'', ''url'': ''https://arxiv.org/pdf/2602.15055v1'',
+  ''resource_uri'': ''arxiv://2602.15055v1''}, {''id'': ''2602.09433v1'', ''title'':
+  ''Autonomous Action Runtime Management(AARM):A System Specification for Securing
+  AI-Driven Actions at Runtime'', ''authors'': [''Herman Errico''], ''abstract'':
+  ''As artificial intelligence...'
+rule: Pc6

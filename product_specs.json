@@ -1,0 +1,425 @@
+{
+  "products": [
+    {
+      "category": "PC1: MODES (Agent Operational Personas)",
+      "instance": "Mode: Research",
+      "knowledge_atoms": ["KA-007", "KA-009", "KA-010", "KA-012", "KA-014"],
+      "spec": {
+        "name": "Research",
+        "description": "Mode for performing deep research on AI coding systems and developer tooling",
+        "role_definition": "You are a meticulous AI research analyst specializing in agentic AI coding systems, developer tooling, software development lifecycle automation, and AI-assisted code generation. You think step by step, break complex research into discrete subtasks, and produce well-cited, structured research artifacts.",
+        "custom_instructions": "PURPOSE: Autonomous AI Coding Research — knowledge gathering, synthesis, and artifact generation only. No architecture design, no implementation code, no codebase modifications.",
+        "tools": ["read_file", "write_file", "list_files", "execute_command"],
+        "sdlc_phases": ["P1: Discovery & Onboarding"],
+        "domains": ["D1: Meta Architecture", "D3: Context & Memory Intelligence"]
+      },
+      "confidence": "HIGH",
+      "gaps": ["No specific tool groups defined"]
+    },
+    {
+      "category": "PC1: MODES (Agent Operational Personas)",
+      "instance": "Mode: Code",
+      "knowledge_atoms": ["KA-006", "KA-018", "KA-017", "KA-028"],
+      "spec": {
+        "name": "Code",
+        "description": "Mode for writing, modifying, or refactoring code",
+        "role_definition": "You are a skilled AI coding assistant specialized in implementing features, fixing bugs, creating new files, or making code improvements across any programming language or framework.",
+        "custom_instructions": "PURPOSE: Code implementation and modification. Focus on writing clean, maintainable code that follows the project's coding standards.",
+        "tools": ["read_file", "write_file", "list_files", "execute_command", "apply_diff"],
+        "sdlc_phases": ["P3: Implementation"],
+        "domains": ["D4: Code Intelligence", "D5: SDLC Automation"]
+      },
+      "confidence": "HIGH",
+      "gaps": ["No specific coding style guidelines defined"]
+    },
+    {
+      "category": "PC2: SKILLS (Specialized Capabilities)",
+      "instance": "Skill: Test-First Development",
+      "knowledge_atoms": ["KA-018", "KA-017", "KA-028"],
+      "spec": {
+        "name": "Test-First Development",
+        "description": "Skill for implementing test-first development (TDD) approach",
+        "techniques": [
+          {
+            "rank": 1,
+            "id": "KA-018",
+            "name": "Test-First Pattern (TDD)",
+            "description": "Write tests before implementation code. Follow red-green-refactor cycle"
+          },
+          {
+            "rank": 2,
+            "id": "KA-017",
+            "name": "Test Pyramid Pattern",
+            "description": "Structure tests in a pyramid shape with many unit tests at the bottom"
+          },
+          {
+            "rank": 3,
+            "id": "KA-028",
+            "name": "Multi-Stage Validation Pattern",
+            "description": "Progress tests through multiple validation stages: local → PR → integration → staging → canary"
+          }
+        ],
+        "combination_recipe": [
+          {
+            "step": 1,
+            "technique": "KA-018",
+            "description": "Write failing test"
+          },
+          {
+            "step": 2,
+            "technique": "KA-018",
+            "description": "Make test pass"
+          },
+          {
+            "step": 3,
+            "technique": "KA-018",
+            "description": "Refactor code"
+          },
+          {
+            "step": 4,
+            "technique": "KA-017",
+            "description": "Add test to appropriate layer of test pyramid"
+          },
+          {
+            "step": 5,
+            "technique": "KA-028",
+            "description": "Submit test for multi-stage validation"
+          }
+        ],
+        "sdlc_phases": ["P4: Testing"],
+        "domains": ["D5: SDLC Automation"]
+      },
+      "confidence": "HIGH",
+      "gaps": ["No specific test frameworks or tools identified"]
+    },
+    {
+      "category": "PC3: WORKFLOWS (Multi-Step Sequences)",
+      "instance": "Workflow: SDLC Research Phase",
+      "knowledge_atoms": ["KA-012", "KA-014", "KA-010", "KA-013", "KA-015"],
+      "spec": {
+        "name": "SDLC Research Phase",
+        "description": "Workflow for the research phase of the SDLC",
+        "steps": [
+          {
+            "step": 1,
+            "description": "Implement task-conditioned context selection",
+            "atoms": ["KA-012"]
+          },
+          {
+            "step": 2,
+            "description": "Apply semantic chunking to repository content",
+            "atoms": ["KA-014"]
+          },
+          {
+            "step": 3,
+            "description": "Use hierarchical summarization for project overview",
+            "atoms": ["KA-010"]
+          },
+          {
+            "step": 4,
+            "description": "Establish context caching for frequently accessed information",
+            "atoms": ["KA-013"]
+          },
+          {
+            "step": 5,
+            "description": "Implement context provenance tracking",
+            "atoms": ["KA-015"]
+          }
+        ],
+        "transitions": {
+          "exit_to": "P2: Planning & Design",
+          "exit_condition": "Project structure and requirements are understood, context is established"
+        },
+        "sdlc_phases": ["P1: Discovery & Onboarding"],
+        "domains": ["D3: Context & Memory Intelligence"]
+      },
+      "confidence": "MEDIUM",
+      "gaps": ["No specific tools or techniques for verifying context understanding"]
+    },
+    {
+      "category": "PC4: PROMPTS (Instruction Templates)",
+      "instance": "Prompt: Code Generation Template",
+      "knowledge_atoms": ["KA-006", "KA-018", "KA-017"],
+      "spec": {
+        "name": "Code Generation Template",
+        "description": "Prompt template for generating code based on requirements",
+        "template": "Generate {language} code for {feature} with the following requirements:\n\n{requirements}\n\nFollow these guidelines:\n- Write clean, maintainable code\n- Include appropriate error handling\n- Add comments explaining complex logic\n- Write tests following the test-first approach\n\n{constraints}",
+        "parameters": ["language", "feature", "requirements", "constraints"],
+        "sdlc_phases": ["P3: Implementation"],
+        "domains": ["D4: Code Intelligence"]
+      },
+      "confidence": "MEDIUM",
+      "gaps": ["No specific example prompts for different languages"]
+    },
+    {
+      "category": "PC5: MCP CONFIGURATIONS (Tool Access Patterns)",
+      "instance": "MCP Configuration: GitHub Integration",
+      "knowledge_atoms": ["KA-007", "KA-013"],
+      "spec": {
+        "name": "GitHub Integration",
+        "description": "MCP configuration for integrating with GitHub API",
+        "tools": ["mcp--github--create_or_update_file", "mcp--github--search_repositories", "mcp--github--create_repository", "mcp--github--get_file_contents", "mcp--github--push_files"],
+        "configuration": {
+          "server": "github",
+          "command": "npx -y @modelcontextprotocol/server-github",
+          "required_env_vars": ["GITHUB_TOKEN"]
+        },
+        "sdlc_phases": ["P1: Discovery & Onboarding", "P3: Implementation", "P5: Deployment"],
+        "domains": ["D5: SDLC Automation"]
+      },
+      "confidence": "HIGH",
+      "gaps": ["No specific rate limiting or error handling configuration"]
+    },
+    {
+      "category": "PC6: RULES (Constraints & Guardrails)",
+      "instance": "Rule: Context Management Anti-Patterns",
+      "knowledge_atoms": ["KA-035", "KA-036"],
+      "spec": {
+        "name": "Context Management Anti-Patterns",
+        "description": "Rules to prevent common context management mistakes",
+        "rules": [
+          {
+            "id": "KA-035",
+            "name": "Context Stuffing",
+            "description": "Do not maximally fill context windows with all available information without prioritization or filtering"
+          },
+          {
+            "id": "KA-036",
+            "name": "Naive Truncation",
+            "description": "Do not truncate context without any prioritization or relevance assessment"
+          }
+        ],
+        "enforcement": "Static analysis of context selection logic",
+        "sdlc_phases": ["P2: Planning & Design", "P3: Implementation"],
+        "domains": ["D3: Context & Memory Intelligence"]
+      },
+      "confidence": "MEDIUM",
+      "gaps": ["No enforcement mechanisms specified"]
+    },
+    {
+      "category": "PC7: CONTEXT MANAGEMENT STRATEGIES",
+      "instance": "Context Management Strategy: Task-Conditioned Semantic Chunking",
+      "knowledge_atoms": ["KA-012", "KA-014", "KA-010", "KA-013", "KA-015"],
+      "spec": {
+        "name": "Task-Conditioned Semantic Chunking",
+        "description": "Context management strategy that selects and chunks context based on task type and preserves semantic boundaries",
+        "techniques": [
+          {
+            "rank": 1,
+            "id": "KA-012",
+            "name": "Task-Conditioned Context",
+            "description": "Context selection and filtering conditioned on current task type and phase"
+          },
+          {
+            "rank": 2,
+            "id": "KA-014",
+            "name": "Semantic Chunking",
+            "description": "Code-aware chunking that preserves semantic boundaries (functions, classes, modules)"
+          },
+          {
+            "rank": 3,
+            "id": "KA-010",
+            "name": "Hierarchical Summarization",
+            "description": "Multi-level summaries enabling zoom-in/zoom-out navigation through context"
+          },
+          {
+            "rank": 4,
+            "id": "KA-013",
+            "name": "Context Caching",
+            "description": "Caching frequently-used or expensive-to-compute context to reduce latency and API costs"
+          },
+          {
+            "rank": 5,
+            "id": "KA-015",
+            "name": "Context Provenance Tracking",
+            "description": "Maintaining source attribution for all context, enabling debugging and trust evaluation"
+          }
+        ],
+        "combination_recipe": [
+          {
+            "step": 1,
+            "technique": "KA-012",
+            "description": "Select context based on current task type (coding/debugging/architecture)"
+          },
+          {
+            "step": 2,
+            "technique": "KA-014",
+            "description": "Chunk context along semantic boundaries"
+          },
+          {
+            "step": 3,
+            "technique": "KA-010",
+            "description": "Generate hierarchical summaries for quick navigation"
+          },
+          {
+            "step": 4,
+            "technique": "KA-013",
+            "description": "Cache processed context for future use"
+          },
+          {
+            "step": 5,
+            "technique": "KA-015",
+            "description": "Track provenance of all context chunks"
+          }
+        ],
+        "constraints": ["KA-035", "KA-036"],
+        "failure_modes": [
+          {
+            "id": "KA-035",
+            "description": "Context stuffing: Filling context windows with all available information without prioritization"
+          },
+          {
+            "id": "KA-036",
+            "description": "Naive truncation: Truncating context without prioritization or relevance assessment"
+          }
+        ],
+        "sdlc_phases": ["P1: Discovery & Onboarding", "P2: Planning & Design", "P3: Implementation"],
+        "domains": ["D3: Context & Memory Intelligence"]
+      },
+      "confidence": "MEDIUM",
+      "gaps": ["No specific tools identified for implementing this strategy"]
+    },
+    {
+      "category": "PC8: TASK DECOMPOSITION PATTERNS",
+      "instance": "Task Decomposition Pattern: Hierarchical Subtask Decomposition",
+      "knowledge_atoms": ["KA-002", "KA-005"],
+      "spec": {
+        "name": "Hierarchical Subtask Decomposition",
+        "description": "Task decomposition pattern that breaks down complex tasks into hierarchical subtasks",
+        "techniques": [
+          {
+            "rank": 1,
+            "id": "KA-002",
+            "name": "Hierarchical Multi-Agent Orchestration",
+            "description": "Organize agents in a tree structure with a planner/manager agent at the root decomposing tasks for specialist sub-agents at lower levels"
+          },
+          {
+            "rank": 2,
+            "id": "KA-005",
+            "name": "Software Company Simulation",
+            "description": "Define explicit roles with specific responsibilities, expertise, and communication patterns"
+          }
+        ],
+        "combination_recipe": [
+          {
+            "step": 1,
+            "technique": "KA-002",
+            "description": "Break down main task into high-level subtasks"
+          },
+          {
+            "step": 2,
+            "technique": "KA-005",
+            "description": "Assign subtasks to specialized agents based on their roles"
+          },
+          {
+            "step": 3,
+            "technique": "KA-002",
+            "description": "Monitor progress and aggregate results from sub-agents"
+          }
+        ],
+        "sdlc_phases": ["P2: Planning & Design"],
+        "domains": ["D2: Agent Orchestration"]
+      },
+      "confidence": "HIGH",
+      "gaps": ["No specific task decomposition algorithms identified"]
+    },
+    {
+      "category": "PC9: WORKSPACE MANAGEMENT",
+      "instance": "Workspace Management: Context-Aware Project Structure",
+      "knowledge_atoms": ["KA-012", "KA-014", "KA-015"],
+      "spec": {
+        "name": "Context-Aware Project Structure",
+        "description": "Workspace management approach that creates context-aware project structures",
+        "techniques": [
+          {
+            "rank": 1,
+            "id": "KA-012",
+            "name": "Task-Conditioned Context",
+            "description": "Context selection and filtering conditioned on current task type and phase"
+          },
+          {
+            "rank": 2,
+            "id": "KA-014",
+            "name": "Semantic Chunking",
+            "description": "Code-aware chunking that preserves semantic boundaries (functions, classes, modules)"
+          },
+          {
+            "rank": 3,
+            "id": "KA-015",
+            "name": "Context Provenance Tracking",
+            "description": "Maintaining source attribution for all context, enabling debugging and trust evaluation"
+          }
+        ],
+        "workspace_structure": {
+          "root": {
+            "src": {
+              "components": {},
+              "utils": {},
+              "tests": {}
+            },
+            "docs": {
+              "research": {},
+              "api": {}
+            },
+            "config": {}
+          }
+        },
+        "context_association": {
+          "src/components": "Code implementation",
+          "src/tests": "Test files",
+          "docs/research": "Research artifacts",
+          "config": "Configuration files"
+        },
+        "sdlc_phases": ["P1: Discovery & Onboarding", "P3: Implementation"],
+        "domains": ["D3: Context & Memory Intelligence"]
+      },
+      "confidence": "MEDIUM",
+      "gaps": ["No specific workspace automation tools identified"]
+    },
+    {
+      "category": "PC10: TECHNIQUES & STRATEGIES (Situational Playbook)",
+      "instance": "Technique: Zero-Shot Recovery Chaining",
+      "knowledge_atoms": ["KA-008", "KA-034"],
+      "spec": {
+        "name": "Zero-Shot Recovery Chaining",
+        "description": "On failure, chain through diagnosis → planning → recovery stages using zero-shot prompting",
+        "techniques": [
+          {
+            "rank": 1,
+            "id": "KA-008",
+            "name": "Zero-Shot Recovery Chaining",
+            "description": "Chain through diagnosis → planning → recovery stages using zero-shot prompting"
+          }
+        ],
+        "combination_recipe": [
+          {
+            "step": 1,
+            "technique": "KA-008",
+            "description": "Diagnose the failure using zero-shot prompting"
+          },
+          {
+            "step": 2,
+            "technique": "KA-008",
+            "description": "Plan recovery strategy using zero-shot prompting"
+          },
+          {
+            "step": 3,
+            "technique": "KA-008",
+            "description": "Execute recovery using zero-shot prompting"
+          }
+        ],
+        "constraints": ["KA-034"],
+        "failure_modes": [
+          {
+            "id": "KA-034",
+            "description": "Prompt brittleness, token overhead, may cascade failures if diagnosis is wrong"
+          }
+        ],
+        "sdlc_phases": ["P3: Implementation", "P4: Testing", "P6: Operation"],
+        "domains": ["D2: Agent Orchestration"]
+      },
+      "confidence": "HIGH",
+      "gaps": ["No specific examples of recovery chain prompts"]
+    }
+  ]
+}
