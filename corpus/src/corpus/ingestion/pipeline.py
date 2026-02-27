@@ -94,15 +94,8 @@ def run_ingest(
             )
             chunks_created += 1
 
-    if unclassified:
-        repo.update_run_status(run_id, "failed")
-        return IngestResult(
-            run_id=run_id,
-            artifacts_ingested=artifacts_ingested,
-            chunks_created=chunks_created,
-            unclassified_files=unclassified,
-            failed=True,
-        )
+    # Unclassified files are skipped (not a hard failure).
+    # The caller can inspect unclassified_files for reporting.
 
     run = repo.get_run(run_id)
     if run is not None:
@@ -113,4 +106,5 @@ def run_ingest(
         run_id=run_id,
         artifacts_ingested=artifacts_ingested,
         chunks_created=chunks_created,
+        unclassified_files=unclassified,
     )

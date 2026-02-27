@@ -8,12 +8,23 @@ from corpus.config import CorpusSettings, get_settings
 from corpus.db.models import ArtifactChunk
 from corpus.db.repository import CorpusRepository
 
+_CHROMA_BATCH_SIZE = 5000
+
 
 @dataclass
 class SyncResult:
     synced: int = 0
     skipped: int = 0
     total: int = 0
+
+
+def _batched_upsert(collection: object, ids: list[str], embeddings: list[list[float]], texts: list[str]) -> None:
+    """Upsert in batches to stay within ChromaDB's max batch size."""
+    for i in range(0, len(ids), _CHROMA_BATCH_SIZE):
+        batch_ids = ids[i : i + _CHROMA_BATCH_SIZE]
+        batch_emb = embeddings[i : i + _CHROMA_BATCH_SIZE]
+        batch_txt = texts[i : i + _CHROMA_BATCH_SIZE]
+        collection.upsert(ids=batch_ids, embeddings=batch_emb, documents=batch_txt)  # type: ignore[union-attr]
 
 
 def sync_vectors(
@@ -53,7 +64,7 @@ def sync_vectors(
     embeddings = model.encode(texts).tolist()
 
     ids = [str(c.chunk_id) for c in chunks_to_embed]
-    collection.upsert(ids=ids, embeddings=embeddings, documents=texts)
+    _batched_upsert(collection, ids, embeddings, texts)
 
     for chunk in chunks_to_embed:
         chunk.embedding_synced = True  # type: ignore[assignment]
@@ -92,7 +103,7 @@ def rebuild_vectors(session: Session, settings: CorpusSettings | None = None) ->
     embeddings = model.encode(texts).tolist()
 
     ids = [str(c.chunk_id) for c in all_chunks]
-    collection.upsert(ids=ids, embeddings=embeddings, documents=texts)
+    _batched_upsert(collection, ids, embeddings, texts)
 
     for chunk in all_chunks:
         chunk.embedding_synced = True  # type: ignore[assignment]

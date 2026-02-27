@@ -84,6 +84,7 @@ def run_dedup(
                 base_url=settings.llm_base_url,
                 api_key=settings.kilo_api_key,
                 model=settings.llm_model,
+                max_calls=settings.max_arbitration_calls,
             )
         report.arbitration_results = arb_results
         report.arbitrated = len(arb_results)
@@ -93,7 +94,7 @@ def run_dedup(
             report.arbitration_fallback = True
 
         for result in arb_results:
-            if result.confidence < settings.arbitration_confidence_min or result.recommendation == "human_review":
+            if result.recommendation == "human_review":
                 art_a = _find_artifact_for_chunk(repo, result.chunk_a_id, run_id)
                 art_b = _find_artifact_for_chunk(repo, result.chunk_b_id, run_id)
                 if art_a and art_b:

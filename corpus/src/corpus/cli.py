@@ -74,6 +74,8 @@ def ingest(source: str, base: str, repo_path: str) -> None:
         sys.exit(1)
 
     click.echo(f"Ingested {result.artifacts_ingested} artifacts, {result.chunks_created} chunks.")
+    if result.unclassified_files:
+        click.echo(f"Skipped {len(result.unclassified_files)} unclassified files.")
     click.echo(f"Run ID: {result.run_id}")
 
 
@@ -236,6 +238,8 @@ def run(source: str, base: str, repo_path: str) -> None:
         n_art = ingest_result.artifacts_ingested
         n_chk = ingest_result.chunks_created
         click.echo(f"  Ingested {n_art} artifacts, {n_chk} chunks (run={run_id})")
+        if ingest_result.unclassified_files:
+            click.echo(f"  Skipped {len(ingest_result.unclassified_files)} unclassified files")
 
         click.echo("Step 2/6: Dedup...")
         dedup_report = run_dedup(session, run_id, settings=settings)
@@ -441,12 +445,15 @@ def status() -> None:
     engine = create_db_engine(settings.db_url)
     with get_session(engine) as session:
         last_run = session.query(ConsolidationRun).order_by(ConsolidationRun.started_at.desc()).first()
+        last_run_info = None
+        if last_run:
+            last_run_info = (str(last_run.run_id), str(last_run.status))
         unresolved = session.query(HumanReviewQueue).filter(HumanReviewQueue.disposition.is_(None)).count()
         health = check_sync_health(session, settings=settings)
         m = compute_metrics(session)
 
-    if last_run:
-        click.echo(f"Last run: {last_run.run_id} (status={last_run.status})")
+    if last_run_info:
+        click.echo(f"Last run: {last_run_info[0]} (status={last_run_info[1]})")
     else:
         click.echo("No runs found.")
     click.echo(f"Human review queue: {unresolved} unresolved")

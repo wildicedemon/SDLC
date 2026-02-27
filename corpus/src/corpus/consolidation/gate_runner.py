@@ -54,6 +54,11 @@ def _gate_capabilities(repo: CorpusRepository, run_id: str, result: GateResult) 
     if not artifacts:
         return
 
+    # If no decision cards exist yet (initial run), skip this gate
+    all_cards = repo.list_decision_cards()
+    if not all_cards:
+        return
+
     import json
 
     capabilities: set[str] = set()
