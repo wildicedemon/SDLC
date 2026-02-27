@@ -1,0 +1,40 @@
+name: "MCP Configuration Template"
+description: "Template for defining MCP server access patterns and security"
+
+fields:
+  applies_to:
+    required: true
+    description: "Which modes or tasks this configuration applies to"
+    validation:
+      - "non_empty"
+
+  servers:
+    required: true
+    description: "MCP servers and their configuration"
+    validation:
+      - "list_non_empty"
+
+  selection_logic:
+    required: true
+    description: "How to choose between multiple available servers"
+    validation:
+      - "non_empty"
+
+  fallback:
+    required: true
+    description: "What to do when preferred servers are unavailable"
+    validation:
+      - "non_empty"
+
+  security_constraints:
+    required: true
+    description: "Security rules and privilege isolation"
+    validation:
+      - "list_non_empty"
+
+structure:
+  - applies_to
+  - servers
+  - selection_logic
+  - fallback
+  - security_constraints
