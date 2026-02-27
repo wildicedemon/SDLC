@@ -20,7 +20,8 @@ If you are blocked and need user clarification, mark the current step with `[!]`
 
 ## Workflow Steps
 
-### [ ] Step: Technical Specification
+### [x] Step: Technical Specification
+<!-- chat-id: b8e772e4-9e22-41bb-b928-c07d336a0f5f -->
 
 Assess the task's difficulty, as underestimating it leads to poor outcomes.
 - easy: Straightforward implementation, trivial bug fix or feature
@@ -54,16 +55,18 @@ Save to `{@artifacts_path}/plan.md`. If the feature is trivial and doesn't warra
 
 ---
 
-### [ ] Step: Implementation
+### [ ] Step: Create Archive Directory
+- Create `docs/research_archive` directory.
 
-Implement the task according to the technical specification and general engineering best practices.
+### [ ] Step: Move Scattered Research to Archive
+- Move `distillation/` (excluding any python/code files) to `docs/research_archive/`
+- Move `distilled/` to `docs/research_archive/`
+- Move `docs/distilled/` to `docs/research_archive/`
+- Move individual scattered research markdown and json files from the root to `docs/research_archive/`
 
-1. Break the task into steps where possible.
-2. Implement the required changes in the codebase
-3. If relevant, write unit tests alongside each change.
-4. Run relevant tests and linters in the end of each step.
-5. Perform basic manual verification if applicable.
-6. After completion, write a report to `{@artifacts_path}/report.md` describing:
-   - What was implemented
-   - How the solution was tested
-   - The biggest issues or challenges encountered
+### [ ] Step: Update Links and Validate
+- Modify `Research.md` to point to `docs/distillation/master_index.md`
+- Verify no scripts (e.g., `*.py`) or operational code artifacts were broken
+
+### [ ] Step: Final Report
+- Write a report to `{@artifacts_path}/report.md` describing what was implemented.
