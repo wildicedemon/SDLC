@@ -1,0 +1,37 @@
+# Default configuration for research distillation system
+distillation:
+  input_dir: "Kimi-Research"  # Directory containing research files
+  output_dir: "output"        # Directory for generated outputs
+  max_file_size: 10485760     # 10MB maximum file size
+  supported_formats:
+    - "md"
+    - "markdown"
+    - "html"
+    - "json"
+    - "csv"
+    - "txt"
+  min_evidence_strength: "MODERATE"
+  deduplication_threshold: 0.85
+  enable_async: true
+  max_concurrent_files: 4
+  log_level: "INFO"
+
+extraction:
+  context_window: 3
+  min_content_length: 10
+  max_content_length: 1000
+
+templates:
+  template_dir: "distillation/templates"
+
+validation:
+  enable_schema_validation: true
+  enable_cross_reference_check: true
+  enable_gap_analysis: true
+  min_confidence_threshold: "LOW"
+
+cli:
+  verbose: false
+  quiet: false
+  progress_bar: true
+  color_output: true

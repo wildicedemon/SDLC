@@ -1,0 +1,69 @@
+name: "Agent Skill Template"
+description: "Template for defining specialized agent capabilities"
+
+fields:
+  purpose:
+    required: true
+    description: "One sentence describing what this skill accomplishes"
+    validation:
+      - "min_length:20"
+      - "max_length:200"
+
+  technique_stack:
+    required: true
+    description: "Primary technique and alternatives with tradeoffs"
+    validation:
+      - "dict_non_empty"
+
+  inputs:
+    required: true
+    description: "Required and optional inputs for the skill"
+    validation:
+      - "dict_non_empty"
+
+  procedure:
+    required: true
+    description: "Step-by-step execution procedure"
+    validation:
+      - "dict_non_empty"
+
+  outputs:
+    required: true
+    description: "What the skill produces"
+    validation:
+      - "non_empty"
+
+  quality_check:
+    required: true
+    description: "How to verify the skill executed correctly"
+    validation:
+      - "min_length:20"
+
+  when_to_use:
+    required: true
+    description: "Conditions that trigger this skill"
+    validation:
+      - "non_empty"
+
+  when_NOT_to_use:
+    required: true
+    description: "Situations where this skill should not be used"
+    validation:
+      - "non_empty"
+
+  cost_profile:
+    required: true
+    description: "Token usage, latency, and cost considerations"
+    validation:
+      - "dict_non_empty"
+
+structure:
+  - purpose
+  - technique_stack
+  - inputs
+  - procedure
+  - outputs
+  - quality_check
+  - when_to_use
+  - when_NOT_to_use
+  - cost_profile

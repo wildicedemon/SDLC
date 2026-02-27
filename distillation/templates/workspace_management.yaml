@@ -1,0 +1,54 @@
+name: "Workspace Management Template"
+description: "Template for defining file, branch, and environment organization"
+
+fields:
+  branch_strategy:
+    required: true
+    description: "How branches are created and managed for agent work"
+    validation:
+      - "non_empty"
+
+  work_tree_management:
+    required: true
+    description: "How working directories are organized"
+    validation:
+      - "non_empty"
+
+  file_organization:
+    required: true
+    description: "How files are structured during task execution"
+    validation:
+      - "non_empty"
+
+  state_persistence:
+    required: true
+    description: "How agent state and progress is saved"
+    validation:
+      - "non_empty"
+
+  artifact_management:
+    required: true
+    description: "How generated artifacts are handled"
+    validation:
+      - "non_empty"
+
+  cleanup:
+    required: true
+    description: "When and how to clean up temporary resources"
+    validation:
+      - "non_empty"
+
+  conflict_resolution:
+    required: true
+    description: "How to handle concurrent agent work conflicts"
+    validation:
+      - "non_empty"
+
+structure:
+  - branch_strategy
+  - work_tree_management
+  - file_organization
+  - state_persistence
+  - artifact_management
+  - cleanup
+  - conflict_resolution

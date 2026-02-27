@@ -1,0 +1,40 @@
+distillation:
+  input_dir: !!python/object/apply:pathlib.WindowsPath
+  - Kimi-Research
+  output_dir: !!python/object/apply:pathlib.WindowsPath
+  - output
+  max_file_size: 10485760
+  supported_formats:
+  - md
+  - markdown
+  - html
+  - json
+  - csv
+  - txt
+  min_evidence_strength: MODERATE
+  deduplication_threshold: 0.85
+  enable_async: true
+  max_concurrent_files: 4
+  log_level: INFO
+  log_file: null
+extraction:
+  rules_file: null
+  custom_patterns: {}
+  context_window: 3
+  min_content_length: 10
+  max_content_length: 1000
+templates:
+  template_dir: !!python/object/apply:pathlib.WindowsPath
+  - distillation
+  - templates
+  custom_templates: {}
+validation:
+  enable_schema_validation: true
+  enable_cross_reference_check: true
+  enable_gap_analysis: true
+  min_confidence_threshold: LOW
+cli:
+  verbose: false
+  quiet: true
+  progress_bar: true
+  color_output: true
