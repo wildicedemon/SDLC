@@ -114,6 +114,20 @@ def query(
     formatted = format_response(matched_cards, depth)
     provenance = [str(c.provenance_refs) for c in matched_cards if c.provenance_refs]
 
+    # When no decision cards exist, fall back to showing top vector-search results
+    if not matched_cards and scored_chunks:
+        parts = ["## Relevant Knowledge Chunks\n"]
+        for sc in scored_chunks[:10]:
+            score_pct = sc.final_score * 100 if sc.final_score else sc.semantic_score * 100
+            parts.append(f"**[{score_pct:.0f}% match]** (chunk: {sc.chunk_id})\n{sc.content[:500]}\n---\n")
+        formatted = "\n".join(parts)
+        best_confidence = max(
+            (sc.final_score or sc.semantic_score for sc in scored_chunks[:10]),
+            default=0.0,
+        )
+        escalation_reason = None
+        depth = depth_override or "L1"
+
     return RetrievalResponse(
         content=formatted,
         depth=depth,

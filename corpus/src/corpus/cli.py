@@ -130,6 +130,37 @@ def update_decisions(run_id: str) -> None:
     click.echo(f"Drift events created: {len(drift_ids)}")
 
 
+@cli.command("generate-decisions")
+@click.argument("run_id")
+@click.option("--domain", multiple=True, help="Specific domain(s) to generate for. Omit for all.")
+@click.option("--dry-run", is_flag=True, help="Show what would be generated without calling LLM.")
+def generate_decisions_cmd(run_id: str, domain: tuple[str, ...], dry_run: bool) -> None:
+    """Generate DecisionCards from ingested artifacts using LLM deep research."""
+    from corpus.config import get_settings
+    from corpus.db.engine import create_db_engine, get_session
+    from corpus.decisions.generator import generate_decisions
+
+    settings = get_settings()
+    engine = create_db_engine(settings.db_url)
+    with get_session(engine) as session:
+        report = generate_decisions(
+            session,
+            run_id,
+            settings=settings,
+            domains=list(domain) if domain else None,
+            dry_run=dry_run,
+        )
+
+    click.echo(f"\nGenerated: {report.generated}")
+    click.echo(f"Skipped (existing): {report.skipped_existing}")
+    click.echo(f"Skipped (structural): {report.skipped_structural}")
+    click.echo(f"Failed: {report.failed}")
+    if report.details:
+        click.echo("\nDetails:")
+        for d in report.details:
+            click.echo(f"  {d}")
+
+
 @cli.command("check-references")
 @click.argument("run_id")
 @click.option("--corpus-root", default=".", help="Path to the corpus root.")
