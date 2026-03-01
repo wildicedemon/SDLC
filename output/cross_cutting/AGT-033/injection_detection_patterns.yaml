@@ -1,0 +1,56 @@
+# output/cross_cutting/AGT-033/injection_detection_patterns.yaml
+name: Prompt Injection Detection Patterns
+domain: DOM-033
+subdomain: SD-033a
+version: 1.0.0
+
+patterns:
+  DOM-033-PTN-001:
+    id: PTN-001
+    type: DIRECT_OVERRIDE
+    name: System Prompt Override Attempt
+    description: Detects attempts to override agent system directives
+    regex:
+      - '(?i)ignore.*previous.*instruction'
+      - '(?i)system.*prompt'
+      - '(?i)you.*are.*now'
+    severity: CRITICAL
+    false_positive_rate: 0.1
+    detection_method: REGEX
+
+  DOM-033-PTN-002:
+    id: PTN-002
+    type: JAILBREAK
+    name: Role-Play Jailbreak
+    description: Detects roleplay-based jailbreak attempts
+    semantic_markers:
+      - 'pretend you are'
+      - 'imagine you are'
+      - 'act as if'
+    severity: HIGH
+    detection_method: SEMANTIC
+
+  DOM-033-PTN-003:
+    id: PTN-003
+    type: ENCODING_ATTACK
+    name: Unicode/Encoding Obfuscation
+    description: Detects encoding-based injection attempts
+    checks:
+      - ZERO_WIDTH_CHARS
+      - HOMOGLYPH_DETECTION
+      - UNICODE_NORMALIZATION
+    severity: MEDIUM
+    detection_method: ENCODING
+
+  DOM-033-PTN-004:
+    id: PTN-004
+    type: CONTEXT_INJECTION
+    name: False Context Insertion
+    description: Detects attempts to inject false context or memory
+    patterns:
+      - 'fabricated packages'
+      - 'forged credentials'
+      - 'fake documentation'
+    severity: HIGH
+    ka_reference: KA-013
+    detection_method: SEMANTIC

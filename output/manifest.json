@@ -1,0 +1,306 @@
+{
+  "generated_at": "2026-03-01T15:41:19.774153+00:00",
+  "total_files": 60,
+  "files": [
+    {
+      "path": "core_infrastructure\\AGT-004\\agent_patterns.yaml",
+      "size_bytes": 8653,
+      "sha256": "537b0198fbd891ace01bf3aff156ebc224d42af10df3bd2e070dd6dc2d50fe49"
+    },
+    {
+      "path": "core_infrastructure\\AGT-004\\domain_decomposition.md",
+      "size_bytes": 15626,
+      "sha256": "e1b3ec694f88d925c841f0052fcb4854a9b6ceb094559ea6f3b1dc1dd0cbe517"
+    },
+    {
+      "path": "core_infrastructure\\AGT-005\\domain_decomposition.md",
+      "size_bytes": 16024,
+      "sha256": "cb741b5b769b25329d27339ec3dedcc31d5d966c1f9550da05763b7ac4131ae2"
+    },
+    {
+      "path": "core_infrastructure\\AGT-006\\domain_decomposition.md",
+      "size_bytes": 17626,
+      "sha256": "4a9e1ddd1887df0a53db0e4be67c215b2099db86b9238443ccb3733533b26a99"
+    },
+    {
+      "path": "core_infrastructure\\AGT-007\\domain_decomposition.md",
+      "size_bytes": 15724,
+      "sha256": "4b83472a67acce522d8c5e22288868da37e6d3d7a5861f5ccd90cca704ccb00a"
+    },
+    {
+      "path": "core_infrastructure\\AGT-008\\domain_decomposition.md",
+      "size_bytes": 17545,
+      "sha256": "ca2aa24dfe64a574eae3147a765d96c3143ea044b73f305152e377ab44426acc"
+    },
+    {
+      "path": "core_infrastructure\\AGT-009\\domain_decomposition.md",
+      "size_bytes": 17104,
+      "sha256": "935f56fc1a5c8c2861bf7c63df14dbfb7084caca6e81bafb2677065e54d21b5f"
+    },
+    {
+      "path": "core_infrastructure\\AGT-010\\domain_decomposition.md",
+      "size_bytes": 16674,
+      "sha256": "844aa4f6918f42056bfc0a000c3dc91c5e73cc1dad3ab4bcfe81d57de92eb879"
+    },
+    {
+      "path": "cross_cutting\\AGT-028\\domain_decomposition.md",
+      "size_bytes": 15410,
+      "sha256": "0d11a66f8d8af2d1d8d694f84eec6657e0a8c229284335c890a72ed28abbd464"
+    },
+    {
+      "path": "cross_cutting\\AGT-029\\domain_decomposition.md",
+      "size_bytes": 17282,
+      "sha256": "aa8de721ae439c3e66bd77cc0dfbfdb0e5c4ef6956907b1ab0f5e2871a06de31"
+    },
+    {
+      "path": "cross_cutting\\AGT-030\\domain_decomposition.md",
+      "size_bytes": 18514,
+      "sha256": "b23604ef9ecebd8e04a7f722fe330f969c8bb221e9d8ff75e7202d9436536ef4"
+    },
+    {
+      "path": "cross_cutting\\AGT-031\\domain_decomposition.md",
+      "size_bytes": 17220,
+      "sha256": "2b6d68e7abdcb9ded1b7dee66a24ee92981d8d36d101ce3eabd087c96c86799f"
+    },
+    {
+      "path": "cross_cutting\\AGT-032\\domain_decomposition.md",
+      "size_bytes": 16043,
+      "sha256": "047e822081c4b0ebfe20e2e4830284860e287e986bcfe84a2a51c79bb08bb841"
+    },
+    {
+      "path": "cross_cutting\\AGT-033\\context_defense_rules.yaml",
+      "size_bytes": 1625,
+      "sha256": "7e85de6ae6e267636815878dad8e99b253193f64030bd8f870582bd0af6f8597"
+    },
+    {
+      "path": "cross_cutting\\AGT-033\\domain_decomposition.md",
+      "size_bytes": 6602,
+      "sha256": "5f3c6e5ac9791509d1d5b2ab553c2952961b33463f1c50b04afc7407ec9b091f"
+    },
+    {
+      "path": "cross_cutting\\AGT-033\\injection_detection_patterns.yaml",
+      "size_bytes": 1525,
+      "sha256": "83077370cc7ae73b255687f1d1135f6dc882054ba7e68b4e3bdaf833c9691adb"
+    },
+    {
+      "path": "cross_cutting\\AGT-034\\domain_decomposition.md",
+      "size_bytes": 15909,
+      "sha256": "48db4ea55856a608a9ef1de7c0dbf0ac6cf1dc1908510a22b891d71ec607165a"
+    },
+    {
+      "path": "cross_cutting\\AGT-035\\domain_decomposition.md",
+      "size_bytes": 16812,
+      "sha256": "8eadece1c04648ddd9dc4439e04c49e39278f4fc5cff72ee479f5cb8a726a0fa"
+    },
+    {
+      "path": "cross_cutting\\AGT-036\\domain_decomposition.md",
+      "size_bytes": 15429,
+      "sha256": "1b7093cd4ec2c155ad7da31a3c89c286df1d5b20c86a8ced154b3055b326f14d"
+    },
+    {
+      "path": "cross_cutting\\AGT-037\\domain_decomposition.md",
+      "size_bytes": 2749,
+      "sha256": "2d89da2bc598b6e8aea16324c5ac5ec7574189e57d5f49e312652cc5b765ee2f"
+    },
+    {
+      "path": "distilled\\atoms.yaml",
+      "size_bytes": 260,
+      "sha256": "60dc9304e1f16e0b23dc638fc4fca71f3ebd55fc7d7b8e0a2bbdd253f87258ed"
+    },
+    {
+      "path": "distilled\\domains.yaml",
+      "size_bytes": 282,
+      "sha256": "b0f67520042c92446238b7ade43673a8a2380d1dedd55b126786fe5cf67d26ac"
+    },
+    {
+      "path": "distilled\\gap_report.txt",
+      "size_bytes": 426,
+      "sha256": "0fabcf4d731045438984255e73a20eb19a21a5acee4958d6877849ffd46a9602"
+    },
+    {
+      "path": "distilled\\phases.yaml",
+      "size_bytes": 181,
+      "sha256": "ce74c58f036ad3fe42737f7a82447fbd04d0e095adb67678411c5aa045bae48e"
+    },
+    {
+      "path": "distilled\\products.yaml",
+      "size_bytes": 292,
+      "sha256": "ebdcd9feed19ee41813efc15b4bae3689e178e6d9864c6c6ded48c48ed25154e"
+    },
+    {
+      "path": "emerging\\AGT-038\\domain_decomposition.md",
+      "size_bytes": 17856,
+      "sha256": "c764c2128e1ae0156be393862f7d8835b377bff1d5be7f63544e8f0a52da0121"
+    },
+    {
+      "path": "emerging\\AGT-039\\domain_decomposition.md",
+      "size_bytes": 17570,
+      "sha256": "1b85d5043a9579c70afa98523b575f0ba88f6fef1a8e725b3366b0253c80a8c8"
+    },
+    {
+      "path": "emerging\\AGT-040\\domain_decomposition.md",
+      "size_bytes": 7846,
+      "sha256": "12c15a0d672bd97ee6b55e03fe862eecebafffa6abeb94ea78576cb172e39e53"
+    },
+    {
+      "path": "intelligence\\AGT-011\\domain_decomposition.md",
+      "size_bytes": 17547,
+      "sha256": "6bbec6367698a0e4f923974616cb70e3c75e19c660935fd84ed356ac2ec0a9d8"
+    },
+    {
+      "path": "intelligence\\AGT-012\\domain_decomposition.md",
+      "size_bytes": 17399,
+      "sha256": "4923fc428608151e1156f047e602c86ba9c9a743bce50da0945673bcae631708"
+    },
+    {
+      "path": "intelligence\\AGT-013\\domain_decomposition.md",
+      "size_bytes": 16003,
+      "sha256": "389d7ed72693fb95c4c3eb2b088c65b1594c1c5858f6bce0b7764674a6a44b06"
+    },
+    {
+      "path": "intelligence\\AGT-014\\domain_decomposition.md",
+      "size_bytes": 16151,
+      "sha256": "5a01435fc75676e95c611c516acae05f5f23059fa5397ad64a18a7e81d733bd8"
+    },
+    {
+      "path": "intelligence\\AGT-014\\knowledge_graph_schema.yaml",
+      "size_bytes": 5689,
+      "sha256": "8f8b25e71cedef0fde2f046b224518e7f8379486865ea00e6afe580ae39fbac3"
+    },
+    {
+      "path": "intelligence\\AGT-015\\code_exploration_skills.yaml",
+      "size_bytes": 8565,
+      "sha256": "4765e547f176597ac1cf6a5d5c13332a664810f72b31b7738932ba3b26721d96"
+    },
+    {
+      "path": "intelligence\\AGT-015\\domain_decomposition.md",
+      "size_bytes": 16247,
+      "sha256": "13c5c24ae910c4689cd8f32c95b5a1d75935c98881d1ae447c635c9cbe0dbd05"
+    },
+    {
+      "path": "intelligence\\AGT-016\\domain_decomposition.md",
+      "size_bytes": 16251,
+      "sha256": "e6e72549d680e4e4a09872be19b65d475682558bbca1723321891cbfe0af804c"
+    },
+    {
+      "path": "intelligence\\AGT-017\\domain_decomposition.md",
+      "size_bytes": 15513,
+      "sha256": "e3255db6ea70552fa30ae644905450bea979bbbff13d836a22560cc79a48596e"
+    },
+    {
+      "path": "intelligence\\AGT-018\\domain_decomposition.md",
+      "size_bytes": 14766,
+      "sha256": "8fa94653a732e9f6ee38c6c587f226a534d31a5a4b3a9ff89df0d75f7ac174fc"
+    },
+    {
+      "path": "intelligence\\AGT-019\\domain_decomposition.md",
+      "size_bytes": 4680,
+      "sha256": "164c4d16a9b86759d8d453508e17b2bc0bd603736c98647f41e950c01a2bb7d8"
+    },
+    {
+      "path": "knowledge_atoms.json",
+      "size_bytes": 1470803,
+      "sha256": "73fa22e8aa889a81bd09848768da67f45c0347ff96b2b2a551f1f616be157374"
+    },
+    {
+      "path": "meta\\AGT-001\\domain_decomposition.md",
+      "size_bytes": 18330,
+      "sha256": "31dc6241b55ea3c6d419c2c0020bdc8c4e90e472e6b010de3e5527484e5b728e"
+    },
+    {
+      "path": "meta\\AGT-002\\domain_decomposition.md",
+      "size_bytes": 17168,
+      "sha256": "526a939d81fd577a1632521b5a90548b05be391f95b035f9deaf71d0b48052a7"
+    },
+    {
+      "path": "meta\\AGT-003\\domain_decomposition.md",
+      "size_bytes": 17851,
+      "sha256": "4f2673522dd0e7fe71a36918982f2a09b0d6053cb52219a95bb07ba660bddd6b"
+    },
+    {
+      "path": "operational\\AGT-020\\domain_decomposition.md",
+      "size_bytes": 17373,
+      "sha256": "b3e659dcd1d0219fa8d3eff6e99096231c6b955e9c29e32d06b440f249f4e391"
+    },
+    {
+      "path": "operational\\AGT-021\\domain_decomposition.md",
+      "size_bytes": 17577,
+      "sha256": "f7bfe3b57ea8692d1054a7f206e86f07e44b5bef557e28a995eddbf0e66e4fa0"
+    },
+    {
+      "path": "operational\\AGT-022\\domain_decomposition.md",
+      "size_bytes": 16043,
+      "sha256": "05691ecff1f9bdad60ac0ff7ab4e55f3c6df3a8b60dd177a478c39c3f0d8d0ef"
+    },
+    {
+      "path": "operational\\AGT-023\\domain_decomposition.md",
+      "size_bytes": 16568,
+      "sha256": "65338056cc8f64114383ecb9857cd60d4698d10bcc98098b7aefdb986cd93624"
+    },
+    {
+      "path": "operational\\AGT-024\\domain_decomposition.md",
+      "size_bytes": 18139,
+      "sha256": "852540f4907d0b4760dc031d5139e1c2007090c312ab85b157931979b8f043c8"
+    },
+    {
+      "path": "operational\\AGT-025\\domain_decomposition.md",
+      "size_bytes": 16619,
+      "sha256": "79091888b90dcfe0516c50ff0cad32fe3535c7c136a72ef3393ce3e2738ab951"
+    },
+    {
+      "path": "operational\\AGT-026\\domain_decomposition.md",
+      "size_bytes": 16711,
+      "sha256": "fc2effde549fac608d150bb46712c6b933a85029934f2113e0060b8d9428f5d1"
+    },
+    {
+      "path": "operational\\AGT-027\\domain_decomposition.md",
+      "size_bytes": 16594,
+      "sha256": "db27f5a836c0a752729f64c62b249f7532fa3bee33777827bf851033e7f1e387"
+    },
+    {
+      "path": "pipeline_metrics.json",
+      "size_bytes": 265,
+      "sha256": "e75fc869831ce37814058ae6e2bc979e51ebad116eec6a1a4826107bf99fc286"
+    },
+    {
+      "path": "products\\PC10_Pc10.yaml",
+      "size_bytes": 3277,
+      "sha256": "e7bdcfb46792803015f624bd811556ce405e73a58c385dc4285043a08183f981"
+    },
+    {
+      "path": "products\\PC1_Pc1.yaml",
+      "size_bytes": 15608,
+      "sha256": "ac635e1cc798969a9505455dc3da718e789486d577d264f4bd31750d80329f89"
+    },
+    {
+      "path": "products\\PC2_Pc2.yaml",
+      "size_bytes": 37197,
+      "sha256": "9c0fca20e5be5b7cfb11eff85a4a3dfd5523cc150303e673a5a4ccfb2763e1cf"
+    },
+    {
+      "path": "products\\PC3_Pc3.yaml",
+      "size_bytes": 29484,
+      "sha256": "2cb9fbffc68637d09d0a9f43ed181c2f39c27344cdbe3c58822ce33bb4b372b5"
+    },
+    {
+      "path": "products\\PC5_Pc5.yaml",
+      "size_bytes": 764,
+      "sha256": "7f99d3a8417be1ecd47523975b6869a679b82b6e65f0b6fbec13bfaed28ab978"
+    },
+    {
+      "path": "products\\PC6_Pc6.yaml",
+      "size_bytes": 2681,
+      "sha256": "18ab85c15b2526d11ed7a39a87ef958c6a87dce3aa8e2f7b904afc5dfa7234d8"
+    },
+    {
+      "path": "products\\PC7_Pc7.yaml",
+      "size_bytes": 3461,
+      "sha256": "71f8fc8acd1c99cf4dc891dfc8bc3a2ee377c66555d44093d39465d52fef0b15"
+    },
+    {
+      "path": "products\\PC8_Pc8.yaml",
+      "size_bytes": 28653,
+      "sha256": "86da2410f86cac8c2f008df320429d0d085a60fcdf39c6b5e79eda256819382f"
+    }
+  ]
+}

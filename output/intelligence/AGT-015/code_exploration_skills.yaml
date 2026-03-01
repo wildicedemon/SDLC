@@ -1,0 +1,201 @@
+# output/intelligence/AGT-015/code_exploration_skills.yaml
+domain: DOM-015
+domain_name: Code Exploration & Navigation
+skills:
+  # SD-015a: AST Analysis Skills
+  - skill_id: DOM-015-SK-001
+    name: AST Parsing and Traversal
+    description: Parse source code into Abstract Syntax Trees and traverse AST nodes with context preservation.
+    inputs: [source_code, language, grammar_version]
+    outputs: [ast_root, node_map, parse_errors]
+    complexity: High
+    dependencies: [KA-037]
+    subdomain: SD-015a
+
+  - skill_id: DOM-015-SK-002
+    name: Control Flow Graph Construction
+    description: Build CFGs from AST representation tracking conditional branches and loop structures.
+    inputs: [ast_root, function_scope]
+    outputs: [cfg_graph, entry_point, exit_points]
+    complexity: High
+    dependencies: [DOM-015-SK-001, KA-037]
+    subdomain: SD-015a
+
+  - skill_id: DOM-015-SK-003
+    name: Data Flow Graph Analysis
+    description: Construct DFGs tracking variable definitions, uses, and propagation through code paths.
+    inputs: [cfg_graph, symbol_table]
+    outputs: [dfg_graph, def_use_chains, reaching_definitions]
+    complexity: High
+    dependencies: [DOM-015-SK-002, DOM-015-SK-005]
+    subdomain: SD-015a
+
+  - skill_id: DOM-015-SK-004
+    name: Code Property Graph Generation
+    description: Merge AST, CFG, and DFG into unified Code Property Graph for multi-level analysis.
+    inputs: [ast_root, cfg_graph, dfg_graph]
+    outputs: [cpg, node_index, edge_types]
+    complexity: High
+    dependencies: [DOM-015-SK-001, DOM-015-SK-002, DOM-015-SK-003]
+    subdomain: SD-015a
+
+  - skill_id: DOM-015-SK-005
+    name: Tree-sitter Grammar Loading and Incremental Parsing
+    description: Load and manage Tree-sitter grammars with support for incremental parsing on large files.
+    inputs: [language, grammar_path, previous_tree, edit_range]
+    outputs: [tree, parse_status, incremental_delta]
+    complexity: Medium
+    dependencies: [KA-037]
+    subdomain: SD-015a
+
+  - skill_id: DOM-015-SK-006
+    name: Cross-Language AST Normalization
+    description: Convert language-specific ASTs to normalized intermediate representation for unified analysis.
+    inputs: [ast_root, source_language, target_language]
+    outputs: [normalized_ast, type_mappings, language_features]
+    complexity: High
+    dependencies: [DOM-015-SK-001, KA-037]
+    subdomain: SD-015a
+
+  # SD-015b: Semantic Search Skills
+  - skill_id: DOM-015-SK-007
+    name: Code Embedding Generation
+    description: Generate semantic embeddings for code snippets and symbols for similarity-based search.
+    inputs: [code_snippet, symbol_info, context]
+    outputs: [embedding_vector, embedding_metadata]
+    complexity: Medium
+    dependencies: [DOM-015-SK-001, DOM-015-SK-011]
+    subdomain: SD-015b
+
+  - skill_id: DOM-015-SK-008
+    name: Semantic Code Search
+    description: Search codebases using semantic similarity rather than syntax matching.
+    inputs: [query_embedding, index, search_scope]
+    outputs: [search_results, relevance_scores, context_windows]
+    complexity: Medium
+    dependencies: [DOM-015-SK-007, DOM-015-SK-009]
+    subdomain: SD-015b
+
+  - skill_id: DOM-015-SK-009
+    name: Natural Language to Code Search
+    description: Translate natural language queries to code search operations with semantic understanding.
+    inputs: [nl_query, codebase_index, context_strategy]
+    outputs: [code_matches, nl_interpretation, confidence_score]
+    complexity: High
+    dependencies: [DOM-015-SK-007, DOM-015-SK-008]
+    subdomain: SD-015b
+
+  - skill_id: DOM-015-SK-010
+    name: Semantic Similarity Scoring
+    description: Compute semantic similarity between code artifacts using multiple scoring dimensions.
+    inputs: [artifact_a, artifact_b, similarity_dimensions]
+    outputs: [similarity_score, dimension_scores, explanation]
+    complexity: Medium
+    dependencies: [DOM-015-SK-007]
+    subdomain: SD-015b
+
+  # SD-015c: Codebase Mapping Skills
+  - skill_id: DOM-015-SK-011
+    name: Codebase Structure Mapping
+    description: Create complete hierarchical map of codebase structure including files, modules, and packages.
+    inputs: [root_path, ignore_rules, language_list]
+    outputs: [structure_map, module_hierarchy, entry_points]
+    complexity: Medium
+    dependencies: [DOM-015-SK-001]
+    subdomain: SD-015c
+
+  - skill_id: DOM-015-SK-012
+    name: Dependency Graph Extraction
+    description: Extract and build dependency graphs tracking imports, includes, and cross-references.
+    inputs: [codebase_map, symbol_table, scope_info]
+    outputs: [dependency_graph, circular_deps, dependency_metadata]
+    complexity: High
+    dependencies: [DOM-015-SK-011, DOM-015-SK-013]
+    subdomain: SD-015c
+
+  - skill_id: DOM-015-SK-013
+    name: Symbol Resolution Across Files
+    description: Resolve symbol definitions and references across file and module boundaries.
+    inputs: [symbol_name, scope_context, module_boundaries]
+    outputs: [definition_location, references, scope_chain]
+    complexity: High
+    dependencies: [DOM-015-SK-001, DOM-015-SK-011]
+    subdomain: SD-015c
+
+  - skill_id: DOM-015-SK-014
+    name: Call Graph Construction and Analysis
+    description: Build and analyze call graphs tracking function invocations and dynamic dispatch.
+    inputs: [cpg, function_definitions, call_sites]
+    outputs: [call_graph, entry_points, reachability_sets]
+    complexity: High
+    dependencies: [DOM-015-SK-004, DOM-015-SK-012]
+    subdomain: SD-015c
+
+  - skill_id: DOM-015-SK-015
+    name: Module Relationship Visualization
+    description: Generate dependency and relationship visualizations for module interconnections.
+    inputs: [dependency_graph, call_graph, scope_hierarchy]
+    outputs: [visual_representation, relationship_data, layout_data]
+    complexity: Medium
+    dependencies: [DOM-015-SK-012, DOM-015-SK-014]
+    subdomain: SD-015c
+
+  - skill_id: DOM-015-SK-016
+    name: Architectural Pattern Detection
+    description: Identify common architectural patterns and design patterns in codebase structure.
+    inputs: [codebase_map, call_graph, dependency_graph]
+    outputs: [patterns_detected, pattern_instances, architectural_type]
+    complexity: High
+    dependencies: [DOM-015-SK-012, DOM-015-SK-014]
+    subdomain: SD-015c
+
+  # SD-015d: Navigation Strategies Skills
+  - skill_id: DOM-015-SK-017
+    name: Definition/Reference Resolution
+    description: Efficiently resolve symbol definitions and find all references with context awareness.
+    inputs: [symbol_name, location, scope_depth_limit]
+    outputs: [definition_locations, references, resolution_confidence]
+    complexity: Medium
+    dependencies: [DOM-015-SK-013]
+    subdomain: SD-015d
+
+  - skill_id: DOM-015-SK-018
+    name: Cross-File Navigation Strategies
+    description: Plan efficient navigation paths through multi-file codebases considering dependencies.
+    inputs: [start_location, target_concept, navigation_context]
+    outputs: [navigation_path, intermediate_points, relevance_scores]
+    complexity: High
+    dependencies: [DOM-015-SK-013, DOM-015-SK-012]
+    subdomain: SD-015d
+
+  - skill_id: DOM-015-SK-019
+    name: Symbol Table Management
+    description: Maintain and query symbol tables across scopes with efficient lookup and update.
+    inputs: [symbol_definitions, scope_stack, mutation_operations]
+    outputs: [symbol_table_state, query_results, scope_info]
+    complexity: Medium
+    dependencies: [DOM-015-SK-013]
+    subdomain: SD-015d
+
+  - skill_id: DOM-015-SK-020
+    name: Context-Aware Navigation Ordering
+    description: Order navigation results by relevance to current task context and developer intent.
+    inputs: [navigation_candidates, task_context, relevance_weights]
+    outputs: [ordered_results, relevance_justification]
+    complexity: Medium
+    dependencies: [DOM-015-SK-018, DOM-015-SK-008]
+    subdomain: SD-015d
+
+  - skill_id: DOM-015-SK-021
+    name: Efficient Code Navigation Algorithms
+    description: Implement breadth-first, depth-first, and bidirectional navigation through code graphs.
+    inputs: [code_graph, start_node, traversal_type, depth_limit]
+    outputs: [traversal_path, reachability_set, traversal_metadata]
+    complexity: High
+    dependencies: [DOM-015-SK-014]
+    subdomain: SD-015d
+
+---
+export_date: 2026-03-01
+total_skills: 21
+coverage: [SD-015a:6, SD-015b:4, SD-015c:6, SD-015d:5]

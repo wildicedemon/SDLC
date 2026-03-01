@@ -1,0 +1,54 @@
+# output/cross_cutting/AGT-033/context_defense_rules.yaml
+name: AGT-033 Context Poisoning Defense Rules
+version: 1.0.0
+domain: DOM-033
+scope:
+  - prompt_injection_detection
+  - memory_poisoning_detection
+  - adversarial_input_filtering
+  - context_integrity_validation
+
+rules:
+  DOM-033-RL-001:
+    id: RL-001
+    title: Pre-Assembly Context Validation
+    description: All context inputs must pass injection detection before entering agent prompts
+    severity: CRITICAL
+    category: input_validation
+    ka_reference: KA-005
+
+  DOM-033-RL-002:
+    id: RL-002
+    title: Quarantine Preservation
+    description: Quarantined inputs must be preserved for forensic analysis
+    severity: HIGH
+    category: containment
+
+  DOM-033-RL-003:
+    id: RL-003
+    title: False Positive Rate Limit
+    description: False positive rate must not exceed 2% of legitimate inputs
+    severity: MEDIUM
+    category: accuracy
+
+  DOM-033-RL-004:
+    id: RL-004
+    title: Latency Constraint
+    description: Defense mechanisms must not add more than 100ms latency per context validation
+    severity: MEDIUM
+    category: performance
+
+  DOM-033-RL-005:
+    id: RL-005
+    title: External Context Provenance Tracking
+    description: Context provenance must be tracked for all inputs from external sources
+    severity: HIGH
+    category: traceability
+    ka_reference: KA-013
+
+  DOM-033-RL-006:
+    id: RL-006
+    title: Cross-Agent Context Validation
+    description: Cross-agent context transfers must be validated at receiving agent
+    severity: HIGH
+    category: cross_agent_security

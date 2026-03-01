@@ -1,0 +1,207 @@
+version: "1.0"
+domain: DOM-014
+domain_name: Knowledge Graphs & Semantic Indexing
+agent: AGT-014
+generated: 2026-03-01
+
+metadata:
+  description: Comprehensive knowledge graph and semantic indexing architecture for agentic AI coding systems
+  subdomains:
+    - SD-014a: Graph Construction
+    - SD-014b: GraphRAG Integration
+    - SD-014c: Vector Search
+    - SD-014d: Semantic Indexing
+  dependencies:
+    - AGT-012 (Memory Systems)
+    - AGT-008 (Data Engineering)
+    - AGT-015 (Code Explorer)
+
+graph_entity_schema:
+  entity:
+    id:
+      type: string
+      format: uuid
+      description: Unique entity identifier
+    type:
+      type: string
+      enum: [Code, Concept, Decision, Document, Person, Organization, Location, CodeArtifact, ArchitecturePattern, Dependency, Test, Feature]
+      description: Entity classification
+    name:
+      type: string
+      description: Human-readable entity name
+    properties:
+      type: object
+      additionalProperties: true
+      description: Domain-specific properties
+    embedding:
+      type: array
+      items:
+        type: number
+      description: Dense vector embedding (1536-dim for text-embedding-3-small)
+    provenance:
+      source_file:
+        type: string
+      source_line:
+        type: integer
+      extraction_method:
+        type: string
+        enum: [llm_extraction, parser_based, manual_annotation]
+      confidence_score:
+        type: number
+        minimum: 0
+        maximum: 1
+      extracted_at:
+        type: string
+        format: date-time
+      extractor_version:
+        type: string
+    source_refs:
+      type: array
+      items:
+        type: object
+        properties:
+          document_id:
+            type: string
+          chunk_id:
+            type: string
+          offset_start:
+            type: integer
+          offset_end:
+            type: integer
+
+graph_relationship_schema:
+  relationship:
+    id:
+      type: string
+      format: uuid
+    type:
+      type: string
+      enum: [depends_on, contains, references, implements, extends, defines, calls, uses, imports, exports, inherits_from, defines_interface, satisfies, contradicts, related_to, temporal_before, temporal_after, spatial_near]
+      description: Relationship type (typed and directional)
+    source_entity_id:
+      type: string
+      format: uuid
+    target_entity_id:
+      type: string
+      format: uuid
+    properties:
+      type: object
+      properties:
+        strength:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: Relationship confidence/strength
+        bidirectional:
+          type: boolean
+          description: Whether relationship is bidirectional
+        metadata:
+          type: object
+          additionalProperties: true
+    created_at:
+      type: string
+      format: date-time
+    updated_at:
+      type: string
+      format: date-time
+    validity_period:
+      type: object
+      properties:
+        valid_from:
+          type: string
+          format: date-time
+        valid_to:
+          type: string
+          format: date-time
+      description: Temporal validity for temporal graphs
+
+knowledge_graph_structure:
+  nodes:
+    - type: entity
+      count_estimate: 10000-100000
+      indexed: true
+  edges:
+    - type: relationship
+      count_estimate: 50000-500000
+      indexed: true
+  communities:
+    enabled: true
+    algorithm: leiden
+    hierarchical: true
+
+graph_quality_constraints:
+  consistency:
+    - entities_must_have_provenance: true
+    - relationships_must_be_typed: true
+    - relationships_must_be_directional: true
+    - no_duplicate_entities_allowed: true
+    - bidirectional_relationships_must_be_symmetric: true
+  completeness:
+    - all_entities_must_have_embeddings: true
+    - embeddings_must_use_same_model: true
+    - entities_should_have_min_3_properties: true
+  temporal:
+    - temporal_relationships_must_have_validity_periods: true
+    - temporal_consistency_must_be_validated: true
+
+graph_persistence:
+  backend:
+    type: neo4j
+    fallback: networkx_inmemory
+  replication:
+    read_replicas: 3
+    consistency_model: eventual
+  partitioning:
+    strategy: domain_based
+    domain_boundaries:
+      - codebase_structure
+      - architecture_decisions
+      - data_models
+      - api_boundaries
+    cross_partition_queries_allowed: true
+    cross_partition_query_cost: high
+
+graph_update_protocol:
+  batch_updates:
+    enabled: true
+    batch_size: 1000
+    flush_interval_ms: 5000
+  incremental_updates:
+    enabled: true
+    validation_required: true
+    rollback_on_validation_failure: true
+  conflict_resolution:
+    strategy: last_write_wins
+    timestamp_based: true
+
+graph_query_protocol:
+  traversal_algorithms:
+    - name: breadth_first_search
+      use_case: immediate_relationships
+      max_depth: 3
+    - name: depth_first_search
+      use_case: specific_relationship_chains
+      max_depth: 5
+    - name: shortest_path
+      use_case: minimal_connection_finding
+      max_hops: 4
+    - name: community_detection
+      use_case: cluster_analysis
+      algorithm: leiden
+  query_bounds:
+    - max_traversal_depth: 6
+    - max_result_nodes: 5000
+    - max_result_edges: 25000
+    - max_query_time_ms: 5000
+  caching:
+    - enabled: true
+      strategy: multi_level
+      levels:
+        - level: 1
+          type: in_memory
+          ttl_seconds: 300
+          use_case: entity_lookups
+        - level: 2
+          type: redis_cluster
+          ttl_seconds: 3600
+          use_case: traversal_results

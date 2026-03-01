@@ -1,0 +1,248 @@
+# output/core_infrastructure/AGT-004/skills.yaml
+domain_id: DOM-004
+domain_name: Agent Architecture & Lifecycle
+category: Skills
+generated: 2026-03-01T05:05:15Z
+
+skills:
+  # SD-004a: Agent Patterns
+  DOM-004-SK-001:
+    name: Agent Pattern Instantiation
+    description: Create concrete agent instances from archetype patterns (specialist, orchestrator, reviewer, gap-filler) with appropriate initialization parameters and constraint bindings.
+    inputs: 
+      - Pattern archetype specification
+      - Domain assignment
+      - Capability requirements
+      - Cost budget allocation
+    outputs:
+      - Agent Definition with unique agent_id
+      - Initialization context
+      - Resource allocation plan
+    complexity: High
+    knowledge_atoms: [KA-006, KA-023]
+    related_workflows: [DOM-004-WF-001, DOM-004-WF-002]
+
+  DOM-004-SK-002:
+    name: Lifecycle State Transition Management
+    description: Execute valid state transitions in agent lifecycle state machine, enforce invariants, and maintain audit trail of all transitions.
+    inputs:
+      - Current agent state
+      - Transition trigger
+      - Contextual metadata
+    outputs:
+      - New agent state
+      - State transition journal entry
+      - Validation confirmation
+    complexity: High
+    knowledge_atoms: [KA-004, KA-009]
+    related_workflows: [DOM-004-WF-003, DOM-004-WF-004, DOM-004-WF-005]
+
+  DOM-004-SK-003:
+    name: Delegation Chain Construction
+    description: Build valid delegation chains with bounded depth, establish task context transfer protocol, and configure result collection mechanisms.
+    inputs:
+      - Parent agent specification
+      - Child agent capability requirements
+      - Task decomposition
+      - Depth constraints
+    outputs:
+      - Delegation chain structure
+      - Context transfer plan
+      - Result aggregation protocol
+    complexity: High
+    knowledge_atoms: [KA-012]
+    related_workflows: [DOM-004-WF-006]
+
+  DOM-004-SK-004:
+    name: Agent Performance Monitoring
+    description: Collect, aggregate, and analyze agent execution metrics including success rate, cost, utilization, and latency patterns.
+    inputs:
+      - Agent execution logs
+      - Task completion records
+      - Resource consumption data
+    outputs:
+      - Performance metrics dashboard
+      - Anomaly alerts
+      - Performance trend analysis
+    complexity: Medium
+    knowledge_atoms: [KA-015, KA-016, KA-021]
+    related_workflows: [DOM-004-WF-008]
+
+  DOM-004-SK-005:
+    name: Structured Journaling Integration
+    description: Implement structured logging of all agent lifecycle events, state transitions, and decision points with queryable schemas.
+    inputs:
+      - Event data
+      - State transition information
+      - Decision context
+    outputs:
+      - Journal entries
+      - Audit trail
+      - Compliance records
+    complexity: Medium
+    knowledge_atoms: [KA-004, KA-009]
+    related_workflows: [DOM-004-WF-003, DOM-004-WF-008]
+
+  DOM-004-SK-006:
+    name: Consensus Protocol Execution
+    description: Execute multi-agent consensus voting, aggregate votes, detect conflicts, and resolve disagreements through defined mechanisms.
+    inputs:
+      - Participating agents
+      - Proposal/decision point
+      - Voting configuration
+    outputs:
+      - Consensus decision
+      - Vote distribution
+      - Conflict resolution outcome
+    complexity: High
+    knowledge_atoms: [KA-006]
+    related_workflows: [DOM-004-WF-007]
+
+  DOM-004-SK-007:
+    name: Agent Template Generation
+    description: Create reusable agent templates with parameterized capabilities, constraints, and initialization blueprints.
+    inputs:
+      - Archetype specification
+      - Domain requirements
+      - Capability set
+    outputs:
+      - Agent template YAML/schema
+      - Parameter definitions
+      - Instantiation guide
+    complexity: Medium
+    knowledge_atoms: [KA-006]
+    related_workflows: [DOM-004-WF-001]
+
+  DOM-004-SK-008:
+    name: Sandbox-Aware Agent Initialization
+    description: Initialize agents with security boundaries, credential isolation, and resource quotas within sandbox environments.
+    inputs:
+      - Sandbox configuration
+      - Security requirements
+      - Resource limits
+    outputs:
+      - Initialized agent in sandbox
+      - Credential mapping
+      - Resource quota assignment
+    complexity: High
+    knowledge_atoms: [KA-010]
+    related_workflows: [DOM-004-WF-001, DOM-004-WF-002]
+
+  DOM-004-SK-009:
+    name: Cost-Aware Agent Configuration
+    description: Allocate cost budgets to agents, configure cost-first execution strategies, and monitor cost consumption.
+    inputs:
+      - Cost budget
+      - Cost optimization parameters
+      - Model/tool costs
+    outputs:
+      - Cost-aware agent configuration
+      - Budget allocation plan
+      - Cost monitoring hooks
+    complexity: Medium
+    knowledge_atoms: [KA-023]
+    related_workflows: [DOM-004-WF-001, DOM-004-WF-002]
+
+  DOM-004-SK-010:
+    name: Context Window Management
+    description: Monitor agent context window usage, prevent overflow conditions, and implement context compression/eviction strategies.
+    inputs:
+      - Current context state
+      - New context addition
+      - Context window limit
+    outputs:
+      - Context decision (accept/compress/evict)
+      - Updated context state
+      - Overflow alert
+    complexity: High
+    knowledge_atoms: [KA-018]
+    related_workflows: [DOM-004-WF-003, DOM-004-WF-009]
+
+  DOM-004-SK-011:
+    name: Model-Agent Binding Validation
+    description: Validate model assignments to agents, ensure diversity constraint enforcement (no one-model-for-everything), and optimize model utilization.
+    inputs:
+      - Agent specification
+      - Available models
+      - Diversity constraints
+    outputs:
+      - Model assignment
+      - Diversity validation report
+      - Alternative model recommendations
+    complexity: Medium
+    knowledge_atoms: [KA-019]
+    related_workflows: [DOM-004-WF-001]
+
+  DOM-004-SK-012:
+    name: Delegation Depth Analysis
+    description: Calculate delegation chain depth, enforce maximum depth constraints, and detect potential infinite recursion scenarios.
+    inputs:
+      - Delegation chain
+      - Depth limits
+    outputs:
+      - Depth analysis report
+      - Violation alerts
+      - Recursion risk assessment
+    complexity: Medium
+    knowledge_atoms: [KA-012]
+    related_workflows: [DOM-004-WF-006]
+
+  DOM-004-SK-013:
+    name: Agent Lifecycle Auditing
+    description: Perform comprehensive audits of agent lifecycle compliance, state transition validity, and policy adherence.
+    inputs:
+      - Agent lifecycle records
+      - Audit criteria
+      - Policy definitions
+    outputs:
+      - Audit report
+      - Compliance findings
+      - Recommendation list
+    complexity: Medium
+    knowledge_atoms: [KA-004, KA-009]
+    related_workflows: [DOM-004-WF-008]
+
+  DOM-004-SK-014:
+    name: Failure Mode Simulation
+    description: Simulate potential failure modes in agent execution, identify vulnerabilities, and validate recovery strategies.
+    inputs:
+      - Agent specification
+      - Failure mode catalog
+      - Environmental conditions
+    outputs:
+      - Simulation results
+      - Vulnerability report
+      - Recovery strategy validation
+    complexity: High
+    knowledge_atoms: [KA-018, KA-019]
+    related_workflows: [DOM-004-WF-009]
+
+  DOM-004-SK-015:
+    name: Agent Trust Score Calculation
+    description: Compute trust scores based on agent performance history, reliability metrics, and behavioral patterns.
+    inputs:
+      - Performance metrics
+      - Historical records
+      - Trust criteria
+    outputs:
+      - Trust score
+      - Trust components breakdown
+      - Trust trajectory
+    complexity: Medium
+    knowledge_atoms: [KA-015, KA-021]
+    related_workflows: [DOM-004-WF-010]
+
+  DOM-004-SK-016:
+    name: Multi-Model Agent Orchestration
+    description: Coordinate execution across agents using different models, manage model-specific communication protocols, and aggregate heterogeneous outputs.
+    inputs:
+      - Multiple agent specifications
+      - Model specifications
+      - Coordination requirements
+    outputs:
+      - Orchestration plan
+      - Model bridge specifications
+      - Output aggregation schema
+    complexity: High
+    knowledge_atoms: [KA-006, KA-019]
+    related_workflows: [DOM-004-WF-003, DOM-004-WF-006, DOM-004-WF-007]
