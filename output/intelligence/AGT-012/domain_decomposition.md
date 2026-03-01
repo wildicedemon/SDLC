@@ -1,330 +1,353 @@
 > code · sonar-reasoning-pro<think>
-The user is asking me to execute an architect agent prompt from a file they've provided. Looking at the file content, this is AGT-012: Memory Systems Agent - a detailed prompt for an autonomous agent responsible for decomposing the "Memory Systems & Persistence" domain within an agentic AI system architecture.
+The user is asking me to execute the architect agent prompt from a file. This appears to be part of an SDLC (Software Development Lifecycle) system with agents, domains, and structured decomposition requirements.
 
-However, I need to clarify what the user is asking:
-1. Are they asking me to run this as if I were the agent AGT-012?
-2. Are they asking me to follow this prompt and generate the outputs?
-3. Are they asking me to execute something else?
+Looking at the file content, it's the prompt for "Agent AGT-012: Memory Systems Agent" - a specialized autonomous agent responsible for decomposing the Memory Systems & Persistence domain within an agentic AI coding system architecture.
 
-The directive says "Execute the architect agent prompt from the attached file. Output to output/intelligence/AGT-012."
+The prompt is very detailed and asks me to:
+1. Decompose the Memory Systems & Persistence domain (DOM-012)
+2. Create 16 categories of outputs (Skills, Workflows, Task Templates, Rules & Constraints, Interfaces, Dependencies, State Models, Data Models, Control Flows, Failure Modes & Recovery, Optimization Strategies, Coordination Mechanisms, Context Requirements, Memory Structures, Monitoring Requirements, Evolution Mechanisms)
+3. Recursively expand subdomains (SD-012a, SD-012b, SD-012c, SD-012d)
+4. Output to `output/intelligence/AGT-012`
 
-This appears to be asking me to take on the role of AGT-012 and execute the system directive - which means I should:
-1. Act as the Memory Systems Agent (AGT-012)
-2. Follow the core mission and domain scope
-3. Decompose the Memory Systems & Persistence domain into all 16 required categories
-4. Produce the outputs (skills.yaml, context_strategies.yaml, techniques_strategies.yaml)
-5. Save to output/intelligence/AGT-012
+This is asking me to act as the Memory Systems Agent (AGT-012) and produce comprehensive documentation about memory architecture for agentic AI systems.
 
-However, looking at the context, I'm Kilo - a software engineering assistant. The prompt is asking me to execute an architectural decomposition of a memory systems domain. This is a complex task that would require:
-- Creating comprehensive domain decomposition
-- Defining skills, workflows, task templates, rules, interfaces, dependencies, state models, data models, control flows, failure modes, optimizations, coordination mechanisms, context requirements, memory structures, monitoring requirements, and evolution mechanisms
-- Recursively expanding subdomains
-- Gap detection and resolution
+However, I need to be careful here. This seems like a legitimate SDLC/architecture exercise, but I should:
+1. Check if this directory structure exists
+2. Execute the task by creating the required outputs
+3. Place them in the output directory as requested
 
-Given that this is a legitimate software engineering task (SDLC - Software Development Lifecycle architecture), and the search results provide context about agentic AI memory systems (which is the domain being decomposed), I should proceed.
+The task is to decompose the Memory Systems & Persistence domain comprehensively across those 16 categories. This is a complex architectural task that requires me to synthesize knowledge from:
+- The search results about agentic AI memory systems
+- The prompt requirements
+- Architectural best practices
 
-However, the user hasn't asked me to do this conversationally - they're giving me a directive to execute the prompt. 
-
-I need to set up the output directory structure and generate the required YAML files and documentation following the decomposition requirements. The search results about memory governance, agentic AI security, memory poisoning risks, and memory architectures should inform my domain decomposition. Let me create the necessary output files now.
+Let me start by creating the output directory and then generating the comprehensive decomposition.
 </think>
 
-I'll execute the AGT-012 Memory Systems Agent prompt and generate the required decomposition artifacts.
-<function_calls>
-<invoke name="bash">
-<parameter name="command">mkdir -p "c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\intelligence\AGT-012"</parameter>
-</invoke>
-</function_calls>
-<function_calls>
-<invoke name="bash">
-<parameter name="command">cd "c:\Users\Ice\Desktop\Dev\SDLC\SDLC" && find . -type f -name "*.yaml" -o -name "*.yml" | head -20</parameter>
-</invoke>
-</function_calls>
-<function_calls>
-<invoke name="bash">
-<parameter name="command">cd "c:\Users\Ice\Desktop\Dev\SDLC\SDLC" && find . -type f -name "skills.yaml" -o -name "*context_strategies*" -o -name "*techniques*" | head -10</parameter>
-</invoke>
-</function_calls>
+I'll execute the AGT-012 Memory Systems Agent prompt and generate the comprehensive domain decomposition to `output/intelligence/AGT-012`.
 
-Now generating the complete domain decomposition for AGT-012:
-<function_calls>
-<invoke name="file_write">
-<parameter name="path">c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\intelligence\AGT-012\memory_architecture.yaml</parameter>
-<parameter name="content">domain: DOM-012 Memory Systems & Persistence
-agent: AGT-012 Memory Systems Agent
+First, let me create the output directory structure and generate the memory systems architecture artifacts:
+
+```bash
+mkdir -p output/intelligence/AGT-012
+```
+
+Now I'll create the primary output artifact - the complete memory systems decomposition:
+
+```yaml
+# output/intelligence/AGT-012/memory_architecture.yaml
+domain_id: DOM-012
+domain_name: Memory Systems & Persistence
+agent: AGT-012
 execution_phase: Phase 3 (Intelligence)
-generated_date: 2026-03-01
-version: 1.0
+generated_timestamp: 2026-03-01T15:59:30Z
 
-subdomains:
-  - id: SD-012a
-    name: Short-Term Memory
-    description: Working memory management, session-scoped memory, conversation history, attention mechanisms
-    status: decomposed
-    
-  - id: SD-012b
-    name: Long-Term Persistence
-    description: Persistent memory storage, knowledge consolidation, memory decay, cross-session retrieval
-    status: decomposed
-    
-  - id: SD-012c
-    name: Vector DB Integration
-    description: Vector database selection, embedding generation, similarity search, hybrid search optimization
-    status: decomposed
-    
-  - id: SD-012d
-    name: Retrieval Strategies
-    description: RAG pipeline design, retrieval ranking, re-ranking, quality metrics
-    status: decomposed
+# ============================================================================
+# 1. SKILLS (DOM-012-SK-*)
+# ============================================================================
 
 skills:
-  DOM-012-SK-001:
+  SK-001:
     name: Memory Architecture Design
-    description: Design complete memory architecture including working, persistent, episodic, and semantic memory layers with proper separation and integration points.
-    inputs: [Domain requirements, agent goals, task complexity, resource constraints]
-    outputs: [Memory architecture diagram, layer definitions, integration contracts]
+    description: Design multi-tier memory systems integrating short-term working memory, long-term persistent storage, and vector embeddings for optimal agent cognition and retrieval.
+    inputs: [agent_objectives, task_complexity, domain_context, storage_constraints]
+    outputs: [memory_tier_specification, integration_patterns, scalability_roadmap]
     complexity: High
-    subdomain: SD-012a, SD-012b
     
-  DOM-012-SK-002:
+  SK-002:
     name: Vector Embedding Generation
-    description: Generate high-dimensional vector representations of knowledge entries using specified embedding models with dimension optimization.
-    inputs: [Raw content, embedding model specification, dimension constraints]
-    outputs: [Vector embeddings, embedding metadata, model versioning]
+    description: Transform semantic content into high-dimensional vector representations using configured embedding models with consistency guarantees across sessions.
+    inputs: [raw_content, embedding_model_spec, domain_vocabulary]
+    outputs: [vector_embeddings, embedding_metadata, confidence_scores]
     complexity: Medium
-    subdomain: SD-012c
     
-  DOM-012-SK-003:
+  SK-003:
     name: Similarity Search Execution
-    description: Execute vector similarity search queries with configurable distance metrics, filtering, and result ranking.
-    inputs: [Query vector, vector DB index, distance metric, filter criteria]
-    outputs: [Ranked results, similarity scores, execution metadata]
+    description: Execute optimized vector similarity searches against indexed embeddings using distance metrics, with tuning for recall/precision tradeoffs.
+    inputs: [query_vector, index_config, distance_metric, k_results]
+    outputs: [ranked_results, similarity_scores, search_latency_metrics]
     complexity: Medium
-    subdomain: SD-012c
     
-  DOM-012-SK-004:
-    name: Memory Consolidation
-    description: Transition information from short-term working memory to long-term persistent storage while preserving semantic integrity and reducing redundancy.
-    inputs: [Working memory entries, consolidation rules, destination schema]
-    outputs: [Persisted entries, transformation audit log, integrity validation]
+  SK-004:
+    name: Memory Consolidation (Short→Long)
+    description: Consolidate ephemeral working memory into persistent long-term storage while preserving semantic integrity and preventing information loss.
+    inputs: [short_term_memory_buffer, consolidation_policy, retention_rules]
+    outputs: [consolidated_memory_entries, archival_manifest, loss_audit_log]
     complexity: High
-    subdomain: SD-012b
     
-  DOM-012-SK-005:
-    name: Retrieval-Augmented Generation Execution
-    description: Execute complete RAG pipeline: retrieve relevant context from memory, rank by relevance, re-rank by quality, and return curated results.
-    inputs: [Query, retrieval parameters, ranking strategies, quality thresholds]
-    outputs: [Augmented context, source attribution, confidence metrics]
+  SK-005:
+    name: Retrieval-Augmented Generation (RAG) Execution
+    description: Orchestrate RAG pipeline to retrieve relevant context, rank results, and inject curated knowledge into agent reasoning processes.
+    inputs: [query, retrieval_config, ranking_strategy, context_window_limit]
+    outputs: [ranked_context_results, retrieval_provenance, confidence_metadata]
     complexity: High
-    subdomain: SD-012d
     
-  DOM-012-SK-006:
+  SK-006:
     name: Hallucination-Aware Retrieval Filtering
-    description: Identify and filter content with hallucination indicators (fabricated packages, vulnerable patterns) before returning to reasoning layer.
-    inputs: [Retrieved results, hallucination patterns (KA-013), vulnerability signatures (KA-014)]
-    outputs: [Filtered results, confidence scores, risk flags]
+    description: Filter retrieved results against known hallucination patterns (KA-013: 19.7% fabricated package rate) and flag unreliable content with confidence scores.
+    inputs: [retrieved_results, hallucination_patterns_db, confidence_thresholds]
+    outputs: [filtered_results, hallucination_flags, reliability_scores]
     complexity: High
-    subdomain: SD-012d
     
-  DOM-012-SK-007:
+  SK-007:
     name: Memory Decay Management
-    description: Implement time-based and access-pattern-based decay policies that reduce priority of stale information while preventing loss of important knowledge.
-    inputs: [Memory entries, decay policies, freshness windows, importance scores]
-    outputs: [Updated decay scores, archival candidates, retention decisions]
+    description: Implement time-based and access-frequency-based decay policies to gracefully age out stale memories while preserving evergreen knowledge.
+    inputs: [memory_entries, decay_policy, access_history, importance_weights]
+    outputs: [decayed_entries, decay_schedule, expiration_markers]
     complexity: Medium
-    subdomain: SD-012b
     
-  DOM-012-SK-008:
-    name: Re-Ranking and Relevance Scoring
-    description: Implement sophisticated re-ranking algorithms that balance vector similarity, semantic relevance, temporal freshness, and source reliability.
-    inputs: [Initial ranked results, query context, scoring weights, domain knowledge]
-    outputs: [Re-ranked results, composite relevance scores, ranking rationale]
+  SK-008:
+    name: Re-ranking and Relevance Scoring
+    description: Apply multi-stage re-ranking algorithms to improve retrieval quality by considering query-result semantic alignment, recency, and domain-specific relevance signals.
+    inputs: [initial_results, ranking_signals, query_context, domain_rules]
+    outputs: [reranked_results, relevance_scores, ranking_rationale]
     complexity: High
-    subdomain: SD-012d
     
-  DOM-012-SK-009:
-    name: Vector Database Configuration
-    description: Select, configure, and optimize vector database engine for embedding storage, retrieval performance, and scalability requirements.
-    inputs: [Embedding dimensions, query volume, data scale, latency SLAs, consistency requirements]
-    outputs: [Vector DB config, index strategy, sharding plan, performance projections]
-    complexity: High
-    subdomain: SD-012c
-    
-  DOM-012-SK-010:
+  SK-009:
     name: Memory Integrity Validation
-    description: Validate semantic integrity of consolidated memory, detect corruption, verify consistency across memory types, and audit access patterns.
-    inputs: [Memory entries, validation rules, audit logs, integrity checksums]
-    outputs: [Validation report, anomaly flags, recovery recommendations]
+    description: Validate memory entries against semantic constraints, consistency rules, and vulnerability indicators (KA-014) to detect corruption or poisoning.
+    inputs: [memory_entries, validation_rules, threat_patterns]
+    outputs: [validation_report, integrity_violations, remediation_actions]
     complexity: High
-    subdomain: SD-012b
     
-  DOM-012-SK-011:
-    name: Hybrid Search Optimization
-    description: Combine vector similarity search with keyword/semantic search to improve relevance, recall, and handling of edge cases.
-    inputs: [Query, vector index, keyword index, hybrid weights, filter logic]
-    outputs: [Merged ranked results, hybrid relevance scores, search analytics]
-    complexity: Medium
-    subdomain: SD-012c
-    
-  DOM-012-SK-012:
-    name: Embedding Model Versioning
-    description: Manage embedding model versions, handle model transitions, regenerate vectors when models change, and maintain backward compatibility.
-    inputs: [Current embeddings, old model version, new model version, migration parameters]
-    outputs: [Regenerated embeddings, version mappings, migration validation]
-    complexity: Medium
-    subdomain: SD-012c
+  SK-010:
+    name: Vector Index Optimization
+    description: Tune vector database indexing strategies (quantization, partitioning, replication) to optimize search latency, recall, and storage efficiency.
+    inputs: [vector_corpus, query_patterns, storage_constraints, latency_targets]
+    outputs: [optimized_index_config, performance_baseline, tuning_recommendations]
+    complexity: High
+
+# ============================================================================
+# 2. WORKFLOWS (DOM-012-WF-*)
+# ============================================================================
 
 workflows:
-  DOM-012-WF-001:
+  WF-001:
     name: Memory Consolidation Workflow
-    description: Move information from working memory to persistent storage with semantic preservation and compression.
-    trigger: Session end, working memory threshold exceeded, consolidation timer elapsed
+    trigger: On schedule (configurable interval) OR on threshold (working memory exceeds limit)
     steps:
       - step: 1
-        name: Identify Consolidation Candidates
-        entry_criteria: Working memory entries exist with consolidation flags set
-        action: Scan working memory for entries meeting consolidation criteria (age, frequency, priority)
-        exit_criteria: Candidate list generated and ranked by consolidation priority
-        
+        action: Select consolidation candidates from working memory buffer
+        entry_criteria: Memory buffer populated with session interactions
+        exit_criteria: Candidates identified with consolidation priority scores
       - step: 2
-        name: Apply Consolidation Rules
-        entry_criteria: Candidate list available
-        action: Apply domain rules (KA-013, KA-014) to filter hallucination-prone or vulnerable entries
-        exit_criteria: Filtered candidate list with confidence scores
-        
+        action: Validate semantic integrity and detect duplicates
+        entry_criteria: Candidates selected
+        exit_criteria: Deduplicated, integrity-validated candidate set
       - step: 3
-        name: Generate Embeddings
-        entry_criteria: Filtered candidates ready
-        action: Generate vector embeddings using specified embedding model
-        exit_criteria: Embeddings created and version tracked
-        
+        action: Generate/update embeddings for persistent entries
+        entry_criteria: Validated candidate set
+        exit_criteria: Vector embeddings computed and indexed
       - step: 4
-        name: Compress and Deduplicate
-        entry_criteria: Embeddings available
-        action: Merge similar entries, remove redundancy while preserving semantic meaning
-        exit_criteria: Consolidated entries with deduplication metadata
-        
+        action: Persist to long-term memory with metadata
+        entry_criteria: Embeddings ready
+        exit_criteria: Entries stored in persistent layer with audit trail
       - step: 5
-        name: Persist to Long-Term Storage
-        entry_criteria: Consolidated entries ready
-        action: Write to persistent memory store with source attribution and audit trail
-        exit_criteria: Entries persisted, confirmation received, audit log updated
-        
-      - step: 6
-        name: Update Working Memory
+        action: Purge consolidation candidates from working memory
         entry_criteria: Persistence confirmed
-        action: Mark consolidated entries as persisted, clean up working memory, maintain references
-        exit_criteria: Working memory updated, consolidation complete
-        
-      - step: 7
-        name: Validate Integrity
-        entry_criteria: Consolidation complete
-        action: Verify semantic integrity, check consistency, validate audit trail
-        exit_criteria: Validation passed or issues flagged for recovery
-    
-    completion_criteria: All consolidation candidates moved to persistent storage, working memory cleaned, audit trail complete, integrity validated
-    rollback_plan: Restore working memory from snapshot, invalidate partial persistence, retry consolidation with refined filters
-    
-  DOM-012-WF-002:
-    name: RAG Retrieval Pipeline
-    description: Complete retrieval-augmented generation workflow from query to ranked, filtered results.
-    trigger: Reasoning agent requests context, agent needs information to complete task
+        exit_criteria: Working memory buffer reduced
+    completion_criteria: All candidates persisted, working memory freed, audit logged
+    rollback_plan: Restore working memory from transaction log; skip consolidation for failed batch; alert monitoring
+
+  WF-002:
+    name: RAG Retrieval Pipeline Workflow
+    trigger: Agent requires context for reasoning task
     steps:
       - step: 1
-        name: Query Embedding
-        entry_criteria: Query received, embedding model specified
-        action: Convert query to vector embedding using active embedding model
-        exit_criteria: Query vector generated with metadata
-        
+        action: Format query according to context strategies (DOM-011)
+        entry_criteria: Raw agent query
+        exit_criteria: Formatted query with metadata (domain, intent, keywords)
       - step: 2
-        name: Vector Similarity Search
-        entry_criteria: Query vector ready, vector DB index available
-        action: Execute similarity search against vector database with configured distance metric
-        exit_criteria: Initial ranked results with similarity scores, search statistics
-        
+        action: Generate query embeddings
+        entry_criteria: Formatted query
+        exit_criteria: Query vector with confidence scores
       - step: 3
-        name: Keyword/Semantic Filtering
-        entry_criteria: Initial results available
-        action: Apply keyword filters, semantic constraints, domain-specific rules
-        exit_criteria: Filtered result set, applied filter statistics
-        
+        action: Execute similarity search against indexed vectors
+        entry_criteria: Query vector ready
+        exit_criteria: Top-k candidate results with similarity scores
       - step: 4
-        name: Hallucination Detection
-        entry_criteria: Filtered results
-        action: Check each result against hallucination patterns (KA-013), vulnerability signatures (KA-014)
-        exit_criteria: Results with confidence scores and risk flags
-        
+        action: Apply hallucination detection filters (KA-013)
+        entry_criteria: Candidate results
+        exit_criteria: Hallucination-flagged results with reliability scores
       - step: 5
-        name: Multi-Factor Re-Ranking
-        entry_criteria: Hallucination-checked results
-        action: Re-rank by composite score (similarity + relevance + freshness + reliability)
-        exit_criteria: Final ranked results with composite scores and ranking rationale
-        
+        action: Re-rank results using multi-stage ranker
+        entry_criteria: Filtered candidates
+        exit_criteria: Re-ranked results with final relevance scores
       - step: 6
-        name: Source Attribution
-        entry_criteria: Final results ready
-        action: Add source references, versioning info, confidence scores, metadata
-        exit_criteria: Augmented context with full attribution
-        
-      - step: 7
-        name: Quality Assurance
-        entry_criteria: Augmented context complete
-        action: Validate result quality, check against thresholds, audit retrieval
-        exit_criteria: Quality metrics captured, audit logged
-    
-    completion_criteria: Augmented context returned to reasoning agent with all confidence scores, source attribution, and quality metrics
-    rollback_plan: Return unaugmented query, log retrieval failure, escalate to fallback retrieval strategy
-    
-  DOM-012-WF-003:
+        action: Format results for reasoning context injection
+        entry_criteria: Ranked results
+        exit_criteria: Contextualized results ready for agent reasoning
+    completion_criteria: Results formatted, metadata attached, provenance tracked
+    rollback_plan: Return empty context; log retrieval failure; escalate to fallback reasoning
+
+  WF-003:
     name: Vector DB Indexing Workflow
-    description: Build, maintain, and optimize vector database indexes for efficient similarity search.
-    trigger: New vectors added, batch size threshold exceeded, index stale, index rebuild scheduled
+    trigger: On new large batch of memory entries OR periodic index maintenance
     steps:
       - step: 1
-        name: Collect Vectors for Indexing
-        entry_criteria: New vectors available or rebuild triggered
-        action: Gather vectors from staging area, validate format and dimensions
-        exit_criteria: Vector batch collected, validation complete
-        
-      - step: 2
-        name: Prepare Index Metadata
+        action: Partition vectors into index shards (if using sharding)
         entry_criteria: Vector batch ready
-        action: Generate index metadata, version tracking, source references
-        exit_criteria: Metadata prepared and linked to vectors
-        
+        exit_criteria: Shards allocated to index partitions
+      - step: 2
+        action: Build/update index structures (tree, graph, hash)
+        entry_criteria: Sharded vectors
+        exit_criteria: Index structures built with performance metrics
       - step: 3
-        name: Build/Update Index Structure
-        entry_criteria: Vectors and metadata ready
-        action: Create or update index using configured structure (HNSW, IVF, etc.)
-        exit_criteria: Index structure built or updated
-        
-      - step: 4
-        name: Validate Index Integrity
+        action: Validate index integrity and query coverage
         entry_criteria: Index built
-        action: Run test queries, verify similarity search accuracy, check consistency
-        exit_criteria: Validation passed or issues identified
-        
+        exit_criteria: Index passes integrity checks; test queries return expected results
+      - step: 4
+        action: Activate index for production queries
+        entry_criteria: Validation passed
+        exit_criteria: Index serving queries; old index remains for fallback
       - step: 5
-        name: Optimize for Query Performance
-        entry_criteria: Index validated
-        action: Optimize parameters (distance metric weights, index parameters) based on query patterns
-        exit_criteria: Index optimized, performance metrics updated
-        
-      - step: 6
-        name: Manage Index State Transition
-        entry_criteria: Optimization complete
-        action: Transition index state (Building → Ready), handle switchover from old to new index
-        exit_criteria: New index active, old index archived
-    
-    completion_criteria: Vector DB indexes updated and ready for efficient similarity search
-    rollback_plan: Revert to previous index version, restore index state, investigate corruption
-    
-  DOM-012-WF-004:
+        action: Monitor index performance and queue stale index for cleanup
+        entry_criteria: Index active
+        exit_criteria: Performance metrics baseline established
+    completion_criteria: Index online, performance baseline met, old index scheduled for removal
+    rollback_plan: Revert to previous index version; investigate build failure; alert ops
+
+  WF-004:
     name: Memory Cleanup and Decay Workflow
-    description: Manage memory lifecycle with decay policies, archival, and purging based on access patterns and policies.
-    trigger: Decay policy evaluation interval, storage capacity threshold, retention policy expiry
+    trigger: On schedule (daily/weekly) OR on threshold (total memory exceeds capacity)
     steps:
       - step: 1
-        name: Evaluate Decay Policies
-        entry_criteria: Memory entries available, decay policy time interval elapsed
-        action: Apply decay policies based on last access time, creation time, importance scores
-        exit_criteria: Updated decay scores for all entries, candidates for archival/purging identified
+        action: Identify memory entries subject to decay
+        entry_criteria: Current memory state
+        exit_criteria: Entries marked with decay eligibility
+      - step: 2
+        action: Apply decay function based on access patterns and age
+        entry_criteria: Eligible entries
+        exit_criteria: Entries with updated decay scores
+      - step: 3
+        action: Identify expired entries per retention policy
+        entry_criteria: Decayed entries
+        exit_criteria: Expiration list with justification
+      - step: 4
+        action: Archive or purge expired entries
+        entry_criteria: Expiration list
+        exit_criteria: Entries removed from active memory; archive created
+      - step: 5
+        action: Update vector index to reflect removals
+        entry_criteria: Entries purged
+        exit_criteria: Index stale markers removed, rebuild scheduled if needed
+    completion_criteria: Memory freed, archive created, index updated
+    rollback_plan: Restore from archive if needed; revert index changes; alert if capacity remains
+
+  WF-005:
+    name: Memory Integrity Validation Workflow
+    trigger: On schedule (hourly) OR on anomaly detection
+    steps:
+      - step: 1
+        action: Sample memory entries across all tiers
+        entry_criteria: Validation triggered
+        exit_criteria: Representative sample selected
+      - step: 2
+        action: Validate semantic consistency and detect anomalies
+        entry_criteria: Sample entries
+        exit_criteria: Anomalies flagged with confidence scores
+      - step: 3
+        action: Check against hallucination patterns and vulnerability indicators
+        entry_criteria: Anomalies identified
+        exit_criteria: Threat assessment completed
+      - step: 4
+        action: Generate integrity report and recommendations
+        entry_criteria: Threat assessment
+        exit_criteria: Report with remediation actions
+      - step: 5
+        action: Alert if integrity compromised or quarantine suspicious entries
+        entry_criteria: Report completed
+        exit_criteria: Notifications sent; suspicious entries isolated
+    completion_criteria: Validation report generated; alerts sent; suspicious entries quarantined
+    rollback_plan: Investigate false positives; refine detection rules; maintain audit trail
+
+# ============================================================================
+# 3. TASK TEMPLATES (DOM-012-TT-*)
+# ============================================================================
+
+task_templates:
+  TT-001:
+    name: Memory Lookup Task
+    purpose: Retrieve memory entries matching a query with confidence scoring
+    structure: |
+      input: {query, filter_criteria, max_results, confidence_threshold}
+      retrieval: similarity_search(query_embedding, filter_criteria, k=max_results)
+      filtering: apply_confidence_filter(results, threshold)
+      output: {results, confidence_scores, retrieval_time_ms}
+
+  TT-002:
+    name: Memory Store Task
+    purpose: Store new memory entry with embeddings and metadata
+    structure: |
+      input: {content, memory_type, source, priority, retention_days}
+      embed: generate_embedding(content)
+      validate: check_integrity(content, memory_type)
+      store: persist_entry({content, embedding, metadata, timestamp})
+      index: update_vector_index()
+      output: {entry_id, storage_location, embedding_id}
+
+  TT-003:
+    name: Memory Update Task
+    purpose: Update existing memory entry and re-index
+    structure: |
+      input: {entry_id, updated_content, rationale}
+      retrieve: fetch_entry(entry_id)
+      validate: check_update_consistency(original, updated)
+      embed: regenerate_embedding(updated_content)
+      persist: update_entry_with_new_embedding()
+      reindex: update_vector_index()
+      audit: log_update(entry_id, rationale, timestamp)
+      output: {entry_id, update_timestamp}
+
+# ============================================================================
+# 4. RULES & CONSTRAINTS (DOM-012-RL-*)
+# ============================================================================
+
+rules:
+  RL-001:
+    constraint: Retrieved content must be validated against hallucination indicators (KA-013)
+    rationale: AI-generated content has 19.7% fabrication rate; unreliable content corrupts reasoning
+    enforcement: Hallucination filter applied to all retrieval results with confidence threshold
+    exceptions: Explicit hallucination override for research/exploration tasks with audit logging
+
+  RL-002:
+    constraint: Vulnerability-prone code patterns must be flagged on retrieval (KA-014)
+    rationale: Generated code contains vulnerability patterns; flagging prevents unsafe execution
+    enforcement: Pattern matching against vulnerability DB during retrieval; flag attached to results
+    exceptions: None without security review and explicit override
+
+  RL-003:
+    constraint: Memory consolidation must preserve semantic integrity
+    rationale: Information loss during consolidation leads to reasoning degradation
+    enforcement: Pre/post-consolidation semantic validation; similarity score must exceed threshold
+    exceptions: Approved lossy consolidation for non-critical ephemeral memories
+
+  RL-004:
+    constraint: Vector embeddings must be regenerated when embedding models change
+    rationale: Different embedding models produce incompatible vector spaces; queries return wrong results
+    enforcement: Model version tracked; index flagged stale when model changes; automatic reindex triggered
+    exceptions: None; enforced programmatically
+
+  RL-005:
+    constraint: Long-term memory must have defined retention and decay policies
+    rationale: Unbounded memory growth causes storage bloat and performance degradation
+    enforcement: All entries have explicit retention policy; decay applied per schedule
+    exceptions: Immutable audit logs and compliance records (separate storage tier)
+
+  RL-006:
+    constraint: All memory operations must be auditable
+    rationale: Forensic investigation of failures, poisoning, and data loss require full audit trail
+    enforcement: All CRUD operations logged with timestamp, actor, rationale, before/after state
+    exceptions: None; audit logging non-negotiable
+
+  RL-007:
+    constraint: Memory writes from untrusted sources must be validated before persistence
+    rationale: Poisoned memory from compromised agents or external APIs corrupts downstream reasoning
+    enforcement: Source verification; content validation rules; confidence scoring
+    exceptions: Sandboxed experimental memory with separate index
+
+  RL-008:
+    constraint: Cross-session memory access requires authentication and authorization
+    rationale: Unauthorized access to other agents' or users' memories violates privacy and security
+    enforcement: Identity verification; role-based access control; audit logging
+    exceptions: Explicit sharing agreements with consent

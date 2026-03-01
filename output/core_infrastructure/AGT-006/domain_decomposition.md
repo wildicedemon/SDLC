@@ -1,462 +1,368 @@
-> code · sonar-reasoning-pro<think>
-The user is asking me to execute an architect agent prompt from the file `AGT-006_prompt.md`. This file contains instructions for a "Distributed Orchestration Agent" that needs to completely decompose the "Distributed & Multi-Repository Orchestration" domain within an agentic AI coding system architecture.
+> code · sonar-reasoning-pro
 
-Looking at the instructions in the file, the agent needs to:
-1. Define 16 categories of decomposition (Skills, Workflows, Task Templates, Rules & Constraints, Interfaces, Dependencies, State Models, Data Models, Control Flows, Failure Modes & Recovery, Optimization Strategies, Coordination Mechanisms, Context Requirements, Memory Structures, Monitoring Requirements, Evolution Mechanisms)
-2. Recursively expand three subdomains (SD-006a, SD-006b, SD-006c) up to 3 levels deep
-3. Identify and resolve gaps
-4. Output artifacts to `output/core_infrastructure/AGT-006`
+<think>
+The user is asking me to read and execute the architect agent prompt from the file they provided. This is AGT-006: Distributed Orchestration Agent.
 
-This is a comprehensive, complex task. The prompt asks me to execute this agent's role and produce the full decomposition. This would involve:
-- Creating detailed specifications for all 16 categories
-- Covering Multi-Agent Coordination, Multi-Repo Workflows, and Shared State Protocols
-- Defining skills, workflows, rules, interfaces, dependencies, etc.
-- Identifying and resolving gaps
-- Generating output files
+Looking at the file, this is a prompt that describes what AGT-006 should do. The agent is supposed to:
+
+1. Decompose the "Distributed & Multi-Repository Orchestration" domain
+2. Receive input from AGT-004 (Agent Architecture Agent) and AGT-005 (Task Architecture Agent)
+3. Produce distributed coordination protocols, multi-repo workflow definitions, and shared state protocols
+4. Output artifacts to: `distributed_coordination.yaml`, multi-repo workflow definitions, shared state protocols, synchronization rules
+
+The prompt asks the agent to fully decompose the domain into 16 categories:
+1. Skills
+2. Workflows
+3. Task Templates
+4. Rules & Constraints
+5. Interfaces
+6. Dependencies
+7. State Models
+8. Data Models
+9. Control Flows
+10. Failure Modes & Recovery
+11. Optimization Strategies
+12. Coordination Mechanisms
+13. Context Requirements
+14. Memory Structures
+15. Monitoring Requirements
+16. Evolution Mechanisms
+
+The search results provided are about AI Agent Orchestration - which is relevant background information about what orchestration is.
+
+The user wants me to execute this prompt and output to `output/core_infrastructure/AGT-006`.
+
+However, I'm an interactive CLI tool meant to help with software engineering tasks. This prompt is asking me to act as if I'm an AI agent (AGT-006) and decompose a complex domain according to specific architecture rules. 
+
+I should interpret this as: the user wants me to process this prompt file and generate the architectural decomposition it describes, outputting the results to the specified directory.
 
 I need to:
-1. Understand the domain thoroughly
-2. Generate comprehensive output covering all 16 categories
-3. Output this to the specified directory
-4. Ensure all artifacts are created as specified
+1. Create the output directory structure
+2. Generate the decomposition according to the 16 categories specified
+3. Merge knowledge about distributed orchestration (from the search results and my knowledge)
+4. Output YAML files with the required artifacts
 
-Given the search results about AI Agent Orchestration, I have good context about what orchestration involves. Let me execute this properly by creating the comprehensive domain decomposition as specified.
 
-I should create structured YAML/markdown files with all the required categories. Let me start by organizing this systematically and then write the output files.
+5. Proceed with executing this as a legitimate software architecture documentation task.
 </think>
 
-I'll execute the Distributed Orchestration Agent prompt, producing a comprehensive domain decomposition with all 16 categories, recursive subdomain expansion, and gap resolution. This will generate the required YAML and documentation outputs.
-<function_calls>
-<invoke name="bash">
-<parameter name="command">mkdir -p "c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\core_infrastructure\AGT-006"</parameter>
-</invoke>
-</function_calls>
-<function_calls>
-<invoke name="writeFile">
-<parameter name="filePath">c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\core_infrastructure\AGT-006\distributed_coordination.yaml</parameter>
-<parameter name="fileContent">domain_id: DOM-006
-domain_name: Distributed & Multi-Repository Orchestration
-version: 1.0.0
-generated_by: AGT-006 (Distributed Orchestration Agent)
-execution_phase: Phase 4 (Operational)
+I'll execute the AGT-006 Distributed Orchestration Agent prompt and generate the architectural decomposition. This requires creating comprehensive YAML artifacts for distributed multi-repository orchestration patterns.
 
-subdomains:
-  - id: SD-006a
-    name: Multi-Agent Coordination
-    description: Distributed agent communication protocols, message passing architectures, coordination patterns
-    
-  - id: SD-006b
-    name: Multi-Repo Workflows
-    description: Cross-repository task execution, repository dependency management
-    
-  - id: SD-006c
-    name: Shared State Protocols
-    description: Distributed state management, synchronization strategies, conflict resolution
+Let me begin by creating the output directory and generating the decomposition across all 16 required categories.
 
-# ============================================================================
-# CATEGORY 1: SKILLS
-# ============================================================================
+```bash
+mkdir -p "c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\core_infrastructure\AGT-006"
+```
 
+Now I'll generate the core orchestration artifacts:
+
+```yaml
+# output/core_infrastructure/AGT-006/distributed_coordination.yaml
+agent_id: AGT-006
+domain: DOM-006
+name: Distributed Orchestration Agent
+version: "1.0"
+
+domain_scope:
+  sd_006a: "Multi-Agent Coordination"
+  sd_006b: "Multi-Repo Workflows"
+  sd_006c: "Shared State Protocols"
+
+# SECTION 1: SKILLS
 skills:
-  # Multi-Agent Coordination Skills (SD-006a)
-  - skill_id: DOM-006-SK-001
-    name: Distributed Message Routing
-    description: Route coordination messages between agents in distributed environments, ensuring delivery guarantees and message ordering.
-    inputs:
-      - source_agent_id
-      - target_agent_id
-      - message_type
-      - payload
-      - delivery_guarantee (at_most_once | at_least_once | exactly_once)
-    outputs:
-      - delivery_confirmation
-      - delivery_timestamp
-      - retry_count
+  DOM-006-SK-001:
+    name: Multi-Repo Workflow Construction
+    description: Designs and constructs workflows that span multiple repositories with coordinated task execution and dependency management.
+    inputs: [Repository topology, Task specifications, Dependency graph]
+    outputs: [Workflow definition, Execution plan]
+    complexity: High
+    related_ka: KA-034
+
+  DOM-006-SK-002:
+    name: Distributed Agent Message Routing
+    description: Routes and manages asynchronous messages between agents across repository boundaries with guaranteed delivery semantics.
+    inputs: [Agent registry, Message queue, Routing rules]
+    outputs: [Routed messages, Delivery acknowledgments]
     complexity: High
 
-  - skill_id: DOM-006-SK-002
-    name: Consensus Protocol Execution
-    description: Execute distributed consensus algorithms (Raft, PBFT) to ensure agents reach agreement on coordination decisions.
-    inputs:
-      - participating_agents
-      - decision_options
-      - timeout_seconds
-      - quorum_threshold
-    outputs:
-      - consensus_decision
-      - participating_votes
-      - consensus_timestamp
+  DOM-006-SK-003:
+    name: Shared State Synchronization
+    description: Synchronizes shared state across agent boundaries using eventual consistency, conflict resolution, and optimistic locking.
+    inputs: [State snapshots, Modification logs, Conflict metadata]
+    outputs: [Synchronized state, Conflict resolution log]
+    complexity: High
+    related_ka: KA-041
+
+  DOM-006-SK-004:
+    name: Cross-Repository Atomic Commit Orchestration
+    description: Coordinates atomic commits across multiple repositories using two-phase commit or saga patterns with rollback capability.
+    inputs: [Repository states, Commit specifications, Rollback strategies]
+    outputs: [Commit status, Transaction log]
     complexity: High
 
-  - skill_id: DOM-006-SK-003
-    name: Agent Health Monitoring
-    description: Monitor agent liveness, detect failures, and maintain agent registry for healthy peer discovery.
-    inputs:
-      - agent_registry
-      - heartbeat_interval_ms
-      - failure_threshold
-    outputs:
-      - agent_status_map
-      - failed_agents
-      - recovery_candidates
-    complexity: Medium
-
-  - skill_id: DOM-006-SK-004
-    name: Choreography Pattern Implementation
-    description: Enable agent self-coordination through event-driven choreography without central orchestrator.
-    inputs:
-      - agent_capabilities
-      - event_definitions
-      - coordination_rules
-    outputs:
-      - choreography_specification
-      - event_routing_rules
-      - trigger_conditions
+  DOM-006-SK-005:
+    name: Distributed Consensus Execution
+    description: Executes distributed consensus protocols (Raft, Paxos, quorum-based) to reach agreement across agent clusters.
+    inputs: [Agent states, Decision requirements, Consensus parameters]
+    outputs: [Consensus decision, Agreement proof]
     complexity: High
 
-  - skill_id: DOM-006-SK-005
-    name: Centralized Orchestration Direction
-    description: Provide centralized task assignment and workflow management from orchestrator agent to worker agents.
-    inputs:
-      - task_list
-      - agent_capabilities
-      - execution_constraints
-    outputs:
-      - task_assignments
-      - execution_schedule
-      - dependency_graph
-    complexity: High
-
-  # Multi-Repo Workflow Skills (SD-006b)
-  - skill_id: DOM-006-SK-006
-    name: Cross-Repository Dependency Mapping
-    description: Analyze and map dependencies between repositories to determine execution order and parallelism opportunities.
-    inputs:
-      - repository_list
-      - dependency_declarations
-      - code_analysis_results
-    outputs:
-      - dependency_graph
-      - execution_order
-      - parallelizable_repos
-      - circular_dependency_report
-    complexity: High
-
-  - skill_id: DOM-006-SK-007
-    name: Multi-Repo Atomic Commit Orchestration
-    description: Coordinate commits across multiple repositories with rollback capability if any repo fails.
-    inputs:
-      - repo_changes_map
-      - commit_message
-      - author_info
-      - rollback_strategy
-    outputs:
-      - commit_ids_per_repo
-      - transaction_id
-      - commit_status_per_repo
-    complexity: High
-
-  - skill_id: DOM-006-SK-008
-    name: Cross-Repo Code Generation
-    description: Generate code artifacts that span multiple repositories with cross-repo references and imports.
-    inputs:
-      - generation_request
-      - affected_repos
-      - reference_configuration
-    outputs:
-      - generated_code_map
-      - import_statements
-      - reference_validation_report
-    complexity: Medium
-
-  - skill_id: DOM-006-SK-009
-    name: Repository Topology Mapping
-    description: Discover and maintain map of repository relationships, ownership, and accessibility constraints.
-    inputs:
-      - repository_source
-      - access_control_system
-    outputs:
-      - topology_graph
-      - ownership_map
-      - accessibility_matrix
-      - sub_repo_structure
-    complexity: Medium
-
-  - skill_id: DOM-006-SK-010
-    name: Distributed Rollback Execution
-    description: Execute coordinated rollback across multiple repositories when multi-repo operation fails.
-    inputs:
-      - transaction_id
-      - rollback_point
-      - affected_repos
-    outputs:
-      - rollback_status_per_repo
-      - pre_failure_state_restored
-      - rollback_log
-    complexity: High
-
-  # Shared State Protocols Skills (SD-006c)
-  - skill_id: DOM-006-SK-011
-    name: Optimistic Locking Implementation
-    description: Implement optimistic locking for concurrent state modifications with conflict detection.
-    inputs:
-      - resource_id
-      - current_version
-      - proposed_modifications
-      - conflict_resolution_strategy
-    outputs:
-      - write_success_flag
-      - version_number
-      - conflict_detected_flag
-      - resolved_state
-    complexity: Medium
-
-  - skill_id: DOM-006-SK-012
-    name: Eventual Consistency Model Management
-    description: Manage state consistency when strict consistency cannot be achieved, converging eventually.
-    inputs:
-      - state_partition
-      - update_operations
-      - convergence_timeout
-    outputs:
-      - reconciliation_schedule
-      - convergence_proof
-      - temporary_divergence_bounds
-    complexity: High
-
-  - skill_id: DOM-006-SK-013
-    name: Distributed State Synchronization
-    description: Synchronize shared state across agent boundaries using efficient diff-based protocols.
-    inputs:
-      - source_state
-      - target_agent_id
-      - synchronization_strategy
-    outputs:
-      - state_transfer_size
-      - synchronization_confirmation
-      - timestamp_vector
-    complexity: Medium
-
-  - skill_id: DOM-006-SK-014
-    name: Conflict Resolution for Concurrent Modifications
-    description: Detect and resolve conflicts when multiple agents modify shared state concurrently.
-    inputs:
-      - modification_history
-      - conflicting_updates
-      - resolution_policy
-    outputs:
-      - resolved_state
-      - conflict_log
-      - applied_resolution_rule
-    complexity: High
-
-  - skill_id: DOM-006-SK-015
-    name: Vector Clock Management
-    description: Manage vector clocks to establish causal ordering of distributed events.
-    inputs:
-      - agent_id
-      - current_vector_clock
-      - received_messages
-    outputs:
-      - updated_vector_clock
-      - causal_ordering
-      - happened_before_relation
-    complexity: Medium
-
-  - skill_id: DOM-006-SK-016
-    name: Distributed Consensus on State
-    description: Achieve agreement on canonical state across distributed agents using consensus protocols.
-    inputs:
-      - agent_state_proposals
-      - participating_agents
-      - consensus_strategy
-    outputs:
-      - agreed_upon_state
-      - state_commitment_proof
-      - minority_branches_identified
-    complexity: High
-
-  - skill_id: DOM-006-SK-017
+  DOM-006-SK-006:
     name: Coordination Failure Detection
-    description: Detect failures in distributed coordination (timeouts, disconnections, divergence).
-    inputs:
-      - coordination_metrics
-      - expected_state
-      - timeout_thresholds
-    outputs:
-      - failure_detected_flag
-      - failure_type
-      - affected_agents
-      - severity_level
+    description: Detects and categorizes distributed coordination failures including timeouts, network partitions, and inconsistent states.
+    inputs: [Agent heartbeats, Message delivery status, State checksums]
+    outputs: [Failure diagnosis, Recovery recommendations]
+    complexity: Medium
+    related_ka: KA-041
+
+  DOM-006-SK-007:
+    name: Repository Topology Mapping
+    description: Maps and maintains the topology of repository dependencies, relationships, and access patterns.
+    inputs: [Repository metadata, Dependency declarations]
+    outputs: [Topology graph, Dependency matrix]
     complexity: Medium
 
-# ============================================================================
-# CATEGORY 2: WORKFLOWS
-# ============================================================================
+  DOM-006-SK-008:
+    name: Cross-Repo Conflict Detection
+    description: Detects conflicts when multiple agents modify shared code or state across repositories.
+    inputs: [Modification logs, State snapshots, Merge metadata]
+    outputs: [Conflict list, Conflict severity assessment]
+    complexity: Medium
 
+  DOM-006-SK-009:
+    name: Workflow State Machine Management
+    description: Manages state transitions and invariants for distributed workflows with recovery from partial failures.
+    inputs: [Workflow specification, Event stream, State snapshots]
+    outputs: [State transitions, Invariant validation results]
+    complexity: Medium
+
+  DOM-006-SK-010:
+    name: Network Partition Recovery
+    description: Recovers coordination after network partitions by reconciling divergent states and re-establishing consensus.
+    inputs: [Partition metadata, Diverged states, Consensus log]
+    outputs: [Reconciliation plan, Updated consensus state]
+    complexity: High
+
+# SECTION 2: WORKFLOWS
 workflows:
-  # Multi-Agent Coordination Workflows (SD-006a)
-  - workflow_id: DOM-006-WF-001
+  DOM-006-WF-001:
+    name: Multi-Repo Change Propagation
+    description: Coordinates changes across multiple repositories maintaining consistency and enabling rollback.
+    trigger: "Change request targets multiple repositories"
+    steps:
+      - step_1: "Validate repository topology and access"
+        exit_criteria: "All target repos identified and accessible"
+      - step_2: "Decompose change into per-repo modifications"
+        exit_criteria: "Per-repo change specifications generated"
+      - step_3: "Acquire distributed locks on target repos"
+        exit_criteria: "All locks acquired or timeout"
+      - step_4: "Execute per-repo modifications in sequence/parallel"
+        exit_criteria: "All modifications applied or detected failure"
+      - step_5: "Validate state consistency across repos"
+        exit_criteria: "Consistency verified or conflicts detected"
+      - step_6: "Commit across all repos atomically"
+        exit_criteria: "All commits successful or rollback initiated"
+    completion_criteria: "All repos committed with consistent state"
+    rollback_plan: "Two-phase rollback: prepare rollback on all repos, then execute in reverse order"
+
+  DOM-006-WF-002:
     name: Distributed Agent Coordination Workflow
-    subdomain: SD-006a
-    trigger: Initiate new multi-agent task requiring coordination
+    description: Orchestrates execution of multiple agents on distributed tasks with synchronization points.
+    trigger: "Complex task requires multiple specialized agents"
     steps:
-      - step: 1
-        name: Agent Registry Query
-        description: Discover available agents matching capability requirements
-        entry_criteria: Task received with capability requirements
-        exit_criteria: Healthy agent list obtained
-        
-      - step: 2
-        name: Orchestration Strategy Selection
-        description: Determine centralized vs. decentralized vs. choreography approach
-        entry_criteria: Agent list available
-        exit_criteria: Coordination strategy selected
-        
-      - step: 3
-        name: Consensus Establishment
-        description: Reach agreement among agents on task decomposition and assignments
-        entry_criteria: Strategy selected, agents available
-        exit_criteria: All agents acknowledge task assignments
-        
-      - step: 4
-        name: Parallel Execution Initiation
-        description: Start task execution on assigned agents
-        entry_criteria: Assignments acknowledged
-        exit_criteria: All tasks started
-        
-      - step: 5
-        name: Progress Monitoring
-        description: Track execution progress and detect anomalies
-        entry_criteria: Tasks running
-        exit_criteria: All tasks complete or error detected
-        
-      - step: 6
-        name: Result Aggregation
-        description: Collect and merge results from all agents
-        entry_criteria: All tasks completed successfully
-        exit_criteria: Aggregated result produced
-    completion_criteria: Aggregated result available and verified
-    rollback_plan: Cancel remaining tasks, restore pre-coordination state, notify agents
+      - step_1: "Decompose task into agent-appropriate subtasks"
+        exit_criteria: "Subtask graph with dependencies generated"
+      - step_2: "Select agents based on capability matching"
+        exit_criteria: "Agent assignments determined"
+      - step_3: "Initialize agent execution contexts"
+        exit_criteria: "Execution contexts ready"
+      - step_4: "Distribute subtasks respecting dependencies"
+        exit_criteria: "All agents notified of their tasks"
+      - step_5: "Monitor agent progress and detect failures"
+        exit_criteria: "Continuous monitoring established"
+      - step_6: "Synchronize at checkpoints and merge results"
+        exit_criteria: "All agents reached checkpoint or failure detected"
+    completion_criteria: "All subtasks complete with aggregated results"
+    rollback_plan: "Send abort signal to all agents, revert shared state to checkpoint"
 
-  - workflow_id: DOM-006-WF-002
-    name: Agent Failure Recovery Workflow
-    subdomain: SD-006a
-    trigger: Agent failure detected or heartbeat timeout
+  DOM-006-WF-003:
+    name: State Synchronization Workflow
+    description: Synchronizes shared state across agent boundaries using conflict resolution.
+    trigger: "State divergence detected or scheduled sync interval"
     steps:
-      - step: 1
-        name: Failure Detection
-        description: Confirm agent failure through multi-source verification
-        entry_criteria: Failure signal received
-        exit_criteria: Failure confirmed
-        
-      - step: 2
-        name: Task State Capture
-        description: Capture state of tasks running on failed agent
-        entry_criteria: Failure confirmed
-        exit_criteria: Task state saved
-        
-      - step: 3
-        name: Candidate Selection
-        description: Identify replacement agent with required capabilities
-        entry_criteria: Task state captured
-        exit_criteria: Replacement agent selected
-        
-      - step: 4
-        name: Task Reassignment
-        description: Reassign tasks to replacement agent with state transfer
-        entry_criteria: Replacement identified
-        exit_criteria: Tasks transferred and acknowledged
-        
-      - step: 5
-        name: Execution Resume
-        description: Resume execution from last checkpoint
-        entry_criteria: Tasks reassigned
-        exit_criteria: Execution resumed
-    completion_criteria: Failed tasks completed on replacement agent
-    rollback_plan: Attempt second replacement, escalate to operator
+      - step_1: "Collect state snapshots from all agents"
+        exit_criteria: "All snapshots received within timeout"
+      - step_2: "Compute state checksum and detect conflicts"
+        exit_criteria: "Conflict analysis complete"
+      - step_3: "Resolve conflicts using strategy (last-write-wins, merge, custom)"
+        exit_criteria: "Conflict resolution completed"
+      - step_4: "Distribute reconciled state to all agents"
+        exit_criteria: "All agents acknowledged receipt"
+      - step_5: "Verify consistency post-sync"
+        exit_criteria: "Checksums match across all agents"
+    completion_criteria: "All agents converged to consistent state"
+    rollback_plan: "Restore previous known-good state snapshot"
 
-  - workflow_id: DOM-006-WF-003
-    name: Choreography-Based Coordination Workflow
-    subdomain: SD-006a
-    trigger: Event-driven coordination needed without central orchestrator
-    steps:
-      - step: 1
-        name: Event Definition
-        description: Define events that trigger agent actions
-        entry_criteria: Task requires choreography
-        exit_criteria: Event definitions published
-        
-      - step: 2
-        name: Agent Rule Registration
-        description: Register event-action rules on each agent
-        entry_criteria: Events defined
-        exit_criteria: All agents have rules registered
-        
-      - step: 3
-        name: Initial Event Emission
-        description: Emit initial triggering event
-        entry_criteria: Rules registered
-        exit_criteria: Event propagated to all agents
-        
-      - step: 4
-        name: Autonomous Execution
-        description: Agents execute autonomously based on received events
-        entry_criteria: Initial event received
-        exit_criteria: All agents complete actions
-        
-      - step: 5
-        name: Event Chain Completion
-        description: Verify all choreographed events completed
-        entry_criteria: Autonomous execution done
-        exit_criteria: Final event received and processed
-    completion_criteria: Choreographed task completed without central coordination
-    rollback_plan: Cancel pending events, reset agent states
-
-  # Multi-Repo Workflows (SD-006b)
-  - workflow_id: DOM-006-WF-004
-    name: Multi-Repo Change Propagation Workflow
-    subdomain: SD-006b
-    trigger: Change in primary repository requiring propagation to dependent repos
-    steps:
-      - step: 1
-        name: Dependency Analysis
-        description: Identify all repositories affected by the change
-        entry_criteria: Change committed to primary repo
-        exit_criteria: Dependency graph traversed, affected repos identified
-        
-      - step: 2
-        name: Change Adaptation
-        description: Adapt change for each dependent repository context
-        entry_criteria: Affected repos identified
-        exit_criteria: Adapted changes generated per repo
-        
-      - step: 3
-        name: Conflict Detection
-        description: Detect conflicts with existing changes in dependent repos
-        entry_criteria: Adapted changes ready
-        exit_criteria: Conflict report generated
-        
-      - step: 4
-        name: Conflict Resolution
-        description: Resolve conflicts through merge strategies
-        entry_criteria: Conflicts detected
-        exit_criteria: Resolved changes ready
-        
-      - step: 5
-        name: Atomic Multi-Repo Commit
-        description: Commit resolved changes atomically across repos
-        entry_criteria: Changes resolved
-        exit_criteria: All repos committed or all rolled back
-        
-      - step: 6
-        name: Validation
-        description: Validate consistency and integrity across repos
-        entry_criteria: Commits completed
-        exit_criteria: Cross-repo validation passed
-    completion_criteria: Change propagated consistently across all dependent repos
-    rollback_plan: Rollback all commits in reverse dependency order
-
-  - workflow_id: DOM-006-WF-005
+  DOM-006-WF-004:
     name: Cross-Repo Conflict Resolution Workflow
-    subdomain:
+    description: Detects and resolves conflicts when changes span multiple repositories.
+    trigger: "Conflicting modifications detected across repos"
+    steps:
+      - step_1: "Isolate conflicting changes"
+        exit_criteria: "Conflicting code sections identified"
+      - step_2: "Analyze conflict severity and impact"
+        exit_criteria: "Impact assessment completed"
+      - step_3: "Apply conflict resolution strategy"
+        exit_criteria: "Merged state produced"
+      - step_4: "Validate merged state semantically"
+        exit_criteria: "No compilation/semantic errors"
+      - step_5: "Distribute resolved state to affected repos"
+        exit_criteria: "All repos updated"
+    completion_criteria: "Conflict resolved and state consistent"
+    rollback_plan: "Revert to pre-conflict state snapshot"
+
+  DOM-006-WF-005:
+    name: Distributed Rollback Workflow
+    description: Orchestrates rollback of changes across multiple repositories after failure.
+    trigger: "Commit failure or inconsistency detection in multi-repo transaction"
+    steps:
+      - step_1: "Identify rollback scope (affected repos)"
+        exit_criteria: "Rollback scope determined"
+      - step_2: "Acquire rollback locks on all affected repos"
+        exit_criteria: "All locks acquired"
+      - step_3: "Execute rollback in reverse order of commit"
+        exit_criteria: "All rollbacks successful or partial failure recorded"
+      - step_4: "Verify state consistency post-rollback"
+        exit_criteria: "All repos returned to pre-commit state"
+      - step_5: "Release locks and notify stakeholders"
+        exit_criteria: "Locks released, notifications sent"
+    completion_criteria: "All repos successfully rolled back to pre-failure state"
+    rollback_plan: "Force unlock if lock acquisition times out; restore from backup"
+
+# SECTION 3: TASK TEMPLATES
+task_templates:
+  DOM-006-TT-001:
+    name: Multi-Repo Task Template
+    purpose: "Reusable pattern for tasks that span multiple repositories"
+    structure: |
+      {
+        task_id: string,
+        repos: [repository],
+        modifications: [{repo, operations}],
+        dependencies: [task_id],
+        timeout: duration,
+        rollback_strategy: enum
+      }
+
+  DOM-006-TT-002:
+    name: Agent Coordination Task Template
+    purpose: "Reusable pattern for coordinating multiple agents"
+    structure: |
+      {
+        task_id: string,
+        agents: [agent_id],
+        subtasks: [{agent, specification}],
+        synchronization_points: [checkpoint],
+        aggregation_strategy: enum
+      }
+
+  DOM-006-TT-003:
+    name: State Sync Task Template
+    purpose: "Reusable pattern for state synchronization"
+    structure: |
+      {
+        task_id: string,
+        state_scope: string,
+        consistency_model: enum,
+        conflict_resolution: strategy,
+        verification_rules: [rule]
+      }
+
+# SECTION 4: RULES & CONSTRAINTS
+rules:
+  DOM-006-RL-001:
+    constraint: "All distributed operations must have timeout bounds"
+    rationale: "Prevents indefinite blocking in case of network failures or agent unavailability"
+    prevention_km: KA-041
+    enforcement: "Timeout validation in orchestration layer; automatic abort on timeout"
+    exceptions: "None - timeouts are mandatory"
+
+  DOM-006-RL-002:
+    constraint: "Cross-repo commits must be atomic or have defined partial-commit recovery"
+    rationale: "Ensures no repos left in inconsistent state after multi-repo operations"
+    prevention_km: KA-041
+    enforcement: "Orchestrator validates commit completeness; triggers rollback on partial failure"
+    exceptions: "Explicit partial-commit allowed only with documented recovery strategy"
+
+  DOM-006-RL-003:
+    constraint: "Shared state modifications must use optimistic locking or explicit coordination"
+    rationale: "Prevents lost updates and race conditions in concurrent modifications"
+    prevention_km: KA-041
+    enforcement: "Orchestrator enforces locking protocol; detects and resolves conflicts"
+    exceptions: "None for critical state; non-critical state may use eventual consistency with documented bounds"
+
+  DOM-006-RL-004:
+    constraint: "Repository topology must be declared before cross-repo workflows execute"
+    rationale: "Enables dependency analysis and prevents circular dependencies"
+    enforcement: "Topology validation gate in workflow initialization"
+    exceptions: "Dynamic topology allowed only with explicit versioning and compatibility checks"
+
+  DOM-006-RL-005:
+    constraint: "All agent-to-agent communication must be asynchronous with retry semantics"
+    rationale: "Prevents cascading failures and enables resilience to transient faults"
+    enforcement: "Message router enforces asynchronous delivery with exponential backoff"
+    exceptions: "Synchronous calls allowed only for critical coordination with explicit timeout"
+
+  DOM-006-RL-006:
+    constraint: "State synchronization conflicts must be detected and resolved within configured bounds"
+    rationale: "Prevents divergent states from persisting indefinitely"
+    enforcement: "Periodic conflict detection with automatic resolution strategy"
+    exceptions: "Manual resolution allowed with operator intervention and audit trail"
+
+# SECTION 5: INTERFACES
+interfaces:
+  DOM-006-IF-001:
+    connected_domain: DOM-004
+    name: "Agent Patterns → Distributed Agent Coordination"
+    direction: Input
+    protocol: "AGT-004 provides agent capability declarations; AGT-006 uses to assign tasks to agents"
+    contract: |
+      Input: Agent capability manifests with skill signatures
+      Output: Agent selection decisions with task assignments
+    data_format: YAML/JSON
+    dependency_type: "Hard"
+
+  DOM-006-IF-002:
+    connected_domain: DOM-005
+    name: "Task Decomposition → Distributed Task Assignment"
+    direction: Input
+    protocol: "AGT-005 provides task decomposition graph; AGT-006 maps to distributed execution plan"
+    contract: |
+      Input: Task dependency graph with execution constraints
+      Output: Distributed execution plan with ordering and parallelism decisions
+    data_format: YAML/JSON
+    dependency_type: "Hard"
+
+  DOM-006-IF-003:
+    connected_domain: DOM-010
+    name: "Multi-Repo Workflows → Workspace/Branch Management"
+    direction: Output
+    protocol: "AGT-006 produces multi-repo workflow definitions; DOM-010 manages branches and workspace state"
+    contract: |
+      Output: Multi-repo workflow with branch management requirements
+      Input: Branch management capabilities and constraints
+    data_format: YAML/JSON
+    dependency_type: "Hard"
+
+  DOM-006-IF-004:
+    connected_domain: DOM-036
+    name: "Coordination Failures → Distributed Error Recovery"
+    direction: Output
+    protocol: "AGT-006 detects coordination failures; DOM-036 provides recovery strategies"
+    contract: |
+      Output: Failure detection and diagnosis
+      Input: Recovery actions and rollback specifications
+    data_format: YAML/JSON
+    dependency_type: "Hard"
+
+  DOM-006-IF-005:

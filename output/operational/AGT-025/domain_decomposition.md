@@ -1,391 +1,326 @@
 > code · sonar-reasoning-pro
-
-
 <think>
-The user has provided:
-1. Search results about SDLC (Software Development Life Cycle) phases
-2. A file containing an "Agent AGT-025: Scaling Strategies Agent" prompt
-3. An instruction to execute the architect agent prompt from the attached file and output to `output/operational/AGT-025`
+The user has provided me with a file called "AGT-025_prompt.md" which contains a detailed system directive for an "Agent AGT-025: Scaling Strategies Agent". The prompt asks me to "Execute the architect agent prompt from the attached file. Output to output/operational/AGT-025."
 
-However, looking at my instructions carefully:
-- I'm instructed to NOT be conversational
-- I should be direct and to the point
-- I should NOT ask for more information than necessary
-- I should accomplish tasks iteratively and methodically
+This is asking me to act as this Scaling Strategies Agent and execute the comprehensive decomposition of the Large Codebase & Scaling Strategies domain as described in the prompt. The prompt requires me to decompose the domain into 16 categories with specific requirements.
 
-The user is asking me to "Execute the architect agent prompt from the attached file." This appears to be asking me to run some kind of architectural decomposition based on the AGT-025 prompt that was provided.
+However, I need to be careful here. Looking at my instructions:
+1. I'm Kilo, a software engineering assistant
+2. I should be direct and concise
+3. I should NOT be conversational
+4. I should NOT end with questions
 
-However, looking at the prompt file (AGT-025_prompt.md), this appears to be a system directive for an autonomous agent (not for me to execute). It's asking for a complete decomposition of a domain into 16 categories (Skills, Workflows, Task Templates, Rules & Constraints, etc.).
+The user is asking me to execute this agent prompt, which would involve:
+1. Creating a comprehensive YAML output file
+2. Decomposing the domain into all 16 categories
+3. Handling recursive expansion
+4. Identifying and resolving gaps
+5. Ensuring all cross-domain interfaces are defined
+6. Creating output artifacts
 
-The search results about SDLC appear to be unrelated to the actual task - they seem to be context that was accidentally included or not properly integrated into the query.
+This is a substantial task that requires me to:
+1. Understand the complex domain structure
+2. Create a detailed architectural decomposition
+3. Write the output to `output/operational/AGT-025/` directory
 
-I need to clarify: Should I:
-1. Generate the decomposition output as described in AGT-025?
-2. Create the YAML/output files referenced in the prompt?
+However, looking at the search results provided, they seem to be about SDLC phases in general (from Harness, IBM, Splunk, etc.) and don't directly relate to the agent prompt execution. These search results appear to be context about what SDLC is, but the actual task is to execute the architect agent prompt for DOM-025 (Large Codebase & Scaling Strategies).
 
-Given my role as Kilo (a software engineer), I should interpret this as: Generate the complete domain decomposition for AGT-025 (Scaling Strategies Agent) according to the specification in the prompt, and output it to `output/operational/AGT-025`.
+I think the search results were provided by mistake or as general context. The real task is to execute the AGT-025 prompt.
 
-This is a substantial task that requires creating:
-- 16 categories of architectural components
-- 3 recursive subdomains decomposed
-- All gaps resolved
-- Output artifacts (YAML files)
-
-I should start by creating the directory structure and then generating the comprehensive decomposition.
+Let me proceed with executing this as the AGT-025 Scaling Strategies Agent and produce the comprehensive decomposition output.
 </think>
 
-I'll execute the AGT-025 Scaling Strategies Agent architectural decomposition and output the complete domain definition to `output/operational/AGT-025`.
-<function_calls>
-<invoke name="bash">
-<parameter name="command">mkdir -p "c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\operational\AGT-025"</parameter>
-</invoke>
-</function_calls>
-<invoke name="file">
-<parameter name="action">write</parameter>
-<parameter name="filePath">c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\operational\AGT-025\domain_decomposition.yaml</parameter>
-<parameter name="content">agent: AGT-025
-domain: DOM-025 Large Codebase & Scaling Strategies
-category: Operational
-execution_phase: Phase 4 (Operational)
-timestamp: "2026-03-01T05:06:58Z"
+I'll execute the AGT-025 Scaling Strategies Agent prompt and produce the comprehensive domain decomposition artifacts.
 
----
+<bash>
+mkdir -p "output/operational/AGT-025"
+</bash>
 
-section_1_skills:
-  - id: DOM-025-SK-001
+Now I'll generate the complete decomposition for DOM-025 Large Codebase & Scaling Strategies:
+
+<file_create>
+path: output/operational/AGT-025/scaling_strategies.yaml
+content: domain_id: DOM-025
+domain_name: Large Codebase & Scaling Strategies
+version: "1.0"
+created: "2026-03-01"
+subdomains:
+  - id: SD-025a
+    name: Monorepo Handling
+    knowledge_atoms: [KA-034]
+    scope: Monorepo structure awareness, selective analysis, cross-package dependency tracking, navigation optimization
+  - id: SD-025b
+    name: Incremental Analysis
+    knowledge_atoms: [KA-037]
+    scope: Change-based analysis scoping, incremental index updates, differential processing, cache-aware recomputation
+  - id: SD-025c
+    name: Performance at Scale
+    knowledge_atoms: []
+    scope: Resource allocation for large codebases, parallel processing strategies, memory-efficient analysis, adaptive complexity management
+
+skills:
+  - skill_id: DOM-025-SK-001
     name: Monorepo Structure Detection and Mapping
-    description: Analyzes repository topology to identify monorepo patterns, package boundaries, and structural organization. Maps relationships between workspaces.
-    inputs:
-      - Repository file system structure
-      - Package manifests (package.json, Cargo.toml, etc.)
-      - Workspace configuration files
-    outputs:
-      - Monorepo topology map (packages, boundaries, relationships)
-      - Workspace hierarchy
-      - Dependency graph skeleton
+    description: Identifies monorepo root, detects workspace boundaries, maps inter-package structure, and creates dependency graphs for monorepo navigation.
+    inputs: [file_tree, package_manifests, workspace_configs]
+    outputs: [monorepo_map, package_graph, workspace_boundaries]
     complexity: High
-    knowledge_atoms: [KA-034]
 
-  - id: DOM-025-SK-002
+  - skill_id: DOM-025-SK-002
+    name: Cross-Package Dependency Analysis
+    description: Traces dependencies across monorepo packages, identifies circular dependencies, and determines change impact across package boundaries.
+    inputs: [monorepo_map, package_manifests, dependency_declarations]
+    outputs: [dependency_graph, impact_analysis, circular_deps]
+    complexity: High
+
+  - skill_id: DOM-025-SK-003
     name: Incremental Analysis Scope Determination
-    description: Determines which packages, modules, and files must be reanalyzed based on detected changes. Computes transitive impact scope.
-    inputs:
-      - Changed files list
-      - Dependency graph
-      - Previous analysis state
-    outputs:
-      - Affected scope (files, packages, modules)
-      - Analysis depth recommendation
-      - Cache invalidation set
+    description: Analyzes file change deltas, determines affected packages/modules, and selects appropriate analysis depth based on change scope.
+    inputs: [file_changes, dependency_graph, previous_analysis_state]
+    outputs: [analysis_scope, affected_packages, analysis_depth]
     complexity: High
-    knowledge_atoms: [KA-037]
 
-  - id: DOM-025-SK-003
-    name: Resource Allocation Optimization for Large Codebases
-    description: Determines optimal resource distribution (CPU, memory, parallelism) based on codebase scale, complexity, and available infrastructure.
-    inputs:
-      - Codebase Scale Profile
-      - System resource constraints
-      - Performance SLAs
-      - Current load metrics
-    outputs:
-      - Resource allocation plan (CPU cores, memory limits, worker counts)
-      - Parallelism strategy
-      - Estimated completion time
+  - skill_id: DOM-025-SK-004
+    name: Resource Allocation Optimization
+    description: Calculates optimal resource distribution based on codebase size, complexity, and available system resources.
+    inputs: [codebase_profile, system_resources, scaling_strategy]
+    outputs: [resource_allocation, memory_budget, parallelism_config]
     complexity: Medium
-    knowledge_atoms: []
 
-  - id: DOM-025-SK-004
+  - skill_id: DOM-025-SK-005
     name: Parallel Processing Strategy Selection
-    description: Selects optimal parallelism strategy (horizontal scaling, task batching, pipeline parallelism) based on workload characteristics and resource constraints.
-    inputs:
-      - Workload dependency graph
-      - Available parallelism levels
-      - Resource constraints
-      - Latency requirements
-    outputs:
-      - Parallelism strategy configuration
-      - Worker pool sizing
-      - Batch grouping recommendations
-    complexity: High
-    knowledge_atoms: []
-
-  - id: DOM-025-SK-005
-    name: Memory-Efficient AST Processing for Large Files
-    description: Implements streaming and chunked AST processing to handle large source files without memory exhaustion. Uses iterative analysis and garbage collection awareness.
-    inputs:
-      - Large source file
-      - Memory budget
-      - Analysis requirements
-    outputs:
-      - Streamed analysis results
-      - Partial AST artifacts
-      - Memory usage telemetry
-    complexity: High
-    knowledge_atoms: [KA-037]
-
-  - id: DOM-025-SK-006
-    name: Cross-Package Dependency Analysis in Monorepos
-    description: Analyzes and bounds dependency relationships across packages in monorepos. Detects dependency cycles and transitive impacts.
-    inputs:
-      - Package manifests
-      - Import statements across packages
-      - Monorepo topology
-    outputs:
-      - Cross-package dependency matrix
-      - Cycle detection report
-      - Impact transitive closure
-      - Bounded scope recommendations
-    complexity: High
-    knowledge_atoms: [KA-034]
-
-  - id: DOM-025-SK-007
-    name: Adaptive Analysis Depth Based on Codebase Scale
-    description: Adjusts analysis depth (shallow vs. deep, selective vs. comprehensive) dynamically based on detected codebase size, complexity, and performance constraints.
-    inputs:
-      - Codebase Scale Profile
-      - Current performance metrics
-      - Analysis requirements
-      - Time budget
-    outputs:
-      - Analysis depth configuration
-      - Feature enablement/disablement set
-      - Precision/recall tradeoff rationale
+    description: Determines optimal parallelization approach (worker count, work distribution, result merging) for large codebase analysis.
+    inputs: [codebase_size, complexity_profile, resource_budget, analysis_type]
+    outputs: [parallelism_strategy, worker_config, distribution_plan]
     complexity: Medium
-    knowledge_atoms: []
 
-  - id: DOM-025-SK-008
-    name: Cache Management for Reusable Analysis Results
-    description: Manages lifecycle of cached analysis artifacts including invalidation, reuse, coherence, and garbage collection.
-    inputs:
-      - Changed artifacts
-      - Dependency change set
-      - Cache state
-      - Memory constraints
-    outputs:
-      - Cache invalidation commands
-      - Reuse recommendations
-      - Purge decisions
-      - Cache coherence report
+  - skill_id: DOM-025-SK-006
+    name: Memory-Efficient AST Processing
+    description: Processes large source files using streaming, chunking, and incremental AST construction to avoid memory exhaustion.
+    inputs: [large_file, analysis_requirements, memory_limit]
+    outputs: [chunked_ast, streaming_results, memory_stats]
+    complexity: High
+
+  - skill_id: DOM-025-SK-007
+    name: Adaptive Analysis Depth Configuration
+    description: Determines appropriate analysis depth (shallow scan, full analysis, deep inspection) based on codebase scale and complexity class.
+    inputs: [codebase_scale_profile, change_scope, performance_constraints]
+    outputs: [analysis_depth, technique_selection, optimization_hints]
     complexity: Medium
-    knowledge_atoms: [KA-037]
 
-  - id: DOM-025-SK-009
+  - skill_id: DOM-025-SK-008
+    name: Cache Management and Invalidation
+    description: Manages analysis result caching, tracks cache validity, implements selective invalidation based on dependency changes.
+    inputs: [analysis_results, dependency_changes, cache_policy]
+    outputs: [cache_state, invalidation_events, fresh_results]
+    complexity: Medium
+
+  - skill_id: DOM-025-SK-009
     name: Codebase Scale Classification
-    description: Classifies codebase into scale categories (Small <5K LOC, Medium 5K-50K, Large 50K-500K, Enterprise >500K) with complexity metrics.
-    inputs:
-      - File count
-      - Total LOC
-      - Language breakdown
-      - Dependency density
-      - Module count
-    outputs:
-      - Scale classification (Small|Medium|Large|Enterprise)
-      - Complexity score
-      - Scaling strategy recommendation
-    complexity: Low
-    knowledge_atoms: []
-
-  - id: DOM-025-SK-010
-    name: Incremental Index Update Strategy
-    description: Determines optimal approach to update search indexes and analysis indices when changes are detected (full rebuild vs. incremental).
-    inputs:
-      - Change scope
-      - Index state
-      - Performance metrics
-      - Current load
-    outputs:
-      - Index update strategy
-      - Rebuild vs. incremental decision
-      - Update plan with timing
+    description: Measures codebase metrics (file count, LOC, complexity) and assigns scale class (Small, Medium, Large, Enterprise).
+    inputs: [file_tree, source_metrics, complexity_metrics]
+    outputs: [scale_profile, complexity_class, strategy_recommendations]
     complexity: Medium
-    knowledge_atoms: [KA-037]
 
-  - id: DOM-025-SK-011
-    name: Performance Benchmark Definition and Measurement
-    description: Defines and measures performance characteristics for scaling operations across different codebase sizes.
-    inputs:
-      - Scale class
-      - Operation type
-      - System configuration
-      - Execution metrics
-    outputs:
-      - Benchmark results
-      - Baseline establishment
-      - Variance analysis
-      - SLA compliance report
+  - skill_id: DOM-025-SK-010
+    name: Performance Benchmarking and Monitoring
+    description: Establishes baseline performance metrics, monitors scaling efficiency, detects performance degradation, recommends optimizations.
+    inputs: [operation_metrics, baseline_profile, current_state]
+    outputs: [benchmark_report, anomalies, optimization_recommendations]
     complexity: Medium
-    knowledge_atoms: []
 
-  - id: DOM-025-SK-012
-    name: Workspace Conflict Detection and Resolution
-    description: Detects and resolves conflicts when multiple analysis processes operate on shared workspace in monorepos.
-    inputs:
-      - Active workspace locks
-      - File access patterns
-      - Process state
-    outputs:
-      - Conflict detection report
-      - Resolution recommendations
-      - Lock acquisition strategy
-    complexity: Medium
-    knowledge_atoms: []
-
----
-
-section_2_workflows:
-  - id: DOM-025-WF-001
+workflows:
+  - workflow_id: DOM-025-WF-001
     name: Monorepo Analysis and Indexing Workflow
-    trigger: "Initial codebase onboarding or periodic reindex"
+    trigger: "Initial system setup or monorepo structure change detected"
     steps:
       - step: 1
-        name: Detect Monorepo Structure
-        entry_criteria: "Repository path provided"
-        action: "Execute DOM-025-SK-001 to detect topology"
-        exit_criteria: "Monorepo topology map generated"
+        name: Detect Monorepo Root
+        entry_criteria: "File tree available"
+        exit_criteria: "Monorepo root identified or single-repo confirmed"
       - step: 2
-        name: Extract Package Manifests
-        entry_criteria: "Topology map available"
-        action: "Scan all packages for manifests, extract dependencies"
-        exit_criteria: "Manifest data indexed"
+        name: Map Package Boundaries
+        entry_criteria: "Monorepo root identified"
+        exit_criteria: "All workspace/package boundaries mapped"
       - step: 3
-        name: Build Dependency Graph
-        entry_criteria: "Manifest data available"
-        action: "Construct transitive dependency closure"
-        exit_criteria: "Complete dependency graph available"
+        name: Extract Package Manifests
+        entry_criteria: "Package boundaries known"
+        exit_criteria: "All package.json, tsconfig.json, etc. parsed"
       - step: 4
-        name: Identify Analysis Boundaries
-        entry_criteria: "Dependency graph available"
-        action: "Determine package-level analysis units"
-        exit_criteria: "Analysis boundaries defined"
+        name: Build Dependency Graph
+        entry_criteria: "Package manifests extracted"
+        exit_criteria: "Complete inter-package dependency graph created"
       - step: 5
-        name: Create Monorepo Index
-        entry_criteria: "Boundaries defined"
-        action: "Build searchable index of all packages and cross-dependencies"
-        exit_criteria: "Monorepo index queryable"
-    completion_criteria: "Monorepo index complete, all packages indexed, dependency graph traversable"
-    rollback_plan: "Delete partial index, restore from backup, resume from step 1"
+        name: Detect Circular Dependencies
+        entry_criteria: "Dependency graph built"
+        exit_criteria: "Circular dependencies identified and logged"
+      - step: 6
+        name: Index for Navigation
+        entry_criteria: "Dependency graph complete"
+        exit_criteria: "Monorepo index ready for queries"
+    completion_criteria: "Monorepo map created, dependency graph valid, index queryable, no unresolved circular dependencies"
+    rollback_plan: "Revert to previous monorepo map version, restart detection"
 
-  - id: DOM-025-WF-002
+  - workflow_id: DOM-025-WF-002
     name: Incremental Change Analysis Workflow
-    trigger: "File change detected in watched repository"
+    trigger: "File changes detected in workspace"
     steps:
       - step: 1
         name: Detect Changed Files
-        entry_criteria: "File system event received"
-        action: "Collect all changed/added/deleted files"
-        exit_criteria: "Change set identified"
+        entry_criteria: "File system events available"
+        exit_criteria: "Changed files list generated"
       - step: 2
         name: Determine Impact Scope
-        entry_criteria: "Change set available"
-        action: "Execute DOM-025-SK-002 to compute affected packages and modules"
-        exit_criteria: "Impact scope and affected packages determined"
+        entry_criteria: "Changed files identified"
+        exit_criteria: "Affected packages and modules identified"
       - step: 3
-        name: Classify Scope Size
+        name: Estimate Change Magnitude
         entry_criteria: "Impact scope determined"
-        action: "Evaluate if scope is small (<=10 packages) or large"
-        exit_criteria: "Scope classification (small|large) determined"
-      - step: 4a
-        name: Execute Incremental Analysis
-        entry_criteria: "Scope classified as small"
-        action: "Reanalyze only affected packages, reuse cached results for unaffected"
-        exit_criteria: "Incremental analysis complete"
-      - step: 4b
-        name: Execute Full Reanalysis
-        entry_criteria: "Scope classified as large"
-        action: "Trigger full codebase reanalysis with scale-aware strategies"
-        exit_criteria: "Full analysis complete"
+        exit_criteria: "Change classified as Small/Medium/Large"
+      - step: 4
+        name: Select Analysis Mode
+        entry_criteria: "Change magnitude classified"
+        exit_criteria: "Incremental or Full analysis selected"
       - step: 5
-        name: Invalidate Dependent Cache
+        name: Execute Scoped Analysis
+        entry_criteria: "Analysis mode selected"
+        exit_criteria: "Analysis results produced for affected scope"
+      - step: 6
+        name: Invalidate Dependent Caches
         entry_criteria: "Analysis complete"
-        action: "Execute DOM-025-SK-008 to invalidate cache entries for affected analyses"
-        exit_criteria: "Cache coherence restored"
-      - step: 6
-        name: Update Indices
-        entry_criteria: "Cache invalidated"
-        action: "Update search indices with new analysis results"
-        exit_criteria: "Indices consistent with latest analysis"
-    completion_criteria: "All affected packages reanalyzed, cache valid, indices updated"
-    rollback_plan: "Restore previous analysis state from backup, resume from last valid checkpoint"
+        exit_criteria: "Downstream caches invalidated based on dependency graph"
+      - step: 7
+        name: Integrate Results
+        entry_criteria: "Caches invalidated"
+        exit_criteria: "New analysis merged with existing state"
+    completion_criteria: "Change fully analyzed, impacted caches invalidated, results integrated, state consistent"
+    rollback_plan: "Restore previous analysis state, revert cache invalidations, rerun full analysis if needed"
 
-  - id: DOM-025-WF-003
+  - workflow_id: DOM-025-WF-003
     name: Scale-Adaptive Resource Allocation Workflow
-    trigger: "Codebase scale assessment or performance degradation detected"
+    trigger: "Codebase scale assessment or resource constraints change"
     steps:
       - step: 1
-        name: Assess Codebase Scale
+        name: Classify Codebase Scale
         entry_criteria: "Codebase metrics available"
-        action: "Execute DOM-025-SK-009 to classify codebase size"
-        exit_criteria: "Scale classification determined"
+        exit_criteria: "Scale class assigned (Small/Medium/Large/Enterprise)"
       - step: 2
-        name: Measure System Resources
-        entry_criteria: "Scale classification available"
-        action: "Query available CPU, memory, parallelism capability"
-        exit_criteria: "System resource inventory complete"
+        name: Measure Available Resources
+        entry_criteria: "Scale class assigned"
+        exit_criteria: "Available CPU, memory, I/O measured"
       - step: 3
-        name: Determine Resource Constraints
-        entry_criteria: "System resources and SLAs known"
-        action: "Execute DOM-025-SK-003 to compute optimal allocation"
-        exit_criteria: "Resource allocation plan generated"
+        name: Select Scaling Strategy
+        entry_criteria: "Scale class and resources known"
+        exit_criteria: "Appropriate strategy (sequential, parallel, distributed) selected"
       - step: 4
-        name: Select Parallelism Strategy
-        entry_criteria: "Resource plan available"
-        action: "Execute DOM-025-SK-004 to choose parallelism approach"
-        exit_criteria: "Parallelism strategy determined"
+        name: Allocate Resources
+        entry_criteria: "Strategy selected"
+        exit_criteria: "CPU, memory, parallelism parameters configured"
       - step: 5
-        name: Configure Execution Environment
-        entry_criteria: "Allocation and parallelism strategy known"
-        action: "Apply resource limits, spawn worker pools, configure batching"
-        exit_criteria: "Execution environment configured"
+        name: Configure Parallelism
+        entry_criteria: "Resources allocated"
+        exit_criteria: "Worker pool size, work distribution policy configured"
       - step: 6
-        name: Monitor and Adjust
-        entry_criteria: "Execution started"
-        action: "Continuously monitor performance; adjust allocation if metrics degrade"
-        exit_criteria: "Performance within SLA"
-    completion_criteria: "Execution within resource constraints, performance SLA met"
-    rollback_plan: "Reduce parallelism, increase time budget, switch to sequential processing"
+        name: Deploy Configuration
+        entry_criteria: "Parallelism configured"
+        exit_criteria: "Configuration active in system"
+    completion_criteria: "Resources allocated, parallelism configured, strategy deployed, monitoring active"
+    rollback_plan: "Restore previous resource configuration, revert to default parallelism, alert administrator"
 
-  - id: DOM-025-WF-004
+  - workflow_id: DOM-025-WF-004
     name: Large Codebase Initial Onboarding Workflow
-    trigger: "New large codebase added to system"
+    trigger: "New large codebase (>10K files) added to system"
     steps:
       - step: 1
-        name: Inventory Codebase
-        entry_criteria: "Codebase path provided"
-        action: "Count files, compute LOC, extract language breakdown"
-        exit_criteria: "Codebase metrics collected"
+        name: Profile Codebase
+        entry_criteria: "Codebase root available"
+        exit_criteria: "Codebase profile created (size, complexity, structure)"
       - step: 2
-        name: Classify Scale and Complexity
-        entry_criteria: "Metrics collected"
-        action: "Execute DOM-025-SK-009 to classify codebase"
-        exit_criteria: "Scale classification and complexity score assigned"
+        name: Classify Scale
+        entry_criteria: "Codebase profile complete"
+        exit_criteria: "Scale class assigned"
       - step: 3
-        name: Detect Structure Type
+        name: Detect Monorepo Structure
         entry_criteria: "Codebase classified"
-        action: "Determine if monorepo, polyrepo, or single-package; execute appropriate detection"
-        exit_criteria: "Structure type and topology identified"
+        exit_criteria: "Monorepo structure mapped or single-repo confirmed"
       - step: 4
-        name: Plan Analysis Strategy
-        entry_criteria: "Structure known"
-        action: "If monorepo: execute WF-001; else: plan single-package analysis"
-        exit_criteria: "Analysis strategy defined"
+        name: Build Initial Index
+        entry_criteria: "Structure detected"
+        exit_criteria: "Symbol index and file index built"
       - step: 5
-        name: Execute Phased Analysis
-        entry_criteria: "Strategy defined"
-        action: "Perform initial shallow analysis, incrementally deepen"
-        exit_criteria: "Initial analysis checkpoint reached"
+        name: Configure Scaling Strategy
+        entry_criteria: "Index built"
+        exit_criteria: "Scale-appropriate analysis strategy configured"
       - step: 6
         name: Establish Performance Baseline
-        entry_criteria: "Initial analysis complete"
-        action: "Execute DOM-025-SK-011 to establish performance baseline"
-        exit_criteria: "Baseline metrics recorded"
-    completion_criteria: "Codebase indexed, metrics baseline established, ready for incremental updates"
-    rollback_plan: "Delete partial index, mark codebase as failed onboarding, log error for manual intervention"
+        entry_criteria: "Strategy configured"
+        exit_criteria: "Performance baseline established for future comparisons"
+      - step: 7
+        name: Activate Monitoring
+        entry_criteria: "Baseline established"
+        exit_criteria: "Continuous monitoring active, alerts configured"
+    completion_criteria: "Codebase fully profiled, strategy configured, baseline established, monitoring active"
+    rollback_plan: "Clear indexes and caches, return to pre-onboarding state, alert operator"
 
-  - id: DOM-025-WF-005
+  - workflow_id: DOM-025-WF-005
     name: Performance Benchmark and Optimization Workflow
-    trigger: "Periodic (weekly) or performance SLA breach"
+    trigger: "Performance SLA threshold breached or periodic benchmark scheduled"
     steps:
       - step: 1
         name: Collect Performance Metrics
-        entry_criteria: "
+        entry_criteria: "Monitoring data available"
+        exit_criteria: "Comprehensive metrics collected (latency, memory, CPU)"
+      - step: 2
+        name: Compare to Baseline
+        entry_criteria: "Metrics collected"
+        exit_criteria: "Deviations from baseline identified"
+      - step: 3
+        name: Identify Bottlenecks
+        entry_criteria: "Deviations identified"
+        exit_criteria: "Root causes of performance issues determined"
+      - step: 4
+        name: Recommend Optimizations
+        entry_criteria: "Bottlenecks identified"
+        exit_criteria: "Ranked list of optimization strategies produced"
+      - step: 5
+        name: Execute Optimizations
+        entry_criteria: "Optimizations recommended"
+        exit_criteria: "Selected optimizations applied"
+      - step: 6
+        name: Measure Impact
+        entry_criteria: "Optimizations applied"
+        exit_criteria: "Post-optimization metrics collected and compared"
+      - step: 7
+        name: Lock or Revert
+        entry_criteria: "Impact measured"
+        exit_criteria: "Optimization locked if successful, reverted if degraded"
+    completion_criteria: "Bottlenecks resolved, performance restored to acceptable range, optimization results documented"
+    rollback_plan: "Revert applied optimizations, restore previous configuration, investigate root cause"
+
+rules_and_constraints:
+  - rule_id: DOM-025-RL-001
+    constraint: "Analysis scope in monorepos must be bounded by directly affected packages and modules (KA-034)"
+    rationale: "Prevents unbounded transitive dependency analysis explosion that could consume all available resources"
+    enforcement: "Validate affected_packages list against dependency_graph; reject analysis requests with scope exceeding threshold"
+    exceptions: "Full-system analysis explicitly requested with operator approval and resource pre-allocation"
+
+  - rule_id: DOM-025-RL-002
+    constraint: "Incremental analysis must be preferred over full reanalysis when change scope is Small or Medium (KA-037)"
+    rationale: "Incremental analysis provides faster feedback and reduces resource consumption for common small-change scenarios"
+    enforcement: "Classify change magnitude; automatically select incremental mode if Small/Medium; require explicit override for Full analysis"
+    exceptions: "Incremental analysis cache corrupted or unavailable; then fall back to Full analysis"
+
+  - rule_id: DOM-025-RL-003
+    constraint: "Resource consumption must scale sub-linearly or linearly with codebase size (not super-linear)"
+    rationale: "Ensures system remains performant even on very large codebases; prevents quadratic or exponential degradation"
+    enforcement: "Monitor resource usage vs. codebase size; alert if resource growth exceeds O(n) trend; trigger optimization workflow"
+    exceptions: "None; this is a hard architectural constraint"
+
+  - rule_id: DOM-025-RL-004
+    constraint: "Large files (>1MB) must be analyzed using streaming or chunked processing, not full AST construction"
+    rationale: "Prevents memory exhaustion when processing unusually large source files"
+    enforcement: "Check file size before parsing; route large files to streaming processor; block full-AST parsing for large files"
+    exceptions: "Language-specific constraints may require full parsing; document and monitor resource usage"
+
+  - rule_id: DOM-025-RL-005
+    constraint:

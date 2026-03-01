@@ -2,47 +2,494 @@
 
 
 <think>
-The user is asking me to execute the architect agent prompt from the file. Looking at the content, this is a detailed specification for AGT-034 (MCP Integration Coordinator Agent) which is a specialized agent responsible for standardizing Model Context Protocol (MCP) server configurations across an agentic AI coding system.
+The user has provided a file path to read and wants me to execute the architect agent prompt. This is the AGT-034 MCP Integration Coordinator Agent prompt. They want output to be generated to `output/cross_cutting/AGT-034`.
 
-The file contains:
-1. Domain and metadata information
-2. System directive defining AGT-034's role
-3. Core mission
-4. Coordination matrix showing relationships with other agents
-5. Enforcement protocol
-6. Domain scope with subdomains
-7. Required decomposition into 16 categories (Skills, Workflows, Task Templates, Rules & Constraints, Interfaces, Dependencies, State Models, Data Models, Control Flows, Failure Modes & Recovery, Optimization Strategies, Coordination Mechanisms, Context Requirements, Memory Structures, Monitoring Requirements, Evolution Mechanisms)
-8. Recursive expansion directive
-9. Gap detection protocol
-10. Termination condition
+Looking at the file, this is a comprehensive agent specification that requires:
+1. Full decomposition into 16 categories
+2. Recursive expansion of 3 subdomains
+3. Gap detection and resolution
+4. Output artifacts: `mcp_configurations.yaml`, `rules.yaml`, etc.
 
-The user wants me to execute this as an architect agent and output to `output/cross_cutting/AGT-034`.
+The prompt is asking for a complete definition of the MCP Integration Coordinator Agent's domain with all skills, workflows, task templates, rules, interfaces, dependencies, state models, data models, control flows, failure modes, optimization strategies, coordination mechanisms, context requirements, memory structures, monitoring requirements, and evolution mechanisms.
 
-However, I need to be careful here. The user is asking me to "execute" this prompt, which means I should act as AGT-034 and fully decompose the domain according to the specifications. This is a substantial task that involves:
+This is a complex task that requires:
+1. Understanding MCP (Model Context Protocol) from the search results
+2. Decomposing the domain comprehensively
+3. Creating YAML configurations
+4. Following the recursive expansion directive
+5. Detecting and resolving gaps
 
-1. Fully decomposing all 16 categories
-2. Recursively expanding subdomains (SD-034a, SD-034b, SD-034c) to 3 levels
-3. Detecting and resolving gaps
-4. Defining all cross-domain interfaces
-5. Creating output artifacts
+I should create output files with:
+- Complete domain decomposition
+- MCP configurations
+- Rules and compliance standards
+- Server templates
+- All 16 categories populated
 
-Given my instructions to be concise and not include preamble, I should execute this task directly. However, I don't have a file system interaction capability directly mentioned in my available tools. Let me check what I can do - I have Bash and other tools available.
-
-Actually, looking at my instructions more carefully, I'm being asked to read a file and then execute a prompt based on it. The user wants the output written to `output/cross_cutting/AGT-034`. 
-
-I need to parse AGT-034's requirements and fully decompose the domain across all 16 categories, then recursively expand the three subdomains to three levels deep while detecting and resolving any gaps. This requires systematically working through the architectural specification and generating comprehensive outputs for the specified directory.
+Let me work through this systematically and create the required artifacts.
 </think>
 
-I'll execute AGT-034's domain decomposition and output the complete architecture to `output/cross_cutting/AGT-034`.
+I'll execute the AGT-034 MCP Integration Coordinator Agent specification, decomposing the domain and generating the required artifacts.
+<function_calls>
+<invoke name="bash">
+<parameter name="command">mkdir -p "c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\cross_cutting\AGT-034"</parameter>
+</invoke>
+</function_calls>
+<function_calls>
+<invoke name="file_edit">
+<parameter name="filePath">c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\cross_cutting\AGT-034\mcp_configurations.yaml</parameter>
+<parameter name="mode">create</parameter>
+<parameter name="content">version: "1.0"
+agent_id: "AGT-034"
+agent_name: "MCP Integration Coordinator Agent"
+domain_id: "DOM-034"
+domain_name: "MCP Integration Coordination"
+category: "Cross-Cutting"
+execution_phase: "Continuous (post-Phase-1)"
 
-<Bash>
-{
-  "command": "mkdir -p c:\\Users\\Ice\\Desktop\\Dev\\SDLC\\SDLC\\output\\cross_cutting\\AGT-034"
-}
-</Bash>
+mcp_framework:
+  protocol_version: "1.0"
+  standardization_scope:
+    - tool_registration
+    - server_discovery
+    - protocol_compliance
+    - invocation_patterns
+    - lifecycle_management
 
-<EditFile>
-{
-  "filePath": "c:\\Users\\Ice\\Desktop\\Dev\\SDLC\\SDLC\\output\\cross_cutting\\AGT-034\\mcp_configurations.yaml",
-  "mode": "create",
-  "content": "# AGT-034: MCP Integration Coordinator Agent - Configuration Specifications\n# Generated: 2026-03-01 05:00 UTC\n# Domain: DOM-034 MCP Integration Coordination\n# Status: ACTIVE (Post-Phase 1)\n\n---\n## SECTION 1: SKILLS DECOMPOSITION (DOM-034-SK-[NNN])\n\nskills:\n  DOM-034-SK-001:\n    name: \"MCP Tool Registration & Validation\"\n    description: \"Register MCP tools with standardized schemas, validate against capability declaration requirements\"\n    owner_agent: \"AGT-034\"\n    related_ka: [\"KA-038\"]\n    subtasks:\n      - Register tool in server registry\n      - Validate capability schema compliance\n      - Generate tool documentation\n      - Assign tool_id and server_id\n\n  DOM-034-SK-002:\n    name: \"MCP Server Capability Discovery\"\n    description: \"Dynamically discover and catalog all capabilities exposed by registered MCP servers\"\n    owner_agent: \"AGT-034\"\n    related_ka: [\"KA-038\"]\n    discovery_mechanisms:\n      - Server introspection via metadata endpoints\n      - Tool manifest parsing\n      - Schema inference from tool descriptions\n      - Capability aggregation\n\n  DOM-034-SK-003:\n    name: \"Protocol Compliance Verification\"\n    description: \"Verify MCP server implementations comply with standardized protocol contracts\"\n    owner_agent: \"AGT-034\"\n    related_ka: [\"KA-032\"]\n    validation_checks:\n      - Request/response format validation\n      - Error handling pattern compliance\n      - Timeout configuration adherence\n      - Backward compatibility verification\n\n  DOM-034-SK-004:\n    name: \"Server Template Generation\"\n    description: \"Generate MCP server configuration templates and deployment specifications\"\n    owner_agent: \"AGT-034\"\n    template_types:\n      - Server initialization template\n      - Tool registration template\n      - Authentication/authorization template\n      - Health check endpoint template\n\n  DOM-034-SK-005:\n    name: \"Tool Invocation Pattern Standardization\"\n    description: \"Define and enforce standardized patterns for agent-to-MCP-server tool invocation\"\n    owner_agent: \"AGT-034\"\n    related_ka: [\"KA-032\", \"KA-038\"]\n    pattern_components:\n      - Request envelope format (correlation_id, trace_id, agent_id, timestamp)\n      - Response envelope format (status, result, error_details, execution_time)\n      - Retry logic and backoff strategies\n      - Timeout escalation patterns\n\n  DOM-034-SK-006:\n    name: \"MCP Server Health Monitoring\"\n    description: \"Monitor availability, latency, and compliance health of all registered MCP servers\"\n    owner_agent: \"AGT-034\"\n    monitoring_dimensions:\n      - Availability rate (uptime percentage)\n      - Response latency distribution\n      - Error rate and failure patterns\n      - Resource utilization metrics\n      - Protocol compliance drift detection\n\n  DOM-034-SK-007:\n    name: \"Cross-Agent Tool Deduplication\"\n    description: \"Detect and consolidate duplicate or redundant tool registrations across agents\"\n    owner_agent: \"AGT-034\"\n    deduplication_logic:\n      - Semantic similarity matching\n      - Capability signature comparison\n      - Consolidation decision heuristics\n      - Migration path planning for affected agents\n\n  DOM-034-SK-008:\n    name: \"MCP Version Compatibility Checking\"\n    description: \"Verify version compatibility between agent implementations and MCP server versions\"\n    owner_agent: \"AGT-034\"\n    compatibility_matrix:\n      - Protocol version requirements\n      - Tool schema version compatibility\n      - Deprecated capability detection\n      - Breaking change identification\n\n  DOM-034-SK-009:\n    name: \"Tool Invocation Cost Tracking\"\n    description: \"Track and estimate computational costs for MCP tool invocations (coordinates with AGT-029)\"\n    owner_agent: \"AGT-034\"\n    cost_dimensions:\n      - Per-invocation cost estimates\n      - Cumulative cost per agent\n      - Cost anomaly detection\n      - Cost optimization recommendations\n\n  DOM-034-SK-010:\n    name: \"Security Validation for MCP Tools\"\n    description: \"Validate security posture of MCP tool registrations and invocations (coordinates with AGT-028)\"\n    owner_agent: \"AGT-034\"\n    security_checks:\n      - Authentication mechanism validation\n      - Authorization scope verification\n      - Credential rotation requirement enforcement\n      - Audit logging compliance\n\n---\n## SECTION 2: WORKFLOWS DECOMPOSITION (DOM-034-WF-[NNN])\n\nworkflows:\n  DOM-034-WF-001:\n    name: \"MCP Server Onboarding Workflow\"\n    description: \"End-to-end workflow for registering, validating, testing, and publishing new MCP servers\"\n    phases:\n      1. registration:\n        steps:\n          - Create MCP server registration record (server_id, endpoint, auth_method)\n          - Declare capabilities using standardized schema\n          - Configure health check endpoint\n          - Assign owner agent\n        outputs:\n          - MCP Server Registration record\n          - Capability manifest\n\n      2. validation:\n        steps:\n          - Validate protocol compliance (SK-003)\n          - Verify capability schema (SK-001)\n          - Check security requirements (SK-010)\n          - Verify version compatibility (SK-008)\n        outputs:\n          - Validation report\n          - Compliance checklist\n\n      3. testing:\n        steps:\n          - Execute test invocations for each tool\n          - Verify response format compliance\n          - Validate error handling\n          - Measure latency characteristics\n          - Test timeout and retry behavior\n        outputs:\n          - Test execution report\n          - Performance baseline\n\n      4. publication:\n        steps:\n          - Register in tool discovery registry\n          - Publish capability documentation\n          - Generate agent integration guidance\n          - Activate monitoring (SK-006)\n        outputs:\n          - Published server configuration\n          - Integration documentation\n\n      5. monitoring:\n        steps:\n          - Activate continuous health monitoring\n          - Set up alerting thresholds\n          - Configure observability integration\n          - Schedule compliance audits\n        outputs:\n          - Monitoring configuration\n          - Alert rules\n\n  DOM-034-WF-002:\n    name: \"Tool Invocation Standardization Workflow\"\n    description: \"Workflow for standardizing how agents invoke MCP tools across all domains\"\n    phases:\n      1. discovery:\n        steps:\n          - Identify all current tool invocation patterns in agents\n          - Catalog non-standard invocation approaches\n          - Classify deviation types (format, error-handling, timeout, tracing)\n        outputs:\n          - Invocation pattern inventory\n          - Deviation classification\n\n      2. standardization:\n        steps:\n          - Define canonical invocation request envelope\n          - Define canonical response envelope\n          - Define error handling patterns\n          - Define timeout and retry policies\n        outputs:\n          - Standard invocation protocol specification (SK-005)\n          - Request/response templates\n\n      3. migration:\n        steps:\n          - Identify affected agents\n          - Create agent-specific migration plan\n          - Execute tool invocation refactoring\n          - Validate new invocation patterns\n        outputs:\n          - Migration tracking records\n          - Agent update notifications\n\n  DOM-034-WF-003:\n    name: \"MCP Server Deprecation Workflow\"\n    description: \"Workflow for safely retiring obsolete or redundant MCP servers\"\n    phases:\n      1. identification:\n        steps:\n          - Identify deprecation candidate (low usage, redundant, non-compliant)\n          - Assess dependent agents and tools\n          - Plan migration strategy to replacement server\n        outputs:\n          - Deprecation proposal\n          - Impact analysis\n          - Migration plan\n\n      2. notification:\n        steps:\n          - Notify dependent agents of deprecation timeline\n          - Provide migration guidance\n          - Offer transition support\n        outputs:\n          - Deprecation notice\n          - Agent acknowledgments\n\n      3. migration_execution:\n        steps:\n          - Execute dependent tool migrations\n          - Verify replacement server functionality\n          - Monitor transition period\n        outputs:\n          - Migration completion report\n\n      4. decommission:\n        steps:\n          - Remove from registry\n          - Archive configuration\n          - Clean up monitoring\n        outputs:\n          - Decommission record\n\n  DOM-034-WF-004:\n    name: \"Protocol Compliance Audit Workflow\"\n    description: \"Continuous workflow for auditing MCP protocol compliance across all servers\"\n    schedule: \"Triggered on-demand or daily\"\n    phases:\n      1. audit_execution:\n        steps:\n          - Iterate over all registered MCP servers\n          - Run compliance verification checks (SK-003)\n          - Collect compliance evidence\n          - Identify violations\n        outputs:\n          - Compliance audit results\n          - Violation list\n\n      2. reporting:\n        steps:\n          - Generate compliance report per server\n          - Aggregate compliance statistics\n          - Identify non-compliant servers\n        outputs:\n          - Individual compliance reports\n          - Aggregate compliance dashboard\n\n      3. remediation:\n        steps:\n          - For critical violations: immediate remediation required\n          - For non-critical: plan remediation in next release cycle\n          - Track remediation progress\n        outputs:\n          - Remediation plan\n          - Tracking records\n\n  DOM-034-WF-005:\n    name: \"Cross-Agent Tool Discovery Workflow\"\n    description: \"Workflow for discovering, cataloging, and deduplicating tools across all agents\"\n    phases:\n      1. discovery:\n        steps:\n          - Query all coordinated agents (AGT-004, AGT-011, AGT-023, AGT-025)\n          - Collect tool manifests\n          - Aggregate tool registry\n        outputs:\n          - Complete tool inventory\n          - Cross-agent tool matrix\n\n      2. deduplication:\n        steps:\n          - Apply semantic similarity analysis (SK-007)\n          - Identify redundant tools\n          - Classify duplication types\n        outputs:\n          - Duplication report\n          - Consolidation recommendations\n\n      3. consolidation:\n        steps:\n          - Execute tool consolidation\n          - Update dependent agents\n          - Validate migration\n        outputs:\n          - Consolidated tool registry\n          - Agent update records\n\n---\n## SECTION 3: TASK TEMPLATES DECOMPOSITION (DOM-034-TT-[NNN])\n\ntask_templates:\n  DOM-034-TT-001:\n    name: \"Register MCP Tool\"\n    template_id: \"register-mcp-tool\"\n    assigned_skill: \"DOM-034-SK-001\"\n    inputs:\n      - server_id: string\n      - tool_name: string\n      - description: string\n      - input_schema: json_schema\n      - output_schema: json_schema\n      - timeout_ms: integer\n      - cost_estimate: float\n    execution_steps:\n      1. Validate input schema format\n      2. Create tool registration record\n      3. Assign tool_id\n      4. Register in server's capability manifest\n      5. Generate tool documentation\n      6. Validate against compliance rules (DOM-034-RL-003)\n    outputs:\n      - tool_id: string\n      - registration_record: object\n      - documentation: string\n\n  DOM-034-TT-002:\n    name: \"Invoke MCP Tool\"\n    template_id: \"invoke-mcp-tool\"\n    assigned_skill: \"DOM-034-SK-005\"\n    inputs:\n      - tool_id: string\n      - agent_id: string\n      - request_payload: object\n      - timeout_override_ms: integer (optional)\n    execution_steps:\n      1. Generate correlation_id and trace_id\n      2. Look up tool endpoint from registry\n      3. Look up authentication credentials\n      4. Format request envelope per standard (SK-005)\n      5. Invoke MCP server endpoint\n      6. Validate response envelope format\n      7. Record invocation (data model: DOM-034-DM-003)\n      8. Return structured response\n    outputs:\n      - invocation_id: string\n      - response_payload: object\n      - execution_time_ms: integer\n      - status: enum [\"success\", \"failure\", \"timeout\"]\n\n  DOM-034-TT-003:\n    name: \"Audit MCP Server Compliance\"\n    template_id: \"audit-mcp-compliance\"\n    assigned_skill: \"DOM-034-SK-003\"\n    inputs:\n      - server_id: string\n    execution_steps:\n      1. Retrieve server configuration\n      2. Verify protocol version compatibility\n      3. Validate all tool capability schemas\n      4. Test invocation request/response envelope format\n      5. Verify error handling patterns\n      6. Check timeout configuration\
+mcp_servers:
+  registration_schema:
+    server_id:
+      type: "string"
+      pattern: "^MCP-SRV-[0-9]{4}$"
+      description: "Unique MCP server identifier"
+    name:
+      type: "string"
+      description: "Human-readable server name"
+    capabilities:
+      type: "array"
+      items:
+        type: "object"
+        properties:
+          tool_id:
+            type: "string"
+          tool_name:
+            type: "string"
+          category:
+            type: "string"
+            enum:
+              - "data_retrieval"
+              - "data_mutation"
+              - "analysis"
+              - "automation"
+              - "coordination"
+          capability_level:
+            type: "string"
+            enum:
+              - "basic"
+              - "advanced"
+              - "expert"
+    version:
+      type: "string"
+      pattern: "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    endpoint:
+      type: "string"
+      format: "uri"
+    auth_method:
+      type: "string"
+      enum:
+        - "api_key"
+        - "oauth2"
+        - "mutual_tls"
+        - "service_account"
+    health_check_url:
+      type: "string"
+      format: "uri"
+    health_check_interval_ms:
+      type: "integer"
+      minimum: 5000
+      maximum: 300000
+    timeout_ms:
+      type: "integer"
+      minimum: 1000
+      maximum: 60000
+    owner_agent:
+      type: "string"
+      pattern: "^AGT-[0-9]{3}$"
+    tags:
+      type: "array"
+      items:
+        type: "string"
+    cost_per_invocation:
+      type: "number"
+      minimum: 0
+    created_date:
+      type: "string"
+      format: "date-time"
+    deprecated:
+      type: "boolean"
+      default: false
+
+tool_capability_schema:
+  tool_id:
+    type: "string"
+    pattern: "^TOOL-[0-9A-Z]{8}$"
+  server_id:
+    type: "string"
+  name:
+    type: "string"
+  description:
+    type: "string"
+  input_schema:
+    type: "object"
+    properties:
+      type:
+        type: "string"
+        enum:
+          - "object"
+          - "array"
+          - "string"
+          - "number"
+          - "boolean"
+      properties:
+        type: "object"
+        additionalProperties: true
+      required:
+        type: "array"
+        items:
+          type: "string"
+  output_schema:
+    type: "object"
+    properties:
+      type:
+        type: "string"
+      properties:
+        type: "object"
+      additionalProperties: true
+  timeout_ms:
+    type: "integer"
+    minimum: 1000
+  error_handling:
+    type: "object"
+    properties:
+      retry_strategy:
+        type: "string"
+        enum:
+          - "exponential_backoff"
+          - "linear_backoff"
+          - "no_retry"
+      max_retries:
+        type: "integer"
+        minimum: 0
+        maximum: 10
+      timeout_behavior:
+        type: "string"
+        enum:
+          - "fail"
+          - "timeout_response"
+          - "circuit_break"
+
+invocation_record_schema:
+  invocation_id:
+    type: "string"
+    pattern: "^INV-[0-9]{16}$"
+  tool_id:
+    type: "string"
+  agent_id:
+    type: "string"
+  request:
+    type: "object"
+  response:
+    type: "object"
+  status:
+    type: "string"
+    enum:
+      - "success"
+      - "failed"
+      - "timeout"
+      - "rate_limited"
+      - "circuit_breaker_open"
+  duration_ms:
+    type: "integer"
+  trace_id:
+    type: "string"
+    pattern: "^TRACE-[0-9A-Z]{16}$"
+  correlation_id:
+    type: "string"
+  error:
+    type: "object"
+    properties:
+      code:
+        type: "string"
+      message:
+        type: "string"
+  timestamp:
+    type: "string"
+    format: "date-time"
+
+compliance_report_schema:
+  server_id:
+    type: "string"
+  audit_date:
+    type: "string"
+    format: "date"
+  protocol_version:
+    type: "string"
+  compliance_status:
+    type: "string"
+    enum:
+      - "compliant"
+      - "non_compliant"
+      - "compliant_with_exceptions"
+  violations:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        violation_id:
+          type: "string"
+        rule_id:
+          type: "string"
+        severity:
+          type: "string"
+          enum:
+            - "critical"
+            - "high"
+            - "medium"
+            - "low"
+        description:
+          type: "string"
+  remediation_actions:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        action_id:
+          type: "string"
+        rule_id:
+          type: "string"
+        status:
+          type: "string"
+          enum:
+            - "pending"
+            - "in_progress"
+            - "completed"
+            - "failed"
+        due_date:
+          type: "string"
+          format: "date"
+
+server_lifecycle_states:
+  - state: "Proposed"
+    description: "Server proposed but not yet registered"
+    allowed_transitions:
+      - "Registered"
+      - "Rejected"
+  - state: "Registered"
+    description: "Server registered and awaiting validation"
+    allowed_transitions:
+      - "Validating"
+      - "Cancelled"
+  - state: "Validating"
+    description: "Server undergoing compliance and capability validation"
+    allowed_transitions:
+      - "Active"
+      - "ValidationFailed"
+  - state: "Active"
+    description: "Server fully operational and compliant"
+    allowed_transitions:
+      - "Degraded"
+      - "Maintenance"
+      - "Deprecation"
+  - state: "Degraded"
+    description: "Server operational but with reduced capability or performance"
+    allowed_transitions:
+      - "Active"
+      - "Maintenance"
+      - "Removed"
+  - state: "Maintenance"
+    description: "Server undergoing updates or repairs"
+    allowed_transitions:
+      - "Active"
+      - "Degraded"
+  - state: "Deprecation"
+    description: "Server marked for eventual removal"
+    allowed_transitions:
+      - "Active"
+      - "Removed"
+  - state: "ValidationFailed"
+    description: "Server failed validation and cannot be activated"
+    allowed_transitions:
+      - "Cancelled"
+  - state: "Removed"
+    description: "Server decommissioned and archived"
+    allowed_transitions: []
+  - state: "Cancelled"
+    description: "Server registration cancelled"
+    allowed_transitions: []
+
+tool_invocation_states:
+  - state: "Requested"
+    description: "Tool invocation requested by agent"
+  - state: "Queued"
+    description: "Invocation queued for execution"
+  - state: "Routed"
+    description: "Invocation routed to appropriate server"
+  - state: "Executing"
+    description: "Tool executing on server"
+  - state: "Completed"
+    description: "Tool execution completed successfully"
+  - state: "Failed"
+    description: "Tool execution failed with error"
+  - state: "TimedOut"
+    description: "Tool execution exceeded timeout threshold"
+  - state: "Retrying"
+    description: "Failed invocation being retried"
+
+compliance_states:
+  - state: "Unchecked"
+    description: "Server compliance not yet evaluated"
+  - state: "Auditing"
+    description: "Compliance audit in progress"
+  - state: "Compliant"
+    description: "Server fully compliant with standards"
+  - state: "NonCompliant"
+    description: "Server violates compliance standards"
+  - state: "Remediating"
+    description: "Non-compliance being addressed"
+  - state: "Archived"
+    description: "Server removed, compliance archived"
+
+cross_cutting_patterns:
+  agent_to_agent_handoff:
+    enabled: true
+    context_preservation: true
+    correlation_tracking: true
+  tool_discovery_pattern: "dynamic_with_caching"
+  security_validation: "pre_invocation"
+  observability_integration: "full_logging"
+  cost_tracking: "per_invocation"
+</parameter>
+</invoke>
+</function_calls>
+<function_calls>
+<invoke name="file_edit">
+<parameter name="filePath">c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\cross_cutting\AGT-034\rules.yaml</parameter>
+<parameter name="mode">create</parameter>
+<parameter name="content">version: "1.0"
+agent_id: "AGT-034"
+rule_engine: "StandardsEnforcement"
+
+rules:
+  DOM-034-RL-001:
+    name: "Mandatory Capability Declaration"
+    category: "Registration"
+    priority: "CRITICAL"
+    description: "All MCP tools must declare capabilities using standardized capability schema"
+    rule_type: "registration_validation"
+    enforcement:
+      point: "pre_activation"
+      action: "block_registration"
+    validation:
+      - capability_schema_present: true
+      - tool_name_present: true
+      - input_schema_valid: true
+      - output_schema_valid: true
+      - error_handling_defined: true
+
+  DOM-034-RL-002:
+    name: "Correlation ID Propagation"
+    category: "Protocol"
+    priority: "CRITICAL"
+    description: "All MCP invocations must include correlation IDs for trace propagation"
+    rule_type: "invocation_validation"
+    enforcement:
+      point: "pre_invocation"
+      action: "reject_request"
+    validation:
+      - correlation_id_format: "^TRACE-[0-9A-Z]{16}$"
+      - trace_id_included: true
+      - parent_span_id_included: true
+
+  DOM-034-RL-003:
+    name: "Timeout Threshold Compliance"
+    category: "Performance"
+    priority: "HIGH"
+    description: "MCP servers must respond within configured timeout thresholds"
+    rule_type: "invocation_monitoring"
+    enforcement:
+      point: "execution"
+      action: "enforce_timeout"
+    parameters:
+      default_timeout_ms: 30000
+      max_timeout_ms: 60000
+      min_timeout_ms: 1000
+      slow_query_threshold_ms: 5000
+
+  DOM-034-RL-004:
+    name: "Duplicate Tool Detection"
+    category: "Deduplication"
+    priority: "HIGH"
+    description: "Duplicate tool registrations across agents must be detected and consolidated"
+    rule_type: "registration_audit"
+    enforcement:
+      point: "continuous"
+      action: "flag_for_consolidation"
+    validation:
+      - tool_name_uniqueness: true
+      - capability_set_comparison: true
+      - ownership_verification: true
+
+  DOM-034-RL-005:
+    name: "Health Check Endpoint Requirement"
+    category: "Availability"
+    priority: "HIGH"
+    description: "All MCP servers must support health check endpoints"
+    rule_type: "server_validation"
+    enforcement:
+      point: "registration"
+      action: "require_compliance"
+    requirements:
+      - health_check_url_present: true
+      - health_check_responds_to_get: true
+      - health_check_response_time_ms: 5000
+      - health_check_interval_ms: 60000
+      - required_response_fields:
+          - "status"
+          - "version"
+          - "timestamp"
+
+  DOM-034-RL-006:
+    name: "Tool Result Validation"
+    category: "Integrity"
+    priority: "CRITICAL"
+    description: "MCP tool results must be validated before integration into agent context"
+    rule_type: "response_validation"
+    enforcement:
+      point: "post_execution"
+      action: "reject_invalid_response"
+    validation:
+      - response_schema_compliance: true
+      - output_type_matching: true
+      - data_completeness_check: true
+      - error_field_validation: true
+
+  DOM-034-RL-007:
+    name: "Security Validation Prerequisite"
+    category: "Security"
+    priority: "CRITICAL"
+    description: "All MCP tools must pass security validation coordinated with AGT-028"
+    rule_type: "security_validation"
+    enforcement:
+      point: "pre_activation"
+      action: "block_activation"
+    validation_pipeline:
+      - credential_validation: true
+      - permission_verification: true
+      - data_access_audit: true
+      - encryption_requirement: true
+
+  DOM-034-RL-008:
+    name: "Version Compatibility Verification"
+    category: "Compatibility"
+    priority: "HIGH"
+    description: "MCP

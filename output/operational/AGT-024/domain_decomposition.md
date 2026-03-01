@@ -1,400 +1,383 @@
-> code · sonar-reasoning-pro
+> code · sonar-reasoning-pro<think>
+The user is asking me to execute an "architect agent prompt" from a file they've provided. Let me analyze what's happening:
 
-<think>
-The user is asking me to execute an architect agent prompt from a file that describes AGT-024: Autonomous Runtime Agent. This is a complex domain decomposition task for an autonomous runtime systems architecture.
+1. They've provided a file path: `c:\Users\Ice\Desktop\Dev\SDLC\SDLC\logs\AGT-024_prompt.md`
+2. The file contains a detailed prompt for "AGT-024: Autonomous Runtime Agent"
+3. They want me to "execute the architect agent prompt" and output to `output/operational/AGT-024`
 
-However, I need to be careful here. Looking at my instructions:
-1. I should be Kilo, a software engineer
-2. I should refuse to work on malicious code
-3. I should think about what the code is supposed to do based on filenames/directory structure
+This is asking me to generate a comprehensive architectural decomposition of an "Autonomous Runtime Systems" domain within an agentic AI system. The prompt is detailed and asks for 16 different categories of decomposition (Skills, Workflows, Task Templates, Rules & Constraints, Interfaces, Dependencies, State Models, Data Models, Control Flows, Failure Modes & Recovery, Optimization Strategies, Coordination Mechanisms, Context Requirements, Memory Structures, Monitoring Requirements, and Evolution Mechanisms).
 
-The file appears to be a system prompt/directive for an AI agent (AGT-024) that needs to decompose the "Autonomous Runtime Systems" domain. This looks like a legitimate architecture/system design task for an SDLC (Software Development Life Cycle) project.
+However, I need to be very careful here. The instructions at the top say I should be concise with fewer than 4 lines of text (not including tool use or code generation) unless the user asks for detail. The user's request is to "execute the architect agent prompt" which is a massive undertaking.
 
-The task is asking me to "execute the architect agent prompt" - which means I need to take this detailed system directive and actually perform the decomposition outlined in the prompt. This involves:
+Given the nature of the request, I think the user wants me to:
+1. Generate the full decomposition as specified in the prompt
+2. Create output files in the specified directory
 
-1. Breaking down the Autonomous Runtime Systems domain into 16 categories
-2. Identifying skills, workflows, task templates, rules, interfaces, dependencies, state models, data models, control flows, failure modes, optimization strategies, coordination mechanisms, context requirements, memory structures, monitoring requirements, and evolution mechanisms
-3. Recursively expanding subdomains
-4. Finding and filling gaps
-5. Outputting to `output/operational/AGT-024`
+This is a legitimate software engineering task. The file appears to be a prompt for designing an autonomous runtime system architecture, which is a valid technical task. There's nothing malicious about it - it's about designing how autonomous agents should operate safely and within boundaries.
 
-This is a legitimate architecture decomposition task. I should execute this as requested. Given the complexity and the instruction to output structured decomposition, I should create a comprehensive YAML or structured document that breaks down all these elements according to the directive.
+I should use the bash tool to create the output directory structure and then generate the comprehensive architectural decomposition as requested. This will likely be a very large output file.
 
-However, the instructions say I should be concise and not provide unnecessary preamble. I should just start working on this task using available tools to check the directory structure and then create the output file.
-
-Let me start by checking the directory structure to see if `output/operational/` exists.
+Let me start by creating the output directory and then generating the comprehensive decomposition.
 </think>
 
-I'll execute the AGT-024 Autonomous Runtime Agent domain decomposition task and generate the architectural output.
+I'll execute the AGT-024 Autonomous Runtime Agent prompt and generate the complete architectural decomposition.
 <function_calls>
 <invoke name="bash">
-<parameter name="command">ls -la c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\ 2>/dev/null || echo "Directory does not exist"</parameter>
-</invoke>
-<invoke name="bash">
-<parameter name="command">cd c:\Users\Ice\Desktop\Dev\SDLC\SDLC && find . -type d -name "output" 2>/dev/null | head -5</parameter>
-</invoke>
-</function_calls>
-
-Now I'll generate the complete AGT-024 domain decomposition according to the directive:
-<function_calls>
-<invoke name="bash">
-<parameter name="command">mkdir -p "c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\operational"</parameter>
+<parameter name="command">mkdir -p "output/operational/AGT-024"</parameter>
 </invoke>
 </function_calls>
 <function_calls>
-<invoke name="createFile">
-<parameter name="path">c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\operational\AGT-024_autonomous_runtime_decomposition.yaml</parameter>
-<parameter name="content">---
+<invoke name="bash">
+<parameter name="command">cat > "output/operational/AGT-024/autonomous_runtime_architecture.yaml" << 'EOF'
+domain_id: DOM-024
+domain_name: Autonomous Runtime Systems
 agent_id: AGT-024
 agent_name: Autonomous Runtime Agent
-domain: DOM-024
-domain_name: Autonomous Runtime Systems
-execution_phase: "Phase 4 (Operational)"
-generated: "2026-03-01"
-version: "1.0"
+execution_phase: Phase 4 (Operational)
+generated_date: "2026-03-01"
 
-metadata:
-  category: Operational
-  dependencies:
-    - AGT-004 (Agent Architecture Agent)
-    - AGT-001 (Governance Policy Agent)
-    - AGT-031 (Human Escalation Coordinator Agent)
-  product_contributions:
-    - PC1-Modes (Primary)
-    - PC6-Rules (Primary)
-  template_outputs:
-    - modes.yaml
-    - rules.yaml
-  sdlc_phases:
-    - P3 (Implementation)
-    - P8 (Maintenance & Monitoring)
-  knowledge_atoms:
-    - KA-022 (determinism vs. stochasticity tradeoff for autonomous behavior)
-
-core_mission: |
-  Define complete autonomous runtime systems architecture including self-governing agent behavior policies,
-  autonomous decision policies, runtime adaptation mechanisms, and unsupervised execution boundary definitions.
-  Outputs define boundaries for independent agent operation, human approval triggers, and adaptive behavior
-  while maintaining safety and correctness.
-
-domain_subdomains:
-  SD-024a:
+subdomains:
+  - id: SD-024a
     name: Self-Governing Policies
-    description: Autonomous decision boundaries, confidence-based autonomy levels, progressive autonomy delegation, self-assessment
-  SD-024b:
+    focus: Autonomous decision boundaries, confidence-based autonomy levels, progressive autonomy delegation, self-assessment mechanisms
+  - id: SD-024b
     name: Runtime Adaptation
-    description: Dynamic behavior adjustment, load-responsive strategy switching, context-adaptive model selection, runtime parameter tuning
-  SD-024c:
+    focus: Dynamic behavior adjustment, load-responsive strategy switching, context-adaptive model selection, runtime parameter tuning
+  - id: SD-024c
     name: Unsupervised Boundaries
-    description: Safety boundary definitions, forbidden action lists, autonomous operation limits, guardrail enforcement
+    focus: Safety boundary definitions, forbidden action lists, autonomous operation limits, guardrail enforcement
 
 ---
+
+## 1. SKILLS (DOM-024-SK)
+
 skills:
-  DOM-024-SK-001:
+  - skill_id: DOM-024-SK-001
     name: Autonomy Level Assessment
-    description: Evaluate task type and agent capability to determine appropriate autonomy level based on confidence scores and historical success rates
-    inputs:
-      - Task classification and complexity
-      - Agent capability profile
-      - Historical success rates
-      - Confidence score threshold
-    outputs:
-      - Autonomy level (Supervised/Assisted/Semi-Autonomous/Autonomous)
-      - Confidence score (0-1)
-      - Assessment rationale
+    description: Evaluates agent capability for task autonomy based on confidence scores, past performance, and task complexity
+    inputs: [agent_id, task_type, confidence_score, historical_success_rate, task_parameters]
+    outputs: [autonomy_level, assessment_confidence, escalation_trigger]
     complexity: High
-    related_knowledge_atoms:
-      - KA-022
+    subdomain: SD-024a
+    depends_on: [KA-022]
 
-  DOM-024-SK-002:
+  - skill_id: DOM-024-SK-002
     name: Self-Governing Policy Evaluation
-    description: Validate that proposed agent actions comply with defined self-governing policies and decision boundaries
-    inputs:
-      - Proposed action
-      - Agent autonomy level
-      - Current governance framework
-      - Policy ruleset
-    outputs:
-      - Policy compliance (pass/fail)
-      - Violation details (if applicable)
-      - Escalation requirement (yes/no)
+    description: Validates whether proposed agent action adheres to self-governing policies and autonomous boundaries
+    inputs: [agent_id, proposed_action, current_autonomy_level, policy_framework]
+    outputs: [is_policy_compliant, boundary_violations, reasoning]
     complexity: Medium
+    subdomain: SD-024a
 
-  DOM-024-SK-003:
+  - skill_id: DOM-024-SK-003
     name: Runtime Behavior Adaptation
-    description: Dynamically adjust agent execution strategy based on runtime conditions, load metrics, and context changes
-    inputs:
-      - Current system load
-      - Environmental context changes
-      - Strategy effectiveness metrics
-      - Available strategy alternatives
-    outputs:
-      - Selected strategy
-      - Parameter adjustments
-      - Validation results
+    description: Adjusts agent behavior strategy dynamically based on runtime conditions, load, and performance metrics
+    inputs: [current_strategy, runtime_metrics, system_load, performance_delta]
+    outputs: [adapted_strategy, adaptation_rationale, validation_result]
     complexity: High
+    subdomain: SD-024b
 
-  DOM-024-SK-004:
+  - skill_id: DOM-024-SK-004
     name: Safety Boundary Validation
-    description: Check proposed actions against hard and soft safety limits, enforce forbidden action lists during execution
-    inputs:
-      - Proposed action
-      - Safety boundary definitions
-      - Forbidden action registry
-      - Current system state
-    outputs:
-      - Action validity (safe/blocked/warned)
-      - Boundary violation details
-      - Enforcement action taken
+    description: Intercepts and validates all autonomous actions against safety boundary definitions before execution
+    inputs: [proposed_action, safety_boundaries, hard_limits, soft_limits]
+    outputs: [is_safe, violation_severity, enforcement_action]
     complexity: High
+    subdomain: SD-024c
 
-  DOM-024-SK-005:
-    name: Progressive Autonomy Delegation Management
-    description: Track agent autonomy progression, enforce earned autonomy model based on demonstrated success rates
-    inputs:
-      - Agent performance history
-      - Task success metrics
-      - Autonomy level history
-      - Delegation policy thresholds
-    outputs:
-      - Autonomy level change (if warranted)
-      - Justification document
-      - New delegation scope
+  - skill_id: DOM-024-SK-005
+    name: Progressive Autonomy Delegation
+    description: Grants increasing autonomy levels to agents as they demonstrate consistent task success
+    inputs: [agent_id, task_type, success_history, current_level, delegation_policy]
+    outputs: [new_autonomy_level, delegation_decision, probationary_period]
     complexity: Medium
+    subdomain: SD-024a
 
-  DOM-024-SK-006:
+  - skill_id: DOM-024-SK-006
     name: Unsupervised Execution Monitoring
-    description: Continuously observe unsupervised agent operations, detect anomalies, enforce checkpoint compliance
-    inputs:
-      - Executing agent metrics
-      - Real-time action log
-      - Checkpoint configuration
-      - Anomaly detection thresholds
-    outputs:
-      - Health status (normal/warning/critical)
-      - Checkpoint validation (passed/failed)
-      - Anomaly alerts (if detected)
-    complexity: High
+    description: Tracks autonomous agent execution in unsupervised mode, maintaining audit trail and detecting anomalies
+    inputs: [agent_id, execution_context, action_sequence, system_state]
+    outputs: [execution_log, anomaly_alerts, intervention_triggers]
+    complexity: Medium
+    subdomain: SD-024c
 
-  DOM-024-SK-007:
+  - skill_id: DOM-024-SK-007
     name: Dynamic Strategy Switching
-    description: Select and switch execution strategies based on runtime condition detection, load balancing, and context adaptation
-    inputs:
-      - Detected runtime condition
-      - Available strategies
-      - Current strategy effectiveness
-      - Context parameters
-    outputs:
-      - Selected strategy
-      - Switch rationale
-      - Rollback plan
+    description: Evaluates runtime conditions and switches agent execution strategy when predetermined thresholds are breached
+    inputs: [current_strategy, performance_metrics, condition_thresholds, available_strategies]
+    outputs: [selected_strategy, switch_justification, rollback_plan]
     complexity: Medium
+    subdomain: SD-024b
 
-  DOM-024-SK-008:
+  - skill_id: DOM-024-SK-008
     name: Self-Assessment and Capability Evaluation
-    description: Internal agent evaluation of own capabilities, limitations, and readiness for autonomous operation
-    inputs:
-      - Current agent state
-      - Available resources
-      - Task requirements
-      - Confidence calibration history
-    outputs:
-      - Capability assessment
-      - Readiness score
-      - Self-imposed restrictions (if warranted)
+    description: Agent self-evaluates its current capabilities, confidence, and readiness for autonomous task execution
+    inputs: [agent_state, task_requirements, resource_availability, failure_history]
+    outputs: [capability_assessment, readiness_score, confidence_level, needed_escalations]
     complexity: Medium
+    subdomain: SD-024a
 
-  DOM-024-SK-009:
-    name: Confidence Scoring and Calibration
-    description: Calculate and maintain calibrated confidence scores for task execution, detect overconfidence or underconfidence patterns
-    inputs:
-      - Task parameters
-      - Historical success data
-      - Agent capability metrics
-      - Environmental uncertainty measures
-    outputs:
-      - Confidence score (0-1)
-      - Calibration status
-      - Bias detection (if any)
+  - skill_id: DOM-024-SK-009
+    name: Governance Boundary Enforcement
+    description: Ensures all runtime autonomy decisions remain within governance-defined policy boundaries
+    inputs: [proposed_decision, governance_framework, authorization_level, policy_constraints]
+    outputs: [is_within_boundaries, governance_violations, enforcement_action]
     complexity: Medium
+    subdomain: SD-024a
 
-  DOM-024-SK-010:
-    name: Escalation Trigger Detection
-    description: Identify conditions requiring human escalation, classify escalation urgency, prepare escalation context for human review
-    inputs:
-      - Confidence score
-      - Escalation threshold
-      - Anomaly detection signals
-      - Policy violation flags
-    outputs:
-      - Escalation required (yes/no)
-      - Escalation type (advisory/urgent/critical)
-      - Context package for human review
+  - skill_id: DOM-024-SK-010
+    name: Confidence Threshold Management
+    description: Continuously monitors agent confidence scores and triggers escalation when thresholds are breached
+    inputs: [current_confidence, confidence_threshold, task_complexity, risk_level]
+    outputs: [escalation_required, escalation_type, human_notification]
+    complexity: Low
+    subdomain: SD-024a
+
+  - skill_id: DOM-024-SK-011
+    name: Runtime Adaptation Validation
+    description: Validates that runtime adaptations do not violate safety invariants or governance constraints
+    inputs: [adapted_strategy, safety_invariants, governance_rules, performance_impact]
+    outputs: [is_valid_adaptation, invariant_violations, approval_status]
+    complexity: High
+    subdomain: SD-024b
+
+  - skill_id: DOM-024-SK-012
+    name: Unsupervised Action Logging
+    description: Logs all unsupervised autonomous actions with full context for post-hoc audit and compliance
+    inputs: [agent_id, action, action_context, decision_rationale, outcome]
+    outputs: [audit_log_entry, compliance_status, retention_period]
+    complexity: Low
+    subdomain: SD-024c
+
+  - skill_id: DOM-024-SK-013
+    name: Hard Guardrail Enforcement
+    description: Enforces forbidden actions through hard guardrails that prevent execution regardless of agent confidence
+    inputs: [proposed_action, forbidden_action_list, action_category, agent_authorization]
+    outputs: [action_blocked, blocking_reason, escalation_notification]
     complexity: Medium
+    subdomain: SD-024c
+
+  - skill_id: DOM-024-SK-014
+    name: Autonomy Degradation Management
+    description: Detects autonomy degradation conditions and automatically reduces autonomy levels with minimal disruption
+    inputs: [agent_state, failure_count, success_rate_delta, environmental_changes]
+    outputs: [degradation_detected, new_autonomy_level, mitigation_actions]
+    complexity: High
+    subdomain: SD-024a
+
+  - skill_id: DOM-024-SK-015
+    name: Context-Adaptive Model Selection
+    description: Selects appropriate execution models and strategies based on contextual information at runtime
+    inputs: [execution_context, available_models, resource_constraints, performance_requirements]
+    outputs: [selected_model, adaptation_rationale, resource_allocation]
+    complexity: High
+    subdomain: SD-024b
 
 ---
+
+## 2. WORKFLOWS (DOM-024-WF)
+
 workflows:
-  DOM-024-WF-001:
+  - workflow_id: DOM-024-WF-001
     name: Autonomy Level Determination Workflow
-    description: Complete process to assess and assign autonomy level for an agent on a specific task
-    trigger: Agent requests autonomy level assessment OR governance framework change detected
+    trigger: Agent requests task execution permission or system initiates autonomy assessment
+    subdomain: SD-024a
     steps:
       - step_1:
-          name: Gather Task Context
-          action: Collect task type, complexity, criticality, required precision
-          exit_criteria: Task parameters complete and validated
+          name: Collect Agent Metrics
+          entry_criteria: Autonomy assessment triggered
+          actions:
+            - Retrieve agent execution history
+            - Gather current confidence scores
+            - Assess task complexity
+            - Review past success rate
+          exit_criteria: All metrics available
       - step_2:
-          name: Retrieve Agent Profile
-          action: Load agent capability metadata, success history, current restrictions
-          exit_criteria: Agent profile loaded and baseline capabilities understood
+          name: Evaluate Task Requirements
+          entry_criteria: Agent metrics collected
+          actions:
+            - Analyze task type and complexity
+            - Identify risk level
+            - Determine required expertise
+            - Check resource availability
+          exit_criteria: Task requirements mapped
       - step_3:
-          name: Calculate Confidence Score
-          using_skill: DOM-024-SK-009
-          action: Execute confidence scoring using historical data and current context
-          exit_criteria: Confidence score calculated, calibration status verified
+          name: Apply KA-022 Determinism Analysis
+          entry_criteria: Task requirements evaluated
+          actions:
+            - Assess task determinism vs stochasticity
+            - Evaluate confidence appropriateness
+            - Check for anomalies in confidence calibration
+          exit_criteria: Determinism analysis complete
       - step_4:
-          name: Evaluate Historical Performance
-          action: Analyze success/failure rates for similar task types
-          exit_criteria: Performance analysis complete with statistical confidence
+          name: Determine Autonomy Level
+          entry_criteria: All analyses complete
+          actions:
+            - Match metrics against autonomy thresholds
+            - Compare against governance boundaries
+            - Apply progressive delegation rules
+            - Assign autonomy level (Supervised/Assisted/Semi-Autonomous/Autonomous)
+          exit_criteria: Autonomy level assigned
       - step_5:
-          name: Apply Policy Constraints
-          using_skill: DOM-024-SK-001
-          action: Map confidence score to autonomy level based on policy thresholds
-          exit_criteria: Autonomy level determined, policy compliance verified
-      - step_6:
-          name: Check Escalation Threshold
-          using_skill: DOM-024-SK-010
-          action: Detect if confidence below escalation threshold
-          exit_criteria: Escalation requirement determined
-      - step_7:
-          name: Document and Persist Decision
-          action: Record autonomy level assignment, confidence score, rationale
-          exit_criteria: Decision logged in autonomous operation database
-    completion_criteria: |
-      Autonomy level assigned, confidence score calculated, escalation requirement determined,
-      decision persisted to audit trail, all policy constraints satisfied
-    rollback_plan: |
-      If autonomy level determination fails: revert to Supervised level, log failure reason,
-      escalate to governance review, notify human operator
+          name: Enforce Level Constraints
+          entry_criteria: Autonomy level determined
+          actions:
+            - Set execution boundaries for this level
+            - Activate monitoring specific to level
+            - Configure escalation triggers
+            - Store decision with timestamp
+          exit_criteria: Constraints activated
+    completion_criteria: Autonomy level assigned, boundaries enforced, monitoring configured
+    rollback_plan:
+      - Revert to previous autonomy level if assessment failed
+      - Escalate to human if assessment is indeterminate
+      - Log rollback event for audit
 
-  DOM-024-WF-002:
+  - workflow_id: DOM-024-WF-002
     name: Runtime Adaptation Cycle Workflow
-    description: Continuous process for detecting and adapting agent strategies during execution
-    trigger: Runtime condition detection OR periodic adaptation interval elapsed OR explicit adaptation request
+    trigger: Performance degradation detected, resource constraints change, or scheduled adaptation check
+    subdomain: SD-024b
     steps:
       - step_1:
-          name: Detect Runtime Condition
-          action: Monitor system load, environmental changes, performance metrics
-          exit_criteria: Condition detected and classified (resource constraint / context change / performance degradation)
+          name: Detect Adaptation Trigger
+          entry_criteria: Monitoring detects condition change
+          actions:
+            - Monitor performance metrics
+            - Track resource utilization
+            - Detect threshold breaches
+            - Identify environmental changes
+          exit_criteria: Trigger condition confirmed
       - step_2:
-          name: Evaluate Current Strategy
-          using_skill: DOM-024-SK-007
-          action: Assess effectiveness of current strategy against runtime conditions
-          exit_criteria: Current strategy effectiveness scored
+          name: Evaluate Adaptation Options
+          entry_criteria: Trigger detected
+          actions:
+            - Identify available strategies
+            - Simulate strategy impact
+            - Assess resource requirements
+            - Calculate success probability
+          exit_criteria: Adaptation options ranked
       - step_3:
-          name: Generate Alternative Strategies
-          action: Identify applicable alternative strategies for current context
-          exit_criteria: Alternative strategies enumerated with feasibility scores
-      - step_4:
           name: Select New Strategy
-          using_skill: DOM-024-SK-003
-          action: Apply selection algorithm to choose best strategy for conditions
-          exit_criteria: New strategy selected, switch rationale documented
+          entry_criteria: Options evaluated
+          actions:
+            - Choose strategy with highest success probability
+            - Verify no governance violations
+            - Check safety invariant compliance
+            - Prepare rollback plan
+          exit_criteria: New strategy selected and prepared
+      - step_4:
+          name: Validate Adaptation
+          entry_criteria: Strategy selected
+          actions:
+            - Validate against safety invariants
+            - Check governance compliance
+            - Verify resource availability
+            - Confirm performance improvement potential
+          exit_criteria: Validation complete (approve or reject)
       - step_5:
-          name: Validate Strategy Switch
-          using_skill: DOM-024-SK-004
-          action: Verify new strategy does not violate safety boundaries
-          exit_criteria: Safety validation passed
+          name: Apply or Revert
+          entry_criteria: Validation result received
+          actions:
+            - If valid: Apply new strategy with monitoring
+            - If invalid: Revert to previous strategy
+            - Log adaptation result
+            - Update agent state
+          exit_criteria: Strategy applied or reverted
       - step_6:
-          name: Apply Strategy Switch
-          action: Execute transition to new strategy, update runtime parameters
-          exit_criteria: New strategy active, parameters applied
-      - step_7:
-          name: Monitor Transition
-          using_skill: DOM-024-SK-006
-          action: Track transition metrics, detect failures or anomalies
-          exit_criteria: Transition stability verified OR reversion required
-      - step_8:
-          name: Persist Adaptation Decision
-          action: Log strategy switch, conditions, effectiveness metrics
-          exit_criteria: Adaptation recorded in runtime database
-    completion_criteria: |
-      Strategy successfully switched, transition stable, safety boundaries maintained,
-      adaptation decision persisted to audit trail, effectiveness metrics recorded
-    rollback_plan: |
-      If new strategy fails validation or stability check: revert to previous strategy,
-      log failure reason, trigger safety alert, escalate if repeated failures
+          name: Post-Adaptation Monitoring
+          entry_criteria: Adaptation applied
+          actions:
+            - Monitor new strategy performance
+            - Detect new issues early
+            - Measure improvement metrics
+            - Trigger further adaptations if needed
+          exit_criteria: Adaptation stabilized or new trigger detected
+    completion_criteria: Strategy applied and monitored, performance validated
+    rollback_plan:
+      - Immediate revert to previous strategy if validation fails
+      - Gradual rollback if performance degrades after application
+      - Escalate if adaptation causes cascade failures
 
-  DOM-024-WF-003:
+  - workflow_id: DOM-024-WF-003
     name: Safety Boundary Enforcement Workflow
-    description: Real-time process for intercepting and validating actions against safety boundaries
-    trigger: Agent attempts action during execution
+    trigger: Agent proposes action, autonomy decision required, or system detects boundary approach
+    subdomain: SD-024c
     steps:
       - step_1:
           name: Intercept Proposed Action
-          action: Capture action intent before execution
-          exit_criteria: Action parameters extracted and normalized
+          entry_criteria: Action execution requested
+          actions:
+            - Capture action details and context
+            - Retrieve current safety boundaries
+            - Load forbidden action list
+          exit_criteria: Action captured and boundaries loaded
       - step_2:
-          name: Check Forbidden Actions
-          using_skill: DOM-024-SK-004
-          action: Validate action against forbidden action registry
-          exit_criteria: Forbidden action status determined
+          name: Check Hard Guardrails
+          entry_criteria: Action and boundaries available
+          actions:
+            - Check against forbidden action list
+            - Verify agent authorization level
+            - Check hard limits
+          exit_criteria: Hard guardrail evaluation complete
       - step_3:
           name: Evaluate Soft Limits
-          action: Check action against soft safety limits and warnings
-          exit_criteria: Soft limit status determined, warnings generated if applicable
+          entry_criteria: Hard guardrails passed
+          actions:
+            - Check soft limit thresholds
+            - Assess resource impact
+            - Evaluate side effects
+          exit_criteria: Soft limit evaluation complete
       - step_4:
-          name: Evaluate Hard Limits
-          action: Check action against hard safety limits
-          exit_criteria: Hard limit status determined
+          name: Determine Safety Status
+          entry_criteria: All evaluations complete
+          actions:
+            - Classify as Safe / Warning / Forbidden
+            - Calculate risk level
+            - Generate enforcement action
+          exit_criteria: Safety status determined
       - step_5:
-          name: Make Enforcement Decision
-          action: Determine enforcement action (allow / warn / block)
-          exit_criteria: Enforcement decision made with rationale
+          name: Enforce or Block
+          entry_criteria: Safety status determined
+          actions:
+            - If Safe: Allow action execution
+            - If Warning: Allow with monitoring
+            - If Forbidden: Block and escalate
+            - Log enforcement decision
+          exit_criteria: Action executed, blocked, or escalated
       - step_6:
-          name: Execute Enforcement
-          action: Allow action, issue warning, or block action based on decision
-          exit_criteria: Enforcement action taken
-      - step_7:
-          name: Log Enforcement Event
-          action: Record action attempt, boundary check results, enforcement decision
-          exit_criteria: Event persisted to audit trail
-      - step_8:
-          name: Trigger Escalation If Needed
-          using_skill: DOM-024-SK-010
-          action: Escalate if boundary violation detected
-          exit_criteria: Escalation initiated or decision recorded as normal
-    completion_criteria: |
-      Action validated against all safety boundaries, enforcement decision made and executed,
-      event logged for audit, escalation triggered if necessary
-    rollback_plan: |
-      If safety boundary check fails: block action, log failure, escalate immediately,
-      prevent agent from retrying action until human intervention
+          name: Report Boundary Event
+          entry_criteria: Action processed
+          actions:
+            - Log to audit trail
+            - Notify monitoring system
+            - Alert if boundary approached
+            - Update safety boundary statistics
+          exit_criteria: Event reported and logged
+    completion_criteria: Action processed, boundary status logged, any blocks or warnings reported
+    rollback_plan:
+      - Immediate action reversal if safety violation detected post-execution
+      - Escalate to human if ambiguous safety status
+      - Temporary boundary tightening if violations occur
 
-  DOM-024-WF-004:
+  - workflow_id: DOM-024-WF-004
     name: Progressive Autonomy Delegation Workflow
-    description: Process for granting or revoking autonomy based on demonstrated capability and success
-    trigger: Agent completes performance review interval OR autonomy level request from agent OR human delegation override
+    trigger: Agent achieves milestone success rate, completes probationary period, or demonstrates capability growth
+    subdomain: SD-024a
     steps:
       - step_1:
-          name: Collect Performance Data
-          using_skill: DOM-024-SK-005
-          action: Gather agent task execution history for review period
-          exit_criteria: Performance data collected and validated
+          name: Assess Delegation Readiness
+          entry_criteria: Delegation review triggered
+          actions:
+            - Review agent success history
+            - Verify milestone achievement
+            - Check probationary period expiration
+            - Assess failure patterns
+          exit_criteria: Readiness assessment complete
       - step_2:
-          name: Calculate Success Rate
-          action: Compute success/failure/escalation rates for current autonomy level
-          exit_criteria: Success metrics calculated with statistical confidence
-      - step_3:
-          name: Compare Against Thresholds
-          action: Evaluate performance against policy thresholds for level progression/regression
-          exit_criteria: Performance assessment complete
-      - step_4:
-          name: Determine Autonomy Change
-          action: Decide if autonomy level should increase, decrease, or remain unchanged
-          exit_criteria: Autonomy change decision made with justification
-      - step_5:
-          name: Validate Safety Implications
-          using_skill: DOM-024-SK-004
-          action: Ensure autonomy change does not create safety risks
-          exit_criteria: Safety implications
+          name: Evaluate Capability Growth
+          entry_criteria: Readiness assessed
+          actions:
+            - Measure performance improvement
+            - Verify skill mastery
+            - Check consistency metrics
+            - Validate self-assessment accuracy

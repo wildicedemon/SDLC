@@ -1,429 +1,404 @@
 > code · sonar-reasoning-pro
+
 <think>
-The user is asking me to execute the architect agent prompt from the file they've provided. This is a detailed SDLC document for creating a Human-in-the-Loop Agent (AGT-023).
+The user is asking me to execute an architect agent prompt from the file `AGT-023_prompt.md`. This is a highly detailed, complex system architecture prompt for designing a Human-in-the-Loop (HITL) agent for an SDLC system.
 
-However, I need to clarify what "execute the architect agent prompt" means in this context. The file contains a system directive and detailed requirements for an agent that should decompose the Human-in-the-Loop Interaction domain.
+Looking at the prompt, it's asking me to:
+1. Act as AGT-023 (Human-in-the-Loop Agent)
+2. Decompose the Human-in-the-Loop Interaction domain
+3. Expand across 16 categories with specific requirements
+4. Recursively expand subdomains
+5. Output to specific files
 
-The user wants me to:
-1. Read the prompt from the file (which I have)
-2. Execute it (which means I need to actually perform the decomposition work outlined)
-3. Output the results to `output/operational/AGT-023`
+The search results provided are about HITL concepts in AI, which provide context for what HITL is, but the actual task is to execute the system prompt in the file.
 
-This is a very substantial task - I need to create comprehensive decompositions for:
-- 16 categories of definitions
-- 4 subdomains recursively expanded
-- Skills, workflows, task templates, rules, interfaces, dependencies, state models, data models, control flows, failure modes, optimization strategies, coordination mechanisms, context requirements, memory structures, monitoring requirements, and evolution mechanisms.
+However, I need to be careful here. The user is asking me to "execute" this architect agent prompt. This is a complex system design task that requires me to:
+1. Create comprehensive domain decomposition
+2. Generate YAML files
+3. Design workflows, state models, data models, etc.
 
-However, I'm constrained by the instructions to be concise and not provide unnecessary preamble. The user wants me to execute this task, not explain it. I should:
+Given the constraints and the nature of Kilo (a CLI tool for software engineering), I should interpret this as: generate the domain decomposition artifacts in the specified output directory.
 
-1. Create the necessary directory structure
-2. Generate the comprehensive decomposition following the template
-3. Save outputs to the specified location
+This is a substantial task. I should start by understanding the structure and then systematically work through the decomposition. Since this is a system architecture task and I need to output to specific files, I should use the available tools to create the necessary files.
 
-Given the scope and complexity, I should start by creating the output files with the decomposition. This is a legitimate software engineering task for designing an SDLC system architecture.
+Let me proceed systematically:
+1. Decompose all 16 categories
+2. Create the required output files
+3. Save to output/operational/AGT-023/
 
-Let me proceed with executing this task by creating the structured decomposition according to the prompt requirements.
+This is a complex architectural task. I'll need to be thorough but also concise in my output format.
 </think>
 
-I'll execute the AGT-023 Human-in-the-Loop Agent decomposition and generate the architectural outputs.
+I'll execute the AGT-023 architect agent prompt to decompose the Human-in-the-Loop Interaction domain. This will generate comprehensive domain artifacts including workflows, state models, data models, and rules.
+
+Let me start by creating the output directory structure and generating the decomposition artifacts:
 <function_calls>
-<tool_calls>
 <invoke name="bash">
 <parameter name="command">mkdir -p "c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\operational\AGT-023"</parameter>
 </invoke>
 </function_calls>
-</function_calls>
-
-Now I'll create the comprehensive domain decomposition for AGT-023:
 <function_calls>
-<tool_calls>
-<invoke name="writeFile">
-<parameter name="filePath">c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\operational\AGT-023\001_skills.yaml</parameter>
+<invoke name="edit_file">
+<parameter name="filePath">c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\operational\AGT-023\domain_decomposition.yaml</parameter>
+<parameter name="operation">create</parameter>
 <parameter name="content">domain: DOM-023
 domain_name: Human-in-the-Loop Interaction
-category: Skills
-description: Discrete capabilities required within Human-in-the-Loop Interaction
+description: Complete decomposition of HITL architecture for agentic AI systems
+version: 1.0.0
+generated_date: 2026-03-01
+agent_id: AGT-023
+status: COMPLETE
+
+---
+# CATEGORY 1: SKILLS
+# ====================
 
 skills:
   - skill_id: DOM-023-SK-001
     name: Escalation Trigger Evaluation
-    description: Assess whether an agent decision requires human escalation based on confidence thresholds and domain complexity.
+    description: Assesses agent confidence levels and domain-specific conditions to determine if escalation to human review is required.
     inputs:
-      - agent_decision_confidence
-      - decision_domain
-      - decision_complexity
-      - escalation_policies
+      - agent_confidence_score (0.0-1.0)
+      - task_domain (string)
+      - execution_context (object)
+      - escalation_rules (array)
     outputs:
       - escalation_required (boolean)
-      - escalation_urgency (low | medium | high | critical)
-      - escalation_reason (string)
+      - escalation_urgency (CRITICAL|HIGH|MEDIUM|LOW)
+      - reasoning (string)
     complexity: Medium
 
   - skill_id: DOM-023-SK-002
     name: Structured Clarification Question Generation
-    description: Generate targeted, contextual clarification questions to resolve ambiguous requirements or user inputs.
+    description: Creates targeted, context-rich clarification questions to resolve detected ambiguities in task specifications.
     inputs:
-      - ambiguity_source
-      - domain_context
-      - conversation_history
-      - user_expertise_level
+      - ambiguity_type (enum)
+      - source_context (object)
+      - knowledge_atoms (array)
+      - question_history (array)
     outputs:
-      - question_text (string)
-      - suggested_answers (list)
+      - clarification_question (string)
+      - suggested_answers (array)
       - context_summary (string)
       - max_attempts (integer)
     complexity: High
 
   - skill_id: DOM-023-SK-003
-    name: Approval Gate Configuration & Enforcement
-    description: Define, configure, and enforce approval gates with multi-approver logic, timeout handling, and fallback policies.
+    name: Approval Gate Configuration and Enforcement
+    description: Designs and enforces approval gates with multi-approver support, timeout handling, and fallback action execution.
     inputs:
-      - approval_requirement
-      - approver_list
-      - required_approval_count
-      - timeout_duration
-      - fallback_policy
+      - gate_requirements (object)
+      - approver_list (array)
+      - timeout_duration (integer)
+      - fallback_action (string)
     outputs:
-      - approval_gate_config (object)
-      - approval_request_id (string)
-      - enforcement_rules (list)
+      - gate_configuration (object)
+      - enforcement_status (string)
+      - approval_tracking (object)
     complexity: High
 
   - skill_id: DOM-023-SK-004
-    name: Notification Formatting & Delivery
-    description: Format notifications for multi-channel delivery (email, Slack, in-app, SMS) with priority routing and batching.
+    name: Notification Formatting and Delivery
+    description: Formats notifications according to channel specifications and routes them via appropriate delivery mechanisms.
     inputs:
-      - message_content
-      - recipient_list
-      - priority_level
-      - channel_preferences
-      - quiet_hours_policy
+      - notification_content (object)
+      - recipient_preferences (object)
+      - delivery_channels (array)
+      - priority_level (enum)
     outputs:
-      - formatted_notifications (list)
-      - delivery_plan (object)
-      - acknowledgment_tracking_id (string)
+      - formatted_notifications (array)
+      - delivery_status (object)
+      - delivery_timestamp (datetime)
     complexity: Medium
 
   - skill_id: DOM-023-SK-005
-    name: Human Response Parsing & Integration
-    description: Parse natural language human responses and integrate them back into agent context with validation and sanitization.
+    name: Human Response Parsing and Integration
+    description: Parses free-text and structured human responses, validates them, and integrates them back into agent execution context.
     inputs:
-      - human_response_text
-      - expected_response_format
-      - context_requirements
-      - validation_rules
+      - raw_response (string)
+      - expected_format (enum)
+      - validation_schema (object)
+      - response_history (array)
     outputs:
       - parsed_response (object)
-      - validation_status (valid | invalid | clarification_needed)
+      - validation_status (boolean)
       - integrated_context (object)
+      - parsing_confidence (0.0-1.0)
     complexity: High
 
   - skill_id: DOM-023-SK-006
-    name: Confidence Threshold Assessment for Escalation
-    description: Calculate and maintain dynamic confidence thresholds for escalation triggers based on historical accuracy and domain drift.
+    name: Confidence Threshold Assessment
+    description: Calculates and evaluates agent confidence levels against configured thresholds to trigger escalation decisions.
     inputs:
-      - decision_history
-      - accuracy_metrics
-      - domain_drift_indicators
-      - escalation_cost_model
+      - agent_metrics (object)
+      - historical_accuracy (float)
+      - task_complexity (enum)
+      - domain_uncertainty (float)
     outputs:
-      - current_threshold (float)
-      - threshold_confidence (float)
-      - threshold_adjustment_recommendation (string)
+      - confidence_score (0.0-1.0)
+      - threshold_status (PASS|FAIL)
+      - recommended_action (enum)
     complexity: Medium
 
   - skill_id: DOM-023-SK-007
     name: Multi-Channel Notification Routing
-    description: Route notifications intelligently across channels based on priority, recipient preferences, and channel availability.
+    description: Routes notifications to appropriate channels based on priority, user preferences, and availability.
     inputs:
-      - notification_priority
-      - recipient_preferences
-      - channel_status
-      - delivery_guarantees
+      - notification (object)
+      - user_preferences (object)
+      - channel_availability (object)
+      - quiet_hours_config (object)
     outputs:
       - routing_decision (object)
-      - primary_channel (string)
-      - fallback_channels (list)
-      - delivery_sla (object)
+      - selected_channels (array)
+      - delivery_schedule (object)
     complexity: Medium
 
   - skill_id: DOM-023-SK-008
-    name: Feedback Collection & Structuring
-    description: Collect structured feedback from humans regarding AI decisions and integrate into learning feedback loops.
+    name: Feedback Collection and Structuring
+    description: Collects human feedback in multiple formats and structures it for model training and improvement.
     inputs:
-      - feedback_prompt
-      - feedback_context
-      - response_format_schema
-      - learning_system_requirements
+      - feedback_type (enum)
+      - feedback_content (mixed)
+      - context_information (object)
+      - user_id (string)
     outputs:
       - structured_feedback (object)
-      - feedback_quality_score (float)
-      - learning_update_payload (object)
+      - feedback_category (enum)
+      - training_data_format (object)
     complexity: Medium
 
   - skill_id: DOM-023-SK-009
-    name: Escalation Timeout Handling & Fallback Execution
-    description: Monitor escalation timeouts and execute pre-defined fallback actions when humans do not respond in time.
+    name: Escalation Timeout Handling
+    description: Manages escalation timeouts, executes fallback actions, and records timeout events for auditing.
     inputs:
-      - escalation_request_id
-      - timeout_duration
-      - fallback_policies
-      - audit_requirements
+      - escalation_id (string)
+      - timeout_duration (integer)
+      - fallback_policy (object)
+      - retry_configuration (object)
     outputs:
       - timeout_event (object)
-      - fallback_action_executed (boolean)
-      - execution_log (object)
+      - fallback_action_result (object)
+      - escalation_state (enum)
     complexity: High
 
   - skill_id: DOM-023-SK-010
-    name: Context Preparation for Escalation
-    description: Prepare and summarize rich context for human escalation decisions, balancing completeness with cognitive load.
+    name: Context Preparation for Human Review
+    description: Prepares agent execution context into human-readable format with sufficient detail for informed decision-making.
     inputs:
-      - agent_state
-      - decision_rationale
-      - historical_context
-      - relevant_domain_knowledge
+      - agent_state (object)
+      - execution_history (array)
+      - decision_rationale (string)
+      - available_options (array)
     outputs:
-      - escalation_context (object)
-      - context_summary (string)
-      - key_decision_factors (list)
-      - estimated_cognitive_load (float)
+      - formatted_context (string)
+      - decision_summary (object)
+      - supporting_evidence (array)
     complexity: High
 
-  - skill_id: DOM-023-SK-011
-    name: Escalation Routing & Expertise Matching
-    description: Route escalations to appropriate humans based on domain expertise, availability, and escalation history.
-    inputs:
-      - escalation_domain
-      - required_expertise
-      - escalation_history
-      - human_availability
-    outputs:
-      - routing_decision (object)
-      - assigned_human (object)
-      - routing_confidence (float)
-      - alternative_routing (list)
-    complexity: Medium
-
-  - skill_id: DOM-023-SK-012
-    name: Approval Timeout & Fallback Policy Enforcement
-    description: Enforce approval request timeouts and execute fallback policies when approvers do not respond.
-    inputs:
-      - approval_request_id
-      - timeout_duration
-      - fallback_policy
-      - escalation_chain
-    outputs:
-      - fallback_action (object)
-      - execution_status (string)
-      - audit_entry (object)
-    complexity: Medium
-
-  - skill_id: DOM-023-SK-013
-    name: Clarification Loop Termination & Resolution
-    description: Determine when a clarification loop has achieved sufficient ambiguity resolution or should terminate with fallback.
-    inputs:
-      - clarification_history
-      - resolution_criteria
-      - max_attempts
-      - fallback_policy
-    outputs:
-      - termination_decision (resolved | unresolved | escalated)
-      - resolution_confidence (float)
-      - next_action (string)
-    complexity: Medium
-
-  - skill_id: DOM-023-SK-014
-    name: Human Override Signal Processing
-    description: Process and validate human override signals and adjust autonomous runtime behavior accordingly.
-    inputs:
-      - override_signal
-      - override_authorization
-      - override_rationale
-      - affected_workflow_id
-    outputs:
-      - validated_override (boolean)
-      - runtime_adjustment_payload (object)
-      - audit_log_entry (object)
-    complexity: Medium
-
-  - skill_id: DOM-023-SK-015
-    name: Notification Preference Management & Enforcement
-    description: Maintain and enforce user notification preferences including quiet hours, channel selection, and frequency limits.
-    inputs:
-      - user_id
-      - notification_type
-      - current_time
-      - preference_store
-    outputs:
-      - delivery_allowed (boolean)
-      - recommended_channel (string)
-      - scheduling_recommendation (object)
-    complexity: Low
-
-  - skill_id: DOM-023-SK-016
-    name: Human Decision Audit Logging
-    description: Create comprehensive, tamper-proof audit logs of all human decisions for compliance and accountability.
-    inputs:
-      - human_id
-      - decision_type
-      - decision_content
-      - context_snapshot
-      - affected_workflows
-    outputs:
-      - audit_log_entry (object)
-      - immutable_record_id (string)
-      - compliance_metadata (object)
-    complexity: Medium
-
-  - skill_id: DOM-023-SK-017
-    name: Escalation Path Depth Validation
-    description: Validate that escalation chains do not exceed maximum depth and have defined resolution endpoints.
-    inputs:
-      - escalation_chain
-      - max_depth_policy
-      - resolution_endpoints
-    outputs:
-      - validation_status (valid | invalid)
-      - chain_depth (integer)
-      - violations (list)
-    complexity: Low
-
-  - skill_id: DOM-023-SK-018
-    name: Bias Detection in Escalation Patterns
-    description: Detect potential biases in escalation routing, approval patterns, or human feedback integration.
-    inputs:
-      - escalation_history
-      - decision_outcomes
-      - demographic_data
-      - statistical_baselines
-    outputs:
-      - bias_indicators (list)
-      - bias_confidence_scores (dict)
-      - mitigation_recommendations (list)
-    complexity: High
-</parameter>
-</invoke>
-</function_calls>
-</function_calls>
-<function_calls>
-<tool_calls>
-<invoke name="writeFile">
-<parameter name="filePath">c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\operational\AGT-023\002_workflows.yaml</parameter>
-<parameter name="content">domain: DOM-023
-domain_name: Human-in-the-Loop Interaction
-category: Workflows
-description: Multi-step processes within Human-in-the-Loop Interaction
+---
+# CATEGORY 2: WORKFLOWS
+# =======================
 
 workflows:
   - workflow_id: DOM-023-WF-001
-    name: Escalation & Resolution Workflow
-    trigger: Agent confidence below threshold OR decision exceeds complexity limit
+    name: Escalation and Resolution Workflow
+    trigger: Escalation trigger evaluation determines escalation_required=true
+    description: Complete workflow from escalation detection through human decision and result integration
     steps:
-      - step_id: WF-001-S001
-        name: Evaluate Escalation Need
-        description: Assess whether escalation is required
-        entry_criteria: Escalation trigger received
-        actions:
-          - Execute DOM-023-SK-001 (Escalation Trigger Evaluation)
-        exit_criteria: Escalation decision made
-      
-      - step_id: WF-001-S002
+      - step_num: 1
+        name: Detect Escalation Need
+        description: Evaluate confidence scores and execution context
+        entry_criteria: Agent task executing with decision point
+        exit_criteria: Escalation requirement determined
+        action: Invoke DOM-023-SK-001 (Escalation Trigger Evaluation)
+        
+      - step_num: 2
         name: Prepare Escalation Context
-        description: Gather and summarize context for human decision
-        entry_criteria: Escalation required = true
-        actions:
-          - Execute DOM-023-SK-010 (Context Preparation for Escalation)
-          - Validate context completeness
-          - Assess cognitive load
-        exit_criteria: Context prepared and summarized
-      
-      - step_id: WF-001-S003
-        name: Route to Appropriate Human
-        description: Match escalation to human with correct expertise
+        description: Format agent state and reasoning for human consumption
+        entry_criteria: escalation_required=true
+        exit_criteria: Formatted context available
+        action: Invoke DOM-023-SK-010 (Context Preparation)
+        
+      - step_num: 3
+        name: Create Escalation Request
+        description: Generate escalation request with metadata
         entry_criteria: Context prepared
-        actions:
-          - Execute DOM-023-SK-011 (Escalation Routing & Expertise Matching)
-          - Validate routing decision
-          - Record routing rationale
-        exit_criteria: Human assigned and notified
-      
-      - step_id: WF-001-S004
-        name: Notify Human of Escalation
-        description: Send escalation notification via appropriate channels
-        entry_criteria: Human assigned
-        actions:
-          - Execute DOM-023-SK-004 (Notification Formatting & Delivery)
-          - Execute DOM-023-SK-007 (Multi-Channel Notification Routing)
-          - Track delivery acknowledgment
-        exit_criteria: Notification delivered
-      
-      - step_id: WF-001-S005
+        exit_criteria: Escalation request object created
+        action: Create DOM-023-DM-001 (Escalation Request)
+        
+      - step_num: 4
+        name: Route and Notify
+        description: Determine appropriate human receiver and deliver notification
+        entry_criteria: Escalation request created
+        exit_criteria: Human notified and acknowledged
+        action: Invoke DOM-023-SK-007 (Multi-Channel Notification Routing)
+        
+      - step_num: 5
         name: Await Human Response
-        description: Wait for human decision with timeout monitoring
+        description: Wait for human decision with timeout management
         entry_criteria: Notification delivered
-        actions:
-          - Set timeout timer
-          - Monitor for human response
-          - Log wait time metrics
-        exit_criteria: Response received OR timeout exceeded
-      
-      - step_id: WF-001-S006
-        name: Process Human Response
-        description: Parse and integrate human decision
-        entry_criteria: Response received AND timeout not exceeded
-        actions:
-          - Execute DOM-023-SK-005 (Human Response Parsing & Integration)
-          - Validate response integrity
-          - Store decision in audit trail
-        exit_criteria: Response parsed and validated
-      
-      - step_id: WF-001-S007
-        name: Integrate Decision into Agent Context
-        description: Update agent state with human decision
+        exit_criteria: Response received OR timeout triggered
+        action: Await response with timeout handler (DOM-023-SK-009)
+        
+      - step_num: 6
+        name: Parse and Validate Response
+        description: Convert human response to structured format
+        entry_criteria: Human response received
+        exit_criteria: Parsed and validated response object
+        action: Invoke DOM-023-SK-005 (Human Response Parsing)
+        
+      - step_num: 7
+        name: Integrate Decision
+        description: Apply human decision to agent execution flow
         entry_criteria: Response validated
-        actions:
-          - Update agent belief state
-          - Trigger workflow resumption
-          - Execute DOM-023-SK-016 (Human Decision Audit Logging)
-        exit_criteria: Agent state updated and workflow resumed
-      
-      - step_id: WF-001-S008
-        name: Handle Timeout
-        description: Execute fallback when human does not respond
-        entry_criteria: Timeout exceeded AND response not received
-        actions:
-          - Execute DOM-023-SK-009 (Escalation Timeout Handling & Fallback Execution)
-          - Log timeout incident
-          - Execute escalation fallback policy
-        exit_criteria: Fallback action executed OR escalated further
+        exit_criteria: Agent execution resumed with human input integrated
+        action: Update agent state and resume execution
+        
+      - step_num: 8
+        name: Log and Audit
+        description: Record escalation event for compliance and analysis
+        entry_criteria: Decision integrated
+        exit_criteria: Audit record created
+        action: Create audit log entry with all escalation metadata
     
-    completion_criteria: Agent workflow resumed with human decision OR fallback executed
+    completion_criteria: Audit record created and agent execution resumed
     rollback_plan: |
-      If human response causes workflow failure:
-      1. Restore agent state to pre-escalation checkpoint
-      2. Log response failure with human ID
-      3. Escalate to supervisor
-      4. Attempt alternative execution path
+      If workflow fails at any step:
+      1. Store escalation state in persistent storage
+      2. Log failure reason and step number
+      3. Trigger DOM-031 (Human Escalation Coordinator) for manual intervention
+      4. Notify system administrator
+      5. Apply fallback_action from escalation configuration
 
   - workflow_id: DOM-023-WF-002
-    name: Approval Gate Request & Response Workflow
-    trigger: Workflow reaches approval gate requirement
+    name: Approval Gate Request and Response Workflow
+    trigger: Agent execution requires approval gate enforcement
+    description: Multi-step approval workflow with timeout and fallback handling
     steps:
-      - step_id: WF-002-S001
-        name: Generate Approval Request
-        description: Create and format approval request
-        entry_criteria: Approval gate trigger encountered
-        actions:
-          - Execute DOM-023-SK-003 (Approval Gate Configuration & Enforcement)
-          - Create approval request object
-          - Identify approvers
-        exit_criteria: Approval request generated
-      
-      - step_id: WF-002-S002
+      - step_num: 1
+        name: Identify Approval Gate
+        description: Locate applicable approval gate configuration
+        entry_criteria: Agent task reaches approval gate checkpoint
+        exit_criteria: Gate configuration loaded
+        action: Load DOM-023-DM-002 (Approval Gate schema)
+        
+      - step_num: 2
+        name: Configure Gate
+        description: Set up gate with approvers, timeout, fallback
+        entry_criteria: Gate configuration loaded
+        exit_criteria: Gate fully configured and ready
+        action: Invoke DOM-023-SK-003 (Approval Gate Configuration)
+        
+      - step_num: 3
+        name: Format Approval Request
+        description: Create human-readable approval request
+        entry_criteria: Gate configured
+        exit_criteria: Approval request message formatted
+        action: Format with current task context and decision rationale
+        
+      - step_num: 4
         name: Notify Approvers
-        description: Send approval requests to designated approvers
-        entry_criteria: Approval request generated
-        actions:
-          - Execute DOM-023-SK-004 (Notification Formatting & Delivery)
-          - Send to all required approvers
+        description: Send approval request to all required approvers
+        entry_criteria: Request formatted
+        exit_criteria: Notifications sent and acknowledged
+        action: Invoke DOM-023-SK-004 (Notification Formatting and Delivery)
+        
+      - step_num: 5
+        name: Await Approvals
+        description: Collect responses from required approvers with timeout
+        entry_criteria: Notifications sent
+        exit_criteria: Required approvals collected OR timeout triggered
+        action: Track approvals against DOM-023-DM-002 required_approvals count
+        
+      - step_num: 6
+        name: Evaluate Approval Status
+        description: Determine if approval gate is satisfied
+        entry_criteria: Approval period ended
+        exit_criteria: Approval status determined (APPROVED|REJECTED|TIMEOUT)
+        action: Compare received approvals against requirements
+        
+      - step_num: 7
+        name: Enforce Gate Decision
+        description: Apply approval result to execution flow
+        entry_criteria: Approval status determined
+        exit_criteria: Execution either proceeds or halts based on decision
+        action: |
+          IF APPROVED: Resume execution
+          IF REJECTED: Halt execution and log rejection
+          IF TIMEOUT: Execute fallback_action
+
+      - step_num: 8
+        name: Record Decision
+        description: Audit log approval result
+        entry_criteria: Gate enforced
+        exit_criteria: Audit record created with all approvals and responses
+        action: Create approval audit log
+    
+    completion_criteria: Approval enforced and audit recorded
+    rollback_plan: |
+      If approval workflow fails:
+      1. Preserve approval gate state
+      2. Retain all received responses
+      3. Notify all approvers of rollback
+      4. Allow gate to be re-triggered
+      5. Log failure for compliance review
+
+  - workflow_id: DOM-023-WF-003
+    name: Structured Clarification Loop Workflow
+    trigger: Agent detection of task specification ambiguity
+    description: Iterative clarification workflow with convergence guarantees
+    steps:
+      - step_num: 1
+        name: Detect Ambiguity
+        description: Identify specification or context ambiguity
+        entry_criteria: Agent executing task with unclear requirements
+        exit_criteria: Ambiguity type classified
+        action: Classify ambiguity into predefined types (requirement, context, constraint)
+        
+      - step_num: 2
+        name: Generate Clarification Question
+        description: Create targeted question to resolve ambiguity
+        entry_criteria: Ambiguity detected and classified
+        exit_criteria: Clarification question formatted
+        action: Invoke DOM-023-SK-002 (Structured Clarification Question Generation)
+        
+      - step_num: 3
+        name: Deliver Question
+        description: Send clarification question to human
+        entry_criteria: Question generated
+        exit_criteria: Question delivered and acknowledged
+        action: Invoke DOM-023-SK-004 (Notification Formatting)
+        
+      - step_num: 4
+        name: Await Response
+        description: Wait for human response with timeout
+        entry_criteria: Question delivered
+        exit_criteria: Response received OR max_attempts exceeded OR timeout triggered
+        action: Monitor response with attempt counter and timeout
+        
+      - step_num: 5
+        name: Parse Response
+        description: Convert response to structured format
+        entry_criteria: Response received
+        exit_criteria: Parsed response object
+        action: Invoke DOM-023-SK-005 (Human Response Parsing)
+        
+      - step_num: 6
+        name: Validate Resolution
+        description: Check if response resolves the ambiguity
+        entry_criteria: Response parsed
+        exit_criteria: Ambiguity resolution status determined
+        action: Validate response against original ambiguity
+        
+      - step_num: 7
+        name: Integrate or Re-Ask
+        description: Either integrate clarification or formulate follow-up question
+        entry_criteria: Resolution status determined
+        exit_criteria: Either ambiguity resolved OR follow-up question generated
+        action: |
+          IF RESOLVED: Integrate into context, move to step 8
+          IF NOT_RESOLVED AND attempts < max_attempts: Return to step 2 with updated context
+          IF max_attempts exceeded: Escalate to DOM-031 (Human Escalation Coordinator)
+        
+      - step_num:

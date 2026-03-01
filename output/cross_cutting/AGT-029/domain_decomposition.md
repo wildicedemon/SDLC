@@ -2,42 +2,23 @@
 
 
 <think>
-The user is asking me to execute a review/analysis agent prompt that is defined in the file `AGT-029_prompt.md`. This is an agent specification for a "Cost Optimization Coordinator Agent" that needs to perform a comprehensive domain decomposition for cost and token optimization across an agentic AI system.
+The user is asking me to execute a review/analysis of the agent prompt file `AGT-029_prompt.md` and output results to `output/cross_cutting/AGT-029`.
 
-Looking at the file, this is a detailed specification document that outlines:
-1. The agent's domain (DOM-029 Cost & Token Optimization)
-2. Its system directive and core mission
-3. A comprehensive list of 16 categories that need to be fully decomposed:
-   - Skills
-   - Workflows
-   - Task Templates
-   - Rules & Constraints
-   - Interfaces
-   - Dependencies
-   - State Models
-   - Data Models
-   - Control Flows
-   - Failure Modes & Recovery
-   - Optimization Strategies
-   - Coordination Mechanisms
-   - Context Requirements
-   - Memory Structures
-   - Monitoring Requirements
-   - Evolution Mechanisms
+Looking at the file, this is a complex domain decomposition document for the "Cost Optimization Coordinator Agent (AGT-029)". It's a structured prompt/specification document that asks me to decompose the cost and token optimization domain into 16 categories with detailed specifications.
 
-The agent is supposed to recursively expand three subdomains (SD-029a, SD-029b, SD-029c) and output to `output/cross_cutting/AGT-029`.
+The instructions are clear - I need to:
+1. Execute the recursive expansion and analysis as specified in the document
+2. Fully decompose all 16 categories (Skills, Workflows, Task Templates, Rules & Constraints, Interfaces, Dependencies, State Models, Data Models, Control Flows, Failure Modes & Recovery, Optimization Strategies, Coordination Mechanisms, Context Requirements, Memory Structures, Monitoring Requirements, Evolution Mechanisms)
+3. Recursively expand subdomains (SD-029a, SD-029b, SD-029c) to 3 levels
+4. Detect and resolve gaps
+5. Output artifacts to the specified directory
 
-This is asking me to execute/perform this role - meaning I need to:
-1. Act as the AGT-029 agent
-2. Perform the domain decomposition as specified
-3. Output the structured results to the specified directory
+This is a large and complex task. I should create a structured output that systematically decomposes the domain according to the specifications given in the prompt.
 
-This appears to be a legitimate software engineering task - building out a domain specification for a cost optimization system in an agentic AI architecture. The search results provided are about AI agents for cost optimization, which are contextually relevant background information.
-
-Let me proceed with executing this task systematically.
+Let me start by creating the output structure and then systematically populate each category.
 </think>
 
-I'll execute the AGT-029 Cost Optimization Coordinator Agent prompt, performing the complete domain decomposition and generating the structured output.
+I'll analyze and execute the domain decomposition for AGT-029 (Cost Optimization Coordinator Agent), generating comprehensive specifications across all 16 categories with recursive expansion.
 <function_calls>
 <invoke name="bash">
 <parameter name="command">mkdir -p "c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\cross_cutting\AGT-029"</parameter>
@@ -45,431 +26,230 @@ I'll execute the AGT-029 Cost Optimization Coordinator Agent prompt, performing 
 </function_calls>
 <function_calls>
 <invoke name="writeFile">
-<parameter name="filePath">c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\cross_cutting\AGT-029\cost_optimization_rules.yaml</parameter>
-<parameter name="content">---
-domain_id: DOM-029
-domain_name: Cost & Token Optimization
-agent_id: AGT-029
-agent_name: Cost Optimization Coordinator Agent
-version: 1.0
-generated: 2026-03-01T05:00:00Z
-status: ACTIVE
+<parameter name="filePath">c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\cross_cutting\AGT-029\domain_decomposition.md</parameter>
+<parameter name="content"># AGT-029: Cost Optimization Coordinator Agent - Domain Decomposition
 
-# ============================================================================
-# SECTION 1: SKILLS (DOM-029-SK-*)
-# ============================================================================
+**Domain:** DOM-029 Cost & Token Optimization  
+**Generated:** 2026-03-01  
+**Decomposition Level:** 3 (Full recursive expansion)  
+**Status:** Complete
 
-skills:
-  DOM-029-SK-001:
-    name: Token Budget Allocation
-    description: Distribute system-wide token budget across domain agents based on workload, priority, and historical consumption patterns.
-    inputs:
-      - total_system_budget_tokens
-      - agent_demand_forecast
-      - priority_weights
-      - historical_consumption_per_agent
-    outputs:
-      - budget_allocation_per_agent
-      - allocation_rationale_report
-      - inheritance_hierarchy
-    complexity: High
-    dependencies: [AGT-019, AGT-007]
+---
 
-  DOM-029-SK-002:
-    name: Cheap-First Cascade Enforcement
-    description: Enforce sequential model routing from cheapest to most expensive, blocking escalation without ROI justification.
-    inputs:
-      - operation_request
-      - model_cost_matrix
-      - quality_requirements
-      - budget_available
-    outputs:
-      - approved_model
-      - cascade_rationale
-      - escalation_decision
-    complexity: High
-    dependencies: [AGT-007, AGT-019]
+## 1. SKILLS (DOM-029-SK-*)
 
-  DOM-029-SK-003:
-    name: Per-Agent Cost Attribution
-    description: Calculate precise cost per agent per task, including token consumption, model pricing, and caching efficiency gains.
-    inputs:
-      - task_id
-      - agent_id
-      - token_consumption
-      - model_used
-      - cache_hit_indicator
-      - external_api_calls
-    outputs:
-      - cost_attribution_record
-      - cost_breakdown_by_component
-    complexity: Medium
-    dependencies: []
+### SD-029a: Token Budgets
 
-  DOM-029-SK-004:
-    name: Semantic Cache Hit-Rate Optimization
-    description: Analyze cache patterns, identify high-value repetitive contexts, and recommend cache strategies for maximum token savings.
-    inputs:
-      - historical_cache_logs
-      - query_patterns
-      - semantic_similarity_matrix
-      - ttl_policies
-    outputs:
-      - cache_efficiency_report
-      - recommended_cache_policies
-      - projected_token_savings
-    complexity: High
-    dependencies: [AGT-012, AGT-002]
+#### DOM-029-SK-001: Token Budget Allocation
+- **Name:** Token Budget Allocation Engine
+- **Description:** Distributes system-wide token budget across domain agents based on task criticality, historical consumption, and domain tier. Allocates budgets hierarchically with inheritance rules and overflow policies.
+- **Inputs:** System total budget (tokens), agent registry, tier classification, historical consumption data, SLA requirements
+- **Outputs:** Per-agent budget allocation, budget period (hourly/daily/weekly), overflow policy assignment, budget inheritance tree
+- **Complexity:** High
+- **Dependencies:** AGT-019 (Economic Optimization), AGT-002 (System Architecture)
 
-  DOM-029-SK-005:
-    name: Budget Burn-Rate Forecasting
-    description: Project token consumption forward based on current velocity, trending behavior, and anticipated workload changes.
-    inputs:
-      - current_budget_remaining
-      - consumption_velocity_per_agent
-      - historical_trend_data
-      - upcoming_workload_predictions
-      - seasonal_factors
-    outputs:
-      - burn_rate_forecast
-      - exhaustion_eta_per_agent
-      - confidence_interval
-    complexity: High
-    dependencies: [AGT-019]
+#### DOM-029-SK-002: Budget Burn-Rate Forecasting
+- **Name:** Budget Burn-Rate Forecasting
+- **Description:** Predicts token consumption velocity per agent and projects budget exhaustion timelines. Uses time-series analysis, workload patterns, and trend detection.
+- **Inputs:** Current consumption rate (tokens/hour), historical consumption patterns, active task queue, model routing decisions, cache hit rates
+- **Outputs:** Projected exhaustion time, burn-rate trend (accelerating/stable/decelerating), recommended intervention threshold, confidence interval
+- **Complexity:** High
+- **Dependencies:** DOM-029-SK-007 (Cost Attribution), DOM-029-SK-008 (Anomaly Detection)
 
-  DOM-029-SK-006:
-    name: Cost Anomaly Detection
-    description: Identify unusual cost spikes, inefficient workflows, or potential budget gaming through statistical analysis and behavioral patterns.
-    inputs:
-      - cost_time_series
-      - per_agent_cost_logs
-      - baseline_patterns
-      - model_routing_decisions
-    outputs:
-      - anomaly_alerts
-      - affected_agents
-      - probable_causes
-      - recommended_interventions
-    complexity: Medium
-    dependencies: []
+#### DOM-029-SK-003: Dynamic Budget Adjustment
+- **Name:** Dynamic Budget Rebalancing
+- **Description:** Reallocates budgets between agents in real-time based on actual demand, SLA violations, and cost ROI. Transfers surplus budget from underutilized agents to critical paths.
+- **Inputs:** All agent budgets, utilization rates, SLA status, task priority queue, ROI scores
+- **Outputs:** Budget reallocation directives, justification, expected impact, rollback procedures
+- **Complexity:** High
+- **Dependencies:** DOM-029-SK-001 (Allocation), DOM-029-SK-006 (Cost-Benefit Analysis)
 
-  DOM-029-SK-007:
-    name: Model Downgrade Recommendation Generation
-    description: Propose cheaper model substitutions for agents exceeding cost targets without quality degradation.
-    inputs:
-      - agent_current_model
-      - agent_quality_requirements
-      - available_cheaper_models
-      - performance_benchmarks
-      - cost_reduction_target
-    outputs:
-      - model_downgrade_recommendation
-      - quality_impact_assessment
-      - projected_cost_savings
-    complexity: Medium
-    dependencies: [AGT-007]
+#### DOM-029-SK-004: Cheap-First Cascade Enforcement
+- **Name:** Cheap-First Model Routing Enforcement
+- **Description:** Enforces strict cascading: attempt cheap model → if quality insufficient, escalate to mid-tier → if still insufficient, escalate to premium. Validates each step before escalation.
+- **Inputs:** Task requirements, model registry with cost/quality profile, previous attempt failures, fallback criteria
+- **Outputs:** Model routing directive, escalation justification, expected cost savings vs. quality trade-off
+- **Complexity:** Medium
+- **Dependencies:** AGT-007 (Model Routing), DOM-029-SK-011 (Quality Validation)
 
-  DOM-029-SK-008:
-    name: Cost-Benefit ROI Analysis
-    description: Calculate expected value vs. cost for proposed expensive operations to determine if budget exception is justified.
-    inputs:
-      - operation_description
-      - operation_cost
-      - expected_outcome_value
-      - success_probability
-      - strategic_alignment
-    outputs:
-      - roi_calculation
-      - roi_category (High|Medium|Low)
-      - recommendation (Allow|Negotiate|Block)
-    complexity: High
-    dependencies: [AGT-019]
+#### DOM-029-SK-005: Semantic Cache Hit-Rate Optimization
+- **Name:** Semantic Cache Optimization
+- **Description:** Identifies repetitive context patterns across tasks and configures semantic caching strategies. Monitors cache hit rates and adjusts cache granularity for maximum efficiency (KA-002).
+- **Inputs:** Task context patterns, cache configuration, historical hit/miss rates, semantic similarity thresholds
+- **Outputs:** Cache configuration directives, hit-rate improvement projections, TTL policies, cache coherence rules
+- **Complexity:** High
+- **Dependencies:** AGT-012 (Memory Systems), DOM-029-SK-010 (Cost Attribution)
 
-  DOM-029-SK-009:
-    name: Dynamic Budget Adjustment
-    description: Rebalance budget allocations during runtime based on changing demand, performance metrics, and strategic priorities.
-    inputs:
-      - current_allocations
-      - actual_consumption_per_agent
-      - performance_metrics
-      - new_constraints
-      - priority_changes
-    outputs:
-      - adjusted_budget_allocations
-      - rebalance_rationale
-      - affected_agents
-    complexity: Medium
-    dependencies: [AGT-019]
+#### DOM-029-SK-006: Per-Agent Cost Attribution
+- **Name:** Cost Attribution Calculator
+- **Description:** Calculates precise cost attribution per agent, per task, and per model call. Assigns shared infrastructure costs proportionally and tracks cost causation.
+- **Inputs:** All agent token consumption, model used, tokens consumed, timestamp, cache hit/miss, external API calls
+- **Outputs:** Cost attribution record, agent cost breakdown, task cost, model cost, infrastructure overhead allocation
+- **Complexity:** Medium
+- **Dependencies:** AGT-019 (Economic Optimization), DOM-029-DM-002 (Cost Attribution Record)
 
-  DOM-029-SK-010:
-    name: Overflow Policy Enforcement
-    description: Apply configured overflow handling (wait, queue, escalate, fail gracefully) when agents exceed allocated budget.
-    inputs:
-      - agent_id
-      - current_consumption
-      - budget_limit
-      - configured_overflow_policy
-      - task_priority
-    outputs:
-      - enforcement_action
-      - escalation_notification
-      - queue_position
-    complexity: Low
-    dependencies: []
+#### DOM-029-SK-007: Cost Anomaly Detection
+- **Name:** Cost Anomaly Detector
+- **Description:** Identifies unusual cost spikes, inefficient task patterns, model routing failures, and cache degradation. Uses statistical anomaly detection and pattern recognition.
+- **Inputs:** Cost metrics stream, per-agent consumption rates, model routing decisions, cache statistics, task completion patterns
+- **Outputs:** Anomaly alert, severity (critical/warning/info), root cause hypothesis, remediation recommendation
+- **Complexity:** High
+- **Dependencies:** DOM-029-SK-010 (Cost Attribution), DOM-029-SK-008 (Anomaly Detection)
 
-# ============================================================================
-# SECTION 2: WORKFLOWS (DOM-029-WF-*)
-# ============================================================================
+#### DOM-029-SK-008: Model Downgrade Recommendation
+- **Name:** Model Downgrade Recommender
+- **Description:** Recommends model downgrades for cost-excessive agents. Analyzes task requirements, compares cheaper model outputs to premium outputs, and quantifies quality loss.
+- **Inputs:** Agent model usage, current model tier, alternative cheaper models, task quality requirements, historical quality metrics
+- **Outputs:** Downgrade recommendation, expected cost savings, quality impact assessment, confidence score, rollback criteria
+- **Complexity:** High
+- **Dependencies:** AGT-007 (Model Routing), DOM-029-SK-011 (Quality Validation)
 
-workflows:
-  DOM-029-WF-001:
-    name: Budget Allocation & Distribution
-    trigger: |
-      System startup OR
-      Monthly budget cycle OR
-      Strategic priority change OR
-      New agent onboarding
-    steps:
-      - step: 1
-        name: Collect Agent Demand Signals
-        entry_criteria: Trigger activated
-        exit_criteria: Demand forecast complete
-        action: Gather projected token needs from all agents
-      
-      - step: 2
-        name: Apply Priority Weighting
-        entry_criteria: Demand signals collected
-        exit_criteria: Priority-weighted scores computed
-        action: Weight demands by strategic priority and SLA requirements
-      
-      - step: 3
-        name: Calculate Allocations
-        entry_criteria: Priority weights applied
-        exit_criteria: Per-agent budget computed
-        action: Use DOM-029-SK-001 to distribute total budget
-      
-      - step: 4
-        name: Define Overflow Policies
-        entry_criteria: Allocations calculated
-        exit_criteria: Overflow policies assigned per agent
-        action: Set overflow behavior (queue, escalate, fail)
-      
-      - step: 5
-        name: Publish Budget Directives
-        entry_criteria: Allocations & policies finalized
-        exit_criteria: All agents notified
-        action: Send budget allocation to all agents via DOM-029-IF-001
-      
-      - step: 6
-        name: Initialize Monitoring
-        entry_criteria: Budget published
-        exit_criteria: Monitoring dashboards active
-        action: Activate cost tracking and alert systems
-    
-    completion_criteria: |
-      All agents have assigned budgets AND
-      Monitoring is active AND
-      All agents have acknowledged budget directive
-    
-    rollback_plan: |
-      If allocation fails:
-      - Restore previous budget allocation from backup
-      - Notify affected agents of allocation delay
-      - Trigger escalation to AGT-019 for manual intervention
+#### DOM-029-SK-009: Cost-Benefit Analysis for Expensive Operations
+- **Name:** Cost-Benefit ROI Calculator
+- **Description:** Evaluates proposed expensive operations (premium model upgrades, external API calls, intensive processing). Calculates ROI, expected business value, and cost-justification threshold.
+- **Inputs:** Operation cost, operation outcome probability, business value of outcome, alternative operations, SLA implications
+- **Outputs:** ROI score, decision (approve/negotiate/reject), cost-justification threshold (>3x = approve, 1-3x = negotiate, <1x = reject)
+- **Complexity:** High
+- **Dependencies:** AGT-019 (Economic Optimization), DOM-029-CM-001 (ROI Assessment Coordination)
 
-  DOM-029-WF-002:
-    name: Cost Overrun Detection & Intervention
-    trigger: |
-      70% budget threshold reached OR
-      Cost spike detected OR
-      Anomalous consumption pattern observed
-    steps:
-      - step: 1
-        name: Detect Budget Threshold
-        entry_criteria: Real-time cost data available
-        exit_criteria: Threshold breach identified
-        action: Monitor per-agent budget consumption against thresholds (70%, 85%, 95%)
-      
-      - step: 2
-        name: Issue Alert
-        entry_criteria: Threshold breach confirmed
-        exit_criteria: Alert issued to agent & operations
-        action: Send budget warning (DOM-029-DM-003) with recommended actions
-      
-      - step: 3
-        name: Analyze Root Cause
-        entry_criteria: Alert issued
-        exit_criteria: Probable cause identified
-        action: Use DOM-029-SK-006 to detect anomalies (cost spike, inefficiency, gaming)
-      
-      - step: 4
-        name: Calculate ROI Impact
-        entry_criteria: Root cause confirmed
-        exit_criteria: ROI category determined
-        action: Assess remaining operations' ROI using DOM-029-SK-008
-      
-      - step: 5
-        name: Issue Intervention Directive
-        entry_criteria: ROI calculated
-        exit_criteria: Intervention action assigned
-        action: |
-          - High ROI (>3x): Allow, log exception, debit reserve
-          - Medium ROI (1-3x): Negotiate cheaper alternative
-          - Low ROI (<1x): Block operation, force optimization
-      
-      - step: 6
-        name: Monitor Intervention Results
-        entry_criteria: Directive issued
-        exit_criteria: Agent compliance confirmed
-        action: Track whether agent reduces consumption or escalates
-    
-    completion_criteria: |
-      Budget brought below threshold OR
-      Exception approved by AGT-019 OR
-      Operation blocked
-    
-    rollback_plan: |
-      If intervention causes operational failure:
-      - Restore operation to previous model/approach
-      - Grant temporary budget exception
-      - Schedule post-incident review
+#### DOM-029-SK-010: Budget Overspend Prevention
+- **Name:** Cost Gate Enforcement
+- **Description:** Blocks or throttles operations when agent budget is exhausted or critical threshold exceeded. Enforces hard budget limits and escalation paths.
+- **Inputs:** Agent remaining budget, operation cost estimate, current utilization %, escalation authority, override permissions
+- **Outputs:** Gate decision (open/throttle/block), reason, escalation path, required approvals
+- **Complexity:** Medium
+- **Dependencies:** DOM-029-SM-002 (Cost Gate State Machine)
 
-  DOM-029-WF-003:
-    name: Cheap-First Routing Verification
-    trigger: |
-      Model routing decision requested OR
-      Hourly compliance audit
-    steps:
-      - step: 1
-        name: Receive Routing Request
-        entry_criteria: AGT-007 requests model selection guidance
-        exit_criteria: Request queued for evaluation
-        action: Accept operation context, task requirements, quality thresholds
-      
-      - step: 2
-        name: Validate Cheap-First Precedence
-        entry_criteria: Request received
-        exit_criteria: Cheapest model identified
-        action: Use DOM-029-SK-002 to verify cheapest model is attempted first
-      
-      - step: 3
-        name: Assess Quality Compatibility
-        entry_criteria: Cheap model identified
-        exit_criteria: Quality fit determined
-        action: Compare cheap model capabilities against task quality requirements
-      
-      - step: 4
-        name: Escalation Decision
-        entry_criteria: Quality assessment complete
-        exit_criteria: Escalation approved or denied
-        action: |
-          - Cheap model sufficient: Approve, return to AGT-007
-          - Cheap model insufficient: Check budget for escalation
-            - Budget available: Approve escalation, recommend medium-cost model
-            - Budget scarce: Reject escalation, suggest task redesign
-      
-      - step: 5
-        name: Log Routing Audit Trail
-        entry_criteria: Routing decision made
-        exit_criteria: Decision recorded
-        action: Store routing decision with model selected, quality assessed, cost approved
-    
-    completion_criteria: Routing decision returned to AGT-007
-    rollback_plan: Use previous routing decision if validation fails
+#### DOM-029-SK-011: Quality Validation for Cost Reduction
+- **Name:** Quality-Cost Trade-off Validator
+- **Description:** Validates that cheaper model alternatives meet quality requirements. Tests outputs against task requirements and historical quality baselines.
+- **Inputs:** Cheap model output, task quality requirements, reference outputs from premium model, quality metrics
+- **Outputs:** Quality validation result (pass/fail), deviation from baseline, recommendation (accept/reject/investigate)
+- **Complexity:** Medium
+- **Dependencies:** AGT-007 (Model Routing), DOM-029-SK-004 (Cascade Enforcement)
 
-  DOM-029-WF-004:
-    name: Cache Efficiency Optimization
-    trigger: |
-      Weekly cache analysis scheduled OR
-      Cache hit rate drops below 30% OR
-      New semantic pattern detected
-    steps:
-      - step: 1
-        name: Collect Cache Metrics
-        entry_criteria: Trigger activated
-        exit_criteria: Cache logs aggregated
-        action: Gather cache access patterns from DOM-012 and prompt storage
-      
-      - step: 2
-        name: Analyze Hit Patterns
-        entry_criteria: Cache logs available
-        exit_criteria: High-value repetitive patterns identified
-        action: Use DOM-029-SK-004 to find semantically similar queries
-      
-      - step: 3
-        name: Recommend Cache Policies
-        entry_criteria: Patterns analyzed
-        exit_criteria: Policy recommendations generated
-        action: |
-          - Increase TTL for high-hit patterns
-          - Enable semantic compression for verbose contexts
-          - Add new cache keys for missed patterns
-      
-      - step: 4
-        name: Calculate Token Savings
-        entry_criteria: Policies recommended
-        exit_criteria: Savings projection complete
-        action: Estimate tokens saved by implementing recommendations
-      
-      - step: 5
-        name: Deploy Policy Changes
-        entry_criteria: Savings validated
-        exit_criteria: New policies active
-        action: Push cache policies to DOM-011 and DOM-012
-      
-      - step: 6
-        name: Validate Results
-        entry_criteria: Policies deployed
-        exit_criteria: Hit rate improvement confirmed
-        action: Monitor cache metrics over next 7 days
-    
-    completion_criteria: New cache policies active and improvement validated
-    rollback_plan: Revert to previous cache policies if hit rate declines
+---
 
-  DOM-029-WF-005:
-    name: Cost Reporting & Analysis
-    trigger: |
-      Daily cost summary requested OR
-      Weekly cost review scheduled OR
-      Monthly financial close
-    steps:
-      - step: 1
-        name: Aggregate Cost Data
-        entry_criteria: Reporting period defined
-        exit_criteria: All cost records collected
-        action: Retrieve cost attribution records from all agents and tasks
-      
-      - step: 2
-        name: Calculate Summary Metrics
-        entry_criteria: Cost data aggregated
-        exit_criteria: KPIs computed
-        action: |
-          - Total cost vs. budget
-          - Per-agent cost attribution
-          - Per-task cost
-          - Cache hit rate impact
-          - Model routing efficiency
-      
-      - step: 3
-        name: Identify Trends
-        entry_criteria: Metrics calculated
-        exit_criteria: Trends documented
-        action: Compare to historical periods, identify cost drivers and savings
-      
-      - step: 4
-        name: Generate Report
-        entry_criteria: Trends identified
-        exit_criteria: Report formatted
-        action: Create cost report with visualizations and recommendations
-      
-      - step: 5
-        name: Distribute Report
-        entry_criteria: Report generated
-        exit_criteria: Recipients notified
-        action: Publish to finance team, engineering leadership, and agents
-    
-    completion_criteria: Report distributed and acknowledged
-    rollback_plan: Resend report if distribution fails
+### SD-029b: Cheap-First Routing
 
-# ============================================================================
-# SECTION 3
+#### DOM-029-SK-012: Fallback Escalation Logic
+- **Name:** Smart Escalation Decision Engine
+- **Description:** Determines when cheap model output is insufficient and escalation to mid-tier or premium is justified. Uses quality thresholds, error rates, and ROI calculations.
+- **Inputs:** Cheap model output, quality metrics, error rate, task criticality, cost delta, SLA requirements
+- **Outputs:** Escalation decision, target tier (mid/premium), justification, expected improvement probability
+- **Complexity:** Medium
+- **Dependencies:** DOM-029-SK-004 (Cascade), DOM-029-SK-009 (ROI Analysis)
+
+#### DOM-029-SK-013: Model Cost-Effectiveness Scoring
+- **Name:** Model Cost-Effectiveness Ranker
+- **Description:** Scores models on cost-effectiveness: quality per dollar, latency per cost, throughput per cost. Maintains up-to-date model profiles and comparative rankings.
+- **Inputs:** Model catalog, cost per call, quality metrics, latency, throughput, task requirements
+- **Outputs:** Cost-effectiveness scores, ranked model list, efficiency frontier, best-choice recommendations
+- **Complexity:** Medium
+- **Dependencies:** AGT-019 (Economic Optimization), AGT-007 (Model Routing)
+
+#### DOM-029-SK-014: Routing Override Authority
+- **Name:** Routing Override Policy Enforcer
+- **Description:** Enforces AGT-029's authority to override AGT-007 routing decisions for cost reasons. Validates override justification and logs overrides for audit.
+- **Inputs:** Proposed routing override, current routing decision, cost justification, SLA impact
+- **Outputs:** Override approval/denial, logged override record, notification to AGT-007
+- **Complexity:** Low
+- **Dependencies:** AGT-007 (Model Routing), DOM-029-CM-003 (Routing Override Mechanism)
+
+---
+
+### SD-029c: Cost Monitoring & Analytics
+
+#### DOM-029-SK-015: Real-Time Cost Dashboard Generation
+- **Name:** Cost Metrics Dashboard
+- **Description:** Aggregates and visualizes real-time cost data across all agents, domains, and tasks. Provides drill-down analytics and anomaly highlighting.
+- **Inputs:** Cost stream (all agents), budget allocations, spending trends, alerts, SLA status
+- **Outputs:** Dashboard data structure, metrics summaries, trend charts, alert highlights, drill-down data
+- **Complexity:** Medium
+- **Dependencies:** DOM-029-SK-010 (Cost Attribution), DOM-029-MON-001 (Monitoring)
+
+#### DOM-029-SK-016: Cost Reporting & Analysis
+- **Name:** Cost Report Generator
+- **Description:** Generates periodic cost reports: hourly/daily/weekly breakdowns by agent, domain, task type, and model. Includes variance analysis and trend forecasts.
+- **Inputs:** Historical cost data, budget allocations, forecasts, SLA targets
+- **Outputs:** Report (PDF/JSON), variance analysis, trend forecast, budget status, optimization recommendations
+- **Complexity:** Medium
+- **Dependencies:** DOM-029-SK-002 (Burn-Rate Forecasting), DOM-029-SK-015 (Dashboard)
+
+#### DOM-029-SK-017: Cost Optimization Recommendation Engine
+- **Name:** Cost Optimization Recommender
+- **Description:** Analyzes cost patterns and recommends specific optimizations: cache tuning, model downgrades, workload redistribution, architecture refactoring.
+- **Inputs:** Cost analytics, agent profiles, task patterns, failure modes, SLA history
+- **Outputs:** Prioritized recommendation list, expected savings per recommendation, implementation effort, risk assessment
+- **Complexity:** High
+- **Dependencies:** DOM-029-SK-007 (Anomaly Detection), DOM-029-SK-017 (Optimization Strategies)
+
+---
+
+## 2. WORKFLOWS (DOM-029-WF-*)
+
+### SD-029a: Token Budget Management Workflows
+
+#### DOM-029-WF-001: Budget Allocation & Distribution
+- **Workflow ID:** DOM-029-WF-001
+- **Name:** Budget Allocation Initialization & Distribution
+- **Trigger:** System startup, budget period start, manual rebalance request
+- **Steps:**
+  1. Retrieve system-wide token budget from AGT-019
+  2. Fetch agent registry and tier classifications
+  3. Retrieve SLA requirements and criticality levels
+  4. Calculate per-agent allocation using DOM-029-SK-001
+  5. Validate allocation against total budget (check sum ≤ total)
+  6. Distribute allocation directives to each agent
+  7. Set budget period (hourly/daily/weekly)
+  8. Initialize monitoring for each agent
+  9. Log allocation for audit trail
+- **Entry Criteria:** Budget pool available, agent registry complete, SLA data current
+- **Exit Criteria:** All agents have active budget allocations, monitoring initiated
+- **Completion Criteria:** All agents acknowledge budget receipt, monitoring streams active
+- **Rollback Plan:** Restore previous budget allocations, notify affected agents, suspend cost gates temporarily
+
+#### DOM-029-WF-002: Continuous Budget Monitoring & Alert Cascade
+- **Workflow ID:** DOM-029-WF-002
+- **Name:** Real-Time Budget Monitoring Loop
+- **Trigger:** Continuous (every 10 seconds), or manual monitoring trigger
+- **Steps:**
+  1. Collect consumption metrics from all agents (tokens, cost)
+  2. Update remaining budget for each agent
+  3. Calculate utilization percentage for each agent
+  4. Check thresholds: 70%, 85%, 95%, 100%
+  5. For agents at 70%: Issue INFO alert, recommend optimization
+  6. For agents at 85%: Issue WARNING alert, enforce cost-first model cascade
+  7. For agents at 95%: Issue CRITICAL alert, activate cost gate (throttling)
+  8. For agents at 100%: Activate cost gate (blocking), escalate to AGT-019
+  9. Generate dashboard update
+  10. Log all threshold crossings
+- **Entry Criteria:** Budget allocations active, cost attribution enabled
+- **Exit Criteria:** Loop runs continuously until period end
+- **Completion Criteria:** N/A (continuous workflow)
+- **Rollback Plan:** Resume previous monitoring, restore previous thresholds
+
+#### DOM-029-WF-003: Budget Exhaustion Recovery
+- **Workflow ID:** DOM-029-WF-003
+- **Name:** Emergency Budget Recovery
+- **Trigger:** Agent budget reaches 100% with active tasks pending
+- **Steps:**
+  1. Immediately escalate to AGT-019 for emergency budget extension
+  2. Block new task acceptance for that agent
+  3. Complete in-flight tasks only (if budget allows)
+  4. Notify dependent agents of queue pause
+  5. Calculate minimum budget needed to complete critical tasks
+  6. Request emergency budget with ROI justification
+  7. If approved: Grant temporary budget extension, resume operations
+  8. If denied: Terminate low-ROI tasks, queue high-priority for next period
+  9. Log recovery action for analysis
+  10. Trigger post-mortem analysis of overrun cause
+- **Entry Criteria:** Budget = 100%, agent has active tasks
+- **Exit Criteria:** Budget restored or contingency plan activated
+- **Completion Criteria:** Pending tasks completed or queued for next period
+- **Rollback Plan:** Revert emergency budget extension, restore queue
+
+#### DOM-029-WF-004: Dynamic Budget Rebalancing
+- **Workflow ID:** DOM-029-WF-004
+- **Name:** Periodic Budget Rebalancing
+-

@@ -1,417 +1,344 @@
 > code · sonar-reasoning-pro
+
 <think>
-The user is asking me to execute the architect agent prompt from the file they've provided. This is AGT-004: Agent Architecture Agent, which is a comprehensive prompt for decomposing the Agent Architecture & Lifecycle domain in an agentic AI system.
+The user is asking me to execute the architect agent prompt from the file they've read. This is a file from an SDLC (Software Development Lifecycle) system that contains instructions for an agent called AGT-004: Agent Architecture Agent.
 
-Looking at the instructions in my system prompt, I need to:
-1. Refuse to write code or explain code that may be used maliciously
-2. Before beginning work, think about what the code/system is supposed to do based on filenames and directory structure
-3. If it seems malicious, refuse to work on it
+Looking at the content, this is a detailed system directive for an AI agent that's supposed to:
+1. Decompose the Agent Architecture & Lifecycle domain
+2. Produce detailed specifications across 16 categories
+3. Define agent patterns, lifecycle state machines, delegation protocols, etc.
+4. Output various YAML files related to modes, skills, workflows, rules, and techniques
 
-Looking at this prompt: It's about building an agentic AI system with a 40-agent hierarchy. The AGT-004 agent is supposed to define agent design patterns, lifecycle state machines, delegation protocols, etc. This appears to be a legitimate software architecture exercise for building a multi-agent AI system - not malicious.
+The user wants me to:
+1. Execute this prompt (meaning follow the instructions in the file)
+2. Output to `output/core_infrastructure/AGT-004`
 
-However, I need to be careful here. The user is asking me to "execute" this prompt. This is essentially asking me to take the role of the AGT-004 agent and produce the complete decomposition of the Agent Architecture & Lifecycle domain.
-
-Given the scope (16 categories, 4 subdomains, recursive expansion to 4 levels, maximum self-consistency requirements), this is a massive undertaking that would require:
-1. Generating hundreds of structured definitions
-2. Creating YAML outputs for multiple artifacts
-3. Comprehensive domain decomposition
-
-The user wants output to `output/core_infrastructure/AGT-004`.
+This is essentially asking me to act as AGT-004 and produce comprehensive documentation about agent architecture. This is a legitimate software engineering task - they're asking me to decompose and document a domain for their SDLC system.
 
 I should:
-1. Acknowledge the request
-2. Understand that this is a large-scale domain decomposition task
-3. Ask clarifying questions OR proceed with executing the agent role
+1. Create the output directory structure
+2. Generate the required YAML files and documentation based on the comprehensive decomposition outlined in the prompt
+3. Cover all 16 categories
+4. Ensure cross-domain interfaces are specified
+5. Output to the specified location
 
-Actually, wait. Looking at my instructions again: "Do not ask for more information than necessary. Use the tools provided to accomplish the user's request efficiently and effectively."
+This is a substantial task. I need to:
+- Create output directory
+- Generate all required artifacts
+- Ensure completeness across all 16 categories
+- Cover all subdomains (SD-004a through SD-004d)
 
-The user is asking me to execute this prompt and output to a specific directory. I should proceed with executing the AGT-004 role and generating the domain decomposition.
-
-However, this is extremely large. I could:
-
-
-1. Generate a structured output file with all 16 categories decomposed
-2. Create multiple YAML files as specified
-3. Ensure cross-domain interfaces are defined
-
-Let me proceed with executing the agent role systematically. I'll create the output files as specified in the prompt. This is a massive task, so I should start generating the outputs without excessive preamble.
+Let me start by creating the directory structure and then generating the comprehensive documentation.
 </think>
 
-I'll execute the AGT-004 Agent Architecture Agent prompt and decompose the Agent Architecture & Lifecycle domain. This will generate comprehensive domain decomposition across all 16 categories.
+I'll execute the AGT-004 architect prompt to fully decompose Agent Architecture & Lifecycle domain and generate all required artifacts.
 <function_calls>
 <invoke name="bash">
-<parameter name="command">mkdir -p "C:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\core_infrastructure\AGT-004"</parameter>
+<parameter name="command">mkdir -p "c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\core_infrastructure\AGT-004"</parameter>
 </invoke>
 </function_calls>
+
+Now generating comprehensive decomposition across all 16 categories:
 <function_calls>
-<invoke name="editor">
-<parameter name="filePath">C:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\core_infrastructure\AGT-004\agent_patterns.yaml</parameter>
-<parameter name="action">create</parameter>
-<parameter name="content">domain: DOM-004 Agent Architecture & Lifecycle
-category: Agent Patterns (SD-004a)
-version: 1.0
-generated_date: 2026-03-01
+<invoke name="file_write">
+<parameter name="filePath">c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\core_infrastructure\AGT-004\skills.yaml</parameter>
+<parameter name="content">domain: DOM-004
+domain_name: Agent Architecture & Lifecycle
+category: Skills
+total_skills: 24
 
-agent_archetypes:
-  specialist_agent:
-    id: DOM-004-AP-001
-    name: Specialist Agent
-    description: Single-domain expert agent focused on solving problems within a narrow domain with deep expertise
-    characteristics:
-      - narrow_focus: true
-      - depth_of_expertise: high
-      - delegation_frequency: medium
-      - model_type: domain_specific_or_finetuned
-    lifecycle_profile: standard_execution_loop
-    failure_modes:
-      - context_window_overflow (KA-018)
-      - out_of_domain_request_handling
-    use_cases:
-      - database_query_optimization
-      - technical_support
-      - mathematical_problem_solving
-    success_metrics:
-      - accuracy_within_domain: KA-021
-      - cost_efficiency: KA-023
-      - utilization_rate: KA-016
+skills:
+  # Core Pattern Skills
+  - skill_id: DOM-004-SK-001
+    name: Agent Pattern Instantiation
+    description: Create new agent instances from defined archetypes (specialist, orchestrator, reviewer, gap-filler) with proper initialization
+    inputs: [pattern_archetype, domain_scope, capability_set, constraint_set, cost_budget]
+    outputs: [agent_instance, initialization_record, cost_allocation]
+    complexity: High
+    related_knowledge: [KA-006, KA-023]
 
-  orchestrator_agent:
-    id: DOM-004-AP-002
-    name: Orchestrator Agent
-    description: Coordination agent that delegates tasks to specialist agents and aggregates results
-    characteristics:
-      - narrow_focus: false
-      - delegation_frequency: high
-      - result_aggregation: true
-      - routing_capability: true
-    lifecycle_profile: delegation_loop
-    required_capabilities:
-      - task_decomposition
-      - agent_selection
-      - result_aggregation
-      - context_transfer (KA-012)
-    failure_modes:
-      - infinite_delegation_chain (KA-012)
-      - consensus_deadlock (SD-004d)
-      - context_loss_during_handoff
-    success_metrics:
-      - delegation_efficiency: KA-012
-      - result_quality: KA-021
-      - cost_per_task: KA-023
+  - skill_id: DOM-004-SK-002
+    name: Lifecycle State Transition Management
+    description: Execute valid state transitions in agent lifecycle with journaling and validation
+    inputs: [agent_id, current_state, trigger_event, context]
+    outputs: [new_state, transition_record, journal_entry]
+    complexity: Medium
+    related_knowledge: [KA-004]
 
-  reviewer_agent:
-    id: DOM-004-AP-003
-    name: Reviewer/Validator Agent
-    description: Quality assurance agent that evaluates outputs from other agents
-    characteristics:
-      - validation_focus: true
-      - consensus_participation: true
-      - no_direct_execution: true
-    lifecycle_profile: validation_loop
-    required_capabilities:
-      - output_evaluation
-      - quality_scoring
-      - consensus_voting (SD-004d)
-    integration_points:
-      - DOM-030 Quality Assurance
-      - DOM-039 Agent Trust
-    failure_modes:
-      - reviewer_bias
-      - false_positive_rejections
-    success_metrics:
-      - precision_of_validation: KA-021
-      - false_positive_rate: KA-015
+  - skill_id: DOM-004-SK-003
+    name: Delegation Chain Construction
+    description: Build and validate bounded delegation chains with context transfer protocols
+    inputs: [parent_agent, child_agents, task_spec, delegation_depth_limit]
+    outputs: [delegation_chain, context_transfer_plan, depth_validation]
+    complexity: High
+    related_knowledge: [KA-012, KA-006]
 
-  gap_filler_agent:
-    id: DOM-004-AP-004
-    name: Gap-Filler Agent
-    description: Handles exceptions and edge cases not covered by specialist agents
-    characteristics:
-      - flexibility: high
-      - generalist: true
-      - fallback_agent: true
-    lifecycle_profile: exception_handling
-    triggers:
-      - specialist_agent_declined
-      - out_of_bounds_request
-      - unknown_domain_task
-    integration_points:
-      - DOM-036 Error Recovery
-      - DOM-031 Human Escalation
-    failure_modes:
-      - one_model_for_everything_degradation (KA-019)
-    success_metrics:
-      - fallback_success_rate: KA-021
-      - escalation_rate: KA-016
+  - skill_id: DOM-004-SK-004
+    name: Agent Performance Monitoring
+    description: Track and measure agent success rates, costs, and utilization metrics in real-time
+    inputs: [agent_id, execution_logs, cost_records, output_quality]
+    outputs: [performance_metrics, anomaly_detection, trend_analysis]
+    complexity: Medium
+    related_knowledge: [KA-015, KA-016, KA-021]
 
-composition_patterns:
-  linear_sequence:
-    id: DOM-004-CP-001
-    name: Linear Delegation Chain
-    description: Single orchestrator delegates sequentially to specialists
-    constraints:
-      - max_chain_depth: 3 (prevents KA-018, unbounded recursion)
-      - ordering: strict
-    use_case: sequential_task_execution
-    failure_recovery: Dom-036 rollback mechanisms
+  - skill_id: DOM-004-SK-005
+    name: Structured Journaling Integration
+    description: Capture and organize agent state transitions, decisions, and execution traces for audit and debugging
+    inputs: [event_data, agent_id, context, severity_level]
+    outputs: [journal_entry, searchable_index, audit_trail]
+    complexity: Medium
+    related_knowledge: [KA-004, KA-009]
 
-  tree_hierarchy:
-    id: DOM-004-CP-002
-    name: Tree Hierarchy
-    description: Multi-level orchestrators with specialist leaves
-    constraints:
-      - max_depth: 4 (per recursive expansion directive)
-      - branching_factor: configurable
-      - context_preserved: across levels
-    use_case: complex_task_decomposition
-    failure_recovery: subtree isolation and recovery
+  - skill_id: DOM-004-SK-006
+    name: Consensus Protocol Execution
+    description: Execute multi-agent voting and consensus mechanisms with conflict resolution
+    inputs: [participating_agents, proposal, voting_schema, quorum_threshold]
+    outputs: [consensus_result, voting_record, resolution_path]
+    complexity: High
+    related_knowledge: [KA-006]
 
-  peer_network:
-    id: DOM-004-CP-003
-    name: Peer-to-Peer Network
-    description: Specialist agents delegate horizontally with consensus coordination
-    constraints:
-      - symmetric_communication: required
-      - consensus_protocol: required (SD-004d)
-      - deadlock_prevention: required
-    use_case: collaborative_problem_solving
-    failure_recovery: DOM-036 deadlock resolution
+  - skill_id: DOM-004-SK-007
+    name: Agent Template Generation
+    description: Generate YAML/JSON templates for new agent types with required fields and validation schemas
+    inputs: [agent_type, domain, capabilities_list, rules_set]
+    outputs: [template_definition, validation_schema, example_instance]
+    complexity: Medium
+    related_knowledge: []
 
-  hub_and_spoke:
-    id: DOM-004-CP-004
-    name: Hub-and-Spoke
-    description: Central orchestrator with direct connections to all specialists
-    constraints:
-      - single_point_of_failure: central orchestrator
-      - scalability: limited by hub capacity
-      - latency: predictable
-    use_case: high_volume_task_distribution
-    failure_recovery: hub failover and reassignment
+  - skill_id: DOM-004-SK-008
+    name: Sandbox-Aware Agent Initialization
+    description: Initialize agents with proper sandbox boundaries, credential isolation, and permission enforcement
+    inputs: [agent_spec, sandbox_config, credential_set, permission_scope]
+    outputs: [sandboxed_agent, credential_mappings, access_control_list]
+    complexity: High
+    related_knowledge: [KA-010]
 
-agent_templates:
-  template_001:
-    id: DOM-004-AT-001
-    name: Standard Specialist Agent Template
-    structure:
-      initialization_phase:
-        - load_domain_knowledge
-        - validate_sandbox_boundaries (KA-010)
-        - allocate_cost_budget (KA-023)
-        - register_with_orchestrator
-      execution_phase:
-        - receive_task
-        - validate_inputs
-        - execute_with_structured_journaling (KA-004)
-        - produce_outputs
-      completion_phase:
-        - log_execution_metrics (KA-015, KA-016, KA-021)
-        - release_resources
-        - notify_orchestrator
-    applicable_to: specialist_agent, gap_filler_agent
-    
-  template_002:
-    id: DOM-004-AT-002
-    name: Orchestrator Agent Template
-    structure:
-      initialization_phase:
-        - load_agent_registry
-        - initialize_delegation_tracker
-        - setup_consensus_protocol (SD-004d)
-      execution_phase:
-        - receive_task
-        - decompose_task
-        - select_agents (DOM-004-RL-005)
-        - delegate_with_context_transfer (KA-012)
-        - collect_results
-        - aggregate_results
-      completion_phase:
-        - verify_consensus (if multi_agent)
-        - log_delegation_chain (KA-004)
-        - return_result
-    applicable_to: orchestrator_agent
+  - skill_id: DOM-004-SK-009
+    name: Cost-Aware Agent Configuration
+    description: Configure agent cost budgets, track token consumption, and enforce cost constraints across delegation chains
+    inputs: [agent_spec, total_budget, cost_allocation_strategy, burn_rate_threshold]
+    outputs: [cost_config, budget_allocation_plan, monitoring_setup]
+    complexity: Medium
+    related_knowledge: [KA-023]
 
-  template_003:
-    id: DOM-004-AT-003
-    name: Reviewer Agent Template
-    structure:
-      initialization_phase:
-        - load_validation_rules
-        - initialize_scoring_engine
-      execution_phase:
-        - receive_candidate_output
-        - validate_against_rules
-        - score_output
-        - participate_in_consensus (SD-004d)
-      completion_phase:
-        - log_validation_result (KA-004)
-        - record_trust_signal (DOM-039)
-    applicable_to: reviewer_agent
+  # Failure & Recovery Skills
+  - skill_id: DOM-004-SK-010
+    name: Context Window Overflow Detection
+    description: Monitor and detect when agent execution approaches context window limits with proactive mitigation
+    inputs: [agent_id, current_tokens, message_history, model_limit]
+    outputs: [overflow_risk_score, mitigation_strategy, recovery_plan]
+    complexity: Medium
+    related_knowledge: [KA-018]
+
+  - skill_id: DOM-004-SK-011
+    name: Infinite Recursion Prevention
+    description: Validate delegation chains for cycle detection and bounded depth enforcement
+    inputs: [delegation_chain, max_depth, visited_agents]
+    outputs: [cycle_detection_result, depth_validation, constraint_violations]
+    complexity: Medium
+    related_knowledge: [KA-012]
+
+  - skill_id: DOM-004-SK-012
+    name: Agent Deadlock Resolution
+    description: Detect and resolve deadlock states in multi-agent consensus with timeout and escalation
+    inputs: [consensus_state, participating_agents, timeout_duration]
+    outputs: [deadlock_detected, resolution_action, escalation_trigger]
+    complexity: High
+    related_knowledge: [KA-006]
+
+  - skill_id: DOM-004-SK-013
+    name: Agent Zombie State Detection
+    description: Identify agents consuming resources without producing output and initiate termination
+    inputs: [agent_id, resource_consumption, output_logs, timeout_threshold]
+    outputs: [zombie_status, resource_cleanup_plan, termination_signal]
+    complexity: Medium
+    related_knowledge: []
+
+  # Composition & Design Skills
+  - skill_id: DOM-004-SK-014
+    name: Multi-Model Agent Design
+    description: Prevent one-model-for-everything antipattern by assigning optimal models to agent types
+    inputs: [agent_type, task_complexity, latency_requirements, cost_constraints]
+    outputs: [model_assignment, justification, performance_prediction]
+    complexity: Medium
+    related_knowledge: [KA-019]
+
+  - skill_id: DOM-004-SK-015
+    name: Agent Composition Pattern Validation
+    description: Validate agent composition patterns against domain constraints and architectural rules
+    inputs: [composition_spec, constraint_set, domain_rules]
+    outputs: [validation_result, violation_list, correction_suggestions]
+    complexity: Medium
+    related_knowledge: [KA-006]
+
+  - skill_id: DOM-004-SK-016
+    name: Delegation Protocol Definition
+    description: Define and specify task handoff, context transfer, result collection for agent-to-agent delegation
+    inputs: [parent_agent_spec, child_agent_spec, task_type]
+    outputs: [delegation_protocol, context_schema, result_schema]
+    complexity: Medium
+    related_knowledge: [KA-012]
+
+  - skill_id: DOM-004-SK-017
+    name: Agent Suspension & Resumption Coordination
+    description: Manage agent suspension, state preservation, and resumption with context reconstruction
+    inputs: [agent_id, suspension_reason, context_snapshot]
+    outputs: [suspension_record, preserved_state, resumption_plan]
+    complexity: Medium
+    related_knowledge: [KA-004]
+
+  # Monitoring & Analytics Skills
+  - skill_id: DOM-004-SK-018
+    name: Agent Success Rate Calculation
+    description: Calculate and trend agent success rates with confidence intervals and anomaly detection
+    inputs: [agent_id, execution_records, success_criteria, time_window]
+    outputs: [success_rate, confidence_interval, trend_analysis, outliers]
+    complexity: Medium
+    related_knowledge: [KA-021]
+
+  - skill_id: DOM-004-SK-019
+    name: Agent Utilization Metrics Aggregation
+    description: Aggregate and analyze agent utilization across execution pools with saturation detection
+    inputs: [agent_pool, execution_logs, time_period]
+    outputs: [utilization_metrics, saturation_alerts, capacity_recommendations]
+    complexity: Medium
+    related_knowledge: [KA-016]
+
+  - skill_id: DOM-004-SK-020
+    name: Delegation Efficiency Analysis
+    description: Measure and optimize delegation chain efficiency, latency, and cost per unit work
+    inputs: [delegation_records, cost_data, latency_measurements]
+    outputs: [efficiency_metrics, bottleneck_analysis, optimization_suggestions]
+    complexity: Medium
+    related_knowledge: [KA-012]
+
+  - skill_id: DOM-004-SK-021
+    name: Agent Performance Baseline Establishment
+    description: Establish performance baselines for agents and track degradation or improvement
+    inputs: [agent_id, historical_metrics, baseline_period]
+    outputs: [baseline_metrics, deviation_thresholds, alert_configuration]
+    complexity: Medium
+    related_knowledge: [KA-015]
+
+  # Cross-Domain Skills
+  - skill_id: DOM-004-SK-022
+    name: Agent-to-Security Integration
+    description: Integrate security guardrails into agent patterns and enforce during instantiation
+    inputs: [agent_spec, security_policies, guardrail_set]
+    outputs: [secured_agent_spec, policy_compliance_report]
+    complexity: Medium
+    related_knowledge: []
+
+  - skill_id: DOM-004-SK-023
+    name: Agent Trust Score Integration
+    description: Feed agent performance data to trust scoring system and adjust permissions based on trust level
+    inputs: [agent_id, performance_metrics, incident_history]
+    outputs: [trust_score, permission_adjustments, escalation_triggers]
+    complexity: Medium
+    related_knowledge: []
+
+  - skill_id: DOM-004-SK-024
+    name: Escalation Trigger Definition
+    description: Define and manage agent state conditions that trigger human escalation
+    inputs: [agent_id, escalation_rules, severity_levels]
+    outputs: [escalation_trigger_config, notification_schema, escalation_log]
+    complexity: Medium
+    related_knowledge: []
 </parameter>
 </invoke>
 </function_calls>
+
 <function_calls>
-<invoke name="editor">
-<parameter name="filePath">C:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\core_infrastructure\AGT-004\lifecycle_state_machines.yaml</parameter>
-<parameter name="action">create</parameter>
-<parameter name="content">domain: DOM-004 Agent Architecture & Lifecycle
-category: Lifecycle State Machines (SD-004b)
-version: 1.0
-generated_date: 2026-03-01
+<invoke name="file_write">
+<parameter name="filePath">c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\core_infrastructure\AGT-004\workflows.yaml</parameter>
+<parameter name="content">domain: DOM-004
+domain_name: Agent Architecture & Lifecycle
+category: Workflows
+total_workflows: 12
 
-agent_lifecycle_state_machine:
-  id: DOM-004-SM-001
-  name: Agent Lifecycle State Machine
-  description: Complete lifecycle of an agent from creation through termination
-  
-  states:
-    created:
-      id: LS-001
-      description: Agent definition exists but not yet initialized
-      invariants:
-        - agent_record_persisted: true
-        - resource_allocation: none
-        - execution_capability: false
-      allowed_transitions:
-        - initializing (trigger: init_command)
-        - failed (trigger: validation_error)
+workflows:
+  # Core Agent Lifecycle
+  - workflow_id: DOM-004-WF-001
+    name: Agent Creation and Initialization Workflow
+    description: Complete workflow from agent instantiation through ready state
+    trigger: Request to create new agent instance
+    steps:
+      - step: 1
+        name: Pattern Selection
+        description: Select agent archetype and validate against domain requirements
+        entry_criteria: [pattern_request_received, domain_scope_defined]
+        exit_criteria: [pattern_validated, requirements_mapped]
+        skill_required: DOM-004-SK-001
+        
+      - step: 2
+        name: Capability and Constraint Definition
+        description: Define agent capabilities, constraints, and cost budget
+        entry_criteria: [pattern_selected]
+        exit_criteria: [capabilities_defined, constraints_validated, budget_allocated]
+        skill_required: [DOM-004-SK-009, DOM-004-SK-015]
+        
+      - step: 3
+        name: Sandbox Configuration
+        description: Configure sandbox boundaries, credentials, and permissions
+        entry_criteria: [capabilities_defined, security_policies_available]
+        exit_criteria: [sandbox_configured, credentials_isolated, permissions_enforced]
+        skill_required: [DOM-004-SK-008, DOM-004-SK-022]
+        
+      - step: 4
+        name: Template Generation
+        description: Generate YAML template for agent instance
+        entry_criteria: [sandbox_configured]
+        exit_criteria: [template_generated, schema_validated]
+        skill_required: DOM-004-SK-007
+        
+      - step: 5
+        name: Instance Instantiation
+        description: Create agent instance from template
+        entry_criteria: [template_validated, dependencies_resolved]
+        exit_criteria: [instance_created, initialization_record_generated]
+        skill_required: DOM-004-SK-001
+        
+      - step: 6
+        name: State Initialization
+        description: Initialize agent in Created state with journal entry
+        entry_criteria: [instance_created]
+        exit_criteria: [state_initialized, journal_entry_recorded]
+        skill_required: [DOM-004-SK-002, DOM-004-SK-005]
+        
+      - step: 7
+        name: Readiness Validation
+        description: Validate all dependencies met and agent ready for work
+        entry_criteria: [state_initialized]
+        exit_criteria: [readiness_validated, agent_ready]
+        skill_required: [DOM-004-SK-015, DOM-004-SK-004]
     
-    initializing:
-      id: LS-002
-      description: Agent loading resources, validating dependencies, registering capabilities
-      invariants:
-        - sandbox_setup_in_progress: true (KA-010)
-        - cost_budget_allocated: true (KA-023)
-        - dependencies_being_resolved: true
-      allowed_transitions:
-        - ready (trigger: initialization_complete)
-        - failed (trigger: dependency_resolution_failure)
-        - terminated (trigger: cancel_during_init)
-    
-    ready:
-      id: LS-003
-      description: Agent fully initialized, waiting for task assignment
-      invariants:
-        - capable_of_execution: true
-        - resource_available: true
-        - context_loaded: true
-      allowed_transitions:
-        - executing (trigger: task_assigned)
-        - suspended (trigger: resource_constraint)
-        - terminated (trigger: shutdown_command)
-    
-    executing:
-      id: LS-004
-      description: Agent actively processing assigned task
-      invariants:
-        - task_in_progress: true
-        - journaling_active: true (KA-004)
-        - cost_tracking_active: true (KA-023)
-        - context_preserved: true
-      allowed_transitions:
-        - completed (trigger: task_success)
-        - suspended (trigger: resource_limit_approaching)
-        - failed (trigger: execution_error)
-        - delegating (trigger: delegation_required)
-    
-    delegating:
-      id: LS-005
-      description: Agent delegating subtask to child agent (orchestrator pattern)
-      invariants:
-        - delegation_record_created: true (KA-012)
-        - context_transferred: true (KA-012)
-        - parent_agent_suspended: false
-        - child_agent_tracking: active
-      allowed_transitions:
-        - executing (trigger: collecting_results)
-        - failed (trigger: delegation_chain_depth_exceeded)
-        - failed (trigger: child_agent_failed)
-    
-    suspended:
-      id: LS-006
-      description: Agent paused due to resource constraints, waiting for continuation
-      invariants:
-        - state_persisted: true
-        - context_preserved: true
-        - no_resource_consumption: true (except memory)
-        - resumption_path_defined: true
-      allowed_transitions:
-        - executing (trigger: resources_available)
-        - ready (trigger: task_canceled)
-        - terminated (trigger: timeout_exceeded)
-    
-    completing:
-      id: LS-007
-      description: Agent finalizing execution, aggregating results, preparing output
-      invariants:
-        - result_aggregation_in_progress: true
-        - quality_validation_in_progress: true
-        - consensus_verification: pending (if multi_agent)
-      allowed_transitions:
-        - completed (trigger: completion_verified)
-        - failed (trigger: quality_check_failed)
-    
-    completed:
-      id: LS-008
-      description: Agent task successfully finished, results delivered
-      invariants:
-        - result_output_delivered: true
-        - execution_metrics_logged: true (KA-015, KA-016, KA-021)
-        - cost_finalized: true
-        - resource_released: true
-      allowed_transitions:
-        - ready (trigger: new_task_assigned)
-        - terminated (trigger: shutdown_after_completion)
-    
-    failed:
-      id: LS-009
-      description: Agent encountered unrecoverable error during execution
-      invariants:
-        - error_logged: true
-        - failure_mode_identified: true (KA-018, KA-019)
-        - recovery_attempted: true
-        - recovery_failed: true
-      allowed_transitions:
-        - terminated (trigger: escalate_to_human)
-        - ready (trigger: recovery_manual_intervention)
-    
-    terminated:
-      id: LS-010
-      description: Agent lifecycle ended, all resources released
-      invariants:
-        - resource_released: true
-        - final_state_logged: true (KA-004)
-        - no_further_transitions: true
-      allowed_transitions: []
+    completion_criteria: Agent is in Ready state with valid journal trail and performance baseline established
+    rollback_plan: "If any step fails: (1) Log failure with journal entry, (2) Revert sandbox configuration, (3) Clean up partial instance, (4) Return error with recovery instructions"
+    related_knowledge: [KA-004, KA-010, KA-023]
 
-delegation_chain_state_machine:
-  id: DOM-004-SM-002
-  name: Delegation Chain State Machine
-  description: Lifecycle of a task delegation from parent to child agent
-  
-  states:
-    pending:
-      id: DC-001
-      description: Delegation task identified but not yet sent
-      invariants:
-        - delegation_record_created: true
-        - child_agent_selected: true
-        - context_staged: true
-      allowed_transitions:
-        - delegated (trigger: context_transfer_complete)
-    
-    delegated:
-      id: DC-002
-      description: Task sent to child agent, waiting for execution to start
-      invariants:
-        - child_acknowledged: true
-        - context_transferred: true (KA-012)
-        - depth_counter_incremented: true
-        - timeout_started: true
-      allowed_transitions:
-        - in_progress (trigger: child_execution_started)
-        - failed (trigger: child_declined_task)
-        - failed (trigger: delegation_timeout)
-    
-    in_progress:
-      id: DC-003
-      description: Child agent
+  # Delegation & Task Distribution
+  - workflow_id: DOM-004-WF-002
+    name: Agent Delegation Workflow
+    description: Complete workflow for delegating tasks to child agents with context transfer
+    trigger: Agent requires subtask execution through delegation
+    steps:
+      - step: 1
+        name: Delegation Plan Development
+        description: Analyze task and determine delegation strategy
+        entry_criteria: [task_specified, child_agents_available]
+        exit_criteria: [delegation_strategy_defined, child_agents_selected]
+        skill_required: DOM-004-SK-003
+        
+      - step: 2
+        name: Delegation Chain Validation
+        description: Validate chain depth, detect cycles, ensure bounded recursion
+        entry_criteria: [delegation_strategy_defined]
+        exit_criteria: [chain_validated, depth_limit_respected, cycles_detected]
+        skill_required: DOM-004-SK-011
+        
+      - step: 3
+        name: Context Transfer Protocol Execution
+        description: Extract relevant context and transfer to child agents
+        entry_criteria: [chain_validated]
+        exit_criteria: [context_transferred, context_receipt_confirmed]
+        skill_required: DOM-004-SK-016

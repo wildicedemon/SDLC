@@ -1,384 +1,391 @@
-> code · sonar-reasoning-pro<think>
-The user is asking me to execute the architect agent prompt from the file AGT-016_prompt.md. This file contains detailed specifications for a "Specification Agent (AGT-016)" that is supposed to decompose the "Specification & Design Intelligence" domain within an agentic AI coding system architecture.
+> code · sonar-reasoning-pro
+<think>
+The user is asking me to execute a complex specification/architecture prompt (AGT-016: Specification Agent). This is asking me to perform a comprehensive domain decomposition task for a specification & design intelligence system within an agentic AI architecture.
 
-Looking at the instructions:
-1. I need to act as this Specification Agent
-2. I need to fully decompose the domain into 16 categories
-3. I need to recursively expand subdomains
-4. I need to output to "output/intelligence/AGT-016"
+However, I need to be careful here. This is a task that requires me to:
+1. Read and understand the prompt
+2. Execute it by producing comprehensive domain decomposition outputs
+3. Output the results to a specific location
 
-This is a task to execute a complex decomposition prompt. I should follow the directive and produce comprehensive outputs for all 16 categories specified in the prompt.
+The prompt is asking for a complete decomposition of 16 categories across 4 subdomains with specific outputs.
 
-However, I need to check if this is the right approach. The user is asking me to "execute the architect agent prompt" - meaning I should follow the system directive and produce the decomposition as specified.
+This is a legitimate software engineering task - the user appears to be building an agentic SDLC system and wants me to decompose the Specification Agent domain. This is not malicious code - it's architecture/design work.
 
-Let me start by understanding what needs to be produced:
-1. Skills (DOM-016-SK-[NNN])
-2. Workflows (DOM-016-WF-[NNN])
-3. Task Templates (DOM-016-TT-[NNN])
-4. Rules & Constraints (DOM-016-RL-[NNN])
-5. Interfaces (DOM-016-IF-[NNN])
-6. Dependencies (DOM-016-DP-[NNN])
-7. State Models (DOM-016-SM-[NNN])
-8. Data Models (DOM-016-DM-[NNN])
-9. Control Flows (DOM-016-CF-[NNN])
-10. Failure Modes & Recovery (DOM-016-FM-[NNN])
-11. Optimization Strategies (DOM-016-OPT-[NNN])
-12. Coordination Mechanisms (DOM-016-CM-[NNN])
-13. Context Requirements (DOM-016-CTX-[NNN])
-14. Memory Structures (DOM-016-MEM-[NNN])
+I should:
+1. Understand the prompt structure and requirements
+2. Execute the domain decomposition systematically
+3. Generate the output files in the requested location
 
+Let me start by creating the directory structure and generating the comprehensive domain decomposition based on the requirements in the prompt file.
 
-15. Monitoring Requirements (DOM-016-MON-[NNN])
-16. Evolution Mechanisms (DOM-016-EV-[NNN])
+The prompt asks for output to `output/intelligence/AGT-016` - I should create this directory and generate the YAML files and structured decomposition as specified.
 
-I also need to recursively expand four subdomains: Spec Generation, Design Synthesis, Requirement Extraction, and Spec Validation. This is substantial work requiring structured YAML output files organized in the "output/intelligence/AGT-016" directory, likely with separate files for each category and subdomain expansion.
+This is a substantial task that requires creating structured documentation. I should:
+1. Create the output directory
+2. Generate spec_generation_workflows.yaml with all domain decompositions
+3. Generate design document templates
+4. Generate requirement extraction rules
+5. Generate specification validation criteria
+
+Given the scope and the instructions to be concise, I should execute this task directly without excessive explanation.
 </think>
 
-I'll execute the Specification Agent (AGT-016) decomposition as specified in the prompt. This requires comprehensive domain decomposition across 16 categories with recursive expansion of subdomains.
-
-```bash
-mkdir -p "output/intelligence/AGT-016"
-```
-
-Now I'll generate the complete decomposition:
-
-```bash
-cat > "output/intelligence/AGT-016/domain_decomposition.yaml" << 'EOF'
-domain_id: DOM-016
+I'll execute the AGT-016 Specification Agent domain decomposition and generate the required outputs.
+<function_calls>
+<invoke name="bash">
+<parameter name="command">mkdir -p "c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\intelligence\AGT-016"</parameter>
+</invoke>
+</function_calls>
+<function_calls>
+<invoke name="write_file">
+<parameter name="filePath">c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\intelligence\AGT-016\spec_generation_workflows.yaml</parameter>
+<parameter name="content">domain_id: DOM-016
 domain_name: Specification & Design Intelligence
-version: 1.0
-generated_date: 2026-03-01
-agent_id: AGT-016
-phase: P2 (Planning)
 execution_phase: Phase 3 (Intelligence)
+dependencies:
+  - AGT-013 (Reasoning Agent)
+  - AGT-005 (Task Architecture Agent)
+  - AGT-015 (Code Explorer - optional)
+outputs_to:
+  - AGT-017 (Code Generation)
+  - AGT-020 (Testing Architecture)
+  - AGT-023 (HITL)
 
 subdomains:
-  - id: SD-016a
+  SD-016a:
     name: Spec Generation
-    description: Automated specification generation from user requirements, intent decomposition into formal specifications
-  - id: SD-016b
+    purpose: Automated specification generation from user requirements, intent decomposition into formal specifications
+    
+  SD-016b:
     name: Design Synthesis
-    description: Design document creation from specifications, architectural design generation
-  - id: SD-016c
+    purpose: Design document creation from specifications, architectural design generation
+    
+  SD-016c:
     name: Requirement Extraction
-    description: Natural language requirement parsing, ambiguity detection, requirement classification
-  - id: SD-016d
+    purpose: Natural language requirement parsing, ambiguity detection, structured clarification
+    
+  SD-016d:
     name: Spec Validation
-    description: Specification completeness checking, consistency validation, feasibility analysis
-
----
-## 1. SKILLS (DOM-016-SK-[NNN])
+    purpose: Specification completeness checking, consistency validation, traceability
 
 skills:
-  - id: DOM-016-SK-001
+  DOM-016-SK-001:
     name: Automated Specification Generation
-    description: Transforms user intent and requirements into formal, structured specifications consumable by code generation agents
-    inputs: [user_intent, requirements_list, context_constraints, existing_specs]
-    outputs: [specification_document, spec_metadata, generation_reasoning]
+    description: Transforms user intent and extracted requirements into formal, structured specifications
+    inputs: [user_intent, requirements_list, context, constraints]
+    outputs: [specification, spec_metadata, generation_artifacts]
     complexity: High
-    subdomain: SD-016a
+    knowledge_atom: KA-006
 
-  - id: DOM-016-SK-002
-    name: Requirement Extraction from Natural Language
-    description: Parses natural language inputs (user stories, transcripts, documentation) and extracts structured requirements
-    inputs: [text_input, requirement_template, domain_context]
-    outputs: [structured_requirements, entity_map, ambiguity_flags]
+  DOM-016-SK-002:
+    name: Requirement Extraction & Classification
+    description: Parses natural language requirements and classifies them by type and priority
+    inputs: [natural_language_text, domain_context, existing_requirements]
+    outputs: [classified_requirements, ambiguity_flags, extraction_confidence]
     complexity: High
-    subdomain: SD-016c
+    knowledge_atom: KA-033
 
-  - id: DOM-016-SK-003
-    name: Ambiguity Detection and Classification
-    description: Identifies ambiguous, vague, or conflicting statements in requirements and classifies ambiguity type
-    inputs: [requirement_text, domain_ontology, historical_ambiguities]
-    outputs: [ambiguity_score, ambiguity_type, clarification_suggestions]
+  DOM-016-SK-003:
+    name: Ambiguity Detection
+    description: Identifies vague, contradictory, or incomplete requirements
+    inputs: [requirement_text, specification_context, historical_ambiguities]
+    outputs: [ambiguity_assessment, clarification_questions, confidence_score]
     complexity: Medium
-    subdomain: SD-016c
+    knowledge_atom: KA-033
 
-  - id: DOM-016-SK-004
-    name: Structured Clarification Prompt Generation
-    description: Generates targeted clarification questions to resolve identified ambiguities in requirements
-    inputs: [ambiguous_requirement, ambiguity_context, stakeholder_profile]
-    outputs: [clarification_questions, question_priority, expected_response_format]
+  DOM-016-SK-004:
+    name: Structured Clarification Generation
+    description: Creates targeted questions to resolve requirement ambiguities
+    inputs: [ambiguous_requirement, context, stakeholder_profile]
+    outputs: [clarification_prompts, clarification_strategy, expected_answers]
     complexity: Medium
-    subdomain: SD-016c
+    knowledge_atom: KA-033
 
-  - id: DOM-016-SK-005
+  DOM-016-SK-005:
     name: Multi-Level Specification Decomposition
-    description: Decomposes system-level specifications into component and function-level specifications maintaining traceability
-    inputs: [system_specification, decomposition_rules, target_granularity]
-    outputs: [component_specs, function_specs, decomposition_tree, traceability_map]
+    description: Decomposes system specifications into component and functional levels
+    inputs: [system_spec, architectural_blueprint, functional_requirements]
+    outputs: [component_specs, function_specs, decomposition_tree]
     complexity: High
-    subdomain: SD-016a
+    knowledge_atom: KA-006
 
-  - id: DOM-016-SK-006
+  DOM-016-SK-006:
     name: Design Document Synthesis
-    description: Generates comprehensive design documents from formal specifications including architecture, components, interactions
-    inputs: [specification, design_patterns, architectural_constraints, existing_designs]
-    outputs: [design_document, architecture_diagram, component_interactions, design_rationale]
+    description: Creates comprehensive design documents from formal specifications
+    inputs: [specification, design_patterns, architectural_decisions]
+    outputs: [design_document, component_diagrams, interaction_flows]
     complexity: High
-    subdomain: SD-016b
 
-  - id: DOM-016-SK-007
+  DOM-016-SK-007:
     name: Specification Completeness Validation
-    description: Verifies that specifications contain all required elements and satisfy completeness criteria
-    inputs: [specification, completeness_checklist, requirement_types]
-    outputs: [completeness_score, missing_elements, remediation_suggestions]
+    description: Verifies all required specification elements are present and sufficiently detailed
+    inputs: [specification, validation_rules, spec_template]
+    outputs: [completeness_assessment, gaps_identified, remediation_suggestions]
     complexity: Medium
-    subdomain: SD-016d
 
-  - id: DOM-016-SK-008
+  DOM-016-SK-008:
     name: Specification Consistency Validation
-    description: Detects contradictions, conflicts, and inconsistencies within and across specifications
-    inputs: [specification_set, constraint_rules, consistency_rules]
-    outputs: [consistency_report, conflict_list, resolution_recommendations]
+    description: Detects contradictions, circular dependencies, and logical inconsistencies
+    inputs: [specification, related_specs, consistency_rules]
+    outputs: [consistency_report, conflicts_identified, resolution_paths]
     complexity: Medium
-    subdomain: SD-016d
 
-  - id: DOM-016-SK-009
+  DOM-016-SK-009:
     name: Feasibility Analysis
-    description: Evaluates whether specifications are technically feasible given constraints and dependencies
-    inputs: [specification, technical_constraints, resource_availability, timeline]
-    outputs: [feasibility_score, risk_assessment, feasibility_concerns, mitigation_strategies]
-    complexity: Medium
-    subdomain: SD-016d
-
-  - id: DOM-016-SK-010
-    name: Specification-to-Implementation Traceability Mapping
-    description: Creates and maintains bidirectional traceability between specifications and implementation artifacts
-    inputs: [specification, implementation_code, test_cases, deployment_config]
-    outputs: [traceability_matrix, coverage_report, orphaned_specs, unused_code]
-    complexity: Medium
-    subdomain: SD-016d
-
-  - id: DOM-016-SK-011
-    name: Requirement Classification
-    description: Categorizes requirements as functional, non-functional, constraints, assumptions, or dependencies
-    inputs: [requirement_text, classification_ontology, domain_context]
-    outputs: [classified_requirement, confidence_score, classification_reasoning]
-    complexity: Low
-    subdomain: SD-016c
-
-  - id: DOM-016-SK-012
-    name: Design Alternative Analysis
-    description: Evaluates multiple design approaches against specifications and trade-offs
-    inputs: [specification, design_alternatives, evaluation_criteria, constraints]
-    outputs: [evaluation_matrix, recommendation, trade-off_analysis, decision_rationale]
+    description: Assesses technical feasibility and identifies implementation constraints
+    inputs: [specification, existing_codebase, resource_constraints, tech_stack]
+    outputs: [feasibility_assessment, risk_factors, mitigation_strategies]
     complexity: High
-    subdomain: SD-016b
 
-  - id: DOM-016-SK-013
-    name: Specification Template Management
-    description: Maintains, retrieves, and applies specification templates for different specification types
-    inputs: [spec_type, context, customization_parameters]
-    outputs: [template_instance, template_guidance, required_sections]
-    complexity: Low
-    subdomain: SD-016a
-
-  - id: DOM-016-SK-014
-    name: Specification Versioning and Change Tracking
-    description: Manages specification versions, tracks changes, and maintains change history with impact analysis
-    inputs: [specification, change_description, impact_scope]
-    outputs: [new_version, change_log, impact_assessment, downstream_dependencies]
+  DOM-016-SK-010:
+    name: Specification-to-Implementation Traceability Mapping
+    description: Creates bidirectional links between specifications, code, and tests
+    inputs: [specification, implementation_code, test_cases, requirements]
+    outputs: [traceability_matrix, coverage_map, gap_analysis]
     complexity: Medium
-    subdomain: SD-016a
 
-  - id: DOM-016-SK-015
-    name: Acceptance Criteria Derivation
-    description: Generates measurable acceptance criteria from requirements and specifications
-    inputs: [requirement, specification_context, acceptance_template]
-    outputs: [acceptance_criteria, measurement_approach, validation_method]
+  DOM-016-SK-011:
+    name: Specification Change Impact Analysis
+    description: Assesses downstream impacts of specification changes
+    inputs: [spec_change, current_specification, downstream_artifacts]
+    outputs: [impact_assessment, affected_components, propagation_plan]
+    complexity: High
+
+  DOM-016-SK-012:
+    name: Requirement Prioritization
+    description: Orders requirements by business value, criticality, and dependency
+    inputs: [requirements_list, business_context, stakeholder_priorities]
+    outputs: [prioritized_requirements, priority_justification, phasing_plan]
     complexity: Medium
-    subdomain: SD-016d
-
----
-## 2. WORKFLOWS (DOM-016-WF-[NNN])
 
 workflows:
-  - id: DOM-016-WF-001
-    name: User Intent to Specification
-    subdomain: SD-016a
-    trigger: New user requirement received or feature request initiated
+  DOM-016-WF-001:
+    name: User Intent to Specification Workflow
+    trigger: New user request or feature requirement
     steps:
       - step: 1
-        action: Parse user intent
-        entry_criteria: Raw user input available
-        exit_criteria: Intent understood, scope boundaries identified
-        agent: DOM-016-SK-002
-      
+        name: Intent Capture
+        action: Collect user intent, acceptance criteria, context
+        entry_criteria: User request received
+        exit_criteria: Intent documented and preliminarily understood
       - step: 2
-        action: Extract structured requirements
-        entry_criteria: Intent parsed
-        exit_criteria: Requirements list with classification
-        agent: DOM-016-SK-002, DOM-016-SK-011
-      
+        name: Requirement Extraction
+        action: Parse natural language, classify requirements (functional/non-functional/constraint)
+        entry_criteria: Intent document available
+        exit_criteria: Structured requirements list with classifications
       - step: 3
-        action: Detect ambiguities
-        entry_criteria: Requirements extracted
-        exit_criteria: Ambiguity map with severity scores
-        agent: DOM-016-SK-003
-      
+        name: Ambiguity Detection
+        action: Scan for vague, incomplete, or contradictory requirements
+        entry_criteria: Requirements classified
+        exit_criteria: Ambiguity report generated with flags
       - step: 4
-        action: Generate clarification questions
-        entry_criteria: Ambiguities detected
-        exit_criteria: Prioritized clarification questions
-        agent: DOM-016-SK-004
-        conditional: ambiguity_detected = true
-      
+        name: Clarification Trigger
+        action: For ambiguous requirements, generate clarification questions
+        entry_criteria: Ambiguities identified
+        exit_criteria: Clarification requests ready or proceed if low ambiguity
       - step: 5
-        action: Collect stakeholder feedback
-        entry_criteria: Clarification questions generated
-        exit_criteria: Feedback incorporated, ambiguities resolved
-        agent: DOM-023 (HITL)
-        conditional: clarification_needed = true
-      
+        name: Requirement Validation
+        action: Validate requirements against organizational standards
+        entry_criteria: Clarifications incorporated
+        exit_criteria: Requirements validated
       - step: 6
-        action: Formalize specification
-        entry_criteria: Requirements clarified
-        exit_criteria: Formal specification document
-        agent: DOM-016-SK-001, DOM-016-SK-005
-      
+        name: Specification Formalization
+        action: Generate formal specification with all sections completed
+        entry_criteria: Validated requirements
+        exit_criteria: Specification artifact ready
       - step: 7
-        action: Validate specification
-        entry_criteria: Specification formalized
-        exit_criteria: Validation report with completeness/consistency score
-        agent: DOM-016-SK-007, DOM-016-SK-008
-      
-      - step: 8
-        action: Iterate on gaps
-        entry_criteria: Validation complete
-        exit_criteria: All gaps resolved or documented as known limitations
-        agent: DOM-016-SK-001
-        loop_condition: validation_score < 0.95 or gaps_remain = true
-    
-    completion_criteria: 
-      - Specification has completeness score >= 0.95
-      - No critical ambiguities remain
-      - Specification is approved by stakeholder
-      - Traceability established to original intent
-    
-    rollback_plan: |
-      If critical ambiguity unresolved after 3 clarification rounds:
-      - Flag specification for expert review
-      - Mark scope as reduced (descope ambiguous features)
-      - Document assumptions and proceed with approved subset
-      - Schedule follow-up session with domain expert
+        name: Traceability Establishment
+        action: Link all requirements to specification sections
+        entry_criteria: Specification generated
+        exit_criteria: Bidirectional traceability established
+    completion_criteria: Specification is complete, validated, approved, and ready for code generation
+    rollback_plan: Return to step 3 if ambiguities unresolved; escalate to human review if conflicts persist
 
-  - id: DOM-016-WF-002
-    name: Design Document Generation
-    subdomain: SD-016b
-    trigger: Specification approved and ready for detailed design
+  DOM-016-WF-002:
+    name: Specification Validation & Approval Workflow
+    trigger: Specification draft completed or updated
     steps:
       - step: 1
-        action: Generate design outline
-        entry_criteria: Specification available and validated
-        exit_criteria: Design outline with sections and components identified
-        agent: DOM-016-SK-006
-      
+        name: Completeness Check
+        action: Verify all required specification sections present and detailed
+        entry_criteria: Specification document available
+        exit_criteria: Completeness assessment report
       - step: 2
-        action: Synthesize architecture design
-        entry_criteria: Design outline complete
-        exit_criteria: Architecture diagram and design rationale
-        agent: DOM-016-SK-006
-      
+        name: Consistency Validation
+        action: Check for contradictions, circular dependencies, logical conflicts
+        entry_criteria: Completeness verified
+        exit_criteria: Consistency report with conflict list
       - step: 3
-        action: Define component interactions
-        entry_criteria: Architecture defined
-        exit_criteria: Component interaction matrix and sequence diagrams
-        agent: DOM-016-SK-006
-      
+        name: Feasibility Assessment
+        action: Analyze technical feasibility against current codebase and constraints
+        entry_criteria: Consistency verified
+        exit_criteria: Feasibility report with risk assessment
       - step: 4
-        action: Analyze design alternatives
-        entry_criteria: Initial design complete
-        exit_criteria: Alternative designs evaluated with trade-offs
-        agent: DOM-016-SK-012
-      
+        name: Stakeholder Review
+        action: Route to product owner, architect, engineering leads for review
+        entry_criteria: All validation checks passed
+        exit_criteria: Review feedback collected or approval obtained
       - step: 5
-        action: Review and approve design
-        entry_criteria: Design complete with alternatives analyzed
-        exit_criteria: Design approved, decisions documented
-        agent: DOM-023 (HITL)
-      
+        name: Gap Remediation
+        action: Address review feedback, gaps, and concerns
+        entry_criteria: Review feedback received
+        exit_criteria: Specification updated and ready for re-validation
       - step: 6
-        action: Generate design templates for implementation
-        entry_criteria: Design approved
-        exit_criteria: Implementation guides and code generation seeds
-        agent: DOM-016-SK-006
-    
-    completion_criteria:
-      - Design document complete and approved
-      - All components mapped to specification requirements
-      - Trade-off decisions documented
-      - Ready for code generation phase
+        name: Final Approval
+        action: Obtain formal approval from stakeholders
+        entry_criteria: All gaps remediated
+        exit_criteria: Specification approved and locked
+    completion_criteria: Specification is approved, versioned, and published
+    rollback_plan: Return to step 2 if consistency issues found; escalate if unresolvable
 
-  - id: DOM-016-WF-003
-    name: Requirement Ambiguity Resolution
-    subdomain: SD-016c
-    trigger: Ambiguity detected in requirements with score > threshold
+  DOM-016-WF-003:
+    name: Requirement Ambiguity Resolution Workflow
+    trigger: Ambiguity detected in requirement
     steps:
       - step: 1
-        action: Classify ambiguity type
+        name: Ambiguity Characterization
+        action: Analyze type and severity of ambiguity
         entry_criteria: Ambiguous requirement identified
-        exit_criteria: Ambiguity type classified and contextualized
-        agent: DOM-016-SK-003
-      
+        exit_criteria: Ambiguity classification and severity score
       - step: 2
-        action: Generate targeted clarification questions
-        entry_criteria: Ambiguity classified
-        exit_criteria: Prioritized clarification questions with response templates
-        agent: DOM-016-SK-004
-      
+        name: Clarification Question Generation
+        action: Create targeted, specific questions to resolve ambiguity
+        entry_criteria: Ambiguity characterized
+        exit_criteria: Clarification prompts ready
       - step: 3
-        action: Submit for stakeholder clarification
-        entry_criteria: Questions generated
-        exit_criteria: Stakeholder response received
-        agent: DOM-023 (HITL)
-      
+        name: Clarification Request
+        action: Submit questions to stakeholder or domain expert
+        entry_criteria: Clarification prompts generated
+        exit_criteria: Clarification response received or timeout
       - step: 4
-        action: Incorporate feedback
+        name: Response Incorporation
+        action: Update requirement with clarification information
         entry_criteria: Stakeholder response received
-        exit_criteria: Requirement re-specified with ambiguity resolved
-        agent: DOM-016-SK-001
-      
+        exit_criteria: Updated requirement with resolved ambiguity
       - step: 5
-        action: Validate resolution
+        name: Revalidation
+        action: Verify ambiguity is resolved and no new conflicts introduced
         entry_criteria: Requirement updated
-        exit_criteria: New ambiguity score calculated
-        agent: DOM-016-SK-003
-        loop_condition: ambiguity_score > threshold and attempts < max_attempts
-      
-      - step: 6
-        action: Document assumptions
-        entry_criteria: Ambiguity partially resolved or max attempts reached
-        exit_criteria: Assumptions documented and flagged
-        conditional: ambiguity_unresolved = true
-    
-    completion_criteria:
-      - Ambiguity score falls below acceptable threshold OR
-      - Maximum clarification attempts reached and assumptions documented
-      - Decision recorded in traceability matrix
+        exit_criteria: Validation confirmation
+    completion_criteria: Ambiguity fully resolved, requirement unambiguous, integrated into specification
+    rollback_plan: If clarification insufficient, escalate to human expert; mark for manual resolution
 
-  - id: DOM-016-WF-004
-    name: Specification Validation and Approval
-    subdomain: SD-016d
-    trigger: Specification ready for validation before approval
+  DOM-016-WF-004:
+    name: Design Document Generation Workflow
+    trigger: Specification approved and requires design documentation
     steps:
       - step: 1
-        action: Check completeness
+        name: Design Pattern Selection
+        action: Identify applicable architectural patterns and design patterns
         entry_criteria: Specification available
-        exit_criteria: Completeness report with missing elements
-        agent: DOM-016-SK-007
-      
+        exit_criteria: Design patterns selected with rationale
       - step: 2
-        action: Check consistency
-        entry_criteria: Completeness check complete
-        exit_criteria: Consistency report with conflicts identified
-        agent: DOM-016-SK-008
-      
+        name: Component Decomposition
+        action: Break specification into architectural components
+        entry_criteria: Design patterns selected
+        exit_criteria: Component architecture and boundaries defined
       - step: 3
-        action: Perform feasibility analysis
-        entry_criteria: Consistency check complete
-        exit_criteria: Feasibility assessment with risks identified
-        agent: DOM-016-SK-009
-      
+        name: Interaction Design
+        action: Define component interactions, data flows, API contracts
+        entry_criteria: Components defined
+        exit_criteria: Component interaction diagrams and specifications
       - step: 4
-        action: Reme
+        name: Design Alternative Analysis
+        action: Evaluate alternative designs against criteria
+        entry_criteria: Initial design created
+        exit_criteria: Design alternatives analyzed with tradeoffs
+      - step: 5
+        name: Design Document Assembly
+        action: Create comprehensive design document with all sections
+        entry_criteria: Design decisions finalized
+        exit_criteria: Complete design document
+      - step: 6
+        name: Design Review
+        action: Obtain architecture review and approval
+        entry_criteria: Design document complete
+        exit_criteria: Design approved or feedback for revision
+    completion_criteria: Design document complete, approved, and traceable to specification
+    rollback_plan: Return to step 4 if design concerns; iterate on alternatives
+
+  DOM-016-WF-005:
+    name: Specification Update & Versioning Workflow
+    trigger: Requested specification change or discovered mismatch with implementation
+    steps:
+      - step: 1
+        name: Change Request Analysis
+        action: Analyze what is changing and why
+        entry_criteria: Change request or drift detection
+        exit_criteria: Change impact assessment
+      - step: 2
+        name: Change Classification
+        action: Determine if intentional modification or unintended drift
+        entry_criteria: Change analyzed
+        exit_criteria: Classification and change type identified
+      - step: 3
+        name: Downstream Impact Analysis
+        action: Identify all affected components, tests, implementation, documentation
+        entry_criteria: Change classified
+        exit_criteria: Impact map with affected artifacts
+      - step: 4
+        name: Change Implementation
+        action: Update specification with version and change tracking
+        entry_criteria: Impact analyzed
+        exit_criteria: Updated specification with version bump
+      - step: 5
+        name: Downstream Propagation
+        action: Queue updates to tests, implementation guidance, design docs
+        entry_criteria: Specification updated
+        exit_criteria: Propagation plan created
+      - step: 6
+        name: Approval & Merge
+        action: Code review and approval of specification change
+        entry_criteria: Propagation plan ready
+        exit_criteria: Change merged to main specification branch
+    completion_criteria: Specification versioned, changes propagated, all artifacts updated
+    rollback_plan: Revert specification to previous version; cancel downstream updates
+
+  DOM-016-WF-006:
+    name: Multi-Level Specification Decomposition Workflow
+    trigger: System-level specification needs decomposition to component and function levels
+    steps:
+      - step: 1
+        name: System Specification Analysis
+        action: Understand system-level requirements and constraints
+        entry_criteria: System specification available
+        exit_criteria: System spec fully understood
+      - step: 2
+        name: Component Decomposition Planning
+        action: Identify logical components based on architecture
+        entry_criteria: System spec analyzed
+        exit_criteria: Component architecture defined
+      - step: 3
+        name: Component Specification Generation
+        action: Generate specifications for each component
+        entry_criteria: Components defined
+        exit_criteria: Component-level specifications
+      - step: 4
+        name: Functional Decomposition
+        action: Break component specs into functional capabilities
+        entry_criteria: Component specs available
+        exit_criteria: Function-level specifications
+      - step: 5
+        name: Traceability Linking
+        action: Create parent-child specification relationships
+        entry_criteria: All spec levels generated
+        exit_criteria: Traceability tree complete
+      - step: 6
+        name: Decomposition Validation
+        action: Verify decomposition is complete and non-overlapping
+        entry_criteria: Traceability tree created
+        exit_criteria: Validation passed or gaps identified
+    completion_criteria: Full specification hierarchy from system to function level, fully traceable
+    rollback_plan: Adjust decomposition strategy if gaps or overlaps detected; revalidate
+
+task_templates:
+  DOM-016-TT-001:
+    name: Specification Generation Task
+    purpose: Create a formal specification from captured requirements
+    structure: |-
+      Input: requirements_list, business_context, constraints
+      Process: format_spec() → validate_completeness() → check_consistency() → assign_traceability()
+      Output: specification_document, spec_metadata, trace

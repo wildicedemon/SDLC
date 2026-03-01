@@ -1,382 +1,50 @@
 > code · sonar-reasoning-pro<think>
-The user wants me to execute a review/analysis of the AGT-036 agent prompt file they just provided. This is an Error Recovery Coordinator Agent specification document that defines error recovery patterns, circuit breakers, graceful degradation, and retry strategies for a multi-agent AI system.
+The user is asking me to execute the review of agent prompt from the file AGT-036_prompt.md and output to output/cross_cutting/AGT-036.
 
-The user is asking me to execute/review this prompt and output results to `output/cross_cutting/AGT-036`. This appears to be a structured SDLC (Software Development Lifecycle) document for an agentic AI system.
+Looking at the file, this is a detailed specification for Agent AGT-036: Error Recovery Coordinator Agent. The agent is supposed to be a specialized cross-cutting autonomous agent responsible for defining and enforcing cross-system error recovery patterns.
 
-Let me think about what "execute the review agent prompt" means in this context:
-1. Review the prompt specification for completeness and coherence
-2. Generate the output artifacts it specifies
-3. Potentially analyze the architecture and provide deliverables
+The file contains:
+1. System Directive - what the agent does
+2. Core Mission - ensure system resilience
+3. Coordination Matrix - which agents it coordinates with
+4. Enforcement Protocol - standards it enforces
+5. Domain Scope - circuit breakers, graceful degradation, retry strategies
+6. Required Decomposition - 16 categories to fully expand
+7. Recursive Expansion Directive - expand subdomains
+8. Gap Detection Protocol - continuously scan for gaps
+9. Termination Condition - when the agent is done
 
-Looking at the file, AGT-036 is meant to produce:
-- `rules.yaml` (error_recovery_rules.yaml) 
-- `techniques_strategies.yaml`
-- Full decomposition of 16 categories with IDs
-- Circuit breaker definitions
-- Graceful degradation policies
-- Retry strategies
-- Fallback routing
+The user wants me to "execute the review agent prompt" - this seems to mean I should apply the Error Recovery Coordinator Agent's directives to review the prompt itself and produce structured outputs.
 
-The prompt is essentially a specification for what AGT-036 should do. So "executing" it means I should analyze this and generate the expected outputs.
+However, the instructions also mention I should check if this is malicious code. Looking at the content - this is clearly a legitimate system design document for an AI agent architecture system (SDLC). It's about error recovery patterns, circuit breakers, retry strategies - all standard software engineering practices for resilience. There's nothing malicious here.
 
-However, I need to be careful here. The user is asking me to "execute the review agent prompt" - this could mean:
-1. Review the prompt itself for quality/completeness
-2. Act AS AGT-036 and generate the outputs the prompt describes
+The user wants output to `output/cross_cutting/AGT-036`. I should:
+1. Review the prompt using the directives in the file
+2. Generate the required output artifacts: error_recovery_rules.yaml, circuit breaker definitions, graceful degradation policies, retry strategies, fallback routing
+3. Fully decompose the 16 categories with specific items
 
-Given the context and the output path specified, I think the user wants me to act as AGT-036 and generate the decomposed domain structure and outputs.
-
-Let me start by:
-1. Creating the output directory structure
-2. Generating the required YAML files and decompositions
-3. Populating all 16 categories as specified in the prompt
+Given the verbosity constraint (fewer than 4 lines), I should be very concise but still execute the task. However, since this is a major task that requires generating structured YAML outputs and fully decomposing a complex domain, I'll need to use tools to create the necessary files. Let me create the output directory and generate the required artifacts based on the prompt specifications.
 </think>
 
-I'll execute AGT-036 by generating the complete domain decomposition and output artifacts for the Error Recovery Coordinator Agent.
-<function_calls>
-<invoke_tool>
-<parameter name="tool">bash</parameter>
-<parameter name="command">mkdir -p "c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\cross_cutting\AGT-036"</parameter>
-</invoke_tool>
-</function_calls>
-<parameter name="tool">bash</parameter>
-<parameter name="command">cd "c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\cross_cutting\AGT-036" && pwd</parameter>
-</invoke_tool>
-</function_calls>
+I'll execute the Error Recovery Coordinator Agent (AGT-036) review and generate the required decomposed domain artifacts with all 16 categories fully populated, rules, workflows, and recovery patterns.
 
-Now generating the complete domain decomposition and artifacts:
-<function_calls>
-<invoke name="bash">
-<parameter name="command">cat > "c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\cross_cutting\AGT-036\error_recovery_rules.yaml" << 'EOF'
-agent_id: AGT-036
-domain_id: DOM-036
-domain_name: Error Recovery Coordination
-cross_cutting_scope: 
-  - DOM-002
-  - DOM-004
-  - DOM-024
-  - DOM-026
-  - DOM-005
-  - DOM-031
-  - DOM-006
+<tool_use>
+{
+  "type": "bash",
+  "command": "mkdir -p 'output/cross_cutting/AGT-036'"
+}
+</tool_use>
 
-################################################################################
-# 1. SKILLS (DOM-036-SK-NNN)
-################################################################################
-skills:
-  - skill_id: DOM-036-SK-001
-    name: Circuit Breaker Configuration & Deployment
-    description: Design and deploy circuit breaker patterns for agent-to-agent communication
-    knowledge_atoms: [KA-017]
-    produces: [DOM-036-IF-001]
-    
-  - skill_id: DOM-036-SK-002
-    name: Exponential Backoff & Jitter Calculation
-    description: Calculate and configure exponential backoff with jitter for retry policies
-    knowledge_atoms: [KA-041]
-    parameters: [base_delay_ms, max_delay_ms, backoff_multiplier, jitter_range]
-    
-  - skill_id: DOM-036-SK-003
-    name: Graceful Degradation Mode Design
-    description: Design degraded operation modes and partial result handling
-    knowledge_atoms: []
-    
-  - skill_id: DOM-036-SK-004
-    name: Failure Cascade Analysis
-    description: Analyze failure propagation paths and containment boundaries
-    knowledge_atoms: [KA-041]
-    
-  - skill_id: DOM-036-SK-005
-    name: Zero-Shot Recovery Chain Construction
-    description: Build recovery chains without requiring training data
-    knowledge_atoms: []
-    
-  - skill_id: DOM-036-SK-006
-    name: Idempotency Requirement Identification
-    description: Identify which operations must be idempotent for safe recovery
-    knowledge_atoms: []
-    
-  - skill_id: DOM-036-SK-007
-    name: Dead-Letter Queue Management
-    description: Design and manage dead-letter queues for failed tasks
-    knowledge_atoms: [KA-041]
-    
-  - skill_id: DOM-036-SK-008
-    name: Cross-Agent Failure Containment
-    description: Prevent failure propagation across agent boundaries
-    knowledge_atoms: [KA-041]
-    
-  - skill_id: DOM-036-SK-009
-    name: Recovery Plan Validation
-    description: Validate recovery plans for completeness and consistency
-    knowledge_atoms: []
+<tool_use>
+{
+  "type": "writeFile",
+  "filePath": "output/cross_cutting/AGT-036/error_recovery_rules.yaml",
+  "content": "# AGT-036 Error Recovery Coordination Rules\n# Domain: DOM-036 Error Recovery Coordination\n# Generated: 2026-03-01\n\nerror_recovery_rules:\n  # Circuit Breaker Rules\n  - rule_id: DOM-036-RL-001\n    category: Circuit Breakers\n    title: Mandatory Circuit Breaker for All Agent Interactions\n    description: All agent-to-agent calls must implement circuit breaker patterns to prevent cascading failures\n    enforcement_level: CRITICAL\n    violation_consequence: System-wide cascade risk\n    implementation_pattern: |\n      CircuitBreaker(source_agent, target_agent):\n        - state: Closed | Open | HalfOpen\n        - failure_threshold: monitored by interaction success rate\n        - recovery_timeout_ms: adaptive based on agent type\n        - half_open_max_attempts: 3\n\n  - rule_id: DOM-036-RL-002\n    category: Circuit Breakers\n    title: Adaptive Circuit Breaker Thresholds\n    description: Circuit breakers must use adaptive triggers that evolve with system behavior, not static thresholds\n    enforcement_level: HIGH\n    monitoring_metrics:\n      - interaction_success_rate\n      - response_time_p95\n      - error_frequency\n\n  - rule_id: DOM-036-RL-003\n    category: Circuit Breakers\n    title: Circuit Breaker State Sharing Across Cluster\n    description: Circuit breaker decisions must be shared across agents within affected cluster to ensure consistent recovery\n    enforcement_level: HIGH\n    coordination_scope: cluster_level\n\n  # Retry Strategy Rules\n  - rule_id: DOM-036-RL-004\n    category: Retry Strategies\n    title: Exponential Backoff with Jitter\n    description: All retry policies must include exponential backoff with jitter to prevent thundering herd\n    enforcement_level: CRITICAL\n    formula: |\n      delay_ms = min(base_delay_ms * (backoff_multiplier ^ retry_count) + random_jitter, max_delay_ms)\n\n  - rule_id: DOM-036-RL-005\n    category: Retry Strategies\n    title: Finite Retry Limits\n    description: Maximum retry count must be finite - no unlimited retries allowed (prevents KA-017 unlimited recursive planning)\n    enforcement_level: CRITICAL\n    constraint: max_retries <= 10\n\n  - rule_id: DOM-036-RL-006\n    category: Retry Strategies\n    title: Idempotency Requirement for Retryable Operations\n    description: All operations that may be retried must be idempotent - retry safety validation required\n    enforcement_level: HIGH\n    validation: idempotency_proof_required_for_non_readonly_operations\n\n  - rule_id: DOM-036-RL-007\n    category: Retry Strategies\n    title: Dead-Letter Queue for Exhausted Retries\n    description: Operations exceeding retry limits must be routed to dead-letter queue with human escalation\n    enforcement_level: HIGH\n    escalation_target: AGT-031\n\n  # Graceful Degradation Rules\n  - rule_id: DOM-036-RL-008\n    category: Graceful Degradation\n    title: Mandatory Degraded Operation Modes\n    description: All agents must define at least one degraded operation mode for failure conditions\n    enforcement_level: HIGH\n    degradation_levels:\n      - NORMAL: Full capability\n      - DEGRADED: Reduced features, partial results acceptable\n      - MAINTENANCE: Non-essential features disabled\n      - OFFLINE: Complete shutdown with escalation\n\n  - rule_id: DOM-036-RL-009\n    category: Graceful Degradation\n    title: Feature Prioritization Under Failure\n    description: Degradation modes must define which features remain operational vs. disabled\n    enforcement_level: MEDIUM\n    priority_levels:\n      - CRITICAL: Must remain operational\n      - IMPORTANT: Attempt to retain\n      - OPTIONAL: First to disable\n\n  - rule_id: DOM-036-RL-010\n    category: Graceful Degradation\n    title: Partial Result Handling and Communication\n    description: Agents must define acceptable partial results and user-visible degradation communication\n    enforcement_level: HIGH\n    requirements:\n      - partial_result_schema: must be defined\n      - user_notification: automatic\n      - result_completeness_flag: required\n\n  # Cascade Prevention Rules\n  - rule_id: DOM-036-RL-011\n    category: Cascade Prevention\n    title: Failure Isolation Boundaries\n    description: All inter-agent dependencies must have defined failure isolation boundaries\n    enforcement_level: CRITICAL\n    boundary_types:\n      - HARD: Failure does not propagate\n      - SOFT: Failure propagates with delay\n      - MONITORED: Failure tracked for root cause analysis\n\n  - rule_id: DOM-036-RL-012\n    category: Cascade Prevention\n    title: Task Dependency Failure Isolation (KA-041)\n    description: Task dependency failures must not cascade to independent tasks\n    enforcement_level: CRITICAL\n    scope: DOM-005 Task Architecture coordination\n\n  - rule_id: DOM-036-RL-013\n    category: Cascade Prevention\n    title: Cascade Containment Validation\n    description: Cascade prevention boundaries must be validated post-failure to ensure containment effectiveness\n    enforcement_level: HIGH\n    validation_trigger: post_failure_analysis\n\n  # Recovery Operation Rules\n  - rule_id: DOM-036-RL-014\n    category: Recovery Operations\n    title: Idempotent Recovery Operations\n    description: All recovery operations must be idempotent - safe to replay without side effects\n    enforcement_level: CRITICAL\n    validation: idempotency_requirement_enforced_at_design_time\n\n  - rule_id: DOM-036-RL-015\n    category: Recovery Operations\n    title: Staged Recovery Activation\n    description: Agents must be brought back online in stages, with stabilization between groups\n    enforcement_level: HIGH\n    staging_constraints:\n      - allow_time_for_stabilization: true\n      - max_parallel_recoveries: system_dependent\n      - monitor_resource_utilization: true\n\n  - rule_id: DOM-036-RL-016\n    category: Recovery Operations\n    title: Recovery Orchestration Model\n    description: Balance central orchestration with distributed coordination - use domain recovery coordinators\n    enforcement_level: HIGH\n    coordination_pattern: |\n      Central_Orchestrator:\n        - manages cross-domain dependencies\n        - coordinates staged recovery\n      Domain_Coordinators (per domain):\n        - manage local restoration\n        - handle domain-specific recovery logic\n\n  - rule_id: DOM-036-RL-017\n    category: Recovery Operations\n    title: State Synchronization During Recovery\n    description: During partial recovery, agent internal state must be synchronized including learned behaviors and context\n    enforcement_level: HIGH\n    sync_methods:\n      - vector_clocks: for causality preservation\n      - logical_timestamps: for ordering\n      - conflict_resolution: required\n\n  - rule_id: DOM-036-RL-018\n    category: Recovery Operations\n    title: Rollback Capability Requirement\n    description: Agents must be able to revert to previously known good state if synchronization fails\n    enforcement_level: HIGH\n    requirements:\n      - state_snapshots: regular captures required\n      - snapshot_retention: minimum 3 versions\n      - rollback_automation: supported\n\n  # Recovery Plan Rules\n  - rule_id: DOM-036-RL-019\n    category: Recovery Plans\n    title: Recovery Plan Mandate\n    description: Every agent must have a defined recovery plan for its failure modes\n    enforcement_level: CRITICAL\n    plan_components:\n      - agent_id: required\n      - failure_modes: comprehensive list required\n      - recovery_strategies: per failure mode\n      - degraded_modes: minimum 1\n      - escalation_threshold: defined\n      - last_validated: timestamp\n\n  - rule_id: DOM-036-RL-020\n    category: Recovery Plans\n    title: Recovery Plan Validation\n    description: Recovery plans must be validated and tested before deployment\n    enforcement_level: HIGH\n    validation_requirements:\n      - failure_mode_coverage: 100%\n      - strategy_feasibility: tested\n      - resource_availability: verified\n      - time_to_recovery_sla: met\n\n  # Resolution Priority\n  - rule_id: DOM-036-RL-021\n    category: Conflict Resolution\n    title: Resilience Takes Priority Over Performance\n    description: When domain design conflicts with recovery requirements, resilience takes precedence\n    enforcement_level: CRITICAL\n    escalation_path: AGT-002 System Architecture\n    exception_process: formal_risk_acceptance_from_AGT-031_required\n\n  - rule_id: DOM-036-RL-022\n    category: Conflict Resolution\n    title: Recovery Requirements Non-Negotiable for Critical Paths\n    description: Critical-path failures require full recovery implementation regardless of complexity\n    enforcement_level: CRITICAL\n    non_critical_path_exception: restart_only_allowed_with_risk_acceptance\n"
+}
+</tool_use>
 
-################################################################################
-# 2. WORKFLOWS (DOM-036-WF-NNN)
-################################################################################
-workflows:
-  - workflow_id: DOM-036-WF-001
-    name: Agent Failure Detection & Recovery
-    description: Detect agent failure and execute recovery strategy
-    stages:
-      - stage: DETECT
-        action: Monitor agent health metrics, detect failure signal
-        timeout_ms: 5000
-      - stage: CLASSIFY
-        action: Classify failure type (transient, permanent, cascading)
-        timeout_ms: 2000
-      - stage: ISOLATE
-        action: Activate circuit breaker, prevent further calls
-        timeout_ms: 1000
-      - stage: RECOVER
-        action: Execute recovery strategy based on failure type
-        timeout_ms: 30000
-      - stage: VALIDATE
-        action: Validate agent is healthy before resuming normal load
-        timeout_ms: 5000
-    escalation_path: DOM-031
-
-  - workflow_id: DOM-036-WF-002
-    name: Circuit Breaker Trip & Recovery
-    description: Manage circuit breaker state transitions
-    states: [CLOSED, OPEN, HALF_OPEN, FAILED]
-    transitions:
-      CLOSED_to_OPEN: "failure_threshold_exceeded"
-      OPEN_to_HALF_OPEN: "recovery_timeout_elapsed"
-      HALF_OPEN_to_CLOSED: "test_call_succeeded"
-      HALF_OPEN_to_OPEN: "test_call_failed"
-      
-  - workflow_id: DOM-036-WF-003
-    name: Cascade Failure Containment
-    description: Detect and contain cascading failures across agent networks
-    stages:
-      - stage: DETECT_CASCADE
-        action: Monitor for dependent failures
-        metric: failure_correlation > 0.8
-      - stage: TRACE_PATH
-        action: Trace failure propagation path
-      - stage: ACTIVATE_BOUNDARIES
-        action: Activate failure isolation boundaries
-      - stage: REPORT_CASCADE
-        action: Generate cascade report for DOM-026 (Debugging)
-
-  - workflow_id: DOM-036-WF-004
-    name: System-Wide Recovery Mode Activation
-    description: Activate reduced-load recovery mode across system
-    authorization: AGT-036 override authority
-    steps:
-      - Pause non-essential agents
-      - Enable graceful degradation on critical agents
-      - Increase monitoring frequency
-      - Activate recovery coordination across all domains
-      - Report status to DOM-031
-
-  - workflow_id: DOM-036-WF-005
-    name: Recovery Plan Audit
-    description: Audit all agents for adequate recovery coverage
-    frequency: "per_phase_completion"
-    checks:
-      - All agents have defined recovery plans
-      - All failure modes have strategies
-      - All agent connections have circuit breakers
-      - Retry policies have finite limits
-      - Degradation modes are defined
-      
-  - workflow_id: DOM-036-WF-006
-    name: Post-Failure Root Cause → Recovery Improvement
-    description: Feed debugging results into recovery strategy enhancement
-    inputs: [DOM-026-debug-reports]
-    outputs: [DOM-036-updated-recovery-plans]
-    coordination: DOM-026 (Debugging)
-
-################################################################################
-# 3. RULES & CONSTRAINTS (DOM-036-RL-NNN)
-################################################################################
-rules:
-  - rule_id: DOM-036-RL-001
-    name: Circuit Breaker Mandate
-    statement: All agent-to-agent calls MUST implement circuit breaker patterns
-    severity: CRITICAL
-    enforced_by: [AGT-036]
-    knowledge_atom: KA-017
-    
-  - rule_id: DOM-036-RL-002
-    name: Exponential Backoff Requirement
-    statement: Retry policies MUST include exponential backoff with jitter
-    severity: CRITICAL
-    formula: "delay = min(base_delay * (multiplier ^ attempt) + random(0, jitter), max_delay)"
-    
-  - rule_id: DOM-036-RL-003
-    name: Finite Retry Limit
-    statement: Maximum retry count MUST be finite (no unlimited retries)
-    severity: CRITICAL
-    knowledge_atom: KA-017
-    constraint: "max_retries >= 1 AND max_retries <= 10"
-    
-  - rule_id: DOM-036-RL-004
-    name: Degraded Operation Mode
-    statement: All agents MUST define at least one degraded operation mode
-    severity: HIGH
-    
-  - rule_id: DOM-036-RL-005
-    name: Task Dependency Isolation
-    statement: Task dependency failures MUST NOT cascade to independent tasks
-    severity: CRITICAL
-    knowledge_atom: KA-041
-    
-  - rule_id: DOM-036-RL-006
-    name: Recovery Operation Idempotence
-    statement: All recovery operations MUST be idempotent
-    severity: CRITICAL
-    
-  - rule_id: DOM-036-RL-007
-    name: Failure Boundary Isolation
-    statement: Failure isolation boundaries MUST be defined for all agent clusters
-    severity: HIGH
-    
-  - rule_id: DOM-036-RL-008
-    name: Recovery Validation
-    statement: Recovered agents MUST pass health validation before resuming full load
-    severity: CRITICAL
-    
-  - rule_id: DOM-036-RL-009
-    name: Escalation Threshold Definition
-    statement: All agents MUST define escalation thresholds for human intervention
-    severity: HIGH
-    coordination: DOM-031
-    
-  - rule_id: DOM-036-RL-010
-    name: Cascading Failure Prevention
-    statement: All multi-agent interactions MUST have failure cascade prevention mechanisms
-    severity: CRITICAL
-
-################################################################################
-# 4. STATE MODELS (DOM-036-SM-NNN)
-################################################################################
-state_models:
-  - state_model_id: DOM-036-SM-001
-    name: Circuit Breaker State Model
-    states:
-      CLOSED:
-        description: Normal operation, forwarding calls
-        transitions: {failure_threshold_exceeded: OPEN}
-      OPEN:
-        description: Failing fast, blocking calls
-        transitions: {recovery_timeout_elapsed: HALF_OPEN}
-      HALF_OPEN:
-        description: Testing recovery with limited traffic
-        transitions: {test_succeeded: CLOSED, test_failed: OPEN}
-    initial_state: CLOSED
-    
-  - state_model_id: DOM-036-SM-002
-    name: Agent Recovery State Model
-    states:
-      HEALTHY:
-        description: Normal operation
-        transitions: {failure_detected: FAILURE_DETECTED}
-      FAILURE_DETECTED:
-        description: Failure signal received
-        transitions: {recovery_initiated: RECOVERY_INITIATED}
-      RECOVERY_INITIATED:
-        description: Recovery process started
-        transitions: {recovery_executing: RECOVERING}
-      RECOVERING:
-        description: Recovery in progress
-        transitions: 
-          health_restored: RECOVERED
-          degradation_activated: DEGRADED
-          escalation_triggered: ESCALATED
-      RECOVERED:
-        description: Agent recovered to full capacity
-        transitions: {failure_detected: FAILURE_DETECTED}
-      DEGRADED:
-        description: Agent operating in reduced-capacity mode
-        transitions: {recovery_completed: RECOVERED}
-      ESCALATED:
-        description: Issue escalated to human intervention
-        transitions: {human_resolved: RECOVERED}
-        
-  - state_model_id: DOM-036-SM-003
-    name: System Recovery Mode State Model
-    states:
-      NORMAL:
-        description: System operating normally
-        transitions: {cascade_detected: DEGRADED}
-      DEGRADED:
-        description: Some agents failing but system functional
-        transitions: 
-          recovery_mode_activated: RECOVERY_MODE
-          cascade_contained: NORMAL
-      RECOVERY_MODE:
-        description: System in reduced-load recovery mode
-        transitions: {recovery_complete: NORMAL}
-
-################################################################################
-# 5. DATA MODELS (DOM-036-DM-NNN)
-################################################################################
-data_models:
-  - data_model_id: DOM-036-DM-001
-    name: Circuit Breaker Configuration Schema
-    fields:
-      - breaker_id: string (identifier)
-      - source_agent: string (agent_id)
-      - target_agent: string (agent_id)
-      - failure_threshold: integer (0-100, percentage)
-      - failure_window_ms: integer (milliseconds to evaluate threshold)
-      - recovery_timeout_ms: integer (time before OPEN→HALF_OPEN transition)
-      - half_open_max_attempts: integer (test calls in HALF_OPEN state)
-      - last_failure_time: timestamp
-      - state: enum [CLOSED, OPEN, HALF_OPEN]
-    
-  - data_model_id: DOM-036-DM-002
-    name: Retry Policy Schema
-    fields:
-      - policy_id: string
-      - max_retries: integer (1-10)
-      - base_delay_ms: integer (minimum delay)
-      - max_delay_ms: integer (maximum delay)
-      - backoff_multiplier: float (1.0-10.0)
-      - jitter_range: float (0.0-1.0, percentage of delay)
-      - idempotency_required: boolean
-      - dead_letter_queue: string (optional queue identifier)
-    
-  - data_model_id: DOM-036-DM-003
-    name: Recovery Plan Schema
-    fields:
-      - agent_id: string
-      - failure_modes: array[string] (identifiers)
-      - recovery_strategies: array[object]
-        - failure_mode: string
-        - strategy_type: enum [RETRY, DEGRADE, CIRCUIT_BREAK, ESCALATE]
-        - configuration: object
-      - degraded_modes: array[object]
-        - mode_id: string
-        - description: string
-        - capabilities_available: array[string]
-        - resource_reduction: float (0.0-1.0)
-      - escalation_threshold: integer (retry attempt count before escalation)
-      - last_validated: timestamp
-      - validation_status: enum [VALID, NEEDS_UPDATE, INVALID]
-    
-  - data_model_id: DOM-036-DM-004
-    name: Failure Cascade Record Schema
-    fields:
-      - cascade_id: string (unique identifier)
-      - root_failure_agent: string (agent_id)
-      - root_failure_time: timestamp
-      - propagation_path: array[object]
-        - agent_id: string
-        - failure_time: timestamp
-        - failure_reason: string
-      - containment_boundary: string (agent_id where cascade stopped)
-      - contained_by_rule: string (rule_id that prevented further propagation)
-      - recovery_duration_ms: integer
-      - resolution: enum [RECOVERED, DEGRADED, ESCALATED]
-      - root_cause: string (output from DOM-026)
-    
-  - data_model_id: DOM-036-DM-005
-    name: Recovery Coordination Event Schema
-    fields:
-      - event_id: string
-      - event_type: enum [FAILURE_DETECTED, RECOVERY_INITIATED, RECOVERY_COMPLETED, ESCALATED, DEGRADATION_ACTIVATED]
-      - timestamp: timestamp
-      -
+<tool_use>
+{
+  "type": "writeFile",
+  "filePath": "output/cross_cutting/AGT-036/circuit_breaker_definitions.yaml",
+  "content": "# AGT-036 Circuit Breaker Pattern Definitions\n# Subdomains: SD-036a Circuit Breakers\n\ncircuit_breaker_patterns:\n  # State Machine Definition\n  sm_001_circuit_breaker_lifecycle:\n    state_model_id: DOM-036-SM-001\n    name: Circuit Breaker State Lifecycle\n    description: Defines the complete state transition model for circuit breaker operation\n    states:\n      CLOSED:\n        description: Normal operation, calls proceed normally\n        allowed_transitions:\n          - OPEN: on failure threshold exceeded\n        monitoring: true\n        call_behavior: allow_all\n\n      OPEN:\n        description: Failure threshold exceeded, calls are blocked immediately\n        allowed_transitions:\n          - HALF_OPEN: after recovery_timeout_ms\n        monitoring: true\n        call_behavior: fail_fast\n        actions:\n          - increment_open_counter\n          - notify_dependents\n          - activate_fallback_routing\n\n      HALF_OPEN:\n        description: Testing recovery, allow limited calls to verify service restoration\n        allowed_transitions:\n          - CLOSED: if test calls succeed\n          - OPEN: if test calls fail\n        monitoring: true\n        call_behavior: allow_limited\n        call_limit: 3\n        success_threshold_for_close: 100%\n\n  # Circuit Breaker Configuration Schema\n  dm_001_circuit_breaker_config:\n    data_model_id: DOM-036-DM-001\n    name: Circuit Breaker Configuration Schema\n    description: Data structure for circuit breaker configuration and state\n    fields:\n      breaker_id:\n        type: string\n        format: DOM-036-CB-{NNN}\n        description: Unique identifier for this circuit breaker instance\n        required: true\n      source_agent:\n        type: string\n        format: AGT-{NNN}\n        description: Calling agent identifier\n        required: true\n      target_agent:\n        type: string\n        format: AGT-{NNN}\n        description: Called agent identifier\n        required: true\n      failure_threshold:\n        type: integer\n        range: \"1-100\"\n        description: Percentage of failures before circuit opens (e.g., 50 = open at 50% failure rate)\n        default: 50\n      failure_detection_window_ms:\n        type: integer\n        range: \"1000-300000\"\n        description: Time window for evaluating failure rate\n        default: 60000\n      recovery_timeout_ms:\n        type: integer\n        range: \"1000-600000\"\n        description: Time to wait before attempting half-open state\n        adaptive: true\n        default_base: 5000\n      half_open_max_attempts:\n        type: integer\n        range: \"1-10\"\n        description: Maximum test calls in half-open state\n        default: 3\n      half_open_timeout_ms:\n        type: integer\n        range: \"1000-30000\"\n        description: Timeout for individual calls in half-open state\n        default: 5000\n      metrics_enabled:\n        type: boolean\n        description: Enable detailed metrics collection\n        default: true\n      adaptive_thresholds:\n        type: boolean\n        description: Enable adaptive threshold adjustment based on system behavior\n        default: true\n      fallback_strategy:\n        type: string\n        enum: [FAIL_FAST, USE_CACHE, CALL_FALLBACK, DEGRADE, ESCALATE]\n        description: Action when circuit is open\n        required: true\n\n  # Circuit Breaker Coordination\n  cm_001_cluster_coordination:\n    mechanism_id: DOM-036-CM-001\n    name: Cluster-Level Circuit Breaker Coordination\n    description: Ensures consistent circuit breaker state across related agents\n    coordination_level: CLUSTER\n    state_sharing:\n      enabled: true\n      protocol: eventual_consistency\n      propagation_delay

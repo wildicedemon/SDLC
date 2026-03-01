@@ -1,455 +1,452 @@
 > code · sonar-reasoning-pro
+
 <think>
-The user is asking me to execute the architect agent prompt from the file `AGT-031_prompt.md`. This file describes the "Human Escalation Coordinator Agent (AGT-031)" which is a specialized cross-cutting autonomous agent responsible for defining and enforcing human escalation policies.
+The user is asking me to execute an architect agent prompt from the file they've provided. The file is `c:\Users\Ice\Desktop\Dev\SDLC\SDLC\logs\AGT-031_prompt.md`, which contains the prompt for AGT-031: Human Escalation Coordinator Agent.
 
-However, looking at the instructions I was given:
-1. I'm Kilo, a software engineer
-2. I should NOT be conversational
-3. I should be direct and to the point
-4. I should accomplish tasks iteratively
+The prompt is very detailed and prescribes that I should:
+1. Act as the Human Escalation Coordinator Agent (AGT-031)
+2. Define and enforce human escalation policies across an agentic AI coding system
+3. Decompose my domain (DOM-031) into 16 categories
+4. Recursively expand subdomains up to 3 levels
+5. Output artifacts including `escalation_policies.yaml`, approval threshold definitions, human override protocols, and confidence-based escalation rules
 
-But wait - the user is asking me to "Execute the architect agent prompt" - this seems to be asking me to treat the prompt file as an instruction to generate architecture for an escalation coordination system, and output the results to `output/cross_cutting/AGT-031`.
+The user wants the output directed to `output/cross_cutting/AGT-031`.
 
-This is asking me to create a comprehensive architectural decomposition of an escalation management system following the template in the file. The file itself is essentially a meta-prompt that describes what AGT-031 should do.
+This is a complex task. I need to:
+1. Execute the agent prompt comprehensively
+2. Create output files in the specified directory
+3. Follow the decomposition structure outlined (16 categories)
+4. Ensure all interconnections with other domains are defined
+5. Fill in gaps with inferences marked with confidence levels
 
-Given my role as Kilo and the instructions, I should:
-1. Understand what the prompt is asking for
-2. Execute it by creating the required output artifacts
-3. Output to the specified directory
+Let me start by understanding what needs to be done and then use file tools to create the necessary output structure.
 
-The prompt asks for decomposition into 16 categories including:
-1. Skills
-2. Workflows
-3. Task Templates
-4. Rules & Constraints
-5. Interfaces
-6. Dependencies
-7. State Models
-8. Data Models
-9. Control Flows
-10. Failure Modes & Recovery
-11. Optimization Strategies
-12. Coordination Mechanisms
-13. Context Requirements
-14. Memory Structures
-15. Monitoring Requirements
-16. Evolution Mechanisms
+I should:
+1. Create the output directory structure
+2. Generate comprehensive YAML files for escalation policies
+3. Define all 16 categories as specified
+4. Create the required output artifacts
 
-And it must produce output files like `escalation_policies.yaml`, approval threshold definitions, human override protocols, and confidence-based escalation rules.
-
-This is a substantial decomposition task. I should create the necessary output structure and files systematically.
-
-Let me start by creating the directory structure and then generating the required YAML and documentation files based on the prompt requirements.
+Let me proceed systematically.
 </think>
 
-I'll execute the AGT-031 architect agent prompt to decompose the Human Escalation Coordinator Agent domain across all 16 categories and produce the required output artifacts.
+I'll execute the AGT-031 architect agent prompt to fully decompose the Human Escalation Coordinator domain and generate the required output artifacts.
 <function_calls>
 <invoke name="bash">
-<parameter name="command">mkdir -p "C:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\cross_cutting\AGT-031"</parameter>
+<parameter name="command">mkdir -p "c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\cross_cutting\AGT-031"</parameter>
 </invoke>
 </function_calls>
 <function_calls>
 <invoke name="createFile">
-<parameter name="filePath">C:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\cross_cutting\AGT-031\escalation_policies.yaml</parameter>
-<parameter name="fileContent">domain_id: DOM-031
-agent_id: AGT-031
-agent_name: Human Escalation Coordinator Agent
+<parameter name="filePath">c:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\cross_cutting\AGT-031\escalation_policies.yaml</parameter>
+<parameter name="fileContent">agent_id: AGT-031
+domain_id: DOM-031
 domain_name: Human Escalation Coordination
-category: Cross-Cutting
-version: 1.0.0
-activation_phase: Phase 0
-execution_model: Continuous
+version: 1.0
+created_date: 2026-03-01
+status: Active
 
-governance:
-  source_agent: AGT-001
-  source_domain: DOM-001
-  primary_contribution: PC6-Rules
-  template_outputs:
-    - escalation_policies.yaml
-    - approval_thresholds.yaml
-    - override_protocols.yaml
-    - confidence_escalation_rules.yaml
+system_directive: |
+  The Human Escalation Coordinator Agent (AGT-031) defines and enforces human escalation 
+  policies across the entire agentic AI coding system. Unlike primary domain agents, AGT-031 
+  does NOT own the human interaction domain (DOM-023) but coordinates escalation policies, 
+  approval thresholds, and human override protocols that all agents must follow.
 
-coordination_scope:
-  cross_cuts:
-    - DOM-002: System Architecture
-    - DOM-004: Agent Architecture
-    - DOM-023: Human-In-The-Loop Interaction
-    - DOM-024: Autonomous Runtime
-    - DOM-028: Security Coordination
-    - DOM-029: Cost Optimization
-    - DOM-036: Error Recovery
-
-knowledge_atoms:
-  - KA-033: Human-in-the-loop patterns
-  - KA-022: Determinism vs. stochasticity — escalation on low confidence
-
-core_mission:
-  - Ensure consistent, well-defined escalation pathways to human operators
-  - Define escalation thresholds based on: confidence levels, risk severity, cost impact, irreversibility
-  - Prevent under-escalation (risky autonomous decisions)
-  - Prevent over-escalation (unnecessary human interruptions)
-  - Balance autonomy vs. human oversight through calibrated confidence-based escalation
-
-enforcement_protocol:
-  - Escalation Policy Definition: Define thresholds for every agent and decision type
-  - Mandatory Escalation Triggers: Certain conditions ALWAYS escalate — no agent may override
-  - Confidence-Based Routing: Decisions below confidence threshold X automatically escalate
-  - Escalation Tracking: All escalations logged with context, decision, resolution
-  - De-escalation Rules: Define when escalated issues return to autonomous processing
-  - Override Authority: Humans can override any agent decision via escalation response
+core_mission: |
+  Ensure consistent, well-defined, and enforced escalation pathways to human operators.
+  Balance under-escalation risk (risky autonomous decisions) against over-escalation 
+  (unnecessary human interruption degrading autonomy). Calibrate confidence-based escalation 
+  per KA-022 (determinism vs. stochasticity).
 
 subdomains:
   SD-031a:
     name: Escalation Thresholds
-    description: Definition of confidence, risk, cost, and irreversibility thresholds that trigger escalation
+    description: |
+      Definition of confidence thresholds, risk thresholds, cost thresholds, and 
+      irreversibility thresholds that trigger escalation across all agents.
     knowledge_atoms: [KA-022, KA-033]
-    scope:
-      - Confidence thresholds per decision type
-      - Risk severity thresholds
-      - Cost impact thresholds
-      - Irreversibility flags
+    outputs:
+      - confidence_threshold_matrix
+      - risk_threshold_definitions
+      - cost_escalation_triggers
+      - irreversibility_rules
 
   SD-031b:
     name: Override Protocols
-    description: Human override mechanisms, authorization levels, scope boundaries, audit requirements
-    scope:
-      - Override authorization levels (L1, L2, L3)
-      - Override scope boundaries (decision type, agent scope)
-      - Override audit and logging requirements
-      - Override reversal procedures
+    description: |
+      Human override mechanisms, override authorization levels, override scope boundaries, 
+      and override audit requirements.
+    outputs:
+      - authorization_levels_schema
+      - override_scope_matrix
+      - override_audit_requirements
 
   SD-031c:
     name: Confidence Routing
-    description: Confidence-based decision routing, calibration mechanisms, dynamic threshold adjustment
+    description: |
+      Confidence-based decision routing to human vs. autonomous, confidence calibration 
+      mechanisms, and dynamic threshold adjustment based on historical outcomes.
     knowledge_atoms: [KA-022]
-    scope:
-      - Confidence scoring methodology
-      - Confidence-based decision routing logic
-      - Confidence calibration mechanisms
-      - Dynamic threshold adjustment based on historical outcomes
-</parameter>
-</invoke>
-</function_calls>
-<function_calls>
-<invoke name="createFile">
-<parameter name="filePath">C:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\cross_cutting\AGT-031\skills_decomposition.yaml</parameter>
-<parameter name="fileContent">skills:
-  DOM-031-SK-001:
-    name: Escalation Threshold Calibration
-    description: Calibrate confidence, risk, cost, and irreversibility thresholds based on domain characteristics and historical escalation patterns (KA-022)
-    inputs:
-      - historical_escalation_data
-      - agent_performance_metrics
-      - domain_risk_profile
-      - cost_sensitivity_profile
     outputs:
-      - calibrated_thresholds
-      - confidence_score_distribution
-      - threshold_adjustment_recommendations
-    complexity: High
-    knowledge_atoms: [KA-022]
+      - routing_logic
+      - calibration_procedures
+      - dynamic_adjustment_rules
 
-  DOM-031-SK-002:
-    name: Confidence-Based Routing Decision
-    description: Evaluate decision confidence score and route to human vs. autonomous execution based on calibrated thresholds
-    inputs:
-      - decision_confidence_score
-      - decision_type
-      - current_escalation_thresholds
-      - risk_context
-    outputs:
-      - routing_decision (human | autonomous | parallel)
-      - routing_rationale
-      - priority_level
-    complexity: High
-    knowledge_atoms: [KA-022]
+escalation_thresholds:
+  confidence_based:
+    description: Decisions below confidence threshold automatically escalate
+    default_threshold: 0.75
+    by_decision_type:
+      critical_infrastructure_decision:
+        threshold: 0.95
+        rationale: Infrastructure changes directly impact system availability
+        mandatory_escalation: true
+      security_decision:
+        threshold: 0.90
+        rationale: Security violations have wide-reaching consequences
+        mandatory_escalation: true
+      cost_authorization:
+        threshold: 0.85
+        rationale: Financial commitments require human approval
+        mandatory_escalation: true
+      data_deletion:
+        threshold: 0.99
+        rationale: Irreversible data loss requires explicit human confirmation
+        mandatory_escalation: true
+      credential_rotation:
+        threshold: 0.95
+        rationale: Credential changes affect system access and security
+        mandatory_escalation: true
+      deployment_authorization:
+        threshold: 0.90
+        rationale: Production deployments must have human sign-off
+        mandatory_escalation: true
+      policy_violation:
+        threshold: 0.80
+        rationale: Governance violations detected
+        mandatory_escalation: true
+      standard_decision:
+        threshold: 0.75
+        rationale: Normal operational decisions
+        mandatory_escalation: false
 
-  DOM-031-SK-003:
-    name: Escalation Context Preparation
-    description: Package complete decision context, history, confidence scores, and recommendations for human escalation
-    inputs:
-      - source_agent_id
-      - decision_history
-      - confidence_scores
-      - available_options
-      - recommendation
-    outputs:
-      - escalation_context_package
-      - formatted_context_for_human
-      - decision_options_formatted
-    complexity: Medium
+  risk_based:
+    description: Escalate based on assessed risk level
+    high_risk:
+      escalation: mandatory
+      examples:
+        - Irreversible system changes
+        - Security boundary violations
+        - Customer-impacting outages
+        - Compliance violations
+    medium_risk:
+      escalation: conditional
+      condition: confidence_below_threshold_or_anomaly_detected
+      examples:
+        - Significant cost overruns (>10% of authorized budget)
+        - Unusual resource allocation patterns
+        - Configuration changes in sensitive systems
+    low_risk:
+      escalation: monitoring_only
+      condition: log_for_audit_trail
+      examples:
+        - Routine operational tasks
+        - Standard maintenance
+        - Documentation updates
 
-  DOM-031-SK-004:
-    name: Override Protocol Enforcement
-    description: Enforce override authorization, log override decisions, validate override scope, and audit trail generation
-    inputs:
-      - override_request
-      - human_operator_id
-      - human_authorization_level
-      - target_agent_id
-      - original_decision
-    outputs:
-      - override_decision
-      - override_audit_record
-      - execution_status
-    complexity: High
+  cost_based:
+    description: Escalate based on financial impact
+    thresholds:
+      per_decision:
+        _1000_to_10000: notify_human
+        _10000_to_100000: require_approval
+        above_100000: require_director_approval
+      monthly_aggregate:
+        budget_overage_threshold: 0.05
+        overage_percent: 5%
+        escalation: immediate
 
-  DOM-031-SK-005:
-    name: Escalation Outcome Analysis
-    description: Analyze escalation outcomes (resolved, re-opened, transferred) and extract learning signals for system improvement
-    inputs:
-      - escalation_record
-      - resolution_outcome
-      - resolution_time
-      - human_rationale
-      - customer_satisfaction_score
-    outputs:
-      - outcome_classification
-      - learning_signals
-      - threshold_adjustment_recommendations
-      - automation_expansion_opportunities
-    complexity: High
+  irreversibility_based:
+    description: Escalate based on decision reversibility
+    rules:
+      - decision: data_deletion_or_archival
+        irreversible: true
+        escalation: mandatory_human_approval
+        approval_level: domain_lead_minimum
+      - decision: infrastructure_decommission
+        irreversible: true
+        escalation: mandatory_human_approval
+        approval_level: system_architect
+      - decision: policy_change
+        irreversible: false
+        escalation: monitoring_with_rollback_plan
+      - decision: credential_change
+        irreversible: partial
+        escalation: human_approval_with_recovery_path
 
-  DOM-031-SK-006:
-    name: De-escalation Eligibility Assessment
-    description: Determine when escalated issues can be returned to autonomous processing with confidence
-    inputs:
-      - escalation_record
-      - resolution_status
-      - human_decision_rationale
-      - current_system_confidence
-    outputs:
-      - de_escalation_eligible: boolean
-      - de_escalation_conditions
-      - monitoring_requirements
-    complexity: Medium
+mandatory_escalation_triggers:
+  always_escalate:
+    - id: MET-001
+      trigger: Deployment to production environment
+      routing: deployment_approval_queue
+      sla_minutes: 30
+    - id: MET-002
+      trigger: Security policy violation detected
+      routing: security_escalation_queue
+      sla_minutes: 15
+    - id: MET-003
+      trigger: Data deletion or permanent archival
+      routing: data_governance_queue
+      sla_minutes: 60
+    - id: MET-004
+      trigger: Credential or key rotation
+      routing: security_escalation_queue
+      sla_minutes: 20
+    - id: MET-005
+      trigger: Cost authorization exceeding threshold
+      routing: finance_approval_queue
+      sla_minutes: 120
+    - id: MET-006
+      trigger: Customer-impacting change
+      routing: customer_impact_queue
+      sla_minutes: 15
+    - id: MET-007
+      trigger: System architecture modification
+      routing: architecture_review_queue
+      sla_minutes: 240
+    - id: MET-008
+      trigger: Compliance violation or policy breach
+      routing: compliance_queue
+      sla_minutes: 10
 
-  DOM-031-SK-007:
-    name: Human Notification Priority Assignment
-    description: Assign priority level to escalation notifications based on risk, cost, and urgency (KA-033)
-    inputs:
-      - escalation_trigger_type
-      - risk_severity
-      - cost_impact
-      - time_sensitivity
-      - customer_tier
-    outputs:
-      - priority_level (critical | high | medium | low)
-      - notification_channel
-      - response_sla_minutes
-      - escalation_team_assignment
-    complexity: Medium
-    knowledge_atoms: [KA-033]
+escalation_context_requirements:
+  required_fields:
+    - escalation_id: unique identifier
+    - source_agent: ID of escalating agent
+    - trigger_type: classification of escalation reason
+    - confidence_score: numeric confidence 0-1
+    - risk_level: HIGH|MEDIUM|LOW
+    - decision_history: full trace of decisions leading to escalation
+    - suggested_options: array of available resolution paths
+    - context_data: relevant domain-specific data
+    - timestamp: when escalation occurred
+    - urgency_level: CRITICAL|HIGH|MEDIUM|LOW
+    
+  optional_enrichments:
+    - customer_impact: description of customer-facing consequences
+    - cost_impact: financial implications
+    - security_implications: any security concerns
+    - dependencies: other systems/decisions affected
+    - rollback_plan: how to undo if escalation denied
 
-  DOM-031-SK-008:
-    name: Escalation Interface Validation
-    description: Validate that all agents implement required escalation interface contracts
-    inputs:
-      - agent_id
-      - agent_implementation
-      - interface_specification
-    outputs:
-      - validation_result: pass | fail
-      - missing_interface_components
-      - compliance_report
-    complexity: Medium
+override_authorization_levels:
+  level_1_agent_override:
+    authority: Can override own non-mandatory decisions
+    scope: Same agent instance, same decision type
+    audit: Logged with rationale
+    approval: Self
+    examples:
+      - Retry a failed operation with modified parameters
+      - Adjust non-critical thresholds within bounded range
 
-  DOM-031-SK-009:
-    name: Confidence Score Calculation
-    description: Calculate composite confidence score from multiple factors (data completeness, model certainty, domain constraints)
-    inputs:
-      - model_confidence
-      - data_completeness_score
-      - domain_constraint_satisfaction
-      - historical_accuracy_rate
-    outputs:
-      - composite_confidence_score (0.0-1.0)
-      - confidence_component_breakdown
-      - confidence_trend
-    complexity: High
-    knowledge_atoms: [KA-022]
+  level_2_domain_lead:
+    authority: Override any domain agent within domain
+    scope: All agents within assigned domain
+    audit: Logged, rationale required, tracked for pattern analysis
+    approval: Domain lead signature
+    examples:
+      - Override agent decision on feature roadmap
+      - Approve non-standard approach to domain problem
 
-  DOM-031-SK-010:
-    name: Escalation Deadlock Detection
-    description: Detect when escalation is blocked (human unavailable, agent blocked) and activate fallback procedures
-    inputs:
-      - escalation_record
-      - human_response_timeout
-      - escalation_status
-      - current_timestamp
-    outputs:
-      - deadlock_detected: boolean
-      - fallback_action_recommendations
-      - escalation_chain_recovery_plan
-    complexity: High
+  level_3_system_architect:
+    authority: Override cross-domain decisions, architecture-level changes
+    scope: System architecture, agent orchestration, cross-domain policy
+    audit: Logged with full rationale, reviewed quarterly
+    approval: System architect + governance committee
+    examples:
+      - Override system architecture decision
+      - Authorize deployment variance
+      - Allow cross-domain policy exception
 
-  DOM-031-SK-011:
-    name: Cross-Domain Escalation Routing
-    description: Route escalations across domain boundaries (security, cost, error recovery) to appropriate specialized teams
-    inputs:
-      - escalation_trigger_type
-      - involved_domains
-      - escalation_severity
-      - source_agent_id
-    outputs:
-      - target_domain_id
-      - target_team_assignment
-      - routing_path
-      - estimated_resolution_time
-    complexity: High
+  level_4_executive_approval:
+    authority: Override irreversible decisions, major policy changes, customer commitments
+    scope: Unrestricted
+    audit: Logged with full rationale, executive review required
+    approval: Director/VP + legal/compliance if applicable
+    examples:
+      - Customer service recovery exception
+      - Major scope change to roadmap
+      - Emergency override of automated controls
 
-  DOM-031-SK-012:
-    name: Escalation Metrics Aggregation
-    description: Aggregate escalation metrics across all agents and domains for reporting and optimization
-    inputs:
-      - time_period
-      - escalation_records
-      - resolution_records
-      - performance_data
-    outputs:
-      - escalation_metrics_report
-      - by_agent_breakdown
-      - by_type_breakdown
-      - trend_analysis
-    complexity: Medium
-</parameter>
-</invoke>
-</function_calls>
-<function_calls>
-<invoke name="createFile">
-<parameter name="filePath">C:\Users\Ice\Desktop\Dev\SDLC\SDLC\output\cross_cutting\AGT-031\workflows_decomposition.yaml</parameter>
-<parameter name="fileContent">workflows:
-  DOM-031-WF-001:
-    name: Standard Escalation Workflow
-    description: Detect escalation condition → package context → route to human → await response → apply decision → close
-    trigger: Agent detection of escalation trigger (low confidence, risk threshold exceeded, irreversible decision)
-    steps:
-      - step_1:
-          name: Detect Escalation Condition
-          entry_criteria: Agent identified trigger (confidence < threshold OR risk > threshold OR irreversible action)
-          actions:
-            - Evaluate escalation trigger validity
-            - Calculate confidence scores
-            - Assess risk severity
-          exit_criteria: Escalation validity confirmed
-          outputs:
-            - trigger_type
-            - confidence_scores
-            - risk_assessment
+de_escalation_rules:
+  when_escalated_can_return:
+    - condition: Human reviewer confirms resolution path aligns with known best practice
+      action: Return to autonomous execution with monitoring
+      monitoring: Enhanced logging for verification period
+    - condition: Confidence threshold increases through additional data gathering
+      action: Resume autonomous with decision rationale logged
+      monitoring: 48-hour audit trail
+    - condition: Escalation context indicates routine decision despite initial uncertainty
+      action: Return with template response authorization
+      monitoring: Success rate tracking
 
-      - step_2:
-          name: Classify Escalation
-          entry_criteria: Trigger validity confirmed
-          actions:
-            - Classify escalation type (confidence, risk, cost, irreversibility, security, compliance)
-            - Determine priority level
-            - Identify target domain/team
-          exit_criteria: Classification complete and priority assigned
-          outputs:
-            - escalation_classification
-            - priority_level
-            - target_domain
+  conditions_preventing_deescalation:
+    - High-risk decision requiring sustained human oversight
+    - Recurring escalation of same decision type (indicates threshold miscalibration)
+    - Active incident or crisis period
+    - Unresolved policy or compliance questions
 
-      - step_3:
-          name: Package Escalation Context
-          entry_criteria: Classification complete
-          actions:
-            - Gather decision history and context
-            - Format confidence scores and risk assessment
-            - Prepare decision options with recommendations
-            - Include agent rationale
-          exit_criteria: Complete context package prepared
-          outputs:
-            - escalation_context_package
-            - formatted_for_human_review
+confidence_calibration:
+  initial_calibration:
+    method: Historical decision accuracy analysis
+    baseline: 0.75 for standard operations
+    period: 30-day observation window
+    
+  ongoing_monitoring:
+    metric: human_agreement_rate
+    target: >0.85 human agreement with autonomous decision
+    if_below_target: Increase escalation threshold by 0.05
+    if_above_target: Decrease by 0.03 (cautiously)
+    review_frequency: Weekly per agent, monthly system-wide
+    
+  recalibration_triggers:
+    - Agreement rate drifts >5% from baseline
+    - New decision type introduced
+    - Significant operational change
+    - Post-incident analysis reveals miscalibrated threshold
+    
+  dynamic_adjustment:
+    method: Exponential moving average of recent outcomes
+    decay_factor: 0.7 for recent data weight
+    max_swing: ±0.15 per adjustment cycle
+    cooldown_period: 7 days between major adjustments
 
-      - step_4:
-          name: Route to Human
-          entry_criteria: Context package complete
-          actions:
-            - Determine human recipient based on priority and skills
-            - Assign escalation queue
-            - Send notification
-            - Record escalation record
-          exit_criteria: Human notified and acknowledged
-          outputs:
-            - escalation_id
-            - assigned_human_operator
-            - notification_timestamp
+escalation_routing_matrix:
+  by_domain:
+    DOM-002:
+      escalation_type: Architecture decision approval
+      route_to: architecture_review_queue
+      primary_reviewer: System Architect (AGT-002)
+      sla_minutes: 240
+      requires_audit: true
 
-      - step_5:
-          name: Await Human Response
-          entry_criteria: Human notified
-          actions:
-            - Monitor for human decision
-            - Track response time
-            - Detect timeout conditions (activate deadlock recovery if needed)
-          exit_criteria: Human provides decision OR timeout threshold exceeded
-          outputs:
-            - human_decision
-            - human_rationale
-            - resolution_timestamp
+    DOM-004:
+      escalation_type: Agent design exception
+      route_to: agent_design_queue
+      primary_reviewer: Agent Architecture Lead (AGT-004)
+      sla_minutes: 120
+      requires_audit: true
 
-      - step_6:
-          name: Apply Human Decision
-          entry_criteria: Human decision received
-          actions:
-            - Validate override authorization
-            - Log override decision with rationale
-            - Execute approved decision
-            - Notify source agent of outcome
-          exit_criteria: Decision applied successfully
-          outputs:
-            - execution_status
-            - override_audit_record
-            - applied_decision
+    DOM-023:
+      escalation_type: Human-in-loop protocol
+      route_to: hitl_coordination
+      primary_reviewer: HITL Manager (AGT-023)
+      sla_minutes: 30
+      requires_audit: true
 
-      - step_7:
-          name: Analyze and Close
-          entry_criteria: Decision applied
-          actions:
-            - Record escalation outcome
-            - Extract learning signals
-            - Update escalation metrics
-            - Check de-escalation eligibility
-          exit_criteria: Escalation record finalized
-          outputs:
-            - outcome_record
-            - learning_signals
-            - escalation_closed
+    DOM-024:
+      escalation_type: Autonomy boundary breach
+      route_to: autonomy_control_queue
+      primary_reviewer: Runtime Manager (AGT-024)
+      sla_minutes: 15
+      requires_audit: true
 
-    completion_criteria:
-      - Escalation outcome recorded
-      - Human decision applied
-      - Audit trail complete
-      - Learning signals extracted
+    DOM-028:
+      escalation_type: Security incident
+      route_to: security_incident_queue
+      primary_reviewer: Security Lead (AGT-028)
+      sla_minutes: 15
+      requires_audit: true
 
-    rollback_plan:
-      - If context packaging fails: Escalate with minimal context to emergency team
-      - If human unavailable: Activate escalation chain (backup human → supervisor → manager)
-      - If decision application fails: Revert to previous state, escalate failure to system admin
-      - If timeout: Implement deadlock recovery procedure
+    DOM-029:
+      escalation_type: Cost overrun
+      route_to: finance_approval_queue
+      primary_reviewer: Cost Optimizer (AGT-029)
+      sla_minutes: 120
+      requires_audit: true
 
-  DOM-031-WF-002:
-    name: Emergency Escalation Workflow
-    description: Immediate human notification for critical/security/compliance issues, bypass normal queuing
-    trigger: Critical security violation, compliance breach, irreversible decision requiring immediate approval, system safety threat
-    steps:
-      - step_1:
-          name: Detect Emergency Condition
-          entry_criteria: Agent detected critical trigger (security violation, compliance breach, immediate danger)
-          actions:
-            - Validate emergency classification
-            - Assess immediate risk
-            - Prepare minimal context
-          exit_criteria: Emergency condition confirmed
-          outputs:
-            - emergency_classification
-            - immediate_risk_level
+    DOM-036:
+      escalation_type: Error recovery failure
+      route_to: error_recovery_queue
+      primary_reviewer: Error Recovery Lead (AGT-036)
+      sla_minutes: 60
+      requires_audit: true
 
-      - step_2:
-          name: Activate Emergency Escalation Chain
-          entry_criteria: Emergency confirmed
-          actions:
-            - Notify primary
+escalation_lifecycle_states:
+  states:
+    triggered:
+      description: Escalation condition detected
+      duration: immediate
+      next_state: packaging_context
+      
+    packaging_context:
+      description: Gathering all relevant context and decision history
+      duration: <5 seconds for standard, <60 seconds for complex
+      next_state: routing
+      
+    routing:
+      description: Determining target queue and priority assignment
+      duration: <1 second
+      next_state: awaiting_human
+      
+    awaiting_human:
+      description: Waiting for human response/decision
+      duration: SLA-dependent (15 min to 4 hours)
+      timeout_action: escalate_to_higher_authority
+      next_state: human_responded
+      
+    human_responded:
+      description: Human has made decision, applying to system
+      duration: <5 seconds
+      next_state: applied
+      
+    applied:
+      description: Decision implemented and verified
+      duration: verification_period (1-48 hours)
+      next_state: closed
+      
+    closed:
+      description: Escalation resolved, audit trail complete
+      duration: permanent record
+      actions:
+        - log_escalation_outcome
+        - update_confidence_metrics
+        - trigger_recalibration_if_needed
+
+escalation_metrics:
+  tracked_metrics:
+    escalation_rate:
+      description: Total escalations per agent per period
+      unit: escalations/24hr
+      healthy_range: agent_dependent
+      
+    human_response_time:
+      description: Time from escalation to human decision
+      unit: minutes
+      target: within_sla
+      alert_threshold: 1.5x_sla
+      
+    human_agreement_rate:
+      description: % of escalations where human agrees with suggested path
+      unit: percentage
+      target: ">85%"
+      
+    under_escalation_incidents:
+      description: Risky autonomous decisions that should have escalated
+      unit: count
+      target: 0
+      detection: post_hoc_quality_review
+      
+    escalation_resolution_time:
+      description: Total time from escalation to full closure
+      unit: minutes
+      tracking: distribution_analysis
+      
+    escalation_reason_distribution:
+      description: Breakdown by trigger type
+      unit: percentage
+      use: identify_threshold_miscalibration
+      
+    re_escalation_rate:
+      description: % of escalations that escalate again
+      unit: percentage
