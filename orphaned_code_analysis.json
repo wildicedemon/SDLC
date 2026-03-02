@@ -1,0 +1,841 @@
+{
+  "summary": {
+    "total_files": 156,
+    "total_functions": 667,
+    "total_classes": 170,
+    "broken_imports_count": 132,
+    "orphaned_tests_count": 12,
+    "import_cycles": 0
+  },
+  "critical_issues": {
+    "broken_imports": [
+      {
+        "file": "scripts/test_distill.py",
+        "line": 36,
+        "module": "distillation.scanner",
+        "name": "scan_corpus"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 146,
+        "module": "distillation.parser",
+        "name": "parse_markdown"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 146,
+        "module": "distillation.parser",
+        "name": "RawAtom"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 199,
+        "module": "distillation.parser",
+        "name": "parse_csv"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 199,
+        "module": "distillation.parser",
+        "name": "RawAtom"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 224,
+        "module": "distillation.parser",
+        "name": "parse_csv"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 224,
+        "module": "distillation.parser",
+        "name": "RawAtom"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 243,
+        "module": "distillation.parser",
+        "name": "parse_file"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 244,
+        "module": "distillation.scanner",
+        "name": "scan_corpus"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 281,
+        "module": "distillation.parser",
+        "name": "parse_markdown"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 297,
+        "module": "distillation.parser",
+        "name": "RawAtom"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 298,
+        "module": "distillation.classifier",
+        "name": "classify"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 299,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 384,
+        "module": "distillation.parser",
+        "name": "RawAtom"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 385,
+        "module": "distillation.classifier",
+        "name": "classify"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 402,
+        "module": "distillation.parser",
+        "name": "RawAtom"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 403,
+        "module": "distillation.classifier",
+        "name": "classify"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 404,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 445,
+        "module": "distillation.parser",
+        "name": "RawAtom"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 446,
+        "module": "distillation.classifier",
+        "name": "classify"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 466,
+        "module": "distillation.parser",
+        "name": "RawAtom"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 467,
+        "module": "distillation.classifier",
+        "name": "classify"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 468,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 498,
+        "module": "distillation.dedup",
+        "name": "deduplicate"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 500,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 500,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 522,
+        "module": "distillation.dedup",
+        "name": "deduplicate"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 524,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 524,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 544,
+        "module": "distillation.dedup",
+        "name": "deduplicate"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 546,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 546,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 567,
+        "module": "distillation.dedup",
+        "name": "deduplicate"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 569,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 569,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 589,
+        "module": "distillation.dedup",
+        "name": "deduplicate"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 591,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 591,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 607,
+        "module": "distillation.ranker",
+        "name": "rank"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 609,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 609,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 637,
+        "module": "distillation.ranker",
+        "name": "rank"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 639,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 639,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 655,
+        "module": "distillation.ranker",
+        "name": "rank"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 657,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 657,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 685,
+        "module": "distillation.ranker",
+        "name": "rank"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 687,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 687,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 714,
+        "module": "distillation.tagger",
+        "name": "tag"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 716,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 716,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 731,
+        "module": "distillation.tagger",
+        "name": "tag"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 733,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 733,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 748,
+        "module": "distillation.tagger",
+        "name": "tag"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 750,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 750,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 765,
+        "module": "distillation.tagger",
+        "name": "tag"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 767,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 767,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 783,
+        "module": "distillation.tagger",
+        "name": "tag"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 785,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 785,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 801,
+        "module": "distillation.tagger",
+        "name": "tag"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 803,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 803,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 819,
+        "module": "distillation.tagger",
+        "name": "tag"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 821,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 821,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 838,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 838,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 904,
+        "module": "distillation.prong2_domains",
+        "name": "generate_domain_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 938,
+        "module": "distillation.prong2_domains",
+        "name": "generate_domain_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 964,
+        "module": "distillation.prong2_domains",
+        "name": "generate_domain_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1007,
+        "module": "distillation.prong2_domains",
+        "name": "generate_domain_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1029,
+        "module": "distillation.prong2_domains",
+        "name": "generate_domain_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1053,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1053,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1098,
+        "module": "distillation.prong3_phases",
+        "name": "generate_phase_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1133,
+        "module": "distillation.prong3_phases",
+        "name": "generate_phase_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1159,
+        "module": "distillation.prong3_phases",
+        "name": "generate_phase_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1189,
+        "module": "distillation.prong3_phases",
+        "name": "generate_phase_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1190,
+        "module": "distillation.constants",
+        "name": "SDLCPhase"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1226,
+        "module": "distillation.prong3_phases",
+        "name": "generate_phase_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1250,
+        "module": "distillation.prong4_products",
+        "name": "generate_product_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1289,
+        "module": "distillation.prong4_products",
+        "name": "generate_product_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1326,
+        "module": "distillation.prong4_products",
+        "name": "generate_product_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1326,
+        "module": "distillation.prong4_products",
+        "name": "PRODUCT_DIR_MAP"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1374,
+        "module": "distillation.prong4_products",
+        "name": "generate_product_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1399,
+        "module": "distillation.prong4_products",
+        "name": "generate_product_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1417,
+        "module": "distillation.prong4_products",
+        "name": "generate_product_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1448,
+        "module": "distillation.validator",
+        "name": "validate"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1448,
+        "module": "distillation.validator",
+        "name": "ValidationReport"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1449,
+        "module": "distillation.prong2_domains",
+        "name": "generate_domain_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1450,
+        "module": "distillation.prong3_phases",
+        "name": "generate_phase_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1451,
+        "module": "distillation.prong4_products",
+        "name": "generate_product_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1474,
+        "module": "distillation.validator",
+        "name": "validate"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1476,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1476,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1476,
+        "module": "distillation.constants",
+        "name": "Domain"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1476,
+        "module": "distillation.constants",
+        "name": "SDLCPhase"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1476,
+        "module": "distillation.constants",
+        "name": "ProductCategory"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1508,
+        "module": "distillation.validator",
+        "name": "validate"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1510,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1510,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1510,
+        "module": "distillation.constants",
+        "name": "Domain"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1510,
+        "module": "distillation.constants",
+        "name": "SDLCPhase"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1510,
+        "module": "distillation.constants",
+        "name": "ProductCategory"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1536,
+        "module": "distillation.gap_report",
+        "name": "generate_gap_report"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1537,
+        "module": "distillation.prong2_domains",
+        "name": "generate_domain_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1538,
+        "module": "distillation.prong3_phases",
+        "name": "generate_phase_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1539,
+        "module": "distillation.prong4_products",
+        "name": "generate_product_specs"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1562,
+        "module": "distillation.gap_report",
+        "name": "generate_gap_report"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1564,
+        "module": "distillation.constants",
+        "name": "AtomType"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1564,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1564,
+        "module": "distillation.constants",
+        "name": "Domain"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1564,
+        "module": "distillation.constants",
+        "name": "SDLCPhase"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1564,
+        "module": "distillation.constants",
+        "name": "ProductCategory"
+      },
+      {
+        "file": "scripts/test_distill.py",
+        "line": 1037,
+        "module": "distillation.constants",
+        "name": "EvidenceStrength"
+      },
+      {
+        "file": "scripts/distill.py",
+        "line": 18,
+        "module": "distillation.scanner",
+        "name": "scan_corpus"
+      },
+      {
+        "file": "scripts/distill.py",
+        "line": 19,
+        "module": "distillation.parser",
+        "name": "parse_file"
+      },
+      {
+        "file": "scripts/distill.py",
+        "line": 20,
+        "module": "distillation.classifier",
+        "name": "classify"
+      },
+      {
+        "file": "scripts/distill.py",
+        "line": 21,
+        "module": "distillation.dedup",
+        "name": "deduplicate"
+      },
+      {
+        "file": "scripts/distill.py",
+        "line": 22,
+        "module": "distillation.ranker",
+        "name": "rank"
+      },
+      {
+        "file": "scripts/distill.py",
+        "line": 23,
+        "module": "distillation.tagger",
+        "name": "tag"
+      },
+      {
+        "file": "scripts/distill.py",
+        "line": 24,
+        "module": "distillation.prong2_domains",
+        "name": "generate_domain_specs"
+      },
+      {
+        "file": "scripts/distill.py",
+        "line": 25,
+        "module": "distillation.prong3_phases",
+        "name": "generate_phase_specs"
+      },
+      {
+        "file": "scripts/distill.py",
+        "line": 26,
+        "module": "distillation.prong4_products",
+        "name": "generate_product_specs"
+      },
+      {
+        "file": "scripts/distill.py",
+        "line": 27,
+        "module": "distillation.validator",
+        "name": "validate"
+      },
+      {
+        "file": "scripts/distill.py",
+        "line": 28,
+        "module": "distillation.gap_report",
+        "name": "generate_gap_report"
+      }
+    ]
+  },
+  "high_issues": {
+    "orphaned_tests": [
+      "corpus/tests/conftest.py",
+      "corpus/tests/test_kilo_gateway.py",
+      "corpus/tests/ingestion/test_ingest_integration.py",
+      "corpus/tests/integration/__init__.py",
+      "corpus/tests/integration/test_core_pipeline_smoke.py",
+      "corpus/tests/integration/test_db_roundtrip.py",
+      "corpus/tests/integration/test_e2e_scaled.py",
+      "corpus/tests/integration/test_full_pipeline_smoke.py",
+      "corpus/tests/integration/test_ingest_smoke.py",
+      "corpus/tests/db/test_migrations.py",
+      "corpus/tests/db/test_repository_core.py",
+      "corpus/tests/db/test_repository_supporting.py"
+    ]
+  },
+  "medium_issues": {
+    "potentially_missing_dependencies": [
+      "bs4",
+      "chromadb",
+      "click",
+      "datasketch",
+      "git",
+      "markdown",
+      "networkx",
+      "numpy",
+      "perplexity",
+      "psutil",
+      "pydantic_settings",
+      "rich",
+      "sentence_transformers",
+      "sqlalchemy",
+      "typer"
+    ]
+  }
+}

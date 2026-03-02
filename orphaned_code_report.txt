@@ -1,0 +1,90 @@
+================================================================================
+ORPHANED CODE AND BROKEN REFERENCES ANALYSIS
+================================================================================
+Repository: /mnt/okcomputer/sdlc_repo/SDLC-main
+Total Python files analyzed: 156
+Analysis timestamp: 2024
+
+--------------------------------------------------------------------------------
+1. BROKEN IMPORTS (CRITICAL)
+--------------------------------------------------------------------------------
+
+The following files import from 'distillation.X' but the actual modules are in 'scripts.distillation.X':
+
+  - scripts/distill.py
+  - scripts/test_distill.py
+
+Total broken import statements: 132
+
+Root Cause: The import statements use 'distillation.MODULE' but should use 'scripts.distillation.MODULE'
+
+--------------------------------------------------------------------------------
+2. ORPHANED TEST FILES (HIGH)
+--------------------------------------------------------------------------------
+Test files without corresponding source files:
+
+  - corpus/tests/conftest.py
+  - corpus/tests/test_kilo_gateway.py
+  - corpus/tests/ingestion/test_ingest_integration.py
+  - corpus/tests/integration/__init__.py
+  - corpus/tests/integration/test_core_pipeline_smoke.py
+  - corpus/tests/integration/test_db_roundtrip.py
+  - corpus/tests/integration/test_e2e_scaled.py
+  - corpus/tests/integration/test_full_pipeline_smoke.py
+  - corpus/tests/integration/test_ingest_smoke.py
+  - corpus/tests/db/test_migrations.py
+  - corpus/tests/db/test_repository_core.py
+  - corpus/tests/db/test_repository_supporting.py
+
+Total orphaned test files: 12
+
+--------------------------------------------------------------------------------
+3. THIRD-PARTY DEPENDENCIES (MEDIUM)
+--------------------------------------------------------------------------------
+
+Current requirements.txt:
+  pydantic>=2.0
+  pyyaml>=6.0
+  openai>=1.0
+  pytest>=8.0
+  flake8>=7.0
+  black>=24.0
+  mypy>=1.0
+
+Third-party modules used in code:
+  - bs4
+  - chromadb
+  - click
+  - datasketch
+  - git
+  - markdown
+  - networkx
+  - numpy
+  - openai
+  - perplexity
+  - psutil
+  - pydantic
+  - pydantic_settings
+  - pytest
+  - rich
+  - sentence_transformers
+  - sqlalchemy
+  - typer
+  - yaml
+
+--------------------------------------------------------------------------------
+4. IMPORT CYCLES (INFO)
+--------------------------------------------------------------------------------
+Import cycles detected: 0
+
+--------------------------------------------------------------------------------
+5. FILE STATISTICS
+--------------------------------------------------------------------------------
+  Total Python files: 156
+  Root directory files: 8
+  Distillation files: 37
+  Scripts files: 29
+  Test files: 53
+  Corpus files: 98
+  Total functions: 667
+  Total classes: 170

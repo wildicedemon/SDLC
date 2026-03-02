@@ -1,0 +1,193 @@
+{
+  "metadata": {
+    "total_knowledge_atoms": 8,
+    "evidence_strength_distribution": {
+      "STRONG": 6,
+      "MODERATE": 2,
+      "WEAK": 0
+    },
+    "extraction_date": "2026-02-25",
+    "source_coverage": "7 research directories, 21 subdirectories"
+  },
+  "knowledge_atoms": [
+    {
+      "id": "KA-001",
+      "type": "TECHNIQUE",
+      "content": "Auto-Launch Workspaces provide deterministic workspace initialization triggered by opening a project, using configuration files to specify profile, mode, and initial prompts. This enables reproducible development environments, A/B testing across models, and reduced cold-start time.",
+      "evidence_strength": "STRONG",
+      "source": [
+        "docs/research/01_meta_architecture/system_design_philosophy/patterns.md"
+      ],
+      "domains": [
+        "D1",
+        "D2",
+        "D3"
+      ],
+      "sdlc_phases": [
+        "P1",
+        "P2"
+      ],
+      "products": [
+        "PC1",
+        "PC2"
+      ]
+    },
+    {
+      "id": "KA-002",
+      "type": "TECHNIQUE",
+      "content": "Bidirectional Specifications evolve alongside code implementations, with agents updating specs as they discover codebase realities. This prevents specification debt and maintains alignment between intent and implementation.",
+      "evidence_strength": "STRONG",
+      "source": [
+        "docs/research/01_meta_architecture/system_design_philosophy/patterns.md"
+      ],
+      "domains": [
+        "D1",
+        "D2",
+        "D4"
+      ],
+      "sdlc_phases": [
+        "P1",
+        "P2",
+        "P3"
+      ],
+      "products": [
+        "PC1",
+        "PC3"
+      ]
+    },
+    {
+      "id": "KA-003",
+      "type": "TECHNIQUE",
+      "content": "BDI Hybrid Architecture combines Belief-Desire-Intent symbolic reasoning with LLM-based agents, providing explicit mental states for introspection and verifiability. Suitable for safety-critical systems requiring accountability.",
+      "evidence_strength": "STRONG",
+      "source": [
+        "docs/research/01_meta_architecture/system_design_philosophy/patterns.md"
+      ],
+      "domains": [
+        "D1",
+        "D2",
+        "D5"
+      ],
+      "sdlc_phases": [
+        "P1",
+        "P2",
+        "P8"
+      ],
+      "products": [
+        "PC1",
+        "PC4"
+      ]
+    },
+    {
+      "id": "KA-004",
+      "type": "TECHNIQUE",
+      "content": "4-Phase Spec-Driven Workflow structures development with explicit phases: Specify (requirements), Plan (decomposition), Tasks (generation), Implement (execution with verification). Achieves 56% faster development with 87% accuracy for multi-file changes.",
+      "evidence_strength": "STRONG",
+      "source": [
+        "docs/research/01_meta_architecture/system_design_philosophy/patterns.md"
+      ],
+      "domains": [
+        "D1",
+        "D2",
+        "D4"
+      ],
+      "sdlc_phases": [
+        "P1",
+        "P2",
+        "P3",
+        "P4"
+      ],
+      "products": [
+        "PC1",
+        "PC2",
+        "PC3"
+      ]
+    },
+    {
+      "id": "KA-005",
+      "type": "TECHNIQUE",
+      "content": "Modular Agent Decomposition breaks agent systems into distinct subsystems (Retriever, Writer, Manager, Observer, core orchestration) with clear interfaces. Enables testable components and independent evolution.",
+      "evidence_strength": "STRONG",
+      "source": [
+        "docs/research/01_meta_architecture/system_design_philosophy/patterns.md"
+      ],
+      "domains": [
+        "D1",
+        "D2"
+      ],
+      "sdlc_phases": [
+        "P1",
+        "P2"
+      ],
+      "products": [
+        "PC1"
+      ]
+    },
+    {
+      "id": "KA-006",
+      "type": "TECHNIQUE",
+      "content": "Critic-Actor Pattern uses separate agents for generation (actor) and review (critic), with the critic validating outputs before commit. Catches errors before commit for high-stakes code generation.",
+      "evidence_strength": "STRONG",
+      "source": [
+        "docs/research/01_meta_architecture/system_design_philosophy/patterns.md"
+      ],
+      "domains": [
+        "D1",
+        "D2",
+        "D4"
+      ],
+      "sdlc_phases": [
+        "P3",
+        "P4",
+        "P5"
+      ],
+      "products": [
+        "PC1",
+        "PC3"
+      ]
+    },
+    {
+      "id": "KA-007",
+      "type": "TECHNIQUE",
+      "content": "Structured Human-in-Loop uses explicit checkpoints for human review using structured clarification tools. Prevents runaway execution and captures human intent for uncertain task boundaries.",
+      "evidence_strength": "STRONG",
+      "source": [
+        "docs/research/01_meta_architecture/system_design_philosophy/patterns.md"
+      ],
+      "domains": [
+        "D1",
+        "D2",
+        "D7"
+      ],
+      "sdlc_phases": [
+        "P3",
+        "P4",
+        "P8"
+      ],
+      "products": [
+        "PC1",
+        "PC4"
+      ]
+    },
+    {
+      "id": "KA-008",
+      "type": "TECHNIQUE",
+      "content": "Semantic Codebase Understanding builds comprehensive understanding through semantic analysis rather than file-by-file processing. Prevents context poisoning and enables drift detection for large codebases.",
+      "evidence_strength": "MODERATE",
+      "source": [
+        "docs/research/01_meta_architecture/system_design_philosophy/patterns.md"
+      ],
+      "domains": [
+        "D1",
+        "D4"
+      ],
+      "sdlc_phases": [
+        "P1",
+        "P2"
+      ],
+      "products": [
+        "PC1"
+      ]
+    }
+  ]
+}

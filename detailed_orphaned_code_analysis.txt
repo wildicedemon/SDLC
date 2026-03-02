@@ -1,0 +1,87 @@
+================================================================================
+ORPHANED CODE AND BROKEN REFERENCES - DETAILED FINDINGS
+================================================================================
+
+## CRITICAL ISSUES
+
+### 1. BROKEN IMPORT STATEMENTS (132 occurrences)
+
+Files with broken imports:
+
+
+scripts/distill.py:
+  Line 18: from distillation.scanner import scan_corpus
+  Line 19: from distillation.parser import parse_file
+  Line 20: from distillation.classifier import classify
+  Line 21: from distillation.dedup import deduplicate
+  Line 22: from distillation.ranker import rank
+  Line 23: from distillation.tagger import tag
+  Line 24: from distillation.prong2_domains import generate_domain_specs
+  Line 25: from distillation.prong3_phases import generate_phase_specs
+  Line 26: from distillation.prong4_products import generate_product_specs
+  Line 27: from distillation.validator import validate
+  ... and 1 more similar issues
+
+scripts/test_distill.py:
+  Line 36: from distillation.scanner import scan_corpus
+  Line 146: from distillation.parser import parse_markdown
+  Line 146: from distillation.parser import RawAtom
+  Line 199: from distillation.parser import parse_csv
+  Line 243: from distillation.parser import parse_file
+  ... and 111 more similar issues
+
+FIX: Change 'from distillation.X' to 'from scripts.distillation.X'
+
+--------------------------------------------------------------------------------
+## HIGH SEVERITY ISSUES
+
+### 2. ORPHANED TEST FILES (12 files)
+
+These test files don't have corresponding source files:
+
+  1. corpus/tests/conftest.py
+  2. corpus/tests/test_kilo_gateway.py
+  3. corpus/tests/ingestion/test_ingest_integration.py
+  4. corpus/tests/integration/__init__.py
+  5. corpus/tests/integration/test_core_pipeline_smoke.py
+  6. corpus/tests/integration/test_db_roundtrip.py
+  7. corpus/tests/integration/test_e2e_scaled.py
+  8. corpus/tests/integration/test_full_pipeline_smoke.py
+  9. corpus/tests/integration/test_ingest_smoke.py
+  10. corpus/tests/db/test_migrations.py
+  11. corpus/tests/db/test_repository_core.py
+  12. corpus/tests/db/test_repository_supporting.py
+
+--------------------------------------------------------------------------------
+## MEDIUM SEVERITY ISSUES
+
+### 3. POTENTIALLY MISSING DEPENDENCIES
+
+These packages are imported but may not be in requirements.txt:
+
+  - bs4
+  - chromadb
+  - click
+  - datasketch
+  - git
+  - markdown
+  - networkx
+  - numpy
+  - perplexity
+  - psutil
+  - pydantic_settings
+  - rich
+  - sentence_transformers
+  - sqlalchemy
+  - typer
+
+--------------------------------------------------------------------------------
+## LOW SEVERITY / INFO
+
+### 4. IMPORT CYCLES
+  No import cycles detected (Good!)
+
+### 5. CODE STATISTICS
+  Total Python files: 156
+  Total functions: 667
+  Total classes: 170

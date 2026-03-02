@@ -1,0 +1,440 @@
+{
+  "D1": {
+    "name": "Agent Architecture & Orchestration",
+    "knowledge_atoms": [
+      "KA-034",
+      "KA-033",
+      "KA-032",
+      "KA-031",
+      "KA-030",
+      "KA-029",
+      "KA-008",
+      "KA-007",
+      "KA-006",
+      "KA-005",
+      "KA-004",
+      "KA-002",
+      "KA-001",
+      "KA-015",
+      "KA-003"
+    ],
+    "key_techniques": [
+      {
+        "rank": 1,
+        "id": "KA-008",
+        "summary": "Zero-Shot Recovery Chaining: On failure, chain through diagnosis \u00e2\u2020\u2019 planning \u00e2\u2020\u2019 recovery stages using zero-shot prompting.",
+        "evidence_strength": "STRONG"
+      },
+      {
+        "rank": 2,
+        "id": "KA-007",
+        "summary": "Human-in-the-Loop Checkpoints: Insert explicit checkpoints in agent workflows where execution pauses for human review, approval, or clarification.",
+        "evidence_strength": "STRONG"
+      },
+      {
+        "rank": 3,
+        "id": "KA-006",
+        "summary": "Explicit Mode Switching: Define discrete operational modes (e.",
+        "evidence_strength": "STRONG"
+      },
+      {
+        "rank": 4,
+        "id": "KA-005",
+        "summary": "Software Company Simulation: Define explicit roles (e.",
+        "evidence_strength": "STRONG"
+      },
+      {
+        "rank": 5,
+        "id": "KA-004",
+        "summary": "Layered Voting Architecture (MoA): Arrange multiple agents in layers where each layer receives outputs from the previous layer and produces refined outputs.",
+        "evidence_strength": "STRONG"
+      }
+    ],
+    "key_constraints": [
+      {
+        "id": "KA-034",
+        "constraint": "prompt brittleness, token overhead for multi-stage prompting, may cascade failures if diagnosis is wrong."
+      },
+      {
+        "id": "KA-033",
+        "constraint": "interrupts workflow flow, requires user availability, may over-checkpoint simple tasks."
+      },
+      {
+        "id": "KA-032",
+        "constraint": "context reloading latency on switch, may require manual mode selection, mode boundary ambiguity for edge cases."
+      },
+      {
+        "id": "KA-031",
+        "constraint": "3-5x compute overhead, increased latency, may average out creative solutions."
+      },
+      {
+        "id": "KA-030",
+        "constraint": "single point of failure at planner level, communication overhead increases with depth, may over-decompose simple tasks."
+      },
+      {
+        "id": "KA-029",
+        "constraint": "integration complexity between subsystems, potential latency from inter-subsystem communication, overhead for simple agent systems."
+      }
+    ],
+    "key_tools": [],
+    "combination_recipes": [],
+    "failure_modes": [
+      {
+        "id": "KA-034",
+        "what_breaks": "prompt brittleness, token overhead for multi-stage prompting, may cascade failures if diagnosis is wrong.",
+        "how_to_detect": "Monitor system metrics (latency, throughput, error rates)",
+        "how_to_respond": "Optimize subsystem communication or adjust task decomposition"
+      },
+      {
+        "id": "KA-033",
+        "what_breaks": "interrupts workflow flow, requires user availability, may over-checkpoint simple tasks.",
+        "how_to_detect": "Monitor system metrics (latency, throughput, error rates)",
+        "how_to_respond": "Optimize subsystem communication or adjust task decomposition"
+      },
+      {
+        "id": "KA-032",
+        "what_breaks": "context reloading latency on switch, may require manual mode selection, mode boundary ambiguity for edge cases.",
+        "how_to_detect": "Monitor system metrics (latency, throughput, error rates)",
+        "how_to_respond": "Optimize subsystem communication or adjust task decomposition"
+      },
+      {
+        "id": "KA-031",
+        "what_breaks": "3-5x compute overhead, increased latency, may average out creative solutions.",
+        "how_to_detect": "Monitor system metrics (latency, throughput, error rates)",
+        "how_to_respond": "Optimize subsystem communication or adjust task decomposition"
+      },
+      {
+        "id": "KA-030",
+        "what_breaks": "single point of failure at planner level, communication overhead increases with depth, may over-decompose simple tasks.",
+        "how_to_detect": "Monitor system metrics (latency, throughput, error rates)",
+        "how_to_respond": "Optimize subsystem communication or adjust task decomposition"
+      },
+      {
+        "id": "KA-029",
+        "what_breaks": "integration complexity between subsystems, potential latency from inter-subsystem communication, overhead for simple agent systems.",
+        "how_to_detect": "Monitor system metrics (latency, throughput, error rates)",
+        "how_to_respond": "Optimize subsystem communication or adjust task decomposition"
+      }
+    ],
+    "cross_domain_links": [
+      {
+        "id": "KA-007",
+        "other_domains": [
+          "Human Interaction"
+        ]
+      },
+      {
+        "id": "KA-015",
+        "other_domains": [
+          "Context & Prompt Engineering"
+        ]
+      },
+      {
+        "id": "KA-033",
+        "other_domains": [
+          "Human Interaction"
+        ]
+      }
+    ],
+    "gaps": []
+  },
+  "D2": {
+    "name": "Task Management & Decomposition",
+    "knowledge_atoms": [],
+    "key_techniques": [],
+    "key_constraints": [],
+    "key_tools": [],
+    "combination_recipes": [],
+    "failure_modes": [],
+    "cross_domain_links": [],
+    "gaps": [
+      "No knowledge atoms available for this domain"
+    ]
+  },
+  "D3": {
+    "name": "Context & Prompt Engineering",
+    "knowledge_atoms": [
+      "KA-036",
+      "KA-035",
+      "KA-016",
+      "KA-015",
+      "KA-014",
+      "KA-013",
+      "KA-012",
+      "KA-011",
+      "KA-010",
+      "KA-009"
+    ],
+    "key_techniques": [
+      {
+        "rank": 1,
+        "id": "KA-016",
+        "summary": "Sliding Window with Overlap: Fixed-size context windows that slide through conversation/code with overlap to maintain continuity.",
+        "evidence_strength": "MODERATE"
+      },
+      {
+        "rank": 2,
+        "id": "KA-015",
+        "summary": "Context Provenance Tracking: Maintaining source attribution for all context, enabling debugging, trust evaluation, and context poisoning detection.",
+        "evidence_strength": "MODERATE"
+      },
+      {
+        "rank": 3,
+        "id": "KA-014",
+        "summary": "Semantic Chunking: Code-aware chunking that preserves semantic boundaries (functions, classes, modules) rather than arbitrary token limits.",
+        "evidence_strength": "MODERATE"
+      },
+      {
+        "rank": 4,
+        "id": "KA-013",
+        "summary": "Context Caching: Caching frequently-used or expensive-to-compute context to reduce latency and API costs across multiple queries.",
+        "evidence_strength": "MODERATE"
+      },
+      {
+        "rank": 5,
+        "id": "KA-012",
+        "summary": "Task-Conditioned Context: Context selection and filtering conditioned on current task type and phase, retrieving different context for coding vs.",
+        "evidence_strength": "MODERATE"
+      }
+    ],
+    "key_constraints": [],
+    "key_tools": [],
+    "combination_recipes": [],
+    "failure_modes": [
+      {
+        "id": "KA-036",
+        "what_breaks": "Naive Truncation: Truncating context without any prioritization or relevance assessment, leading to loss of critical information and degraded model performance.",
+        "how_to_detect": "Monitor for wasted tokens, model confusion, or degraded performance",
+        "how_to_respond": "Implement context filtering and prioritization"
+      },
+      {
+        "id": "KA-035",
+        "what_breaks": "Context Stuffing: Maximally filling context windows with all available information without prioritization or filtering. Results in 23-45% of tokens wasted on irrelevant content, \"lost in the middle\" phenomenon, increased API costs, and model confusion from contradictory or redundant context.",
+        "how_to_detect": "Monitor for wasted tokens, model confusion, or degraded performance",
+        "how_to_respond": "Implement context filtering and prioritization"
+      }
+    ],
+    "cross_domain_links": [
+      {
+        "id": "KA-015",
+        "other_domains": [
+          "Agent Architecture & Orchestration"
+        ]
+      }
+    ],
+    "gaps": []
+  },
+  "D4": {
+    "name": "Memory & Knowledge Systems",
+    "knowledge_atoms": [],
+    "key_techniques": [],
+    "key_constraints": [],
+    "key_tools": [],
+    "combination_recipes": [],
+    "failure_modes": [],
+    "cross_domain_links": [],
+    "gaps": [
+      "No knowledge atoms available for this domain",
+      "Memory persistence and retrieval mechanisms",
+      "Knowledge graph construction and maintenance",
+      "Long-term memory architectures"
+    ]
+  },
+  "D5": {
+    "name": "Code Intelligence & Representations",
+    "knowledge_atoms": [],
+    "key_techniques": [],
+    "key_constraints": [],
+    "key_tools": [],
+    "combination_recipes": [],
+    "failure_modes": [],
+    "cross_domain_links": [],
+    "gaps": [
+      "No knowledge atoms available for this domain",
+      "Code representation learning",
+      "Semantic code analysis",
+      "Code summarization techniques"
+    ]
+  },
+  "D6": {
+    "name": "Testing & Validation",
+    "knowledge_atoms": [
+      "KA-018",
+      "KA-017",
+      "KA-028",
+      "KA-027",
+      "KA-026",
+      "KA-025",
+      "KA-024",
+      "KA-023",
+      "KA-022",
+      "KA-021",
+      "KA-020",
+      "KA-019"
+    ],
+    "key_techniques": [
+      {
+        "rank": 1,
+        "id": "KA-018",
+        "summary": "Test-First Pattern (TDD): Write tests before implementation code.",
+        "evidence_strength": "STRONG"
+      },
+      {
+        "rank": 2,
+        "id": "KA-017",
+        "summary": "Test Pyramid Pattern: Structure tests in a pyramid shape with many unit tests at the bottom, fewer integration tests in the middle, and few E2E tests at the top.",
+        "evidence_strength": "STRONG"
+      },
+      {
+        "rank": 3,
+        "id": "KA-028",
+        "summary": "Multi-Stage Validation Pattern: Progress tests through multiple validation stages: local \u00e2\u2020\u2019 PR \u00e2\u2020\u2019 integration \u00e2\u2020\u2019 staging \u00e2\u2020\u2019 canary.",
+        "evidence_strength": "MODERATE"
+      },
+      {
+        "rank": 4,
+        "id": "KA-027",
+        "summary": "Happy Path / Sad Path Pattern: Explicitly test both success scenarios (happy path) and error scenarios (sad path).",
+        "evidence_strength": "MODERATE"
+      },
+      {
+        "rank": 5,
+        "id": "KA-026",
+        "summary": "Test Double Pattern: Use various types of test doubles (dummy, stub, spy, mock, fake) to replace real dependencies appropriately.",
+        "evidence_strength": "MODERATE"
+      }
+    ],
+    "key_constraints": [],
+    "key_tools": [],
+    "combination_recipes": [],
+    "failure_modes": [],
+    "cross_domain_links": [],
+    "gaps": []
+  },
+  "D7": {
+    "name": "Security & Guardrails",
+    "knowledge_atoms": [],
+    "key_techniques": [],
+    "key_constraints": [],
+    "key_tools": [],
+    "combination_recipes": [],
+    "failure_modes": [],
+    "cross_domain_links": [],
+    "gaps": [
+      "No knowledge atoms available for this domain",
+      "Security vulnerability detection in AI-generated code",
+      "Access control mechanisms for agent systems",
+      "Data privacy protection"
+    ]
+  },
+  "D8": {
+    "name": "Model Management & Routing",
+    "knowledge_atoms": [],
+    "key_techniques": [],
+    "key_constraints": [],
+    "key_tools": [],
+    "combination_recipes": [],
+    "failure_modes": [],
+    "cross_domain_links": [],
+    "gaps": [
+      "No knowledge atoms available for this domain",
+      "Model selection and routing algorithms",
+      "Model versioning and provenance",
+      "Model performance monitoring"
+    ]
+  },
+  "D9": {
+    "name": "CI/CD & DevOps",
+    "knowledge_atoms": [],
+    "key_techniques": [],
+    "key_constraints": [],
+    "key_tools": [],
+    "combination_recipes": [],
+    "failure_modes": [],
+    "cross_domain_links": [],
+    "gaps": [
+      "No knowledge atoms available for this domain",
+      "CI/CD pipeline automation for agent systems",
+      "Deployment strategies for AI applications",
+      "DevOps practices for agentic workflows"
+    ]
+  },
+  "D10": {
+    "name": "Workspace & Infrastructure Management",
+    "knowledge_atoms": [],
+    "key_techniques": [],
+    "key_constraints": [],
+    "key_tools": [],
+    "combination_recipes": [],
+    "failure_modes": [],
+    "cross_domain_links": [],
+    "gaps": [
+      "No knowledge atoms available for this domain",
+      "Workspace management and isolation",
+      "Resource allocation and scheduling",
+      "Infrastructure provisioning for agents"
+    ]
+  },
+  "D11": {
+    "name": "Human Interaction",
+    "knowledge_atoms": [
+      "KA-033",
+      "KA-007"
+    ],
+    "key_techniques": [
+      {
+        "rank": 1,
+        "id": "KA-007",
+        "summary": "Human-in-the-Loop Checkpoints: Insert explicit checkpoints in agent workflows where execution pauses for human review, approval, or clarification.",
+        "evidence_strength": "STRONG"
+      }
+    ],
+    "key_constraints": [
+      {
+        "id": "KA-033",
+        "constraint": "interrupts workflow flow, requires user availability, may over-checkpoint simple tasks."
+      }
+    ],
+    "key_tools": [],
+    "combination_recipes": [],
+    "failure_modes": [
+      {
+        "id": "KA-033",
+        "what_breaks": "interrupts workflow flow, requires user availability, may over-checkpoint simple tasks.",
+        "how_to_detect": "Monitor system metrics (latency, throughput, error rates)",
+        "how_to_respond": "Optimize subsystem communication or adjust task decomposition"
+      }
+    ],
+    "cross_domain_links": [
+      {
+        "id": "KA-007",
+        "other_domains": [
+          "Agent Architecture & Orchestration"
+        ]
+      },
+      {
+        "id": "KA-033",
+        "other_domains": [
+          "Agent Architecture & Orchestration"
+        ]
+      }
+    ],
+    "gaps": []
+  },
+  "D12": {
+    "name": "Self-Improvement & Optimization",
+    "knowledge_atoms": [],
+    "key_techniques": [],
+    "key_constraints": [],
+    "key_tools": [],
+    "combination_recipes": [],
+    "failure_modes": [],
+    "cross_domain_links": [],
+    "gaps": [
+      "No knowledge atoms available for this domain",
+      "Self-improvement algorithms",
+      "Performance optimization techniques",
+      "Continuous learning mechanisms"
+    ]
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "KnowledgeAtom",
+  "description": "A single, self-contained piece of actionable knowledge extracted from research.",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "content",
+    "evidence_strength"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this knowledge atom (e.g., KA-001)"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "TECHNIQUE",
+        "METRIC",
+        "CONSTRAINT",
+        "TOOL",
+        "COMBINATION",
+        "FAILURE_MODE",
+        "ANTI_PATTERN",
+        "TRADEOFF",
+        "RECIPE"
+      ],
+      "description": "Type of knowledge atom"
+    },
+    "content": {
+      "type": "string",
+      "description": "The actual knowledge content (1-5 sentences max)"
+    },
+    "evidence_strength": {
+      "type": "string",
+      "enum": [
+        "STRONG",
+        "MODERATE",
+        "WEAK"
+      ],
+      "description": "Strength of evidence supporting this atom"
+    },
+    "source": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Research file path(s) where this was found",
+      "default": []
+    },
+    "domains": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "D1",
+          "D2",
+          "D3",
+          "D4",
+          "D5",
+          "D6",
+          "D7",
+          "D8",
+          "D9",
+          "D10",
+          "D11",
+          "D12"
+        ]
+      },
+      "description": "Technical domains this applies to",
+      "default": []
+    },
+    "sdlc_phases": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "P1",
+          "P2",
+          "P3",
+          "P4",
+          "P5",
+          "P6",
+          "P7",
+          "P8"
+        ]
+      },
+      "description": "SDLC phases this applies to",
+      "default": []
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "PC1",
+          "PC2",
+          "PC3",
+          "PC4",
+          "PC5",
+          "PC6",
+          "PC7",
+          "PC8",
+          "PC9",
+          "PC10"
+        ]
+      },
+      "description": "Product types this feeds",
+      "default": []
+    }
+  },
+  "definitions": {
+    "AtomType": {
+      "type": "string",
+      "enum": [
+        "TECHNIQUE",
+        "METRIC",
+        "CONSTRAINT",
+        "TOOL",
+        "COMBINATION",
+        "FAILURE_MODE",
+        "ANTI_PATTERN",
+        "TRADEOFF",
+        "RECIPE"
+      ]
+    },
+    "EvidenceStrength": {
+      "type": "string",
+      "enum": [
+        "STRONG",
+        "MODERATE",
+        "WEAK"
+      ]
+    },
+    "Domain": {
+      "type": "string",
+      "enum": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "D10",
+        "D11",
+        "D12"
+      ]
+    },
+    "SDLCPhase": {
+      "type": "string",
+      "enum": [
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8"
+      ]
+    },
+    "ProductCategory": {
+      "type": "string",
+      "enum": [
+        "PC1",
+        "PC2",
+        "PC3",
+        "PC4",
+        "PC5",
+        "PC6",
+        "PC7",
+        "PC8",
+        "PC9",
+        "PC10"
+      ]
+    }
+  }
+}

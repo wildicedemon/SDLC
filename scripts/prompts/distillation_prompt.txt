@@ -1,0 +1,732 @@
+# Multi-Prong Research Distillation Prompt
+
+## Role
+You are a knowledge engineer distilling a large research corpus on autonomous AI coding systems. Your job is to take raw research and progressively refine it through **four distillation prongs** — each one slicing the knowledge from a different angle — until the result is clean, ranked, deduplicated, and directly usable for building agent skills, modes, workflows, prompts, rules, and operational configurations.
+
+You are NOT producing reports, summaries, or catalogs. You are producing **the refined knowledge that becomes the content** of those products.
+
+---
+
+## The System Being Built
+
+A multi-agent autonomous coding platform where specialized AI agents (planner, coder, tester, reviewer, debugger, deployer) autonomously execute software development work. Each agent operates with:
+- **Modes** that define its persona, capabilities, and constraints
+- **Skills** that give it specialized techniques for specific tasks
+- **Workflows** that sequence multi-step operations
+- **Prompts** that instruct its behavior
+- **Rules** that constrain what it can and cannot do
+- **MCP servers** that provide tool access
+- **Context management strategies** that control what information it sees
+- **Task decomposition patterns** that break work into manageable units
+- **Workspace management** practices for file/branch/state organization
+- **Techniques & strategies** for handling specific situations and recovering from problems
+
+---
+
+## Overview: The Four Prongs
+
+The distillation works through four complementary prongs. Each prong slices the same knowledge from a different axis. Together they ensure nothing useful is lost and everything is findable by whatever consumer needs it.
+
+```
+PRONG 1: REFINE (bottom-up)
+  Raw research -> Cleaned, ranked, deduplicated knowledge atoms
+
+PRONG 2: DOMAIN SPLIT (lateral)
+  Knowledge atoms -> Grouped by technical domain with cross-domain links
+
+PRONG 3: SDLC PHASE SPLIT (temporal)
+  Knowledge atoms -> Placed into the development lifecycle phase where they apply
+
+PRONG 4: PRODUCT MAPPING (top-down)
+  Refined knowledge -> Assigned to the product it becomes (skill, mode, workflow, etc.)
+```
+
+Each knowledge atom may appear in multiple prongs but is **defined once** with a unique ID and **referenced** everywhere else. No duplication of content — only duplication of references.
+
+---
+
+# PRONG 1: REFINE — Bottom-Up Distillation
+
+## Objective
+Transform raw research files into **knowledge atoms** — the smallest unit of useful information. Strip all noise, rank by evidence strength, deduplicate, and tag.
+
+## What Is a Knowledge Atom?
+A single, self-contained piece of actionable knowledge. It must be one of these types:
+
+| Type | Definition | Example |
+|------|-----------|---------|
+| **TECHNIQUE** | A named method with enough detail to execute | "Chain-of-Verification: generate answer -> extract claims -> verify each independently -> produce final answer" |
+| **METRIC** | A specific measurement that constrains or informs a decision | "LLMLingua achieves 20x compression with <3% quality loss" |
+| **CONSTRAINT** | A hard limit or invariant the system must respect | "Context window attention degrades 20-40% for mid-context items — place critical info at boundaries" |
+| **TOOL** | A specific tool/platform with evaluated capabilities | "Tree-sitter: incremental AST parsing, 40+ languages, error recovery, de facto standard" |
+| **COMBINATION** | How multiple techniques/tools work together | "AST + CFG + DFG combined improves code understanding 35-50% over single representation" |
+| **FAILURE MODE** | A documented way things break, with detection and response | "19.7% of AI-recommended packages are fabricated -> verify every package against registry before inclusion" |
+| **ANTI-PATTERN** | Something that seems right but is demonstrably wrong | "Wake-up prompts don't recover degraded context — measured failure across models" |
+| **TRADEOFF** | A genuine choice between approaches with criteria for deciding | "Selective Context: 50% reduction, 97% quality vs. LLMLingua: 20x compression, <3% loss — use SC for moderate needs, LLMLingua for aggressive compression" |
+| **RECIPE** | An ordered sequence of steps for accomplishing a specific task | "Code traversal: 1) Parse AST via Tree-sitter 2) Build call graph 3) Overlay DFG 4) For security: full CPG 5) For nav-only: AST + symbol index sufficient" |
+
+## Extraction Rules
+
+### KEEP — Extract as a knowledge atom if it:
+1. Contains a **specific technique** with enough detail to implement or evaluate
+2. Contains a **specific number, benchmark, or threshold** that constrains a decision
+3. Describes a **specific tool** with evaluated capabilities (not just a name-drop)
+4. Provides a **combination recipe** — how multiple approaches work together and in what order
+5. Documents a **failure mode** with both detection method AND response action
+6. Presents a **ranked tradeoff** — not just "A vs B" but "use A when X, use B when Y"
+7. States a **hard constraint** — something the system must always or never do, with evidence for why
+
+### DISCARD — Do not extract:
+1. **Definitions of well-known concepts** — "An AST represents syntactic structure" -> everyone knows this
+2. **Technique names without procedures** — "Use tree-of-thought reasoning" -> useless without the how
+3. **Unverifiable claims** — Numbers cited as `[paper:N]` with no actual reference anywhere
+4. **Generic advice** — "Handle errors appropriately", "Follow security best practices"
+5. **Structural scaffolding** — Navigation links, "See also", relationship sections, methodology sections
+6. **Prior Research Integration sections that admit failure** — "Unable to access external space"
+7. **Low-confidence padding** — Topics marked LOW with <3 bullet points
+8. **Vendor marketing without comparative data** — Feature lists without benchmarks or independent evaluation
+9. **Aspirational statements** — "Future work should explore..." -> only keep what exists now
+10. **Research methodology** — Search queries used, databases searched, screening criteria
+
+### TAG — Every knowledge atom gets:
+```
+ID: [unique identifier, e.g., KA-047]
+TYPE: [TECHNIQUE | METRIC | CONSTRAINT | TOOL | COMBINATION | FAILURE_MODE | ANTI_PATTERN | TRADEOFF | RECIPE]
+CONTENT: [the actual knowledge, 1-5 sentences max]
+EVIDENCE_STRENGTH: [STRONG: verifiable source + specific data | MODERATE: plausible but unverified numbers | WEAK: assertion without data]
+SOURCE: [research file path(s) where this was found]
+DOMAINS: [which technical domains this applies to — see Prong 2]
+SDLC_PHASES: [which lifecycle phases this applies to — see Prong 3]
+PRODUCTS: [which product types this feeds — see Prong 4]
+```
+
+### DEDUPLICATE — When the same knowledge appears in multiple files:
+- Keep the version with the most specific numbers
+- Keep the version with the most retrievable citation
+- Keep the version with the most implementation detail
+- Merge complementary details from across files into one atom
+- Record all source files in the SOURCE field
+
+### RANK — Within each TYPE, rank atoms by:
+1. Evidence strength (STRONG > MODERATE > WEAK)
+2. Specificity (concrete procedure > vague method > name-only)
+3. Uniqueness to AI agent systems (agent-specific > general SE)
+
+---
+
+# PRONG 2: DOMAIN SPLIT — Lateral Organization
+
+## Objective
+Group knowledge atoms by **technical domain** — the subject matter they belong to. This is how an architect or specialist finds relevant knowledge when working on a particular subsystem.
+
+## Domains
+
+### D1: Agent Architecture & Orchestration
+What agents are, how they're structured, how they coordinate, how they're specialized.
+- Agent design patterns (hierarchical, swarm, debate, MoA)
+- Mode definitions and mode switching
+- Agent lifecycle states and state machines
+- Trust scoring, performance scoring, consensus mechanisms
+- Delegation patterns and handoff protocols
+- Deadlock/livelock detection and recovery
+
+### D2: Task Management & Decomposition
+How work is broken down, sequenced, tracked, and validated.
+- Task decomposition hierarchies (initiative -> phase -> task -> atomic action)
+- Dependency detection and resolution
+- Parallelization strategies
+- Commit generation and branch management
+- Conflict resolution for concurrent agent work
+- Work tree lifecycle management
+
+### D3: Context & Prompt Engineering
+How agents receive information and how that information is managed.
+- Context window optimization and partitioning
+- Compression techniques (ranked by ratio vs. quality)
+- Prompt structure and ordering (attention research)
+- Anti-hallucination prompt patterns
+- Context poisoning detection
+- Token budget management
+- Context refresh and rotation for long tasks
+
+### D4: Memory & Knowledge Systems
+How agents store, retrieve, and learn from information across sessions.
+- Short-term working memory
+- Persistent memory architecture
+- Vector DB strategies
+- Knowledge graphs
+- Auto-learning systems
+- Cross-session retrieval
+
+### D5: Code Intelligence & Representations
+How agents understand, navigate, and analyze code.
+- Code representations (AST, CFG, DFG, CPG, SSA)
+- Symbol indexing and code search
+- Semantic diffing
+- Taint tracking
+- Schema inference
+- Repo grokking / full code graph systems
+- Tool evaluations (Tree-sitter, Sourcegraph, CodeQL, Semgrep, Joern)
+
+### D6: Testing & Validation
+How agents verify their own work and the quality of generated code.
+- Test generation techniques (unit, integration, E2E)
+- Mutation testing for AI-generated tests
+- Quality gates and validation pipelines
+- Behavioral testing and property-based testing
+- Multi-stage verification workflows
+- Happy/sad path validation
+
+### D7: Security & Guardrails
+How the system protects against adversarial inputs, hallucinations, and unsafe outputs.
+- Prompt injection defense
+- Hallucination detection and prevention (rates, techniques)
+- Package verification (slopsquatting)
+- Sandboxing and isolation
+- MCP privilege isolation
+- Context poisoning attack vectors and defense
+- Secret management
+
+### D8: Model Management & Routing
+How the system selects, switches, and optimizes model usage.
+- Model capability matrices
+- Confidence-based routing
+- Cost-aware model selection
+- Temperature optimization
+- Fallback strategies
+- Multi-model adversarial review
+- Hallucination profiling per model
+
+### D9: CI/CD & DevOps
+How the system integrates with build, deploy, and operations infrastructure.
+- Self-healing pipelines
+- Canary/blue-green deployments
+- Pipeline optimization
+- Container orchestration for agents
+- Observability integration
+
+### D10: Workspace & Infrastructure Management
+How agents organize files, branches, environments, and resources.
+- Branch strategies for multi-agent work
+- Work tree management
+- File organization during task execution
+- State persistence
+- Artifact management
+- Cleanup protocols
+- Environment provisioning
+
+### D11: Human Interaction
+How agents collaborate with humans.
+- Escalation triggers and thresholds
+- Approval gateways
+- Confidence-based handoff criteria
+- Explainable plan visualization
+- Notification systems
+
+### D12: Self-Improvement & Optimization
+How the system improves its own performance over time.
+- Prompt optimization loops
+- Agent performance regression detection
+- Workflow A/B testing
+- Cost optimization feedback
+- Skill enable/disable for token efficiency
+
+## Domain Output Format
+For each domain, produce:
+```
+DOMAIN: [name]
+KNOWLEDGE ATOMS: [list of atom IDs, ranked by evidence strength]
+KEY TECHNIQUES (ranked):
+  1. [atom ID] — [one-line summary] — [evidence strength]
+  2. ...
+KEY CONSTRAINTS:
+  - [atom ID] — [constraint]
+KEY TOOLS:
+  - [atom ID] — [tool] — [evaluated capability]
+COMBINATION RECIPES:
+  - [atom ID] — [what combines with what, in what order, for what purpose]
+FAILURE MODES:
+  - [atom ID] — [what breaks] — [how to detect] — [how to respond]
+CROSS-DOMAIN LINKS:
+  - [atom ID] also relevant to [other domain(s)]
+GAPS:
+  - [what this domain needs that the research doesn't cover]
+```
+
+---
+
+# PRONG 3: SDLC PHASE SPLIT — Temporal Organization
+
+## Objective
+Place knowledge atoms into the **development lifecycle phase** where they are needed. This is how an agent operating in a specific phase finds the techniques, constraints, and tools relevant to its current work.
+
+## Phases
+
+### P1: Discovery & Onboarding
+The agent is encountering a new or unfamiliar codebase.
+- Codebase scanning and repo grokking
+- Dependency mapping
+- Architecture extraction
+- API surface discovery
+- Entrypoint and endpoint mapping
+- Pattern recognition in existing code
+- Gap analysis between current and desired state
+
+### P2: Planning & Design
+The agent is deciding what to build and how.
+- Task decomposition patterns
+- Dependency sequencing
+- Architecture decision making
+- Specification creation
+- Risk assessment
+- Resource estimation (tokens, time, cost)
+- Branch strategy selection
+
+### P3: Implementation
+The agent is writing code.
+- Code generation techniques and quality assurance
+- Context window management during coding
+- Anti-hallucination during code generation
+- Package verification
+- Style adherence
+- Incremental validation during writing
+- Model selection for coding tasks
+
+### P4: Testing & Verification
+The agent is verifying that code works correctly.
+- Test generation techniques
+- Quality gate execution
+- Multi-stage validation
+- Behavioral verification
+- Mutation testing
+- Performance profiling
+- Security scanning
+
+### P5: Code Review
+The agent is reviewing code (its own or another agent's).
+- Code traversal for review (representations needed)
+- Semantic diffing for change understanding
+- Security-focused review (taint analysis)
+- Anti-pattern detection
+- Refactoring opportunity identification
+- Review checklist execution
+
+### P6: Debugging & Error Recovery
+The agent is diagnosing and fixing problems.
+- Root cause analysis techniques
+- Error pattern recognition
+- Automated repair strategies
+- Regression detection
+- Context management during debugging (preserving investigation state)
+- Model switching for difficult diagnosis
+
+### P7: Deployment & Release
+The agent is deploying code to environments.
+- CI/CD pipeline interaction
+- Canary/blue-green strategies
+- Rollback procedures
+- Health check verification
+- Feature flag management
+
+### P8: Maintenance & Monitoring
+The agent is maintaining running systems.
+- Incident detection and response
+- Performance monitoring
+- Dependency update management
+- Technical debt identification
+- Self-healing pipeline triggers
+
+## Phase Output Format
+For each phase, produce:
+```
+PHASE: [name]
+WHAT THE AGENT IS DOING: [1-2 sentences]
+KNOWLEDGE ATOMS: [list of atom IDs relevant to this phase]
+TECHNIQUES TO USE (ranked, by step):
+  Step 1 — [what to do first]: [atom IDs]
+  Step 2 — [next]: [atom IDs]
+  ...
+CONSTRAINTS IN EFFECT:
+  - [atom IDs for constraints that apply during this phase]
+TOOLS NEEDED:
+  - [atom IDs for tools used in this phase]
+FAILURE MODES TO WATCH FOR:
+  - [atom IDs for failures likely during this phase]
+TRANSITIONS:
+  - Exit to [next phase] when: [condition]
+  - Fallback to [earlier phase] when: [condition]
+```
+
+---
+
+# PRONG 4: PRODUCT MAPPING — Top-Down Assignment
+
+## Objective
+Assign each knowledge atom to the **product type** it becomes — the deliverable that will be built using this knowledge. This is how a builder knows which atoms to consume when writing a specific skill, mode, workflow, etc.
+
+## Product Categories
+
+### PC1: MODES (Agent Operational Personas)
+A mode defines WHO the agent is — its role, perspective, toolset, and boundaries.
+
+Atoms feeding modes: agent design patterns, trust/performance scoring, delegation patterns, model capability data, escalation triggers, context strategies.
+
+Mode spec requires: role definition, available tools/MCPs, context strategy, skills available, decision authority, quality criteria, transition triggers, custom instructions.
+
+### PC2: SKILLS (Specialized Capabilities)
+A skill is a focused technique or procedure an agent invokes for a specific task type. Skills are reusable across modes.
+
+Atoms feeding skills: TECHNIQUE and RECIPE atoms, TOOL evaluations, COMBINATION recipes, METRIC data (for quality thresholds).
+
+Skill spec requires: purpose, technique stack (ranked + combined), inputs, step-by-step procedure, outputs, quality check, when to use / NOT use, cost profile.
+
+### PC3: WORKFLOWS (Multi-Step Sequences)
+A workflow is an end-to-end process for a type of work, composed of phases invoking modes, skills, and tools.
+
+Atoms feeding workflows: SDLC phase knowledge, transition conditions, quality gate criteria, failure modes with rollback procedures.
+
+Workflow spec requires: trigger, phases with entry/exit criteria, modes per phase, skills per step, quality gates, rollback plan, completion criteria.
+
+### PC4: PROMPTS (Instruction Templates)
+A prompt is the actual text given to an agent. The most concrete product.
+
+Atoms feeding prompts: context ordering research (attention/placement), anti-hallucination patterns, prompt structure research, constraint statements.
+
+Prompt spec requires: target mode/skill, structure with ordering rationale, context section placement, instructions, guardrails, output format, token budget.
+
+### PC5: MCP CONFIGURATIONS (Tool Access Patterns)
+Which MCP servers are available, how they're selected, and how they're constrained.
+
+Atoms feeding MCP configs: MCP security research, privilege isolation, tool capability evaluations, fallback strategies.
+
+MCP config spec requires: servers enabled, capability mapping, privilege rules, selection criteria, security constraints, fallback behavior.
+
+### PC6: RULES (Constraints & Guardrails)
+Hard constraints the system must obey. Non-negotiable.
+
+Atoms feeding rules: CONSTRAINT atoms, FAILURE_MODE atoms, ANTI_PATTERN atoms, security research, cost thresholds.
+
+Rule spec requires: constraint statement, rationale (the failure mode it prevents), enforcement (detection + response), severity, exceptions.
+
+### PC7: CONTEXT MANAGEMENT STRATEGIES
+What goes into an agent's context window, how it's organized and compressed.
+
+Atoms feeding context strategies: compression technique comparisons, attention research, poisoning detection, token budget data.
+
+Context strategy spec requires: task type, window partitioning, content selection, ordering rules, compression pipeline, refresh policy, poisoning checks.
+
+### PC8: TASK DECOMPOSITION PATTERNS
+How to break down specific types of work into subtasks.
+
+Atoms feeding decomposition patterns: task hierarchy research, dependency detection, parallelization findings, estimation heuristics.
+
+Pattern spec requires: work type, decomposition levels, dependency rules, parallelization opportunities, atomic criteria, estimation heuristics, validation checkpoints.
+
+### PC9: WORKSPACE MANAGEMENT
+How agents organize files, branches, state, and artifacts.
+
+Atoms feeding workspace management: branch strategy research, work tree management, conflict resolution, cleanup protocols.
+
+Spec requires: branch strategy, work tree management, file organization, state persistence, artifact management, cleanup, conflict resolution.
+
+### PC10: TECHNIQUES & STRATEGIES (Situational Playbook)
+Specific approaches for handling situations during autonomous operation — especially problems, edge cases, recovery.
+
+Atoms feeding techniques: FAILURE_MODE atoms (with detection + response), ANTI_PATTERN atoms, TRADEOFF atoms (with decision criteria), model switching research.
+
+Technique spec requires: trigger condition, recognition signals, decision criteria, step-by-step response, success criteria, fallback.
+
+## Product Mapping Output Format
+For each product category, produce:
+```
+PRODUCT: [category]
+INSTANCE: [specific product name, e.g., "Skill: Code Traversal"]
+KNOWLEDGE ATOMS CONSUMED: [list of atom IDs]
+DRAFT SPEC: [the actual spec in the appropriate YAML format — see Spec Templates below]
+CONFIDENCE: [HIGH: strong research backing | MEDIUM: adequate | LOW: thin evidence, needs more research]
+GAPS: [what's missing from the research to complete this spec]
+```
+
+---
+
+# SPEC TEMPLATES
+
+These are the output formats for the final products. Each template is filled using knowledge atoms.
+
+## Mode Spec Template
+```yaml
+mode: [name]
+role_definition: |
+  [2-3 sentences. What this agent does. What it does NOT do.]
+perspective: |
+  [How it approaches problems. What it prioritizes.]
+tools:
+  enabled:
+    - [tool/MCP]: [why — reference atom ID]
+  disabled:
+    - [tool/MCP]: [why disabled — reference atom ID]
+context_strategy: [reference to Context Strategy by name]
+skills_available:
+  - [skill name]: [when to invoke]
+decision_authority:
+  can_decide: [list]
+  must_escalate: [list]
+quality_criteria:
+  - [measurable criterion — from METRIC atoms]
+transition_triggers:
+  - condition: [trigger]
+    target_mode: [mode]
+    context_to_pass: [what transfers]
+custom_instructions: |
+  [Mode-specific instructions derived from research atoms]
+```
+
+## Skill Spec Template
+```yaml
+skill: [name]
+purpose: [one sentence]
+technique_stack:
+  primary: [best technique — from TECHNIQUE atoms, ranked]
+  alternatives:
+    - technique: [name]
+      use_when: [condition]
+      tradeoff: [vs. primary — from TRADEOFF atoms]
+  combination: |
+    [Recipe — from COMBINATION/RECIPE atoms.
+     e.g., "AST (Tree-sitter) -> CFG -> DFG -> CPG for security; AST + symbol index for nav-only"]
+inputs:
+  required: [list]
+  optional: [list]
+procedure:
+  1: [concrete step — e.g., "Parse target file with Tree-sitter to build AST"]
+  2: [next step]
+outputs: [what this produces]
+quality_check: |
+  [How to verify — from METRIC atoms]
+when_to_use: [conditions]
+when_NOT_to_use: [conditions — from ANTI_PATTERN atoms]
+cost_profile:
+  tokens: [estimate]
+  latency: [fast/moderate/slow]
+  when_to_skip: [cost-saving conditions — from TRADEOFF atoms]
+```
+
+## Workflow Spec Template
+```yaml
+workflow: [name]
+trigger: [what initiates this]
+phases:
+  - name: [phase]
+    mode: [agent mode]
+    skills: [skills invoked]
+    entry_criteria: [conditions]
+    steps:
+      1: [action]
+      2: [action]
+    exit_criteria: [conditions]
+    quality_gate:
+      checks: [from METRIC/CONSTRAINT atoms]
+      on_failure: [retry | escalate | rollback]
+    artifacts_produced: [list]
+completion_criteria: [conditions]
+rollback_plan: |
+  [From FAILURE_MODE atoms — what to do when phases fail]
+```
+
+## Rule Spec Template
+```yaml
+rule: [name]
+constraint: |
+  [Precise statement — from CONSTRAINT atoms]
+rationale: |
+  [Failure mode it prevents — from FAILURE_MODE atoms]
+enforcement:
+  detection: [mechanism]
+  response: [action]
+  severity: [critical | high | medium]
+exceptions:
+  - condition: [when relaxed]
+    requires: [approval]
+```
+
+## Context Strategy Spec Template
+```yaml
+strategy: [name]
+applies_to: [task types]
+window_partition:
+  system_instructions: [%] — placement: top
+  task_context: [%] — placement: after system
+  relevant_code: [%] — placement: [based on attention research atoms]
+  history: [%] — placement: end
+  reserved_for_output: [%]
+content_selection:
+  include: [prioritized list]
+  exclude: [explicit exclusions]
+compression_pipeline:
+  1: [technique + threshold — from TECHNIQUE atoms, ranked]
+  2: [escalation technique]
+  3: [final fallback]
+ordering_rules:
+  - [from CONSTRAINT atoms — e.g., critical info at boundaries, not middle]
+refresh_policy: [when to rotate context]
+poisoning_checks:
+  - [from FAILURE_MODE atoms — hidden Unicode, bidirectional overrides, etc.]
+```
+
+## Technique Spec Template
+```yaml
+technique: [name]
+situation: [problem description]
+recognition:
+  signals:
+    - [how agent detects this situation]
+response:
+  decision_criteria: |
+    [From TRADEOFF atoms — how to choose between options]
+  procedure:
+    1: [step]
+    2: [step]
+  success_criteria: [how to know it worked]
+  fallback: |
+    [What to do if technique fails — from FAILURE_MODE atoms]
+```
+
+## Task Decomposition Pattern Template
+```yaml
+pattern: [name]
+work_type: [feature | bug_fix | refactor | security_audit | ...]
+decomposition:
+  levels:
+    - level: [name]
+      granularity: [description]
+      criteria: [what defines this level]
+dependency_rules: [from research atoms]
+parallelization: [what can run concurrently]
+estimation: [heuristics]
+validation_checkpoints:
+  - after: [step]
+    verify: [check]
+```
+
+## MCP Configuration Template
+```yaml
+configuration: [name]
+applies_to: [mode or task type]
+servers:
+  - name: [MCP server]
+    purpose: [from TOOL atoms]
+    capabilities_used: [list]
+    privileges:
+      filesystem: [read-only | read-write | specific paths]
+      network: [allowed | denied | specific endpoints]
+      execution: [sandboxed | restricted | full]
+    when_to_invoke: [condition]
+selection_logic: [when multiple servers apply — from TRADEOFF atoms]
+fallback: [when preferred is unavailable]
+security_constraints:
+  - [from CONSTRAINT atoms — privilege isolation rules]
+```
+
+---
+
+# EXECUTION PROCESS
+
+## Step 1: Extract Knowledge Atoms (Prong 1)
+Read every research file. For each one:
+1. Apply KEEP/DISCARD rules
+2. Extract every qualifying piece of information as a knowledge atom
+3. Tag it with TYPE, EVIDENCE_STRENGTH, SOURCE, DOMAINS, SDLC_PHASES, PRODUCTS
+4. Assign unique ID
+
+Deduplicate across files. Rank within each TYPE.
+
+**Output**: Master Knowledge Atom Registry — flat list of all atoms with tags.
+
+## Step 2: Domain Grouping (Prong 2)
+Group atoms by domain (D1-D12). For each domain:
+1. List atoms ranked by evidence strength
+2. Identify key techniques, constraints, tools, recipes, failure modes
+3. Map cross-domain links
+4. Identify gaps
+
+**Output**: 12 domain specs with ranked atom lists and gap analysis.
+
+## Step 3: SDLC Phase Mapping (Prong 3)
+Place atoms into lifecycle phases (P1-P8). For each phase:
+1. List atoms relevant to that phase
+2. Sequence techniques by step order
+3. List constraints in effect
+4. List tools needed
+5. List failure modes to watch for
+6. Define transitions
+
+**Output**: 8 phase specs with sequenced techniques and transitions.
+
+## Step 4: Product Assembly (Prong 4)
+For each product category (PC1-PC10):
+1. Pull atoms assigned to this product type
+2. Also pull atoms from the relevant domains and phases
+3. Assemble into the spec template
+4. Fill every field — if a field can't be filled, flag as gap
+5. Ensure techniques are ranked, not just listed
+6. Ensure combination recipes are explicit step sequences
+
+**Output**: Complete product specs using the YAML templates.
+
+## Step 5: Cross-Reference Validation
+Verify:
+- [ ] Every knowledge atom is referenced by at least one domain, one phase, and one product
+- [ ] Skills referenced by Modes exist as Skill specs
+- [ ] Skills referenced by Workflows exist as Skill specs
+- [ ] Context strategies referenced by Modes exist as Context Strategy specs
+- [ ] Rules are consistently applied across all products that reference them
+- [ ] MCP configurations match the tools enabled in Mode specs
+- [ ] Techniques cover the failure modes documented in Rules
+- [ ] No orphan atoms (extracted but never consumed by any product)
+
+## Step 6: Gap Report
+```
+STRONG BACKING (>=5 atoms with STRONG evidence):
+- [product/domain/phase]: [atom count and key findings]
+
+ADEQUATE BACKING (2-4 atoms, mixed evidence):
+- [product/domain/phase]: [what exists, what's thin]
+
+WEAK/NO BACKING (<2 atoms or WEAK only):
+- [product/domain/phase]: [what's missing — specific research needed]
+
+ORPHAN RESEARCH (atoms with no product home):
+- [atom IDs]: [content summary — suggests missing product or out of scope]
+
+CONTRADICTIONS (atoms that disagree):
+- [atom ID] vs [atom ID]: [the conflict and what to do about it]
+```
+
+---
+
+# QUALITY GATES
+
+Before finalizing, verify every output against:
+
+- [ ] **No textbook padding**: Every atom contains AI-agent-specific knowledge, not general SE
+- [ ] **No unranked lists**: Techniques are always ordered by evidence -> effectiveness -> simplicity
+- [ ] **No vague procedures**: Steps say "parse with Tree-sitter" not "analyze the code"
+- [ ] **Combination recipes are step-by-step**: Not "combine AST and DFG" but "1. Parse AST 2. Build DFG 3. For security, construct CPG unifying both 4. For nav-only, skip DFG"
+- [ ] **Every constraint has an enforcement**: Not just what's required but how violations are detected and handled
+- [ ] **Every failure mode has a response**: Detection + mitigation, not just documentation
+- [ ] **Cost/token awareness**: Skills and strategies include performance tradeoff data
+- [ ] **No duplicate content**: Each atom defined once, referenced many times
+- [ ] **Specs are self-contained**: An agent can follow a spec without reading original research
+- [ ] **Gaps are explicit**: Missing information is called out, not filled with generalities
+
+---
+
+# ANTI-PATTERNS (Do NOT)
+
+- **Do not produce research summaries.** Produce knowledge atoms and product specs.
+- **Do not list techniques without ranking.** Order by: evidence strength -> effectiveness -> implementation simplicity.
+- **Do not say "consider using X."** Say "Use X when [condition]. Use Y when [other condition]. Default to X."
+- **Do not include background explanations.** "ASTs represent syntactic structure" is background. "Parse with Tree-sitter for AST — 40+ languages, incremental, error-recovery" is a procedure step. Only the second belongs.
+- **Do not pad thin areas.** An explicit gap flag is more valuable than three generic bullets.
+- **Do not invent procedures.** If research says "X is effective" but not HOW to do X, flag as gap — don't fabricate steps.
+- **Do not duplicate content across prongs.** Define each atom once in Prong 1. Reference by ID in Prongs 2, 3, 4.

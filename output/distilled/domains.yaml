@@ -1,0 +1,13 @@
+- domain: D5
+  knowledge_atoms:
+  - KA-001
+  key_techniques: []
+  key_constraints: []
+  key_tools:
+  - atom_id: KA-001
+    tool: Tree-sitter
+    evaluated_capability: incremental parsing
+  combination_recipes: []
+  failure_modes: []
+  cross_domain_links: []
+  gaps: []

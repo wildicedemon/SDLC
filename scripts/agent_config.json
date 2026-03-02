@@ -1,0 +1,995 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "total_agents": 40,
+    "total_tiers": 10,
+    "generated_from": "docs/research/orchestrator_execution_spec.md"
+  },
+  "tiers": [
+    {
+      "id": 0,
+      "name": "Bootstrap",
+      "agents": [
+        "AGT-001"
+      ],
+      "description": "Root governance agent - must complete before all others"
+    },
+    {
+      "id": 1,
+      "name": "Foundation",
+      "agents": [
+        "AGT-002",
+        "AGT-003",
+        "AGT-031"
+      ],
+      "description": "System architecture, research foundations, and human escalation policies"
+    },
+    {
+      "id": 2,
+      "name": "Core",
+      "agents": [
+        "AGT-004",
+        "AGT-005",
+        "AGT-008",
+        "AGT-009",
+        "AGT-011",
+        "AGT-019",
+        "AGT-023",
+        "AGT-028",
+        "AGT-034"
+      ],
+      "description": "Core architecture, infrastructure, economics, security, and MCP integration"
+    },
+    {
+      "id": 3,
+      "name": "Intelligence",
+      "agents": [
+        "AGT-006",
+        "AGT-007",
+        "AGT-010",
+        "AGT-012",
+        "AGT-015",
+        "AGT-022",
+        "AGT-024",
+        "AGT-033",
+        "AGT-036"
+      ],
+      "description": "Distributed orchestration, model routing, memory, code exploration, observability"
+    },
+    {
+      "id": 4,
+      "name": "Reasoning",
+      "agents": [
+        "AGT-013",
+        "AGT-014",
+        "AGT-018",
+        "AGT-025",
+        "AGT-029",
+        "AGT-032",
+        "AGT-037"
+      ],
+      "description": "Reasoning, knowledge graphs, refactoring, scaling, cost optimization, telemetry"
+    },
+    {
+      "id": 5,
+      "name": "Specification",
+      "agents": [
+        "AGT-016",
+        "AGT-035",
+        "AGT-038",
+        "AGT-040"
+      ],
+      "description": "Specification generation, compliance auditing, self-improvement, ecosystem intelligence"
+    },
+    {
+      "id": 6,
+      "name": "Generation",
+      "agents": [
+        "AGT-017"
+      ],
+      "description": "Code generation from specifications"
+    },
+    {
+      "id": 7,
+      "name": "Testing",
+      "agents": [
+        "AGT-020"
+      ],
+      "description": "Testing architecture and validation frameworks"
+    },
+    {
+      "id": 8,
+      "name": "Integration",
+      "agents": [
+        "AGT-021",
+        "AGT-026",
+        "AGT-030"
+      ],
+      "description": "CI/CD pipelines, debugging, and quality assurance coordination"
+    },
+    {
+      "id": 9,
+      "name": "Deployment",
+      "agents": [
+        "AGT-027",
+        "AGT-039"
+      ],
+      "description": "Deployment orchestration and agent trust verification"
+    }
+  ],
+  "agents": {
+    "AGT-001": {
+      "name": "Governance Policy Agent",
+      "domain_id": "DOM-001",
+      "domain_name": "System Governance & Policy",
+      "category": "Meta",
+      "type": "Meta",
+      "mode": "architect",
+      "tier": 0,
+      "dependencies": [],
+      "prompt_source": "docs/agent_prompts_batch1.md",
+      "prompt_section": "AGT-001",
+      "output_dir": "output/meta/AGT-001",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-002": {
+      "name": "System Architect Agent",
+      "domain_id": "DOM-002",
+      "domain_name": "System Architecture & Design Patterns",
+      "category": "Meta",
+      "type": "Meta",
+      "mode": "architect",
+      "tier": 1,
+      "dependencies": [
+        "AGT-001"
+      ],
+      "prompt_source": "docs/agent_prompts_batch1.md",
+      "prompt_section": "AGT-002",
+      "output_dir": "output/meta/AGT-002",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-003": {
+      "name": "Research & Benchmarking Agent",
+      "domain_id": "DOM-003",
+      "domain_name": "Research & Benchmarking Framework",
+      "category": "Meta",
+      "type": "Meta",
+      "mode": "research",
+      "tier": 1,
+      "dependencies": [
+        "AGT-001"
+      ],
+      "prompt_source": "docs/agent_prompts_batch1.md",
+      "prompt_section": "AGT-003",
+      "output_dir": "output/meta/AGT-003",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-004": {
+      "name": "Agent Architecture Agent",
+      "domain_id": "DOM-004",
+      "domain_name": "Agent Architecture & Lifecycle",
+      "category": "Core Infrastructure",
+      "type": "Primary",
+      "mode": "architect",
+      "tier": 2,
+      "dependencies": [
+        "AGT-002"
+      ],
+      "prompt_source": "docs/agent_prompts_batch1.md",
+      "prompt_section": "AGT-004",
+      "output_dir": "output/core_infrastructure/AGT-004",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 4,
+      "timeout_minutes": 45,
+      "is_gap_filler": false
+    },
+    "AGT-005": {
+      "name": "Task Architecture Agent",
+      "domain_id": "DOM-005",
+      "domain_name": "Task Architecture & Dependency Management",
+      "category": "Core Infrastructure",
+      "type": "Primary",
+      "mode": "architect",
+      "tier": 2,
+      "dependencies": [
+        "AGT-002"
+      ],
+      "prompt_source": "docs/agent_prompts_batch1.md",
+      "prompt_section": "AGT-005",
+      "output_dir": "output/core_infrastructure/AGT-005",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 4,
+      "timeout_minutes": 45,
+      "is_gap_filler": false
+    },
+    "AGT-006": {
+      "name": "Distributed Orchestration Agent",
+      "domain_id": "DOM-006",
+      "domain_name": "Distributed & Multi-Repository Orchestration",
+      "category": "Core Infrastructure",
+      "type": "Primary",
+      "mode": "architect",
+      "tier": 3,
+      "dependencies": [
+        "AGT-004",
+        "AGT-005"
+      ],
+      "prompt_source": "docs/agent_prompts_batch1.md",
+      "prompt_section": "AGT-006",
+      "output_dir": "output/core_infrastructure/AGT-006",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-007": {
+      "name": "Model Routing Agent",
+      "domain_id": "DOM-007",
+      "domain_name": "Model Capability Management & Routing",
+      "category": "Core Infrastructure",
+      "type": "Primary",
+      "mode": "architect",
+      "tier": 3,
+      "dependencies": [
+        "AGT-002",
+        "AGT-019"
+      ],
+      "prompt_source": "docs/agent_prompts_batch1.md",
+      "prompt_section": "AGT-007",
+      "output_dir": "output/core_infrastructure/AGT-007",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 4,
+      "timeout_minutes": 45,
+      "is_gap_filler": false
+    },
+    "AGT-008": {
+      "name": "Data Engineering Agent",
+      "domain_id": "DOM-008",
+      "domain_name": "Data Engineering & Storage",
+      "category": "Core Infrastructure",
+      "type": "Primary",
+      "mode": "code",
+      "tier": 2,
+      "dependencies": [
+        "AGT-002"
+      ],
+      "prompt_source": "docs/agent_prompts_batch1.md",
+      "prompt_section": "AGT-008",
+      "output_dir": "output/core_infrastructure/AGT-008",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-009": {
+      "name": "Infrastructure Agent",
+      "domain_id": "DOM-009",
+      "domain_name": "Infrastructure & Platform Engineering",
+      "category": "Core Infrastructure",
+      "type": "Primary",
+      "mode": "code",
+      "tier": 2,
+      "dependencies": [
+        "AGT-002"
+      ],
+      "prompt_source": "docs/agent_prompts_batch1.md",
+      "prompt_section": "AGT-009",
+      "output_dir": "output/core_infrastructure/AGT-009",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-010": {
+      "name": "Workspace Management Agent",
+      "domain_id": "DOM-010",
+      "domain_name": "Workspace & Repository Management",
+      "category": "Core Infrastructure",
+      "type": "Primary",
+      "mode": "code",
+      "tier": 3,
+      "dependencies": [
+        "AGT-005"
+      ],
+      "prompt_source": "docs/agent_prompts_batch1.md",
+      "prompt_section": "AGT-010",
+      "output_dir": "output/core_infrastructure/AGT-010",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-011": {
+      "name": "Context & Prompt Agent",
+      "domain_id": "DOM-011",
+      "domain_name": "Context Management & Prompt Engineering",
+      "category": "Intelligence",
+      "type": "Primary",
+      "mode": "architect",
+      "tier": 2,
+      "dependencies": [
+        "AGT-002"
+      ],
+      "prompt_source": "docs/agent_prompts_batch1.md",
+      "prompt_section": "AGT-011",
+      "output_dir": "output/intelligence/AGT-011",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 4,
+      "timeout_minutes": 45,
+      "is_gap_filler": false
+    },
+    "AGT-012": {
+      "name": "Memory Systems Agent",
+      "domain_id": "DOM-012",
+      "domain_name": "Memory Systems & Persistence",
+      "category": "Intelligence",
+      "type": "Primary",
+      "mode": "architect",
+      "tier": 3,
+      "dependencies": [
+        "AGT-008",
+        "AGT-011"
+      ],
+      "prompt_source": "docs/agent_prompts_batch1.md",
+      "prompt_section": "AGT-012",
+      "output_dir": "output/intelligence/AGT-012",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 4,
+      "timeout_minutes": 45,
+      "is_gap_filler": false
+    },
+    "AGT-013": {
+      "name": "Reasoning Agent",
+      "domain_id": "DOM-013",
+      "domain_name": "Reasoning & Decision Intelligence",
+      "category": "Intelligence",
+      "type": "Primary",
+      "mode": "architect",
+      "tier": 4,
+      "dependencies": [
+        "AGT-011",
+        "AGT-012"
+      ],
+      "prompt_source": "docs/agent_prompts_batch1.md",
+      "prompt_section": "AGT-013",
+      "output_dir": "output/intelligence/AGT-013",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 4,
+      "timeout_minutes": 45,
+      "is_gap_filler": false
+    },
+    "AGT-014": {
+      "name": "Knowledge Graph Agent",
+      "domain_id": "DOM-014",
+      "domain_name": "Knowledge Graphs & Semantic Indexing",
+      "category": "Intelligence",
+      "type": "Primary",
+      "mode": "architect",
+      "tier": 4,
+      "dependencies": [
+        "AGT-012",
+        "AGT-008"
+      ],
+      "prompt_source": "docs/agent_prompts_batch1.md",
+      "prompt_section": "AGT-014",
+      "output_dir": "output/intelligence/AGT-014",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 4,
+      "timeout_minutes": 45,
+      "is_gap_filler": false
+    },
+    "AGT-015": {
+      "name": "Code Explorer Agent",
+      "domain_id": "DOM-015",
+      "domain_name": "Code Exploration & Navigation",
+      "category": "Intelligence",
+      "type": "Primary",
+      "mode": "code",
+      "tier": 3,
+      "dependencies": [
+        "AGT-011"
+      ],
+      "prompt_source": "docs/agent_prompts_batch2.md",
+      "prompt_section": "AGT-015",
+      "output_dir": "output/intelligence/AGT-015",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 4,
+      "timeout_minutes": 45,
+      "is_gap_filler": false
+    },
+    "AGT-016": {
+      "name": "Specification Agent",
+      "domain_id": "DOM-016",
+      "domain_name": "Specification & Design Intelligence",
+      "category": "Intelligence",
+      "type": "Primary",
+      "mode": "architect",
+      "tier": 5,
+      "dependencies": [
+        "AGT-013",
+        "AGT-005"
+      ],
+      "prompt_source": "docs/agent_prompts_batch2.md",
+      "prompt_section": "AGT-016",
+      "output_dir": "output/intelligence/AGT-016",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 4,
+      "timeout_minutes": 45,
+      "is_gap_filler": false
+    },
+    "AGT-017": {
+      "name": "Code Generation Agent",
+      "domain_id": "DOM-017",
+      "domain_name": "Code Generation & Synthesis",
+      "category": "Intelligence",
+      "type": "Primary",
+      "mode": "code",
+      "tier": 6,
+      "dependencies": [
+        "AGT-016",
+        "AGT-015",
+        "AGT-013",
+        "AGT-007"
+      ],
+      "prompt_source": "docs/agent_prompts_batch2.md",
+      "prompt_section": "AGT-017",
+      "output_dir": "output/intelligence/AGT-017",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 4,
+      "timeout_minutes": 45,
+      "is_gap_filler": false
+    },
+    "AGT-018": {
+      "name": "Refactoring Agent",
+      "domain_id": "DOM-018",
+      "domain_name": "Refactoring & Code Optimization",
+      "category": "Intelligence",
+      "type": "Primary",
+      "mode": "code",
+      "tier": 4,
+      "dependencies": [
+        "AGT-015"
+      ],
+      "prompt_source": "docs/agent_prompts_batch2.md",
+      "prompt_section": "AGT-018",
+      "output_dir": "output/intelligence/AGT-018",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-019": {
+      "name": "Economic Optimization Agent",
+      "domain_id": "DOM-019",
+      "domain_name": "Economic Optimization & Cost Modeling",
+      "category": "Intelligence",
+      "type": "Primary",
+      "mode": "research",
+      "tier": 2,
+      "dependencies": [
+        "AGT-002"
+      ],
+      "prompt_source": "docs/agent_prompts_batch2.md",
+      "prompt_section": "AGT-019",
+      "output_dir": "output/intelligence/AGT-019",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 4,
+      "timeout_minutes": 45,
+      "is_gap_filler": false
+    },
+    "AGT-020": {
+      "name": "Testing Architecture Agent",
+      "domain_id": "DOM-020",
+      "domain_name": "Testing Architecture & Automation",
+      "category": "Operational",
+      "type": "Gap-Filler",
+      "mode": "code",
+      "tier": 7,
+      "dependencies": [
+        "AGT-017",
+        "AGT-016"
+      ],
+      "prompt_source": "docs/agent_prompts_batch2.md",
+      "prompt_section": "AGT-020",
+      "output_dir": "output/operational/AGT-020",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 5,
+      "timeout_minutes": 60,
+      "is_gap_filler": true
+    },
+    "AGT-021": {
+      "name": "CI/CD Pipeline Agent",
+      "domain_id": "DOM-021",
+      "domain_name": "CI/CD Pipeline Orchestration",
+      "category": "Operational",
+      "type": "Gap-Filler",
+      "mode": "code",
+      "tier": 8,
+      "dependencies": [
+        "AGT-020",
+        "AGT-009",
+        "AGT-010"
+      ],
+      "prompt_source": "docs/agent_prompts_batch2.md",
+      "prompt_section": "AGT-021",
+      "output_dir": "output/operational/AGT-021",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 5,
+      "timeout_minutes": 60,
+      "is_gap_filler": true
+    },
+    "AGT-022": {
+      "name": "Observability Agent",
+      "domain_id": "DOM-022",
+      "domain_name": "Observability & Feedback Loops",
+      "category": "Operational",
+      "type": "Primary",
+      "mode": "code",
+      "tier": 3,
+      "dependencies": [
+        "AGT-002",
+        "AGT-009"
+      ],
+      "prompt_source": "docs/agent_prompts_batch2.md",
+      "prompt_section": "AGT-022",
+      "output_dir": "output/operational/AGT-022",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 4,
+      "timeout_minutes": 45,
+      "is_gap_filler": false
+    },
+    "AGT-023": {
+      "name": "Human-in-the-Loop Agent",
+      "domain_id": "DOM-023",
+      "domain_name": "Human-in-the-Loop Interaction",
+      "category": "Operational",
+      "type": "Primary",
+      "mode": "architect",
+      "tier": 2,
+      "dependencies": [
+        "AGT-001",
+        "AGT-031"
+      ],
+      "prompt_source": "docs/agent_prompts_batch2.md",
+      "prompt_section": "AGT-023",
+      "output_dir": "output/operational/AGT-023",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 4,
+      "timeout_minutes": 45,
+      "is_gap_filler": false
+    },
+    "AGT-024": {
+      "name": "Autonomous Runtime Agent",
+      "domain_id": "DOM-024",
+      "domain_name": "Autonomous Runtime Systems",
+      "category": "Operational",
+      "type": "Primary",
+      "mode": "architect",
+      "tier": 3,
+      "dependencies": [
+        "AGT-004",
+        "AGT-001",
+        "AGT-031"
+      ],
+      "prompt_source": "docs/agent_prompts_batch2.md",
+      "prompt_section": "AGT-024",
+      "output_dir": "output/operational/AGT-024",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-025": {
+      "name": "Scaling Strategies Agent",
+      "domain_id": "DOM-025",
+      "domain_name": "Large Codebase & Scaling Strategies",
+      "category": "Operational",
+      "type": "Primary",
+      "mode": "architect",
+      "tier": 4,
+      "dependencies": [
+        "AGT-015",
+        "AGT-011",
+        "AGT-010"
+      ],
+      "prompt_source": "docs/agent_prompts_batch2.md",
+      "prompt_section": "AGT-025",
+      "output_dir": "output/operational/AGT-025",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-026": {
+      "name": "Debugging Agent",
+      "domain_id": "DOM-026",
+      "domain_name": "Debugging & Error Recovery",
+      "category": "Operational",
+      "type": "Gap-Filler",
+      "mode": "code",
+      "tier": 8,
+      "dependencies": [
+        "AGT-020",
+        "AGT-015"
+      ],
+      "prompt_source": "docs/agent_prompts_batch2.md",
+      "prompt_section": "AGT-026",
+      "output_dir": "output/operational/AGT-026",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 4,
+      "timeout_minutes": 45,
+      "is_gap_filler": true
+    },
+    "AGT-027": {
+      "name": "Deployment Agent",
+      "domain_id": "DOM-027",
+      "domain_name": "Deployment & Release Management",
+      "category": "Operational",
+      "type": "Gap-Filler",
+      "mode": "code",
+      "tier": 9,
+      "dependencies": [
+        "AGT-021",
+        "AGT-010",
+        "AGT-009"
+      ],
+      "prompt_source": "docs/agent_prompts_batch2.md",
+      "prompt_section": "AGT-027",
+      "output_dir": "output/operational/AGT-027",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 4,
+      "timeout_minutes": 45,
+      "is_gap_filler": true
+    },
+    "AGT-028": {
+      "name": "Security Coordinator Agent",
+      "domain_id": "DOM-028",
+      "domain_name": "Security Coordination",
+      "category": "Cross-Cutting",
+      "type": "Cross-Cutting",
+      "mode": "review",
+      "tier": 2,
+      "dependencies": [
+        "AGT-001",
+        "AGT-002"
+      ],
+      "prompt_source": "docs/agent_prompts_batch3.md",
+      "prompt_section": "AGT-028",
+      "output_dir": "output/cross_cutting/AGT-028",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 4,
+      "timeout_minutes": 45,
+      "is_gap_filler": false
+    },
+    "AGT-029": {
+      "name": "Cost Optimization Coordinator Agent",
+      "domain_id": "DOM-029",
+      "domain_name": "Cost & Token Optimization",
+      "category": "Cross-Cutting",
+      "type": "Cross-Cutting",
+      "mode": "review",
+      "tier": 4,
+      "dependencies": [
+        "AGT-019",
+        "AGT-007"
+      ],
+      "prompt_source": "docs/agent_prompts_batch3.md",
+      "prompt_section": "AGT-029",
+      "output_dir": "output/cross_cutting/AGT-029",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-030": {
+      "name": "Quality Assurance Coordinator Agent",
+      "domain_id": "DOM-030",
+      "domain_name": "Quality Assurance Coordination",
+      "category": "Cross-Cutting",
+      "type": "Cross-Cutting",
+      "mode": "review",
+      "tier": 8,
+      "dependencies": [
+        "AGT-001",
+        "AGT-020"
+      ],
+      "prompt_source": "docs/agent_prompts_batch3.md",
+      "prompt_section": "AGT-030",
+      "output_dir": "output/cross_cutting/AGT-030",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-031": {
+      "name": "Human Escalation Coordinator Agent",
+      "domain_id": "DOM-031",
+      "domain_name": "Human Escalation Coordination",
+      "category": "Cross-Cutting",
+      "type": "Cross-Cutting",
+      "mode": "architect",
+      "tier": 1,
+      "dependencies": [
+        "AGT-001"
+      ],
+      "prompt_source": "docs/agent_prompts_batch3.md",
+      "prompt_section": "AGT-031",
+      "output_dir": "output/cross_cutting/AGT-031",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-032": {
+      "name": "Telemetry Coordinator Agent",
+      "domain_id": "DOM-032",
+      "domain_name": "Observability & Telemetry Coordination",
+      "category": "Cross-Cutting",
+      "type": "Cross-Cutting",
+      "mode": "review",
+      "tier": 4,
+      "dependencies": [
+        "AGT-002",
+        "AGT-022"
+      ],
+      "prompt_source": "docs/agent_prompts_batch3.md",
+      "prompt_section": "AGT-032",
+      "output_dir": "output/cross_cutting/AGT-032",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-033": {
+      "name": "Context Poisoning Defense Agent",
+      "domain_id": "DOM-033",
+      "domain_name": "Context Poisoning Defense",
+      "category": "Cross-Cutting",
+      "type": "Cross-Cutting",
+      "mode": "review",
+      "tier": 3,
+      "dependencies": [
+        "AGT-028",
+        "AGT-011"
+      ],
+      "prompt_source": "docs/agent_prompts_batch3.md",
+      "prompt_section": "AGT-033",
+      "output_dir": "output/cross_cutting/AGT-033",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-034": {
+      "name": "MCP Integration Coordinator Agent",
+      "domain_id": "DOM-034",
+      "domain_name": "MCP Integration Coordination",
+      "category": "Cross-Cutting",
+      "type": "Cross-Cutting",
+      "mode": "architect",
+      "tier": 2,
+      "dependencies": [
+        "AGT-002"
+      ],
+      "prompt_source": "docs/agent_prompts_batch3.md",
+      "prompt_section": "AGT-034",
+      "output_dir": "output/cross_cutting/AGT-034",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-035": {
+      "name": "Compliance & Audit Coordinator Agent",
+      "domain_id": "DOM-035",
+      "domain_name": "Compliance & Audit Coordination",
+      "category": "Cross-Cutting",
+      "type": "Cross-Cutting",
+      "mode": "review",
+      "tier": 5,
+      "dependencies": [
+        "AGT-001",
+        "AGT-032"
+      ],
+      "prompt_source": "docs/agent_prompts_batch3.md",
+      "prompt_section": "AGT-035",
+      "output_dir": "output/cross_cutting/AGT-035",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-036": {
+      "name": "Error Recovery Coordinator Agent",
+      "domain_id": "DOM-036",
+      "domain_name": "Error Recovery Coordination",
+      "category": "Cross-Cutting",
+      "type": "Cross-Cutting",
+      "mode": "review",
+      "tier": 3,
+      "dependencies": [
+        "AGT-002",
+        "AGT-004"
+      ],
+      "prompt_source": "docs/agent_prompts_batch3.md",
+      "prompt_section": "AGT-036",
+      "output_dir": "output/cross_cutting/AGT-036",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-037": {
+      "name": "Performance Regression Agent",
+      "domain_id": "DOM-037",
+      "domain_name": "Performance Regression Management",
+      "category": "Cross-Cutting",
+      "type": "Cross-Cutting",
+      "mode": "review",
+      "tier": 4,
+      "dependencies": [
+        "AGT-003",
+        "AGT-007"
+      ],
+      "prompt_source": "docs/agent_prompts_batch3.md",
+      "prompt_section": "AGT-037",
+      "output_dir": "output/cross_cutting/AGT-037",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-038": {
+      "name": "Self-Improvement Agent",
+      "domain_id": "DOM-038",
+      "domain_name": "Self-Improvement & Evolution",
+      "category": "Emerging",
+      "type": "Gap-Filler",
+      "mode": "research",
+      "tier": 5,
+      "dependencies": [
+        "AGT-003",
+        "AGT-037",
+        "AGT-032"
+      ],
+      "prompt_source": "docs/agent_prompts_batch3.md",
+      "prompt_section": "AGT-038",
+      "output_dir": "output/emerging/AGT-038",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 5,
+      "timeout_minutes": 60,
+      "is_gap_filler": true
+    },
+    "AGT-039": {
+      "name": "Agent Trust Agent",
+      "domain_id": "DOM-039",
+      "domain_name": "Agent Trust & Scoring",
+      "category": "Emerging",
+      "type": "Emerging",
+      "mode": "research",
+      "tier": 9,
+      "dependencies": [
+        "AGT-004",
+        "AGT-037",
+        "AGT-030"
+      ],
+      "prompt_source": "docs/agent_prompts_batch3.md",
+      "prompt_section": "AGT-039",
+      "output_dir": "output/emerging/AGT-039",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    },
+    "AGT-040": {
+      "name": "Ecosystem Intelligence Agent",
+      "domain_id": "DOM-040",
+      "domain_name": "Ecosystem Intelligence",
+      "category": "Emerging",
+      "type": "Emerging",
+      "mode": "research",
+      "tier": 5,
+      "dependencies": [
+        "AGT-015",
+        "AGT-028",
+        "AGT-025"
+      ],
+      "prompt_source": "docs/agent_prompts_batch3.md",
+      "prompt_section": "AGT-040",
+      "output_dir": "output/emerging/AGT-040",
+      "expected_outputs": [
+        "domain_decomposition.md"
+      ],
+      "max_recursion_depth": 3,
+      "timeout_minutes": 30,
+      "is_gap_filler": false
+    }
+  }
+}

@@ -1,0 +1,206 @@
+
+================================================================================
+                    DUPLICATE CONTENT ANALYSIS REPORT
+              Repository: /mnt/okcomputer/sdlc_repo/SDLC-main
+================================================================================
+
+EXECUTIVE SUMMARY
+-----------------
+This analysis identified significant code duplication in the SDLC knowledge atom
+extraction system. The most critical finding is 90.1% duplication between the
+two main extractor files, indicating a need for immediate consolidation.
+
+OVERALL STATISTICS
+------------------
+- Total Python files: 156
+- Total JSON files: 13
+- Total Markdown files: 505
+- Total YAML files: 29
+
+================================================================================
+                        CRITICAL SEVERITY (90%+ Duplication)
+================================================================================
+
+[CRITICAL] extract_knowledge.py vs extract_knowledge_atoms.py
+----------------------------------------------------------------
+Location: 
+  - /mnt/okcomputer/sdlc_repo/SDLC-main/extract_knowledge.py (33,023 chars, 739 lines)
+  - /mnt/okcomputer/sdlc_repo/SDLC-main/extract_knowledge_atoms.py (35,236 chars, 805 lines)
+
+Duplication Metrics:
+  - Common lines: 291 of 323 unique lines
+  - Duplication percentage: 90.1%
+
+Identical Functions (100% match):
+  Line ~50:  should_keep()
+  Line ~100: determine_atom_type()
+  Line ~180: calculate_evidence_strength()
+  Line ~230: map_to_domains()
+  Line ~300: map_to_sdlc_phases()
+  Line ~330: map_to_products()
+  Line ~360: create_atom()
+  Line ~400: deduplicate_atoms()
+
+Impact: Maintenance burden, inconsistency risk, code bloat
+Recommendation: URGENT - Merge into single extractor module with configurable behavior
+
+================================================================================
+                          HIGH SEVERITY (50-90% Duplication)
+================================================================================
+
+[HIGH] simple_extractor.py vs minimal_extractor.py
+----------------------------------------------------
+Location:
+  - /mnt/okcomputer/sdlc_repo/SDLC-main/simple_extractor.py (6,401 chars, 203 lines)
+  - /mnt/okcomputer/sdlc_repo/SDLC-main/minimal_extractor.py (5,507 chars, 163 lines)
+
+Duplication Metrics:
+  - Common lines: 57 of 103 unique lines
+  - Duplication percentage: 55.3%
+
+Identical Functions:
+  - main()
+  - extract_sections()
+  - should_keep()
+
+Recommendation: Consolidate into single simplified extractor with options
+
+================================================================================
+                         MEDIUM SEVERITY (20-50% Duplication)
+================================================================================
+
+[MEDIUM] Registry JSON Files
+-----------------------------
+Location:
+  - /mnt/okcomputer/sdlc_repo/SDLC-main/knowledge_atom_registry.json (22,767 chars)
+  - /mnt/okcomputer/sdlc_repo/SDLC-main/master_knowledge_atoms.json (40,397 chars)
+
+Duplication: 64.9% similarity
+Recommendation: Consolidate into single registry file with clear schema
+
+[MEDIUM] Registry Generator Scripts
+------------------------------------
+Location:
+  - /mnt/okcomputer/sdlc_repo/SDLC-main/generate_registry.py (9,231 chars, 186 lines)
+  - /mnt/okcomputer/sdlc_repo/SDLC-main/generate_full_registry.py (44,863 chars, 746 lines)
+
+Duplication: 32.2% similarity
+Recommendation: Merge functionality, use command-line options for different modes
+
+================================================================================
+                         LOW SEVERITY (<20% Duplication)
+================================================================================
+
+[LOW] Duplicate Documentation Filenames
+----------------------------------------
+Files with same names in different directories:
+  - gap_report.md (2 locations)
+  - knowledge_atom_registry.md (2 locations)
+  - patterns.md (3 locations)
+  - references.md (3 locations)
+  - README.md (multiple locations)
+
+Note: These appear to be template-generated files, not actual duplicates
+
+[LOW] Empty __init__.py Files
+------------------------------
+22 empty __init__.py files found across the codebase
+Recommendation: Consider if all are necessary
+
+================================================================================
+                    DUPLICATE FUNCTION SIGNATURES
+================================================================================
+
+The following function names appear in multiple extractor files:
+
+  main()                - 5 files (extract_knowledge_atoms.py, 
+                                 knowledge_atom_extractor.py,
+                                 simple_extractor.py,
+                                 minimal_extractor.py,
+                                 knowledge_atom_extractor/main.py)
+
+  extract_sections()    - 4 files
+  should_keep()         - 4 files
+  create_atom()         - 4 files
+  deduplicate_atoms()   - 3 files
+  rank_atoms()          - 3 files
+
+This indicates a lack of shared utility modules and code reuse.
+
+================================================================================
+                         CONSOLIDATION RECOMMENDATIONS
+================================================================================
+
+1. EXTRACTOR CONSOLIDATION (CRITICAL PRIORITY)
+   --------------------------------------------
+   Create a single knowledge extraction module:
+
+   /mnt/okcomputer/sdlc_repo/SDLC-main/extractors/
+   ├── __init__.py
+   ├── core.py          (merged core functionality)
+   ├── simple.py        (simplified interface)
+   └── utils.py         (shared utilities)
+
+   Deprecate:
+   - extract_knowledge.py
+   - extract_knowledge_atoms.py
+   - simple_extractor.py
+   - minimal_extractor.py
+
+2. REGISTRY CONSOLIDATION (HIGH PRIORITY)
+   ----------------------------------------
+   Create single registry file:
+
+   /mnt/okcomputer/sdlc_repo/SDLC-main/registry/
+   ├── knowledge_atoms.json    (merged registry)
+   └── schema.json             (validation schema)
+
+   Deprecate:
+   - knowledge_atom_registry.json
+   - master_knowledge_atoms.json
+   - registry_simple.json
+
+3. GENERATOR CONSOLIDATION (MEDIUM PRIORITY)
+   -------------------------------------------
+   Merge registry generators into single script with options:
+
+   /mnt/okcomputer/sdlc_repo/SDLC-main/generate_registry.py --full
+
+4. SHARED UTILITIES MODULE (HIGH PRIORITY)
+   -----------------------------------------
+   Create shared utilities module:
+
+   /mnt/okcomputer/sdlc_repo/SDLC-main/utils/
+   ├── __init__.py
+   ├── text_processing.py
+   ├── validation.py
+   └── domain_mapping.py
+
+================================================================================
+                         ESTIMATED IMPACT
+================================================================================
+
+Lines of Code that can be eliminated: ~800-1000 lines
+Percentage of codebase affected: ~5-7%
+Maintenance effort reduction: ~30-40% for extractor-related changes
+Risk of inconsistency: HIGH until consolidation is complete
+
+================================================================================
+                         IMPLEMENTATION PRIORITY
+================================================================================
+
+Priority 1 (Immediate - This Sprint):
+  [CRITICAL] Merge extract_knowledge.py and extract_knowledge_atoms.py
+
+Priority 2 (Next Sprint):
+  [HIGH] Consolidate simple_extractor.py and minimal_extractor.py
+  [HIGH] Create shared utilities module
+
+Priority 3 (Backlog):
+  [MEDIUM] Consolidate registry JSON files
+  [MEDIUM] Merge registry generator scripts
+  [LOW] Review and clean up empty __init__.py files
+
+================================================================================
+                              END OF REPORT
+================================================================================

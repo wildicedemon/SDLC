@@ -1,0 +1,33 @@
+name: "Workflow Template"
+description: "Template for defining multi-step operational sequences"
+
+fields:
+  trigger:
+    required: true
+    description: "What initiates this workflow"
+    validation:
+      - "non_empty"
+
+  phases:
+    required: true
+    description: "Sequential phases with entry/exit criteria"
+    validation:
+      - "list_non_empty"
+
+  completion_criteria:
+    required: true
+    description: "Conditions that mark the workflow as complete"
+    validation:
+      - "non_empty"
+
+  rollback_plan:
+    required: true
+    description: "How to handle failures and roll back changes"
+    validation:
+      - "min_length:20"
+
+structure:
+  - trigger
+  - phases
+  - completion_criteria
+  - rollback_plan
