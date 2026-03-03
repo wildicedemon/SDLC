@@ -63,12 +63,9 @@ class CorpusEventHandler(FileSystemEventHandler):
         """(Re-)schedule processing with a 2-second debounce."""
         path = Path(src_path)
 
-        # Ignore files already in the processed/ subdirectory
-        try:
-            path.relative_to(self.processed_dir)
+        # Ignore files anywhere under a ``processed/`` directory
+        if "processed" in path.parts:
             return
-        except ValueError:
-            pass  # not inside processed/
 
         if path.suffix.lower() not in _SUPPORTED_EXTS:
             logger.debug("Ignoring unsupported extension: %s", path)
@@ -191,15 +188,16 @@ def watch(watch_dir: Path, poll_interval: float = 2.0) -> None:
 
     handler = CorpusEventHandler(watch_dir)
 
-    # Process any backlog (existing files)
+    # Process any backlog (existing files, recursively)
     logger.info("Checking for backlog in %s …", watch_dir)
-    for existing_file in sorted(watch_dir.iterdir()):
-        if existing_file.is_file() and existing_file.suffix.lower() in _SUPPORTED_EXTS:
-            logger.info("Backlog file found: %s", existing_file)
-            handler._process_file(existing_file)
+    for ext in _SUPPORTED_EXTS:
+        for existing_file in sorted(watch_dir.rglob(f"*{ext}")):
+            if "processed" not in existing_file.parts:
+                logger.info("Backlog file found: %s", existing_file)
+                handler._process_file(existing_file)
 
     observer = Observer()
-    observer.schedule(handler, str(watch_dir), recursive=False)
+    observer.schedule(handler, str(watch_dir), recursive=True)
     observer.start()
     logger.info("Watching %s (poll every %.1fs) — press Ctrl+C to stop", watch_dir, poll_interval)
 
