@@ -13,7 +13,7 @@ class CorpusSettings(BaseSettings):
     embedding_model: str = Field(default="all-MiniLM-L6-v2")
     kilo_api_key: str = Field(default="")
     llm_base_url: str = Field(default="https://api.kilo.ai/api/gateway")
-    llm_model: str = Field(default="google/gemini-2.5-flash")
+    llm_model: str = Field(default="google/gemini-3-flash-preview")
     decision_model: str = Field(default="perplexity/sonar-deep-research")
     max_arbitration_calls: int = Field(default=500)
     dedup_l1_threshold: float = Field(default=0.5)

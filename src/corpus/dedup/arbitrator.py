@@ -70,7 +70,7 @@ def arbitrate(
     disagreements: list[Disagreement],
     base_url: str = "https://api.kilo.ai/api/gateway",
     api_key: str = "",
-    model: str = "google/gemini-2.5-flash",
+    model: str = "google/gemini-3-flash-preview",
     max_calls: int = 500,
 ) -> list[ArbitrationResult]:
     """Resolve Layer 1/Layer 2 disagreements via LLM or auto-resolution.
