@@ -1,0 +1,38 @@
+You are a senior speech/audio-ML + applied-ML research engineer. Produce a decision-grade comparison that ends in a single recommended option with a justified rationale — NOT a literature survey. Be rigorous, current, and cite everything.
+
+### The system you are researching for — HARD CONSTRAINTS
+- A local, offline, privacy-first desktop meeting assistant ("family-base", a fork of Meetily). No cloud, no APIs, no telemetry, nothing leaves the machine. Treat cloud-only/API-only solutions as out-of-scope — mention only to exclude them.
+- Hardware (abundant): one workstation — NVIDIA RTX PRO 6000 Blackwell, 96 GB VRAM (CUDA 12.8+, sm_120), Threadripper PRO, ample RAM, WSL2 Ubuntu for Python/GPU services. Compute is NOT the bottleneck; multiple models can co-reside.
+- Existing stack to reuse/compose with: NVIDIA NeMo (running Canary-Qwen ASR), vLLM (Whisper-large-v3-turbo), per-model HTTP servers exposing OpenAI /v1/audio/transcriptions on localhost; a local LLM available; app shell is Tauri 2 (Rust) + Next.js 14 / React / TypeScript; audio capture in Rust (cpal + WASAPI loopback); heavy ML lives in Python services on WSL2; SQLite storage. Audio is captured as separate per-source streams (mic + system loopback).
+- Two runtime modes matter — state which each option fits: LIVE (low-latency streaming during the meeting) and BATCH (post-meeting, max quality). Many features only need batch.
+
+### What to find
+Concrete, comparable options for this target: models, methods/techniques, libraries/packages, open-source reference code, key papers, and end-to-end solutions. Prefer open-source, locally-runnable, actively-maintained, and proven.
+
+### How to evaluate — score every candidate on:
+1. Quality/accuracy — REAL benchmark numbers on relevant datasets (cite them); state eval conditions (in-domain vs zero-shot, dataset, metric).
+2. Local/offline feasibility on the hardware above — VRAM, throughput / real-time factor, GPU vs CPU, streaming-capable vs batch-only, latency.
+3. License — must permit private/offline use; note commercial-use status; flag gated/non-commercial weights or "free tier is cloud-only" traps.
+4. Maturity & maintenance — release recency, repo activity, real-world use.
+5. Integration effort into the stack above — bindings (Rust? Python service? ONNX/CTranslate2?), API shape, dependency weight, how it composes with NeMo / pyannote / Whisper / the local LLM.
+6. Robustness on REAL meeting audio — noisy, overlapping speakers, accents, long-form (hours) — not just clean benchmark conditions.
+
+### Deliver a DECISION
+- Name the single best/superior option and explain WHY it wins against the specific runner-up(s) — not generically. Name the runner-up and the exact conditions under which you'd choose it instead. If the honest answer is "it depends," give the decision rule.
+- Call out where your recommended solution also covers other capabilities on the family-base list (shared tech), or where it should compose with another area's tool — so the overall build is minimized.
+- Where relevant, address: is there a single multitask model (e.g. a Meta/NVIDIA audio foundation model) that covers this target AND neighbors, beating the specialized stack? Verify, don't assume.
+
+### Rigor
+- Current (2024–2026); primary sources (papers, model cards, repos, official docs) over blogs; cite every claim with a link.
+- Real numbers; distinguish measured vs claimed; adversarially sanity-check eye-popping benchmarks (in-domain? cherry-picked? oracle?). Flag what you could not verify.
+- No marketing language.
+
+### Output format
+1. TL;DR — the winner + one-line why.
+2. Decision matrix — candidates × the 6 criteria (compact table, with numbers).
+3. Per-candidate notes — strengths/weaknesses, license, VRAM/latency, integration.
+4. Recommendation — justified vs the runner-up; the decision rule if conditional.
+5. Integration sketch — how it plugs into the local stack (live and/or batch); dependencies; risks; rough effort.
+6. Shared-tech / overlap notes (which other family-base capabilities this also serves).
+7. Open questions / what needs a prototype to settle.
+8. Sources (linked).
